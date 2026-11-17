@@ -1,0 +1,207 @@
+[
+ {
+  "addr": "0x40c84c",
+  "name": "TSDictionaryDefinitionRetriever::TSDictionaryDefinitionRetriever",
+  "cls": "TSDictionaryDefinitionRetriever",
+  "source": "notes+analysis",
+  "note": "constructor(list, dictionaryIndex, FILETIME* out): opens the dictionary file for reading and reports its timestamp"
+ },
+ {
+  "addr": "0x40ca04",
+  "name": "TSDictionaryDefinitionRetriever::ReadDefinition",
+  "cls": "TSDictionaryDefinitionRetriever",
+  "source": "notes",
+  "note": "reads and decodes one definition record at a file offset (XOR 0xBD per your notes). Entry checked; body not read"
+ },
+ {
+  "addr": "0x408ef4",
+  "name": "TSDictionaryList::CollectDefinitionOffsets",
+  "source": "notes",
+  "note": "gathers direct-definition and full-text occurrence offsets for a matched word. Entry checked; body not read"
+ },
+ {
+  "addr": "0x40e5e0",
+  "name": "TSDictionaryDefinitionSearchIndexed::TSDictionaryDefinitionSearchIndexed",
+  "cls": "TSDictionaryDefinitionSearchIndexed",
+  "source": "notes",
+  "note": "runs the indexed full-text search and stores the resulting sorted offset list (pipeline per your notes). Entry checked; body not read"
+ },
+ {
+  "addr": "0x410420",
+  "name": "sort_uint32",
+  "source": "notes",
+  "note": "std::sort over uint32 offsets per your notes. Entry checked; body not read"
+ },
+ {
+  "addr": "0x410568",
+  "name": "unique_uint32",
+  "source": "notes+analysis",
+  "note": "std::unique over a sorted int range"
+ },
+ {
+  "addr": "0x4105bc",
+  "name": "set_union_uint32",
+  "source": "notes+analysis",
+  "note": "std::set_union of two sorted int ranges"
+ },
+ {
+  "addr": "0x410628",
+  "name": "set_intersection_uint32",
+  "source": "notes+analysis",
+  "note": "std::set_intersection of two sorted int ranges"
+ },
+ {
+  "addr": "0x410704",
+  "name": "TSDictionaryDefinitionSearchIndexed::Next",
+  "cls": "TSDictionaryDefinitionSearchIndexed",
+  "source": "notes+analysis",
+  "note": "advances through the offset list, skipping values outside the definition section, and reads the next record"
+ },
+ {
+  "addr": "0x410788",
+  "name": "TSDictionaryDefinitionSearchSequential::TSDictionaryDefinitionSearchSequential",
+  "cls": "TSDictionaryDefinitionSearchSequential",
+  "source": "notes+analysis",
+  "note": "constructor: opens the file, sets a 0x40000-byte stream buffer and seeks to the start of the definition section"
+ },
+ {
+  "addr": "0x4108e4",
+  "name": "TSDictionaryDefinitionSearchSequential::Next",
+  "cls": "TSDictionaryDefinitionSearchSequential",
+  "source": "notes",
+  "note": "sequential record scan with on-the-fly tokenising per your notes. Entry checked; body not read"
+ },
+ {
+  "addr": "0x4304f0",
+  "name": "MatchListWindows::Entry::Entry",
+  "cls": "MatchListWindows",
+  "source": "notes+analysis",
+  "note": "constructor(text, wordLength, linkIndex): next=NULL, link index, length byte at +8, text copied to +9"
+ },
+ {
+  "addr": "0x4309cc",
+  "name": "MatchListWindows::CompareEntries",
+  "cls": "MatchListWindows",
+  "source": "notes+analysis",
+  "note": "ordering predicate for the sort modes: modes > 2 compare by length first; odd/even selects direction"
+ },
+ {
+  "addr": "0x448c4c",
+  "name": "WordListMap::AllocateNode",
+  "source": "notes",
+  "note": "node slab allocator for the duplicate-suppression map per your notes. Entry checked; body not read"
+ },
+ {
+  "addr": "0x4deb10",
+  "name": "fopen",
+  "source": "analysis (usage pattern)"
+ },
+ {
+  "addr": "0x4e02cc",
+  "name": "setvbuf",
+  "source": "analysis (usage pattern)"
+ },
+ {
+  "addr": "0x4dedd8",
+  "name": "fseek",
+  "source": "analysis (usage pattern)"
+ },
+ {
+  "addr": "0x411790",
+  "name": "InputEngine::StartLength",
+  "cls": "InputEngine",
+  "source": "analysis (matched TEACON.exe by position and size)",
+  "note": "corresponds to TEACON.exe by position and size (bodies differ only where the larger GUI structures shift offsets). Selects one word-length bucket and opens the file"
+ },
+ {
+  "addr": "0x4118a0",
+  "name": "InputEngine::NextWord",
+  "cls": "InputEngine",
+  "source": "analysis (inferred)",
+  "note": "second Huffman decode loop that exists only in TEA.exe; same structure as NextMatch. Its exact role was not determined"
+ },
+ {
+  "addr": "0x411bdc",
+  "name": "InputEngine::NextMatch",
+  "cls": "InputEngine",
+  "source": "notes+analysis (matched TEACON.exe by position and size)",
+  "note": "corresponds to TEACON.exe by position and size (bodies differ only where the larger GUI structures shift offsets). Huffman-decodes words of the current length and tests each against the MatchEngineSet"
+ },
+ {
+  "addr": "0x412000",
+  "name": "MatchEngineSet::EvalLogic",
+  "module": "InputEngine",
+  "source": "notes+analysis (matched TEACON.exe by position and size)",
+  "note": "corresponds to TEACON.exe by position and size (bodies differ only where the larger GUI structures shift offsets). Boolean VM over the logic bytecode; this is the 0x412000 address given in your notes"
+ },
+ {
+  "addr": "0x41229c",
+  "name": "InputEngine::GetLinkGroupIndex",
+  "cls": "InputEngine",
+  "source": "notes+analysis",
+  "note": "returns link_group_index-1 (+0x4808) when the has_links flag (+0x4804) is set, else -1"
+ },
+ {
+  "addr": "0x43484c",
+  "name": "MatchEngine::GetLengthKind",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "1 when max_len > 100 (open-ended), -1 when min_len < max_len, 0 for a fixed length. TEA.exe only"
+ },
+ {
+  "addr": "0x460050",
+  "name": "MatchEngine::MatchGeneral",
+  "cls": "MatchEngine",
+  "source": "analysis (matched TEACON.exe by position and size)",
+  "note": "corresponds to TEACON.exe by position and size (bodies differ only where the larger GUI structures shift offsets). Default matcher installed by the constructor"
+ },
+ {
+  "addr": "0x468ab8",
+  "name": "VariableValues::Bind",
+  "cls": "VariableValues",
+  "source": "analysis (matched TEACON.exe by position and size)",
+  "note": "corresponds to TEACON.exe by position and size (bodies differ only where the larger GUI structures shift offsets). "
+ },
+ {
+  "addr": "0x468b04",
+  "name": "VariableValues::Get",
+  "cls": "VariableValues",
+  "source": "analysis (matched TEACON.exe by position and size)",
+  "note": "corresponds to TEACON.exe by position and size (bodies differ only where the larger GUI structures shift offsets). "
+ },
+ {
+  "addr": "0x468b50",
+  "name": "VariableValues::Clear",
+  "cls": "VariableValues",
+  "source": "analysis",
+  "note": "marks all ten variables unbound (0xfe)"
+ },
+ {
+  "addr": "0x468b6c",
+  "name": "VariableValues::Save",
+  "cls": "VariableValues",
+  "source": "analysis",
+  "note": "copies the ten bindings into a snapshot"
+ },
+ {
+  "addr": "0x468b8c",
+  "name": "VariableValues::Restore",
+  "cls": "VariableValues",
+  "source": "analysis",
+  "note": "restores the ten bindings from a snapshot"
+ },
+ {
+  "addr": "0x468bb8",
+  "name": "MatchEngine::ResetMatchState",
+  "module": "VariableValues",
+  "source": "analysis",
+  "note": "clears the variable-binding flag and the balance flag"
+ },
+ {
+  "addr": "0x477e58",
+  "name": "MatchEngineSet::Compile",
+  "cls": "MatchEngineSet",
+  "source": "notes+analysis (matched TEACON.exe by position and size)",
+  "note": "corresponds to TEACON.exe by position and size (bodies differ only where the larger GUI structures shift offsets). Splits the query on & | ! ( ) and compiles one MatchEngine per leaf"
+ }
+]

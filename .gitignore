@@ -1,0 +1,17 @@
+# Downloaded toolchain (Ghidra, JDK, MinGW): over 2 GB, fetched separately
+/_tools/
+
+# The original TEA Crossword Helper release and its installer: not ours to redistribute
+/TEA Crossword Helper 2.11/
+/TEA (1).exe
+
+# Registry exports of the original's settings (hold its licence details)
+/_backup/
+
+# Build output of tea-rebuild, teacon-rebuild and decompiled/<program>/obj
+bin/
+obj/
+
+# Ghidra project databases (binary; rebuilt by decompiled/_work/tools/prepare.ps1 and commit.ps1)
+/decompiled/ghidra-project/
+/decompiled/_work/backup/ghidra-project-before-signature-commit/

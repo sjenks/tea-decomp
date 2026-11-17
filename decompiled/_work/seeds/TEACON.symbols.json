@@ -1,0 +1,2327 @@
+{
+ "exe": "TEACON.exe",
+ "imageBase": 4194304,
+ "functions": {
+  "4199116": {
+   "name": "main",
+   "priority": 10,
+   "module": "main",
+   "kind": "function",
+   "source": "analysis",
+   "note": "console entry: parses options, loads the profile, compiles the pattern, streams matches (references the usage/banner strings)"
+  },
+  "4214684": {
+   "name": "std::exception::vf1",
+   "priority": 2,
+   "cls": "std::exception",
+   "kind": "virtual",
+   "slot": 1,
+   "source": "rtti:vtable"
+  },
+  "4214696": {
+   "name": "std::bad_alloc::vf1",
+   "priority": 2,
+   "cls": "std::bad_alloc",
+   "kind": "virtual",
+   "slot": 1,
+   "source": "rtti:vtable"
+  },
+  "4214708": {
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string",
+   "priority": 5,
+   "cls": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4214852": {
+   "name": "std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::~vector",
+   "priority": 5,
+   "cls": "std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4214908": {
+   "name": "std::vector<MatchEngine *,std::allocator<MatchEngine *> >::~vector",
+   "priority": 5,
+   "cls": "std::vector<MatchEngine *,std::allocator<MatchEngine *> >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4215424": {
+   "name": "TSDictionaryList::~TSDictionaryList",
+   "priority": 5,
+   "cls": "TSDictionaryList",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4220004": {
+   "name": "TSDictionaryList::ReleaseDictionaries",
+   "priority": 10,
+   "cls": "TSDictionaryList",
+   "kind": "function",
+   "source": "analysis",
+   "note": "drops one reference on every listed Dictionary in the shared cache and deletes those reaching zero"
+  },
+  "4220328": {
+   "name": "TSDictionaryList::GetCount",
+   "priority": 10,
+   "cls": "TSDictionaryList",
+   "kind": "function",
+   "source": "analysis",
+   "note": "number of dictionaries (vector size)"
+  },
+  "4220740": {
+   "name": "TSDictionaryList::GetNumLengths",
+   "priority": 10,
+   "cls": "TSDictionaryList",
+   "kind": "function",
+   "source": "analysis",
+   "note": "dictionary header num_lengths (u16 at Dictionary+0x240c)"
+  },
+  "4220768": {
+   "name": "TSDictionaryList::GetWordStreamOffset",
+   "priority": 10,
+   "cls": "TSDictionaryList",
+   "kind": "function",
+   "source": "analysis",
+   "note": "word_stream_offsets[length] (u32 table at Dictionary+0x2410)"
+  },
+  "4220948": {
+   "name": "TSDictionaryList::Dictionary::Dictionary",
+   "priority": 10,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "function",
+   "source": "analysis",
+   "note": "constructor: installs the vtable, copies the path string"
+  },
+  "4221264": {
+   "name": "TSDictionaryList::Dictionary::~Dictionary",
+   "priority": 5,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4221484": {
+   "name": "TSDictionaryList::Dictionary::Load",
+   "priority": 10,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "vtable slot 1. Reads the .tsd header (magic TSD0/TSD1), Huffman table and calibration matrix; builds the 8-bit lookahead decode tables",
+   "aliases": [
+    "TSDictionaryList::Dictionary::vf1 [rtti:vtable]"
+   ]
+  },
+  "4223260": {
+   "name": "TSDictionaryList::Dictionary::Unload",
+   "priority": 10,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "function",
+   "source": "analysis",
+   "note": "vtable slot 2. Frees the calibration matrix and clears the loaded state",
+   "aliases": [
+    "TSDictionaryList::Dictionary::vf2 [rtti:vtable]"
+   ]
+  },
+  "4223392": {
+   "name": "TSDictionaryList::Dictionary::EnsureCurrent",
+   "priority": 10,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "function",
+   "source": "analysis",
+   "note": "vtable slot 3. Reloads when the file's timestamp no longer matches; returns the loaded flag",
+   "aliases": [
+    "TSDictionaryList::Dictionary::vf3 [rtti:vtable]"
+   ]
+  },
+  "4223488": {
+   "name": "TSDictionaryList::Dictionary::vf4",
+   "priority": 2,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "virtual",
+   "slot": 4,
+   "source": "rtti:vtable"
+  },
+  "4223504": {
+   "name": "TSDictionaryList::Dictionary::GetFileTitle",
+   "priority": 10,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "function",
+   "source": "analysis",
+   "note": "vtable slot 5",
+   "aliases": [
+    "TSDictionaryList::Dictionary::vf5 [rtti:vtable]"
+   ]
+  },
+  "4223572": {
+   "name": "TSDictionaryList::Dictionary::vf6",
+   "priority": 2,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "virtual",
+   "slot": 6,
+   "source": "rtti:vtable"
+  },
+  "4223588": {
+   "name": "TSDictionaryList::Dictionary::GetCounts",
+   "priority": 10,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "function",
+   "source": "analysis",
+   "note": "vtable slot 10. Sums the per-length count tables into four totals",
+   "aliases": [
+    "TSDictionaryList::Dictionary::vf10 [rtti:vtable]"
+   ]
+  },
+  "4223692": {
+   "name": "TSDictionaryList::Dictionary::GetSummaryText",
+   "priority": 10,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "function",
+   "source": "analysis",
+   "note": "vtable slot 7. Formats the Headwords / Definitions / Description text",
+   "aliases": [
+    "TSDictionaryList::Dictionary::vf7 [rtti:vtable]"
+   ]
+  },
+  "4224296": {
+   "name": "TSDictionaryList::Dictionary::GetFileDateText",
+   "priority": 10,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "function",
+   "source": "analysis",
+   "note": "vtable slot 8. Formats the file time with GetDateFormatA",
+   "aliases": [
+    "TSDictionaryList::Dictionary::vf8 [rtti:vtable]"
+   ]
+  },
+  "4224872": {
+   "name": "TSDictionaryList::Dictionary::GetDescription",
+   "priority": 10,
+   "cls": "TSDictionaryList::Dictionary",
+   "kind": "function",
+   "source": "analysis",
+   "note": "vtable slot 9. Returns the header description string (Dictionary+0x2014)",
+   "aliases": [
+    "TSDictionaryList::Dictionary::vf9 [rtti:vtable]"
+   ]
+  },
+  "4225100": {
+   "name": "MatchEngine::~MatchEngine",
+   "priority": 5,
+   "cls": "MatchEngine",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4225664": {
+   "name": "std::logic_error::vf1",
+   "priority": 2,
+   "cls": "std::logic_error",
+   "kind": "virtual",
+   "slot": 1,
+   "source": "rtti:vtable"
+  },
+  "4225676": {
+   "name": "std::vector<TSDictionaryList::Dictionary *,std::allocator<TSDictionaryList::Dictionary *> >::~vector",
+   "priority": 5,
+   "cls": "std::vector<TSDictionaryList::Dictionary *,std::allocator<TSDictionaryList::Dictionary *> >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4230852": {
+   "name": "GetFileTitleString",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "GetFileTitleA wrapper returning a std::string"
+  },
+  "4231324": {
+   "name": "GetProgramDirectory",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "GetModuleFileNameA, truncated after the last backslash"
+  },
+  "4232796": {
+   "name": "ReadFileTime",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "opens the file read-only and calls GetFileTime"
+  },
+  "4233544": {
+   "name": "std::locale::~locale",
+   "priority": 5,
+   "cls": "std::locale",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4233820": {
+   "name": "InputEngine::InputEngine",
+   "priority": 10,
+   "cls": "InputEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "constructor(list, dictionaryIndex): links the engine into the global InputEngine list"
+  },
+  "4234020": {
+   "name": "InputEngine::~InputEngine",
+   "priority": 5,
+   "cls": "InputEngine",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4234092": {
+   "name": "InputEngine::StartLength",
+   "priority": 10,
+   "cls": "InputEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "selects one word-length bucket: looks up word_stream_offsets[L], skips empty buckets, opens the file, clears the word buffer"
+  },
+  "4234360": {
+   "name": "InputEngine::NextMatch",
+   "priority": 10,
+   "cls": "InputEngine",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "Huffman-decodes words of the current length (8-bit lookahead table, then bit-by-bit trie walk), at most 2000 per call, testing each against the MatchEngineSet"
+  },
+  "4235420": {
+   "name": "MatchEngineSet::EvalLogic",
+   "priority": 10,
+   "module": "InputEngine",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "boolean VM over the logic bytecode: 1=OR 2=AND 3=END 4=open paren 5=close paren, bit 0x08=NOT. mode 0 = precomputed flags, 1 = length pre-check (NOT is skipped), 2 = match the word. The 0x412000 address in your notes is this function in TEA.exe"
+  },
+  "4235800": {
+   "name": "InputEngine::OpenFile",
+   "priority": 10,
+   "cls": "InputEngine",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "CreateFileA + seek to the saved offset; on ERROR_TOO_MANY_OPEN_FILES closes another engine's handle from the global list and retries"
+  },
+  "4236088": {
+   "name": "InputEngine::GetAnnotation",
+   "priority": 10,
+   "cls": "InputEngine",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "returns the text following the display word's NUL, or NULL when empty. The 0x4122bc address in your notes is this function in TEA.exe"
+  },
+  "4236156": {
+   "name": "MatchEngine::CompilePattern",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes (structure checked)",
+   "note": "recursive [template][;anagram] parser; mutually recursive with CompileTemplate / CompileAnagram. Not read line by line"
+  },
+  "4238904": {
+   "name": "MatchEngine::CompileTemplate",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes (inferred)",
+   "note": "template-side compiler (choice lists, escapes per your notes). Role inferred from call structure"
+  },
+  "4241112": {
+   "name": "MatchEngine::CompileAnagram",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes (inferred)",
+   "note": "anagram-side compiler; uses the Pattern pool. Role inferred from call structure"
+  },
+  "4244584": {
+   "name": "MatchEngine::Compile",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "compiles one leaf pattern and selects the fast-path matcher stored at +0x114c"
+  },
+  "4249016": {
+   "name": "MatchEngine::IsValid",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "returns the int at +0x1020; MatchEngineSet::Compile treats 0 as a compile failure"
+  },
+  "4249032": {
+   "name": "MatchEngine::GetStatus",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "returns the status byte at +0x1024"
+  },
+  "4249048": {
+   "name": "MatchEngine::MatchEngine",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "constructor: Pattern pool, empty bytecode string, shortest=1, longest=100, matcher=MatchGeneral"
+  },
+  "4249268": {
+   "name": "MatchEngine::SetShortest",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "clamps to 1..100 and stores at +0x1134"
+  },
+  "4249320": {
+   "name": "MatchEngine::SetLongest",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "clamps to 1..100 and stores at +0x1138"
+  },
+  "4249372": {
+   "name": "MatchEngine::SetWordLength",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "stores the candidate length (+0x113c) and the slack over the template minimum (+0x1140)"
+  },
+  "4249404": {
+   "name": "MatchEngine::MatchWord",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "builds the punctuation-prefix and filtered raw buffers when needed, then calls the selected matcher"
+  },
+  "4249668": {
+   "name": "MatchEngine::FormatBalance",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes",
+   "note": "renders the anagram balance table as text. Entry checked; body only skimmed"
+  },
+  "4249924": {
+   "name": "MatchEngine::GetMinLength",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "max(shortest setting, compiled min_len)"
+  },
+  "4249952": {
+   "name": "MatchEngine::GetMaxLength",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "min(longest setting, compiled max_len)"
+  },
+  "4249980": {
+   "name": "VariableValues::Bind",
+   "priority": 10,
+   "cls": "VariableValues",
+   "kind": "function",
+   "source": "analysis",
+   "note": "binds variable 0..9 to a letter if unbound (0xfe) and, when exclusive, not already used"
+  },
+  "4250056": {
+   "name": "VariableValues::Get",
+   "priority": 10,
+   "cls": "VariableValues",
+   "kind": "function",
+   "source": "analysis",
+   "note": "pointer to the binding slot for one variable"
+  },
+  "4250084": {
+   "name": "VariableValues::IsLetterBound",
+   "priority": 10,
+   "cls": "VariableValues",
+   "kind": "function",
+   "source": "analysis",
+   "note": "true when the exclusive option is on and another variable already holds this letter"
+  },
+  "4250132": {
+   "name": "VariableValues::Clear",
+   "priority": 10,
+   "cls": "VariableValues",
+   "kind": "function",
+   "source": "analysis",
+   "note": "marks all ten variables unbound (0xfe)"
+  },
+  "4250160": {
+   "name": "VariableValues::Save",
+   "priority": 10,
+   "cls": "VariableValues",
+   "kind": "function",
+   "source": "analysis",
+   "note": "copies the ten bindings into a snapshot"
+  },
+  "4250192": {
+   "name": "VariableValues::Restore",
+   "priority": 10,
+   "cls": "VariableValues",
+   "kind": "function",
+   "source": "analysis",
+   "note": "restores the ten bindings from a snapshot"
+  },
+  "4250232": {
+   "name": "MatchEngine::ResetMatchState",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "clears the variable-binding flag and the balance flag before a match"
+  },
+  "4250336": {
+   "name": "Pattern::Pattern",
+   "priority": 10,
+   "cls": "Pattern",
+   "kind": "function",
+   "source": "analysis",
+   "note": "constructor: count=0 and 256 empty 16-byte strings"
+  },
+  "4250452": {
+   "name": "Pattern::~Pattern",
+   "priority": 5,
+   "cls": "Pattern",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4250552": {
+   "name": "Pattern::Add",
+   "priority": 10,
+   "cls": "Pattern",
+   "kind": "function",
+   "source": "analysis",
+   "note": "returns the index of an equal entry or appends (capacity 256)"
+  },
+  "4250716": {
+   "name": "Pattern::Clear",
+   "priority": 10,
+   "cls": "Pattern",
+   "kind": "function",
+   "source": "analysis",
+   "note": "count = 0"
+  },
+  "4250728": {
+   "name": "Pattern::At",
+   "priority": 10,
+   "cls": "Pattern",
+   "kind": "function",
+   "source": "analysis",
+   "note": "address of slot n (8 + n*16)"
+  },
+  "4250752": {
+   "name": "MatchEngine::MatchFixedTemplate",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "fast path: (offset, letter) pairs compared in sequence until an opcode >= 0xf0"
+  },
+  "4250784": {
+   "name": "MatchEngine::MatchDistinctAnagram",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes",
+   "note": "fast path for anagrams of distinct letters. Entry checked; body not read"
+  },
+  "4250900": {
+   "name": "MatchEngine::MatchMultiAnagram",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes",
+   "note": "fast path for anagrams with repeated letters. Entry checked; body not read"
+  },
+  "4251000": {
+   "name": "MatchEngine::RunTemplateVM",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes",
+   "note": "backtracking template bytecode interpreter. Entry checked; body not read"
+  },
+  "4252664": {
+   "name": "MatchEngine::AnagramSingleLetters",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "anagram opcode 0xf5 operand walker: <count> <letter...>"
+  },
+  "4252720": {
+   "name": "MatchEngine::AnagramMultiLetters",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "anagram opcode 0xf6: (multiplicity, letter) pairs checked against the letter histogram with an omission budget"
+  },
+  "4252800": {
+   "name": "MatchEngine::AnagramChoiceLists",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes",
+   "note": "anagram opcode 0xf7 solver. Entry checked; body not read"
+  },
+  "4253040": {
+   "name": "MatchEngine::AnagramChoiceListsOp",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "fetches the Pattern pool slot and calls AnagramChoiceLists"
+  },
+  "4253108": {
+   "name": "MatchEngine::AnagramVariables",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes",
+   "note": "anagram opcode 0xf8. Entry checked; body not read"
+  },
+  "4253596": {
+   "name": "MatchEngine::AnagramSubPattern",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes",
+   "note": "anagram opcode 0xfa. Entry checked; body not read"
+  },
+  "4254296": {
+   "name": "MatchEngine::RunAnagramVM",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes",
+   "note": "anagram bytecode interpreter. Entry checked; body not read"
+  },
+  "4254496": {
+   "name": "MatchEngine::ComputeBalance",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "fills the 256-entry balance table: +1 per candidate letter, minus the letters the anagram consumed"
+  },
+  "4254700": {
+   "name": "MatchEngine::MatchGeneral",
+   "priority": 10,
+   "cls": "MatchEngine",
+   "kind": "function",
+   "source": "analysis",
+   "note": "default matcher installed by the constructor; snapshots variable bindings around the template VM"
+  },
+  "4255108": {
+   "name": "VariableValues::~VariableValues",
+   "priority": 5,
+   "cls": "VariableValues",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4255164": {
+   "name": "FilterWordByCaseMode",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (inferred)",
+   "note": "copies a word into a new string under mode 1..4 (all / letters only / letters upper-cased / letters lower-cased)"
+  },
+  "4256364": {
+   "name": "TEAViewProfileWindows::Load",
+   "priority": 10,
+   "cls": "TEAViewProfileWindows",
+   "kind": "function",
+   "source": "analysis (inferred)",
+   "note": "reads fonts, colours, view settings and the open-dictionary list from the registry profile; class membership inferred from position next to the destructor"
+  },
+  "4264264": {
+   "name": "TEAViewProfileWindows::~TEAViewProfileWindows",
+   "priority": 5,
+   "cls": "TEAViewProfileWindows",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4264716": {
+   "name": "ExpandQueryMacros",
+   "priority": 10,
+   "module": "main",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "replaces unescaped @ and # with the configured expansions; \\x pairs are copied verbatim"
+  },
+  "4265328": {
+   "name": "LoadPatternOptions",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "reads ExpansionAt, ExpansionHash, VariablesExclusive, IgnoreUnusedPunctuation from the registry profile"
+  },
+  "4266300": {
+   "name": "Persist::Persist",
+   "priority": 10,
+   "cls": "Persist",
+   "kind": "function",
+   "source": "analysis",
+   "note": "opens or creates the registry key (RegOpenKeyExA / RegCreateKeyExA)"
+  },
+  "4266528": {
+   "name": "Persist::~Persist",
+   "priority": 5,
+   "cls": "Persist",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4266572": {
+   "name": "Persist::QueryValueSized",
+   "priority": 10,
+   "cls": "Persist",
+   "kind": "function",
+   "source": "analysis",
+   "note": "RegQueryValueExA wrapper"
+  },
+  "4266688": {
+   "name": "Persist::QueryValue",
+   "priority": 10,
+   "cls": "Persist",
+   "kind": "function",
+   "source": "analysis",
+   "note": "RegQueryValueExA wrapper"
+  },
+  "4267864": {
+   "name": "MatchEngineSet::~MatchEngineSet",
+   "priority": 5,
+   "cls": "MatchEngineSet",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4268108": {
+   "name": "MatchEngineSet::Compile",
+   "priority": 10,
+   "cls": "MatchEngineSet",
+   "kind": "function",
+   "source": "notes+analysis",
+   "note": "splits the expanded query on & | ! ( ), creates one MatchEngine per leaf and calls MatchEngine::Compile; returns the first leaf's error status"
+  },
+  "4279772": {
+   "name": "Common::~Common",
+   "priority": 5,
+   "cls": "Common",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4280140": {
+   "name": "calloc",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "malloc(n*size) then memset 0"
+  },
+  "4280184": {
+   "name": "operator_delete",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "called on `this` at the end of every deleting destructor"
+  },
+  "4280200": {
+   "name": "operator_delete_array",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)"
+  },
+  "4280216": {
+   "name": "set_new_handler",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)"
+  },
+  "4280236": {
+   "name": "operator_new",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "result is null-checked and passed to a constructor"
+  },
+  "4280380": {
+   "name": "operator_new_array",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern, less certain)"
+  },
+  "4280608": {
+   "name": "_vector_delete_ldtc_",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "Borland RTL array destructor helper (ptr, elemSize, count, mode, dtor)"
+  },
+  "4280960": {
+   "name": "_vector_new_ldtc_",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "Borland RTL array constructor helper (ptr, elemSize, count, mode, ctor)"
+  },
+  "4281840": {
+   "name": "malloc",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "called by operator new in a retry loop"
+  },
+  "4281856": {
+   "name": "free",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "called by operator delete"
+  },
+  "4287368": {
+   "name": "__rwstd::locale_vector<__rwstd::facet_imp *>::~locale_vector",
+   "priority": 5,
+   "cls": "__rwstd::locale_vector<__rwstd::facet_imp *>",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4288116": {
+   "name": "std::string::string_from_cstr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "std::string(const char*)"
+  },
+  "4288508": {
+   "name": "std::string::__getRep",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "allocates a string representation of the given capacity"
+  },
+  "4290556": {
+   "name": "__rwstd::locale_vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::~locale_vector",
+   "priority": 5,
+   "cls": "__rwstd::locale_vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4290792": {
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::~basic_string",
+   "priority": 5,
+   "cls": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4291884": {
+   "name": "std::locale::facet::~facet",
+   "priority": 5,
+   "cls": "std::locale::facet",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4292604": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::~basic_filebuf",
+   "priority": 5,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4293132": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::~basic_streambuf",
+   "priority": 5,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4294524": {
+   "name": "std::basic_ostream<char,std::char_traits<char> >::~basic_ostream",
+   "priority": 5,
+   "cls": "std::basic_ostream<char,std::char_traits<char> >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4294644": {
+   "name": "std::basic_istream<char,std::char_traits<char> >::~basic_istream",
+   "priority": 5,
+   "cls": "std::basic_istream<char,std::char_traits<char> >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4294764": {
+   "name": "std::basic_ios<char,std::char_traits<char> >::~basic_ios",
+   "priority": 5,
+   "cls": "std::basic_ios<char,std::char_traits<char> >",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4296076": {
+   "name": "std::basic_istream<char,std::char_traits<char> >::sentry::~sentry",
+   "priority": 5,
+   "cls": "std::basic_istream<char,std::char_traits<char> >::sentry",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4297384": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::vf9",
+   "priority": 2,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 9,
+   "source": "rtti:vtable"
+  },
+  "4299048": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::vf10",
+   "priority": 2,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 10,
+   "source": "rtti:vtable"
+  },
+  "4299400": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::vf12",
+   "priority": 2,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 12,
+   "source": "rtti:vtable"
+  },
+  "4300336": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::vf7",
+   "priority": 2,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 7,
+   "source": "rtti:vtable"
+  },
+  "4301688": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf9",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 9,
+   "source": "rtti:vtable"
+  },
+  "4301700": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf10",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 10,
+   "source": "rtti:vtable"
+  },
+  "4301712": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf12",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 12,
+   "source": "rtti:vtable"
+  },
+  "4301720": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf8",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 8,
+   "source": "rtti:vtable"
+  },
+  "4301788": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf7",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 7,
+   "source": "rtti:vtable"
+  },
+  "4301800": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::vf5",
+   "priority": 2,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 5,
+   "source": "rtti:vtable"
+  },
+  "4301884": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::vf11",
+   "priority": 2,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 11,
+   "source": "rtti:vtable"
+  },
+  "4302448": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf5",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 5,
+   "source": "rtti:vtable"
+  },
+  "4302592": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf6",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 6,
+   "source": "rtti:vtable"
+  },
+  "4302752": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf11",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 11,
+   "source": "rtti:vtable"
+  },
+  "4303468": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::vf2",
+   "priority": 2,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 2,
+   "source": "rtti:vtable"
+  },
+  "4303712": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf2",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 2,
+   "source": "rtti:vtable"
+  },
+  "4303720": {
+   "name": "std::string::append",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)"
+  },
+  "4303996": {
+   "name": "std::string::assign",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern, less certain)"
+  },
+  "4304528": {
+   "name": "std::string::replace_fill",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "replace(pos, n1, n2, ch); with pos=size,n1=0 it appends n2 copies of ch"
+  },
+  "4306336": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::vf3",
+   "priority": 2,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 3,
+   "source": "rtti:vtable"
+  },
+  "4308008": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::vf4",
+   "priority": 2,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 4,
+   "source": "rtti:vtable"
+  },
+  "4308528": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf3",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 3,
+   "source": "rtti:vtable"
+  },
+  "4308552": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf4",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 4,
+   "source": "rtti:vtable"
+  },
+  "4308576": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vf1",
+   "priority": 2,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "virtual",
+   "slot": 1,
+   "source": "rtti:vtable"
+  },
+  "4309996": {
+   "name": "__rwstd::facet_imp::vf2",
+   "priority": 2,
+   "cls": "__rwstd::facet_imp",
+   "kind": "virtual",
+   "slot": 2,
+   "source": "rtti:vtable"
+  },
+  "4310600": {
+   "name": "__rwstd::facet_imp::~facet_imp",
+   "priority": 5,
+   "cls": "__rwstd::facet_imp",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4310668": {
+   "name": "__rwstd::facet_imp::vf1",
+   "priority": 2,
+   "cls": "__rwstd::facet_imp",
+   "kind": "virtual",
+   "slot": 1,
+   "source": "rtti:vtable"
+  },
+  "4311176": {
+   "name": "std::ios_base::failure::~failure",
+   "priority": 5,
+   "cls": "std::ios_base::failure",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4311396": {
+   "name": "std::ios_base::failure::vf1",
+   "priority": 2,
+   "cls": "std::ios_base::failure",
+   "kind": "virtual",
+   "slot": 1,
+   "source": "rtti:vtable"
+  },
+  "4311584": {
+   "name": "std::ios_base::Init::~Init",
+   "priority": 5,
+   "cls": "std::ios_base::Init",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4311796": {
+   "name": "std::ios_base::~ios_base",
+   "priority": 5,
+   "cls": "std::ios_base",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4315248": {
+   "name": "__rwstd::ref_counted::~ref_counted",
+   "priority": 5,
+   "cls": "__rwstd::ref_counted",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4315600": {
+   "name": "__rwstd::locale_imp::~locale_imp",
+   "priority": 5,
+   "cls": "__rwstd::locale_imp",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4316436": {
+   "name": "__rwstd::use_Clib_locale::~use_Clib_locale",
+   "priority": 5,
+   "cls": "__rwstd::use_Clib_locale",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4319484": {
+   "name": "std::runtime_error::vf1",
+   "priority": 2,
+   "cls": "std::runtime_error",
+   "kind": "virtual",
+   "slot": 1,
+   "source": "rtti:vtable"
+  },
+  "4319876": {
+   "name": "std::exception::~exception",
+   "priority": 5,
+   "cls": "std::exception",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4319908": {
+   "name": "std::bad_alloc::~bad_alloc",
+   "priority": 5,
+   "cls": "std::bad_alloc",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4320000": {
+   "name": "std::logic_error::~logic_error",
+   "priority": 5,
+   "cls": "std::logic_error",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4320220": {
+   "name": "std::length_error::~length_error",
+   "priority": 5,
+   "cls": "std::length_error",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4320316": {
+   "name": "std::out_of_range::~out_of_range",
+   "priority": 5,
+   "cls": "std::out_of_range",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4320412": {
+   "name": "std::runtime_error::~runtime_error",
+   "priority": 5,
+   "cls": "std::runtime_error",
+   "kind": "destructor",
+   "source": "rtti:dtor"
+  },
+  "4320668": {
+   "name": "memchr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern, less certain)"
+  },
+  "4320732": {
+   "name": "memcpy",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)"
+  },
+  "4320844": {
+   "name": "memset",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)"
+  },
+  "4321152": {
+   "name": "strlen",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)"
+  },
+  "4321924": {
+   "name": "strrchr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)"
+  },
+  "4322300": {
+   "name": "__InitExceptBlockLDTC",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern)",
+   "note": "Borland exception-frame setup; first call in most functions, argument is that function's exception table"
+  },
+  "4328256": {
+   "name": "fopen",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern) (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x004deb10."
+  },
+  "4329004": {
+   "name": "fseek",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern) (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x004dedd8."
+  },
+  "4330984": {
+   "name": "setvbuf",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (usage pattern) (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x004e02cc."
+  }
+ },
+ "data": {
+  "4371336": {
+   "name": "std::exception::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::exception"
+  },
+  "4371356": {
+   "name": "std::bad_alloc::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::bad_alloc"
+  },
+  "4373432": {
+   "name": "TSDictionaryList::Dictionary::vftable",
+   "source": "rtti:vtable",
+   "cls": "TSDictionaryList::Dictionary"
+  },
+  "4373488": {
+   "name": "std::out_of_range::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::out_of_range"
+  },
+  "4373508": {
+   "name": "std::logic_error::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::logic_error"
+  },
+  "4373528": {
+   "name": "std::length_error::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::length_error"
+  },
+  "4393576": {
+   "name": "__rwstd::ref_counted::vftable",
+   "source": "rtti:vtable",
+   "cls": "__rwstd::ref_counted"
+  },
+  "4393592": {
+   "name": "__rwstd::facet_imp::vftable",
+   "source": "rtti:vtable",
+   "cls": "__rwstd::facet_imp"
+  },
+  "4393660": {
+   "name": "std::ios_base::failure::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::ios_base::failure"
+  },
+  "4393680": {
+   "name": "std::locale::facet::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::locale::facet"
+  },
+  "4393700": {
+   "name": "std::basic_ios<char,std::char_traits<char> >::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::basic_ios<char,std::char_traits<char> >"
+  },
+  "4393716": {
+   "name": "std::basic_ostream<char,std::char_traits<char> >::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::basic_ostream<char,std::char_traits<char> >"
+  },
+  "4393744": {
+   "name": "std::basic_istream<char,std::char_traits<char> >::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::basic_istream<char,std::char_traits<char> >"
+  },
+  "4393772": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >"
+  },
+  "4393836": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >"
+  },
+  "4394284": {
+   "name": "std::ios_base::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::ios_base"
+  },
+  "4397264": {
+   "name": "std::runtime_error::vftable",
+   "source": "rtti:vtable",
+   "cls": "std::runtime_error"
+  },
+  "4397284": {
+   "name": "__rwstd::locale_imp::vftable",
+   "source": "rtti:vtable",
+   "cls": "__rwstd::locale_imp"
+  }
+ },
+ "classes": [
+  {
+   "va": 4211992,
+   "name": "std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >",
+   "size": 32,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4214852,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4212224,
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+   "size": 16,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4214708,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4212356,
+   "name": "TEAViewProfileWindows",
+   "size": 496,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 0
+    },
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 16
+    },
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 480
+    }
+   ],
+   "dtor": 4264264,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4212464,
+   "name": "Common",
+   "size": 16,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 0
+    }
+   ],
+   "dtor": 4279772,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4212540,
+   "name": "Persist",
+   "size": 8,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4266528,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4212632,
+   "name": "InputEngine",
+   "size": 18444,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4234020,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4212704,
+   "name": "MatchEngineSet",
+   "size": 56,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [
+    {
+     "type": "std::vector<MatchEngine *,std::allocator<MatchEngine *> >",
+     "offset": 0
+    },
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 32
+    }
+   ],
+   "dtor": 4267864,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4213908,
+   "name": "std::bad_alloc",
+   "size": 4,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "std::exception",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [],
+   "dtor": 4319908,
+   "vtables": [
+    {
+     "va": 4371356,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4319908,
+      4214696
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4214488,
+   "name": "std::exception",
+   "size": 4,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 115,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4319876,
+   "vtables": [
+    {
+     "va": 4371336,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4319876,
+      4214684
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4214564,
+   "name": "std::vector<MatchEngine *,std::allocator<MatchEngine *> >",
+   "size": 32,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4214908,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4218612,
+   "name": "std::length_error",
+   "size": 24,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "std::logic_error",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [],
+   "dtor": 4320220,
+   "vtables": [
+    {
+     "va": 4373528,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4320220,
+      4225664
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4218956,
+   "name": "std::out_of_range",
+   "size": 24,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "std::logic_error",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [],
+   "dtor": 4320316,
+   "vtables": [
+    {
+     "va": 4373488,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4320316,
+      4225664
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4220860,
+   "name": "MatchEngine",
+   "size": 4432,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [
+    {
+     "type": "Pattern",
+     "offset": 0
+    },
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 4104
+    }
+   ],
+   "dtor": 4225100,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4224948,
+   "name": "std::vector<TSDictionaryList::Dictionary *,std::allocator<TSDictionaryList::Dictionary *> >",
+   "size": 32,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4225676,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4225300,
+   "name": "Pattern",
+   "size": 4104,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [
+    {
+     "type": "string[256]",
+     "offset": 8
+    }
+   ],
+   "dtor": 4250452,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4225376,
+   "name": "TSDictionaryList::Dictionary",
+   "size": 12200,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 115,
+   "bases": [],
+   "vbases": [],
+   "members": [
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 12180
+    }
+   ],
+   "dtor": 4221264,
+   "vtables": [
+    {
+     "va": 4373432,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4221264,
+      4221484,
+      4223260,
+      4223392,
+      4223488,
+      4223504,
+      4223572,
+      4223692,
+      4224296,
+      4224872,
+      4223588
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4225476,
+   "name": "std::logic_error",
+   "size": 24,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "std::exception",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 8
+    }
+   ],
+   "dtor": 4320000,
+   "vtables": [
+    {
+     "va": 4373508,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4320000,
+      4225664
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4225576,
+   "name": "TSDictionaryList",
+   "size": 40,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [
+    {
+     "type": "std::vector<TSDictionaryList::Dictionary *,std::allocator<TSDictionaryList::Dictionary *> >",
+     "offset": 8
+    }
+   ],
+   "dtor": 4215424,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4232900,
+   "name": "std::basic_istream<char,std::char_traits<char> >",
+   "size": 68,
+   "mask": 3,
+   "vptrOffs": 4,
+   "flags": 127,
+   "bases": [],
+   "vbases": [
+    {
+     "name": "std::basic_ios<char,std::char_traits<char> >",
+     "offset": 0,
+     "flags": 7
+    }
+   ],
+   "members": [],
+   "dtor": 4294644,
+   "vtables": [
+    {
+     "va": 4393744,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4294644
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4233024,
+   "name": "std::basic_ios<char,std::char_traits<char> >",
+   "size": 56,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "std::ios_base",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [],
+   "dtor": 4294764,
+   "vtables": [
+    {
+     "va": 4393700,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4294764
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4233144,
+   "name": "std::basic_filebuf<char,std::char_traits<char> >",
+   "size": 68,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "std::basic_streambuf<char,std::char_traits<char> >",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [],
+   "dtor": 4292604,
+   "vtables": [
+    {
+     "va": 4393836,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4292604,
+      4308576,
+      4303468,
+      4306336,
+      4308008,
+      4301800,
+      4302592,
+      4300336,
+      4301720,
+      4297384,
+      4299048,
+      4301884,
+      4299400
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4233268,
+   "name": "std::basic_streambuf<char,std::char_traits<char> >",
+   "size": 36,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 115,
+   "bases": [],
+   "vbases": [],
+   "members": [
+    {
+     "type": "std::locale",
+     "offset": 32
+    }
+   ],
+   "dtor": 4293132,
+   "vtables": [
+    {
+     "va": 4393772,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4293132,
+      4308576,
+      4303712,
+      4308528,
+      4308552,
+      4302448,
+      4302592,
+      4301788,
+      4301720,
+      4301688,
+      4301700,
+      4302752,
+      4301712
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4233388,
+   "name": "std::ios_base",
+   "size": 36,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 115,
+   "bases": [],
+   "vbases": [],
+   "members": [
+    {
+     "type": "std::locale",
+     "offset": 16
+    }
+   ],
+   "dtor": 4311796,
+   "vtables": [
+    {
+     "va": 4394284,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4311796
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4233472,
+   "name": "std::locale",
+   "size": 4,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4233544,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4233736,
+   "name": "__rwstd::ref_counted",
+   "size": 8,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 115,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4315248,
+   "vtables": [
+    {
+     "va": 4393576,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4315248
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4254624,
+   "name": "VariableValues",
+   "size": 11,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4255108,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4290652,
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >",
+   "size": 16,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4290792,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4294256,
+   "name": "std::ios_base::failure",
+   "size": 24,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "std::exception",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 8
+    }
+   ],
+   "dtor": 4311176,
+   "vtables": [
+    {
+     "va": 4393660,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4311176,
+      4311396
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4302316,
+   "name": "std::basic_istream<char,std::char_traits<char> >::sentry",
+   "size": 8,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4296076,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4308600,
+   "name": "__rwstd::use_Clib_locale",
+   "size": 8,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4316436,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4309476,
+   "name": "__rwstd::facet_imp",
+   "size": 16,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "__rwstd::ref_counted",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [],
+   "dtor": 4310600,
+   "vtables": [
+    {
+     "va": 4393592,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4310600,
+      4310668,
+      4309996
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4309568,
+   "name": "std::locale::facet",
+   "size": 16,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "__rwstd::facet_imp",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [],
+   "dtor": 4291884,
+   "vtables": [
+    {
+     "va": 4393680,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4291884,
+      4310668
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4309872,
+   "name": "std::basic_ostream<char,std::char_traits<char> >",
+   "size": 64,
+   "mask": 3,
+   "vptrOffs": 4,
+   "flags": 127,
+   "bases": [],
+   "vbases": [
+    {
+     "name": "std::basic_ios<char,std::char_traits<char> >",
+     "offset": 0,
+     "flags": 7
+    }
+   ],
+   "members": [],
+   "dtor": 4294524,
+   "vtables": [
+    {
+     "va": 4393716,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4294524
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4310120,
+   "name": "std::mbstate_t",
+   "size": 4,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 1,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 0,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4310176,
+   "name": "__rwstd::__string_ref<char,std::char_traits<char>,std::allocator<char> >",
+   "size": 12,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 5,
+   "bases": [
+    {
+     "name": "__rwstd::__string_ref_rep<std::allocator<char> >",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [],
+   "dtor": 0,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4310336,
+   "name": "__rwstd::locale_vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >",
+   "size": 8,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4290556,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4310492,
+   "name": "__rwstd::locale_vector<__rwstd::facet_imp *>",
+   "size": 8,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4287368,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4310732,
+   "name": "__rwstd::__string_ref_rep<std::allocator<char> >",
+   "size": 12,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 1,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 0,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4312024,
+   "name": "std::ios_base::Init",
+   "size": 8,
+   "mask": 3,
+   "vptrOffs": 4294967295,
+   "flags": 3,
+   "bases": [],
+   "vbases": [],
+   "members": [],
+   "dtor": 4311584,
+   "vtables": [],
+   "tables": []
+  },
+  {
+   "va": 4317208,
+   "name": "std::runtime_error",
+   "size": 24,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "std::exception",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 8
+    }
+   ],
+   "dtor": 4320412,
+   "vtables": [
+    {
+     "va": 4397264,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4320412,
+      4319484
+     ]
+    }
+   ],
+   "tables": []
+  },
+  {
+   "va": 4319368,
+   "name": "__rwstd::locale_imp",
+   "size": 56,
+   "mask": 3,
+   "vptrOffs": 0,
+   "flags": 119,
+   "bases": [
+    {
+     "name": "__rwstd::ref_counted",
+     "offset": 0,
+     "flags": 3
+    }
+   ],
+   "vbases": [],
+   "members": [
+    {
+     "type": "__rwstd::locale_vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >",
+     "offset": 8
+    },
+    {
+     "type": "__rwstd::locale_vector<__rwstd::facet_imp *>",
+     "offset": 16
+    },
+    {
+     "type": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+     "offset": 32
+    }
+   ],
+   "dtor": 4315600,
+   "vtables": [
+    {
+     "va": 4397284,
+     "prefix": [
+      0,
+      0
+     ],
+     "slots": [
+      4315600
+     ]
+    }
+   ],
+   "tables": []
+  }
+ ],
+ "responseTables": [],
+ "notes": [],
+ "inventory": 825
+}

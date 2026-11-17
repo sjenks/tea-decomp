@@ -1,0 +1,84 @@
+// rea decompile_all
+// name: FUN_004d4378
+// address: 0x4d4378
+// body: available
+// range: 0x4d4378-0x4d44a4 inclusive
+// range: 0x4d44a7-0x4d44e9 inclusive
+// non_contiguous: true
+// provider: Ghidra 12.1.4 (ghidra)
+// analysis_profile: 3d97689231092bb069c4cce300579f66b49d458d30316f639f63b3829183de18
+// limitations: The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.; Ghidra Program checkpoint mode is disabled: closing discards metadata edits; original executable bytes are unchanged. For stock ELF/PE/Mach-O on Linux/macOS, set REA_GHIDRA_CHECKPOINT_DIR to a private absolute directory before starting REA (restart MCP after changing its startup environment).; Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.; Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.; Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, DOS MZ images, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.; The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.; Windows sessions require the matching packaged Windows x64 native addon, local NTFS/ReFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically.; Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.; External functions and functions without an analyzable body return null; other decompiler failures remain explicit.
+// pseudocode: provider-specific; not original source
+
+
+int __cdecl FUN_004d4378(int *param_1,undefined1 *param_2,int param_3)
+
+{
+  bool bVar1;
+  int iVar2;
+  int *piVar3;
+  int local_30;
+  int local_2c;
+  int local_28;
+  int local_24;
+  undefined4 local_20;
+  int local_1c;
+  undefined4 local_18;
+  undefined4 local_14;
+  undefined4 local_10;
+  int local_c;
+  int local_8;
+  
+  if ((param_2 == (undefined1 *)0x0) || (param_3 == 0)) {
+    iVar2 = 0;
+  }
+  else if (param_1[0xc] < param_3) {
+    local_c = FUN_004d0a2c();
+    piVar3 = &local_c;
+    FUN_004d0a2c();
+    local_8 = (**(code **)(*param_1 + 0x24))();
+    bVar1 = FUN_004d1694(&local_8,piVar3);
+    if (bVar1) {
+      iVar2 = 0;
+    }
+    else {
+      local_10 = FUN_004d34a4((int)param_1);
+      local_14 = FUN_004d17a8((int)param_1);
+      local_18 = FUN_004d17b4((int)param_1);
+      iVar2 = FUN_004d3498((int)param_1);
+      local_1c = FUN_004d348c((int)param_1);
+      local_20 = FUN_004d34b0((int)param_1);
+      FUN_004d187c((int)param_1,0,0,0);
+      FUN_004d1898((int)param_1,param_2,param_2 + param_3);
+      FUN_004d18b0((int)param_1,param_3);
+      local_28 = FUN_004d0a2c();
+      piVar3 = &local_28;
+      FUN_004d0a2c();
+      local_24 = (**(code **)(*param_1 + 0x24))();
+      bVar1 = FUN_004d1694(&local_24,piVar3);
+      if (bVar1) {
+        iVar2 = 0;
+      }
+      else {
+        FUN_004d187c((int)param_1,local_10,local_14,local_18);
+        FUN_004d1898((int)param_1,iVar2,local_20);
+        FUN_004d18b0((int)param_1,local_1c - iVar2);
+        iVar2 = param_3;
+      }
+    }
+  }
+  else {
+    for (iVar2 = 0; iVar2 < param_3; iVar2 = iVar2 + 1) {
+      local_30 = FUN_004d0a2c();
+      piVar3 = &local_30;
+      local_2c = FUN_004d34bc(param_1,*param_2);
+      bVar1 = FUN_004d1694(&local_2c,piVar3);
+      if (bVar1) {
+        return iVar2;
+      }
+      param_2 = param_2 + 1;
+    }
+  }
+  return iVar2;
+}
+

@@ -1,0 +1,26 @@
+[
+ {
+  "program": "TEA",
+  "unchanged": 4287,
+  "changed": 202,
+  "total": 4489
+ },
+ {
+  "program": "TEACON",
+  "unchanged": 768,
+  "changed": 57,
+  "total": 825
+ },
+ {
+  "program": "TSBuild",
+  "unchanged": 2886,
+  "changed": 143,
+  "total": 3029
+ },
+ {
+  "program": "TSMerge",
+  "unchanged": 2570,
+  "changed": 121,
+  "total": 2691
+ }
+]

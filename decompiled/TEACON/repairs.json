@@ -1,0 +1,28 @@
+{
+ "files": {
+  "lib/code_0x00414000.cpp": 12,
+  "lib/code_0x00418000.cpp": 4,
+  "lib/code_0x0041c000.cpp": 9,
+  "lib/code_0x00420000.cpp": 6,
+  "lib/code_0x00424000.cpp": 27,
+  "lib/code_0x00428000.cpp": 2,
+  "lib/rwstd_locale_imp.cpp": 1,
+  "lib/rwstd_locale_vector.cpp": 1,
+  "lib/std_basic_filebuf.cpp": 3,
+  "src/main.cpp": 1,
+  "src/MatchEngine.cpp": 7,
+  "src/MatchEngineSet.cpp": 5,
+  "src/Pattern.cpp": 2,
+  "src/TSDictionaryList.cpp": 5
+ },
+ "kinds": {
+  "cannot convert '…' to '…' ": 42,
+  "cannot convert '…' to '…' in assignment": 9,
+  "expression cannot be used as a function": 9,
+  "assignment of read-only location '…'": 2,
+  "incompatible types in assignment of '…' to '…' ": 11,
+  "cannot convert '…' to '…'": 2,
+  "ISO C++ forbids casting to an array type '…' ": 10
+ },
+ "total": 85
+}

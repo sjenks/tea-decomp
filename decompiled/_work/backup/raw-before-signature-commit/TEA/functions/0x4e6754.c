@@ -1,0 +1,80 @@
+// name: FUN_004e6754
+// address: 0x4e6754
+// provider: Ghidra 12.1.4 (prepared project; borlandcpp)
+// pseudocode: decompiler output; not original source
+
+undefined4 __cdecl FUN_004e6754(undefined4 param_1,short *param_2,undefined *param_3)
+
+{
+  short sVar1;
+  bool bVar2;
+  short *psVar3;
+  undefined2 *local_c;
+  short *local_8;
+  
+  local_8 = param_2;
+  (*(code *)param_3)();
+  for (; (*local_8 == 0x20 || (*local_8 == 9)); local_8 = local_8 + 1) {
+  }
+  if (*local_8 == 0x22) {
+    do {
+      psVar3 = local_8;
+      local_8 = psVar3 + 1;
+      if (*local_8 == 0x22) break;
+    } while (*local_8 != 0);
+    if (*local_8 == 0x22) {
+      local_8 = psVar3 + 2;
+    }
+  }
+  else {
+    for (; ((sVar1 = *local_8, sVar1 != 0x20 && (sVar1 != 9)) && (sVar1 != 0));
+        local_8 = local_8 + 1) {
+    }
+  }
+  FUN_004dce0c(local_8);
+  DAT_0051c418 = (undefined2 *)FUN_004cc734();
+  local_c = DAT_0051c418;
+  if (DAT_0051c418 == (undefined2 *)0x0) {
+    FUN_004e5f84((uint *)s_No_space_for_copy_of_command_lin_00518ce8);
+  }
+  while( true ) {
+    if (*local_8 == 0) {
+      return 1;
+    }
+    bVar2 = false;
+    for (; (*local_8 == 0x20 || (*local_8 == 9)); local_8 = local_8 + 1) {
+    }
+    if (*local_8 == 0) break;
+    while (((sVar1 = *local_8, sVar1 != 0x20 && (sVar1 != 9)) && (sVar1 != 0))) {
+      if (sVar1 == 0x22) {
+        local_8 = local_8 + 1;
+        while ((*local_8 != 0x22 && (*local_8 != 0))) {
+          FUN_004e6904((int *)&local_c,(int *)&local_8);
+        }
+        if (*local_8 == 0x22) {
+          local_8 = local_8 + 1;
+        }
+      }
+      else {
+        if ((*local_8 == 0x2a) || (*local_8 == 0x3f)) {
+          bVar2 = true;
+        }
+        FUN_004e6904((int *)&local_c,(int *)&local_8);
+      }
+    }
+    *local_c = 0;
+    local_c = local_c + 1;
+    if (bVar2) {
+      (*(code *)PTR_FUN_00518d10)();
+    }
+    else {
+      (*(code *)param_3)();
+    }
+    if (*local_8 == 0) {
+      return 1;
+    }
+    local_8 = local_8 + 1;
+  }
+  return 1;
+}
+

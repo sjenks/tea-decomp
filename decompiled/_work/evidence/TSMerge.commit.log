@@ -1,0 +1,63 @@
+﻿INFO  Using log config file: jar:file:/C:/Users/jenks/code/tea-rea/_tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1092 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (3414 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 59 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\decompiled\_work\ghidra-scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\PyGhidra\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: C:\Users\jenks\code\tea-rea\decompiled\ghidra-project\tea (HeadlessAnalyzer)  
+INFO  Opening project: C:\Users\jenks\code\tea-rea\decompiled\ghidra-project\tea (HeadlessProject)  
+INFO  REPORT: Processing project file: /TSMerge.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: TeaCommit.java 'C:\Users\jenks\code\tea-rea\decompiled\_work\seeds\TSMerge.commit-report.txt'  (HeadlessAnalyzer)  
+INFO  SCRIPT: C:\Users\jenks\code\tea-rea\decompiled\_work\ghidra-scripts\TeaCommit.java (HeadlessAnalyzer)  
+WARN  Decompiling 004125b0, pcode error at 004127d1: Unable to resolve constructor at 004127d1 (DecompileCallback)  
+WARN  Decompiling 004126a8, pcode error at 004127d1: Unable to resolve constructor at 004127d1 (DecompileCallback)  
+WARN  Decompiling 004126a8, pcode error at 004127d1: Unable to resolve constructor at 004127d1 (DecompileCallback)  
+WARN  Decompiling 0043e760, pcode error at 0043e79d: Unable to resolve constructor at 0043e79d (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 004530e4: Unable to resolve constructor at 004530e4 (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 0045311c: Unable to resolve constructor at 0045311c (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 004531bd: Unable to resolve constructor at 004531bd (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 00453259: Unable to resolve constructor at 00453259 (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 00453350: Unable to resolve constructor at 00453350 (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 004531bc: Unable to resolve constructor at 004531bc (DecompileCallback)  
+WARN  Decompiling 004125b0, pcode error at 004127d1: Unable to resolve constructor at 004127d1 (DecompileCallback)  
+WARN  Decompiling 004126a8, pcode error at 004127d1: Unable to resolve constructor at 004127d1 (DecompileCallback)  
+WARN  Decompiling 004126a8, pcode error at 004127d1: Unable to resolve constructor at 004127d1 (DecompileCallback)  
+WARN  Decompiling 0043e760, pcode error at 0043e79d: Unable to resolve constructor at 0043e79d (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 004530e4: Unable to resolve constructor at 004530e4 (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 0045311c: Unable to resolve constructor at 0045311c (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 004531bd: Unable to resolve constructor at 004531bd (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 00453259: Unable to resolve constructor at 00453259 (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 00453350: Unable to resolve constructor at 00453350 (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 004531bc: Unable to resolve constructor at 004531bc (DecompileCallback)  
+INFO  TeaCommit.java> TeaCommit: committed=2392 noDecompile=5 errors=0 widened=102 (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /TSMerge.exe (HeadlessAnalyzer)  

@@ -1,0 +1,17 @@
+{
+ "program": "TEACON",
+ "objects": 35,
+ "linked": false,
+ "undefinedSymbols": 341,
+ "undefinedReferences": 1285,
+ "undefinedData": 333,
+ "undefinedOther": 8,
+ "examples": [
+  "DAT_0042fab4",
+  "DAT_0042e763",
+  "_tls_index",
+  "segment(...)",
+  "_imp__GetFileTitleA@12",
+  "out(...)"
+ ]
+}

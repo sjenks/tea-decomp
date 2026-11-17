@@ -1,0 +1,32 @@
+// TSBuild.exe — runtime / library code "OWL_TUIFaceData"
+// 1 functions, 0x0043250c..0x0043250c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
+
+#include "../decomp.h"
+
+namespace tea {
+
+// ----------------------------------------------------------------------------------------------------
+// 0x0043250c  OWL::TUIFaceData::~TUIFaceData   (135 bytes)   [rtti:dtor destructor]
+//   written in code as OWL::TUIFaceData::_dtor
+void __cdecl OWL::TUIFaceData::_dtor(uint *param_1,byte param_2)
+
+{
+  undefined4 *in_FS_OFFSET;
+  undefined4 local_2c;
+  
+  __InitExceptBlockLDTC(0x47d480);
+  if (param_1 != (uint *)0x0) {
+    if (*(uint **)((int)param_1 + 0x11) != (uint *)0x0) {
+      OWL::TBitmap::_dtor(*(uint **)((int)param_1 + 0x11),3);
+    }
+    OWL::TBrush::_dtor(param_1,0);
+    if ((param_2 & 1) != 0) {
+      operator_delete();
+    }
+  }
+  *in_FS_OFFSET = local_2c;
+  return;
+}
+
+} // namespace tea

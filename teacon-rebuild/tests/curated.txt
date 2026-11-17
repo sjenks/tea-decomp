@@ -1,0 +1,138 @@
+## Patterns taken from the product's help pages, plus edge cases. One per line; lines starting ## are skipped.
+.....
+q???k
+;acenrt
+;oldmaneli
+;theodora..
+y*y
+;opqr*
+*a*e*i*o*u*
+[xyz]..[abc]
+;str[aeiou]
+l[^aeiou]...
+e........;cats
+.....*;aadmort
+......*;ehiktt.
+.......*;rexadigno
+1234321
+;11223344
+.122..11.
+123*321
+122..33.
+123454321
+....-..-..
+* ..d
+.......\!
+...-....... ...
+\A....
+*'*'*'*
+1*1 & *date*
+....cous | cous....
+;tearing & ! *ing*
+(p* | *p) & ;q......
+;@@@@#
+##@@##@@##
+...(;orange)
+;rebel(ada)
+;umber(;lily)
+;diners[ai]
+......*;gdangboot
+;..oting & ! *ing
+@#@#@#@#@#@
+;(che)rostra
+.....;defijnx
+......*;bdeeio.
+;eiknrr.
+..d..-....l.
+.o.c... ....
+## logic and parentheses
+.. & !*ing
+... | !*ing
+!*
+!!abc
+!(a*)
+(a* | b*) & *e
+((a* | b*) & *e) | z*
+(a*
+a*)
+a* | (b* & *e
+!(a* | b*)
+! ( a* | b* ) & *s
+a* & b* | c*
+a* | b* & c*
+(a*) & (*z)
+\(a\)
+a\&b
+a\|b
+\!abc
+## errors
+[abc
+[]
+[^]
+abc]
+a^b
+a;b;c
+;a-b
+\
+abc\
+(abc
+abc)
+()
+;
+
+*
+;*
+;.
+;..........
+.;.
+*;abc
+*;abc*
+...;*
+...*;ab
+..;abcdef
+....;ab..
+## punctuation, case, escapes
+a-b
+*-*
+*-*-*
+* *
+* * *
+*'s
+*'*
+\'*
+'*
+*!
+*\?
+\a*
+*\A*
+\q*
+[\a\b]...
+.\.
+\..
+## sub-patterns
+(a)(b)(c)
+(..)(..)
+(a*)b
+a(*b)
+(*a*)(*b*)
+(;ab)(;cd)
+(;ab)*(;cd)
+;(ab)(cd)
+;(a.)(.b)
+;(;ab)cd
+;(*)ab
+;(a*)b
+(1)(1)
+(12)(21)
+;1(1)
+1;1
+12;21..
+1*;1..
+;[ab][ab]..
+;[ab][bc][ca]
+...;[ab][bc]
+;11
+;112
+;1122..
+;1[ab]
+;[^e]....

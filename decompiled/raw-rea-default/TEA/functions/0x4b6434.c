@@ -1,0 +1,94 @@
+// rea decompile_all
+// name: FUN_004b6434
+// address: 0x4b6434
+// body: available
+// range: 0x4b6434-0x4b6629 inclusive
+// non_contiguous: false
+// provider: Ghidra 12.1.4 (ghidra)
+// analysis_profile: 3d97689231092bb069c4cce300579f66b49d458d30316f639f63b3829183de18
+// limitations: The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.; Ghidra Program checkpoint mode is disabled: closing discards metadata edits; original executable bytes are unchanged. For stock ELF/PE/Mach-O on Linux/macOS, set REA_GHIDRA_CHECKPOINT_DIR to a private absolute directory before starting REA (restart MCP after changing its startup environment).; Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.; Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.; Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, DOS MZ images, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.; The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.; Windows sessions require the matching packaged Windows x64 native addon, local NTFS/ReFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically.; Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.; External functions and functions without an analyzable body return null; other decompiler failures remain explicit.
+// pseudocode: provider-specific; not original source
+
+
+void __cdecl FUN_004b6434(int *param_1,int param_2)
+
+{
+  char cVar1;
+  int iVar2;
+  char **ppcVar3;
+  uint *puVar4;
+  char **ppcVar5;
+  undefined4 *in_FS_OFFSET;
+  bool bVar6;
+  char *local_40;
+  byte local_3a;
+  byte local_39;
+  char *local_38;
+  char *local_34;
+  char *local_30;
+  undefined4 local_2c;
+  undefined2 local_1c;
+  int local_10;
+  LPSTR local_8;
+  
+  FUN_004dce64(0x50e250);
+  if ((param_1[6] == 0) || (param_2 == 8)) {
+    FUN_004a5774(*param_1);
+  }
+  else {
+    local_30 = (char *)GetWindowTextLengthA(*(HWND *)(*param_1 + 0xc));
+    local_1c = 0x14;
+    local_8 = (LPSTR)FUN_004cc180();
+    local_10 = local_10 + 1;
+    local_1c = 8;
+    GetWindowTextA(*(HWND *)(*param_1 + 0xc),local_8,(int)(local_30 + 1));
+    (**(code **)(param_1[3] + 0x34))();
+    bVar6 = local_38 == local_30;
+    iVar2 = FUN_004a76a8(*param_1,0xb8,0,0);
+    local_39 = iVar2 != 0;
+    FUN_004a5774(*param_1);
+    iVar2 = FUN_004a76a8(*param_1,0xb8,0,0);
+    local_3a = iVar2 != 0;
+    (**(code **)(param_1[3] + 0x34))();
+    local_40 = (char *)GetWindowTextLengthA(*(HWND *)(*param_1 + 0xc));
+    if (local_40 < local_30) {
+      ppcVar3 = &local_30;
+    }
+    else {
+      ppcVar3 = &local_40;
+    }
+    ppcVar5 = (char **)(param_1 + 5);
+    if ((char *)param_1[5] <= *ppcVar3) {
+      ppcVar5 = ppcVar3;
+    }
+    puVar4 = (uint *)FUN_004b6ba0(param_1,(SIZE_T)(*ppcVar5 + 1));
+    if (((*(byte *)(param_1[6] + 4) & 4) == 0) || ((bVar6 && (local_38 == local_40)))) {
+      cVar1 = (**(code **)(*(int *)param_1[6] + 8))();
+      if (cVar1 == '\0') {
+        FUN_004dc9c4((char *)puVar4,local_8);
+        local_3a = local_39;
+      }
+      else if (bVar6) {
+        local_38 = FUN_004dc9f4(puVar4);
+        local_34 = local_38;
+      }
+      FUN_004b6c5c(param_1,(LPCSTR)puVar4,'\x01');
+      (**(code **)(param_1[3] + 0x3c))();
+    }
+    else {
+      if (local_38 == local_40) {
+        cVar1 = (**(code **)(*(int *)param_1[6] + 8))();
+        if (cVar1 == '\0') {
+          (**(code **)(*(int *)param_1[6] + 4))();
+        }
+      }
+      FUN_004b6c5c(param_1,(LPCSTR)puVar4,'\0');
+    }
+    FUN_004a76a8(*param_1,0xb9,(uint)local_3a,0);
+    local_10 = local_10 + -1;
+    FUN_004cc0cc();
+  }
+  *in_FS_OFFSET = local_2c;
+  return;
+}
+

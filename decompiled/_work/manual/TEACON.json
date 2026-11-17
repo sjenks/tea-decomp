@@ -1,0 +1,596 @@
+[
+ {
+  "addr": "0x4012cc",
+  "name": "main",
+  "module": "main",
+  "source": "analysis",
+  "note": "console entry: parses options, loads the profile, compiles the pattern, streams matches (references the usage/banner strings)"
+ },
+ {
+  "addr": "0x41130c",
+  "name": "ExpandQueryMacros",
+  "module": "main",
+  "source": "notes+analysis",
+  "note": "replaces unescaped @ and # with the configured expansions; \\x pairs are copied verbatim"
+ },
+ {
+  "addr": "0x411570",
+  "name": "LoadPatternOptions",
+  "source": "analysis",
+  "note": "reads ExpansionAt, ExpansionHash, VariablesExclusive, IgnoreUnusedPunctuation from the registry profile"
+ },
+ {
+  "addr": "0x40edbc",
+  "name": "FilterWordByCaseMode",
+  "source": "analysis (inferred)",
+  "note": "copies a word into a new string under mode 1..4 (all / letters only / letters upper-cased / letters lower-cased)"
+ },
+ {
+  "addr": "0x40f26c",
+  "name": "TEAViewProfileWindows::Load",
+  "cls": "TEAViewProfileWindows",
+  "source": "analysis (inferred)",
+  "note": "reads fonts, colours, view settings and the open-dictionary list from the registry profile; class membership inferred from position next to the destructor"
+ },
+ {
+  "addr": "0x406464",
+  "name": "TSDictionaryList::ReleaseDictionaries",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "drops one reference on every listed Dictionary in the shared cache and deletes those reaching zero"
+ },
+ {
+  "addr": "0x4065a8",
+  "name": "TSDictionaryList::GetCount",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "number of dictionaries (vector size)"
+ },
+ {
+  "addr": "0x406744",
+  "name": "TSDictionaryList::GetNumLengths",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "dictionary header num_lengths (u16 at Dictionary+0x240c)"
+ },
+ {
+  "addr": "0x406760",
+  "name": "TSDictionaryList::GetWordStreamOffset",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "word_stream_offsets[length] (u32 table at Dictionary+0x2410)"
+ },
+ {
+  "addr": "0x406814",
+  "name": "TSDictionaryList::Dictionary::Dictionary",
+  "cls": "TSDictionaryList::Dictionary",
+  "source": "analysis",
+  "note": "constructor: installs the vtable, copies the path string"
+ },
+ {
+  "addr": "0x406a2c",
+  "name": "TSDictionaryList::Dictionary::Load",
+  "cls": "TSDictionaryList::Dictionary",
+  "source": "notes+analysis",
+  "note": "vtable slot 1. Reads the .tsd header (magic TSD0/TSD1), Huffman table and calibration matrix; builds the 8-bit lookahead decode tables"
+ },
+ {
+  "addr": "0x40711c",
+  "name": "TSDictionaryList::Dictionary::Unload",
+  "cls": "TSDictionaryList::Dictionary",
+  "source": "analysis",
+  "note": "vtable slot 2. Frees the calibration matrix and clears the loaded state"
+ },
+ {
+  "addr": "0x4071a0",
+  "name": "TSDictionaryList::Dictionary::EnsureCurrent",
+  "cls": "TSDictionaryList::Dictionary",
+  "source": "analysis",
+  "note": "vtable slot 3. Reloads when the file's timestamp no longer matches; returns the loaded flag"
+ },
+ {
+  "addr": "0x407210",
+  "name": "TSDictionaryList::Dictionary::GetFileTitle",
+  "cls": "TSDictionaryList::Dictionary",
+  "source": "analysis",
+  "note": "vtable slot 5"
+ },
+ {
+  "addr": "0x407264",
+  "name": "TSDictionaryList::Dictionary::GetCounts",
+  "cls": "TSDictionaryList::Dictionary",
+  "source": "analysis",
+  "note": "vtable slot 10. Sums the per-length count tables into four totals"
+ },
+ {
+  "addr": "0x4072cc",
+  "name": "TSDictionaryList::Dictionary::GetSummaryText",
+  "cls": "TSDictionaryList::Dictionary",
+  "source": "analysis",
+  "note": "vtable slot 7. Formats the Headwords / Definitions / Description text"
+ },
+ {
+  "addr": "0x407528",
+  "name": "TSDictionaryList::Dictionary::GetFileDateText",
+  "cls": "TSDictionaryList::Dictionary",
+  "source": "analysis",
+  "note": "vtable slot 8. Formats the file time with GetDateFormatA"
+ },
+ {
+  "addr": "0x407768",
+  "name": "TSDictionaryList::Dictionary::GetDescription",
+  "cls": "TSDictionaryList::Dictionary",
+  "source": "analysis",
+  "note": "vtable slot 9. Returns the header description string (Dictionary+0x2014)"
+ },
+ {
+  "addr": "0x408ec4",
+  "name": "GetFileTitleString",
+  "source": "analysis",
+  "note": "GetFileTitleA wrapper returning a std::string"
+ },
+ {
+  "addr": "0x40909c",
+  "name": "GetProgramDirectory",
+  "source": "analysis",
+  "note": "GetModuleFileNameA, truncated after the last backslash"
+ },
+ {
+  "addr": "0x40965c",
+  "name": "ReadFileTime",
+  "source": "analysis",
+  "note": "opens the file read-only and calls GetFileTime"
+ },
+ {
+  "addr": "0x409a5c",
+  "name": "InputEngine::InputEngine",
+  "cls": "InputEngine",
+  "source": "analysis",
+  "note": "constructor(list, dictionaryIndex): links the engine into the global InputEngine list"
+ },
+ {
+  "addr": "0x409b6c",
+  "name": "InputEngine::StartLength",
+  "cls": "InputEngine",
+  "source": "analysis",
+  "note": "selects one word-length bucket: looks up word_stream_offsets[L], skips empty buckets, opens the file, clears the word buffer"
+ },
+ {
+  "addr": "0x409c78",
+  "name": "InputEngine::NextMatch",
+  "cls": "InputEngine",
+  "source": "notes+analysis",
+  "note": "Huffman-decodes words of the current length (8-bit lookahead table, then bit-by-bit trie walk), at most 2000 per call, testing each against the MatchEngineSet"
+ },
+ {
+  "addr": "0x40a09c",
+  "name": "MatchEngineSet::EvalLogic",
+  "module": "InputEngine",
+  "source": "notes+analysis",
+  "note": "boolean VM over the logic bytecode: 1=OR 2=AND 3=END 4=open paren 5=close paren, bit 0x08=NOT. mode 0 = precomputed flags, 1 = length pre-check (NOT is skipped), 2 = match the word. The 0x412000 address in your notes is this function in TEA.exe"
+ },
+ {
+  "addr": "0x40a218",
+  "name": "InputEngine::OpenFile",
+  "cls": "InputEngine",
+  "source": "notes+analysis",
+  "note": "CreateFileA + seek to the saved offset; on ERROR_TOO_MANY_OPEN_FILES closes another engine's handle from the global list and retries"
+ },
+ {
+  "addr": "0x40a338",
+  "name": "InputEngine::GetAnnotation",
+  "cls": "InputEngine",
+  "source": "notes+analysis",
+  "note": "returns the text following the display word's NUL, or NULL when empty. The 0x4122bc address in your notes is this function in TEA.exe"
+ },
+ {
+  "addr": "0x40a37c",
+  "name": "MatchEngine::CompilePattern",
+  "cls": "MatchEngine",
+  "source": "notes (structure checked)",
+  "note": "recursive [template][;anagram] parser; mutually recursive with CompileTemplate / CompileAnagram. Not read line by line"
+ },
+ {
+  "addr": "0x40ae38",
+  "name": "MatchEngine::CompileTemplate",
+  "cls": "MatchEngine",
+  "source": "notes (inferred)",
+  "note": "template-side compiler (choice lists, escapes per your notes). Role inferred from call structure"
+ },
+ {
+  "addr": "0x40b6d8",
+  "name": "MatchEngine::CompileAnagram",
+  "cls": "MatchEngine",
+  "source": "notes (inferred)",
+  "note": "anagram-side compiler; uses the Pattern pool. Role inferred from call structure"
+ },
+ {
+  "addr": "0x40c468",
+  "name": "MatchEngine::Compile",
+  "cls": "MatchEngine",
+  "source": "notes+analysis",
+  "note": "compiles one leaf pattern and selects the fast-path matcher stored at +0x114c"
+ },
+ {
+  "addr": "0x40d5b8",
+  "name": "MatchEngine::IsValid",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "returns the int at +0x1020; MatchEngineSet::Compile treats 0 as a compile failure"
+ },
+ {
+  "addr": "0x40d5c8",
+  "name": "MatchEngine::GetStatus",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "returns the status byte at +0x1024"
+ },
+ {
+  "addr": "0x40d5d8",
+  "name": "MatchEngine::MatchEngine",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "constructor: Pattern pool, empty bytecode string, shortest=1, longest=100, matcher=MatchGeneral"
+ },
+ {
+  "addr": "0x40d6b4",
+  "name": "MatchEngine::SetShortest",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "clamps to 1..100 and stores at +0x1134"
+ },
+ {
+  "addr": "0x40d6e8",
+  "name": "MatchEngine::SetLongest",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "clamps to 1..100 and stores at +0x1138"
+ },
+ {
+  "addr": "0x40d71c",
+  "name": "MatchEngine::SetWordLength",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "stores the candidate length (+0x113c) and the slack over the template minimum (+0x1140)"
+ },
+ {
+  "addr": "0x40d73c",
+  "name": "MatchEngine::MatchWord",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "builds the punctuation-prefix and filtered raw buffers when needed, then calls the selected matcher"
+ },
+ {
+  "addr": "0x40d844",
+  "name": "MatchEngine::FormatBalance",
+  "cls": "MatchEngine",
+  "source": "notes",
+  "note": "renders the anagram balance table as text. Entry checked; body only skimmed"
+ },
+ {
+  "addr": "0x40d944",
+  "name": "MatchEngine::GetMinLength",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "max(shortest setting, compiled min_len)"
+ },
+ {
+  "addr": "0x40d960",
+  "name": "MatchEngine::GetMaxLength",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "min(longest setting, compiled max_len)"
+ },
+ {
+  "addr": "0x40da78",
+  "name": "MatchEngine::ResetMatchState",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "clears the variable-binding flag and the balance flag before a match"
+ },
+ {
+  "addr": "0x40dc80",
+  "name": "MatchEngine::MatchFixedTemplate",
+  "cls": "MatchEngine",
+  "source": "notes+analysis",
+  "note": "fast path: (offset, letter) pairs compared in sequence until an opcode >= 0xf0"
+ },
+ {
+  "addr": "0x40dca0",
+  "name": "MatchEngine::MatchDistinctAnagram",
+  "cls": "MatchEngine",
+  "source": "notes",
+  "note": "fast path for anagrams of distinct letters. Entry checked; body not read"
+ },
+ {
+  "addr": "0x40dd14",
+  "name": "MatchEngine::MatchMultiAnagram",
+  "cls": "MatchEngine",
+  "source": "notes",
+  "note": "fast path for anagrams with repeated letters. Entry checked; body not read"
+ },
+ {
+  "addr": "0x40dd78",
+  "name": "MatchEngine::RunTemplateVM",
+  "cls": "MatchEngine",
+  "source": "notes",
+  "note": "backtracking template bytecode interpreter. Entry checked; body not read"
+ },
+ {
+  "addr": "0x40e3f8",
+  "name": "MatchEngine::AnagramSingleLetters",
+  "cls": "MatchEngine",
+  "source": "notes+analysis",
+  "note": "anagram opcode 0xf5 operand walker: <count> <letter...>"
+ },
+ {
+  "addr": "0x40e430",
+  "name": "MatchEngine::AnagramMultiLetters",
+  "cls": "MatchEngine",
+  "source": "notes+analysis",
+  "note": "anagram opcode 0xf6: (multiplicity, letter) pairs checked against the letter histogram with an omission budget"
+ },
+ {
+  "addr": "0x40e480",
+  "name": "MatchEngine::AnagramChoiceLists",
+  "cls": "MatchEngine",
+  "source": "notes",
+  "note": "anagram opcode 0xf7 solver. Entry checked; body not read"
+ },
+ {
+  "addr": "0x40e570",
+  "name": "MatchEngine::AnagramChoiceListsOp",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "fetches the Pattern pool slot and calls AnagramChoiceLists"
+ },
+ {
+  "addr": "0x40e5b4",
+  "name": "MatchEngine::AnagramVariables",
+  "cls": "MatchEngine",
+  "source": "notes",
+  "note": "anagram opcode 0xf8. Entry checked; body not read"
+ },
+ {
+  "addr": "0x40e79c",
+  "name": "MatchEngine::AnagramSubPattern",
+  "cls": "MatchEngine",
+  "source": "notes",
+  "note": "anagram opcode 0xfa. Entry checked; body not read"
+ },
+ {
+  "addr": "0x40ea58",
+  "name": "MatchEngine::RunAnagramVM",
+  "cls": "MatchEngine",
+  "source": "notes",
+  "note": "anagram bytecode interpreter. Entry checked; body not read"
+ },
+ {
+  "addr": "0x40eb20",
+  "name": "MatchEngine::ComputeBalance",
+  "cls": "MatchEngine",
+  "source": "notes+analysis",
+  "note": "fills the 256-entry balance table: +1 per candidate letter, minus the letters the anagram consumed"
+ },
+ {
+  "addr": "0x40ebec",
+  "name": "MatchEngine::MatchGeneral",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "default matcher installed by the constructor; snapshots variable bindings around the template VM"
+ },
+ {
+  "addr": "0x40d97c",
+  "name": "VariableValues::Bind",
+  "cls": "VariableValues",
+  "source": "analysis",
+  "note": "binds variable 0..9 to a letter if unbound (0xfe) and, when exclusive, not already used"
+ },
+ {
+  "addr": "0x40d9c8",
+  "name": "VariableValues::Get",
+  "cls": "VariableValues",
+  "source": "analysis",
+  "note": "pointer to the binding slot for one variable"
+ },
+ {
+  "addr": "0x40d9e4",
+  "name": "VariableValues::IsLetterBound",
+  "cls": "VariableValues",
+  "source": "analysis",
+  "note": "true when the exclusive option is on and another variable already holds this letter"
+ },
+ {
+  "addr": "0x40da14",
+  "name": "VariableValues::Clear",
+  "cls": "VariableValues",
+  "source": "analysis",
+  "note": "marks all ten variables unbound (0xfe)"
+ },
+ {
+  "addr": "0x40da30",
+  "name": "VariableValues::Save",
+  "cls": "VariableValues",
+  "source": "analysis",
+  "note": "copies the ten bindings into a snapshot"
+ },
+ {
+  "addr": "0x40da50",
+  "name": "VariableValues::Restore",
+  "cls": "VariableValues",
+  "source": "analysis",
+  "note": "restores the ten bindings from a snapshot"
+ },
+ {
+  "addr": "0x40dae0",
+  "name": "Pattern::Pattern",
+  "cls": "Pattern",
+  "source": "analysis",
+  "note": "constructor: count=0 and 256 empty 16-byte strings"
+ },
+ {
+  "addr": "0x40dbb8",
+  "name": "Pattern::Add",
+  "cls": "Pattern",
+  "source": "analysis",
+  "note": "returns the index of an equal entry or appends (capacity 256)"
+ },
+ {
+  "addr": "0x40dc5c",
+  "name": "Pattern::Clear",
+  "cls": "Pattern",
+  "source": "analysis",
+  "note": "count = 0"
+ },
+ {
+  "addr": "0x40dc68",
+  "name": "Pattern::At",
+  "cls": "Pattern",
+  "source": "analysis",
+  "note": "address of slot n (8 + n*16)"
+ },
+ {
+  "addr": "0x41193c",
+  "name": "Persist::Persist",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "opens or creates the registry key (RegOpenKeyExA / RegCreateKeyExA)"
+ },
+ {
+  "addr": "0x411a4c",
+  "name": "Persist::QueryValueSized",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "RegQueryValueExA wrapper"
+ },
+ {
+  "addr": "0x411ac0",
+  "name": "Persist::QueryValue",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "RegQueryValueExA wrapper"
+ },
+ {
+  "addr": "0x41204c",
+  "name": "MatchEngineSet::Compile",
+  "cls": "MatchEngineSet",
+  "source": "notes+analysis",
+  "note": "splits the expanded query on & | ! ( ), creates one MatchEngine per leaf and calls MatchEngine::Compile; returns the first leaf's error status"
+ },
+ {
+  "addr": "0x414f78",
+  "name": "operator_delete",
+  "source": "analysis (usage pattern)",
+  "note": "called on `this` at the end of every deleting destructor"
+ },
+ {
+  "addr": "0x414f88",
+  "name": "operator_delete_array",
+  "source": "analysis (usage pattern)"
+ },
+ {
+  "addr": "0x414fac",
+  "name": "operator_new",
+  "source": "analysis (usage pattern)",
+  "note": "result is null-checked and passed to a constructor"
+ },
+ {
+  "addr": "0x41503c",
+  "name": "operator_new_array",
+  "source": "analysis (usage pattern, less certain)"
+ },
+ {
+  "addr": "0x415280",
+  "name": "_vector_new_ldtc_",
+  "source": "analysis (usage pattern)",
+  "note": "Borland RTL array constructor helper (ptr, elemSize, count, mode, ctor)"
+ },
+ {
+  "addr": "0x415120",
+  "name": "_vector_delete_ldtc_",
+  "source": "analysis (usage pattern)",
+  "note": "Borland RTL array destructor helper (ptr, elemSize, count, mode, dtor)"
+ },
+ {
+  "addr": "0x416e74",
+  "name": "std::string::string_from_cstr",
+  "source": "analysis (usage pattern)",
+  "note": "std::string(const char*)"
+ },
+ {
+  "addr": "0x416ffc",
+  "name": "std::string::__getRep",
+  "source": "analysis (usage pattern)",
+  "note": "allocates a string representation of the given capacity"
+ },
+ {
+  "addr": "0x41ab68",
+  "name": "std::string::append",
+  "source": "analysis (usage pattern)"
+ },
+ {
+  "addr": "0x41ac7c",
+  "name": "std::string::assign",
+  "source": "analysis (usage pattern, less certain)"
+ },
+ {
+  "addr": "0x41ae90",
+  "name": "std::string::replace_fill",
+  "source": "analysis (usage pattern)",
+  "note": "replace(pos, n1, n2, ch); with pos=size,n1=0 it appends n2 copies of ch"
+ },
+ {
+  "addr": "0x41ee4c",
+  "name": "memset",
+  "source": "analysis (usage pattern)"
+ },
+ {
+  "addr": "0x41eddc",
+  "name": "memcpy",
+  "source": "analysis (usage pattern)"
+ },
+ {
+  "addr": "0x41ef80",
+  "name": "strlen",
+  "source": "analysis (usage pattern)"
+ },
+ {
+  "addr": "0x41ed9c",
+  "name": "memchr",
+  "source": "analysis (usage pattern, less certain)"
+ },
+ {
+  "addr": "0x41f284",
+  "name": "strrchr",
+  "source": "analysis (usage pattern)"
+ },
+ {
+  "addr": "0x41f3fc",
+  "name": "__InitExceptBlockLDTC",
+  "source": "analysis (usage pattern)",
+  "note": "Borland exception-frame setup; first call in most functions, argument is that function's exception table"
+ },
+ {
+  "addr": "0x414f4c",
+  "name": "calloc",
+  "source": "analysis (usage pattern)",
+  "note": "malloc(n*size) then memset 0"
+ },
+ {
+  "addr": "0x414f98",
+  "name": "set_new_handler",
+  "source": "analysis (usage pattern)"
+ },
+ {
+  "addr": "0x4155f0",
+  "name": "malloc",
+  "source": "analysis (usage pattern)",
+  "note": "called by operator new in a retry loop"
+ },
+ {
+  "addr": "0x415600",
+  "name": "free",
+  "source": "analysis (usage pattern)",
+  "note": "called by operator delete"
+ }
+]

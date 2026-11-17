@@ -1,0 +1,90 @@
+{
+ "exe": "TSMerge.exe",
+ "sha256": "1bb081e905800b5a000ca63af04de2d022c868b64d275fbb0922761f779fb35d",
+ "functions": 2691,
+ "named": 928,
+ "nameSources": {
+  "unnamed": 1763,
+  "rtti:dtor": 167,
+  "rtti:vtable": 557,
+  "owl:response-table": 181,
+  "analysis (matched TEACON.exe)": 3,
+  "analysis (usage pattern) (matched TEACON.exe)": 13,
+  "analysis (usage pattern) (position-matched TEACON.exe)": 5,
+  "analysis (usage pattern, less certain) (position-matched TEACON.exe)": 1,
+  "analysis (usage pattern, less certain) (matched TEACON.exe)": 1
+ },
+ "appFunctions": 116,
+ "libFunctions": 2575,
+ "appNamed": 44,
+ "libStart": "0x0040ef00",
+ "textBytes": 393216,
+ "bytesInFunctions": 338663,
+ "definedByTables": 85,
+ "definedByPrologueScan": 18,
+ "classes": 211,
+ "appClasses": 8,
+ "responseTables": 22,
+ "responseTablesOwned": 18,
+ "globalsDeclared": 1040,
+ "generatorProblems": [],
+ "modules": [
+  {
+   "file": "src/DMProgressBar.cpp",
+   "functions": 10,
+   "named": 2,
+   "from": "0x00401000",
+   "to": "0x004014b4",
+   "bytes": 1292
+  },
+  {
+   "file": "src/DMDialog.cpp",
+   "functions": 61,
+   "named": 22,
+   "from": "0x00401678",
+   "to": "0x0040a884",
+   "bytes": 29405
+  },
+  {
+   "file": "src/DMApplication.cpp",
+   "functions": 9,
+   "named": 8,
+   "from": "0x00404128",
+   "to": "0x00404a9c",
+   "bytes": 864
+  },
+  {
+   "file": "src/Abandon_exception.cpp",
+   "functions": 10,
+   "named": 6,
+   "from": "0x0040aae0",
+   "to": "0x0040be50",
+   "bytes": 4209
+  },
+  {
+   "file": "src/TSMergeProfile.cpp",
+   "functions": 12,
+   "named": 2,
+   "from": "0x0040bf28",
+   "to": "0x0040e920",
+   "bytes": 10859
+  },
+  {
+   "file": "src/Persist.cpp",
+   "functions": 8,
+   "named": 3,
+   "from": "0x0040ea04",
+   "to": "0x0040ec5c",
+   "bytes": 793
+  },
+  {
+   "file": "src/Help.cpp",
+   "functions": 6,
+   "named": 1,
+   "from": "0x0040ed80",
+   "to": "0x0040eef8",
+   "bytes": 381
+  }
+ ],
+ "libFiles": 174
+}

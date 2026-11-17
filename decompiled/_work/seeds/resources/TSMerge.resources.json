@@ -1,0 +1,207 @@
+{
+ "commands": {},
+ "strings": {},
+ "dialogs": {
+  "102": {
+   "title": "TEA&Sympathy Word List Merge",
+   "controls": [
+    {
+     "id": 107,
+     "cls": "BUTTON",
+     "text": "Merge &Operation"
+    },
+    {
+     "id": 108,
+     "cls": "BUTTON",
+     "text": "Output sorted entries in primary list only"
+    },
+    {
+     "id": 114,
+     "cls": "BUTTON",
+     "text": "Output entries in primary OR secondary"
+    },
+    {
+     "id": 115,
+     "cls": "BUTTON",
+     "text": "Output entries in both primary AND secondary"
+    },
+    {
+     "id": 109,
+     "cls": "BUTTON",
+     "text": "Output entries in primary AND NOT in secondary"
+    },
+    {
+     "id": 110,
+     "cls": "BUTTON",
+     "text": "Output entries in secondary AND NOT in primary"
+    },
+    {
+     "id": 113,
+     "cls": "BUTTON",
+     "text": "Output Con&version"
+    },
+    {
+     "id": 116,
+     "cls": "BUTTON",
+     "text": "None"
+    },
+    {
+     "id": 117,
+     "cls": "BUTTON",
+     "text": "To ASCII"
+    },
+    {
+     "id": 118,
+     "cls": "BUTTON",
+     "text": "To ASCII letters"
+    },
+    {
+     "id": 119,
+     "cls": "BUTTON",
+     "text": "To ASCII lower case letters"
+    },
+    {
+     "id": 121,
+     "cls": "BUTTON",
+     "text": "To ASCII upper case letters"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Primary Input List:"
+    },
+    {
+     "id": 111,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 112,
+     "cls": "BUTTON",
+     "text": "Cha&nge..."
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Secondary Input List:"
+    },
+    {
+     "id": 102,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 104,
+     "cls": "BUTTON",
+     "text": "Chan&ge..."
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Merged Output List:"
+    },
+    {
+     "id": 105,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 120,
+     "cls": "BUTTON",
+     "text": "Chang&e..."
+    },
+    {
+     "id": 258,
+     "cls": "BUTTON",
+     "text": ""
+    },
+    {
+     "id": 101,
+     "cls": "BUTTON",
+     "text": "S&tart"
+    },
+    {
+     "id": 106,
+     "cls": "BUTTON",
+     "text": "&Help..."
+    },
+    {
+     "id": 122,
+     "cls": "BUTTON",
+     "text": "&About..."
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "&Close"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 103,
+     "cls": "STATIC",
+     "text": ""
+    }
+   ]
+  },
+  "200": {
+   "title": "About TEA&Sympathy Word List Merge",
+   "controls": [
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": 108
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "TEA&&Sympathy Word List Merge Utility"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "by Ross Beresford"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "v3.10.2, 23 July 2011"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Copyright© 2011 Crossword Man"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Email:"
+    },
+    {
+     "id": 132,
+     "cls": "EDIT",
+     "text": "support@crosswordman.com"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Web:"
+    },
+    {
+     "id": 131,
+     "cls": "EDIT",
+     "text": "http://www.crosswordman.com/"
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "Ok"
+    }
+   ]
+  }
+ },
+ "menus": {}
+}

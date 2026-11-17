@@ -1,0 +1,1 @@
+TEACON.exe: 817 functions in the REA export; 814 have identical pseudocode in the prepared-project export, 3 differ, 0 are absent; the prepared export adds 8 functions. TEA.exe: 4321 functions in the REA export; 4241 have identical pseudocode in the prepared-project export, 80 differ, 0 are absent; the prepared export adds 168 functions.

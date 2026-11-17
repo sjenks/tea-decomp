@@ -1,0 +1,23 @@
+[
+ {
+  "addr": "0x00420b40",
+  "name": "fopen",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x004deb10."
+ },
+ {
+  "addr": "0x00420e2c",
+  "name": "fseek",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x004dedd8."
+ },
+ {
+  "addr": "0x004215e8",
+  "name": "setvbuf",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x004e02cc."
+ }
+]

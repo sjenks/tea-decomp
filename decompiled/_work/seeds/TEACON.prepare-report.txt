@@ -1,0 +1,9 @@
+new	00404f9c	vtable-slot	10 bytes
+new	0040784c	rtti-dtor	200 bytes
+new	00407a80	vtable-slot	11 bytes
+new	004178e8	rtti-dtor	34 bytes
+new	0041c3ec	vtable-slot	48 bytes
+new	0041c648	rtti-dtor	66 bytes
+new	0041e8fc	vtable-slot	11 bytes
+new	0041cc28	prologue-scan	203 bytes
+summary	functions_before=887	functions_after=895	created_from_tables=7	created_by_prologue_scan=1	already_present=69	skipped=0	scan_rounds=2	text_bytes=167936	text_bytes_in_functions=153616

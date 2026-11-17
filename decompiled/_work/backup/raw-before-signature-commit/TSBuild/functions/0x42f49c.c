@@ -1,0 +1,30 @@
+// name: FUN_0042f49c
+// address: 0x42f49c
+// provider: Ghidra 12.1.4 (prepared project; borlandcpp)
+// pseudocode: decompiler output; not original source
+
+undefined4 __cdecl FUN_0042f49c(int param_1)
+
+{
+  BOOL BVar1;
+  undefined4 uVar2;
+  tagPOINT local_c;
+  
+  (**(code **)(*(int *)(param_1 + 8) + 0x10))();
+  *(undefined4 *)(param_1 + 0x93) = 0xfffffffe;
+  local_c.x = 0;
+  local_c.y = 0;
+  GetCursorPos(&local_c);
+  TrackPopupMenu(*(HMENU *)(param_1 + 0x8a),0,local_c.x,local_c.y,0,*(HWND *)(param_1 + 0xc),
+                 (RECT *)0x0);
+  BVar1 = IsWindow(*(HWND *)(param_1 + 0xc));
+  if (BVar1 == 0) {
+    uVar2 = 0xfffffffe;
+  }
+  else {
+    FUN_0042c95c((int *)(*(int *)(param_1 + 0x6c) + 0x11));
+    uVar2 = *(undefined4 *)(param_1 + 0x93);
+  }
+  return uVar2;
+}
+

@@ -1,0 +1,16 @@
+// name: KERNEL32.DLL::LocalLock
+// address: 0x473212
+// provider: Ghidra 12.1.4 (prepared project; borlandcpp)
+// pseudocode: decompiler output; not original source
+
+LPVOID __stdcall LocalLock(HLOCAL hMem)
+
+{
+  LPVOID pvVar1;
+  
+                    /* WARNING: Could not recover jumptable at 0x00473212. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  pvVar1 = LocalLock(hMem);
+  return pvVar1;
+}
+

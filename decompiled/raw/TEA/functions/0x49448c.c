@@ -1,0 +1,64 @@
+// name: FUN_0049448c
+// address: 0x49448c
+// provider: Ghidra 12.1.4 (prepared project; borlandcpp)
+// pseudocode: decompiler output; not original source
+
+void __cdecl FUN_0049448c(int *param_1,int *param_2)
+
+{
+  bool bVar1;
+  int iVar2;
+  
+  if ((((*param_1 == 0) && (param_1[2] == 0)) && (param_1[1] == 0)) && (param_1[3] == 0)) {
+    bVar1 = true;
+  }
+  else {
+    bVar1 = false;
+  }
+  if (!bVar1) {
+    if (((*param_2 == 0) && (param_2[2] == 0)) && ((param_2[1] == 0 && (param_2[3] == 0)))) {
+      bVar1 = true;
+    }
+    else {
+      bVar1 = false;
+    }
+    if (bVar1) {
+      *param_1 = 0;
+      param_1[1] = 0;
+      param_1[2] = 0;
+      param_1[3] = 0;
+    }
+    else {
+      if (*param_2 < *param_1) {
+        iVar2 = *param_1;
+      }
+      else {
+        iVar2 = *param_2;
+      }
+      *param_1 = iVar2;
+      if (param_2[1] < param_1[1]) {
+        iVar2 = param_1[1];
+      }
+      else {
+        iVar2 = param_2[1];
+      }
+      param_1[1] = iVar2;
+      if (param_1[2] < param_2[2]) {
+        iVar2 = param_1[2];
+      }
+      else {
+        iVar2 = param_2[2];
+      }
+      param_1[2] = iVar2;
+      if (param_1[3] < param_2[3]) {
+        iVar2 = param_1[3];
+      }
+      else {
+        iVar2 = param_2[3];
+      }
+      param_1[3] = iVar2;
+    }
+  }
+  return;
+}
+

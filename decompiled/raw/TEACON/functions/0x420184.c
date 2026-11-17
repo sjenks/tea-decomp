@@ -1,0 +1,126 @@
+// name: FUN_00420184
+// address: 0x420184
+// provider: Ghidra 12.1.4 (prepared project; borlandcpp)
+// pseudocode: decompiler output; not original source
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+int __cdecl FUN_00420184(LPCSTR param_1,uint param_2,uint param_3)
+
+{
+  bool bVar1;
+  int iVar2;
+  HANDLE hObject;
+  undefined3 extraout_var;
+  uint uVar3;
+  DWORD dwFlagsAndAttributes;
+  DWORD DVar4;
+  _SECURITY_ATTRIBUTES local_18;
+  DWORD local_c;
+  DWORD local_8;
+  
+  if ((param_2 & 0xc000) == 0) {
+    param_2 = param_2 | *(uint *)PTR_DAT_004325f8 & 0xc000;
+  }
+  if ((param_2 & 0x8000) == 0) {
+    param_2 = param_2 | 0x4000;
+  }
+  uVar3 = param_2 & 0x700;
+  if (uVar3 < 0x501) {
+    if (uVar3 == 0x500) {
+LAB_004201ef:
+      DVar4 = 1;
+      goto LAB_00420210;
+    }
+    if (uVar3 == 0x100) {
+      DVar4 = 4;
+      goto LAB_00420210;
+    }
+    if (uVar3 != 0x200) {
+      if (uVar3 == 0x300) {
+        DVar4 = 2;
+        goto LAB_00420210;
+      }
+      goto LAB_0042020b;
+    }
+  }
+  else if (uVar3 != 0x600) {
+    if (uVar3 != 0x700) {
+LAB_0042020b:
+      DVar4 = 3;
+      goto LAB_00420210;
+    }
+    goto LAB_004201ef;
+  }
+  DVar4 = 5;
+LAB_00420210:
+  if ((param_2 & 0x100) == 0) {
+    dwFlagsAndAttributes = GetFileAttributesA(param_1);
+    if (dwFlagsAndAttributes == 0xffffffff) {
+      dwFlagsAndAttributes = 0;
+    }
+  }
+  else if ((param_3 & _DAT_00432070 & 0x80) == 0) {
+    dwFlagsAndAttributes = 1;
+  }
+  else {
+    dwFlagsAndAttributes = 0x80;
+  }
+  uVar3 = param_2 & 3;
+  if (uVar3 == 0) {
+    local_8 = 0x80000000;
+  }
+  else if (uVar3 == 1) {
+    local_8 = 0x40000000;
+  }
+  else {
+    if (uVar3 != 2) {
+      iVar2 = FUN_004211cc(1);
+      return iVar2;
+    }
+    local_8 = 0xc0000000;
+  }
+  uVar3 = param_2 & 0x70;
+  if (uVar3 == 0x10) {
+    local_c = 0;
+  }
+  else if (uVar3 == 0x20) {
+    local_c = 1;
+  }
+  else if (uVar3 == 0x30) {
+    local_c = 2;
+  }
+  else {
+    local_c = 3;
+  }
+  local_18.nLength = 0xc;
+  local_18.lpSecurityDescriptor = (LPVOID)0x0;
+  local_18.bInheritHandle = (BOOL)((param_2 & 0x80) == 0);
+  hObject = CreateFileA(param_1,local_8,local_c,&local_18,DVar4,dwFlagsAndAttributes,(HANDLE)0x0);
+  if (hObject == (HANDLE)0xffffffff) {
+    DVar4 = GetLastError();
+    uVar3 = DVar4 & 0xffff;
+    if (uVar3 == 0x6e) {
+      if ((param_2 & 0x100) == 0) {
+        uVar3 = 2;
+      }
+      else {
+        uVar3 = 0x50;
+      }
+    }
+    iVar2 = FUN_004211cc(uVar3);
+  }
+  else {
+    bVar1 = FUN_004200f4(hObject);
+    if (CONCAT31(extraout_var,bVar1) != 0) {
+      param_2 = param_2 | 0x2000;
+    }
+    iVar2 = FUN_00420f10(hObject,param_2 & 0xfffff8ff);
+    if (iVar2 == -1) {
+      FUN_004211cc(4);
+      CloseHandle(hObject);
+    }
+  }
+  return iVar2;
+}
+

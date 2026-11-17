@@ -1,0 +1,21 @@
+// name: FUN_0042d05c
+// address: 0x42d05c
+// provider: Ghidra 12.1.4 (prepared project; borlandcpp)
+// pseudocode: decompiler output; not original source
+
+void __cdecl FUN_0042d05c(int param_1,int param_2)
+
+{
+  if (param_2 != 0) {
+    if (*(int *)(param_1 + 0x7a) != 0) {
+      *(undefined4 *)(param_2 + 0x7e) = *(undefined4 *)(*(int *)(param_1 + 0x7a) + 0x7e);
+      *(int *)(*(int *)(param_1 + 0x7a) + 0x7e) = param_2;
+      *(int *)(param_1 + 0x7a) = param_2;
+      return;
+    }
+    *(int *)(param_1 + 0x7a) = param_2;
+    *(int *)(param_2 + 0x7e) = param_2;
+  }
+  return;
+}
+

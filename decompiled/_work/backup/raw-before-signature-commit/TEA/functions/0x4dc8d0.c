@@ -1,0 +1,18 @@
+// name: FUN_004dc8d0
+// address: 0x4dc8d0
+// provider: Ghidra 12.1.4 (prepared project; borlandcpp)
+// pseudocode: decompiler output; not original source
+
+undefined2 * __cdecl FUN_004dc8d0(undefined2 *param_1,undefined2 param_2,int param_3)
+
+{
+  undefined2 *puVar1;
+  
+  puVar1 = param_1;
+  for (; param_3 != 0; param_3 = param_3 + -1) {
+    *puVar1 = param_2;
+    puVar1 = puVar1 + 1;
+  }
+  return param_1;
+}
+

@@ -1,0 +1,18 @@
+{
+ "program": "TEACON",
+ "compiler": "C:\\Users\\jenks\\code\\tea-rea\\_tools\\mingw\\mingw32\\bin\\g++.exe",
+ "flags": [
+  "-std=gnu++17",
+  "-fpermissive",
+  "-w",
+  "-fmax-errors=0",
+  "-c"
+ ],
+ "files": 35,
+ "filesWithErrors": 0,
+ "errors": 0,
+ "objectFiles": 35,
+ "seconds": 15,
+ "errorKinds": [],
+ "failedFiles": []
+}

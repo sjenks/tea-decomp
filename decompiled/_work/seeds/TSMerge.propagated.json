@@ -1,0 +1,165 @@
+[
+ {
+  "addr": "0x0040dee4",
+  "name": "GetProgramDirectory",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040909c. GetModuleFileNameA, truncated after the last backslash"
+ },
+ {
+  "addr": "0x0040ea30",
+  "name": "Persist::QueryValueSized",
+  "cls": "Persist",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00411a4c. RegQueryValueExA wrapper"
+ },
+ {
+  "addr": "0x0040eaa4",
+  "name": "Persist::QueryValue",
+  "cls": "Persist",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00411ac0. RegQueryValueExA wrapper"
+ },
+ {
+  "addr": "0x0044b2a0",
+  "name": "calloc",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00414f4c. malloc(n*size) then memset 0"
+ },
+ {
+  "addr": "0x0044b300",
+  "name": "operator_new",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00414fac. result is null-checked and passed to a constructor"
+ },
+ {
+  "addr": "0x0044b474",
+  "name": "_vector_delete_ldtc_",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00415120. Borland RTL array destructor helper (ptr, elemSize, count, mode, dtor)"
+ },
+ {
+  "addr": "0x0044b5d4",
+  "name": "_vector_new_ldtc_",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00415280. Borland RTL array constructor helper (ptr, elemSize, count, mode, ctor)"
+ },
+ {
+  "addr": "0x0044d11c",
+  "name": "std::string::string_from_cstr",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00416e74. std::string(const char*)"
+ },
+ {
+  "addr": "0x0044d2a4",
+  "name": "std::string::__getRep",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00416ffc. allocates a string representation of the given capacity"
+ },
+ {
+  "addr": "0x00451a34",
+  "name": "std::string::append",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ab68."
+ },
+ {
+  "addr": "0x00451d38",
+  "name": "std::string::replace_fill",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ae90. replace(pos, n1, n2, ch); with pos=size,n1=0 it appends n2 copies of ch"
+ },
+ {
+  "addr": "0x00455990",
+  "name": "memchr",
+  "kind": "function",
+  "source": "analysis (usage pattern, less certain) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ed9c."
+ },
+ {
+  "addr": "0x004559d0",
+  "name": "memcpy",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041eddc."
+ },
+ {
+  "addr": "0x00455a40",
+  "name": "memset",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ee4c."
+ },
+ {
+  "addr": "0x00455bf0",
+  "name": "strlen",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ef80."
+ },
+ {
+  "addr": "0x00455e2c",
+  "name": "strrchr",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041f284."
+ },
+ {
+  "addr": "0x00455f04",
+  "name": "__InitExceptBlockLDTC",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041f3fc. Borland exception-frame setup; first call in most functions, argument is that function's exception table"
+ },
+ {
+  "addr": "0x0044b2cc",
+  "name": "operator_delete",
+  "kind": "function",
+  "source": "analysis (usage pattern) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x00414f78 (15 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. called on `this` at the end of every deleting destructor"
+ },
+ {
+  "addr": "0x0044b2dc",
+  "name": "operator_delete_array",
+  "kind": "function",
+  "source": "analysis (usage pattern) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x00414f88 (15 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours."
+ },
+ {
+  "addr": "0x0044b2ec",
+  "name": "set_new_handler",
+  "kind": "function",
+  "source": "analysis (usage pattern) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x00414f98 (19 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours."
+ },
+ {
+  "addr": "0x0044b390",
+  "name": "operator_new_array",
+  "kind": "function",
+  "source": "analysis (usage pattern, less certain) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x0041503c (15 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours."
+ },
+ {
+  "addr": "0x0044b944",
+  "name": "malloc",
+  "kind": "function",
+  "source": "analysis (usage pattern) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x004155f0 (16 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. called by operator new in a retry loop"
+ },
+ {
+  "addr": "0x0044b954",
+  "name": "free",
+  "kind": "function",
+  "source": "analysis (usage pattern) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x00415600 (16 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. called by operator delete"
+ }
+]

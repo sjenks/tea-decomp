@@ -1,0 +1,18 @@
+{
+ "program": "TSMerge",
+ "compiler": "C:\\Users\\jenks\\code\\tea-rea\\_tools\\mingw\\mingw32\\bin\\g++.exe",
+ "flags": [
+  "-std=gnu++17",
+  "-fpermissive",
+  "-w",
+  "-fmax-errors=0",
+  "-c"
+ ],
+ "files": 181,
+ "filesWithErrors": 0,
+ "errors": 0,
+ "objectFiles": 181,
+ "seconds": 90,
+ "errorKinds": [],
+ "failedFiles": []
+}

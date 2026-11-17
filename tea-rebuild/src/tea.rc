@@ -1,0 +1,603 @@
+// Resources for tea.exe. Dialog layouts and identifiers follow the original TEA.exe so that the two
+// programs look alike and the same test script can drive both.
+#include <windows.h>
+#include <commctrl.h>
+#include <richedit.h>
+#include "resource.h"
+
+1 RT_MANIFEST "tea.manifest"
+IDI_TEA ICON "tea.ico"
+
+IDM_MAIN MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...\tCtrl+O", CM_FILE_OPEN
+        MENUITEM "&Close *", CM_FILE_CLOSE
+        MENUITEM "Save Results from * &As...\tCtrl+S", CM_SAVE_RESULTS
+        MENUITEM SEPARATOR
+        MENUITEM "&Demote *", CM_DEMOTE
+        MENUITEM "Pro&mote *", CM_PROMOTE
+        MENUITEM SEPARATOR
+        MENUITEM "P&roperties from *", CM_PROPERTIES
+        MENUITEM SEPARATOR
+        MENUITEM "&Print Results from *...\tCtrl+P", CM_PRINT
+        MENUITEM "Print Pre&view Results from *...", CM_PRINT_PREVIEW
+        MENUITEM "Page Set&up...", CM_PAGE_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "", CM_MRU_FIRST
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit", CM_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "Cu&t\tCtrl+X", CM_CUT
+        MENUITEM "&Copy\tCtrl+C", CM_COPY
+        MENUITEM "&Paste\tCtrl+V", CM_PASTE
+        MENUITEM SEPARATOR
+        MENUITEM "&Select All\tCtrl+A", CM_SELECT_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "&Lookup...\tCtrl+Enter", CM_LOOKUP
+        MENUITEM "Lookup in &New Window...\tShift+Ctrl+Enter", CM_LOOKUP_NEW
+        POPUP "&External Lookup"
+        BEGIN
+            MENUITEM SEPARATOR
+            MENUITEM "&Setup...", CM_EXTERNAL_SETUP
+        END
+    END
+    POPUP "T&ools"
+    BEGIN
+        MENUITEM "&Dictionary Builder", CM_DICTIONARY_BUILDER
+        MENUITEM "&Word List Merge", CM_WORD_LIST_MERGE
+        MENUITEM SEPARATOR
+        MENUITEM "&Options...", CM_OPTIONS
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "Always On &Top", CM_TOPMOST
+        MENUITEM SEPARATOR
+        MENUITEM "Tile &Horizontal", CM_TILE_HORIZONTAL
+        MENUITEM "Tile &Vertical", CM_TILE_VERTICAL
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Quick Reference...", CM_QUICK_REFERENCE
+        MENUITEM "&Startup Tips...", CM_STARTUP_TIPS
+        MENUITEM "&Contents", CM_HELP_CONTENTS
+        MENUITEM SEPARATOR
+        MENUITEM "&About TEA...", CM_ABOUT
+    END
+END
+
+IDM_DICTIONARY_CONTEXT MENU
+BEGIN
+    MENUITEM "P&roperties", CM_PROPERTIES
+    MENUITEM SEPARATOR
+    MENUITEM "&Close", CM_FILE_CLOSE
+    MENUITEM "Save Results &As...\tCtrl+S", CM_SAVE_RESULTS
+    MENUITEM SEPARATOR
+    MENUITEM "&Demote", CM_DEMOTE
+    MENUITEM "Pro&mote", CM_PROMOTE
+END
+
+IDM_RESULT_CONTEXT MENU
+BEGIN
+    MENUITEM "&Lookup...\tCtrl+Enter", CM_LOOKUP
+    MENUITEM "Lookup in &New Window...\tShift+Ctrl+Enter", CM_LOOKUP_NEW
+    POPUP "&External Lookup"
+    BEGIN
+        MENUITEM SEPARATOR
+        MENUITEM "&Setup...", CM_EXTERNAL_SETUP
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "&Copy\tCtrl+C", CM_COPY
+    MENUITEM "&Select All\tCtrl+A", CM_SELECT_ALL
+    MENUITEM SEPARATOR
+    MENUITEM "&Print...\tCtrl+P", CM_PRINT
+    MENUITEM "Print Pre&view...", CM_PRINT_PREVIEW
+END
+
+IDM_SEARCH_CONTEXT MENU
+BEGIN
+    MENUITEM "&Word Search\tCtrl+W", CM_WORD_SEARCH
+    MENUITEM "&Full Text Search\tCtrl+F", CM_FULL_TEXT_SEARCH
+END
+
+IDM_DEFINITION_CONTEXT MENU
+BEGIN
+    POPUP "&Go To"
+    BEGIN
+        MENUITEM "&Previous Definition\tShift+Ctrl+Tab", CM_PREV_DEFINITION
+        MENUITEM "&Next Definition\tCtrl+Tab", CM_NEXT_DEFINITION
+        MENUITEM SEPARATOR
+        MENUITEM "&Previous Result\tAlt+Up Arrow", CM_PREV_RESULT
+        MENUITEM "&Next Result\tAlt+Down Arrow", CM_NEXT_RESULT
+        MENUITEM SEPARATOR
+        MENUITEM "&Back\tAlt+Left Arrow", CM_BACK
+        MENUITEM "&Forward\tAlt+Right Arrow", CM_FORWARD
+        MENUITEM SEPARATOR
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "&Lookup *\tCtrl+Enter", CM_LOOKUP
+    MENUITEM "Lookup * in &New Window...\tShift+Ctrl+Enter", CM_LOOKUP_NEW
+    POPUP "&External Lookup"
+    BEGIN
+        MENUITEM SEPARATOR
+        MENUITEM "&Setup...", CM_EXTERNAL_SETUP
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "&Copy\tCtrl+C", CM_COPY
+    MENUITEM "&Select All\tCtrl+A", CM_SELECT_ALL
+END
+
+IDA_MAIN ACCELERATORS
+BEGIN
+    "^S", CM_SAVE_RESULTS
+    VK_RETURN, CM_LOOKUP, VIRTKEY, CONTROL
+    VK_RETURN, CM_LOOKUP_NEW, VIRTKEY, CONTROL, SHIFT
+    VK_RETURN, CM_EXTERNAL_DEFAULT, VIRTKEY, CONTROL, ALT
+    "^C", CM_COPY
+    "^A", CM_SELECT_ALL
+    "^P", CM_PRINT
+    "^O", CM_FILE_OPEN
+    "^W", CM_WORD_SEARCH
+    "^F", CM_FULL_TEXT_SEARCH
+    "1", 16010, VIRTKEY, ALT
+    "2", 16011, VIRTKEY, ALT
+    "3", 16012, VIRTKEY, ALT
+    "4", 16013, VIRTKEY, ALT
+    "5", 16014, VIRTKEY, ALT
+    "6", 16015, VIRTKEY, ALT
+    "7", 16016, VIRTKEY, ALT
+    "8", 16017, VIRTKEY, ALT
+    "9", 16018, VIRTKEY, ALT
+    "0", 16019, VIRTKEY, ALT
+END
+
+IDA_DEFINITION ACCELERATORS
+BEGIN
+    VK_RETURN, CM_LOOKUP, VIRTKEY, CONTROL
+    VK_RETURN, CM_LOOKUP_NEW, VIRTKEY, CONTROL, SHIFT
+    VK_RETURN, CM_EXTERNAL_DEFAULT, VIRTKEY, CONTROL, ALT
+    VK_LEFT, CM_BACK, VIRTKEY, ALT
+    VK_RIGHT, CM_FORWARD, VIRTKEY, ALT
+    VK_UP, CM_PREV_RESULT, VIRTKEY, ALT
+    VK_DOWN, CM_NEXT_RESULT, VIRTKEY, ALT
+    VK_TAB, CM_PREV_DEFINITION, VIRTKEY, CONTROL, SHIFT
+    VK_TAB, CM_NEXT_DEFINITION, VIRTKEY, CONTROL
+    "^C", CM_COPY
+    "^A", CM_SELECT_ALL
+END
+
+// The pattern box, ruler and lists live in this child dialog, which the main window resizes.
+IDD_PATTERN DIALOGEX 0, 0, 166, 323
+STYLE DS_SETFONT | DS_CONTROL | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX "P&attern", IDC_PATTERN_GROUP, 1, 0, 164, 64, WS_GROUP
+    COMBOBOX IDC_PATTERN, 5, 10, 88, 300, CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP | WS_GROUP
+    DEFPUSHBUTTON "Word &Search", IDC_SEARCH, 93, 10, 60, 16, WS_TABSTOP | WS_GROUP | WS_DISABLED
+    CONTROL "", IDC_SEARCH_MENU, "BUTTON", BS_OWNERDRAW | WS_TABSTOP, 153, 10, 8, 16
+    LTEXT "Sho&rtest:", IDC_SHORTEST_LABEL, 5, 30, 34, 10
+    EDITTEXT IDC_SHORTEST, 39, 29, 32, 12, ES_NUMBER | WS_TABSTOP | WS_GROUP
+    CONTROL "", IDC_SHORTEST_SPIN, "msctls_updown32", UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS, 63, 29, 8, 12
+    LTEXT "&Longest:", IDC_LONGEST_LABEL, 99, 30, 30, 10
+    EDITTEXT IDC_LONGEST, 129, 29, 32, 12, ES_NUMBER | WS_TABSTOP | WS_GROUP
+    CONTROL "", IDC_LONGEST_SPIN, "msctls_updown32", UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS, 153, 29, 8, 12
+    LTEXT "", IDC_PROGRESS, 5, 44, 156, 16
+END
+
+IDD_OPTIONS DIALOGEX 43, 148, 276, 226
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX
+CAPTION "TEA Options"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    // Pattern
+    LTEXT "&@ becomes:", IDC_OPT_AT_LABEL, 13, 27, 45, 8
+    EDITTEXT IDC_OPT_AT, 58, 24, 100, 14, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "&# becomes:", IDC_OPT_HASH_LABEL, 13, 46, 45, 8
+    EDITTEXT IDC_OPT_HASH, 58, 43, 100, 14, ES_AUTOHSCROLL | WS_TABSTOP
+    AUTOCHECKBOX "E&xclusive letter variables", IDC_OPT_EXCLUSIVE, 13, 65, 238, 9, WS_TABSTOP
+    AUTOCHECKBOX "Ignore &unused punctuation", IDC_OPT_IGNORE_UNUSED, 13, 80, 238, 9, WS_TABSTOP
+    // Result
+    AUTOCHECKBOX "Sho&w dictionary annotations", IDC_OPT_ANNOTATIONS, 13, 24, 114, 9, WS_TABSTOP
+    AUTOCHECKBOX "Show anagra&m balances", IDC_OPT_BALANCES, 13, 40, 114, 9, WS_TABSTOP
+    GROUPBOX "Filtering", IDC_OPT_FILTER_GROUP, 13, 54, 250, 68
+    AUTOCHECKBOX "Show words containing only &lower case letters (e.g. tail)", IDC_OPT_SHOW_LOWER, 19, 66, 242, 9, WS_TABSTOP
+    AUTOCHECKBOX "Show words containing some &upper case letters (e.g. Charlie)", IDC_OPT_SHOW_UPPER, 19, 80, 242, 9, WS_TABSTOP
+    AUTOCHECKBOX "Show words containing punc&tuation (e.g. tail-end)", IDC_OPT_SHOW_PUNCT, 19, 94, 242, 9, WS_TABSTOP
+    AUTOCHECKBOX "Show phr&ases (e.g. tail-end Charlie)", IDC_OPT_SHOW_PHRASES, 19, 108, 242, 9, WS_TABSTOP
+    GROUPBOX "&Double-click action", IDC_OPT_DBLCLICK_GROUP, 13, 128, 250, 40
+    AUTORADIOBUTTON "Lookup", IDC_OPT_DBLCLICK_LOOKUP, 19, 140, 242, 9, WS_GROUP | WS_TABSTOP
+    AUTORADIOBUTTON "External lookup", IDC_OPT_DBLCLICK_EXTERN, 19, 154, 242, 9
+    // Sorting
+    GROUPBOX "Sorting", IDC_OPT_SORT_GROUP, 13, 24, 250, 28
+    AUTOCHECKBOX "S&ort alphabetically", IDC_OPT_SORT_ALPHA, 19, 37, 114, 9, WS_TABSTOP | WS_GROUP
+    AUTOCHECKBOX "Ascending", IDC_OPT_SORT_ASCENDING, 145, 37, 114, 9, WS_TABSTOP
+    GROUPBOX "Length grouping", IDC_OPT_LENGTH_GROUP, 13, 57, 250, 55
+    AUTOCHECKBOX "Group &by length", IDC_OPT_GROUP_BY_LENGTH, 19, 69, 114, 9, WS_TABSTOP
+    AUTORADIOBUTTON "Ascending", IDC_OPT_LENGTH_ASC, 145, 69, 114, 9, WS_GROUP | WS_TABSTOP
+    AUTORADIOBUTTON "Smart", IDC_OPT_LENGTH_SMART, 145, 83, 114, 9
+    AUTORADIOBUTTON "Descending", IDC_OPT_LENGTH_DESC, 145, 97, 114, 9
+    // Dictionary
+    GROUPBOX "Multiple dictionar&y searching", IDC_OPT_MULTI_GROUP, 13, 24, 250, 52, WS_GROUP
+    AUTORADIOBUTTON "Search all dictionaries independently", IDC_OPT_MULTI_INDEPENDENT, 18, 34, 243, 12, WS_GROUP | WS_TABSTOP
+    AUTORADIOBUTTON "Search all dictionaries and suppress duplicated results", IDC_OPT_MULTI_SUPPRESS, 18, 48, 243, 12
+    AUTORADIOBUTTON "Search active dictionary only", IDC_OPT_MULTI_ACTIVE, 18, 62, 243, 12
+    GROUPBOX "Definition dictionaries", IDC_OPT_DEFDICT_GROUP, 13, 82, 250, 28
+    COMBOBOX IDC_OPT_DEFDICTS, 18, 92, 196, 80, CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP | WS_GROUP
+    PUSHBUTTON "Chan&ge...", IDC_OPT_DEFDICTS_CHANGE, 214, 92, 44, 12, WS_TABSTOP
+    // Appearance
+    GROUPBOX "Main window", IDC_OPT_MAIN_GROUP, 10, 24, 174, 84
+    LTEXT "&Pattern font:", IDC_OPT_PATTERN_FONT_L, 16, 38, 97, 8
+    CONTROL "", IDC_OPT_PATTERN_FONT, "BUTTON", BS_OWNERDRAW | WS_TABSTOP, 113, 35, 66, 14
+    LTEXT "&Results font:", IDC_OPT_RESULT_FONT_L, 16, 56, 97, 8
+    CONTROL "", IDC_OPT_RESULT_FONT, "BUTTON", BS_OWNERDRAW | WS_TABSTOP, 113, 53, 66, 14
+    LTEXT "R&esults annotation font:", IDC_OPT_ANNOT_FONT_L, 16, 74, 97, 8
+    CONTROL "", IDC_OPT_ANNOT_FONT, "BUTTON", BS_OWNERDRAW | WS_TABSTOP, 113, 71, 66, 14
+    LTEXT "Pri&ntout font:", IDC_OPT_PRINT_FONT_L, 16, 92, 97, 8
+    CONTROL "", IDC_OPT_PRINT_FONT, "BUTTON", BS_OWNERDRAW | WS_TABSTOP, 113, 89, 66, 14
+    GROUPBOX "Definition windows", IDC_OPT_DEF_GROUP, 10, 115, 174, 66
+    LTEXT "Bac&kground color:", IDC_OPT_DEF_BG_L, 15, 129, 97, 8
+    CONTROL "", IDC_OPT_DEF_BG, "BUTTON", BS_OWNERDRAW | WS_TABSTOP, 112, 126, 66, 14
+    LTEXT "De&fault font:", IDC_OPT_DEF_FONT_L, 15, 147, 97, 8
+    CONTROL "", IDC_OPT_DEF_FONT, "BUTTON", BS_OWNERDRAW | WS_TABSTOP, 112, 144, 66, 14
+    LTEXT "H&ighlight font:", IDC_OPT_DEF_HIGHLIGHT_L, 15, 165, 97, 8
+    CONTROL "", IDC_OPT_DEF_HIGHLIGHT, "BUTTON", BS_OWNERDRAW | WS_TABSTOP, 112, 162, 66, 14
+    // Common
+    PUSHBUTTON "&Save as defaults", IDC_SAVE_DEFAULTS, 4, 208, 80, 14, WS_TABSTOP
+    PUSHBUTTON "&Close", IDCANCEL, 171, 208, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Help", IDC_HELP_BUTTON, 223, 208, 48, 14, WS_TABSTOP
+    CONTROL "", IDC_OPT_TABS, "SysTabControl32", WS_TABSTOP | WS_CLIPSIBLINGS, 4, 4, 268, 200
+END
+
+IDD_PROPERTIES DIALOGEX 43, 148, 400, 285
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION " Properties"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT "&Location:", -1, 8, 9, 45, 10
+    EDITTEXT IDC_PROP_LOCATION, 55, 8, 337, 12, ES_AUTOHSCROLL | ES_READONLY | WS_TABSTOP
+    LTEXT "&Date:", -1, 8, 25, 45, 10
+    EDITTEXT IDC_PROP_DATE, 55, 24, 337, 12, ES_AUTOHSCROLL | ES_READONLY | WS_TABSTOP
+    LTEXT "De&scription:", -1, 8, 42, 45, 10
+    EDITTEXT IDC_PROP_DESCRIPTION, 55, 40, 337, 187, ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL | WS_TABSTOP
+    LTEXT "&Entries:", -1, 8, 232, 44, 10
+    EDITTEXT IDC_PROP_ENTRIES, 55, 231, 60, 12, ES_READONLY | WS_TABSTOP
+    LTEXT "&Shortest:", -1, 143, 232, 36, 10
+    EDITTEXT IDC_PROP_SHORTEST, 179, 231, 20, 12, ES_READONLY | WS_TABSTOP
+    LTEXT "De&finitions:", -1, 8, 248, 44, 10
+    EDITTEXT IDC_PROP_DEFINITIONS, 55, 247, 60, 12, ES_READONLY | WS_TABSTOP
+    LTEXT "&Longest:", -1, 143, 248, 36, 10
+    EDITTEXT IDC_PROP_LONGEST, 179, 247, 20, 12, ES_READONLY | WS_TABSTOP
+    DEFPUSHBUTTON "&OK", IDOK, 290, 267, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Help", IDC_HELP_BUTTON, 342, 267, 48, 14, WS_TABSTOP
+END
+
+IDD_ABOUT DIALOGEX 50, 43, 224, 128
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About TEA"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON IDI_TEA, -1, 104, 8, 16, 16
+    CTEXT "TEA Crossword Helper, rebuilt", -1, 8, 30, 208, 8
+    CTEXT "An independent reimplementation of TEA Crossword Helper 2.11", -1, 8, 42, 208, 8
+    CTEXT "by Ross Beresford (Crossword Man)", -1, 8, 52, 208, 8
+    CTEXT "", 11160, 8, 66, 208, 24
+    CTEXT "Help, tips and the dictionaries are the original release's files.", -1, 8, 92, 208, 8
+    DEFPUSHBUTTON "OK", IDOK, 88, 108, 48, 14
+END
+
+IDD_QUICK_REFERENCE DIALOGEX 166, 0, 280, 161
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX
+CAPTION "TEA Quick Reference"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT "Pattern feature (click for help):", -1, 12, 8, 116, 10
+    LTEXT "Example (click to try it):", -1, 115, 8, 98, 10
+    LTEXT "Finds:", -1, 217, 8, 56, 10
+    LTEXT "Templates", 11910, 11, 21, 102, 11, SS_NOTIFY
+    LTEXT ".l...r.n", 11890, 114, 21, 102, 11, SS_NOTIFY
+    LTEXT "electron", 11930, 217, 21, 54, 11
+    LTEXT "Anagrams", 11911, 11, 32, 102, 11, SS_NOTIFY
+    LTEXT ";lobikes", 11891, 114, 32, 102, 11, SS_NOTIFY
+    LTEXT "obelisk", 11931, 217, 32, 54, 11
+    LTEXT "Wildcards", 11912, 11, 43, 102, 11, SS_NOTIFY
+    LTEXT "m*ja", 11892, 114, 43, 102, 11, SS_NOTIFY
+    LTEXT "maharaja", 11932, 217, 43, 54, 11
+    LTEXT "Choice lists", 11913, 11, 54, 102, 11, SS_NOTIFY
+    LTEXT ";diners[ai]", 11893, 114, 54, 102, 11, SS_NOTIFY
+    LTEXT "sardine", 11933, 217, 54, 54, 11
+    LTEXT "Templates with anagrams", 11914, 11, 65, 102, 11, SS_NOTIFY
+    LTEXT "......*;gdangboot", 11894, 114, 65, 102, 11, SS_NOTIFY
+    LTEXT "toboggan", 11934, 217, 65, 54, 11
+    LTEXT "Letter variables", 11915, 11, 76, 102, 11, SS_NOTIFY
+    LTEXT "12341234", 11895, 114, 76, 102, 11, SS_NOTIFY
+    LTEXT "beriberi", 11935, 217, 76, 54, 11
+    LTEXT "Punctuation matching", 11916, 11, 87, 102, 11, SS_NOTIFY
+    LTEXT "...-..-.....", 11896, 114, 87, 102, 11, SS_NOTIFY
+    LTEXT "fly-by-night", 11936, 217, 87, 54, 11
+    LTEXT "Logical operations", 11917, 11, 98, 102, 11, SS_NOTIFY
+    LTEXT ";..oting & ! *ing", 11897, 114, 98, 102, 11, SS_NOTIFY | SS_NOPREFIX
+    LTEXT "tonight", 11937, 217, 98, 54, 11
+    LTEXT "Macros", 11918, 11, 109, 102, 11, SS_NOTIFY
+    LTEXT "@#@#@#@#@#@", 11898, 114, 109, 102, 11, SS_NOTIFY
+    LTEXT "imaginative", 11938, 217, 109, 54, 11
+    LTEXT "Sub-patterns", 11919, 11, 120, 102, 11, SS_NOTIFY
+    LTEXT ";rebel(ada)", 11899, 114, 120, 102, 11, SS_NOTIFY
+    LTEXT "readable", 11939, 217, 120, 54, 11
+    CONTROL "", -1, "STATIC", SS_ETCHEDFRAME, 4, 4, 274, 135
+    AUTOCHECKBOX "&Show this window when TEA starts", IDC_QR_SHOW_AT_START, 5, 146, 171, 8, WS_TABSTOP
+    DEFPUSHBUTTON "&Close", IDCANCEL, 177, 143, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Help", IDC_HELP_BUTTON, 229, 143, 48, 14, WS_TABSTOP
+END
+
+IDD_TIPS DIALOGEX 166, 0, 280, 151
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX
+CAPTION "TEA Tip of the Day"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL "", IDC_TIP_TEXT, "RICHEDIT50W", ES_MULTILINE | ES_READONLY | WS_BORDER | WS_VSCROLL, 8, 8, 264, 98
+    PUSHBUTTON "&Next Tip", IDC_TIP_NEXT, 8, 110, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&More on this topic", IDC_TIP_MORE, 173, 110, 98, 14, WS_TABSTOP
+    CONTROL "", -1, "STATIC", SS_ETCHEDFRAME, 4, 4, 272, 125
+    AUTOCHECKBOX "&Show this window when TEA starts", IDC_QR_SHOW_AT_START, 8, 136, 164, 8, WS_TABSTOP
+    DEFPUSHBUTTON "&Close", IDCANCEL, 175, 133, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Help", IDC_HELP_BUTTON, 227, 133, 48, 14, WS_TABSTOP
+END
+
+IDD_DICTIONARY_LIST DIALOGEX 8, 40, 380, 179
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Definition Dictionary List"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT "&Selected files:", -1, 8, 8, 136, 10
+    LISTBOX IDC_DL_SELECTED, 8, 18, 140, 81, LBS_NOTIFY | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    PUSHBUTTON "&Promote", IDC_DL_PROMOTE, 24, 103, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Demote", IDC_DL_DEMOTE, 86, 103, 48, 14, WS_TABSTOP
+    PUSHBUTTON "< &Add", IDC_DL_ADD, 152, 28, 48, 13, WS_TABSTOP
+    PUSHBUTTON "> &Remove", IDC_DL_REMOVE, 152, 52, 48, 13, WS_TABSTOP
+    PUSHBUTTON "Prop&erties...", IDC_DL_PROPERTIES, 152, 75, 48, 13, WS_TABSTOP
+    LTEXT "O&ther files:", -1, 203, 8, 136, 10
+    LISTBOX IDC_DL_OTHER, 204, 18, 168, 81, LBS_NOTIFY | LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    LTEXT "Other &files folder:", -1, 203, 103, 169, 10
+    EDITTEXT IDC_DL_FOLDER, 204, 113, 124, 12, ES_AUTOHSCROLL | ES_READONLY | WS_TABSTOP
+    PUSHBUTTON "&Browse...", IDC_DL_BROWSE, 328, 113, 44, 12, WS_TABSTOP
+    CONTROL "", -1, "STATIC", SS_ETCHEDFRAME, 3, 3, 374, 154
+    DEFPUSHBUTTON "&OK", IDOK, 224, 161, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Cancel", IDCANCEL, 276, 161, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Help", IDC_HELP_BUTTON, 328, 161, 48, 14, WS_TABSTOP
+END
+
+IDD_SAVE_TSD DIALOGEX 10, 20, 305, 116
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Save TEA&&Sympathy Dictionary"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT "&File:", -1, 8, 10, 48, 8
+    EDITTEXT 2270, 56, 8, 242, 12, ES_AUTOHSCROLL | ES_READONLY | WS_TABSTOP
+    LTEXT "D&escription:", -1, 8, 26, 48, 8
+    EDITTEXT IDC_SAVE_DESCRIPTION, 56, 25, 242, 48, ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL | WS_TABSTOP
+    LTEXT "", IDC_SAVE_MESSAGE, 8, 78, 290, 16, SS_SUNKEN
+    DEFPUSHBUTTON "&Save", IDOK, 149, 98, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Cancel", IDCANCEL, 201, 98, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Help", IDC_HELP_BUTTON, 253, 98, 48, 14, WS_TABSTOP
+END
+
+IDD_EXTERNAL_LOOKUP DIALOGEX 49, 46, 234, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "External Lookup"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT "", IDC_EXT_MESSAGE, 8, 8, 220, 48
+    DEFPUSHBUTTON "&OK", IDOK, 15, 60, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Cancel", IDCANCEL, 67, 60, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Setup...", IDC_EXT_SETUP, 119, 60, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Help", IDC_HELP_BUTTON, 171, 60, 48, 14, WS_TABSTOP
+END
+
+IDD_LOOKUP_METHODS DIALOGEX 139, 100, 380, 285
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Lookup Methods"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT "&Test word:", -1, 8, 9, 44, 8
+    EDITTEXT IDC_LM_TEST_WORD, 52, 7, 268, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    PUSHBUTTON "Test &lookup", IDC_LM_TEST, 320, 7, 52, 12, WS_TABSTOP
+    GROUPBOX "Use &web search script:", -1, 8, 21, 364, 75
+    AUTO3STATE "Name:", 13200, 12, 32, 40, 12, WS_TABSTOP
+    EDITTEXT 13210, 52, 32, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Address:", -1, 127, 34, 32, 8
+    EDITTEXT 13220, 160, 32, 208, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    AUTO3STATE "Name:", 13230, 12, 48, 40, 12, WS_TABSTOP
+    EDITTEXT 13240, 52, 48, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Address:", -1, 127, 50, 32, 8
+    EDITTEXT 13250, 160, 48, 208, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    AUTO3STATE "Name:", 13260, 12, 64, 40, 12, WS_TABSTOP
+    EDITTEXT 13270, 52, 64, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Address:", -1, 127, 66, 32, 8
+    EDITTEXT 13280, 160, 64, 208, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    AUTO3STATE "Name:", 13290, 12, 80, 40, 12, WS_TABSTOP
+    EDITTEXT 13310, 52, 80, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Address:", -1, 127, 82, 32, 8
+    EDITTEXT 13320, 160, 80, 208, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    GROUPBOX "Use &DDE", -1, 8, 99, 364, 72
+    AUTO3STATE "Name:", 5350, 12, 107, 40, 12, WS_TABSTOP
+    EDITTEXT 13140, 52, 107, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Service:", -1, 127, 109, 32, 8
+    EDITTEXT 5390, 160, 107, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Topic:", -1, 252, 109, 32, 8
+    EDITTEXT 5430, 288, 107, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    AUTO3STATE "Name:", 5360, 12, 123, 40, 12, WS_TABSTOP
+    EDITTEXT 13150, 52, 123, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Service:", -1, 127, 125, 32, 8
+    EDITTEXT 5400, 160, 123, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Topic:", -1, 252, 125, 32, 8
+    EDITTEXT 5440, 288, 123, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    AUTO3STATE "Name:", 5370, 12, 139, 40, 12, WS_TABSTOP
+    EDITTEXT 13160, 52, 139, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Service:", -1, 127, 141, 32, 8
+    EDITTEXT 5410, 160, 139, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Topic:", -1, 252, 141, 32, 8
+    EDITTEXT 5450, 288, 139, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    AUTO3STATE "Name:", 5380, 12, 155, 40, 12, WS_TABSTOP
+    EDITTEXT 13170, 52, 155, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Service:", -1, 127, 157, 32, 8
+    EDITTEXT 5420, 160, 155, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Topic:", -1, 252, 157, 32, 8
+    EDITTEXT 5460, 288, 155, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    GROUPBOX "Send a &message", -1, 8, 174, 364, 40
+    AUTO3STATE "Name:", 5470, 12, 182, 40, 12, WS_TABSTOP
+    EDITTEXT 13180, 52, 182, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Window:", -1, 127, 184, 32, 8
+    EDITTEXT 5510, 160, 182, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Command:", -1, 250, 184, 38, 8
+    EDITTEXT 5550, 288, 182, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    AUTO3STATE "Name:", 5480, 12, 198, 40, 12, WS_TABSTOP
+    EDITTEXT 13190, 52, 198, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Window:", -1, 127, 200, 32, 8
+    EDITTEXT 5520, 160, 198, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Command:", -1, 250, 200, 38, 8
+    EDITTEXT 5560, 288, 198, 80, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    GROUPBOX "&Execute application", -1, 8, 217, 364, 40
+    AUTO3STATE "Name:", 5160, 12, 226, 40, 12, WS_TABSTOP
+    EDITTEXT 13100, 52, 226, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Program:", -1, 127, 228, 32, 8
+    EDITTEXT 5200, 160, 226, 94, 12, ES_AUTOHSCROLL | ES_READONLY | WS_TABSTOP
+    PUSHBUTTON "Browse...", 5240, 254, 226, 40, 12, WS_TABSTOP
+    COMBOBOX 11200, 296, 226, 72, 33, CBS_DROPDOWNLIST | WS_TABSTOP
+    AUTO3STATE "Name:", 5170, 12, 241, 40, 12, WS_TABSTOP
+    EDITTEXT 13110, 52, 241, 64, 12, ES_AUTOHSCROLL | WS_TABSTOP
+    LTEXT "Program:", -1, 127, 243, 32, 8
+    EDITTEXT 5210, 160, 241, 94, 12, ES_AUTOHSCROLL | ES_READONLY | WS_TABSTOP
+    PUSHBUTTON "Browse...", 5250, 254, 241, 40, 12, WS_TABSTOP
+    COMBOBOX 5290, 296, 241, 72, 33, CBS_DROPDOWNLIST | WS_TABSTOP
+    PUSHBUTTON "&Save as defaults", IDC_SAVE_DEFAULTS, 4, 267, 72, 14, WS_TABSTOP
+    DEFPUSHBUTTON "&Close", IDCANCEL, 276, 267, 48, 14, WS_TABSTOP
+    PUSHBUTTON "&Help", IDC_HELP_BUTTON, 328, 267, 48, 14, WS_TABSTOP
+END
+
+// The definition window's client: a tree of dictionaries and definitions, and the definition text.
+IDD_DEFINITION_VIEW DIALOGEX 0, 0, 308, 168
+STYLE DS_SETFONT | DS_CONTROL | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL "", IDC_DEF_TREE, "SysTreeView32", TVS_HASBUTTONS | TVS_SHOWSELALWAYS | TVS_DISABLEDRAGDROP | WS_BORDER | WS_TABSTOP, 4, 4, 100, 160
+    CONTROL "", IDC_DEF_TEXT, "RICHEDIT50W", ES_MULTILINE | ES_READONLY | ES_NOHIDESEL | WS_BORDER | WS_VSCROLL | WS_TABSTOP, 108, 4, 196, 160
+END
+
+STRINGTABLE
+BEGIN
+    1770   "Display TEA version information"
+    3770   "Display the TEA help topics"
+    3780   "Change page layout settings"
+    4460   " - TEA"
+    4820   "Open a summary of TEA patterns"
+    4840   "Change to this previously used dictionary"
+    4841   "Change to this previously used dictionary"
+    4842   "Change to this previously used dictionary"
+    4843   "Change to this previously used dictionary"
+    4844   "Change to this previously used dictionary"
+    4845   "Change to this previously used dictionary"
+    4846   "Change to this previously used dictionary"
+    4847   "Change to this previously used dictionary"
+    4848   "Change to this previously used dictionary"
+    4849   "Change to this previously used dictionary"
+    4960   "Searching - click on Stop to pause"
+    4970   "Searching paused - click on Resume to continue"
+    4980   "Start the TEA&Sympathy Dictionary Builder (TSBuild.exe from the original release)"
+    5120   "Start the TEA&Sympathy Word List Merge (TSMerge.exe from the original release)"
+    5140   "Configure the applications used to do external lookups"
+    5800   " "
+    5900   " results with pattern "
+    6380   "Lookup in the selected external dictionary application failed.\n\nApplications using DDE and Message interfaces need to be started before lookup is used."
+    6670   "Use Open... on the File menu to select a dictionary"
+    7480   "Save the list of results as a file"
+    7490   "Look up the selected word\nLookup"
+    7500   "Copy the selection and put it in the clipboard"
+    7510   "Select all the words in the list of results"
+    7520   "Print the words selected in the list of results"
+    7530   "Display pages as they will be printed"
+    7540   "Display information about the active dictionary"
+    7550   "Open a dictionary for searching"
+    7560   "Change TEA settings"
+    7580   "Close the active dictionary"
+    7590   "Move the active dictionary up in the search order"
+    7600   "Move the active dictionary down in the search order"
+    7610   "Insert text from the clipboard"
+    7620   "Remove the selection and put it in the clipboard"
+    11850  ", "
+    11860  "Show results lists one on top of the other"
+    11870  "Show results lists side by side"
+    12640  "Look up the selected word in a new window"
+    12650  "See the definitions for the word you looked at before the current one\nBack"
+    12660  "See the definitions for the word you looked at after the current one\nForward"
+    12670  "See the definitions of the word shown"
+    12671  "See the definitions of the word shown"
+    12672  "See the definitions of the word shown"
+    12673  "See the definitions of the word shown"
+    12674  "See the definitions of the word shown"
+    12675  "See the definitions of the word shown"
+    12676  "See the definitions of the word shown"
+    12677  "See the definitions of the word shown"
+    12678  "See the definitions of the word shown"
+    12679  "See the definitions of the word shown"
+    12710  "Look up the selected word online or in an another dictionary application\nExternal Lookup"
+    12890  "Would you like to try an external search for """" now?"
+    12891  "No external lookup methods are enabled.\n\nClick on the Setup... button and ensure one of the configured methods is checked if you would like to try an external search for """"."
+    12892  "No definitions for """" could be found in the TEA dictionaries.\n\nWould you like to try an external search?"
+    12893  "No definitions for """" could be found in the TEA dictionaries.\n\nClick on the Setup... button and ensure one of the configured methods is checked if you would like to try an external search."
+    12730  "See the definitions for the next word shown in the main window\nNext Result"
+    12740  "See the definitions for the previous word shown in the main window\nPrevious Result"
+    12760  "Search for words matching the pattern"
+    12770  "Search for definitions containing words matching the pattern"
+    12780  "No length of word will be matched"
+    13000  "Shortest/Longest settings stop the pattern being matched"
+    13010  "Patterns match incompatible lengths"
+    13080  "Pattern is valid - press the return key to start searching"
+    13081  "Press F1 for help"
+    13082  "Choice lists can only include letters, optionally preceded by ^"
+    13083  "Too many patterns or choice lists"
+    13084  "Pattern is too long to match anything"
+    13085  "Choice list started - use ] to complete it"
+    13086  "Only one ; is allowed in a pattern"
+    13087  "Subpattern started - use ) to complete it"
+    13088  "A ) can only appear at the end of a subpattern"
+    13089  "A ] can only appear at the end of a choice list"
+    13090  "Too many non-alphabetic characters in templates"
+    13091  "Only letters and match-alls allowed in anagrams"
+    13092  "A ^ can only appear within a choice list"
+    13093  "Follow \\ by the character you want to match exactly"
+    13094  "Choice lists must contain at least one letter"
+    13390  "Show a tip about using TEA"
+    13890  "See the next definition for the current word\nNext Definition"
+    13900  "See the previous definition for the current word\nPrevious Definition"
+    14030  "No words of the required length(s) in the dictionaries"
+    14870  "Keep the TEA windows in front of other windows"
+    24310  "Exit TEA"
+END
+
+1 VERSIONINFO
+FILEVERSION 2,11,0,1
+PRODUCTVERSION 2,11,0,1
+FILEOS 0x4L
+FILETYPE 0x1L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "TEA Crossword Helper (rebuilt)"
+            VALUE "FileVersion", "2.11.0.1"
+            VALUE "InternalName", "tea"
+            VALUE "OriginalFilename", "tea.exe"
+            VALUE "ProductName", "TEA Crossword Helper (rebuilt)"
+            VALUE "ProductVersion", "2.11"
+            VALUE "Comments", "Independent reimplementation of TEA Crossword Helper 2.11"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1200
+    END
+END

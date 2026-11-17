@@ -1,0 +1,72 @@
+// rea decompile_all
+// name: FUN_004dca50
+// address: 0x4dca50
+// body: available
+// range: 0x4dca50-0x4dcabd inclusive
+// non_contiguous: false
+// provider: Ghidra 12.1.4 (ghidra)
+// analysis_profile: 3d97689231092bb069c4cce300579f66b49d458d30316f639f63b3829183de18
+// limitations: The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.; Ghidra Program checkpoint mode is disabled: closing discards metadata edits; original executable bytes are unchanged. For stock ELF/PE/Mach-O on Linux/macOS, set REA_GHIDRA_CHECKPOINT_DIR to a private absolute directory before starting REA (restart MCP after changing its startup environment).; Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.; Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.; Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, DOS MZ images, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.; The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.; Windows sessions require the matching packaged Windows x64 native addon, local NTFS/ReFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically.; Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.; External functions and functions without an analyzable body return null; other decompiler failures remain explicit.
+// pseudocode: provider-specific; not original source
+
+
+char * __cdecl FUN_004dca50(char *param_1,char *param_2,uint param_3)
+
+{
+  char cVar1;
+  int iVar2;
+  uint uVar3;
+  char *pcVar4;
+  char *pcVar5;
+  
+  iVar2 = -1;
+  pcVar5 = param_1;
+  do {
+    pcVar4 = pcVar5;
+    if (iVar2 == 0) break;
+    iVar2 = iVar2 + -1;
+    pcVar4 = pcVar5 + 1;
+    cVar1 = *pcVar5;
+    pcVar5 = pcVar4;
+  } while (cVar1 != '\0');
+  pcVar4 = pcVar4 + -1;
+  for (uVar3 = param_3 & 3; uVar3 != 0; uVar3 = uVar3 - 1) {
+    cVar1 = *param_2;
+    *pcVar4 = cVar1;
+    if (cVar1 == '\0') {
+      return param_1;
+    }
+    param_2 = param_2 + 1;
+    pcVar4 = pcVar4 + 1;
+  }
+  uVar3 = param_3 >> 2;
+  while( true ) {
+    if (uVar3 == 0) {
+      *pcVar4 = '\0';
+      return param_1;
+    }
+    cVar1 = *param_2;
+    *pcVar4 = cVar1;
+    if (cVar1 == '\0') {
+      return param_1;
+    }
+    cVar1 = param_2[1];
+    pcVar4[1] = cVar1;
+    if (cVar1 == '\0') {
+      return param_1;
+    }
+    cVar1 = param_2[2];
+    pcVar4[2] = cVar1;
+    if (cVar1 == '\0') break;
+    cVar1 = param_2[3];
+    param_2 = param_2 + 4;
+    pcVar4[3] = cVar1;
+    pcVar4 = pcVar4 + 4;
+    if (cVar1 == '\0') {
+      return param_1;
+    }
+    uVar3 = uVar3 - 1;
+  }
+  return param_1;
+}
+

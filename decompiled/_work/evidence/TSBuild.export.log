@@ -1,0 +1,52 @@
+﻿INFO  Using log config file: jar:file:/C:/Users/jenks/code/tea-rea/_tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1342 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (8738 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 59 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\decompiled\_work\ghidra-scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\PyGhidra\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: C:\Users\jenks\code\tea-rea\decompiled\ghidra-project\tea (HeadlessAnalyzer)  
+INFO  Opening project: C:\Users\jenks\code\tea-rea\decompiled\ghidra-project\tea (HeadlessProject)  
+INFO  REPORT: Processing read-only project file: /TSBuild.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: TeaExport.java 'C:\Users\jenks\code\tea-rea\decompiled\raw\TSBuild'  (HeadlessAnalyzer)  
+INFO  SCRIPT: C:\Users\jenks\code\tea-rea\decompiled\_work\ghidra-scripts\TeaExport.java (HeadlessAnalyzer)  
+WARN  Decompiling 0041d6cc, pcode error at 0041d7f5: Unable to resolve constructor at 0041d7f5 (DecompileCallback)  
+WARN  Decompiling 00421c58, pcode error at 00421c74: Unable to resolve constructor at 00421c74 (DecompileCallback)  
+WARN  Decompiling 004498f4, pcode error at 00449931: Unable to resolve constructor at 00449931 (DecompileCallback)  
+WARN  Decompiling 004631b0, pcode error at 004632c8: Unable to resolve constructor at 004632c8 (DecompileCallback)  
+WARN  Decompiling 004631b0, pcode error at 004633a1: Unable to resolve constructor at 004633a1 (DecompileCallback)  
+WARN  Decompiling 004631b0, pcode error at 0046343d: Unable to resolve constructor at 0046343d (DecompileCallback)  
+WARN  Decompiling 004631b0, pcode error at 004634a9: Unable to resolve constructor at 004634a9 (DecompileCallback)  
+WARN  Decompiling 004631b0, pcode error at 004635dd: Unable to resolve constructor at 004635dd (DecompileCallback)  
+WARN  Decompiling 004631b0, pcode error at 004633a0: Unable to resolve constructor at 004633a0 (DecompileCallback)  
+WARN  Decompiling 004631b0, pcode error at 00463300: Unable to resolve constructor at 00463300 (DecompileCallback)  
+INFO  TeaExport.java> TeaExport: written=3029 failed=3 external=290 -> C:\Users\jenks\code\tea-rea\decompiled\raw\TSBuild (GhidraScript)  

@@ -1,0 +1,117 @@
+{
+ "exe": "TEACON.exe",
+ "sha256": "d4a30243fa47315ecd79278f862ac5a4706b023ca32d5f90d08020608bc69b1c",
+ "functions": 825,
+ "named": 161,
+ "nameSources": {
+  "unnamed": 664,
+  "analysis": 44,
+  "rtti:vtable": 30,
+  "rtti:dtor": 38,
+  "notes+analysis": 12,
+  "notes (structure checked)": 1,
+  "notes (inferred)": 2,
+  "notes": 8,
+  "analysis (inferred)": 2,
+  "analysis (usage pattern)": 18,
+  "analysis (usage pattern, less certain)": 3,
+  "analysis (usage pattern) (matched TEA.exe)": 3
+ },
+ "appFunctions": 155,
+ "libFunctions": 670,
+ "appNamed": 89,
+ "libStart": "0x00414f4c",
+ "textBytes": 167936,
+ "bytesInFunctions": 153616,
+ "definedByTables": 7,
+ "definedByPrologueScan": 1,
+ "classes": 41,
+ "appClasses": 10,
+ "responseTables": 0,
+ "responseTablesOwned": 0,
+ "globalsDeclared": 342,
+ "generatorProblems": [],
+ "modules": [
+  {
+   "file": "src/main.cpp",
+   "functions": 24,
+   "named": 8,
+   "from": "0x00401000",
+   "to": "0x00411910",
+   "bytes": 17051
+  },
+  {
+   "file": "src/TSDictionaryList.cpp",
+   "functions": 31,
+   "named": 17,
+   "from": "0x00405280",
+   "to": "0x00407768",
+   "bytes": 8529
+  },
+  {
+   "file": "src/MatchEngine.cpp",
+   "functions": 44,
+   "named": 35,
+   "from": "0x0040784c",
+   "to": "0x0040ebec",
+   "bytes": 25631
+  },
+  {
+   "file": "src/InputEngine.cpp",
+   "functions": 8,
+   "named": 7,
+   "from": "0x00409a5c",
+   "to": "0x0040a360",
+   "bytes": 2285
+  },
+  {
+   "file": "src/VariableValues.cpp",
+   "functions": 8,
+   "named": 8,
+   "from": "0x0040d97c",
+   "to": "0x0040edbc",
+   "bytes": 1493
+  },
+  {
+   "file": "src/Pattern.cpp",
+   "functions": 5,
+   "named": 5,
+   "from": "0x0040dae0",
+   "to": "0x0040dc68",
+   "bytes": 383
+  },
+  {
+   "file": "src/TEAViewProfileWindows.cpp",
+   "functions": 2,
+   "named": 2,
+   "from": "0x0040f26c",
+   "to": "0x00411148",
+   "bytes": 8312
+  },
+  {
+   "file": "src/Persist.cpp",
+   "functions": 9,
+   "named": 4,
+   "from": "0x0041193c",
+   "to": "0x00411e94",
+   "bytes": 1497
+  },
+  {
+   "file": "src/MatchEngineSet.cpp",
+   "functions": 22,
+   "named": 2,
+   "from": "0x00411f58",
+   "to": "0x00414ab4",
+   "bytes": 11706
+  },
+  {
+   "file": "src/Common.cpp",
+   "functions": 2,
+   "named": 1,
+   "from": "0x00414ddc",
+   "to": "0x00414ea8",
+   "bytes": 364
+  }
+ ],
+ "libFiles": 25
+}

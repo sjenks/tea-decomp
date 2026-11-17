@@ -1,0 +1,217 @@
+{
+ "commands": {},
+ "strings": {},
+ "dialogs": {
+  "102": {
+   "title": "TEA&Sympathy Dictionary Builder",
+   "controls": [
+    {
+     "id": 117,
+     "cls": "BUTTON",
+     "text": "Files"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Input word list:"
+    },
+    {
+     "id": 102,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 104,
+     "cls": "BUTTON",
+     "text": "Cha&nge..."
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Output TEA&&Sympathy dictionary:"
+    },
+    {
+     "id": 105,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 120,
+     "cls": "BUTTON",
+     "text": "Chan&ge..."
+    },
+    {
+     "id": 116,
+     "cls": "BUTTON",
+     "text": "&Description"
+    },
+    {
+     "id": 113,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 115,
+     "cls": "BUTTON",
+     "text": "Advanced Options"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "&Minimum length output:"
+    },
+    {
+     "id": 107,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 108,
+     "cls": "SCROLLBAR",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Ma&ximum length output:"
+    },
+    {
+     "id": 109,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 110,
+     "cls": "SCROLLBAR",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Maximum indexed &frequency (%):"
+    },
+    {
+     "id": 118,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 119,
+     "cls": "SCROLLBAR",
+     "text": ""
+    },
+    {
+     "id": 121,
+     "cls": "BUTTON",
+     "text": "S&ort alphabetically"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Alphabet mapping file:"
+    },
+    {
+     "id": 111,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 112,
+     "cls": "BUTTON",
+     "text": "Chang&e..."
+    },
+    {
+     "id": 258,
+     "cls": "BUTTON",
+     "text": ""
+    },
+    {
+     "id": 101,
+     "cls": "BUTTON",
+     "text": "&Start"
+    },
+    {
+     "id": 106,
+     "cls": "BUTTON",
+     "text": "&Help..."
+    },
+    {
+     "id": 114,
+     "cls": "BUTTON",
+     "text": "&About..."
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "&Close"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 103,
+     "cls": "STATIC",
+     "text": ""
+    }
+   ]
+  },
+  "200": {
+   "title": "About TEA&Sympathy Dictionary Builder",
+   "controls": [
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": 108
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "TEA&&Sympathy Dictionary Builder Utility"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "by Ross Beresford"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "v3.11.0, 1 Oct 2011"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Copyright© 2011 Crossword Man"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Email:"
+    },
+    {
+     "id": 122,
+     "cls": "EDIT",
+     "text": "support@crosswordman.com"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Web:"
+    },
+    {
+     "id": 121,
+     "cls": "EDIT",
+     "text": "http://www.crosswordman.com/"
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "Ok"
+    }
+   ]
+  }
+ },
+ "menus": {}
+}

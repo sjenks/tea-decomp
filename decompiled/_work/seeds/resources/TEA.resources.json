@@ -1,0 +1,2714 @@
+{
+ "commands": {
+  "1770": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Help > &About TEA..."
+   }
+  ],
+  "3770": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Help > &Contents"
+   }
+  ],
+  "3780": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > Page Set&up..."
+   }
+  ],
+  "4820": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Help > &Quick Reference..."
+   }
+  ],
+  "4840": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > "
+   }
+  ],
+  "4980": [
+   {
+    "menu": "MAINMENU",
+    "path": "T&ools > &Dictionary Builder"
+   }
+  ],
+  "5120": [
+   {
+    "menu": "MAINMENU",
+    "path": "T&ools > &Word List Merge"
+   }
+  ],
+  "5140": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Edit > &External Lookup > &Setup..."
+   },
+   {
+    "menu": "6660",
+    "path": "&External Lookup > &Setup..."
+   },
+   {
+    "menu": "12930",
+    "path": "&External Lookup > &Setup..."
+   }
+  ],
+  "5670": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Help > Online &Tutorial"
+   }
+  ],
+  "6740": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Help > Online &Help"
+   }
+  ],
+  "6750": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Help > Online &Ordering"
+   }
+  ],
+  "6760": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Help > Order &Form..."
+   }
+  ],
+  "7480": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > Save Results from * &As...\tCtrl+S"
+   },
+   {
+    "menu": "6640",
+    "path": "Save Results &As...\tCtrl+S"
+   },
+   {
+    "accelerator": "^S"
+   }
+  ],
+  "7490": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Edit > &Lookup...\tCtrl+Enter"
+   },
+   {
+    "menu": "6660",
+    "path": "&Lookup...\tCtrl+Enter"
+   },
+   {
+    "menu": "12930",
+    "path": "&Lookup *\tCtrl+Enter"
+   },
+   {
+    "accelerator": "CONTROL+VK_RETURN"
+   },
+   {
+    "accelerator": "CONTROL+VK_RETURN"
+   }
+  ],
+  "7500": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Edit > &Copy\tCtrl+C"
+   },
+   {
+    "menu": "6660",
+    "path": "&Copy\tCtrl+C"
+   },
+   {
+    "menu": "12930",
+    "path": "&Copy\tCtrl+C"
+   },
+   {
+    "accelerator": "^C"
+   }
+  ],
+  "7510": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Edit > &Select All\tCtrl+A"
+   },
+   {
+    "menu": "6660",
+    "path": "&Select All\tCtrl+A"
+   },
+   {
+    "menu": "12930",
+    "path": "&Select All\tCtrl+A"
+   },
+   {
+    "accelerator": "^A"
+   }
+  ],
+  "7520": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > &Print Results from *...\tCtrl+P"
+   },
+   {
+    "menu": "6660",
+    "path": "&Print...\tCtrl+P"
+   },
+   {
+    "accelerator": "^P"
+   }
+  ],
+  "7530": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > Print Pre&view Results from *..."
+   },
+   {
+    "menu": "6660",
+    "path": "Print Pre&view..."
+   }
+  ],
+  "7540": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > P&roperties from *"
+   },
+   {
+    "menu": "6640",
+    "path": "P&roperties"
+   }
+  ],
+  "7550": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > &Open...\tCtrl+O"
+   },
+   {
+    "accelerator": "^O"
+   }
+  ],
+  "7560": [
+   {
+    "menu": "MAINMENU",
+    "path": "T&ools > &Options..."
+   }
+  ],
+  "7580": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > &Close *"
+   },
+   {
+    "menu": "6640",
+    "path": "&Close"
+   }
+  ],
+  "7590": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > Pro&mote *"
+   },
+   {
+    "menu": "6640",
+    "path": "Pro&mote"
+   }
+  ],
+  "7600": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > &Demote *"
+   },
+   {
+    "menu": "6640",
+    "path": "&Demote"
+   }
+  ],
+  "7610": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Edit > &Paste\tCtrl+V"
+   }
+  ],
+  "7620": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Edit > Cu&t\tCtrl+X"
+   }
+  ],
+  "11860": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Window > Tile &Horizontal"
+   }
+  ],
+  "11870": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Window > Tile &Vertical"
+   }
+  ],
+  "12110": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Help > &Email Support"
+   }
+  ],
+  "12640": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Edit > Lookup in &New Window...\tShift+Ctrl+Enter"
+   },
+   {
+    "menu": "6660",
+    "path": "Lookup in &New Window...\tShift+Ctrl+Enter"
+   },
+   {
+    "menu": "12930",
+    "path": "Lookup * in &New Window...\tShift+Ctrl+Enter"
+   },
+   {
+    "accelerator": "CONTROL+SHIFT+VK_RETURN"
+   },
+   {
+    "accelerator": "CONTROL+SHIFT+VK_RETURN"
+   }
+  ],
+  "12650": [
+   {
+    "menu": "12930",
+    "path": "&Go To > &Back\tAlt+Left Arrow"
+   },
+   {
+    "accelerator": "ALT+VK_LEFT"
+   }
+  ],
+  "12660": [
+   {
+    "menu": "12930",
+    "path": "&Go To > &Forward\tAlt+Right Arrow"
+   },
+   {
+    "accelerator": "ALT+VK_RIGHT"
+   }
+  ],
+  "12710": [
+   {
+    "accelerator": "CONTROL+ALT+VK_RETURN"
+   },
+   {
+    "accelerator": "CONTROL+ALT+VK_RETURN"
+   }
+  ],
+  "12730": [
+   {
+    "menu": "12930",
+    "path": "&Go To > &Next Result\tAlt+Down Arrow"
+   },
+   {
+    "accelerator": "ALT+VK_DOWN"
+   }
+  ],
+  "12740": [
+   {
+    "menu": "12930",
+    "path": "&Go To > &Previous Result\tAlt+Up Arrow"
+   },
+   {
+    "accelerator": "ALT+VK_UP"
+   }
+  ],
+  "12760": [
+   {
+    "menu": "12750",
+    "path": "&Word Search\tCtrl+W"
+   },
+   {
+    "accelerator": "^W"
+   }
+  ],
+  "12770": [
+   {
+    "menu": "12750",
+    "path": "&Full Text Search\tCtrl+F"
+   },
+   {
+    "accelerator": "^F"
+   }
+  ],
+  "13390": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Help > &Startup Tips..."
+   }
+  ],
+  "13890": [
+   {
+    "menu": "12930",
+    "path": "&Go To > &Next Definition\tCtrl+Tab"
+   },
+   {
+    "accelerator": "CONTROL+VK_TAB"
+   }
+  ],
+  "13900": [
+   {
+    "menu": "12930",
+    "path": "&Go To > &Previous Definition\tShift+Ctrl+Tab"
+   },
+   {
+    "accelerator": "CONTROL+SHIFT+VK_TAB"
+   }
+  ],
+  "14870": [
+   {
+    "menu": "MAINMENU",
+    "path": "&Window > Always On &Top"
+   }
+  ],
+  "24310": [
+   {
+    "menu": "MAINMENU",
+    "path": "&File > E&xit"
+   }
+  ]
+ },
+ "strings": {
+  "1770": "Display TEA version information",
+  "3770": "Display the TEA help topics",
+  "3780": "Change page layout settings",
+  "4270": "Enter the word pattern you are searching for here (see the TEA Quick Reference for examples)",
+  "4280": "Click on this button to start, stop and resume searching",
+  "4350": "Click on the arrows to change the longest length of word matched",
+  "4360": "Click on the arrows to change the shortest length of word matched",
+  "4370": "Update this number to change the longest length of word that will be matched",
+  "4380": "Update this number to change the shortest length of word that will be matched",
+  "4420": "This progress bar also shows the range of lengths that will be shown",
+  "4460": " - TEA",
+  "4780": "\nClick to change the font and text color used to display results",
+  "4790": "\nClick to change the font and text color used in the pattern entry box",
+  "4820": "Open a summary of TEA patterns",
+  "4840": "Change to this previously used dictionary",
+  "4841": "Change to this previously used dictionary",
+  "4842": "Change to this previously used dictionary",
+  "4843": "Change to this previously used dictionary",
+  "4844": "Change to this previously used dictionary",
+  "4845": "Change to this previously used dictionary",
+  "4846": "Change to this previously used dictionary",
+  "4847": "Change to this previously used dictionary",
+  "4848": "Change to this previously used dictionary",
+  "4849": "Change to this previously used dictionary",
+  "4960": "Searching - click on Stop to pause",
+  "4970": "Searching paused - click on Resume to continue",
+  "4980": "Start the TEA&Sympathy Dictionary Builder application",
+  "5120": "Start the TEA&Sympathy Word List Merge application",
+  "5140": "Configure the applications used to do external lookups",
+  "5320": "No Encoding",
+  "5330": "Hex Encoding",
+  "5670": "View the TEA tutorial pages using your web browser",
+  "5690": "Print the page being displayed\nPrint Page",
+  "5700": "\nClick to change the font and text color used for printed results",
+  "5720": "Display the page before the one shown\nShow Previous Page",
+  "5730": "Display the page after the one shown\nShow Next Page",
+  "5800": " ",
+  "5900": " results with pattern ",
+  "6380": "Lookup in the selected external dictionary application failed.\n\nApplications using DDE and Message interfaces need to be started before lookup is used.",
+  "6670": "Use Open... on the File menu to select a dictionary",
+  "6740": "View the TEA support page using your web browser",
+  "6750": "Order TEA licenses online using your web browser",
+  "6760": "Open a form you can use to order TEA licenses by post",
+  "7480": "Save the list of results as a file",
+  "7490": "Look up the selected word\nLookup",
+  "7500": "Copy the selection and put it in the clipboard",
+  "7510": "Select all the words in the list of results",
+  "7520": "Print the words selected in the list of results",
+  "7530": "Display pages as they will be printed",
+  "7540": "Display information about the active dictionary",
+  "7550": "Open a dictionary for searching",
+  "7560": "Change TEA settings",
+  "7580": "Close the active dictionary",
+  "7590": "Move the active dictionary up in the search order",
+  "7600": "Move the active dictionary down in the search order",
+  "7610": "Insert text from the clipboard",
+  "7620": "Remove the selection and put it in the clipboard",
+  "9840": "Print all results\nAll Results",
+  "9850": "Print selected results\nSelected Results",
+  "10740": " already exists.\nDo you want to replace it?",
+  "11850": ", ",
+  "11860": "Show results lists one on top of the other",
+  "11870": "Show results lists side by side",
+  "11980": "Pattern",
+  "11990": "How letter variables and macros in patterns are treated",
+  "12000": "Result",
+  "12010": "How results are displayed and filtered",
+  "12015": "Sorting",
+  "12020": "How results are sorted",
+  "12025": "Dictionary",
+  "12030": "How multiple dictionaries are handled",
+  "12040": "Appearance",
+  "12050": "What fonts are used in the display and for printing",
+  "12110": "Send an e-mail to request technical support",
+  "12580": "\nClick to change the font and text color used in the definition window",
+  "12590": "\nClick to change the background color in the definition window",
+  "12600": "\nClick to change the font and text color used to higlight words in the definition window",
+  "12640": "Look up the selected word in a new window",
+  "12650": "See the definitions for the word you looked at before the current one\nBack",
+  "12660": "See the definitions for the word you looked at after the current one\nForward",
+  "12670": "See the definitions of the word shown",
+  "12671": "See the definitions of the word shown",
+  "12672": "See the definitions of the word shown",
+  "12673": "See the definitions of the word shown",
+  "12674": "See the definitions of the word shown",
+  "12675": "See the definitions of the word shown",
+  "12676": "See the definitions of the word shown",
+  "12677": "See the definitions of the word shown",
+  "12678": "See the definitions of the word shown",
+  "12679": "See the definitions of the word shown",
+  "12690": "Click on the down arrow to switch between Word Search and Full Text Search mode",
+  "12710": "Look up the selected word online or in an another dictionary application\nExternal Lookup",
+  "12730": "See the definitions for the next word shown in the main window\nNext Result",
+  "12740": "See the definitions for the previous word shown in the main window\nPrevious Result",
+  "12780": "No length of word will be matched",
+  "12850": "\nClick to change the font and text color used to display annotations for results",
+  "12890": "Would you like to try an external search for \"\" now?",
+  "12891": "No external lookup methods are enabled.\n\nClick on the Setup... button and ensure one of the configured methods is checked if you would like to try an external search for \"\".",
+  "12892": "No definitions for \"\" could be found in the TEA dictionaries.\n\nWould you like to try an external search?",
+  "12893": "No definitions for \"\" could be found in the TEA dictionaries.\n\nClick on the Setup... button and ensure one of the configured methods is checked if you would like to try an external search.",
+  "13000": "Shortest/Longest settings stop the pattern being matched",
+  "13010": "Patterns match incompatible lengths",
+  "13080": "Pattern is valid - press the return key to start searching",
+  "13081": "Press F1 for help",
+  "13082": "Choice lists can only include letters, optionally preceded by ^",
+  "13083": "Too many patterns or choice lists",
+  "13084": "Pattern is too long to match anything",
+  "13085": "Choice list started - use ] to complete it",
+  "13086": "Only one ; is allowed in a pattern",
+  "13087": "Subpattern started - use ) to complete it",
+  "13088": "A ) can only appear at the end of a subpattern",
+  "13089": "A ] can only appear at the end of a choice list",
+  "13090": "Too many non-alphabetic characters in templates",
+  "13091": "Only letters and match-alls allowed in anagrams",
+  "13092": "A ^ can only appear within a choice list",
+  "13093": "Follow \\ by the character you want to match exactly",
+  "13094": "Choice lists must contain at least one letter",
+  "13890": "See the next definition for the current word\nNext Definition",
+  "13900": "See the previous definition for the current word\nPrevious Definition",
+  "14030": "No words of the required length(s) in the dictionaries",
+  "14930": "Database List",
+  "14940": "Definition Dictionary List",
+  "14950": "Dictionary and Database List",
+  "24310": "Exit TEA",
+  "32450": "Shell failure",
+  "32451": "TShellMalloc::Alloc failed.",
+  "32452": "Invalid Path",
+  "32453": "IShellFolder::BindToObject failed.",
+  "32454": "::SHGetDesktopFolder failed.",
+  "32455": "::SHGetSpecialFolderLocation failed.",
+  "32456": "IShellFolder::GetAttributesOf failed.",
+  "32457": "::SHGetFileInfo failed.",
+  "32458": "IShellFolder::GetDisplayNameOf failed.",
+  "32459": "::SHGetPathFromIDList failed.",
+  "32460": "IShellFolder::SetNameOf failed.",
+  "32461": "IShellFolder::GetUIObjectOf failed.",
+  "32462": "IShellFolder::CompareIDs failed.",
+  "32463": "TShellItem is invalid.",
+  "32464": "IShellFolder::EnumObjects failed.",
+  "32465": "IEnumIDList::Clone failed.",
+  "32466": "Attempt to read past end of TShellItemIterator list.",
+  "32467": "IEnumIDList::Next failed.",
+  "32468": "IEnumIDList::Skip failed.",
+  "32469": "IEnumIDList::Reset failed.",
+  "32470": "IEnumIDList pointer is zero.",
+  "32471": "::SHGetMalloc failed.",
+  "32472": "IExtractIcon::GetIconLocation failed.",
+  "32473": "IExtractIcon::Extract failed.",
+  "32474": "TShellItem::Rename attempted on item that cannot be renamed.",
+  "32475": "TShellItem::Copy attempted on item that cannot be copied.",
+  "32476": "TShellItem::Move attempted on item that cannot be moved.",
+  "32477": "TShellItem::Delete attempted on item that cannot be deleted.",
+  "32478": "CoCreateInstance(IShellLink) failed.",
+  "32479": "IShellLink::QueryInterface(IPersistFile) failed.",
+  "32480": "IPersistFile::Load failed.",
+  "32481": "IShellLink::GetIDList failed.",
+  "32482": "IShellLink::SetPath failed.",
+  "32483": "IShellLink::SetDescription failed.",
+  "32589": "Cannot print without a default printer.",
+  "32590": " on ",
+  "32591": "'%s' not printed. %s.",
+  "32592": "Out of memory",
+  "32593": "Out of disk space",
+  "32594": "Printing canceled",
+  "32595": "Printing aborted in Print Manager",
+  "32596": "Error encountered during print",
+  "32597": "Print Error",
+  "32707": "Invalid client window %s",
+  "32708": "Invalid child window %s",
+  "32709": "Invalid window %s",
+  "32729": "Attempt to open busy clipboard",
+  "32730": "WING failure",
+  "32731": "WING not available",
+  "32732": "Invalid DIB handle %X",
+  "32733": "GDI object %X destroy failure",
+  "32734": "GDI object %X delete failure",
+  "32735": "GDI file read failure",
+  "32736": "GDI resource load failure",
+  "32737": "GDI creation failure",
+  "32738": "GDI allocate failure",
+  "32739": "GDI failure",
+  "32740": "Invalid relative window specified in layout constraint in window %s",
+  "32741": "Incomplete layout constraints specified in window %s",
+  "32742": "Printer error",
+  "32743": "Validator syntax error",
+  "32744": "Menu creation failure",
+  "32745": "Child create fail for window %s",
+  "32746": "Execute fail for window %s",
+  "32747": "Create fail for window %s",
+  "32748": "Child class registration fail for window %s",
+  "32749": "Class registration fail for window %s",
+  "32750": "Bad file format",
+  "32751": "Not supported function call",
+  "32754": "Module version info failure",
+  "32755": "Failure in Common Control DLL",
+  "32756": "Ordinal %d not found in module ",
+  "32757": "Function %s not found in module ",
+  "32758": "VBX Library init failure",
+  "32759": "Invalid MainWindow",
+  "32760": "Unable to load module %s",
+  "32761": "Out of memory",
+  "32762": "No application object",
+  "32763": "Unknown error",
+  "32764": "Unhandled Exception",
+  "32765": "OK to resume?",
+  "32766": "ObjectWindows Exception",
+  "32767": "Unknown exception"
+ },
+ "dialogs": {
+  "80": {
+   "title": "TEA Introduction Screen",
+   "controls": [
+    {
+     "id": 2090,
+     "cls": "BUTTON",
+     "text": "Getting Started"
+    },
+    {
+     "id": 1530,
+     "cls": "BUTTON",
+     "text": "&Help Contents..."
+    },
+    {
+     "id": 29991,
+     "cls": "BUTTON",
+     "text": "&Mail Technical Support..."
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "&Online tutorial:"
+    },
+    {
+     "id": 29993,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 108,
+     "cls": "BUTTON",
+     "text": "Ordering"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Secure online ordering:"
+    },
+    {
+     "id": 90,
+     "cls": "BUTTON",
+     "text": "&BUY NOW..."
+    },
+    {
+     "id": 109,
+     "cls": "BUTTON",
+     "text": "Licensing Terms"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "A TEA license entitles you to use the application on a single computer. If you accept these terms, click on I Agree and enter the license you wish to use on this computer. To purchase additional licenses, order online or use the form provided."
+    },
+    {
+     "id": 100,
+     "cls": "BUTTON",
+     "text": "I &Agree"
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "I &Disagree"
+    }
+   ]
+  },
+  "410": {
+   "title": "TEA License",
+   "controls": [
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Frame1"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Name:"
+    },
+    {
+     "id": 1540,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Key:"
+    },
+    {
+     "id": 1550,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "&Ok"
+    },
+    {
+     "id": 2,
+     "cls": "BUTTON",
+     "text": "&Cancel"
+    },
+    {
+     "id": 1530,
+     "cls": "BUTTON",
+     "text": "&Help"
+    }
+   ]
+  },
+  "4010": {
+   "title": "About TEA",
+   "controls": [
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "GRIDICON"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "TEA Crossword Helper"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "by Ross Beresford, Crossword Man"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "v2.11.0, 1 Oct 2011"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Copyright© 2011 Crossword Man"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Licensed to:"
+    },
+    {
+     "id": 11160,
+     "cls": "EDIT",
+     "text": "Nobody"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Email support:"
+    },
+    {
+     "id": 29991,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Homepage:"
+    },
+    {
+     "id": 29990,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "OK"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Frame2"
+    }
+   ]
+  },
+  "4250": {
+   "title": "",
+   "controls": [
+    {
+     "id": 9000,
+     "cls": "BUTTON",
+     "text": "P&attern"
+    },
+    {
+     "id": 4270,
+     "cls": "COMBOBOX",
+     "text": ""
+    },
+    {
+     "id": 4280,
+     "cls": "BUTTON",
+     "text": "&Search"
+    },
+    {
+     "id": 6680,
+     "cls": "STATIC",
+     "text": "Sho&rtest:"
+    },
+    {
+     "id": 4380,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 4360,
+     "cls": "msctls_updown32",
+     "text": ""
+    },
+    {
+     "id": 6690,
+     "cls": "STATIC",
+     "text": "&Longest:"
+    },
+    {
+     "id": 4370,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 4350,
+     "cls": "msctls_updown32",
+     "text": ""
+    },
+    {
+     "id": 4420,
+     "cls": "BUTTON",
+     "text": ""
+    },
+    {
+     "id": 12690,
+     "cls": "STATIC",
+     "text": ""
+    }
+   ]
+  },
+  "4310": {
+   "title": "TEA Options",
+   "controls": [
+    {
+     "id": 11960,
+     "cls": "STATIC",
+     "text": "&@ becomes:"
+    },
+    {
+     "id": 4320,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 11970,
+     "cls": "STATIC",
+     "text": "&# becomes:"
+    },
+    {
+     "id": 4330,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 10830,
+     "cls": "BUTTON",
+     "text": "E&xclusive letter variables"
+    },
+    {
+     "id": 14880,
+     "cls": "BUTTON",
+     "text": "Ignore &unused punctuation"
+    },
+    {
+     "id": 13850,
+     "cls": "BUTTON",
+     "text": "Sho&w dictionary annotations"
+    },
+    {
+     "id": 5780,
+     "cls": "BUTTON",
+     "text": "Show anagra&m balances"
+    },
+    {
+     "id": 12060,
+     "cls": "BUTTON",
+     "text": "Filtering"
+    },
+    {
+     "id": 12070,
+     "cls": "BUTTON",
+     "text": "Show words containing only &lower case letters (e.g. tail)"
+    },
+    {
+     "id": 12071,
+     "cls": "BUTTON",
+     "text": "Show words containing some &upper case letters (e.g. Charlie)"
+    },
+    {
+     "id": 12072,
+     "cls": "BUTTON",
+     "text": "Show words containing punc&tuation (e.g. tail-end)"
+    },
+    {
+     "id": 12073,
+     "cls": "BUTTON",
+     "text": "Show phr&ases (e.g. tail-end Charlie)"
+    },
+    {
+     "id": 13340,
+     "cls": "BUTTON",
+     "text": "&Double-click action"
+    },
+    {
+     "id": 13350,
+     "cls": "BUTTON",
+     "text": "Lookup"
+    },
+    {
+     "id": 13360,
+     "cls": "BUTTON",
+     "text": "External lookup"
+    },
+    {
+     "id": 14000,
+     "cls": "BUTTON",
+     "text": "Sorting"
+    },
+    {
+     "id": 14010,
+     "cls": "BUTTON",
+     "text": "S&ort alphabetically"
+    },
+    {
+     "id": 14020,
+     "cls": "BUTTON",
+     "text": "Ascending"
+    },
+    {
+     "id": 13970,
+     "cls": "BUTTON",
+     "text": "Length grouping"
+    },
+    {
+     "id": 13980,
+     "cls": "BUTTON",
+     "text": "Group &by length"
+    },
+    {
+     "id": 13992,
+     "cls": "BUTTON",
+     "text": "Ascending"
+    },
+    {
+     "id": 13991,
+     "cls": "BUTTON",
+     "text": "Smart"
+    },
+    {
+     "id": 13990,
+     "cls": "BUTTON",
+     "text": "Descending"
+    },
+    {
+     "id": 12990,
+     "cls": "BUTTON",
+     "text": "Multiple dictionar&y searching"
+    },
+    {
+     "id": 6710,
+     "cls": "BUTTON",
+     "text": "Search all dictionaries independently"
+    },
+    {
+     "id": 6700,
+     "cls": "BUTTON",
+     "text": "Search all dictionaries and suppress duplicated results"
+    },
+    {
+     "id": 6720,
+     "cls": "BUTTON",
+     "text": "Search active dictionary only"
+    },
+    {
+     "id": 11430,
+     "cls": "BUTTON",
+     "text": "Definition dictionaries"
+    },
+    {
+     "id": 2270,
+     "cls": "COMBOBOX",
+     "text": ""
+    },
+    {
+     "id": 2260,
+     "cls": "BUTTON",
+     "text": "Chan&ge..."
+    },
+    {
+     "id": 12810,
+     "cls": "BUTTON",
+     "text": "Main window"
+    },
+    {
+     "id": 4810,
+     "cls": "STATIC",
+     "text": "&Pattern font:"
+    },
+    {
+     "id": 4790,
+     "cls": "BUTTON",
+     "text": ""
+    },
+    {
+     "id": 4800,
+     "cls": "STATIC",
+     "text": "&Results font:"
+    },
+    {
+     "id": 4780,
+     "cls": "BUTTON",
+     "text": ""
+    },
+    {
+     "id": 12860,
+     "cls": "STATIC",
+     "text": "R&esults annotation font:"
+    },
+    {
+     "id": 12850,
+     "cls": "BUTTON",
+     "text": ""
+    },
+    {
+     "id": 5710,
+     "cls": "STATIC",
+     "text": "Pri&ntout font:"
+    },
+    {
+     "id": 5700,
+     "cls": "BUTTON",
+     "text": ""
+    },
+    {
+     "id": 12820,
+     "cls": "BUTTON",
+     "text": "Definition windows"
+    },
+    {
+     "id": 12620,
+     "cls": "STATIC",
+     "text": "Bac&kground color:"
+    },
+    {
+     "id": 12590,
+     "cls": "BUTTON",
+     "text": ""
+    },
+    {
+     "id": 12610,
+     "cls": "STATIC",
+     "text": "De&fault font:"
+    },
+    {
+     "id": 12580,
+     "cls": "BUTTON",
+     "text": ""
+    },
+    {
+     "id": 12630,
+     "cls": "STATIC",
+     "text": "H&ighlight font:"
+    },
+    {
+     "id": 12600,
+     "cls": "BUTTON",
+     "text": ""
+    },
+    {
+     "id": 4340,
+     "cls": "BUTTON",
+     "text": "&Save as defaults"
+    },
+    {
+     "id": 2,
+     "cls": "BUTTON",
+     "text": "&Close"
+    },
+    {
+     "id": 1530,
+     "cls": "BUTTON",
+     "text": "&Help"
+    },
+    {
+     "id": 8030,
+     "cls": "SysTabControl32",
+     "text": ""
+    }
+   ]
+  },
+  "4850": {
+   "title": " Properties",
+   "controls": [
+    {
+     "id": 12920,
+     "cls": "STATIC",
+     "text": "Frame1"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "&Location:"
+    },
+    {
+     "id": 2270,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "&Date:"
+    },
+    {
+     "id": 13370,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "De&scription:"
+    },
+    {
+     "id": 4400,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 12210,
+     "cls": "STATIC",
+     "text": "&Entries:"
+    },
+    {
+     "id": 4410,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 6680,
+     "cls": "STATIC",
+     "text": "&Shortest:"
+    },
+    {
+     "id": 4610,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 13960,
+     "cls": "STATIC",
+     "text": "De&finitions:"
+    },
+    {
+     "id": 13950,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 6690,
+     "cls": "STATIC",
+     "text": "&Longest:"
+    },
+    {
+     "id": 4620,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "&OK"
+    },
+    {
+     "id": 1530,
+     "cls": "BUTTON",
+     "text": "&Help"
+    }
+   ]
+  },
+  "5150": {
+   "title": "Lookup Methods",
+   "controls": [
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "&Test word:"
+    },
+    {
+     "id": 5590,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 5600,
+     "cls": "BUTTON",
+     "text": "Test &lookup"
+    },
+    {
+     "id": 111,
+     "cls": "BUTTON",
+     "text": "Use &web search script:"
+    },
+    {
+     "id": 13200,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13210,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Address:"
+    },
+    {
+     "id": 13220,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 13230,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13240,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Address:"
+    },
+    {
+     "id": 13250,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 13260,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13270,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Address:"
+    },
+    {
+     "id": 13280,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 13290,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13310,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Address:"
+    },
+    {
+     "id": 13320,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 108,
+     "cls": "BUTTON",
+     "text": "Use &DDE"
+    },
+    {
+     "id": 5350,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13140,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Service:"
+    },
+    {
+     "id": 5390,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Topic:"
+    },
+    {
+     "id": 5430,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 5360,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13150,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Service:"
+    },
+    {
+     "id": 5400,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Topic:"
+    },
+    {
+     "id": 5440,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 5370,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13160,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Service:"
+    },
+    {
+     "id": 5410,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Topic:"
+    },
+    {
+     "id": 5450,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 5380,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13170,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Service:"
+    },
+    {
+     "id": 5420,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Topic:"
+    },
+    {
+     "id": 5460,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 107,
+     "cls": "BUTTON",
+     "text": "Send a &message"
+    },
+    {
+     "id": 5470,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13180,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Window:"
+    },
+    {
+     "id": 5510,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Command:"
+    },
+    {
+     "id": 5550,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 5480,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13190,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Window:"
+    },
+    {
+     "id": 5520,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Command:"
+    },
+    {
+     "id": 5560,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 104,
+     "cls": "BUTTON",
+     "text": "&Execute application"
+    },
+    {
+     "id": 5160,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13100,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Program:"
+    },
+    {
+     "id": 5200,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 5240,
+     "cls": "BUTTON",
+     "text": "Browse..."
+    },
+    {
+     "id": 11200,
+     "cls": "COMBOBOX",
+     "text": ""
+    },
+    {
+     "id": 5170,
+     "cls": "BUTTON",
+     "text": "Name:"
+    },
+    {
+     "id": 13110,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Program:"
+    },
+    {
+     "id": 5210,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 5250,
+     "cls": "BUTTON",
+     "text": "Browse..."
+    },
+    {
+     "id": 5290,
+     "cls": "COMBOBOX",
+     "text": ""
+    },
+    {
+     "id": 5340,
+     "cls": "BUTTON",
+     "text": "&Save as defaults"
+    },
+    {
+     "id": 2,
+     "cls": "BUTTON",
+     "text": "&Close"
+    },
+    {
+     "id": 1530,
+     "cls": "BUTTON",
+     "text": "&Help"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Frame1"
+    }
+   ]
+  },
+  "5810": {
+   "title": "",
+   "controls": [
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Frame2"
+    },
+    {
+     "id": 11440,
+     "cls": "BUTTON",
+     "text": "&Dictionaries"
+    },
+    {
+     "id": 7830,
+     "cls": "LISTBOX",
+     "text": ""
+    },
+    {
+     "id": 11430,
+     "cls": "STATIC",
+     "text": "&File:"
+    },
+    {
+     "id": 2270,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 2260,
+     "cls": "BUTTON",
+     "text": "Ch&ange..."
+    },
+    {
+     "id": 12200,
+     "cls": "STATIC",
+     "text": "D&escription:"
+    },
+    {
+     "id": 4400,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 5890,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "&Save"
+    },
+    {
+     "id": 2,
+     "cls": "BUTTON",
+     "text": "&Cancel"
+    },
+    {
+     "id": 1530,
+     "cls": "BUTTON",
+     "text": "&Help"
+    }
+   ]
+  },
+  "7820": {
+   "title": "",
+   "controls": [
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 13700,
+     "cls": "STATIC",
+     "text": "&Selected files:"
+    },
+    {
+     "id": 7830,
+     "cls": "LISTBOX",
+     "text": ""
+    },
+    {
+     "id": 7870,
+     "cls": "BUTTON",
+     "text": "&Promote"
+    },
+    {
+     "id": 7880,
+     "cls": "BUTTON",
+     "text": "&Demote"
+    },
+    {
+     "id": 7890,
+     "cls": "BUTTON",
+     "text": "< &Add"
+    },
+    {
+     "id": 7900,
+     "cls": "BUTTON",
+     "text": "> &Remove"
+    },
+    {
+     "id": 7910,
+     "cls": "BUTTON",
+     "text": "Prop&erties..."
+    },
+    {
+     "id": 13710,
+     "cls": "STATIC",
+     "text": "O&ther files:"
+    },
+    {
+     "id": 7840,
+     "cls": "LISTBOX",
+     "text": ""
+    },
+    {
+     "id": 13720,
+     "cls": "STATIC",
+     "text": "Other &files folder:"
+    },
+    {
+     "id": 7850,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 7860,
+     "cls": "BUTTON",
+     "text": "&Browse..."
+    },
+    {
+     "id": 14630,
+     "cls": "BUTTON",
+     "text": "&Quarantine days"
+    },
+    {
+     "id": 14580,
+     "cls": "STATIC",
+     "text": "Clue:"
+    },
+    {
+     "id": 14590,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 14600,
+     "cls": "msctls_updown32",
+     "text": ""
+    },
+    {
+     "id": 14581,
+     "cls": "STATIC",
+     "text": "Answer:"
+    },
+    {
+     "id": 14591,
+     "cls": "EDIT",
+     "text": ""
+    },
+    {
+     "id": 14601,
+     "cls": "msctls_updown32",
+     "text": ""
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "&OK"
+    },
+    {
+     "id": 2,
+     "cls": "BUTTON",
+     "text": "&Cancel"
+    },
+    {
+     "id": 1530,
+     "cls": "BUTTON",
+     "text": "&Help"
+    }
+   ]
+  },
+  "11880": {
+   "title": "TEA Quick Reference",
+   "controls": [
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 12100,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 11950,
+     "cls": "BUTTON",
+     "text": "&Show this window when TEA starts"
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "&Close"
+    },
+    {
+     "id": 1530,
+     "cls": "BUTTON",
+     "text": "&Help"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Pattern feature (click for help):"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Example (click to try it):"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Finds:"
+    },
+    {
+     "id": 11910,
+     "cls": "EDIT",
+     "text": "Templates"
+    },
+    {
+     "id": 11890,
+     "cls": "EDIT",
+     "text": ".l...r.n"
+    },
+    {
+     "id": 11930,
+     "cls": "STATIC",
+     "text": "electron"
+    },
+    {
+     "id": 11911,
+     "cls": "EDIT",
+     "text": "Anagrams"
+    },
+    {
+     "id": 11891,
+     "cls": "EDIT",
+     "text": ";lobikes"
+    },
+    {
+     "id": 11931,
+     "cls": "STATIC",
+     "text": "obelisk"
+    },
+    {
+     "id": 11912,
+     "cls": "EDIT",
+     "text": "Wildcards"
+    },
+    {
+     "id": 11892,
+     "cls": "EDIT",
+     "text": "m*ja"
+    },
+    {
+     "id": 11932,
+     "cls": "STATIC",
+     "text": "maharaja"
+    },
+    {
+     "id": 11913,
+     "cls": "EDIT",
+     "text": "Choice lists"
+    },
+    {
+     "id": 11893,
+     "cls": "EDIT",
+     "text": ";diners[ai]"
+    },
+    {
+     "id": 11933,
+     "cls": "STATIC",
+     "text": "sardine"
+    },
+    {
+     "id": 11914,
+     "cls": "EDIT",
+     "text": "Templates with anagrams"
+    },
+    {
+     "id": 11894,
+     "cls": "EDIT",
+     "text": "......*;gdangboot"
+    },
+    {
+     "id": 11934,
+     "cls": "STATIC",
+     "text": "toboggan"
+    },
+    {
+     "id": 11915,
+     "cls": "EDIT",
+     "text": "Letter variables"
+    },
+    {
+     "id": 11895,
+     "cls": "EDIT",
+     "text": "12341234"
+    },
+    {
+     "id": 11935,
+     "cls": "STATIC",
+     "text": "beriberi"
+    },
+    {
+     "id": 11916,
+     "cls": "EDIT",
+     "text": "Punctuation matching"
+    },
+    {
+     "id": 11896,
+     "cls": "EDIT",
+     "text": "...-..-....."
+    },
+    {
+     "id": 11936,
+     "cls": "STATIC",
+     "text": "fly-by-night"
+    },
+    {
+     "id": 11917,
+     "cls": "EDIT",
+     "text": "Logical operations"
+    },
+    {
+     "id": 11897,
+     "cls": "EDIT",
+     "text": ";..oting & ! *ing"
+    },
+    {
+     "id": 11937,
+     "cls": "STATIC",
+     "text": "tonight"
+    },
+    {
+     "id": 11918,
+     "cls": "EDIT",
+     "text": "Macros"
+    },
+    {
+     "id": 11898,
+     "cls": "EDIT",
+     "text": "@#@#@#@#@#@"
+    },
+    {
+     "id": 11938,
+     "cls": "STATIC",
+     "text": "imaginative"
+    },
+    {
+     "id": 11919,
+     "cls": "EDIT",
+     "text": "Sub-patterns"
+    },
+    {
+     "id": 11899,
+     "cls": "EDIT",
+     "text": ";rebel(ada)"
+    },
+    {
+     "id": 11939,
+     "cls": "STATIC",
+     "text": "readable"
+    }
+   ]
+  },
+  "12560": {
+   "title": "",
+   "controls": [
+    {
+     "id": 13880,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 13860,
+     "cls": "SysTreeView32",
+     "text": ""
+    }
+   ]
+  },
+  "12830": {
+   "title": "External Lookup",
+   "controls": [
+    {
+     "id": 12840,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "&OK"
+    },
+    {
+     "id": 2,
+     "cls": "BUTTON",
+     "text": "&Cancel"
+    },
+    {
+     "id": 3340,
+     "cls": "BUTTON",
+     "text": "&Setup..."
+    },
+    {
+     "id": 1530,
+     "cls": "BUTTON",
+     "text": "&Help"
+    }
+   ]
+  },
+  "13380": {
+   "title": "TEA Tip of the Day",
+   "controls": [
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 4510,
+     "cls": "BUTTON",
+     "text": "&Next Tip"
+    },
+    {
+     "id": 13400,
+     "cls": "BUTTON",
+     "text": "&More on this topic"
+    },
+    {
+     "id": 11950,
+     "cls": "BUTTON",
+     "text": "&Show this window when TEA starts"
+    },
+    {
+     "id": 1,
+     "cls": "BUTTON",
+     "text": "&Close"
+    },
+    {
+     "id": 1530,
+     "cls": "BUTTON",
+     "text": "&Help"
+    }
+   ]
+  },
+  "13460": {
+   "title": "TEA Evaluation Exit Screen",
+   "controls": [
+    {
+     "id": 108,
+     "cls": "BUTTON",
+     "text": "Ordering"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Secure online ordering:"
+    },
+    {
+     "id": 90,
+     "cls": "BUTTON",
+     "text": "&BUY NOW..."
+    },
+    {
+     "id": 109,
+     "cls": "BUTTON",
+     "text": "TEA Benefits"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Thank you for evaluating TEA Crossword Helper. To buy the product, use the secure online ordering link above. The benefits of the full version of TEA include:"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "CHECKICON"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Bigger dictionaries - over 5 million words and phrases!"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "CHECKICON"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Dictionary with English language titles from Wikipedia"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "CHECKICON"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Twelve extra dictionaries with definitions"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "CHECKICON"
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": "Dictionary Builder and Word List Merge tools"
+    },
+    {
+     "id": 100,
+     "cls": "BUTTON",
+     "text": "E&xit"
+    }
+   ]
+  },
+  "32599": {
+   "title": "Printing",
+   "controls": [
+    {
+     "id": 101,
+     "cls": "STATIC",
+     "text": "'%s' on the"
+    },
+    {
+     "id": 102,
+     "cls": "STATIC",
+     "text": "%s on %s"
+    },
+    {
+     "id": 104,
+     "cls": "STATIC",
+     "text": "Printing Page %d "
+    },
+    {
+     "id": 105,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 65535,
+     "cls": "STATIC",
+     "text": ""
+    },
+    {
+     "id": 2,
+     "cls": "BUTTON",
+     "text": "Cancel"
+    }
+   ]
+  }
+ },
+ "menus": {
+  "6640": [
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7540,
+    "text": "P&roperties"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": ""
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7580,
+    "text": "&Close"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7480,
+    "text": "Save Results &As...\tCtrl+S"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": ""
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7600,
+    "text": "&Demote"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7590,
+    "text": "Pro&mote"
+   }
+  ],
+  "6660": [
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7490,
+    "text": "&Lookup...\tCtrl+Enter"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 12640,
+    "text": "Lookup in &New Window...\tShift+Ctrl+Enter"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": "&External Lookup",
+    "children": [
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 5140,
+      "text": "&Setup..."
+     }
+    ]
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": ""
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7500,
+    "text": "&Copy\tCtrl+C"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7510,
+    "text": "&Select All\tCtrl+A"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": ""
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7520,
+    "text": "&Print...\tCtrl+P"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7530,
+    "text": "Print Pre&view..."
+   }
+  ],
+  "12750": [
+   {
+    "flags": 512,
+    "state": 0,
+    "id": 12760,
+    "text": "&Word Search\tCtrl+W"
+   },
+   {
+    "flags": 512,
+    "state": 0,
+    "id": 12770,
+    "text": "&Full Text Search\tCtrl+F"
+   }
+  ],
+  "12930": [
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": "&Go To",
+    "children": [
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 13900,
+      "text": "&Previous Definition\tShift+Ctrl+Tab"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 13890,
+      "text": "&Next Definition\tCtrl+Tab"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 12740,
+      "text": "&Previous Result\tAlt+Up Arrow"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 12730,
+      "text": "&Next Result\tAlt+Down Arrow"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 12650,
+      "text": "&Back\tAlt+Left Arrow"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 12660,
+      "text": "&Forward\tAlt+Right Arrow"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     }
+    ]
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": ""
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7490,
+    "text": "&Lookup *\tCtrl+Enter"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 12640,
+    "text": "Lookup * in &New Window...\tShift+Ctrl+Enter"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": "&External Lookup",
+    "children": [
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 5140,
+      "text": "&Setup..."
+     }
+    ]
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": ""
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7500,
+    "text": "&Copy\tCtrl+C"
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 7510,
+    "text": "&Select All\tCtrl+A"
+   }
+  ],
+  "MAINMENU": [
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": "&File",
+    "children": [
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7550,
+      "text": "&Open...\tCtrl+O"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7580,
+      "text": "&Close *"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7480,
+      "text": "Save Results from * &As...\tCtrl+S"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7600,
+      "text": "&Demote *"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7590,
+      "text": "Pro&mote *"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7540,
+      "text": "P&roperties from *"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7520,
+      "text": "&Print Results from *...\tCtrl+P"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7530,
+      "text": "Print Pre&view Results from *..."
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 3780,
+      "text": "Page Set&up..."
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 4840,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 24310,
+      "text": "E&xit"
+     }
+    ]
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": "&Edit",
+    "children": [
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7620,
+      "text": "Cu&t\tCtrl+X"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7500,
+      "text": "&Copy\tCtrl+C"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7610,
+      "text": "&Paste\tCtrl+V"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7510,
+      "text": "&Select All\tCtrl+A"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7490,
+      "text": "&Lookup...\tCtrl+Enter"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 12640,
+      "text": "Lookup in &New Window...\tShift+Ctrl+Enter"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": "&External Lookup",
+      "children": [
+       {
+        "flags": 0,
+        "state": 0,
+        "id": 0,
+        "text": ""
+       },
+       {
+        "flags": 0,
+        "state": 0,
+        "id": 5140,
+        "text": "&Setup..."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": "T&ools",
+    "children": [
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 4980,
+      "text": "&Dictionary Builder"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 5120,
+      "text": "&Word List Merge"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 7560,
+      "text": "&Options..."
+     }
+    ]
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": "&Window",
+    "children": [
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 14870,
+      "text": "Always On &Top"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 512,
+      "state": 0,
+      "id": 11860,
+      "text": "Tile &Horizontal"
+     },
+     {
+      "flags": 512,
+      "state": 0,
+      "id": 11870,
+      "text": "Tile &Vertical"
+     }
+    ]
+   },
+   {
+    "flags": 0,
+    "state": 0,
+    "id": 0,
+    "text": "&Help",
+    "children": [
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 4820,
+      "text": "&Quick Reference..."
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 13390,
+      "text": "&Startup Tips..."
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 3770,
+      "text": "&Contents"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 12110,
+      "text": "&Email Support"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 6740,
+      "text": "Online &Help"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 5670,
+      "text": "Online &Tutorial"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 6750,
+      "text": "Online &Ordering"
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 6760,
+      "text": "Order &Form..."
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 0,
+      "text": ""
+     },
+     {
+      "flags": 0,
+      "state": 0,
+      "id": 1770,
+      "text": "&About TEA..."
+     }
+    ]
+   }
+  ]
+ }
+}

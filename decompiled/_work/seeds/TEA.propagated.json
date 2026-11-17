@@ -1,0 +1,555 @@
+[
+ {
+  "addr": "0x00408884",
+  "name": "TSDictionaryList::ReleaseDictionaries",
+  "cls": "TSDictionaryList",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00406464. drops one reference on every listed Dictionary in the shared cache and deletes those reaching zero"
+ },
+ {
+  "addr": "0x00408b14",
+  "name": "TSDictionaryList::GetCount",
+  "cls": "TSDictionaryList",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x004065a8. number of dictionaries (vector size)"
+ },
+ {
+  "addr": "0x00408de0",
+  "name": "TSDictionaryList::GetNumLengths",
+  "cls": "TSDictionaryList",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00406744. dictionary header num_lengths (u16 at Dictionary+0x240c)"
+ },
+ {
+  "addr": "0x00408e80",
+  "name": "TSDictionaryList::GetWordStreamOffset",
+  "cls": "TSDictionaryList",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00406760. word_stream_offsets[length] (u32 table at Dictionary+0x2410)"
+ },
+ {
+  "addr": "0x0040b8ac",
+  "name": "TSDictionaryList::Dictionary::Dictionary",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00406814. constructor: installs the vtable, copies the path string"
+ },
+ {
+  "addr": "0x0040bac4",
+  "name": "TSDictionaryList::Dictionary::Load",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "function",
+  "source": "notes+analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00406a2c. vtable slot 1. Reads the .tsd header (magic TSD0/TSD1), Huffman table and calibration matrix; builds the 8-bit lookahead decode tables"
+ },
+ {
+  "addr": "0x0040c1b4",
+  "name": "TSDictionaryList::Dictionary::Unload",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040711c. vtable slot 2. Frees the calibration matrix and clears the loaded state"
+ },
+ {
+  "addr": "0x0040c238",
+  "name": "TSDictionaryList::Dictionary::EnsureCurrent",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x004071a0. vtable slot 3. Reloads when the file's timestamp no longer matches; returns the loaded flag"
+ },
+ {
+  "addr": "0x0040c2a8",
+  "name": "TSDictionaryList::Dictionary::GetFileTitle",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00407210. vtable slot 5"
+ },
+ {
+  "addr": "0x0040c2fc",
+  "name": "TSDictionaryList::Dictionary::GetCounts",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00407264. vtable slot 10. Sums the per-length count tables into four totals"
+ },
+ {
+  "addr": "0x0040c364",
+  "name": "TSDictionaryList::Dictionary::GetSummaryText",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x004072cc. vtable slot 7. Formats the Headwords / Definitions / Description text"
+ },
+ {
+  "addr": "0x0040c5c0",
+  "name": "TSDictionaryList::Dictionary::GetFileDateText",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00407528. vtable slot 8. Formats the file time with GetDateFormatA"
+ },
+ {
+  "addr": "0x0040c800",
+  "name": "TSDictionaryList::Dictionary::GetDescription",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00407768. vtable slot 9. Returns the header description string (Dictionary+0x2014)"
+ },
+ {
+  "addr": "0x00411680",
+  "name": "InputEngine::InputEngine",
+  "cls": "InputEngine",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00409a5c. constructor(list, dictionaryIndex): links the engine into the global InputEngine list"
+ },
+ {
+  "addr": "0x0041217c",
+  "name": "InputEngine::OpenFile",
+  "cls": "InputEngine",
+  "kind": "function",
+  "source": "notes+analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040a218. CreateFileA + seek to the saved offset; on ERROR_TOO_MANY_OPEN_FILES closes another engine's handle from the global list and retries"
+ },
+ {
+  "addr": "0x004122bc",
+  "name": "InputEngine::GetAnnotation",
+  "cls": "InputEngine",
+  "kind": "function",
+  "source": "notes+analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040a338. returns the text following the display word's NUL, or NULL when empty. The 0x4122bc address in your notes is this function in TEA.exe"
+ },
+ {
+  "addr": "0x004347e4",
+  "name": "MatchEngine::SetShortest",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040d6b4. clamps to 1..100 and stores at +0x1134"
+ },
+ {
+  "addr": "0x00434818",
+  "name": "MatchEngine::SetLongest",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040d6e8. clamps to 1..100 and stores at +0x1138"
+ },
+ {
+  "addr": "0x00434878",
+  "name": "MatchEngine::SetWordLength",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040d71c. stores the candidate length (+0x113c) and the slack over the template minimum (+0x1140)"
+ },
+ {
+  "addr": "0x004349a0",
+  "name": "MatchEngine::FormatBalance",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040d844. renders the anagram balance table as text. Entry checked; body only skimmed"
+ },
+ {
+  "addr": "0x00434aa0",
+  "name": "MatchEngine::GetMinLength",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040d944. max(shortest setting, compiled min_len)"
+ },
+ {
+  "addr": "0x00434abc",
+  "name": "MatchEngine::GetMaxLength",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040d960. min(longest setting, compiled max_len)"
+ },
+ {
+  "addr": "0x00434b30",
+  "name": "Pattern::Pattern",
+  "cls": "Pattern",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040dae0. constructor: count=0 and 256 empty 16-byte strings"
+ },
+ {
+  "addr": "0x00434c08",
+  "name": "Pattern::Add",
+  "cls": "Pattern",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040dbb8. returns the index of an equal entry or appends (capacity 256)"
+ },
+ {
+  "addr": "0x00436fec",
+  "name": "GetProgramDirectory",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040909c. GetModuleFileNameA, truncated after the last backslash"
+ },
+ {
+  "addr": "0x0043b544",
+  "name": "ExpandQueryMacros",
+  "module": "main",
+  "kind": "function",
+  "source": "notes+analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041130c. replaces unescaped @ and # with the configured expansions; \\x pairs are copied verbatim"
+ },
+ {
+  "addr": "0x0043b7a8",
+  "name": "LoadPatternOptions",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00411570. reads ExpansionAt, ExpansionHash, VariablesExclusive, IgnoreUnusedPunctuation from the registry profile"
+ },
+ {
+  "addr": "0x0044e94c",
+  "name": "Persist::QueryValueSized",
+  "cls": "Persist",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00411a4c. RegQueryValueExA wrapper"
+ },
+ {
+  "addr": "0x0044e9c0",
+  "name": "Persist::QueryValue",
+  "cls": "Persist",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00411ac0. RegQueryValueExA wrapper"
+ },
+ {
+  "addr": "0x0045f0dc",
+  "name": "MatchEngine::MatchFixedTemplate",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes+analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040dc80. fast path: (offset, letter) pairs compared in sequence until an opcode >= 0xf0"
+ },
+ {
+  "addr": "0x0045f0fc",
+  "name": "MatchEngine::MatchDistinctAnagram",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040dca0. fast path for anagrams of distinct letters. Entry checked; body not read"
+ },
+ {
+  "addr": "0x0045f170",
+  "name": "MatchEngine::MatchMultiAnagram",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040dd14. fast path for anagrams with repeated letters. Entry checked; body not read"
+ },
+ {
+  "addr": "0x0045f860",
+  "name": "MatchEngine::AnagramSingleLetters",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes+analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040e3f8. anagram opcode 0xf5 operand walker: <count> <letter...>"
+ },
+ {
+  "addr": "0x0045f898",
+  "name": "MatchEngine::AnagramMultiLetters",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes+analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040e430. anagram opcode 0xf6: (multiplicity, letter) pairs checked against the letter histogram with an omission budget"
+ },
+ {
+  "addr": "0x0045f8e8",
+  "name": "MatchEngine::AnagramChoiceLists",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040e480. anagram opcode 0xf7 solver. Entry checked; body not read"
+ },
+ {
+  "addr": "0x0045f9d8",
+  "name": "MatchEngine::AnagramChoiceListsOp",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040e570. fetches the Pattern pool slot and calls AnagramChoiceLists"
+ },
+ {
+  "addr": "0x0045fa1c",
+  "name": "MatchEngine::AnagramVariables",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040e5b4. anagram opcode 0xf8. Entry checked; body not read"
+ },
+ {
+  "addr": "0x0045febc",
+  "name": "MatchEngine::RunAnagramVM",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040ea58. anagram bytecode interpreter. Entry checked; body not read"
+ },
+ {
+  "addr": "0x0045ff84",
+  "name": "MatchEngine::ComputeBalance",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes+analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040eb20. fills the 256-entry balance table: +1 per candidate letter, minus the letters the anagram consumed"
+ },
+ {
+  "addr": "0x00468b20",
+  "name": "VariableValues::IsLetterBound",
+  "cls": "VariableValues",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040d9e4. true when the exclusive option is on and another variable already holds this letter"
+ },
+ {
+  "addr": "0x004cc090",
+  "name": "calloc",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00414f4c. malloc(n*size) then memset 0"
+ },
+ {
+  "addr": "0x004cc0f0",
+  "name": "operator_new",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00414fac. result is null-checked and passed to a constructor"
+ },
+ {
+  "addr": "0x004cc264",
+  "name": "_vector_delete_ldtc_",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00415120. Borland RTL array destructor helper (ptr, elemSize, count, mode, dtor)"
+ },
+ {
+  "addr": "0x004cc3c4",
+  "name": "_vector_new_ldtc_",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00415280. Borland RTL array constructor helper (ptr, elemSize, count, mode, ctor)"
+ },
+ {
+  "addr": "0x004cf628",
+  "name": "std::string::string_from_cstr",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00416e74. std::string(const char*)"
+ },
+ {
+  "addr": "0x004cf7b0",
+  "name": "std::string::__getRep",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00416ffc. allocates a string representation of the given capacity"
+ },
+ {
+  "addr": "0x004d573c",
+  "name": "std::string::append",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ab68."
+ },
+ {
+  "addr": "0x004d5a2c",
+  "name": "std::string::assign",
+  "kind": "function",
+  "source": "analysis (usage pattern, less certain) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ac7c."
+ },
+ {
+  "addr": "0x004d5c40",
+  "name": "std::string::replace_fill",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ae90. replace(pos, n1, n2, ch); with pos=size,n1=0 it appends n2 copies of ch"
+ },
+ {
+  "addr": "0x004dc794",
+  "name": "memchr",
+  "kind": "function",
+  "source": "analysis (usage pattern, less certain) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ed9c."
+ },
+ {
+  "addr": "0x004dc7d4",
+  "name": "memcpy",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041eddc."
+ },
+ {
+  "addr": "0x004dc844",
+  "name": "memset",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ee4c."
+ },
+ {
+  "addr": "0x004dc9f4",
+  "name": "strlen",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ef80."
+ },
+ {
+  "addr": "0x004dccbc",
+  "name": "strrchr",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041f284."
+ },
+ {
+  "addr": "0x004dce64",
+  "name": "__InitExceptBlockLDTC",
+  "kind": "function",
+  "source": "analysis (usage pattern) (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041f3fc. Borland exception-frame setup; first call in most functions, argument is that function's exception table"
+ },
+ {
+  "addr": "0x00431474",
+  "name": "MatchEngine::CompilePattern",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (structure checked) (position-matched TEACON.exe)",
+  "note": "paired with TEACON.exe 0x0040a37c by position between identical neighbours; the bodies differ (2748 vs 2751 bytes), so treat the name as probable. recursive [template][;anagram] parser; mutually recursive with CompileTemplate / CompileAnagram. Not read line by line"
+ },
+ {
+  "addr": "0x00431f34",
+  "name": "MatchEngine::CompileTemplate",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (inferred) (position-matched TEACON.exe)",
+  "note": "paired with TEACON.exe 0x0040ae38 by position between identical neighbours; the bodies differ (2202 vs 2223 bytes), so treat the name as probable. template-side compiler (choice lists, escapes per your notes). Role inferred from call structure"
+ },
+ {
+  "addr": "0x004327e8",
+  "name": "MatchEngine::CompileAnagram",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (inferred) (position-matched TEACON.exe)",
+  "note": "paired with TEACON.exe 0x0040b6d8 by position between identical neighbours; the bodies differ (3470 vs 3500 bytes), so treat the name as probable. anagram-side compiler; uses the Pattern pool. Role inferred from call structure"
+ },
+ {
+  "addr": "0x00433594",
+  "name": "MatchEngine::Compile",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes+analysis (position-matched TEACON.exe)",
+  "note": "paired with TEACON.exe 0x0040c468 by position between identical neighbours; the bodies differ (4431 vs 4431 bytes), so treat the name as probable. compiles one leaf pattern and selects the fast-path matcher stored at +0x114c"
+ },
+ {
+  "addr": "0x004346e4",
+  "name": "MatchEngine::IsValid",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "analysis (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x0040d5b8 (14 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. returns the int at +0x1020; MatchEngineSet::Compile treats 0 as a compile failure"
+ },
+ {
+  "addr": "0x004346f4",
+  "name": "MatchEngine::GetStatus",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "analysis (position-matched TEACON.exe)",
+  "note": "paired with TEACON.exe 0x0040d5c8 by position between identical neighbours; the bodies differ (14 vs 14 bytes), so treat the name as probable. returns the status byte at +0x1024"
+ },
+ {
+  "addr": "0x00434704",
+  "name": "MatchEngine::MatchEngine",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "analysis (position-matched TEACON.exe)",
+  "note": "paired with TEACON.exe 0x0040d5d8 by position between identical neighbours; the bodies differ (191 vs 194 bytes), so treat the name as probable. constructor: Pattern pool, empty bytecode string, shortest=1, longest=100, matcher=MatchGeneral"
+ },
+ {
+  "addr": "0x00434898",
+  "name": "MatchEngine::MatchWord",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "analysis (position-matched TEACON.exe)",
+  "note": "paired with TEACON.exe 0x0040d73c by position between identical neighbours; the bodies differ (262 vs 262 bytes), so treat the name as probable. builds the punctuation-prefix and filtered raw buffers when needed, then calls the selected matcher"
+ },
+ {
+  "addr": "0x0045f1d4",
+  "name": "MatchEngine::RunTemplateVM",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (position-matched TEACON.exe)",
+  "note": "paired with TEACON.exe 0x0040dd78 by position between identical neighbours; the bodies differ (1659 vs 1671 bytes), so treat the name as probable. backtracking template bytecode interpreter. Entry checked; body not read"
+ },
+ {
+  "addr": "0x0045fc04",
+  "name": "MatchEngine::AnagramSubPattern",
+  "cls": "MatchEngine",
+  "kind": "function",
+  "source": "notes (position-matched TEACON.exe)",
+  "note": "paired with TEACON.exe 0x0040e79c by position between identical neighbours; the bodies differ (698 vs 696 bytes), so treat the name as probable. anagram opcode 0xfa. Entry checked; body not read"
+ },
+ {
+  "addr": "0x0044e83c",
+  "name": "Persist::Persist",
+  "cls": "Persist",
+  "kind": "function",
+  "source": "analysis (position-matched TEACON.exe)",
+  "note": "paired with TEACON.exe 0x0041193c by position between identical neighbours; the bodies differ (201 vs 201 bytes), so treat the name as probable. opens or creates the registry key (RegOpenKeyExA / RegCreateKeyExA)"
+ },
+ {
+  "addr": "0x004cc0bc",
+  "name": "operator_delete",
+  "kind": "function",
+  "source": "analysis (usage pattern) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x00414f78 (15 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. called on `this` at the end of every deleting destructor"
+ },
+ {
+  "addr": "0x004cc0cc",
+  "name": "operator_delete_array",
+  "kind": "function",
+  "source": "analysis (usage pattern) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x00414f88 (15 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours."
+ },
+ {
+  "addr": "0x004cc0dc",
+  "name": "set_new_handler",
+  "kind": "function",
+  "source": "analysis (usage pattern) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x00414f98 (19 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours."
+ },
+ {
+  "addr": "0x004cc180",
+  "name": "operator_new_array",
+  "kind": "function",
+  "source": "analysis (usage pattern, less certain) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x0041503c (15 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours."
+ },
+ {
+  "addr": "0x004cc734",
+  "name": "malloc",
+  "kind": "function",
+  "source": "analysis (usage pattern) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x004155f0 (16 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. called by operator new in a retry loop"
+ },
+ {
+  "addr": "0x004cc744",
+  "name": "free",
+  "kind": "function",
+  "source": "analysis (usage pattern) (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x00415600 (16 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. called by operator delete"
+ }
+]

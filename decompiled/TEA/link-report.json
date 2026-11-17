@@ -1,0 +1,17 @@
+{
+ "program": "TEA",
+ "objects": 275,
+ "linked": false,
+ "undefinedSymbols": 1645,
+ "undefinedReferences": 6121,
+ "undefinedData": 1553,
+ "undefinedOther": 92,
+ "examples": [
+  "DAT_00513d58",
+  "DAT_0051aeb4",
+  "DefinitionRichEdit::__entries",
+  "DefinitionViewWindows::__entries",
+  "DictionaryListViewWindows::__entries",
+  "uRam00000760"
+ ]
+}

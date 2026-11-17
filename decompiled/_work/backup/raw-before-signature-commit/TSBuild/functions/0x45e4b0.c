@@ -1,0 +1,11 @@
+// name: FUN_0045e4b0
+// address: 0x45e4b0
+// provider: Ghidra 12.1.4 (prepared project; borlandcpp)
+// pseudocode: decompiler output; not original source
+
+bool __cdecl FUN_0045e4b0(int *param_1,int *param_2)
+
+{
+  return *param_1 == *param_2;
+}
+

@@ -1,0 +1,823 @@
+// Resources decoded from TEA.exe (static parse of the PE .rsrc section; not the original .rc source)
+// Compiles with a resource compiler (checked with GNU windres). Bitmaps, icons and cursors are listed at the end, not included.
+#include <windows.h>
+
+MAINMENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...\tCtrl+O", 7550
+        MENUITEM "&Close *", 7580
+        MENUITEM "Save Results from * &As...\tCtrl+S", 7480
+        MENUITEM SEPARATOR
+        MENUITEM "&Demote *", 7600
+        MENUITEM "Pro&mote *", 7590
+        MENUITEM SEPARATOR
+        MENUITEM "P&roperties from *", 7540
+        MENUITEM SEPARATOR
+        MENUITEM "&Print Results from *...\tCtrl+P", 7520
+        MENUITEM "Print Pre&view Results from *...", 7530
+        MENUITEM "Page Set&up...", 3780
+        MENUITEM SEPARATOR
+        MENUITEM "", 4840
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit", 24310
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "Cu&t\tCtrl+X", 7620
+        MENUITEM "&Copy\tCtrl+C", 7500
+        MENUITEM "&Paste\tCtrl+V", 7610
+        MENUITEM SEPARATOR
+        MENUITEM "&Select All\tCtrl+A", 7510
+        MENUITEM SEPARATOR
+        MENUITEM "&Lookup...\tCtrl+Enter", 7490
+        MENUITEM "Lookup in &New Window...\tShift+Ctrl+Enter", 12640
+        POPUP "&External Lookup"
+        BEGIN
+            MENUITEM SEPARATOR
+            MENUITEM "&Setup...", 5140
+        END
+    END
+    POPUP "T&ools"
+    BEGIN
+        MENUITEM "&Dictionary Builder", 4980
+        MENUITEM "&Word List Merge", 5120
+        MENUITEM SEPARATOR
+        MENUITEM "&Options...", 7560
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "Always On &Top", 14870
+        MENUITEM SEPARATOR
+        MENUITEM "Tile &Horizontal", 11860
+        MENUITEM "Tile &Vertical", 11870
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Quick Reference...", 4820
+        MENUITEM "&Startup Tips...", 13390
+        MENUITEM "&Contents", 3770
+        MENUITEM SEPARATOR
+        MENUITEM "&Email Support", 12110
+        MENUITEM "Online &Help", 6740
+        MENUITEM "Online &Tutorial", 5670
+        MENUITEM SEPARATOR
+        MENUITEM "Online &Ordering", 6750
+        MENUITEM "Order &Form...", 6760
+        MENUITEM SEPARATOR
+        MENUITEM "&About TEA...", 1770
+    END
+END
+
+6640 MENU
+BEGIN
+    MENUITEM "P&roperties", 7540
+    MENUITEM SEPARATOR
+    MENUITEM "&Close", 7580
+    MENUITEM "Save Results &As...\tCtrl+S", 7480
+    MENUITEM SEPARATOR
+    MENUITEM "&Demote", 7600
+    MENUITEM "Pro&mote", 7590
+END
+
+6660 MENU
+BEGIN
+    MENUITEM "&Lookup...\tCtrl+Enter", 7490
+    MENUITEM "Lookup in &New Window...\tShift+Ctrl+Enter", 12640
+    POPUP "&External Lookup"
+    BEGIN
+        MENUITEM SEPARATOR
+        MENUITEM "&Setup...", 5140
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "&Copy\tCtrl+C", 7500
+    MENUITEM "&Select All\tCtrl+A", 7510
+    MENUITEM SEPARATOR
+    MENUITEM "&Print...\tCtrl+P", 7520
+    MENUITEM "Print Pre&view...", 7530
+END
+
+12750 MENU
+BEGIN
+    MENUITEM "&Word Search\tCtrl+W", 12760
+    MENUITEM "&Full Text Search\tCtrl+F", 12770
+END
+
+12930 MENU
+BEGIN
+    POPUP "&Go To"
+    BEGIN
+        MENUITEM "&Previous Definition\tShift+Ctrl+Tab", 13900
+        MENUITEM "&Next Definition\tCtrl+Tab", 13890
+        MENUITEM SEPARATOR
+        MENUITEM "&Previous Result\tAlt+Up Arrow", 12740
+        MENUITEM "&Next Result\tAlt+Down Arrow", 12730
+        MENUITEM SEPARATOR
+        MENUITEM "&Back\tAlt+Left Arrow", 12650
+        MENUITEM "&Forward\tAlt+Right Arrow", 12660
+        MENUITEM SEPARATOR
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "&Lookup *\tCtrl+Enter", 7490
+    MENUITEM "Lookup * in &New Window...\tShift+Ctrl+Enter", 12640
+    POPUP "&External Lookup"
+    BEGIN
+        MENUITEM SEPARATOR
+        MENUITEM "&Setup...", 5140
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "&Copy\tCtrl+C", 7500
+    MENUITEM "&Select All\tCtrl+A", 7510
+END
+
+6660 ACCELERATORS
+BEGIN
+    "^S", 7480
+    VK_RETURN, 7490, VIRTKEY, CONTROL
+    VK_RETURN, 12640, VIRTKEY, CONTROL, SHIFT
+    VK_RETURN, 12710, VIRTKEY, CONTROL, ALT
+    "^C", 7500
+    "^A", 7510
+    "^P", 7520
+    "^O", 7550
+    "^W", 12760
+    "^F", 12770
+END
+
+12930 ACCELERATORS
+BEGIN
+    VK_RETURN, 7490, VIRTKEY, CONTROL
+    VK_RETURN, 12640, VIRTKEY, CONTROL, SHIFT
+    VK_RETURN, 12710, VIRTKEY, CONTROL, ALT
+    VK_LEFT, 12650, VIRTKEY, ALT
+    VK_RIGHT, 12660, VIRTKEY, ALT
+    VK_UP, 12740, VIRTKEY, ALT
+    VK_DOWN, 12730, VIRTKEY, ALT
+    VK_TAB, 13900, VIRTKEY, CONTROL, SHIFT
+    VK_TAB, 13890, VIRTKEY, CONTROL
+END
+
+80 DIALOG 0, 0, 268, 256
+STYLE 0x90c008c0
+EXSTYLE 0x00000001
+CAPTION "TEA Introduction Screen"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "Getting Started",2090, "BUTTON", 0x50000007, 4, 3, 260, 45
+    CONTROL "&Help Contents...",1530, "BUTTON", 0x50030300, 9, 14, 96, 14
+    CONTROL "&Mail Technical Support...",29991, "BUTTON", 0x50030300, 109, 14, 96, 14
+    CONTROL "&Online tutorial:",-1, "STATIC", 0x5000000c, 9, 33, 50, 8
+    CONTROL "",29993, "EDIT", 0x50030800, 60, 32, 194, 10
+    CONTROL "Ordering",108, "BUTTON", 0x50000007, 4, 51, 260, 45
+    CONTROL "Secure online ordering:",-1, "STATIC", 0x5000000c, 9, 71, 78, 8
+    CONTROL "&BUY NOW...",90, "BUTTON", 0x50030000, 121, 61, 96, 28
+    CONTROL "Licensing Terms",109, "BUTTON", 0x50000007, 4, 99, 260, 154
+    CONTROL "A TEA license entitles you to use the application on a single computer. If you accept these terms, click on I Agree and enter the license you wish to use on this computer. To purchase additional licenses, order online or use the form provided.",-1, "STATIC", 0x50000000, 8, 109, 254, 80
+    CONTROL "I &Agree",100, "BUTTON", 0x50030000, 38, 227, 67, 22
+    CONTROL "I &Disagree",1, "BUTTON", 0x50030001, 162, 227, 67, 22
+END
+
+410 DIALOG 110, 69, 186, 71
+STYLE 0x80c008c0
+EXSTYLE 0x00000001
+CAPTION "TEA License"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "Frame1",-1, "STATIC", 0x50000012, 3, 3, 180, 46
+    CONTROL "Name:",-1, "STATIC", 0x50020000, 8, 10, 33, 8
+    CONTROL "",1540, "EDIT", 0x50810080, 42, 8, 136, 12
+    CONTROL "Key:",-1, "STATIC", 0x50020000, 8, 34, 33, 8
+    CONTROL "",1550, "EDIT", 0x50810080, 42, 32, 136, 12
+    CONTROL "&Ok",1, "BUTTON", 0x50030001, 30, 53, 48, 14
+    CONTROL "&Cancel",2, "BUTTON", 0x50010000, 82, 53, 48, 14
+    CONTROL "&Help",1530, "BUTTON", 0x50010000, 134, 53, 48, 14
+END
+
+4010 DIALOG 50, 43, 224, 148
+STYLE 0x90c008c0
+EXSTYLE 0x00000001
+CAPTION "About TEA"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "GRIDICON",-1, "STATIC", 0x50000003, 104, 8, 16, 16
+    CONTROL "TEA Crossword Helper",-1, "STATIC", 0x50000001, 8, 29, 208, 8
+    CONTROL "by Ross Beresford, Crossword Man",-1, "STATIC", 0x50000001, 8, 39, 208, 8
+    CONTROL "v2.11.0, 1 Oct 2011",-1, "STATIC", 0x50000001, 8, 54, 208, 10
+    CONTROL "Copyright© 2011 Crossword Man",-1, "STATIC", 0x50000001, 8, 64, 208, 8
+    CONTROL "",-1, "STATIC", 0x50000007, 8, 79, 208, 16
+    CONTROL "Licensed to:",-1, "STATIC", 0x50000000, 12, 83, 48, 8
+    CONTROL "Nobody",11160, "EDIT", 0x50830800, 60, 81, 152, 12
+    CONTROL "Email support:",-1, "STATIC", 0x5000000c, 20, 102, 50, 8
+    CONTROL "",29991, "EDIT", 0x50030800, 71, 101, 144, 10
+    CONTROL "Homepage:",-1, "STATIC", 0x5000000c, 20, 113, 50, 8
+    CONTROL "",29990, "EDIT", 0x50030800, 71, 112, 144, 10
+    CONTROL "OK",1, "BUTTON", 0x50030001, 88, 130, 48, 14
+    CONTROL "Frame2",-1, "STATIC", 0x50000012, 4, 4, 216, 122
+END
+
+4250 DIALOG 0, 0, 166, 323
+STYLE 0x50000040
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "P&attern",9000, "BUTTON", 0x50020007, 1, 0, 164, 64
+    CONTROL "",4270, "COMBOBOX", 0x50210042, 5, 10, 88, 300
+    CONTROL "&Search",4280, "BUTTON", 0x58030001, 93, 10, 60, 16
+    CONTROL "Sho&rtest:",6680, "STATIC", 0x50020000, 5, 30, 34, 10
+    CONTROL "",4380, "EDIT", 0x50810080, 39, 29, 32, 12
+    CONTROL "",4360, "msctls_updown32", 0x500000b6, 63, 29, 8, 12
+    CONTROL "&Longest:",6690, "STATIC", 0x50020000, 99, 30, 30, 10
+    CONTROL "",4370, "EDIT", 0x50810080, 129, 29, 32, 12
+    CONTROL "",4350, "msctls_updown32", 0x500000b6, 153, 29, 8, 12
+    CONTROL "",4420, "BUTTON", 0x5000000b, 5, 44, 156, 16
+    CONTROL "",12690, "STATIC", 0x5000010d, 153, 10, 8, 16
+END
+
+4310 DIALOG 43, 148, 276, 226
+STYLE 0x80ca0840
+CAPTION "TEA Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "&@ becomes:",11960, "STATIC", 0x50000000, 13, 27, 45, 8
+    CONTROL "",4320, "EDIT", 0x50830080, 58, 24, 100, 14
+    CONTROL "&# becomes:",11970, "STATIC", 0x50000000, 13, 46, 45, 8
+    CONTROL "",4330, "EDIT", 0x50830080, 58, 43, 100, 14
+    CONTROL "E&xclusive letter variables",10830, "BUTTON", 0x50030003, 13, 65, 238, 9
+    CONTROL "Ignore &unused punctuation",14880, "BUTTON", 0x50030003, 13, 80, 238, 9
+    CONTROL "Sho&w dictionary annotations",13850, "BUTTON", 0x50030003, 13, 24, 114, 9
+    CONTROL "Show anagra&m balances",5780, "BUTTON", 0x50030003, 13, 40, 114, 9
+    CONTROL "Filtering",12060, "BUTTON", 0x50020007, 13, 54, 250, 68
+    CONTROL "Show words containing only &lower case letters (e.g. tail)",12070, "BUTTON", 0x50010003, 19, 66, 242, 9
+    CONTROL "Show words containing some &upper case letters (e.g. Charlie)",12071, "BUTTON", 0x50010003, 19, 80, 242, 9
+    CONTROL "Show words containing punc&tuation (e.g. tail-end)",12072, "BUTTON", 0x50010003, 19, 94, 242, 9
+    CONTROL "Show phr&ases (e.g. tail-end Charlie)",12073, "BUTTON", 0x50010003, 19, 108, 242, 9
+    CONTROL "&Double-click action",13340, "BUTTON", 0x50030007, 13, 128, 250, 40
+    CONTROL "Lookup",13350, "BUTTON", 0x50000009, 19, 140, 242, 9
+    CONTROL "External lookup",13360, "BUTTON", 0x50000009, 19, 154, 242, 9
+    CONTROL "Sorting",14000, "BUTTON", 0x50000007, 13, 24, 250, 28
+    CONTROL "S&ort alphabetically",14010, "BUTTON", 0x50030003, 19, 37, 114, 9
+    CONTROL "Ascending",14020, "BUTTON", 0x50030003, 145, 37, 114, 9
+    CONTROL "Length grouping",13970, "BUTTON", 0x50000007, 13, 57, 250, 55
+    CONTROL "Group &by length",13980, "BUTTON", 0x50030003, 19, 69, 114, 9
+    CONTROL "Ascending",13992, "BUTTON", 0x50030009, 145, 69, 114, 9
+    CONTROL "Smart",13991, "BUTTON", 0x50000009, 145, 83, 114, 9
+    CONTROL "Descending",13990, "BUTTON", 0x50000009, 145, 97, 114, 9
+    CONTROL "Multiple dictionar&y searching",12990, "BUTTON", 0x50020007, 13, 24, 250, 52
+    CONTROL "Search all dictionaries independently",6710, "BUTTON", 0x50010009, 18, 34, 243, 12
+    CONTROL "Search all dictionaries and suppress duplicated results",6700, "BUTTON", 0x50000009, 18, 48, 243, 12
+    CONTROL "Search active dictionary only",6720, "BUTTON", 0x50000009, 18, 62, 243, 12
+    CONTROL "Definition dictionaries",11430, "BUTTON", 0x50000007, 13, 82, 250, 28
+    CONTROL "",2270, "COMBOBOX", 0x50230203, 18, 92, 196, 80
+    CONTROL "Chan&ge...",2260, "BUTTON", 0x50030300, 214, 92, 44, 12
+    CONTROL "Main window",12810, "BUTTON", 0x50000007, 10, 24, 174, 84
+    CONTROL "&Pattern font:",4810, "STATIC", 0x50000000, 16, 38, 97, 8
+    CONTROL "",4790, "BUTTON", 0x5003000b, 113, 35, 66, 14
+    CONTROL "&Results font:",4800, "STATIC", 0x50000000, 16, 56, 97, 8
+    CONTROL "",4780, "BUTTON", 0x5003000b, 113, 53, 66, 14
+    CONTROL "R&esults annotation font:",12860, "STATIC", 0x50000000, 16, 74, 97, 8
+    CONTROL "",12850, "BUTTON", 0x5003030b, 113, 71, 66, 14
+    CONTROL "Pri&ntout font:",5710, "STATIC", 0x50000000, 16, 92, 97, 8
+    CONTROL "",5700, "BUTTON", 0x5003000b, 113, 89, 66, 14
+    CONTROL "Definition windows",12820, "BUTTON", 0x50000007, 10, 115, 174, 66
+    CONTROL "Bac&kground color:",12620, "STATIC", 0x50000000, 15, 129, 97, 8
+    CONTROL "",12590, "BUTTON", 0x5003030b, 112, 126, 66, 14
+    CONTROL "De&fault font:",12610, "STATIC", 0x50000000, 15, 147, 97, 8
+    CONTROL "",12580, "BUTTON", 0x5003030b, 112, 144, 66, 14
+    CONTROL "H&ighlight font:",12630, "STATIC", 0x50000000, 15, 165, 97, 8
+    CONTROL "",12600, "BUTTON", 0x5003030b, 112, 162, 66, 14
+    CONTROL "&Save as defaults",4340, "BUTTON", 0x50030000, 4, 208, 80, 14
+    CONTROL "&Close",2, "BUTTON", 0x50010000, 171, 208, 48, 14
+    CONTROL "&Help",1530, "BUTTON", 0x50010000, 223, 208, 48, 14
+    CONTROL "",8030, "SysTabControl32", 0x50034000, 4, 4, 268, 200
+END
+
+4850 DIALOG 43, 148, 400, 285
+STYLE 0x80cf0840
+CAPTION " Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "Frame1",12920, "STATIC", 0x50000012, 3, 3, 394, 260
+    CONTROL "&Location:",-1, "STATIC", 0x50000000, 8, 9, 45, 10
+    CONTROL "",2270, "EDIT", 0x50800880, 55, 8, 337, 12
+    CONTROL "&Date:",-1, "STATIC", 0x50000000, 8, 25, 45, 10
+    CONTROL "",13370, "EDIT", 0x50800880, 55, 24, 337, 12
+    CONTROL "De&scription:",-1, "STATIC", 0x50000000, 8, 42, 45, 10
+    CONTROL "",4400, "EDIT", 0x508308c4, 55, 40, 337, 187
+    CONTROL "&Entries:",12210, "STATIC", 0x50000000, 8, 232, 44, 10
+    CONTROL "",4410, "EDIT", 0x50800880, 55, 231, 60, 12
+    CONTROL "&Shortest:",6680, "STATIC", 0x50000000, 143, 232, 36, 10
+    CONTROL "",4610, "EDIT", 0x50800880, 179, 231, 20, 12
+    CONTROL "De&finitions:",13960, "STATIC", 0x50000000, 8, 248, 44, 10
+    CONTROL "",13950, "EDIT", 0x50800880, 55, 247, 60, 12
+    CONTROL "&Longest:",6690, "STATIC", 0x50000000, 143, 248, 36, 10
+    CONTROL "",4620, "EDIT", 0x50800880, 179, 247, 20, 12
+    CONTROL "&OK",1, "BUTTON", 0x50030001, 290, 267, 48, 14
+    CONTROL "&Help",1530, "BUTTON", 0x50010000, 342, 267, 48, 14
+END
+
+5150 DIALOG 139, 100, 380, 285
+STYLE 0x90c028c0
+CAPTION "Lookup Methods"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "&Test word:",-1, "STATIC", 0x50000000, 8, 9, 44, 8
+    CONTROL "",5590, "EDIT", 0x50830080, 52, 7, 268, 12
+    CONTROL "Test &lookup",5600, "BUTTON", 0x50030301, 320, 7, 52, 12
+    CONTROL "Use &web search script:",111, "BUTTON", 0x50000007, 8, 21, 364, 75
+    CONTROL "Name:",13200, "BUTTON", 0x50030006, 12, 32, 40, 12
+    CONTROL "",13210, "EDIT", 0x50830080, 52, 32, 64, 12
+    CONTROL "Address:",-1, "STATIC", 0x50000000, 127, 34, 32, 8
+    CONTROL "",13220, "EDIT", 0x50830080, 160, 32, 208, 12
+    CONTROL "Name:",13230, "BUTTON", 0x50030006, 12, 48, 40, 12
+    CONTROL "",13240, "EDIT", 0x50830080, 52, 48, 64, 12
+    CONTROL "Address:",-1, "STATIC", 0x50000000, 127, 50, 32, 8
+    CONTROL "",13250, "EDIT", 0x50830080, 160, 48, 208, 12
+    CONTROL "Name:",13260, "BUTTON", 0x50030006, 12, 64, 40, 12
+    CONTROL "",13270, "EDIT", 0x50830080, 52, 64, 64, 12
+    CONTROL "Address:",-1, "STATIC", 0x50000000, 127, 66, 32, 8
+    CONTROL "",13280, "EDIT", 0x50830080, 160, 64, 208, 12
+    CONTROL "Name:",13290, "BUTTON", 0x50030006, 12, 80, 40, 12
+    CONTROL "",13310, "EDIT", 0x50830080, 52, 80, 64, 12
+    CONTROL "Address:",-1, "STATIC", 0x50000000, 127, 82, 32, 8
+    CONTROL "",13320, "EDIT", 0x50830080, 160, 80, 208, 12
+    CONTROL "Use &DDE",108, "BUTTON", 0x50000007, 8, 99, 364, 72
+    CONTROL "Name:",5350, "BUTTON", 0x50030006, 12, 107, 40, 12
+    CONTROL "",13140, "EDIT", 0x50830080, 52, 107, 64, 12
+    CONTROL "Service:",-1, "STATIC", 0x50000000, 127, 109, 32, 8
+    CONTROL "",5390, "EDIT", 0x50830080, 160, 107, 80, 12
+    CONTROL "Topic:",-1, "STATIC", 0x50000000, 252, 109, 32, 8
+    CONTROL "",5430, "EDIT", 0x50830080, 288, 107, 80, 12
+    CONTROL "Name:",5360, "BUTTON", 0x50030006, 12, 123, 40, 12
+    CONTROL "",13150, "EDIT", 0x50830080, 52, 123, 64, 12
+    CONTROL "Service:",-1, "STATIC", 0x50000000, 127, 125, 32, 8
+    CONTROL "",5400, "EDIT", 0x50830080, 160, 123, 80, 12
+    CONTROL "Topic:",-1, "STATIC", 0x50000000, 252, 125, 32, 8
+    CONTROL "",5440, "EDIT", 0x50830080, 288, 123, 80, 12
+    CONTROL "Name:",5370, "BUTTON", 0x50030006, 12, 139, 40, 12
+    CONTROL "",13160, "EDIT", 0x50830080, 52, 139, 64, 12
+    CONTROL "Service:",-1, "STATIC", 0x50000000, 127, 141, 32, 8
+    CONTROL "",5410, "EDIT", 0x50830080, 160, 139, 80, 12
+    CONTROL "Topic:",-1, "STATIC", 0x50000000, 252, 141, 32, 8
+    CONTROL "",5450, "EDIT", 0x50830080, 288, 139, 80, 12
+    CONTROL "Name:",5380, "BUTTON", 0x50030006, 12, 155, 40, 12
+    CONTROL "",13170, "EDIT", 0x50830080, 52, 155, 64, 12
+    CONTROL "Service:",-1, "STATIC", 0x50000000, 127, 157, 32, 8
+    CONTROL "",5420, "EDIT", 0x50830080, 160, 155, 80, 12
+    CONTROL "Topic:",-1, "STATIC", 0x50000000, 252, 157, 32, 8
+    CONTROL "",5460, "EDIT", 0x50830080, 288, 155, 80, 12
+    CONTROL "Send a &message",107, "BUTTON", 0x50000007, 8, 174, 364, 40
+    CONTROL "Name:",5470, "BUTTON", 0x50030006, 12, 182, 40, 12
+    CONTROL "",13180, "EDIT", 0x50830080, 52, 182, 64, 12
+    CONTROL "Window:",-1, "STATIC", 0x50000000, 127, 184, 32, 8
+    CONTROL "",5510, "EDIT", 0x50830080, 160, 182, 80, 12
+    CONTROL "Command:",-1, "STATIC", 0x50000000, 250, 184, 38, 8
+    CONTROL "",5550, "EDIT", 0x50830080, 288, 182, 80, 12
+    CONTROL "Name:",5480, "BUTTON", 0x50030006, 12, 198, 40, 12
+    CONTROL "",13190, "EDIT", 0x50830080, 52, 198, 64, 12
+    CONTROL "Window:",-1, "STATIC", 0x50000000, 127, 200, 32, 8
+    CONTROL "",5520, "EDIT", 0x50830080, 160, 198, 80, 12
+    CONTROL "Command:",-1, "STATIC", 0x50000000, 250, 200, 38, 8
+    CONTROL "",5560, "EDIT", 0x50830080, 288, 198, 80, 12
+    CONTROL "&Execute application",104, "BUTTON", 0x50000007, 8, 217, 364, 40
+    CONTROL "Name:",5160, "BUTTON", 0x50030006, 12, 226, 40, 12
+    CONTROL "",13100, "EDIT", 0x50830080, 52, 226, 64, 12
+    CONTROL "Program:",-1, "STATIC", 0x50000000, 127, 228, 32, 8
+    CONTROL "",5200, "EDIT", 0x50830880, 160, 226, 94, 12
+    CONTROL "Browse...",5240, "BUTTON", 0x50030300, 254, 226, 40, 12
+    CONTROL "",11200, "COMBOBOX", 0x50030003, 296, 226, 72, 33
+    CONTROL "Name:",5170, "BUTTON", 0x50030006, 12, 241, 40, 12
+    CONTROL "",13110, "EDIT", 0x50830080, 52, 241, 64, 12
+    CONTROL "Program:",-1, "STATIC", 0x50000000, 127, 243, 32, 8
+    CONTROL "",5210, "EDIT", 0x50830880, 160, 241, 94, 12
+    CONTROL "Browse...",5250, "BUTTON", 0x50030300, 254, 241, 40, 12
+    CONTROL "",5290, "COMBOBOX", 0x50030003, 296, 241, 72, 33
+    CONTROL "&Save as defaults",5340, "BUTTON", 0x50030300, 4, 267, 72, 14
+    CONTROL "&Close",2, "BUTTON", 0x50010300, 276, 267, 48, 14
+    CONTROL "&Help",1530, "BUTTON", 0x50010300, 328, 267, 48, 14
+    CONTROL "Frame1",-1, "STATIC", 0x50000012, 4, 2, 374, 260
+END
+
+5810 DIALOG 10, 20, 305, 174
+STYLE 0x80c008c0
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "Frame2",-1, "STATIC", 0x50000012, 3, 3, 299, 149
+    CONTROL "&Dictionaries",11440, "BUTTON", 0x50020007, 8, 7, 290, 57
+    CONTROL "",7830, "LISTBOX", 0x50a10109, 12, 18, 281, 42
+    CONTROL "&File:",11430, "STATIC", 0x50000000, 8, 70, 48, 8
+    CONTROL "",2270, "EDIT", 0x50830080, 56, 68, 194, 12
+    CONTROL "Ch&ange...",2260, "BUTTON", 0x50030300, 250, 68, 48, 12
+    CONTROL "D&escription:",12200, "STATIC", 0x50000000, 8, 100, 48, 8
+    CONTROL "",4400, "EDIT", 0x50a31084, 56, 85, 242, 40
+    CONTROL "",-1, "STATIC", 0x50000007, 9, 131, 289, 16
+    CONTROL "",5890, "STATIC", 0x50000000, 13, 135, 283, 8
+    CONTROL "&Save",1, "BUTTON", 0x50030001, 149, 156, 48, 14
+    CONTROL "&Cancel",2, "BUTTON", 0x50010000, 201, 156, 48, 14
+    CONTROL "&Help",1530, "BUTTON", 0x50010000, 253, 156, 48, 14
+END
+
+7820 DIALOG 8, 40, 380, 179
+STYLE 0x80c008c0
+EXSTYLE 0x00000001
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "",-1, "STATIC", 0x50000012, 3, 3, 374, 154
+    CONTROL "&Selected files:",13700, "STATIC", 0x50000000, 8, 8, 136, 10
+    CONTROL "",7830, "LISTBOX", 0x50a30101, 8, 18, 140, 81
+    CONTROL "&Promote",7870, "BUTTON", 0x50030300, 24, 103, 48, 14
+    CONTROL "&Demote",7880, "BUTTON", 0x50010300, 86, 103, 48, 14
+    CONTROL "< &Add",7890, "BUTTON", 0x50030300, 152, 28, 48, 13
+    CONTROL "> &Remove",7900, "BUTTON", 0x50010300, 152, 52, 48, 13
+    CONTROL "Prop&erties...",7910, "BUTTON", 0x50010300, 152, 75, 48, 13
+    CONTROL "O&ther files:",13710, "STATIC", 0x50000000, 203, 8, 136, 10
+    CONTROL "",7840, "LISTBOX", 0x50a30101, 204, 18, 168, 81
+    CONTROL "Other &files folder:",13720, "STATIC", 0x50000000, 203, 103, 169, 10
+    CONTROL "",7850, "EDIT", 0x50830880, 204, 113, 124, 12
+    CONTROL "&Browse...",7860, "BUTTON", 0x50030300, 328, 113, 44, 12
+    CONTROL "&Quarantine days",14630, "BUTTON", 0x40020007, 8, 124, 140, 28
+    CONTROL "Clue:",14580, "STATIC", 0x40020000, 11, 136, 24, 8
+    CONTROL "",14590, "EDIT", 0x40810080, 38, 135, 30, 12
+    CONTROL "",14600, "msctls_updown32", 0x400000b6, 60, 135, 8, 12
+    CONTROL "Answer:",14581, "STATIC", 0x40020000, 81, 136, 32, 8
+    CONTROL "",14591, "EDIT", 0x40810080, 114, 134, 30, 12
+    CONTROL "",14601, "msctls_updown32", 0x400000b6, 136, 134, 8, 12
+    CONTROL "&OK",1, "BUTTON", 0x50030000, 224, 161, 48, 14
+    CONTROL "&Cancel",2, "BUTTON", 0x50010000, 276, 161, 48, 14
+    CONTROL "&Help",1530, "BUTTON", 0x50010000, 328, 161, 48, 14
+END
+
+11880 DIALOG 166, 0, 280, 161
+STYLE 0x90c000c0
+EXSTYLE 0x00000001
+CAPTION "TEA Quick Reference"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "",-1, "STATIC", 0x50000012, 4, 4, 274, 135
+    CONTROL "",12100, "STATIC", 0x50021000, 8, 18, 266, 116
+    CONTROL "&Show this window when TEA starts",11950, "BUTTON", 0x50030003, 5, 146, 171, 8
+    CONTROL "&Close",1, "BUTTON", 0x50030001, 177, 143, 48, 14
+    CONTROL "&Help",1530, "BUTTON", 0x50010300, 229, 143, 48, 14
+    CONTROL "Pattern feature (click for help):",-1, "STATIC", 0x50000000, 12, 8, 116, 10
+    CONTROL "Example (click to try it):",-1, "STATIC", 0x50000000, 115, 8, 74, 10
+    CONTROL "Finds:",-1, "STATIC", 0x50000000, 217, 8, 56, 10
+    CONTROL "Templates",11910, "EDIT", 0x50010800, 11, 21, 102, 11
+    CONTROL ".l...r.n",11890, "EDIT", 0x50010800, 114, 21, 102, 11
+    CONTROL "electron",11930, "STATIC", 0x50000000, 217, 21, 54, 11
+    CONTROL "Anagrams",11911, "EDIT", 0x50010800, 11, 32, 102, 11
+    CONTROL ";lobikes",11891, "EDIT", 0x50010800, 114, 32, 102, 11
+    CONTROL "obelisk",11931, "STATIC", 0x50000000, 217, 32, 54, 11
+    CONTROL "Wildcards",11912, "EDIT", 0x50010800, 11, 43, 102, 11
+    CONTROL "m*ja",11892, "EDIT", 0x50010800, 114, 43, 102, 11
+    CONTROL "maharaja",11932, "STATIC", 0x50000000, 217, 43, 54, 11
+    CONTROL "Choice lists",11913, "EDIT", 0x50010800, 11, 54, 102, 11
+    CONTROL ";diners[ai]",11893, "EDIT", 0x50010800, 114, 54, 102, 11
+    CONTROL "sardine",11933, "STATIC", 0x50000000, 217, 54, 54, 11
+    CONTROL "Templates with anagrams",11914, "EDIT", 0x50010800, 11, 65, 102, 11
+    CONTROL "......*;gdangboot",11894, "EDIT", 0x50010800, 114, 65, 102, 11
+    CONTROL "toboggan",11934, "STATIC", 0x50000000, 217, 65, 54, 11
+    CONTROL "Letter variables",11915, "EDIT", 0x50010800, 11, 76, 102, 11
+    CONTROL "12341234",11895, "EDIT", 0x50010800, 114, 76, 102, 11
+    CONTROL "beriberi",11935, "STATIC", 0x50000000, 217, 76, 54, 11
+    CONTROL "Punctuation matching",11916, "EDIT", 0x50010800, 11, 87, 102, 11
+    CONTROL "...-..-.....",11896, "EDIT", 0x50010800, 114, 87, 102, 11
+    CONTROL "fly-by-night",11936, "STATIC", 0x50000000, 217, 87, 54, 11
+    CONTROL "Logical operations",11917, "EDIT", 0x50010800, 11, 98, 102, 11
+    CONTROL ";..oting & ! *ing",11897, "EDIT", 0x50010800, 114, 98, 102, 11
+    CONTROL "tonight",11937, "STATIC", 0x50000000, 217, 98, 54, 11
+    CONTROL "Macros",11918, "EDIT", 0x50010800, 11, 109, 102, 11
+    CONTROL "@#@#@#@#@#@",11898, "EDIT", 0x50010800, 114, 109, 102, 11
+    CONTROL "imaginative",11938, "STATIC", 0x50000000, 217, 109, 54, 11
+    CONTROL "Sub-patterns",11919, "EDIT", 0x50010800, 11, 120, 102, 11
+    CONTROL ";rebel(ada)",11899, "EDIT", 0x50010800, 114, 120, 102, 11
+    CONTROL "readable",11939, "STATIC", 0x50000000, 217, 120, 54, 11
+END
+
+12560 DIALOG 128, 12, 308, 168
+STYLE 0x50000040
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "",13880, "STATIC", 0x50000012, 0, 0, 308, 1
+    CONTROL "",13860, "SysTreeView32", 0x50830020, 4, 4, 100, 160
+END
+
+12830 DIALOG 49, 46, 234, 78
+STYLE 0x90c80840
+CAPTION "External Lookup"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "",12840, "STATIC", 0x50000000, 8, 8, 220, 48
+    CONTROL "&OK",1, "BUTTON", 0x50030001, 15, 60, 48, 14
+    CONTROL "&Cancel",2, "BUTTON", 0x50010300, 67, 60, 48, 14
+    CONTROL "&Setup...",3340, "BUTTON", 0x50010300, 119, 60, 48, 14
+    CONTROL "&Help",1530, "BUTTON", 0x50010300, 171, 60, 48, 14
+END
+
+13380 DIALOG 166, 0, 280, 151
+STYLE 0x90c008c0
+EXSTYLE 0x00000001
+CAPTION "TEA Tip of the Day"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "",-1, "STATIC", 0x50000012, 4, 4, 272, 125
+    CONTROL "&Next Tip",4510, "BUTTON", 0x50030301, 8, 110, 48, 14
+    CONTROL "&More on this topic",13400, "BUTTON", 0x50030301, 173, 110, 98, 14
+    CONTROL "&Show this window when TEA starts",11950, "BUTTON", 0x50030003, 8, 136, 164, 8
+    CONTROL "&Close",1, "BUTTON", 0x50030001, 175, 133, 48, 14
+    CONTROL "&Help",1530, "BUTTON", 0x50010300, 227, 133, 48, 14
+END
+
+13460 DIALOG 0, 0, 260, 178
+STYLE 0x90c008c0
+EXSTYLE 0x00000001
+CAPTION "TEA Evaluation Exit Screen"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "Ordering",108, "BUTTON", 0x50000007, 4, 1, 252, 45
+    CONTROL "Secure online ordering:",-1, "STATIC", 0x5000000c, 9, 21, 78, 8
+    CONTROL "&BUY NOW...",90, "BUTTON", 0x50030000, 126, 12, 96, 28
+    CONTROL "TEA Benefits",109, "BUTTON", 0x50000007, 4, 50, 252, 124
+    CONTROL "Thank you for evaluating TEA Crossword Helper. To buy the product, use the secure online ordering link above. The benefits of the full version of TEA include:",-1, "STATIC", 0x50000000, 8, 60, 246, 59
+    CONTROL "CHECKICON",-1, "STATIC", 0x5000000e, 11, 89, 13, 13
+    CONTROL "Bigger dictionaries - over 5 million words and phrases!",-1, "STATIC", 0x50000000, 23, 89, 230, 8
+    CONTROL "CHECKICON",-1, "STATIC", 0x5000000e, 11, 103, 13, 13
+    CONTROL "Dictionary with English language titles from Wikipedia",-1, "STATIC", 0x50000000, 23, 103, 230, 8
+    CONTROL "CHECKICON",-1, "STATIC", 0x5000000e, 11, 117, 13, 13
+    CONTROL "Twelve extra dictionaries with definitions",-1, "STATIC", 0x50000000, 23, 117, 230, 8
+    CONTROL "CHECKICON",-1, "STATIC", 0x5000000e, 11, 131, 13, 13
+    CONTROL "Dictionary Builder and Word List Merge tools",-1, "STATIC", 0x50000000, 23, 131, 230, 8
+    CONTROL "E&xit",100, "BUTTON", 0x50030000, 96, 147, 67, 22
+END
+
+32599 DIALOG 84, 51, 202, 70
+STYLE 0x90c808c4
+CAPTION "Printing"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "'%s' on the",101, "STATIC", 0x50020001, 1, 8, 200, 8
+    CONTROL "%s on %s",102, "STATIC", 0x50020001, 1, 20, 200, 8
+    CONTROL "Printing Page %d ",104, "STATIC", 0x50020001, 1, 32, 200, 8
+    CONTROL "",105, "STATIC", 0x50020000, 113, 41, 68, 8
+    CONTROL "",-1, "STATIC", 0x50020001, 1, 32, 200, 8
+    CONTROL "Cancel",2, "BUTTON", 0x50010000, 75, 52, 48, 14
+END
+
+STRINGTABLE
+BEGIN
+    1770   "Display TEA version information"
+    3770   "Display the TEA help topics"
+    3780   "Change page layout settings"
+    4270   "Enter the word pattern you are searching for here (see the TEA Quick Reference for examples)"
+    4280   "Click on this button to start, stop and resume searching"
+    4350   "Click on the arrows to change the longest length of word matched"
+    4360   "Click on the arrows to change the shortest length of word matched"
+    4370   "Update this number to change the longest length of word that will be matched"
+    4380   "Update this number to change the shortest length of word that will be matched"
+    4420   "This progress bar also shows the range of lengths that will be shown"
+    4460   " - TEA"
+    4780   "\nClick to change the font and text color used to display results"
+    4790   "\nClick to change the font and text color used in the pattern entry box"
+    4820   "Open a summary of TEA patterns"
+    4840   "Change to this previously used dictionary"
+    4841   "Change to this previously used dictionary"
+    4842   "Change to this previously used dictionary"
+    4843   "Change to this previously used dictionary"
+    4844   "Change to this previously used dictionary"
+    4845   "Change to this previously used dictionary"
+    4846   "Change to this previously used dictionary"
+    4847   "Change to this previously used dictionary"
+    4848   "Change to this previously used dictionary"
+    4849   "Change to this previously used dictionary"
+    4960   "Searching - click on Stop to pause"
+    4970   "Searching paused - click on Resume to continue"
+    4980   "Start the TEA&Sympathy Dictionary Builder application"
+    5120   "Start the TEA&Sympathy Word List Merge application"
+    5140   "Configure the applications used to do external lookups"
+    5320   "No Encoding"
+    5330   "Hex Encoding"
+    5670   "View the TEA tutorial pages using your web browser"
+    5690   "Print the page being displayed\nPrint Page"
+    5700   "\nClick to change the font and text color used for printed results"
+    5720   "Display the page before the one shown\nShow Previous Page"
+    5730   "Display the page after the one shown\nShow Next Page"
+    5800   " "
+    5900   " results with pattern "
+    6380   "Lookup in the selected external dictionary application failed.\n\nApplications using DDE and Message interfaces need to be started before lookup is used."
+    6670   "Use Open... on the File menu to select a dictionary"
+    6740   "View the TEA support page using your web browser"
+    6750   "Order TEA licenses online using your web browser"
+    6760   "Open a form you can use to order TEA licenses by post"
+    7480   "Save the list of results as a file"
+    7490   "Look up the selected word\nLookup"
+    7500   "Copy the selection and put it in the clipboard"
+    7510   "Select all the words in the list of results"
+    7520   "Print the words selected in the list of results"
+    7530   "Display pages as they will be printed"
+    7540   "Display information about the active dictionary"
+    7550   "Open a dictionary for searching"
+    7560   "Change TEA settings"
+    7580   "Close the active dictionary"
+    7590   "Move the active dictionary up in the search order"
+    7600   "Move the active dictionary down in the search order"
+    7610   "Insert text from the clipboard"
+    7620   "Remove the selection and put it in the clipboard"
+    9840   "Print all results\nAll Results"
+    9850   "Print selected results\nSelected Results"
+    10740  " already exists.\nDo you want to replace it?"
+    11850  ", "
+    11860  "Show results lists one on top of the other"
+    11870  "Show results lists side by side"
+    11980  "Pattern"
+    11990  "How letter variables and macros in patterns are treated"
+    12000  "Result"
+    12010  "How results are displayed and filtered"
+    12015  "Sorting"
+    12020  "How results are sorted"
+    12025  "Dictionary"
+    12030  "How multiple dictionaries are handled"
+    12040  "Appearance"
+    12050  "What fonts are used in the display and for printing"
+    12110  "Send an e-mail to request technical support"
+    12580  "\nClick to change the font and text color used in the definition window"
+    12590  "\nClick to change the background color in the definition window"
+    12600  "\nClick to change the font and text color used to higlight words in the definition window"
+    12640  "Look up the selected word in a new window"
+    12650  "See the definitions for the word you looked at before the current one\nBack"
+    12660  "See the definitions for the word you looked at after the current one\nForward"
+    12670  "See the definitions of the word shown"
+    12671  "See the definitions of the word shown"
+    12672  "See the definitions of the word shown"
+    12673  "See the definitions of the word shown"
+    12674  "See the definitions of the word shown"
+    12675  "See the definitions of the word shown"
+    12676  "See the definitions of the word shown"
+    12677  "See the definitions of the word shown"
+    12678  "See the definitions of the word shown"
+    12679  "See the definitions of the word shown"
+    12690  "Click on the down arrow to switch between Word Search and Full Text Search mode"
+    12710  "Look up the selected word online or in an another dictionary application\nExternal Lookup"
+    12730  "See the definitions for the next word shown in the main window\nNext Result"
+    12740  "See the definitions for the previous word shown in the main window\nPrevious Result"
+    12780  "No length of word will be matched"
+    12850  "\nClick to change the font and text color used to display annotations for results"
+    12890  "Would you like to try an external search for """" now?"
+    12891  "No external lookup methods are enabled.\n\nClick on the Setup... button and ensure one of the configured methods is checked if you would like to try an external search for """"."
+    12892  "No definitions for """" could be found in the TEA dictionaries.\n\nWould you like to try an external search?"
+    12893  "No definitions for """" could be found in the TEA dictionaries.\n\nClick on the Setup... button and ensure one of the configured methods is checked if you would like to try an external search."
+    13000  "Shortest/Longest settings stop the pattern being matched"
+    13010  "Patterns match incompatible lengths"
+    13080  "Pattern is valid - press the return key to start searching"
+    13081  "Press F1 for help"
+    13082  "Choice lists can only include letters, optionally preceded by ^"
+    13083  "Too many patterns or choice lists"
+    13084  "Pattern is too long to match anything"
+    13085  "Choice list started - use ] to complete it"
+    13086  "Only one ; is allowed in a pattern"
+    13087  "Subpattern started - use ) to complete it"
+    13088  "A ) can only appear at the end of a subpattern"
+    13089  "A ] can only appear at the end of a choice list"
+    13090  "Too many non-alphabetic characters in templates"
+    13091  "Only letters and match-alls allowed in anagrams"
+    13092  "A ^ can only appear within a choice list"
+    13093  "Follow \\ by the character you want to match exactly"
+    13094  "Choice lists must contain at least one letter"
+    13890  "See the next definition for the current word\nNext Definition"
+    13900  "See the previous definition for the current word\nPrevious Definition"
+    14030  "No words of the required length(s) in the dictionaries"
+    14930  "Database List"
+    14940  "Definition Dictionary List"
+    14950  "Dictionary and Database List"
+    24310  "Exit TEA"
+    32450  "Shell failure"
+    32451  "TShellMalloc::Alloc failed."
+    32452  "Invalid Path"
+    32453  "IShellFolder::BindToObject failed."
+    32454  "::SHGetDesktopFolder failed."
+    32455  "::SHGetSpecialFolderLocation failed."
+    32456  "IShellFolder::GetAttributesOf failed."
+    32457  "::SHGetFileInfo failed."
+    32458  "IShellFolder::GetDisplayNameOf failed."
+    32459  "::SHGetPathFromIDList failed."
+    32460  "IShellFolder::SetNameOf failed."
+    32461  "IShellFolder::GetUIObjectOf failed."
+    32462  "IShellFolder::CompareIDs failed."
+    32463  "TShellItem is invalid."
+    32464  "IShellFolder::EnumObjects failed."
+    32465  "IEnumIDList::Clone failed."
+    32466  "Attempt to read past end of TShellItemIterator list."
+    32467  "IEnumIDList::Next failed."
+    32468  "IEnumIDList::Skip failed."
+    32469  "IEnumIDList::Reset failed."
+    32470  "IEnumIDList pointer is zero."
+    32471  "::SHGetMalloc failed."
+    32472  "IExtractIcon::GetIconLocation failed."
+    32473  "IExtractIcon::Extract failed."
+    32474  "TShellItem::Rename attempted on item that cannot be renamed."
+    32475  "TShellItem::Copy attempted on item that cannot be copied."
+    32476  "TShellItem::Move attempted on item that cannot be moved."
+    32477  "TShellItem::Delete attempted on item that cannot be deleted."
+    32478  "CoCreateInstance(IShellLink) failed."
+    32479  "IShellLink::QueryInterface(IPersistFile) failed."
+    32480  "IPersistFile::Load failed."
+    32481  "IShellLink::GetIDList failed."
+    32482  "IShellLink::SetPath failed."
+    32483  "IShellLink::SetDescription failed."
+    32589  "Cannot print without a default printer."
+    32590  " on "
+    32591  "'%s' not printed. %s."
+    32592  "Out of memory"
+    32593  "Out of disk space"
+    32594  "Printing canceled"
+    32595  "Printing aborted in Print Manager"
+    32596  "Error encountered during print"
+    32597  "Print Error"
+    32707  "Invalid client window %s"
+    32708  "Invalid child window %s"
+    32709  "Invalid window %s"
+    32729  "Attempt to open busy clipboard"
+    32730  "WING failure"
+    32731  "WING not available"
+    32732  "Invalid DIB handle %X"
+    32733  "GDI object %X destroy failure"
+    32734  "GDI object %X delete failure"
+    32735  "GDI file read failure"
+    32736  "GDI resource load failure"
+    32737  "GDI creation failure"
+    32738  "GDI allocate failure"
+    32739  "GDI failure"
+    32740  "Invalid relative window specified in layout constraint in window %s"
+    32741  "Incomplete layout constraints specified in window %s"
+    32742  "Printer error"
+    32743  "Validator syntax error"
+    32744  "Menu creation failure"
+    32745  "Child create fail for window %s"
+    32746  "Execute fail for window %s"
+    32747  "Create fail for window %s"
+    32748  "Child class registration fail for window %s"
+    32749  "Class registration fail for window %s"
+    32750  "Bad file format"
+    32751  "Not supported function call"
+    32754  "Module version info failure"
+    32755  "Failure in Common Control DLL"
+    32756  "Ordinal %d not found in module "
+    32757  "Function %s not found in module "
+    32758  "VBX Library init failure"
+    32759  "Invalid MainWindow"
+    32760  "Unable to load module %s"
+    32761  "Out of memory"
+    32762  "No application object"
+    32763  "Unknown error"
+    32764  "Unhandled Exception"
+    32765  "OK to resume?"
+    32766  "ObjectWindows Exception"
+    32767  "Unknown exception"
+END
+
+1 VERSIONINFO
+FILEVERSION 2,11,0,0
+PRODUCTVERSION 2,11,0,0
+FILEFLAGSMASK 0x0000003fL
+FILEFLAGS 0x00000000L
+FILEOS 0x00000004L
+FILETYPE 0x00000001L
+FILESUBTYPE 0x00000000L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "CompanyName", "Crossword Man"
+            VALUE "FileDescription", "TEA Crossword Helper"
+            VALUE "FileVersion", "2.11.0.0"
+            VALUE "InternalName", "TEA"
+            VALUE "LegalCopyright", "Copyright © 1994-2011. All Rights Reserved."
+            VALUE "LegalTrademarks", ""
+            VALUE "OriginalFilename", "Tea.exe"
+            VALUE "ProductName", "TEA Crossword Helper"
+            VALUE "ProductVersion", "2.11"
+            VALUE "Comments", "Production Build"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1252
+    END
+END
+
+// Binary resources (not expanded here):
+//   CURSOR       1            308 bytes @ rva 0x001248a0
+//   BITMAP       CHECKICON    208 bytes @ rva 0x001249d4
+//   BITMAP       5690         392 bytes @ rva 0x00124aa4
+//   BITMAP       5720         392 bytes @ rva 0x00124c2c
+//   BITMAP       5730         392 bytes @ rva 0x00124db4
+//   BITMAP       7490         392 bytes @ rva 0x00124f3c
+//   BITMAP       9840         392 bytes @ rva 0x001250c4
+//   BITMAP       9850         392 bytes @ rva 0x0012524c
+//   BITMAP       12710        392 bytes @ rva 0x001253d4
+//   BITMAP       12730        392 bytes @ rva 0x0012555c
+//   BITMAP       12740        392 bytes @ rva 0x001256e4
+//   BITMAP       13870        744 bytes @ rva 0x0012586c
+//   ICON         1            744 bytes @ rva 0x00125b54
+//   ICON         2            296 bytes @ rva 0x00125e3c
+//   RCDATA       DVCLAL       16 bytes @ rva 0x0012f5a0
+//   GROUP_CURSOR 6730         20 bytes @ rva 0x0012f5b0
+//   GROUP_ICON   GRIDICON     34 bytes @ rva 0x0012f5c4

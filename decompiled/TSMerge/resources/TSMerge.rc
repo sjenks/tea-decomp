@@ -1,0 +1,89 @@
+// Resources decoded from TSMerge.exe (static parse of the PE .rsrc section; not the original .rc source)
+// Compiles with a resource compiler (checked with GNU windres). Bitmaps, icons and cursors are listed at the end, not included.
+#include <windows.h>
+
+102 DIALOG 11, 20, 364, 231
+STYLE 0x50c00040
+CAPTION "TEA&Sympathy Word List Merge"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "Merge &Operation",107, "BUTTON", 0x50020007, 4, 2, 176, 70
+    CONTROL "Output sorted entries in primary list only",108, "BUTTON", 0x50010009, 8, 10, 170, 12
+    CONTROL "Output entries in primary OR secondary",114, "BUTTON", 0x50000009, 8, 22, 170, 12
+    CONTROL "Output entries in both primary AND secondary",115, "BUTTON", 0x50000009, 8, 34, 170, 12
+    CONTROL "Output entries in primary AND NOT in secondary",109, "BUTTON", 0x50000009, 8, 46, 170, 12
+    CONTROL "Output entries in secondary AND NOT in primary",110, "BUTTON", 0x50000009, 8, 58, 170, 12
+    CONTROL "Output Con&version",113, "BUTTON", 0x50020007, 184, 2, 176, 70
+    CONTROL "None",116, "BUTTON", 0x50010009, 188, 10, 170, 12
+    CONTROL "To ASCII",117, "BUTTON", 0x50000009, 188, 22, 170, 12
+    CONTROL "To ASCII letters",118, "BUTTON", 0x50000009, 188, 34, 170, 12
+    CONTROL "To ASCII lower case letters",119, "BUTTON", 0x50000009, 188, 46, 170, 12
+    CONTROL "To ASCII upper case letters",121, "BUTTON", 0x50000009, 188, 58, 170, 12
+    CONTROL "Primary Input List:",-1, "STATIC", 0x50000000, 4, 82, 119, 8
+    CONTROL "",111, "EDIT", 0x50830880, 123, 80, 187, 12
+    CONTROL "Cha&nge...",112, "BUTTON", 0x50030000, 310, 80, 51, 12
+    CONTROL "Secondary Input List:",-1, "STATIC", 0x50000000, 4, 104, 119, 8
+    CONTROL "",102, "EDIT", 0x50830880, 123, 102, 187, 12
+    CONTROL "Chan&ge...",104, "BUTTON", 0x50030000, 310, 102, 51, 12
+    CONTROL "Merged Output List:",-1, "STATIC", 0x50000000, 4, 126, 119, 8
+    CONTROL "",105, "EDIT", 0x50830880, 123, 124, 187, 12
+    CONTROL "Chang&e...",120, "BUTTON", 0x50030000, 310, 124, 51, 12
+    CONTROL "",258, "BUTTON", 0x5002000b, 5, 146, 355, 29
+    CONTROL "S&tart",101, "BUTTON", 0x58030001, 6, 182, 77, 20
+    CONTROL "&Help...",106, "BUTTON", 0x50010000, 97, 182, 78, 20
+    CONTROL "&About...",122, "BUTTON", 0x50010300, 189, 182, 78, 20
+    CONTROL "&Close",1, "BUTTON", 0x50010000, 282, 182, 77, 20
+    CONTROL "",-1, "STATIC", 0x50000007, 5, 210, 356, 16
+    CONTROL "",103, "STATIC", 0x50000000, 9, 214, 348, 8
+END
+
+200 DIALOG 49, 46, 216, 126
+STYLE 0x90c00040
+CAPTION "About TEA&Sympathy Word List Merge"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL 108,-1, "STATIC", 0x50000003, 100, 8, 16, 16
+    CONTROL "TEA&&Sympathy Word List Merge Utility",-1, "STATIC", 0x50020001, 4, 28, 208, 8
+    CONTROL "by Ross Beresford",-1, "STATIC", 0x50020001, 4, 38, 208, 8
+    CONTROL "v3.10.2, 23 July 2011",-1, "STATIC", 0x50020001, 4, 53, 208, 10
+    CONTROL "Copyright© 2011 Crossword Man",-1, "STATIC", 0x50020001, 4, 63, 208, 8
+    CONTROL "Email:",-1, "STATIC", 0x5000000c, 32, 80, 40, 8
+    CONTROL "support@crosswordman.com",132, "EDIT", 0x50000800, 73, 79, 140, 10
+    CONTROL "Web:",-1, "STATIC", 0x5000000c, 32, 90, 40, 8
+    CONTROL "http://www.crosswordman.com/",131, "EDIT", 0x50000800, 73, 89, 140, 10
+    CONTROL "Ok",1, "BUTTON", 0x50010001, 84, 106, 48, 14
+END
+
+1 VERSIONINFO
+FILEVERSION 3,10,2,0
+PRODUCTVERSION 3,10,0,0
+FILEFLAGSMASK 0x0000003fL
+FILEFLAGS 0x00000000L
+FILEOS 0x00000004L
+FILETYPE 0x00000001L
+FILESUBTYPE 0x00000000L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "CompanyName", "Crossword Man"
+            VALUE "FileDescription", "TEA&Sympathy Word List Merge"
+            VALUE "FileVersion", "3.10.2"
+            VALUE "InternalName", "Tsmerge"
+            VALUE "LegalCopyright", "Copyright © 2010. All Rights Reserved."
+            VALUE "OriginalFilename", "Tsmerge.exe"
+            VALUE "ProductName", "Tsmerge"
+            VALUE "ProductVersion", "3.10"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1252
+    END
+END
+
+// Binary resources (not expanded here):
+//   ICON         1            744 bytes @ rva 0x0007d1b8
+//   RCDATA       DVCLAL       16 bytes @ rva 0x0007de74
+//   GROUP_ICON   108          20 bytes @ rva 0x0007de84

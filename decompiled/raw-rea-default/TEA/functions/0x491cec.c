@@ -1,0 +1,181 @@
+// rea decompile_all
+// name: FUN_00491cec
+// address: 0x491cec
+// body: available
+// range: 0x491cec-0x491fb9 inclusive
+// non_contiguous: false
+// provider: Ghidra 12.1.4 (ghidra)
+// analysis_profile: 3d97689231092bb069c4cce300579f66b49d458d30316f639f63b3829183de18
+// limitations: The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.; Ghidra Program checkpoint mode is disabled: closing discards metadata edits; original executable bytes are unchanged. For stock ELF/PE/Mach-O on Linux/macOS, set REA_GHIDRA_CHECKPOINT_DIR to a private absolute directory before starting REA (restart MCP after changing its startup environment).; Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.; Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.; Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, DOS MZ images, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.; The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.; Windows sessions require the matching packaged Windows x64 native addon, local NTFS/ReFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically.; Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.; External functions and functions without an analyzable body return null; other decompiler failures remain explicit.
+// pseudocode: provider-specific; not original source
+
+
+void __cdecl FUN_00491cec(int param_1,int *param_2)
+
+{
+  int *piVar1;
+  int *piVar2;
+  int iVar3;
+  int iVar4;
+  int iVar5;
+  int iVar6;
+  byte bVar7;
+  int local_80;
+  int local_7c;
+  int local_78;
+  int local_74;
+  int local_70;
+  undefined4 local_6c;
+  int local_68;
+  undefined4 local_64;
+  int local_60;
+  undefined4 local_5c;
+  int local_58;
+  int local_54;
+  int *local_50;
+  undefined4 local_4c;
+  int local_48;
+  int local_44;
+  int local_40;
+  int local_3c;
+  int local_38;
+  int local_34;
+  int local_30;
+  undefined4 local_2c;
+  int local_28;
+  undefined4 local_24;
+  int local_20;
+  undefined4 local_1c;
+  undefined4 local_18;
+  int local_14;
+  int local_10;
+  int local_c;
+  int local_8;
+  
+  bVar7 = 0;
+  local_70 = 0;
+  local_6c = 0;
+  local_68 = 0;
+  local_64 = 0;
+  (**(code **)(*(int *)(param_1 + 0x18) + 0x40))();
+  FUN_0048fbc8((int *)(param_1 + 0x28),&local_8,&local_c,&local_10,&local_14,
+               (uint)*(byte *)(param_1 + 0x30));
+  local_1c = 0;
+  local_18 = 0;
+  *param_2 = 0;
+  param_2[1] = 0;
+  piVar1 = FUN_004cc3c4((int *)0x0,0x10,*(int *)(param_1 + 0xc),1,FUN_004918cc);
+  FUN_004cc0cc();
+  param_2[2] = (int)piVar1;
+  if (*(char *)(param_1 + 0x33) == '\0') {
+    local_20 = 0;
+  }
+  else {
+    iVar5 = 0;
+    for (piVar1 = *(int **)(param_1 + 8); piVar1 != (int *)0x0;
+        piVar1 = *(int **)((int)piVar1 + 0x3e)) {
+      if (*(char *)((int)piVar1 + 5) == '\0') {
+        local_28 = 0;
+        local_24 = 0;
+        (**(code **)(*piVar1 + 8))();
+        iVar5 = iVar5 + local_28;
+      }
+      if (*(int *)((int)piVar1 + 0x3e) != 0) {
+        local_30 = 0;
+        local_2c = 0;
+        (**(code **)(*(int *)(param_1 + 0x18) + 0x50))();
+        iVar5 = iVar5 + local_30;
+      }
+    }
+    local_34 = 0;
+    local_38 = ((local_68 - local_70) - iVar5) / (int)(uint)*(byte *)(param_1 + 0x33);
+    if (local_38 < 1) {
+      piVar1 = &local_34;
+    }
+    else {
+      piVar1 = &local_38;
+    }
+    local_20 = *piVar1;
+  }
+  local_3c = local_8;
+  local_40 = local_10;
+  local_44 = 0;
+  iVar5 = 0;
+  for (piVar1 = *(int **)(param_1 + 8); piVar1 != (int *)0x0; piVar1 = *(int **)((int)piVar1 + 0x3e)
+      ) {
+    local_4c = 0;
+    local_48 = 0;
+    (**(code **)(*piVar1 + 8))();
+    *(undefined4 *)(param_2[2] + iVar5 * 0x10) = local_4c;
+    *(int *)(param_2[2] + 4 + iVar5 * 0x10) = local_48;
+    if (local_48 < local_44) {
+      piVar2 = &local_44;
+    }
+    else {
+      piVar2 = &local_48;
+    }
+    local_44 = *piVar2;
+    iVar5 = iVar5 + 1;
+  }
+  iVar6 = 0;
+  for (iVar5 = *(int *)(param_1 + 8); iVar5 != 0; iVar5 = *(int *)(iVar5 + 0x3e)) {
+    local_50 = (int *)(iVar5 + 10);
+    piVar1 = (int *)(iVar5 + 10);
+    piVar2 = &local_80;
+    for (iVar3 = 4; iVar3 != 0; iVar3 = iVar3 + -1) {
+      *piVar2 = *piVar1;
+      piVar1 = piVar1 + (uint)bVar7 * -2 + 1;
+      piVar2 = piVar2 + (uint)bVar7 * -2 + 1;
+    }
+    local_54 = *(int *)(param_2[2] + 4 + iVar6 * 0x10);
+    iVar3 = *(int *)(param_2[2] + iVar6 * 0x10);
+    local_58 = iVar3;
+    local_80 = local_3c;
+    iVar4 = local_44 - local_54 >> 1;
+    if (iVar4 < 0) {
+      iVar4 = iVar4 + (uint)((local_44 - local_54 & 1U) != 0);
+    }
+    local_7c = iVar4 + local_40;
+    if (*(char *)(iVar5 + 5) == '\0') {
+      local_78 = local_3c + iVar3;
+    }
+    else {
+      if (iVar3 < local_20) {
+        iVar3 = local_20;
+      }
+      local_78 = iVar3 + local_3c;
+    }
+    local_74 = iVar4 + local_40 + local_54;
+    piVar1 = &local_80;
+    piVar2 = (int *)(param_2[2] + iVar6 * 0x10);
+    for (iVar3 = 4; iVar3 != 0; iVar3 = iVar3 + -1) {
+      *piVar2 = *piVar1;
+      piVar1 = piVar1 + (uint)bVar7 * -2 + 1;
+      piVar2 = piVar2 + (uint)bVar7 * -2 + 1;
+    }
+    local_60 = local_78;
+    local_3c = local_78;
+    if (*(int *)(iVar5 + 0x3e) != 0) {
+      local_5c = 0;
+      (**(code **)(*(int *)(param_1 + 0x18) + 0x50))();
+      local_3c = local_60;
+    }
+    if (*param_2 < local_78 + local_c) {
+      local_78 = local_78 + local_c;
+    }
+    else {
+      local_78 = *param_2;
+    }
+    *param_2 = local_78;
+    if (param_2[1] < local_74 + local_14) {
+      local_74 = local_74 + local_14;
+    }
+    else {
+      local_74 = param_2[1];
+    }
+    param_2[1] = local_74;
+    iVar6 = iVar6 + 1;
+  }
+  return;
+}
+

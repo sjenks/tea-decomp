@@ -1,0 +1,206 @@
+﻿INFO  Using log config file: jar:file:/C:/Users/jenks/code/tea-rea/_tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1246 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (3562 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 59 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    C:\Users\jenks\AppData\Local\Temp\claude\3c668cda8e064a0c\e3eeaeab-6184-48a9-aa27-97ae29fb0c0a\scratchpad\ghidra-scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\PyGhidra\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: C:\Users\jenks\code\tea-rea\decompiled\ghidra-project\tea (HeadlessAnalyzer)  
+INFO  Opening project: C:\Users\jenks\code\tea-rea\decompiled\ghidra-project\tea (HeadlessProject)  
+INFO  REPORT: Processing input files:  (HeadlessAnalyzer)  
+INFO       project: C:\Users\jenks\code\tea-rea\decompiled\ghidra-project\tea (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///C:/Users/jenks/code/tea-rea/TEA Crossword Helper 2.11/TSMerge.exe (HeadlessAnalyzer)  
+INFO  Using Loader: Portable Executable (PE) (ProgramLoader)  
+INFO  Using Language/Compiler: x86:LE:32:default:borlandcpp (ProgramLoader)  
+INFO  Using Library Search Path: [., C:\WINDOWS\SysWOW64, C:\Users\jenks\code\tea-rea\_tools\jdk\jdk-21.0.13\bin, C:\WINDOWS\Sun\Java\bin, C:\WINDOWS\system32, C:\WINDOWS, C:\WINDOWS\System32\Wbem, C:\WINDOWS\System32\WindowsPowerShell\v1.0\, C:\WINDOWS\System32\OpenSSH\, C:\Program Files (x86)\Calibre2\, C:\Program Files\dotnet\, C:\Program Files\nodejs\, C:\Users\jenks\AppData\Local\nvm, C:\nvm4w\nodejs, C:\Program Files\Git\cmd, C:\Program Files\Tailscale\, C:\Users\jenks\.grok\bin, C:\Users\jenks\AppData\Local\Microsoft\WindowsApps, C:\Users\jenks\AppData\Local\Programs\Microsoft VS Code\bin, C:\Users\jenks\AppData\Roaming\npm, C:\Users\jenks\.local\bin, C:\Users\jenks\AppData\Local\Programs\nodejs, C:\Users\jenks\.t3\bin, C:\Users\jenks\AppData\Local\Volta\bin, C:\Users\jenks\AppData\Local\pnpm, C:\Users\jenks\.bun\bin, C:\Users\jenks\scoop\shims] (ProgramLoader)  
+INFO  TLS callbacks at 479010 (TLSDirectory)  
+INFO  TLS callbacks at 10029728 (TLSDirectory)  
+WARN  Invalid or missing function at 105f9f4c (ExportDataDirectory)  
+WARN  Invalid or missing function at 100e31dc (ExportDataDirectory)  
+INFO  Additional info:
+Loading file:///C:/Users/jenks/code/tea-rea/TEA Crossword Helper 2.11/TSMerge.exe?MD5=a39006940e94328e27ded8af9c78d9bc...
+------------------------------------------------
+
+Searching 19 paths for library ADVAPI32.DLL...
+Loading file:///C:/Windows/SysWOW64/advapi32.dll?MD5=3ae45ee3ca66486c3747838ebdf9dfc2...
+Using existing exports file: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\advapi32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 19 paths for library GDI32.DLL...
+Loading file:///C:/Windows/SysWOW64/gdi32.dll?MD5=37002dbb23f87dae9ebd7dd7b5051995...
+Using existing exports file: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\gdi32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 19 paths for library KERNEL32.DLL...
+Loading file:///C:/Windows/SysWOW64/kernel32.dll?MD5=505c80011e47bc0dd833c598919d64c6...
+Using existing exports file: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\kernel32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 19 paths for library SHELL32.DLL...
+Loading file:///C:/Windows/SysWOW64/shell32.dll?MD5=d8b1a97aefe8518dc5688c76b39c6d77...
+Using existing exports file: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\shell32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 19 paths for library USER32.DLL...
+Loading file:///C:/Windows/SysWOW64/user32.dll?MD5=7597f31e467fc6b4be8e2390e761cf9c...
+[user32.dll]: failed to create WEVTResource at 10101a70: Failed to resolve data length for WEVTResource
+Using existing exports file: C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\user32.exports
+Library not saved to project.
+------------------------------------------------
+
+Applying C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\advapi32.exports
+Applying C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\kernel32.exports
+Applying C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\gdi32.exports
+Applying C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\shell32.exports
+Applying C:\Users\jenks\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\user32.exports
+Linking the External Programs of 'TSMerge.exe' to imported libraries...
+  [ADVAPI32.DLL] -> not found in project
+  [KERNEL32.DLL] -> not found in project
+  [GDI32.DLL] -> not found in project
+  [SHELL32.DLL] -> not found in project
+  [USER32.DLL] -> not found in project
+------------------------------------------------
+
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///C:/Users/jenks/code/tea-rea/TEA Crossword Helper 2.11/TSMerge.exe (HeadlessAnalyzer)  
+WARN  Ignoring leading '_' chars on no-return name '___raise_securityfailure' specified in file: C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\Base\data\PEFunctionsThatDoNotReturn (NoReturnFunctionAnalyzer)  
+WARN  Ignoring leading '_' chars on no-return name '___report_rangecheckfailure' specified in file: C:\Users\jenks\code\tea-rea\_tools\ghidra\ghidra_12.1.4_PUBLIC\Ghidra\Features\Base\data\PEFunctionsThatDoNotReturn (NoReturnFunctionAnalyzer)  
+INFO  Skipping PDB processing: missing PDB information in program metadata (PdbUniversalAnalyzer)  
+INFO  hit non-returning function, restarting decompiler switch analyzer later (DecompilerSwitchAnalyzer)  
+INFO  Packed database cache: C:\Users\jenks\AppData\Local\ghidra\packed-db-cache (PackedDatabaseCache)  
+INFO  Applied data type archive: windows_vs12_32 (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              0.794 secs
+    Apply Data Archives                        0.859 secs
+    Call Convention ID                         0.028 secs
+    Call-Fixup Installer                       0.085 secs
+    Create Address Tables                      0.274 secs
+    Create Address Tables - One Time           0.279 secs
+    Create Function                            1.262 secs
+    Data Reference                             0.322 secs
+    Decompiler Parameter ID                   13.951 secs
+    Decompiler Switch Analysis                 4.639 secs
+    Decompiler Switch Analysis - One Time      0.000 secs
+    Demangler GNU                              0.048 secs
+    Demangler Microsoft                        0.018 secs
+    Disassemble                                5.094 secs
+    Disassemble Entry Points                   0.149 secs
+    Disassemble Entry Points - One Time        0.005 secs
+    Embedded Media                             0.019 secs
+    External Entry References                  0.000 secs
+    Function ID                                1.321 secs
+    Function Start Pre Search                  0.020 secs
+    Function Start Search                      0.100 secs
+    Function Start Search After Code           0.083 secs
+    Function Start Search After Data           0.074 secs
+    Non-Returning Functions - Discovered       0.550 secs
+    Non-Returning Functions - Known            0.007 secs
+    PDB Universal                              0.003 secs
+    Reference                                  0.471 secs
+    Scalar Operand References                  0.983 secs
+    Shared Return Calls                        0.419 secs
+    Stack                                      8.154 secs
+    Subroutine References                      0.356 secs
+    Subroutine References - One Time           0.000 secs
+    WindowsResourceReference                   1.469 secs
+    X86 Function Callee Purge                  0.933 secs
+    x86 Constant Reference Analyzer            5.039 secs
+-----------------------------------------------------
+     Total Time   47 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///C:/Users/jenks/code/tea-rea/TEA Crossword Helper 2.11/TSMerge.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: TeaPrepare.java 'C:\Users\jenks\AppData\Local\Temp\claude\3c668cda8e064a0c\e3eeaeab-6184-48a9-aa27-97ae29fb0c0a\scratchpad\seeds\TSMerge.entries.txt' 'C:\Users\jenks\AppData\Local\Temp\claude\3c668cda8e064a0c\e3eeaeab-6184-48a9-aa27-97ae29fb0c0a\scratchpad\seeds\TSMerge.prepare-report.txt'  (HeadlessAnalyzer)  
+INFO  SCRIPT: C:\Users\jenks\AppData\Local\Temp\claude\3c668cda8e064a0c\e3eeaeab-6184-48a9-aa27-97ae29fb0c0a\scratchpad\ghidra-scripts\TeaPrepare.java (HeadlessAnalyzer)  
+WARN  Decompiling 00453060, pcode error at 004530e4: Unable to resolve constructor at 004530e4 (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 0045311c: Unable to resolve constructor at 0045311c (DecompileCallback)  
+WARN  Decompiling 0043e760, pcode error at 0043e79d: Unable to resolve constructor at 0043e79d (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 004531bd: Unable to resolve constructor at 004531bd (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 00453259: Unable to resolve constructor at 00453259 (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 00453350: Unable to resolve constructor at 00453350 (DecompileCallback)  
+WARN  Decompiling 00453060, pcode error at 004531bc: Unable to resolve constructor at 004531bc (DecompileCallback)  
+WARN  Decompiling 004125b0, pcode error at 004127d1: Unable to resolve constructor at 004127d1 (DecompileCallback)  
+WARN  Decompiling 004126a8, pcode error at 004127d1: Unable to resolve constructor at 004127d1 (DecompileCallback)  
+WARN  Decompiling 004126a8, pcode error at 004127d1: Unable to resolve constructor at 004127d1 (DecompileCallback)  
+INFO  -----------------------------------------------------
+    Call Convention ID                         0.004 secs
+    Call-Fixup Installer                       0.002 secs
+    Data Reference                             0.000 secs
+    Decompiler Parameter ID                    1.626 secs
+    Decompiler Switch Analysis                 0.001 secs
+    Function Start Search                      0.001 secs
+    Function Start Search After Code           0.001 secs
+    Function Start Search After Data           0.000 secs
+    Non-Returning Functions - Discovered       0.002 secs
+    Reference                                  0.002 secs
+    Scalar Operand References                  0.012 secs
+    Shared Return Calls                        0.006 secs
+    Stack                                      0.121 secs
+    Subroutine References                      0.004 secs
+    WindowsResourceReference                   0.370 secs
+    X86 Function Callee Purge                  0.003 secs
+    x86 Constant Reference Analyzer            0.028 secs
+-----------------------------------------------------
+     Total Time   2 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  -----------------------------------------------------
+    Call Convention ID                         0.000 secs
+    Call-Fixup Installer                       0.001 secs
+    Decompiler Parameter ID                    1.260 secs
+    Decompiler Switch Analysis                 0.001 secs
+    Function Start Search                      0.000 secs
+    Function Start Search After Code           0.000 secs
+    Non-Returning Functions - Discovered       0.001 secs
+    Reference                                  0.001 secs
+    Scalar Operand References                  0.003 secs
+    Shared Return Calls                        0.001 secs
+    Stack                                      0.026 secs
+    Subroutine References                      0.001 secs
+    WindowsResourceReference                   0.370 secs
+    X86 Function Callee Purge                  0.000 secs
+    x86 Constant Reference Analyzer            0.011 secs
+-----------------------------------------------------
+     Total Time   1 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  TeaPrepare.java> TeaPrepare: functions 2881 -> 2984 (tables +85, prologue +18, skipped 0) (GhidraScript)  
+INFO  ANALYZING changes made by post scripts: file:///C:/Users/jenks/code/tea-rea/TEA Crossword Helper 2.11/TSMerge.exe (HeadlessAnalyzer)  
+INFO  REPORT: Post-analysis succeeded for file: file:///C:/Users/jenks/code/tea-rea/TEA Crossword Helper 2.11/TSMerge.exe (HeadlessAnalyzer)  
+INFO  /TSMerge.exe: file created (jenks) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /TSMerge.exe (tea:/TSMerge.exe) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  

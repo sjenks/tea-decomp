@@ -1,0 +1,17 @@
+{
+ "program": "TSBuild",
+ "objects": 192,
+ "linked": false,
+ "undefinedSymbols": 1156,
+ "undefinedReferences": 3432,
+ "undefinedData": 1094,
+ "undefinedOther": 62,
+ "examples": [
+  "DictionaryMaintainer::vftable",
+  "DAT_00485bcc",
+  "_tls_index",
+  "segment(...)",
+  "DMDialog::__entries",
+  "_imp__Rectangle@20"
+ ]
+}

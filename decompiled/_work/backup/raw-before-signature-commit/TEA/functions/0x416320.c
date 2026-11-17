@@ -1,0 +1,76 @@
+// name: FUN_00416320
+// address: 0x416320
+// provider: Ghidra 12.1.4 (prepared project; borlandcpp)
+// pseudocode: decompiler output; not original source
+
+undefined4 __cdecl FUN_00416320(int *param_1,HDC param_2,HWND param_3,int param_4)
+
+{
+  bool bVar1;
+  LRESULT LVar2;
+  undefined4 *puVar3;
+  int *piVar4;
+  DWORD color;
+  undefined3 extraout_var;
+  HANDLE h;
+  int iVar5;
+  undefined4 *in_FS_OFFSET;
+  LOGFONTA local_70;
+  HWND local_34;
+  undefined4 local_30;
+  undefined4 local_2c;
+  undefined2 local_1c;
+  uint *local_8;
+  
+  FUN_004dce64(0x4edc78);
+  local_30 = FUN_004b0584(param_1,param_2,param_3,param_4);
+  if (param_4 == 6) {
+    LVar2 = FUN_004a614c(param_3,*(LPARAM *)(*param_1 + 0x6c));
+    if (LVar2 == 0) {
+      iVar5 = 0;
+    }
+    else {
+      iVar5 = *(int *)(LVar2 + 8);
+    }
+    puVar3 = FUN_004dd744(LVar2,iVar5,(int *)&DAT_0040299c,(int *)&DAT_0041385c,0);
+    local_34 = param_3;
+    LVar2 = FUN_004a614c(param_3,*(LPARAM *)(*param_1 + 0x6c));
+    if (LVar2 == 0) {
+      iVar5 = 0;
+    }
+    else {
+      iVar5 = *(int *)(LVar2 + 8);
+    }
+    piVar4 = FUN_004dd744(LVar2,iVar5,(int *)&DAT_0040299c,(int *)&DAT_004164a4,0);
+    if ((puVar3 != (undefined4 *)0x0) && (puVar3[0xc] != 0)) {
+      color = GetSysColor(2);
+      SetTextColor(param_2,color);
+    }
+    if (((puVar3 != (undefined4 *)0x0) && (puVar3[0xc] != 0)) ||
+       ((piVar4 != (int *)0x0 && (bVar1 = FUN_0041b8f8(piVar4), CONCAT31(extraout_var,bVar1) != 0)))
+       ) {
+      if (param_1[0xf] == 0) {
+        h = (HANDLE)FUN_004a76a8(*param_1,0x31,0,0);
+        if (h == (HANDLE)0x0) {
+          h = GetStockObject(0xc);
+        }
+        if ((h != (HANDLE)0x0) && (iVar5 = GetObjectA(h,0x3c,&local_70), iVar5 != 0)) {
+          local_70.lfUnderline = '\x01';
+          local_8 = (uint *)FUN_004cc0f0();
+          if (local_8 != (uint *)0x0) {
+            local_1c = 0x14;
+            FUN_0048f7fc(local_8,&local_70);
+            local_1c = 8;
+          }
+          param_1[0xf] = (int)local_8;
+        }
+      }
+      if ((undefined4 *)param_1[0xf] != (undefined4 *)0x0) {
+        SelectObject(param_2,*(HGDIOBJ *)param_1[0xf]);
+      }
+    }
+  }
+  *in_FS_OFFSET = local_2c;
+  return local_30;
+}
+

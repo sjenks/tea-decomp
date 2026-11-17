@@ -1,0 +1,17 @@
+{
+ "program": "TSMerge",
+ "objects": 181,
+ "linked": false,
+ "undefinedSymbols": 1087,
+ "undefinedReferences": 3158,
+ "undefinedData": 1027,
+ "undefinedOther": 60,
+ "examples": [
+  "DAT_00471d5c",
+  "DAT_00408678",
+  "DMDialog::__entries",
+  "_tls_index",
+  "segment(...)",
+  "_imp__Rectangle@20"
+ ]
+}

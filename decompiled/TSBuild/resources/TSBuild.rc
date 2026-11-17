@@ -1,0 +1,91 @@
+// Resources decoded from TSBuild.exe (static parse of the PE .rsrc section; not the original .rc source)
+// Compiles with a resource compiler (checked with GNU windres). Bitmaps, icons and cursors are listed at the end, not included.
+#include <windows.h>
+
+102 DIALOG 10, 20, 364, 280
+STYLE 0x50c00040
+CAPTION "TEA&Sympathy Dictionary Builder"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL "Files",117, "BUTTON", 0x50000007, 4, 2, 356, 46
+    CONTROL "Input word list:",-1, "STATIC", 0x50000000, 10, 14, 110, 8
+    CONTROL "",102, "EDIT", 0x50830880, 120, 12, 184, 12
+    CONTROL "Cha&nge...",104, "BUTTON", 0x50030000, 304, 12, 51, 12
+    CONTROL "Output TEA&&Sympathy dictionary:",-1, "STATIC", 0x50000000, 10, 33, 110, 8
+    CONTROL "",105, "EDIT", 0x50830880, 120, 31, 184, 12
+    CONTROL "Chan&ge...",120, "BUTTON", 0x50030000, 304, 31, 51, 12
+    CONTROL "&Description",116, "BUTTON", 0x50000007, 4, 52, 356, 105
+    CONTROL "",113, "EDIT", 0x50a31084, 10, 62, 345, 90
+    CONTROL "Advanced Options",115, "BUTTON", 0x50020007, 4, 161, 356, 59
+    CONTROL "&Minimum length output:",-1, "STATIC", 0x5000000b, 10, 173, 120, 8
+    CONTROL "",107, "EDIT", 0x50830000, 130, 171, 20, 12
+    CONTROL "",108, "SCROLLBAR", 0x50000001, 150, 171, 12, 12
+    CONTROL "Ma&ximum length output:",-1, "STATIC", 0x5000000b, 221, 173, 102, 8
+    CONTROL "",109, "EDIT", 0x50830000, 323, 171, 20, 12
+    CONTROL "",110, "SCROLLBAR", 0x50000001, 343, 171, 12, 12
+    CONTROL "Maximum indexed &frequency (%):",-1, "STATIC", 0x5000000b, 10, 189, 120, 8
+    CONTROL "",118, "EDIT", 0x50830000, 130, 187, 20, 12
+    CONTROL "",119, "SCROLLBAR", 0x50000001, 150, 187, 12, 12
+    CONTROL "S&ort alphabetically",121, "BUTTON", 0x50030003, 221, 188, 135, 10
+    CONTROL "Alphabet mapping file:",-1, "STATIC", 0x50000000, 10, 205, 120, 8
+    CONTROL "",111, "EDIT", 0x50830880, 130, 203, 174, 12
+    CONTROL "Chang&e...",112, "BUTTON", 0x50030000, 304, 203, 51, 12
+    CONTROL "",258, "BUTTON", 0x5000000b, 4, 225, 356, 10
+    CONTROL "&Start",101, "BUTTON", 0x58030001, 8, 240, 64, 16
+    CONTROL "&Help...",106, "BUTTON", 0x50010000, 103, 240, 64, 16
+    CONTROL "&About...",114, "BUTTON", 0x50010300, 197, 240, 64, 16
+    CONTROL "&Close",1, "BUTTON", 0x50010000, 292, 240, 64, 16
+    CONTROL "",-1, "STATIC", 0x50000007, 3, 261, 356, 16
+    CONTROL "",103, "STATIC", 0x50000000, 7, 265, 348, 8
+END
+
+200 DIALOG 49, 46, 216, 128
+STYLE 0x90c00040
+CAPTION "About TEA&Sympathy Dictionary Builder"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL 108,-1, "STATIC", 0x50000003, 100, 8, 16, 16
+    CONTROL "TEA&&Sympathy Dictionary Builder Utility",-1, "STATIC", 0x50020001, 4, 28, 208, 8
+    CONTROL "by Ross Beresford",-1, "STATIC", 0x50020001, 4, 38, 208, 8
+    CONTROL "v3.11.0, 1 Oct 2011",-1, "STATIC", 0x50020001, 4, 53, 208, 10
+    CONTROL "Copyright© 2011 Crossword Man",-1, "STATIC", 0x50020001, 4, 63, 208, 8
+    CONTROL "Email:",-1, "STATIC", 0x5000000c, 32, 80, 40, 8
+    CONTROL "support@crosswordman.com",122, "EDIT", 0x50000800, 73, 79, 140, 10
+    CONTROL "Web:",-1, "STATIC", 0x5000000c, 32, 90, 40, 8
+    CONTROL "http://www.crosswordman.com/",121, "EDIT", 0x50000800, 73, 89, 140, 10
+    CONTROL "Ok",1, "BUTTON", 0x50010001, 84, 108, 48, 14
+END
+
+1 VERSIONINFO
+FILEVERSION 3,11,0,0
+PRODUCTVERSION 3,11,0,0
+FILEFLAGSMASK 0x0000003fL
+FILEFLAGS 0x00000000L
+FILEOS 0x00000004L
+FILETYPE 0x00000001L
+FILESUBTYPE 0x00000000L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "CompanyName", "Crossword Man"
+            VALUE "FileDescription", "TEA&Sympathy Dictionary Builder"
+            VALUE "FileVersion", "3.11.0.0"
+            VALUE "InternalName", "Tsbuild"
+            VALUE "LegalCopyright", "Copyright © 2010. All Rights Reserved."
+            VALUE "OriginalFilename", "Tsbuild.exe"
+            VALUE "ProductName", "Tsbuild"
+            VALUE "ProductVersion", "3.11"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1252
+    END
+END
+
+// Binary resources (not expanded here):
+//   ICON         1            744 bytes @ rva 0x000931b8
+//   RCDATA       DVCLAL       16 bytes @ rva 0x00093d3c
+//   GROUP_ICON   108          20 bytes @ rva 0x00093d4c
