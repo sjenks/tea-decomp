@@ -9,10 +9,10 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x004dd5ac  std::type_info::~type_info   (32 bytes)   [rtti:dtor destructor]
 //   written in code as std::type_info::_dtor
-void __cdecl std::type_info::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl std::type_info::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  if ((param_1 != (undefined4 *)0x0) && (*param_1 = &std::type_info::vftable, (param_2 & 1) != 0)) {
+  if ((self != (undefined4 *)0x0) && (*self = &std::type_info::vftable, (dtorFlags & 1) != 0)) {
     operator_delete();
   }
   return;

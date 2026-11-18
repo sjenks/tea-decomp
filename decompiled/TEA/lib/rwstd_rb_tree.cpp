@@ -9,25 +9,25 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x004cd7c0  __rwstd::__rb_tree<int,std::pair<const int,std::string>,__rwstd::__select1st<std::pair<const int,std::string>,int>,std::less<int>>::~__rb_tree   (107 bytes)   [rtti:dtor destructor]
 //   written in code as __rwstd::rb_tree_int_std_pair_const_int_std_string_rwstd_select1st_std_pair_const_int_std_string_int_std_less_int::_dtor
-void __cdecl __rwstd::rb_tree_int_std_pair_const_int_std_string_rwstd_select1st_std_pair_const_int_std_string_int_std_less_int::_dtor(int param_1,byte param_2)
+void __cdecl __rwstd::rb_tree_int_std_pair_const_int_std_string_rwstd_select1st_std_pair_const_int_std_string_int_std_less_int::_dtor(int self,byte dtorFlags)
 
 {
   undefined1 local_38 [4];
-  undefined4 uStack_34;
+  undefined4 unused;
   undefined4 local_28;
   undefined4 local_14 [4];
   
-  if (param_1 != 0) {
-    if (*(int *)(param_1 + 0x24) != 0) {
-      uStack_34 = 0x4cd7e2;
-      FUN_004cd89c((int)&local_28,param_1);
-      FUN_004cd82c((int)local_38,param_1);
-      FUN_004cd8bc(local_14,param_1);
+  if (self != 0) {
+    if (*(int *)(self + 0x24) != 0) {
+      unused = 0x4cd7e2;
+      FUN_004cd89c((int)&local_28,self);
+      FUN_004cd82c((int)local_38,self);
+      FUN_004cd8bc(local_14,self);
       local_28 = 0x4cd80f;
-      FUN_004ce770(param_1,*(int *)(param_1 + 0x24),'\0');
-      FUN_004ceb10(param_1);
+      FUN_004ce770(self,*(int *)(self + 0x24),'\0');
+      FUN_004ceb10(self);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

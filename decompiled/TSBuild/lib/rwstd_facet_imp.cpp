@@ -1,5 +1,5 @@
 // TSBuild.exe — runtime / library code "rwstd_facet_imp"
-// 3 functions, 0x0041c3b8..0x004631b0. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 4 functions, 0x0041c3b8..0x004631b0. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -17,21 +17,39 @@ void __stdcall __rwstd::facet_imp::vf1(void)
 // ----------------------------------------------------------------------------------------------------
 // 0x0041c3c0  __rwstd::facet_imp::~facet_imp   (66 bytes)   [rtti:dtor destructor]
 //   written in code as __rwstd::facet_imp::_dtor
-void __cdecl __rwstd::facet_imp::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl __rwstd::facet_imp::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x478dfc);
-  if (param_1 != (undefined4 *)0x0) {
-    __rwstd::ref_counted::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    __rwstd::ref_counted::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00462dfc  __rwstd::facet_imp::facet_imp   (84 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores __rwstd::facet_imp's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl __rwstd::facet_imp::facet_imp(undefined4 *self,undefined4 param_2,undefined4 param_3)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x4874c8);
+  __rwstd::ref_counted::ref_counted(self,param_2);
+  *self = &__rwstd::facet_imp::vftable;
+  self[2] = 0;
+  self[3] = param_3;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -67,7 +85,7 @@ void __cdecl __rwstd::facet_imp::_dtor(undefined4 *param_1,byte param_2)
 /* WARNING: Removing unreachable block (ram,0x004634f4) */
 /* WARNING: Removing unreachable block (ram,0x00463481) */
 /* WARNING: Removing unreachable block (ram,0x00463391) */
-char * __rwstd::facet_imp::vf2(int *param_1,byte *param_2,byte *param_3,byte *param_4,undefined4 param_5, byte *param_6,byte *param_7,byte *param_8,byte *param_9,byte *param_10, byte *param_11,undefined4 param_12,byte *param_13,byte *param_14,byte *param_15, byte *param_16,byte *param_17,byte *param_18,byte *param_19,byte *param_20, byte *param_21,byte *param_22,byte *param_23,byte *param_24,byte *param_25, undefined4 param_26,byte *param_27,byte *param_28,byte *param_29,byte *param_30, byte *param_31,byte *param_32,byte *param_33,byte *param_34,byte *param_35, byte *param_36,byte *param_37,byte *param_38,undefined4 param_39, undefined4 param_40,byte *param_41,byte *param_42,undefined4 param_43, byte *param_44,byte *param_45,byte *param_46,byte *param_47)
+char * __rwstd::facet_imp::vf2(int *self,byte *param_2,byte *param_3,byte *param_4,undefined4 param_5, byte *param_6,byte *param_7,byte *param_8,byte *param_9,byte *param_10, byte *param_11,undefined4 param_12,byte *param_13,byte *param_14,byte *param_15, byte *param_16,byte *param_17,byte *param_18,byte *param_19,byte *param_20, byte *param_21,byte *param_22,byte *param_23,byte *param_24,byte *param_25, undefined4 param_26,byte *param_27,byte *param_28,byte *param_29,byte *param_30, byte *param_31,byte *param_32,byte *param_33,byte *param_34,byte *param_35, byte *param_36,byte *param_37,byte *param_38,undefined4 param_39, undefined4 param_40,byte *param_41,byte *param_42,undefined4 param_43, byte *param_44,byte *param_45,byte *param_46,byte *param_47)
 
 {
   ushort *puVar1;
@@ -98,7 +116,7 @@ char * __rwstd::facet_imp::vf2(int *param_1,byte *param_2,byte *param_3,byte *pa
   undefined2 in_ES;
   undefined2 in_SS;
   undefined2 in_DS;
-  int in_FS_OFFSET;
+  int sehChainHead;
   int in_GS_OFFSET;
   char in_CF;
   bool bVar23;
@@ -108,9 +126,9 @@ char * __rwstd::facet_imp::vf2(int *param_1,byte *param_2,byte *param_3,byte *pa
   undefined3 uVar11;
   
   pbVar19 = param_9;
-  *(char *)param_1 = ((char)*param_1 - (char)param_1) - in_CF;
-  *(char *)param_1 = (char)*param_1 + (char)param_1;
-  pbVar7 = (byte *)((int)param_1 + *param_1);
+  *(char *)self = ((char)*self - (char)self) - in_CF;
+  *(char *)self = (char)*self + (char)self;
+  pbVar7 = (byte *)((int)self + *self);
   bVar6 = (byte)pbVar7;
   *pbVar7 = *pbVar7 ^ bVar6;
   *pbVar7 = *pbVar7 + bVar6;
@@ -143,7 +161,7 @@ char * __rwstd::facet_imp::vf2(int *param_1,byte *param_2,byte *param_3,byte *pa
     sVar4 = ((ushort)puVar18 & 3) - (*puVar1 & 3);
     *puVar1 = *puVar1 + (ushort)(0 < sVar4) * sVar4;
     if (cVar5 == 'c') {
-      bVar6 = param_2[in_FS_OFFSET];
+      bVar6 = param_2[sehChainHead];
       bVar23 = bVar16 < bVar6;
       bVar25 = SBORROW1(bVar16,bVar6);
       bVar24 = bVar16 == bVar6;
@@ -204,8 +222,8 @@ code_r0x004632dd:
       goto code_r0x004632e2;
     }
     bVar6 = (byte)((uint)param_6 >> 8);
-    bVar23 = bVar6 < param_7[in_FS_OFFSET];
-    bVar24 = bVar6 == param_7[in_FS_OFFSET];
+    bVar23 = bVar6 < param_7[sehChainHead];
+    bVar24 = bVar6 == param_7[sehChainHead];
     out(uRam632c7261,(short)param_7);
     pbVar22 = param_8;
     pbVar13 = param_7;
@@ -348,8 +366,8 @@ code_r0x004632dc:
     if (CARRY1(bVar16,bVar6)) {
 code_r0x004632e2:
       bVar6 = (byte)((uint)param_6 >> 8);
-      bVar23 = bVar6 < param_7[in_FS_OFFSET];
-      bVar24 = bVar6 == param_7[in_FS_OFFSET];
+      bVar23 = bVar6 < param_7[sehChainHead];
+      bVar24 = bVar6 == param_7[sehChainHead];
       uVar2 = in((short)param_7);
       *(undefined4 *)unaff_EDI = uVar2;
       pbVar19 = param_16;
@@ -417,7 +435,7 @@ code_r0x00463395:
   param_6[0x74] = param_6[0x74] + (char)((uint)param_7 >> 8);
   bVar6 = (byte)param_24;
   pbVar22 = pbVar21 + 1;
-  if (bVar16 < param_7[in_FS_OFFSET]) {
+  if (bVar16 < param_7[sehChainHead]) {
     bVar16 = param_6[0x68];
     bVar10 = (byte)((uint)pbVar7 >> 8);
     bVar23 = bVar10 == bVar16;
@@ -609,8 +627,8 @@ code_r0x00463474:
     }
     if (!bVar23) {
       param_31 = (byte *)0x725f5f00;
-      bVar25 = bVar17 < param_22[in_FS_OFFSET];
-      bVar24 = (char)(bVar17 - param_22[in_FS_OFFSET]) < '\0';
+      bVar25 = bVar17 < param_22[sehChainHead];
+      bVar24 = (char)(bVar17 - param_22[sehChainHead]) < '\0';
       bVar6 = in(uVar12);
       param_17[2] = bVar6;
       out(*(undefined4 *)pbVar19,uVar12);

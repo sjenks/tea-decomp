@@ -1,5 +1,5 @@
 // TEA.exe — application module "TSDictionarySaveDialog"
-// 31 functions, 0x0043cdcc..0x0043fd98. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 30 functions, 0x0043cdcc..0x0043fd78. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -8,15 +8,15 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043cdcc  TSDictionarySaveDialog::Find   (70 bytes)   [owl:response-table response-table-find]
-//   also: TSDictionarySaveDialog::vf14 [rtti:vtable]
-undefined4 __cdecl TSDictionarySaveDialog::Find(undefined4 *param_1,int *param_2,undefined *param_3)
+//   also: TSDictionarySaveDialog::Find [rtti:vtable]; TSDictionarySaveDialog::vf14 [rtti:vtable]
+undefined4 __cdecl TSDictionarySaveDialog::Find(undefined4 *self,int *eventInfo,undefined *equal)
 
 {
-  undefined4 uVar1;
+  undefined4 found;
   
-  param_2[2] = (int)param_1;
-  uVar1 = FUN_0048e808(param_1[1],(int *)&TSDictionarySaveDialog::__entries,param_2,param_3);
-  if (((char)uVar1 == '\0') && (uVar1 = PropertiesViewWindows::Find(param_1,param_2,param_3), (char)uVar1 == '\0'))
+  eventInfo[2] = (int)self;
+  found = FUN_0048e808(self[1],(int *)&TSDictionarySaveDialog::__entries,eventInfo,equal);
+  if (((char)found == '\0') && (found = PropertiesViewWindows::Find(self,eventInfo,equal), (char)found == '\0'))
   {
     return 0;
   }
@@ -24,328 +24,329 @@ undefined4 __cdecl TSDictionarySaveDialog::Find(undefined4 *param_1,int *param_2
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043ce14  FUN_0043ce14   (1264 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
+// 0x0043ce14  TSDictionarySaveDialog::TSDictionarySaveDialog   (1264 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores TSDictionarySaveDialog's vtable at its vptr offset (+0xc) in this
 /* WARNING: Removing unreachable block (ram,0x0043d15d) */
 /* WARNING: Removing unreachable block (ram,0x0043d1a1) */
 /* WARNING: Heritage AFTER dead removal. Example location: s0xffffff7c : 0x0043d1ac */
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-int * __cdecl FUN_0043ce14(int *param_1,int param_2,undefined4 param_3,int param_4,uint *param_5,int param_6, int param_7,int param_8,int param_9,int param_10,int param_11)
+int * __cdecl TSDictionarySaveDialog::TSDictionarySaveDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,uint *param_5,int param_6, int param_7,int param_8,int param_9,int param_10,int param_11)
 
 {
-  int iVar1;
-  uint uVar2;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  int refs;
+  uint len;
+  int *rep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4f555c);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 0x1d8);
-    param_1[0x1d8] = (int)(param_1 + 0x1d5);
-    param_1[0x1d9] = (int)(param_1 + 0x1d6);
-    param_1[1] = (int)(param_1 + 0x1d5);
-    param_1[2] = (int)(param_1 + 0x1d6);
-    param_1[0x1d4] = 0;
-    param_1[0x1d7] = 0;
-    param_1[0x1d5] = (int)&OWL::TEventHandler::vftable;
-    param_1[0x1d6] = (int)&OWL::TStreamableBase::vftable;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    FUN_004a4fbc(param_1 + 0x1d8,1);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
+  if (vbasesBuilt == 0) {
+    *self = (int)(self + 0x1d8);
+    self[0x1d8] = (int)(self + 0x1d5);
+    self[0x1d9] = (int)(self + 0x1d6);
+    self[1] = (int)(self + 0x1d5);
+    self[2] = (int)(self + 0x1d6);
+    self[0x1d4] = 0;
+    self[0x1d7] = 0;
+    self[0x1d5] = (int)&OWL::TEventHandler::vftable;
+    self[0x1d6] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::TWindow_4a4fbc(self + 0x1d8,1);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
   }
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x6f0;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0x6f0;
-  FUN_00413cf4(param_1,1,0x4f5414,param_3,param_4,(uint *)0x16b2,0,0);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x6f0;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0x6f0;
-  FUN_0043fd98(param_1 + 0x18);
-  param_1[3] = (int)&TSDictionarySaveDialog::vftable;
-  param_1[0x18] = (int)&PTR_LAB_004f5a68;
-  *(undefined ***)param_1[1] = &PTR_LAB_004f5a84;
-  *(undefined ***)param_1[2] = &PTR_LAB_004f5a90;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_004f5a9c;
-  param_1[0x19] = 0;
-  param_1[0x1a] = param_6;
-  param_1[0x1b] = param_7;
-  param_1[0x1c] = param_10;
-  param_1[0x1d] = param_11;
-  param_1[0x20] = 0;
-  iVar1 = *(int *)(*(int *)(param_8 + 8) + -0xc);
-  if (iVar1 == -1 || iVar1 + 1 < 0) {
-    uVar2 = *(uint *)(*(int *)(param_8 + 8) + -4);
-    piVar3 = std::string::__getRep(param_1 + 0x1e,uVar2,uVar2);
-    param_1[0x20] = (int)(piVar3 + 3);
-    memcpy((undefined4 *)param_1[0x20],*(undefined4 **)(param_8 + 8),uVar2);
-  }
-  else {
-    param_1[0x20] = *(int *)(param_8 + 8);
-    piVar3 = (int *)(param_1[0x20] + -0xc);
-    if (piVar3 != &DAT_00513d58) {
-      *piVar3 = *piVar3 + 1;
-    }
-  }
-  param_1[0x24] = 0;
-  iVar1 = *(int *)(*(int *)(param_9 + 8) + -0xc);
-  if (iVar1 == -1 || iVar1 + 1 < 0) {
-    uVar2 = *(uint *)(*(int *)(param_9 + 8) + -4);
-    piVar3 = std::string::__getRep(param_1 + 0x22,uVar2,uVar2);
-    param_1[0x24] = (int)(piVar3 + 3);
-    memcpy((undefined4 *)param_1[0x24],*(undefined4 **)(param_9 + 8),uVar2);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x6f0;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -0x6f0;
+  PropertiesViewWindows::PropertiesViewWindows(self,1,0x4f5414,param_3,param_4,(uint *)0x16b2,0,0);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x6f0;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 0x6f0;
+  DictionaryMaintainer::DictionaryMaintainer(self + 0x18);
+  self[3] = (int)&TSDictionarySaveDialog::vftable;
+  self[0x18] = (int)&PTR_LAB_004f5a68;
+  *(undefined ***)self[1] = &PTR_LAB_004f5a84;
+  *(undefined ***)self[2] = &PTR_LAB_004f5a90;
+  *(undefined ***)(*self + 8) = &TSDictionarySaveDialog::vftable_TWindow;
+  self[0x19] = 0;
+  self[0x1a] = param_6;
+  self[0x1b] = param_7;
+  self[0x1c] = param_10;
+  self[0x1d] = param_11;
+  self[0x20] = 0;
+  refs = *(int *)(*(int *)(param_8 + 8) + -0xc);
+  if (refs == -1 || refs + 1 < 0) {
+    len = *(uint *)(*(int *)(param_8 + 8) + -4);
+    rep = std::string::__getRep(self + 0x1e,len,len);
+    self[0x20] = (int)(rep + 3);
+    memcpy((undefined4 *)self[0x20],*(undefined4 **)(param_8 + 8),len);
   }
   else {
-    param_1[0x24] = *(int *)(param_9 + 8);
-    piVar3 = (int *)(param_1[0x24] + -0xc);
-    if (piVar3 != &DAT_00513d58) {
-      *piVar3 = *piVar3 + 1;
+    self[0x20] = *(int *)(param_8 + 8);
+    rep = (int *)(self[0x20] + -0xc);
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
-  param_1[0x26] = -1;
-  param_1[0x29] = 0;
-  param_1[0x2a] = 0;
-  param_1[0x2e] = 0;
-  param_1[0x28] = 0x40;
-  param_1[0x31] = 0;
-  param_1[0x32] = 0;
-  param_1[0x36] = 0;
-  param_1[0x30] = 0x40;
-  FUN_004c7a28(param_1 + 0x38,0,*param_1,0x2fa8,0,0);
-  FUN_0041af38(param_1 + 100,0,param_1,0x1130,1000);
-  FUN_0041b680(param_1 + 0x93,0,param_1,0x1702,0);
-  FUN_004179f0(param_1 + 0xc0,0,param_1,1);
-  FUN_004bf504(param_1 + 0xf2,0,*param_1,0x2cb0,0);
-  FUN_004bf9d8((int *)((int)param_1 + 0x473),0,*param_1,0x1e96,0);
-  FUN_004c7a28((int *)((int)param_1 + 0x51d),0,*param_1,0x2ca6,0,0);
-  FUN_0041af38(param_1 + 0x173,0,param_1,0x8de,0);
-  FUN_004179f0(param_1 + 0x1a2,0,param_1,0x8d4);
-  FUN_004b0c44(param_1,param_5);
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  self[0x24] = 0;
+  refs = *(int *)(*(int *)(param_9 + 8) + -0xc);
+  if (refs == -1 || refs + 1 < 0) {
+    len = *(uint *)(*(int *)(param_9 + 8) + -4);
+    rep = std::string::__getRep(self + 0x22,len,len);
+    self[0x24] = (int)(rep + 3);
+    memcpy((undefined4 *)self[0x24],*(undefined4 **)(param_9 + 8),len);
+  }
+  else {
+    self[0x24] = *(int *)(param_9 + 8);
+    rep = (int *)(self[0x24] + -0xc);
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
+    }
+  }
+  self[0x26] = -1;
+  self[0x29] = 0;
+  self[0x2a] = 0;
+  self[0x2e] = 0;
+  self[0x28] = 0x40;
+  self[0x31] = 0;
+  self[0x32] = 0;
+  self[0x36] = 0;
+  self[0x30] = 0x40;
+  OWL::TStatic::TStatic_4c7a28(self + 0x38,0,*self,0x2fa8,0,0);
+  PVWEdit::PVWEdit(self + 100,0,self,0x1130,1000);
+  PVWStatic::PVWStatic(self + 0x93,0,self,0x1702,0);
+  PVWPushButton::PVWPushButton(self + 0xc0,0,self,1);
+  OWL::TGroupBox::TGroupBox(self + 0xf2,0,*self,0x2cb0,0);
+  OWL::TListBox::TListBox((int *)((int)self + 0x473),0,*self,0x1e96,0);
+  OWL::TStatic::TStatic_4c7a28((int *)((int)self + 0x51d),0,*self,0x2ca6,0,0);
+  PVWEdit::PVWEdit(self + 0x173,0,self,0x8de,0);
+  PVWPushButton::PVWPushButton(self + 0x1a2,0,self,0x8d4);
+  FUN_004b0c44(self,param_5);
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043d32c  TSDictionarySaveDialog::~TSDictionarySaveDialog   (1150 bytes)   [rtti:dtor destructor]
 //   written in code as TSDictionarySaveDialog::_dtor
-void __cdecl TSDictionarySaveDialog::_dtor(int *param_1,byte param_2)
+void __cdecl TSDictionarySaveDialog::_dtor(int *self,byte dtorFlags)
 
 {
-  int iVar1;
-  int *piVar2;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  int prevRefs;
+  int *control;
+  int *control2;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4f5634);
-  if (param_1 == (int *)0x0) goto LAB_0043d79a;
-  param_1[3] = (int)&TSDictionarySaveDialog::vftable;
-  param_1[0x18] = (int)&PTR_LAB_004f5a68;
-  *(undefined ***)param_1[1] = &PTR_LAB_004f5a84;
-  *(undefined ***)param_1[2] = &PTR_LAB_004f5a90;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_004f5a9c;
-  PVWPushButton::_dtor(param_1 + 0x1a2,2);
-  PVWEdit::_dtor(param_1 + 0x173,2);
-  piVar2 = (int *)((int)param_1 + 0x51d);
-  piVar3 = (int *)(*(int *)((int)param_1 + 0x521) + -4);
-  *piVar3 = *piVar3 + -4;
-  *(int *)(*piVar2 + -4) = *(int *)(*piVar2 + -4) + -4;
-  OWL::TControl::_dtor(piVar2,0);
-  piVar3 = (int *)(*(int *)((int)param_1 + 0x521) + -4);
-  *piVar3 = *piVar3 + 4;
-  *(int *)(*piVar2 + -4) = *(int *)(*piVar2 + -4) + 4;
-  piVar3 = (int *)(*(int *)((int)param_1 + 0x521) + -4);
-  *piVar3 = *piVar3 + 0x96;
-  OWL::TWindow::_dtor((undefined4 *)((int)param_1 + 0x545),0);
-  piVar3 = (int *)(*(int *)((int)param_1 + 0x521) + -4);
-  *piVar3 = *piVar3 + -0x96;
-  OWL::TStreamableBase::_dtor((undefined4 *)((int)param_1 + 0x53d),0);
-  OWL::TControl::_dtor((int *)((int)param_1 + 0x473),0);
-  piVar3 = (int *)(*(int *)((int)param_1 + 0x477) + -4);
-  *piVar3 = *piVar3 + 0x96;
-  OWL::TWindow::_dtor((undefined4 *)((int)param_1 + 0x497),0);
-  piVar3 = (int *)(*(int *)((int)param_1 + 0x477) + -4);
-  *piVar3 = *piVar3 + -0x96;
-  OWL::TStreamableBase::_dtor((undefined4 *)((int)param_1 + 0x48f),0);
-  piVar3 = param_1 + 0xf2;
-  *(int *)(param_1[0xf3] + -4) = *(int *)(param_1[0xf3] + -4) + -1;
-  *(int *)(*piVar3 + -4) = *(int *)(*piVar3 + -4) + -1;
-  OWL::TControl::_dtor(piVar3,0);
-  *(int *)(param_1[0xf3] + -4) = *(int *)(param_1[0xf3] + -4) + 1;
-  *(int *)(*piVar3 + -4) = *(int *)(*piVar3 + -4) + 1;
-  *(int *)(param_1[0xf3] + -4) = *(int *)(param_1[0xf3] + -4) + 0x96;
-  OWL::TWindow::_dtor((undefined4 *)((int)param_1 + 0x3ed),0);
-  *(int *)(param_1[0xf3] + -4) = *(int *)(param_1[0xf3] + -4) + -0x96;
-  OWL::TStreamableBase::_dtor((undefined4 *)((int)param_1 + 0x3e5),0);
-  PVWPushButton::_dtor(param_1 + 0xc0,2);
-  PVWStatic::_dtor(param_1 + 0x93,2);
-  PVWEdit::_dtor(param_1 + 100,2);
-  piVar3 = param_1 + 0x38;
-  *(int *)(param_1[0x39] + -4) = *(int *)(param_1[0x39] + -4) + -4;
-  *(int *)(*piVar3 + -4) = *(int *)(*piVar3 + -4) + -4;
-  OWL::TControl::_dtor(piVar3,0);
-  *(int *)(param_1[0x39] + -4) = *(int *)(param_1[0x39] + -4) + 4;
-  *(int *)(*piVar3 + -4) = *(int *)(*piVar3 + -4) + 4;
-  *(int *)(param_1[0x39] + -4) = *(int *)(param_1[0x39] + -4) + 0x96;
-  OWL::TWindow::_dtor(param_1 + 0x42,0);
-  *(int *)(param_1[0x39] + -4) = *(int *)(param_1[0x39] + -4) + -0x96;
-  OWL::TStreamableBase::_dtor(param_1 + 0x40,0);
-  FUN_0040b4f0(param_1 + 0x30,param_1[0x31],param_1[0x32]);
+  if (self == (int *)0x0) goto LAB_0043d79a;
+  self[3] = (int)&TSDictionarySaveDialog::vftable;
+  self[0x18] = (int)&PTR_LAB_004f5a68;
+  *(undefined ***)self[1] = &PTR_LAB_004f5a84;
+  *(undefined ***)self[2] = &PTR_LAB_004f5a90;
+  *(undefined ***)(*self + 8) = &TSDictionarySaveDialog::vftable_TWindow;
+  PVWPushButton::_dtor(self + 0x1a2,2);
+  PVWEdit::_dtor(self + 0x173,2);
+  control = (int *)((int)self + 0x51d);
+  control2 = (int *)(*(int *)((int)self + 0x521) + -4);
+  *control2 = *control2 + -4;
+  *(int *)(*control + -4) = *(int *)(*control + -4) + -4;
+  OWL::TControl::_dtor(control,0);
+  control2 = (int *)(*(int *)((int)self + 0x521) + -4);
+  *control2 = *control2 + 4;
+  *(int *)(*control + -4) = *(int *)(*control + -4) + 4;
+  control2 = (int *)(*(int *)((int)self + 0x521) + -4);
+  *control2 = *control2 + 0x96;
+  OWL::TWindow::_dtor((undefined4 *)((int)self + 0x545),0);
+  control2 = (int *)(*(int *)((int)self + 0x521) + -4);
+  *control2 = *control2 + -0x96;
+  OWL::TStreamableBase::_dtor((undefined4 *)((int)self + 0x53d),0);
+  OWL::TControl::_dtor((int *)((int)self + 0x473),0);
+  control2 = (int *)(*(int *)((int)self + 0x477) + -4);
+  *control2 = *control2 + 0x96;
+  OWL::TWindow::_dtor((undefined4 *)((int)self + 0x497),0);
+  control2 = (int *)(*(int *)((int)self + 0x477) + -4);
+  *control2 = *control2 + -0x96;
+  OWL::TStreamableBase::_dtor((undefined4 *)((int)self + 0x48f),0);
+  control2 = self + 0xf2;
+  *(int *)(self[0xf3] + -4) = *(int *)(self[0xf3] + -4) + -1;
+  *(int *)(*control2 + -4) = *(int *)(*control2 + -4) + -1;
+  OWL::TControl::_dtor(control2,0);
+  *(int *)(self[0xf3] + -4) = *(int *)(self[0xf3] + -4) + 1;
+  *(int *)(*control2 + -4) = *(int *)(*control2 + -4) + 1;
+  *(int *)(self[0xf3] + -4) = *(int *)(self[0xf3] + -4) + 0x96;
+  OWL::TWindow::_dtor((undefined4 *)((int)self + 0x3ed),0);
+  *(int *)(self[0xf3] + -4) = *(int *)(self[0xf3] + -4) + -0x96;
+  OWL::TStreamableBase::_dtor((undefined4 *)((int)self + 0x3e5),0);
+  PVWPushButton::_dtor(self + 0xc0,2);
+  PVWStatic::_dtor(self + 0x93,2);
+  PVWEdit::_dtor(self + 100,2);
+  control2 = self + 0x38;
+  *(int *)(self[0x39] + -4) = *(int *)(self[0x39] + -4) + -4;
+  *(int *)(*control2 + -4) = *(int *)(*control2 + -4) + -4;
+  OWL::TControl::_dtor(control2,0);
+  *(int *)(self[0x39] + -4) = *(int *)(self[0x39] + -4) + 4;
+  *(int *)(*control2 + -4) = *(int *)(*control2 + -4) + 4;
+  *(int *)(self[0x39] + -4) = *(int *)(self[0x39] + -4) + 0x96;
+  OWL::TWindow::_dtor(self + 0x42,0);
+  *(int *)(self[0x39] + -4) = *(int *)(self[0x39] + -4) + -0x96;
+  OWL::TStreamableBase::_dtor(self + 0x40,0);
+  std::_Destroy_range_string(self + 0x30,self[0x31],self[0x32]);
   operator_delete();
-  FUN_0040b4f0(param_1 + 0x28,param_1[0x29],param_1[0x2a]);
+  std::_Destroy_range_string(self + 0x28,self[0x29],self[0x2a]);
   operator_delete();
-  if (param_1[0x24] != 0) {
-    if (*(int *)(param_1[0x24] + -0xc) != -1) {
-      piVar3 = (int *)(param_1[0x24] + -0xc);
-      if (piVar3 == &DAT_00513d58) {
-        iVar1 = 1;
+  if (self[0x24] != 0) {
+    if (*(int *)(self[0x24] + -0xc) != -1) {
+      control2 = (int *)(self[0x24] + -0xc);
+      if (control2 == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar3 == &DAT_00513d58) {
-        iVar1 = 1;
+      else if (control2 == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar1 = *piVar3 + 1;
+        *control2 = *control2 + -1;
+        prevRefs = *control2 + 1;
       }
-      if (iVar1 != 0) goto LAB_0043d669;
+      if (prevRefs != 0) goto LAB_0043d669;
     }
     operator_delete();
-    param_1[0x24] = 0;
+    self[0x24] = 0;
   }
 LAB_0043d669:
-  if (param_1[0x20] != 0) {
-    if (*(int *)(param_1[0x20] + -0xc) != -1) {
-      piVar3 = (int *)(param_1[0x20] + -0xc);
-      if (piVar3 == &DAT_00513d58) {
-        iVar1 = 1;
+  if (self[0x20] != 0) {
+    if (*(int *)(self[0x20] + -0xc) != -1) {
+      control2 = (int *)(self[0x20] + -0xc);
+      if (control2 == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar3 == &DAT_00513d58) {
-        iVar1 = 1;
+      else if (control2 == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar1 = *piVar3 + 1;
+        *control2 = *control2 + -1;
+        prevRefs = *control2 + 1;
       }
-      if (iVar1 != 0) goto LAB_0043d6e3;
+      if (prevRefs != 0) goto LAB_0043d6e3;
     }
     operator_delete();
-    param_1[0x20] = 0;
+    self[0x20] = 0;
   }
 LAB_0043d6e3:
-  DictionaryMaintainer::_dtor(param_1 + 0x18,0);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x6f0;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0x6f0;
-  PropertiesViewWindows::_dtor(param_1,0);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x6f0;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0x6f0;
-  if ((param_2 & 2) != 0) {
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    OWL::TWindow::_dtor(param_1 + 0x1d8,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-    OWL::TStreamableBase::_dtor(param_1 + 0x1d6,0);
+  DictionaryMaintainer::_dtor(self + 0x18,0);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x6f0;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -0x6f0;
+  PropertiesViewWindows::_dtor(self,0);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x6f0;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 0x6f0;
+  if ((dtorFlags & 2) != 0) {
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::_dtor(self + 0x1d8,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+    OWL::TStreamableBase::_dtor(self + 0x1d6,0);
   }
-  if ((param_2 & 1) != 0) {
+  if ((dtorFlags & 1) != 0) {
     operator_delete();
   }
 LAB_0043d79a:
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043d7ac  TSDictionarySaveDialog::vf19   (866 bytes)   [rtti:vtable virtual slot 19]
+// 0x0043d7ac  TSDictionarySaveDialog::OnButton   (866 bytes)   [rtti:vtable virtual slot 19]
+//   vtable slot 19 (introduced by PropertiesViewWindows); a push button, check box or radio button was clicked (PVW*::BNClicked call it with the control id)
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-void __cdecl TSDictionarySaveDialog::vf19(int *param_1,undefined4 param_2,int param_3)
+void __cdecl TSDictionarySaveDialog::OnButton(int *self,undefined4 param_2,int param_3)
 
 {
   int *piVar1;
   int iVar2;
   uint uVar3;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   char cVar4;
-  int local_1d8 [18];
-  undefined4 local_190;
+  int lParam [18];
+  undefined4 unused;
   int local_188;
   int local_184;
-  undefined1 *local_180;
-  undefined4 local_17c;
-  int local_178;
-  int local_174;
-  undefined4 local_170;
-  undefined2 local_160;
-  int local_154;
+  undefined1 *unused2;
+  undefined4 unused3;
+  int unused4;
+  int unused5;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
   int local_14c;
   int local_148;
-  undefined4 local_cc [2];
-  undefined4 local_c4 [34];
-  uint local_3c [2];
-  LPSTR local_34;
-  undefined1 local_14 [8];
-  int local_c;
+  undefined4 streamableBase [2];
+  undefined4 window [34];
+  uint data [2];
+  LPSTR text;
+  undefined1 pvwEdit [8];
+  int str;
   
   __InitExceptBlockLDTC(0x4f56b8);
   if (param_3 != 1) {
     if (param_3 == 0x8d4) {
-      local_160 = 0x20;
-      FUN_004c279c(local_3c,0x80e,(uint *)"TEA&Sympathy Dictionary (TSD)|*.tsd|All Files (*.*)|*.*",0,0,
+      ehContext = 0x20;
+      FUN_004c279c(data,0x80e,(uint *)"TEA&Sympathy Dictionary (TSD)|*.tsd|All Files (*.*)|*.*",0,0,
                    (uint)(PTR_DAT_004f33b8 + 1),0,0,0);
-      local_154 = local_154 + 1;
-      local_160 = 0x2c;
-      GetWindowTextA(*(HWND *)(param_1[0x173] + 0xc),local_34,0x104);
-      local_160 = 0x38;
-      piVar1 = FUN_004c2e14(&local_14c,0,*param_1,(int)local_3c,0,0x4f545b,0);
-      local_154 = local_154 + 6;
+      ehDtorCount = ehDtorCount + 1;
+      ehContext = 0x2c;
+      GetWindowTextA(*(HWND *)(self[0x173] + 0xc),text,0x104);
+      ehContext = 0x38;
+      piVar1 = OWL::TFileSaveDialog::TFileSaveDialog(&local_14c,0,*self,(int)data,0,0x4f545b,0);
+      ehDtorCount = ehDtorCount + 6;
       iVar2 = (**(code **)(piVar1[3] + 0x14))();
       cVar4 = iVar2 == 1;
       *(int *)(local_148 + -4) = *(int *)(local_148 + -4) + -0x5c;
       *(int *)(local_14c + -4) = *(int *)(local_14c + -4) + -0x5c;
-      local_154 = local_154 + -6;
+      ehDtorCount = ehDtorCount + -6;
       OWL::TCommonDialog::_dtor(&local_14c,0);
       *(int *)(local_148 + -4) = *(int *)(local_148 + -4) + 0x5c;
       *(int *)(local_14c + -4) = *(int *)(local_14c + -4) + 0x5c;
       *(int *)(local_148 + -4) = *(int *)(local_148 + -4) + 0x96;
-      local_154 = local_154 + -2;
-      OWL::TWindow::_dtor(local_c4,0);
+      ehDtorCount = ehDtorCount + -2;
+      OWL::TWindow::_dtor(window,0);
       *(int *)(local_148 + -4) = *(int *)(local_148 + -4) + -0x96;
-      local_154 = local_154 + -1;
-      OWL::TStreamableBase::_dtor(local_cc,0);
+      ehDtorCount = ehDtorCount + -1;
+      OWL::TStreamableBase::_dtor(streamableBase,0);
       if (cVar4 != '\0') {
-        FUN_0041b1ec(param_1 + 0x173,local_34);
+        PVWEdit::SetText(self + 0x173,text);
       }
-      local_154 = local_154 + -1;
-      OWL::TOpenSaveDialog::TData::_dtor((int)local_3c,2);
+      ehDtorCount = ehDtorCount + -1;
+      OWL::TOpenSaveDialog::TData::_dtor((int)data,2);
     }
     goto LAB_0043dafa;
   }
-  if (param_1[0x19] != 1) goto LAB_0043dafa;
-  TSDictionarySaveDialog::Child7830_Notify1((int)param_1);
-  FUN_0043e02c(param_1,'\0');
-  param_1[0x19] = 2;
+  if (self[0x19] != 1) goto LAB_0043dafa;
+  TSDictionarySaveDialog::Child7830_Notify1((int)self);
+  TSDictionarySaveDialog::FocusControl(self,'\0');
+  self[0x19] = 2;
   uVar3 = 1;
-  if (param_1[0x1b] < 0) {
-    local_184 = FUN_004bfdd8((int *)((int)param_1 + 0x473),(LPARAM)local_1d8,0x10);
-    piVar1 = local_1d8;
+  if (self[0x1b] < 0) {
+    local_184 = FUN_004bfdd8((int *)((int)self + 0x473),(LPARAM)lParam,0x10);
+    piVar1 = lParam;
     local_188 = 0;
     while ((local_188 < local_184 && (uVar3 != 0))) {
       iVar2 = *piVar1;
-      param_1[0x1b] = iVar2;
-      uVar3 = FUN_0043db94(param_1,iVar2 * 0x10 + param_1[0x29]);
+      self[0x1b] = iVar2;
+      uVar3 = TSDictionarySaveDialog::SaveDictionary(self,iVar2 * 0x10 + self[0x29]);
       local_188 = local_188 + 1;
       piVar1 = piVar1 + 1;
     }
-    param_1[0x1b] = -1;
+    self[0x1b] = -1;
   }
   else {
-    local_160 = 8;
-    FUN_0041b2b0((int)local_14,param_1 + 100);
-    local_154 = local_154 + 1;
-    uVar3 = FUN_0043db94(param_1,(int)(param_1 + 0x1e));
-    local_154 = local_154 + -1;
-    if (local_c != 0) {
-      if (*(int *)(local_c + -0xc) != -1) {
-        piVar1 = (int *)(local_c + -0xc);
-        if (piVar1 == &DAT_00513d58) {
+    ehContext = 8;
+    PVWEdit::GetText((int)pvwEdit,self + 100);
+    ehDtorCount = ehDtorCount + 1;
+    uVar3 = TSDictionarySaveDialog::SaveDictionary(self,(int)(self + 0x1e));
+    ehDtorCount = ehDtorCount + -1;
+    if (str != 0) {
+      if (*(int *)(str + -0xc) != -1) {
+        piVar1 = (int *)(str + -0xc);
+        if (piVar1 == &g_nullStringRep) {
           iVar2 = 1;
         }
-        else if (piVar1 == &DAT_00513d58) {
+        else if (piVar1 == &g_nullStringRep) {
           iVar2 = 1;
         }
         else {
@@ -354,335 +355,337 @@ void __cdecl TSDictionarySaveDialog::vf19(int *param_1,undefined4 param_2,int pa
         }
         if (iVar2 != 0) goto LAB_0043d957;
       }
-      local_174 = local_c + -0xc;
-      local_178 = local_c + -0xc;
+      unused5 = str + -0xc;
+      unused4 = str + -0xc;
       operator_delete();
-      local_17c = 0;
-      local_180 = local_14;
-      local_c = 0;
-      local_190 = 0;
+      unused3 = 0;
+      unused2 = pvwEdit;
+      str = 0;
+      unused = 0;
     }
   }
 LAB_0043d957:
-  if ((param_1[0x19] == 2) && (uVar3 != 0)) {
-    param_1[0x19] = 4;
-    (**(code **)(param_1[3] + 0x20))();
+  if ((self[0x19] == 2) && (uVar3 != 0)) {
+    self[0x19] = 4;
+    (**(code **)(self[3] + 0x20))();
   }
   else {
-    FUN_0043e02c(param_1,'\x01');
-    FUN_0043dfb0((int)param_1);
+    TSDictionarySaveDialog::FocusControl(self,'\x01');
+    TSDictionarySaveDialog::UpdateOkButton((int)self);
   }
 LAB_0043dafa:
-  *in_FS_OFFSET = local_170;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043db94  FUN_0043db94   (1052 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-uint __cdecl FUN_0043db94(int *param_1,int param_2)
+// 0x0043db94  TSDictionarySaveDialog::SaveDictionary   (1052 bytes)   [analysis]
+//   writes the edited word list as a .tsd file (WriteTsdDictionary) next to the chosen name and reopens it ("DictionaryOpen")
+uint __cdecl TSDictionarySaveDialog::SaveDictionary(int *self,int fileName)
 
 {
-  uint *puVar1;
-  int iVar2;
-  int iVar3;
+  uint *description;
+  int longest;
+  int wordLists;
   uint uVar4;
-  int *piVar5;
-  undefined4 *in_FS_OFFSET;
+  int *strRep;
+  undefined4 *sehChainHead;
   int in_stack_0000000c;
-  LPCSTR pCVar6;
-  int iVar7;
-  int iVar8;
-  undefined1 *puVar9;
-  int iVar10;
-  _FILETIME local_9c;
-  undefined1 *local_94;
-  undefined4 local_90;
-  int local_8c;
-  int local_88;
-  undefined1 *local_84;
-  undefined4 local_80;
-  int local_7c;
-  int local_78;
+  LPCSTR fileName2;
+  int shortest;
+  int progressTotal;
+  undefined1 *rhs;
+  int options;
+  _FILETIME fileTime;
+  undefined1 *unused;
+  undefined4 unused2;
+  int unused3;
+  int unused4;
+  undefined1 *unused5;
+  undefined4 unused6;
+  int unused7;
+  int unused8;
   char *local_6c;
-  undefined4 local_68;
-  undefined2 local_58;
-  int local_4c;
-  undefined1 local_44 [8];
-  int local_3c;
-  undefined1 local_34 [8];
-  int local_2c;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 pvwStatic [8];
+  int str2;
+  undefined1 result [8];
+  int str3;
   undefined1 local_24 [8];
-  int local_1c;
-  undefined1 local_14 [8];
+  int str4;
+  undefined1 str [8];
   LPCSTR local_c;
   
   __InitExceptBlockLDTC(0x4f5758);
-  uVar4 = DAT_005140ac;
-  if (*(uint *)(*(int *)(param_2 + 8) + -4) < DAT_005140ac) {
-    uVar4 = *(uint *)(*(int *)(param_2 + 8) + -4);
+  uVar4 = g_stringNpos;
+  if (*(uint *)(*(int *)(fileName + 8) + -4) < g_stringNpos) {
+    uVar4 = *(uint *)(*(int *)(fileName + 8) + -4);
   }
-  local_6c = FUN_00420b88(*(char **)(param_2 + 8),'\\',uVar4);
-  uVar4 = DAT_005140ac;
+  local_6c = memrchr(*(char **)(fileName + 8),'\\',uVar4);
+  uVar4 = g_stringNpos;
   if (local_6c != (char *)0x0) {
-    uVar4 = (int)local_6c - *(int *)(param_2 + 8);
+    uVar4 = (int)local_6c - *(int *)(fileName + 8);
   }
-  puVar1 = (uint *)FUN_004e0520((char *)0x0);
-  if (puVar1 == (uint *)0x0) {
-    puVar1 = (uint *)("DictionaryOpen" + 0xe);
+  description = (uint *)FUN_004e0520((char *)0x0);
+  if (description == (uint *)0x0) {
+    description = (uint *)("DictionaryOpen" + 0xe);
   }
-  local_58 = 0x14;
-  std::string::string_from_cstr((int)local_14,puVar1);
-  local_4c = local_4c + 1;
-  local_58 = 8;
+  ehContext = 0x14;
+  std::string::string_from_cstr((int)str,description);
+  ehDtorCount = ehDtorCount + 1;
+  ehContext = 8;
   if (uVar4 != 0xffffffff) {
-    local_58 = 0x20;
-    puVar9 = local_14;
-    FUN_004d6118((int)local_24,param_2,0,uVar4 + 1);
-    local_4c = local_4c + 1;
-    FUN_00436b94((int)local_34,(int)local_24,(int)puVar9);
-    local_4c = local_4c + 1;
-    FUN_004cf384((int)local_14,(int)local_34);
-    local_4c = local_4c + -1;
-    if (local_2c != 0) {
-      if (*(int *)(local_2c + -0xc) != -1) {
-        piVar5 = (int *)(local_2c + -0xc);
-        if (piVar5 == &DAT_00513d58) {
-          iVar2 = 1;
+    ehContext = 0x20;
+    rhs = str;
+    std::string::substr((int)local_24,fileName,0,uVar4 + 1);
+    ehDtorCount = ehDtorCount + 1;
+    std::operator_plus((int)result,(int)local_24,(int)rhs);
+    ehDtorCount = ehDtorCount + 1;
+    std::string::operator_assign((int)str,(int)result);
+    ehDtorCount = ehDtorCount + -1;
+    if (str3 != 0) {
+      if (*(int *)(str3 + -0xc) != -1) {
+        strRep = (int *)(str3 + -0xc);
+        if (strRep == &g_nullStringRep) {
+          longest = 1;
         }
-        else if (piVar5 == &DAT_00513d58) {
-          iVar2 = 1;
+        else if (strRep == &g_nullStringRep) {
+          longest = 1;
         }
         else {
-          *piVar5 = *piVar5 + -1;
-          iVar2 = *piVar5 + 1;
+          *strRep = *strRep + -1;
+          longest = *strRep + 1;
         }
-        if (iVar2 != 0) goto LAB_0043dce1;
+        if (longest != 0) goto LAB_0043dce1;
       }
-      local_78 = local_2c + -0xc;
-      local_7c = local_2c + -0xc;
+      unused8 = str3 + -0xc;
+      unused7 = str3 + -0xc;
       operator_delete();
-      local_80 = 0;
-      local_84 = local_34;
-      local_2c = 0;
+      unused6 = 0;
+      unused5 = result;
+      str3 = 0;
     }
 LAB_0043dce1:
-    local_58 = 8;
-    local_4c = local_4c + -1;
-    if (local_1c != 0) {
-      if (*(int *)(local_1c + -0xc) != -1) {
-        piVar5 = (int *)(local_1c + -0xc);
-        if (piVar5 == &DAT_00513d58) {
-          iVar2 = 1;
+    ehContext = 8;
+    ehDtorCount = ehDtorCount + -1;
+    if (str4 != 0) {
+      if (*(int *)(str4 + -0xc) != -1) {
+        strRep = (int *)(str4 + -0xc);
+        if (strRep == &g_nullStringRep) {
+          longest = 1;
         }
-        else if (piVar5 == &DAT_00513d58) {
-          iVar2 = 1;
+        else if (strRep == &g_nullStringRep) {
+          longest = 1;
         }
         else {
-          *piVar5 = *piVar5 + -1;
-          iVar2 = *piVar5 + 1;
+          *strRep = *strRep + -1;
+          longest = *strRep + 1;
         }
-        if (iVar2 != 0) goto LAB_0043dd7a;
+        if (longest != 0) goto LAB_0043dd7a;
       }
-      local_88 = local_1c + -0xc;
-      local_8c = local_1c + -0xc;
+      unused4 = str4 + -0xc;
+      unused3 = str4 + -0xc;
       operator_delete();
-      local_90 = 0;
-      local_94 = local_24;
-      local_1c = 0;
+      unused2 = 0;
+      unused = local_24;
+      str4 = 0;
     }
   }
 LAB_0043dd7a:
-  iVar2 = FUN_00408c68(param_1[0x1a],param_1[0x1b]);
-  if (iVar2 == 0) {
-    FUN_00408c98(param_1[0x1a],param_1[0x1b]);
-    (**(code **)(param_1[3] + 0xc4))();
+  longest = TSDictionaryList::EnsureCurrent(self[0x1a],self[0x1b]);
+  if (longest == 0) {
+    TSDictionaryList::GetPath(self[0x1a],self[0x1b]);
+    (**(code **)(self[3] + 0xc4))();
     uVar4 = 0;
   }
   else {
-    iVar10 = 0;
-    iVar8 = 100;
-    iVar2 = param_1[0x1d];
-    iVar7 = param_1[0x1c];
-    puVar1 = *(uint **)(in_stack_0000000c + 8);
-    pCVar6 = local_c;
-    iVar3 = FUN_00408edc(param_1[0x1a],param_1[0x1b]);
-    uVar4 = FUN_00440d08(param_1 + 0x18,iVar3,pCVar6,puVar1,iVar7,iVar2,iVar8,iVar10);
+    options = 0;
+    progressTotal = 100;
+    longest = self[0x1d];
+    shortest = self[0x1c];
+    description = *(uint **)(in_stack_0000000c + 8);
+    fileName2 = local_c;
+    wordLists = TSDictionaryList::GetSymbolBytes(self[0x1a],self[0x1b]);
+    uVar4 = WriteTsdDictionary(self + 0x18,wordLists,fileName2,description,shortest,longest,progressTotal,options);
     uVar4 = uVar4 & 0xff;
   }
   if (uVar4 != 0) {
-    FUN_00437928(param_2,&local_9c);
-    iVar2 = FUN_004df65c(local_c,*(LPCSTR *)(param_2 + 8));
-    if (iVar2 != 0) {
-      (**(code **)(param_1[3] + 0xc4))();
+    BackupFile(fileName,&fileTime);
+    longest = FUN_004df65c(local_c,*(LPCSTR *)(fileName + 8));
+    if (longest != 0) {
+      (**(code **)(self[3] + 0xc4))();
       uVar4 = 0;
     }
   }
   if (uVar4 == 0) {
     thunk_FUN_004e0588(local_c);
-    local_58 = 0x50;
-    FUN_0041b914((int)local_44,param_1 + 0x93);
-    local_4c = local_4c + 1;
-    local_58 = 0x44;
-    (**(code **)(*(int *)(*(int *)(*param_1 + 0x6c) + 0x1b) + 0x30))();
-    local_4c = local_4c + -1;
-    if (local_3c != 0) {
-      if (*(int *)(local_3c + -0xc) != -1) {
-        piVar5 = (int *)(local_3c + -0xc);
-        if (piVar5 == &DAT_00513d58) {
-          iVar2 = 1;
+    ehContext = 0x50;
+    PVWStatic::GetText((int)pvwStatic,self + 0x93);
+    ehDtorCount = ehDtorCount + 1;
+    ehContext = 0x44;
+    (**(code **)(*(int *)(*(int *)(*self + 0x6c) + 0x1b) + 0x30))();
+    ehDtorCount = ehDtorCount + -1;
+    if (str2 != 0) {
+      if (*(int *)(str2 + -0xc) != -1) {
+        strRep = (int *)(str2 + -0xc);
+        if (strRep == &g_nullStringRep) {
+          longest = 1;
         }
-        else if (piVar5 == &DAT_00513d58) {
-          iVar2 = 1;
+        else if (strRep == &g_nullStringRep) {
+          longest = 1;
         }
         else {
-          *piVar5 = *piVar5 + -1;
-          iVar2 = *piVar5 + 1;
+          *strRep = *strRep + -1;
+          longest = *strRep + 1;
         }
-        if (iVar2 != 0) goto LAB_0043df06;
+        if (longest != 0) goto LAB_0043df06;
       }
       operator_delete();
-      local_3c = 0;
+      str2 = 0;
     }
 LAB_0043df06:
-    local_58 = 8;
+    ehContext = 8;
   }
   uVar4 = (uint)(uVar4 != 0);
-  local_4c = local_4c + -1;
+  ehDtorCount = ehDtorCount + -1;
   if (local_c != (LPCSTR)0x0) {
     if (*(int *)(local_c + -0xc) != -1) {
-      piVar5 = (int *)(local_c + -0xc);
-      if (piVar5 == &DAT_00513d58) {
-        iVar2 = 1;
+      strRep = (int *)(local_c + -0xc);
+      if (strRep == &g_nullStringRep) {
+        longest = 1;
       }
-      else if (piVar5 == &DAT_00513d58) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        longest = 1;
       }
       else {
-        *piVar5 = *piVar5 + -1;
-        iVar2 = *piVar5 + 1;
+        *strRep = *strRep + -1;
+        longest = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_0043df98;
+      if (longest != 0) goto LAB_0043df98;
     }
     operator_delete();
   }
 LAB_0043df98:
-  *in_FS_OFFSET = local_68;
+  *sehChainHead = sehPrevFrame;
   return uVar4;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043dfb0  FUN_0043dfb0   (123 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_0043dfb0(int param_1)
+// 0x0043dfb0  TSDictionarySaveDialog::UpdateOkButton   (123 bytes)   [analysis]
+//   enables OK when a file name is entered
+undefined4 __cdecl TSDictionarySaveDialog::UpdateOkButton(int self)
 
 {
   int iVar1;
   undefined4 uVar2;
   
-  if (*(int *)(param_1 + 0x6c) < 0) {
-    iVar1 = FUN_004bfd60((int *)(param_1 + 0x473));
+  if (*(int *)(self + 0x6c) < 0) {
+    iVar1 = FUN_004bfd60((int *)(self + 0x473));
     if (iVar1 < 1) {
-      *(undefined4 *)(param_1 + 100) = 0;
-      (**(code **)(*(int *)(param_1 + 0xc) + 0xc0))();
+      *(undefined4 *)(self + 100) = 0;
+      (**(code **)(*(int *)(self + 0xc) + 0xc0))();
     }
     else {
-      *(undefined4 *)(param_1 + 100) = 1;
-      (**(code **)(*(int *)(param_1 + 0xc) + 0xc0))();
+      *(undefined4 *)(self + 100) = 1;
+      (**(code **)(*(int *)(self + 0xc) + 0xc0))();
     }
   }
   else {
-    *(undefined4 *)(param_1 + 100) = 1;
+    *(undefined4 *)(self + 100) = 1;
   }
-  uVar2 = (**(code **)(*(int *)(*(int *)(param_1 + 0x300) + 8) + 0x60))();
+  uVar2 = (**(code **)(*(int *)(*(int *)(self + 0x300) + 8) + 0x60))();
   return uVar2;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043e02c  FUN_0043e02c   (72 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_0043e02c(int *param_1,char param_2)
+// 0x0043e02c  TSDictionarySaveDialog::FocusControl   (72 bytes)   [analysis]
+//   moves the focus to the name edit (or to the list)
+void __cdecl TSDictionarySaveDialog::FocusControl(int *self,char toList)
 
 {
   HWND hWnd;
   
-  if (param_2 == '\0') {
-    hWnd = GetDlgItem(*(HWND *)(*param_1 + 0xc),2);
+  if (toList == '\0') {
+    hWnd = GetDlgItem(*(HWND *)(*self + 0xc),2);
     SetFocus(hWnd);
   }
-  (**(code **)(*(int *)(param_1[100] + 8) + 0x60))();
-  (**(code **)(*(int *)(param_1[0xc0] + 8) + 0x60))();
+  (**(code **)(*(int *)(self[100] + 8) + 0x60))();
+  (**(code **)(*(int *)(self[0xc0] + 8) + 0x60))();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043e074  TSDictionarySaveDialog::vf11   (2081 bytes)   [rtti:vtable virtual slot 11]
+// 0x0043e074  TSDictionarySaveDialog::SetupWindow   (2081 bytes)   [rtti:vtable virtual slot 30]
+//   override of OWL::TWindow vtable slot 30, from TSDictionarySaveDialog's OWL::TWindow subobject vtable at 0x004f5a9c (through the this-adjusting thunk at 0x0043ed4d); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: TSDictionarySaveDialog::vf11 [rtti:vtable]
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-void __cdecl TSDictionarySaveDialog::vf11(int *param_1)
+void __cdecl TSDictionarySaveDialog::SetupWindow(int *self)
 
 {
-  uint uVar1;
-  int *piVar2;
-  uint *puVar3;
+  uint len;
+  int *rep;
+  uint *path;
   int iVar4;
-  int iVar5;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_80;
+  int index;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   undefined1 local_58 [8];
   undefined4 *local_50;
   int local_48;
-  undefined1 local_44 [8];
+  undefined1 value [8];
   undefined4 *local_3c;
-  undefined1 local_34 [8];
-  int local_2c;
-  undefined1 local_24 [8];
-  int local_1c;
+  undefined1 result [8];
+  int str;
+  undefined1 result2 [8];
+  int str2;
   undefined1 local_14 [8];
-  int local_c;
+  int str3;
   
   __InitExceptBlockLDTC(0x4f585c);
-  PropertiesViewWindows::vf11(param_1);
-  if (param_1[0x1b] < 0) {
-    for (iVar5 = 0; iVar4 = TSDictionaryList::GetCount(param_1[0x1a]), iVar5 < iVar4; iVar5 = iVar5 + 1) {
-      FUN_00408cbc(local_34,param_1[0x1a],iVar5);
-      (**(code **)(*(int *)((int)param_1 + 0x47f) + 0x60))();
-      puVar3 = (uint *)FUN_00408c98(param_1[0x1a],iVar5);
-      std::string::string_from_cstr((int)local_44,puVar3);
-      if (param_1[0x2a] == param_1[0x2e]) {
-        FUN_0040e240((int)(param_1 + 0x28),param_1[0x2a],(int)local_44);
+  PropertiesViewWindows::SetupWindow(self);
+  if (self[0x1b] < 0) {
+    for (index = 0; iVar4 = TSDictionaryList::GetCount(self[0x1a]), index < iVar4; index = index + 1) {
+      TSDictionaryList::GetFileTitle(result,self[0x1a],index);
+      (**(code **)(*(int *)((int)self + 0x47f) + 0x60))();
+      path = (uint *)TSDictionaryList::GetPath(self[0x1a],index);
+      std::string::string_from_cstr((int)value,path);
+      if (self[0x2a] == self[0x2e]) {
+        std::vector_string::insert_aux((int)(self + 0x28),self[0x2a],(int)value);
       }
       else {
-        local_48 = param_1[0x2a];
+        local_48 = self[0x2a];
         if (local_48 != 0) {
           *(undefined4 *)(local_48 + 8) = 0;
           if (local_3c[-3] == -1 || local_3c[-3] + 1 < 0) {
-            uVar1 = local_3c[-1];
-            piVar2 = std::string::__getRep(local_48,uVar1,uVar1);
-            *(int **)(local_48 + 8) = piVar2 + 3;
-            memcpy(*(undefined4 **)(local_48 + 8),local_3c,uVar1);
+            len = local_3c[-1];
+            rep = std::string::__getRep(local_48,len,len);
+            *(int **)(local_48 + 8) = rep + 3;
+            memcpy(*(undefined4 **)(local_48 + 8),local_3c,len);
           }
           else {
             *(undefined4 **)(local_48 + 8) = local_3c;
-            piVar2 = (int *)(*(int *)(local_48 + 8) + -0xc);
-            if (piVar2 != &DAT_00513d58) {
-              *piVar2 = *piVar2 + 1;
+            rep = (int *)(*(int *)(local_48 + 8) + -0xc);
+            if (rep != &g_nullStringRep) {
+              *rep = *rep + 1;
             }
           }
         }
-        param_1[0x2a] = param_1[0x2a] + 0x10;
+        self[0x2a] = self[0x2a] + 0x10;
       }
       if (local_3c != (undefined4 *)0x0) {
         if (local_3c[-3] != -1) {
-          piVar2 = local_3c + -3;
-          if (piVar2 == &DAT_00513d58) {
+          rep = local_3c + -3;
+          if (rep == &g_nullStringRep) {
             iVar4 = 1;
           }
-          else if (piVar2 == &DAT_00513d58) {
+          else if (rep == &g_nullStringRep) {
             iVar4 = 1;
           }
           else {
-            *piVar2 = *piVar2 + -1;
-            iVar4 = *piVar2 + 1;
+            *rep = *rep + -1;
+            iVar4 = *rep + 1;
           }
           if (iVar4 != 0) goto LAB_0043e550;
         }
@@ -690,42 +693,42 @@ void __cdecl TSDictionarySaveDialog::vf11(int *param_1)
         local_3c = (undefined4 *)0x0;
       }
 LAB_0043e550:
-      FUN_00408d5c(local_58,param_1[0x1a],iVar5);
-      if (param_1[0x32] == param_1[0x36]) {
-        FUN_0040e240((int)(param_1 + 0x30),param_1[0x32],(int)local_58);
+      TSDictionaryList::GetDescription(local_58,self[0x1a],index);
+      if (self[0x32] == self[0x36]) {
+        std::vector_string::insert_aux((int)(self + 0x30),self[0x32],(int)local_58);
       }
       else {
-        iVar4 = param_1[0x32];
+        iVar4 = self[0x32];
         if (iVar4 != 0) {
           *(undefined4 *)(iVar4 + 8) = 0;
           if (local_50[-3] == -1 || local_50[-3] + 1 < 0) {
-            uVar1 = local_50[-1];
-            piVar2 = std::string::__getRep(iVar4,uVar1,uVar1);
-            *(int **)(iVar4 + 8) = piVar2 + 3;
-            memcpy(*(undefined4 **)(iVar4 + 8),local_50,uVar1);
+            len = local_50[-1];
+            rep = std::string::__getRep(iVar4,len,len);
+            *(int **)(iVar4 + 8) = rep + 3;
+            memcpy(*(undefined4 **)(iVar4 + 8),local_50,len);
           }
           else {
             *(undefined4 **)(iVar4 + 8) = local_50;
-            piVar2 = (int *)(*(int *)(iVar4 + 8) + -0xc);
-            if (piVar2 != &DAT_00513d58) {
-              *piVar2 = *piVar2 + 1;
+            rep = (int *)(*(int *)(iVar4 + 8) + -0xc);
+            if (rep != &g_nullStringRep) {
+              *rep = *rep + 1;
             }
           }
         }
-        param_1[0x32] = param_1[0x32] + 0x10;
+        self[0x32] = self[0x32] + 0x10;
       }
       if (local_50 != (undefined4 *)0x0) {
         if (local_50[-3] != -1) {
-          piVar2 = local_50 + -3;
-          if (piVar2 == &DAT_00513d58) {
+          rep = local_50 + -3;
+          if (rep == &g_nullStringRep) {
             iVar4 = 1;
           }
-          else if (piVar2 == &DAT_00513d58) {
+          else if (rep == &g_nullStringRep) {
             iVar4 = 1;
           }
           else {
-            *piVar2 = *piVar2 + -1;
-            iVar4 = *piVar2 + 1;
+            *rep = *rep + -1;
+            iVar4 = *rep + 1;
           }
           if (iVar4 != 0) goto LAB_0043e78c;
         }
@@ -733,203 +736,205 @@ LAB_0043e550:
         local_50 = (undefined4 *)0x0;
       }
 LAB_0043e78c:
-      if (local_2c != 0) {
-        if (*(int *)(local_2c + -0xc) != -1) {
-          piVar2 = (int *)(local_2c + -0xc);
-          if (piVar2 == &DAT_00513d58) {
+      if (str != 0) {
+        if (*(int *)(str + -0xc) != -1) {
+          rep = (int *)(str + -0xc);
+          if (rep == &g_nullStringRep) {
             iVar4 = 1;
           }
-          else if (piVar2 == &DAT_00513d58) {
+          else if (rep == &g_nullStringRep) {
             iVar4 = 1;
           }
           else {
-            *piVar2 = *piVar2 + -1;
-            iVar4 = *piVar2 + 1;
+            *rep = *rep + -1;
+            iVar4 = *rep + 1;
           }
           if (iVar4 != 0) goto LAB_0043e825;
         }
         operator_delete();
-        local_2c = 0;
+        str = 0;
       }
 LAB_0043e825:
     }
-    FUN_004a76a8(*(int *)((int)param_1 + 0x473),0x185,1,0);
-    TSDictionarySaveDialog::Child7830_Notify1((int)param_1);
+    FUN_004a76a8(*(int *)((int)self + 0x473),0x185,1,0);
+    TSDictionarySaveDialog::Child7830_Notify1((int)self);
     goto LAB_0043e87e;
   }
-  (**(code **)(*(int *)(param_1[0xf2] + 8) + 0x60))();
-  (**(code **)(*(int *)(*(int *)((int)param_1 + 0x473) + 8) + 0x60))();
-  (**(code **)(*(int *)(*(int *)((int)param_1 + 0x51d) + 8) + 0x60))();
-  (**(code **)(*(int *)(param_1[0x173] + 8) + 0x60))();
-  (**(code **)(*(int *)(param_1[0x1a2] + 8) + 0x60))();
-  FUN_00408cbc(local_14,param_1[0x1a],param_1[0x1b]);
-  FUN_00464a94((int)local_24,param_1[0xe],0x170c);
-  std::string::append((int)local_14,(int)local_24);
-  if (local_1c != 0) {
-    if (*(int *)(local_1c + -0xc) != -1) {
-      piVar2 = (int *)(local_1c + -0xc);
-      if (piVar2 == &DAT_00513d58) {
-        iVar5 = 1;
+  (**(code **)(*(int *)(self[0xf2] + 8) + 0x60))();
+  (**(code **)(*(int *)(*(int *)((int)self + 0x473) + 8) + 0x60))();
+  (**(code **)(*(int *)(*(int *)((int)self + 0x51d) + 8) + 0x60))();
+  (**(code **)(*(int *)(self[0x173] + 8) + 0x60))();
+  (**(code **)(*(int *)(self[0x1a2] + 8) + 0x60))();
+  TSDictionaryList::GetFileTitle(local_14,self[0x1a],self[0x1b]);
+  TEAAppWindows::LoadResourceString((int)result2,self[0xe],0x170c);
+  std::string::append((int)local_14,(int)result2);
+  if (str2 != 0) {
+    if (*(int *)(str2 + -0xc) != -1) {
+      rep = (int *)(str2 + -0xc);
+      if (rep == &g_nullStringRep) {
+        index = 1;
       }
-      else if (piVar2 == &DAT_00513d58) {
-        iVar5 = 1;
+      else if (rep == &g_nullStringRep) {
+        index = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar5 = *piVar2 + 1;
+        *rep = *rep + -1;
+        index = *rep + 1;
       }
-      if (iVar5 != 0) goto LAB_0043e1fe;
+      if (index != 0) goto LAB_0043e1fe;
     }
     operator_delete();
-    local_1c = 0;
+    str2 = 0;
   }
 LAB_0043e1fe:
-  std::string::append((int)local_14,(int)(param_1 + 0x22));
-  FUN_0041b474(param_1 + 100,(int)local_14);
-  if (local_c != 0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      piVar2 = (int *)(local_c + -0xc);
-      if (piVar2 == &DAT_00513d58) {
-        iVar5 = 1;
+  std::string::append((int)local_14,(int)(self + 0x22));
+  PVWEdit::SetIntValue(self + 100,(int)local_14);
+  if (str3 != 0) {
+    if (*(int *)(str3 + -0xc) != -1) {
+      rep = (int *)(str3 + -0xc);
+      if (rep == &g_nullStringRep) {
+        index = 1;
       }
-      else if (piVar2 == &DAT_00513d58) {
-        iVar5 = 1;
+      else if (rep == &g_nullStringRep) {
+        index = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar5 = *piVar2 + 1;
+        *rep = *rep + -1;
+        index = *rep + 1;
       }
-      if (iVar5 != 0) goto LAB_0043e87e;
+      if (index != 0) goto LAB_0043e87e;
     }
     operator_delete();
-    local_c = 0;
+    str3 = 0;
   }
 LAB_0043e87e:
-  FUN_0043dfb0((int)param_1);
-  *in_FS_OFFSET = local_80;
+  TSDictionarySaveDialog::UpdateOkButton((int)self);
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043e898  TSDictionarySaveDialog::vf9   (36 bytes)   [rtti:vtable virtual slot 9]
-void __cdecl TSDictionarySaveDialog::vf9(int *param_1,INT_PTR param_2)
+// 0x0043e898  TSDictionarySaveDialog::Destroy   (36 bytes)   [rtti:vtable virtual slot 6]
+//   override of OWL::TWindow vtable slot 6, from TSDictionarySaveDialog's OWL::TWindow subobject vtable at 0x004f5a9c (through the this-adjusting thunk at 0x0043ee0a); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: TSDictionarySaveDialog::vf9 [rtti:vtable]
+void __cdecl TSDictionarySaveDialog::Destroy(int *self,INT_PTR result)
 
 {
-  if (param_1[0x19] == 2) {
-    param_1[0x19] = 3;
+  if (self[0x19] == 2) {
+    self[0x19] = 3;
     return;
   }
-  PropertiesViewWindows::vf9(param_1,param_2);
+  PropertiesViewWindows::Destroy(self,result);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043e8bc  TSDictionarySaveDialog::vf48   (63 bytes)   [rtti:vtable virtual slot 48]
-void __cdecl TSDictionarySaveDialog::vf48(int param_1,byte *param_2)
+void __cdecl TSDictionarySaveDialog::vf48(int self,byte *format)
 
 {
-  CHAR local_404 [1024];
+  CHAR string_ [1024];
   
-  FUN_004e0344(local_404,param_2);
-  SetWindowTextA(*(HWND *)(*(int *)(param_1 + 0x24c) + 0xc),local_404);
+  sprintf(string_,format);
+  SetWindowTextA(*(HWND *)(*(int *)(self + 0x24c) + 0xc),string_);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043e8fc  TSDictionarySaveDialog::vf49   (29 bytes)   [rtti:vtable virtual slot 49]
-void __cdecl TSDictionarySaveDialog::vf49(int param_1)
+void __cdecl TSDictionarySaveDialog::vf49(int self)
 
 {
-  (**(code **)(*(int *)(param_1 + 0xc) + 0xc0))();
+  (**(code **)(*(int *)(self + 0xc) + 0xc0))();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043e91c  TSDictionarySaveDialog::Child7830_Notify1   (741 bytes)   [owl:response-table message-handler]
 //   EV_CHILD_NOTIFY(id 7830, code 1)
-undefined4 __cdecl TSDictionarySaveDialog::Child7830_Notify1(int param_1)
+undefined4 __cdecl TSDictionarySaveDialog::Child7830_Notify1(int self)
 
 {
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  int *piVar4;
-  undefined4 *in_FS_OFFSET;
+  int *strRep;
+  undefined4 *sehChainHead;
   undefined4 local_48;
-  undefined1 local_24 [8];
-  int local_1c;
-  undefined1 local_14 [8];
-  int local_c;
+  undefined1 pvwEdit [8];
+  int str;
+  undefined1 pvwEdit2 [8];
+  int str2;
   
   __InitExceptBlockLDTC(0x4f5944);
-  if (-1 < *(int *)(param_1 + 0x6c)) {
-    *in_FS_OFFSET = local_48;
+  if (-1 < *(int *)(self + 0x6c)) {
+    *sehChainHead = local_48;
     return local_48;
   }
-  iVar2 = *(int *)(param_1 + 0x98);
-  if ((iVar2 < 0) || (iVar1 = (**(code **)(*(int *)(param_1 + 0x47f) + 0x24))(), iVar1 <= iVar2))
+  iVar2 = *(int *)(self + 0x98);
+  if ((iVar2 < 0) || (iVar1 = (**(code **)(*(int *)(self + 0x47f) + 0x24))(), iVar1 <= iVar2))
   goto LAB_0043eac2;
-  FUN_0041b2b0((int)local_14,(int *)(param_1 + 0x5cc));
-  FUN_004cf384(*(int *)(param_1 + 0x98) * 0x10 + *(int *)(param_1 + 0xa4),(int)local_14);
-  if (local_c != 0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      piVar4 = (int *)(local_c + -0xc);
-      if (piVar4 == &DAT_00513d58) {
+  PVWEdit::GetText((int)pvwEdit2,(int *)(self + 0x5cc));
+  std::string::operator_assign(*(int *)(self + 0x98) * 0x10 + *(int *)(self + 0xa4),(int)pvwEdit2);
+  if (str2 != 0) {
+    if (*(int *)(str2 + -0xc) != -1) {
+      strRep = (int *)(str2 + -0xc);
+      if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
-      else if (piVar4 == &DAT_00513d58) {
+      else if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
       else {
-        *piVar4 = *piVar4 + -1;
-        iVar2 = *piVar4 + 1;
+        *strRep = *strRep + -1;
+        iVar2 = *strRep + 1;
       }
       if (iVar2 != 0) goto LAB_0043ea19;
     }
     operator_delete();
-    local_c = 0;
+    str2 = 0;
   }
 LAB_0043ea19:
-  FUN_0041b2b0((int)local_24,(int *)(param_1 + 400));
-  FUN_004cf384(*(int *)(param_1 + 0x98) * 0x10 + *(int *)(param_1 + 0xc4),(int)local_24);
-  if (local_1c != 0) {
-    if (*(int *)(local_1c + -0xc) != -1) {
-      piVar4 = (int *)(local_1c + -0xc);
-      if (piVar4 == &DAT_00513d58) {
+  PVWEdit::GetText((int)pvwEdit,(int *)(self + 400));
+  std::string::operator_assign(*(int *)(self + 0x98) * 0x10 + *(int *)(self + 0xc4),(int)pvwEdit);
+  if (str != 0) {
+    if (*(int *)(str + -0xc) != -1) {
+      strRep = (int *)(str + -0xc);
+      if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
-      else if (piVar4 == &DAT_00513d58) {
+      else if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
       else {
-        *piVar4 = *piVar4 + -1;
-        iVar2 = *piVar4 + 1;
+        *strRep = *strRep + -1;
+        iVar2 = *strRep + 1;
       }
       if (iVar2 != 0) goto LAB_0043eac2;
     }
     operator_delete();
-    local_1c = 0;
+    str = 0;
   }
 LAB_0043eac2:
-  *(undefined4 *)(param_1 + 0x98) = 0xffffffff;
-  iVar2 = FUN_004bfd60((int *)(param_1 + 0x473));
-  if ((iVar2 == 1) && (iVar2 = FUN_004bfdd8((int *)(param_1 + 0x473),param_1 + 0x98,1), iVar2 == 1))
+  *(undefined4 *)(self + 0x98) = 0xffffffff;
+  iVar2 = FUN_004bfd60((int *)(self + 0x473));
+  if ((iVar2 == 1) && (iVar2 = FUN_004bfdd8((int *)(self + 0x473),self + 0x98,1), iVar2 == 1))
   {
-    FUN_0041b474((int *)(param_1 + 0x5cc),*(int *)(param_1 + 0x98) * 0x10 + *(int *)(param_1 + 0xa4)
+    PVWEdit::SetIntValue((int *)(self + 0x5cc),*(int *)(self + 0x98) * 0x10 + *(int *)(self + 0xa4)
                 );
-    FUN_0041b474((int *)(param_1 + 400),*(int *)(param_1 + 0x98) * 0x10 + *(int *)(param_1 + 0xc4));
+    PVWEdit::SetIntValue((int *)(self + 400),*(int *)(self + 0x98) * 0x10 + *(int *)(self + 0xc4));
   }
   else {
-    (**(code **)(*(int *)(param_1 + 0x5d8) + 0x24))();
-    (**(code **)(*(int *)(param_1 + 0x19c) + 0x24))();
+    (**(code **)(*(int *)(self + 0x5d8) + 0x24))();
+    (**(code **)(*(int *)(self + 0x19c) + 0x24))();
   }
-  (**(code **)(*(int *)(*(int *)(param_1 + 0x51d) + 8) + 0x60))();
-  (**(code **)(*(int *)(*(int *)(param_1 + 0x5cc) + 8) + 0x60))();
-  (**(code **)(*(int *)(*(int *)(param_1 + 0x688) + 8) + 0x60))();
-  (**(code **)(*(int *)(*(int *)(param_1 + 0xe0) + 8) + 0x60))();
-  (**(code **)(*(int *)(*(int *)(param_1 + 400) + 8) + 0x60))();
-  uVar3 = FUN_0043dfb0(param_1);
-  *in_FS_OFFSET = local_48;
+  (**(code **)(*(int *)(*(int *)(self + 0x51d) + 8) + 0x60))();
+  (**(code **)(*(int *)(*(int *)(self + 0x5cc) + 8) + 0x60))();
+  (**(code **)(*(int *)(*(int *)(self + 0x688) + 8) + 0x60))();
+  (**(code **)(*(int *)(*(int *)(self + 0xe0) + 8) + 0x60))();
+  (**(code **)(*(int *)(*(int *)(self + 400) + 8) + 0x60))();
+  uVar3 = TSDictionarySaveDialog::UpdateOkButton(self);
+  *sehChainHead = local_48;
   return uVar3;
 }
 
@@ -937,30 +942,30 @@ LAB_0043eac2:
 // 0x0043ec04  OWL::TFileSaveDialog::~TFileSaveDialog   (175 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TFileSaveDialog::_dtor
 //   file placement: inferred (address adjacency)
-void __cdecl OWL::TFileSaveDialog::_dtor(int *param_1,uint param_2)
+void __cdecl OWL::TFileSaveDialog::_dtor(int *self,uint dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4f597c);
-  if (param_1 != (int *)0x0) {
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x5c;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0x5c;
-    OWL::TCommonDialog::_dtor(param_1,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x5c;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0x5c;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0x22,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 0x20,0);
+  if (self != (int *)0x0) {
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x5c;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -0x5c;
+    OWL::TCommonDialog::_dtor(self,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x5c;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 0x5c;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0x22,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 0x20,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -968,42 +973,43 @@ void __cdecl OWL::TFileSaveDialog::_dtor(int *param_1,uint param_2)
 // 0x0043eea0  OWL::TOpenSaveDialog::~TOpenSaveDialog   (168 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TOpenSaveDialog::_dtor
 //   file placement: inferred (address adjacency)
-void __cdecl OWL::TOpenSaveDialog::_dtor(int *param_1,uint param_2)
+void __cdecl OWL::TOpenSaveDialog::_dtor(int *self,uint dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4f5b24);
-  if (param_1 != (int *)0x0) {
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x5c;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0x5c;
-    OWL::TCommonDialog::_dtor(param_1,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x5c;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0x5c;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0x22,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 0x20,0);
+  if (self != (int *)0x0) {
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x5c;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -0x5c;
+    OWL::TCommonDialog::_dtor(self,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x5c;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 0x5c;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0x22,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 0x20,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043ef48  FUN_0043ef48   (40 bytes)   [unnamed]
+// 0x0043ef48  BitWriter::FlushWord   (40 bytes)   [analysis]
+//   writes the pending 16-bit word of the bit stream to the file
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_0043ef48(int *param_1)
+void __cdecl BitWriter::FlushWord(int *file)
 
 {
   uint uVar1;
   
-  uVar1 = FUN_004def90(&GHIDRA_STACK(0x00000008),2,1,param_1);
+  uVar1 = FUN_004def90(&GHIDRA_STACK(0x00000008),2,1,file);
   if (uVar1 != 1) {
     (*(undefined4 *)&DAT_004f5b2c) = 1;
   }
@@ -1011,94 +1017,100 @@ void __cdecl FUN_0043ef48(int *param_1)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043ef70  FUN_0043ef70   (24 bytes)   [unnamed]
+// 0x0043ef70  BitWriter::BitWriter   (24 bytes)   [analysis]
+//   bit stream on a FILE
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_0043ef70(undefined4 *param_1,undefined4 param_2)
+void __cdecl BitWriter::BitWriter(undefined4 *self,undefined4 file)
 
 {
-  *param_1 = param_2;
-  *(undefined2 *)(param_1 + 1) = 0;
-  param_1[2] = 0;
+  *self = file;
+  *(undefined2 *)(self + 1) = 0;
+  self[2] = 0;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043ef88  FUN_0043ef88   (140 bytes)   [unnamed]
+// 0x0043ef88  BitWriter::WriteBits   (140 bytes)   [analysis]
+//   appends an nbits-long code to the 16-bit-word bit stream, flushing full words
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_0043ef88(undefined4 *param_1,int param_2,uint param_3)
+void __cdecl BitWriter::WriteBits(undefined4 *self,int nbits,uint code_)
 
 {
   int iVar1;
   int iVar2;
   uint uVar3;
   
-  if (0xf < (int)param_1[2]) {
-    FUN_0043ef48((int *)*param_1);
-    param_1[2] = 0;
-    *(undefined2 *)(param_1 + 1) = 0;
+  if (0xf < (int)self[2]) {
+    BitWriter::FlushWord((int *)*self);
+    self[2] = 0;
+    *(undefined2 *)(self + 1) = 0;
   }
-  *(ushort *)(param_1 + 1) = *(ushort *)(param_1 + 1) | (short)param_3 << ((byte)param_1[2] & 0x1f);
-  iVar1 = 0x10 - param_1[2];
-  if (iVar1 < param_2) {
-    iVar2 = param_2 - iVar1;
-    uVar3 = param_3 >> ((byte)iVar1 & 0x1f);
-    FUN_0043ef48((int *)*param_1);
-    *(short *)(param_1 + 1) = (short)uVar3;
+  *(ushort *)(self + 1) = *(ushort *)(self + 1) | (short)code_ << ((byte)self[2] & 0x1f);
+  iVar1 = 0x10 - self[2];
+  if (iVar1 < nbits) {
+    iVar2 = nbits - iVar1;
+    uVar3 = code_ >> ((byte)iVar1 & 0x1f);
+    BitWriter::FlushWord((int *)*self);
+    *(short *)(self + 1) = (short)uVar3;
     if (0x10 < iVar2) {
-      FUN_0043ef48((int *)*param_1);
+      BitWriter::FlushWord((int *)*self);
       iVar2 = iVar2 + -0x10;
-      *(short *)(param_1 + 1) = (short)(uVar3 >> 0x10);
+      *(short *)(self + 1) = (short)(uVar3 >> 0x10);
     }
-    param_1[2] = iVar2;
+    self[2] = iVar2;
   }
   else {
-    param_1[2] = param_1[2] + param_2;
+    self[2] = self[2] + nbits;
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f014  FUN_0043f014   (65 bytes)   [unnamed]
+// 0x0043f014  BitWriter::WriteBytes   (65 bytes)   [analysis]
+//   writes bytes through the Huffman code table
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_0043f014(undefined4 *param_1,byte *param_2,int param_3)
+void __cdecl BitWriter::WriteBytes(undefined4 *self,byte *bytes,int count)
 
 {
   byte *pbVar1;
   
-  pbVar1 = param_2 + param_3;
-  for (; param_2 < pbVar1; param_2 = param_2 + 1) {
-    FUN_0043ef88(param_1,(uint)(byte)(&DAT_00519d3c)[*param_2],(&DAT_0051993c)[*param_2]);
+  pbVar1 = bytes + count;
+  for (; bytes < pbVar1; bytes = bytes + 1) {
+    BitWriter::WriteBits(self,(uint)(byte)(&DAT_00519d3c)[*bytes],(&DAT_0051993c)[*bytes]);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f058  FUN_0043f058   (32 bytes)   [unnamed]
+// 0x0043f058  BitWriter::AlignToWord   (32 bytes)   [analysis]
+//   pads the stream to a word boundary
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_0043f058(undefined4 *param_1)
+void __cdecl BitWriter::AlignToWord(undefined4 *self)
 
 {
-  FUN_0043ef88(param_1,(uint)DAT_00519d3c,DAT_0051993c);
+  BitWriter::WriteBits(self,(uint)DAT_00519d3c,DAT_0051993c);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f078  FUN_0043f078   (30 bytes)   [unnamed]
+// 0x0043f078  BitWriter::Flush   (30 bytes)   [analysis]
+//   writes out any pending bits
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_0043f078(undefined4 *param_1)
+void __cdecl BitWriter::Flush(undefined4 *self)
 
 {
-  if (0 < (int)param_1[2]) {
-    FUN_0043ef48((int *)*param_1);
+  if (0 < (int)self[2]) {
+    BitWriter::FlushWord((int *)*self);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f098  FUN_0043f098   (137 bytes)   [unnamed]
+// 0x0043f098  ScaleFrequency   (137 bytes)   [analysis]
+//   frequency scaled to the Huffman weight range (floating-point arithmetic not visible; ends in __ftol)
 //   file placement: inferred (address adjacency)
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-undefined4 __cdecl FUN_0043f098(uint param_1,uint param_2,uint param_3)
+undefined4 __cdecl ScaleFrequency(uint count,uint total,uint range)
 
 {
   double dVar1;
@@ -1106,21 +1118,22 @@ undefined4 __cdecl FUN_0043f098(uint param_1,uint param_2,uint param_3)
   undefined4 uVar2;
   
   uVar2 = CONCAT31((int3)((uint)in_EAX >> 8),0x80);
-  if (param_1 != 0) {
-    dVar1 = ((double)param_3 * (double)param_1) / (double)param_2;
+  if (count != 0) {
+    dVar1 = ((double)range * (double)count) / (double)total;
     FUN_004e3e60(SUB84(dVar1,0),(int)((ulonglong)dVar1 >> 0x20));
-    uVar2 = FUN_004e3c04();
+    uVar2 = __ftol();
   }
   return uVar2;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f138  FUN_0043f138   (94 bytes)   [unnamed]
+// 0x0043f138  ReverseHuffmanCodes   (94 bytes)   [analysis]
+//   reverses the bits of every byte code so the stream can be written low bit first
 //   file placement: inferred (address adjacency)
-void __stdcall FUN_0043f138(void)
+void __stdcall ReverseHuffmanCodes(void)
 
 {
-  int iVar1;
+  int i;
   uint uVar2;
   uint *puVar3;
   int local_18;
@@ -1131,9 +1144,9 @@ void __stdcall FUN_0043f138(void)
   local_14 = &DAT_00519d3c;
   do {
     uVar2 = 0;
-    for (iVar1 = 0; iVar1 < (int)(uint)*local_14; iVar1 = iVar1 + 1) {
+    for (i = 0; i < (int)(uint)*local_14; i = i + 1) {
       uVar2 = uVar2 * 2;
-      if ((1 << ((byte)iVar1 & 0x1f) & *puVar3) != 0) {
+      if ((1 << ((byte)i & 0x1f) & *puVar3) != 0) {
         uVar2 = uVar2 | 1;
       }
     }
@@ -1146,71 +1159,75 @@ void __stdcall FUN_0043f138(void)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f198  FUN_0043f198   (47 bytes)   [unnamed]
+// 0x0043f198  HuffmanNodeLess   (47 bytes)   [analysis]
+//   order of two Huffman nodes by weight
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_0043f198(int *param_1,int *param_2)
+undefined4 __cdecl HuffmanNodeLess(int *a,int *b)
 
 {
-  if (*(uint *)(*param_1 + 0xc) < *(uint *)(*param_2 + 0xc)) {
+  if (*(uint *)(*a + 0xc) < *(uint *)(*b + 0xc)) {
     return 1;
   }
-  if (*(uint *)(*param_2 + 0xc) < *(uint *)(*param_1 + 0xc)) {
+  if (*(uint *)(*b + 0xc) < *(uint *)(*a + 0xc)) {
     return 0xffffffff;
   }
   return 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f1c8  FUN_0043f1c8   (58 bytes)   [unnamed]
+// 0x0043f1c8  AddBitToSubtree   (58 bytes)   [analysis]
+//   appends one bit to the code of every leaf under a Huffman tree node
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_0043f1c8(int *param_1,int param_2)
+void __cdecl AddBitToSubtree(int *node,int bit)
 
 {
-  if (*param_1 == 0) {
-    param_1[5] = param_1[5] | param_2 << ((byte)param_1[4] & 0x1f);
-    param_1[4] = param_1[4] + 1;
+  if (*node == 0) {
+    node[5] = node[5] | bit << ((byte)node[4] & 0x1f);
+    node[4] = node[4] + 1;
   }
   else {
-    FUN_0043f1c8((int *)*param_1,param_2);
-    FUN_0043f1c8((int *)param_1[1],param_2);
+    AddBitToSubtree((int *)*node,bit);
+    AddBitToSubtree((int *)node[1],bit);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f204  FUN_0043f204   (64 bytes)   [unnamed]
+// 0x0043f204  StoreCodesAndFree   (64 bytes)   [analysis]
+//   walks a Huffman (sub)tree storing each leaf byte code and length in the tables, freeing the nodes
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_0043f204(int *param_1)
+void __cdecl StoreCodesAndFree(int *node)
 
 {
   int iVar1;
   
-  if ((int *)*param_1 == (int *)0x0) {
-    iVar1 = param_1[2];
-    (&DAT_0051993c)[iVar1] = param_1[5];
-    (&DAT_00519d3c)[iVar1] = (char)param_1[4];
+  if ((int *)*node == (int *)0x0) {
+    iVar1 = node[2];
+    (&DAT_0051993c)[iVar1] = node[5];
+    (&DAT_00519d3c)[iVar1] = (char)node[4];
   }
   else {
-    FUN_0043f204((int *)*param_1);
-    FUN_0043f204((int *)param_1[1]);
+    StoreCodesAndFree((int *)*node);
+    StoreCodesAndFree((int *)node[1]);
   }
   operator_delete();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f244  FUN_0043f244   (340 bytes)   [unnamed]
+// 0x0043f244  BuildHuffmanCodes   (340 bytes)   [analysis]
+//   builds the Huffman tree from the byte frequencies and assigns each byte its code and length
 //   file placement: inferred (address adjacency)
 /* WARNING: Type propagation algorithm not settling */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-int __stdcall FUN_0043f244(void)
+int __stdcall BuildHuffmanCodes(void)
 
 {
   int *piVar1;
   byte *pbVar2;
   undefined1 *puVar3;
   uint uVar4;
-  int iVar5;
+  int i;
   int iVar6;
   int **ppiVar7;
   int local_418;
@@ -1242,11 +1259,11 @@ int __stdcall FUN_0043f244(void)
   }
   else {
     _DAT_00519938 = iVar6;
-    for (iVar5 = 0; iVar5 < iVar6 + -1; iVar5 = iVar5 + 1) {
-      uVar4 = iVar6 - iVar5;
-      FUN_004e6244((undefined1 *)(local_414 + 1),uVar4,4,FUN_0043f198);
-      FUN_0043f1c8((int *)(&local_418)[uVar4],0);
-      FUN_0043f1c8(local_414[uVar4],1);
+    for (i = 0; i < iVar6 + -1; i = i + 1) {
+      uVar4 = iVar6 - i;
+      FUN_004e6244((undefined1 *)(local_414 + 1),uVar4,4,HuffmanNodeLess);
+      AddBitToSubtree((int *)(&local_418)[uVar4],0);
+      AddBitToSubtree(local_414[uVar4],1);
       piVar1 = (int *)operator_new();
       piVar1[3] = *(int *)((&local_418)[uVar4] + 0xc) + local_414[uVar4][3];
       piVar1[2] = 0;
@@ -1257,7 +1274,7 @@ int __stdcall FUN_0043f244(void)
       (&local_418)[uVar4] = (int)piVar1;
       local_414[uVar4] = (int *)0x0;
     }
-    FUN_0043f204(local_414[1]);
+    StoreCodesAndFree(local_414[1]);
     iVar6 = 0;
     pbVar2 = &DAT_00519d3c;
     do {
@@ -1283,10 +1300,11 @@ int __stdcall FUN_0043f244(void)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f398  FUN_0043f398   (1400 bytes)   [unnamed]
+// 0x0043f398  ParseDefinitionLine   (1400 bytes)   [analysis]
+//   splits one definition line into headwords, qualifiers and text (RTF braces escaped)
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x0043f454) */
-int __cdecl FUN_0043f398(int param_1,uint *param_2)
+int __cdecl ParseDefinitionLine(int out,uint *line2)
 
 {
   char cVar1;
@@ -1297,85 +1315,85 @@ int __cdecl FUN_0043f398(int param_1,uint *param_2)
   uint *puVar6;
   int iVar7;
   char *pcVar8;
-  int *piVar9;
-  undefined4 *in_FS_OFFSET;
+  int *strRep;
+  undefined4 *sehChainHead;
   byte bVar10;
   char local_114;
   char local_113 [19];
-  undefined *local_100;
-  undefined4 *local_f0;
-  undefined4 *local_ec;
-  undefined4 *local_e8;
-  undefined4 *local_e4;
-  uint local_e0;
-  int local_dc;
-  int *local_d8;
-  int *local_d4;
-  int local_d0;
-  undefined4 *local_cc;
-  undefined4 local_c8;
-  undefined1 local_c2;
-  undefined1 local_c1;
-  uint *local_c0;
-  uint *local_bc;
+  undefined *unused;
+  undefined4 *unused2;
+  undefined4 *unused3;
+  undefined4 *dest;
+  undefined4 *unused4;
+  uint unused5;
+  int unused6;
+  int *newRep;
+  int *newData;
+  int unused7;
+  undefined4 *unused8;
+  undefined4 unused9;
+  undefined1 unused10;
+  undefined1 unused11;
+  uint *unused12;
+  uint *unused13;
   char *local_b8;
   char local_b4 [76];
   uint *local_68;
   uint *local_64;
-  char *local_60;
-  uint local_5c;
-  uint *local_58;
+  char *len;
+  uint pos;
+  uint *s;
   int local_54;
   int local_50;
   int local_4c;
   undefined4 local_40;
-  undefined2 local_3c;
-  undefined1 local_3a;
-  undefined4 local_38;
-  undefined2 local_28;
-  int local_1c;
-  undefined1 local_14 [8];
+  undefined2 unused14;
+  undefined1 unused15;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [8];
   undefined4 *local_c;
   
   bVar10 = 0;
   __InitExceptBlockLDTC(0x4f5bd4);
   local_40 = DAT_004f5b30;
-  local_3c = DAT_004f5b34;
-  local_3a = DAT_004f5b36;
-  uVar2 = FUN_004dcac0((byte *)param_2,(byte *)&local_40,6);
+  unused14 = DAT_004f5b34;
+  unused15 = DAT_004f5b36;
+  uVar2 = FUN_004dcac0((byte *)line2,(byte *)&local_40,6);
   if (uVar2 != 0) {
-    pcVar3 = strlen(param_2);
-    if ((pcVar3 != (char *)0x0) && (pcVar3[(int)param_2 + -1] == '\n')) {
+    pcVar3 = strlen(line2);
+    if ((pcVar3 != (char *)0x0) && (pcVar3[(int)line2 + -1] == '\n')) {
       pcVar3 = pcVar3 + -1;
     }
-    local_28 = 8;
-    FUN_004d1c6c(param_1,param_2,(uint)pcVar3);
-    *in_FS_OFFSET = local_38;
-    return param_1;
+    ehContext = 8;
+    std::string::string_from_buf(out,line2,(uint)pcVar3);
+    *sehChainHead = sehPrevFrame;
+    return out;
   }
-  local_c = (undefined4 *)&DAT_00513d64;
-  local_100 = &DAT_00513d64;
-  local_1c = local_1c + 1;
-  local_28 = 0x2c;
+  local_c = (undefined4 *)&g_emptyStringData;
+  unused = &g_emptyStringData;
+  ehDtorCount = ehDtorCount + 1;
+  ehContext = 0x2c;
   local_4c = 2;
   iVar7 = 0;
   local_50 = 0;
   local_54 = 0;
-  while ((cVar1 = (char)*param_2, cVar1 != '\n' && (cVar1 != '\0'))) {
-    puVar5 = param_2;
+  while ((cVar1 = (char)*line2, cVar1 != '\n' && (cVar1 != '\0'))) {
+    puVar5 = line2;
     if (iVar7 == 2) {
       local_54 = local_54 + -1;
     }
     else if (cVar1 == '\\') {
-      puVar5 = (uint *)((int)param_2 + 1);
+      puVar5 = (uint *)((int)line2 + 1);
       cVar1 = *(char *)puVar5;
       if (cVar1 < ']') {
         if (cVar1 == '\\') {
 LAB_0043f4ef:
-          local_5c = local_c[-1];
-          local_58 = puVar5;
-          local_60 = strlen(puVar5);
-          FUN_004cfad4((int)local_14,local_5c,0,(uint)local_58,(uint)local_60,0,(uint)local_60);
+          pos = local_c[-1];
+          s = puVar5;
+          len = strlen(puVar5);
+          std::string::replace((int)str,pos,0,(uint)s,(uint)len,0,(uint)len);
         }
         else if (cVar1 == '\'') {
           iVar7 = 1;
@@ -1387,34 +1405,34 @@ LAB_0043f4ef:
       }
       else if (cVar1 == '_') {
 LAB_0043f52d:
-        std::string::replace_fill((int)local_14,local_c[-1],0,1,0x2d);
+        std::string::replace_fill((int)str,local_c[-1],0,1,0x2d);
       }
       else {
         if ((cVar1 == '{') || (cVar1 == '}')) goto LAB_0043f4ef;
 LAB_0043f54b:
-        iVar4 = FUN_004e133c((int)*(char *)puVar5);
+        iVar4 = isalpha((int)*(char *)puVar5);
         if (iVar4 == 0) {
-          puVar5 = (uint *)((int)param_2 + 2);
+          puVar5 = (uint *)((int)line2 + 2);
         }
         else {
-          local_28 = 0x2c;
+          ehContext = 0x2c;
           local_64 = puVar5;
           do {
             puVar6 = puVar5;
             puVar5 = (uint *)((int)puVar6 + 1);
-            iVar4 = FUN_004e133c((int)*(char *)puVar5);
+            iVar4 = isalpha((int)*(char *)puVar5);
           } while (iVar4 != 0);
           if (*(char *)puVar5 == '-') {
             puVar5 = (uint *)((int)puVar6 + 2);
           }
-          local_28 = 0x2c;
+          ehContext = 0x2c;
           local_68 = puVar5;
           while (iVar4 = FUN_004e1368((int)(char)*puVar5), iVar4 != 0) {
             puVar5 = (uint *)((int)puVar5 + 1);
           }
           if ((int)puVar5 - (int)local_64 < 10) {
             local_114 = '|';
-            FUN_004dcc40((undefined4 *)local_113,local_64,(char *)((int)puVar5 - (int)local_64));
+            strncpy((undefined4 *)local_113,local_64,(char *)((int)puVar5 - (int)local_64));
             *(char *)((int)puVar5 + ((int)local_113 - (int)local_64)) = '|';
             *(char *)((int)puVar5 + (int)(local_113 + (1 - (int)local_64))) = '\0';
             pcVar3 = "|bin|par|line|tab|emdash|endash|bullet|lquote|rquote|ldblquote|rdblquote|";
@@ -1425,12 +1443,12 @@ LAB_0043f54b:
               pcVar8 = pcVar8 + ((uint)bVar10 * -2 + 1) * 4;
             }
             *(undefined2 *)pcVar8 = *(undefined2 *)pcVar3;
-            local_28 = 0x2c;
+            ehContext = 0x2c;
             local_b8 = thunk_FUN_004dcd18(local_b4,&local_114);
             if ((local_b8 != (char *)0x0) &&
-               (std::string::replace_fill((int)local_14,local_c[-1],0,1,0x20), local_b4 == local_b8)) {
-              local_bc = local_68;
-              local_54 = FUN_004e39d0((char *)local_68);
+               (std::string::replace_fill((int)str,local_c[-1],0,1,0x20), local_b4 == local_b8)) {
+              unused13 = local_68;
+              local_54 = atoi((char *)local_68);
             }
           }
           if ((char)*puVar5 != ' ') {
@@ -1441,19 +1459,19 @@ LAB_0043f54b:
     }
     else if ((cVar1 != '{') && (cVar1 != '}')) {
       if (iVar7 == 0) {
-        uVar2 = FUN_004dcb98((char *)param_2,&DAT_004f5d62 /* "\{}" */);
-        local_28 = 0x2c;
-        local_c0 = param_2;
-        FUN_004cfad4((int)local_14,local_c[-1],0,(uint)param_2,uVar2,0,uVar2);
-        puVar5 = (uint *)((int)param_2 + (uVar2 - 1));
+        uVar2 = strcspn((char *)line2,&DAT_004f5d62 /* "\{}" */);
+        ehContext = 0x2c;
+        unused12 = line2;
+        std::string::replace((int)str,local_c[-1],0,(uint)line2,uVar2,0,uVar2);
+        puVar5 = (uint *)((int)line2 + (uVar2 - 1));
       }
       else {
         local_50 = local_50 * 0x10;
-        iVar4 = (int)(char)*param_2;
+        iVar4 = (int)(char)*line2;
         if ((iVar4 < 0x30) || (0x39 < iVar4)) {
-          iVar4 = (int)(char)*param_2;
+          iVar4 = (int)(char)*line2;
           if ((iVar4 < 0x61) || (0x66 < iVar4)) {
-            iVar4 = (int)(char)*param_2;
+            iVar4 = (int)(char)*line2;
             if ((0x40 < iVar4) && (iVar4 < 0x47)) {
               local_50 = local_50 + iVar4 + -0x37;
             }
@@ -1467,221 +1485,223 @@ LAB_0043f54b:
         }
         local_4c = local_4c + -1;
         if (local_4c == 0) {
-          local_c1 = (undefined1)local_50;
-          local_28 = 0x2c;
-          local_c2 = (undefined1)local_50;
-          std::string::replace_fill((int)local_14,local_c[-1],0,1,(undefined1)local_50);
+          unused11 = (undefined1)local_50;
+          ehContext = 0x2c;
+          unused10 = (undefined1)local_50;
+          std::string::replace_fill((int)str,local_c[-1],0,1,(undefined1)local_50);
           local_4c = 2;
           iVar7 = 0;
           local_50 = 0;
         }
       }
     }
-    param_2 = (uint *)((int)puVar5 + 1);
+    line2 = (uint *)((int)puVar5 + 1);
   }
-  local_28 = 0x38;
-  local_c8 = 0;
-  *(undefined4 *)(param_1 + 8) = 0;
+  ehContext = 0x38;
+  unused9 = 0;
+  *(undefined4 *)(out + 8) = 0;
   if (local_c[-3] == -1 || local_c[-3] + 1 < 0) {
     uVar2 = local_c[-1];
-    local_d8 = std::string::__getRep(param_1,uVar2,uVar2);
-    local_d4 = local_d8 + 3;
-    *(int **)(param_1 + 8) = local_d4;
-    local_dc = param_1;
-    local_e4 = local_c;
-    local_e8 = *(undefined4 **)(param_1 + 8);
-    local_e0 = uVar2;
-    memcpy(local_e8,local_c,uVar2);
+    newRep = std::string::__getRep(out,uVar2,uVar2);
+    newData = newRep + 3;
+    *(int **)(out + 8) = newData;
+    unused6 = out;
+    unused4 = local_c;
+    dest = *(undefined4 **)(out + 8);
+    unused5 = uVar2;
+    memcpy(dest,local_c,uVar2);
   }
   else {
-    local_cc = local_c;
-    *(undefined4 **)(param_1 + 8) = local_c;
-    local_d0 = param_1;
-    piVar9 = (int *)(*(int *)(param_1 + 8) + -0xc);
-    if (piVar9 != &DAT_00513d58) {
-      *piVar9 = *piVar9 + 1;
+    unused8 = local_c;
+    *(undefined4 **)(out + 8) = local_c;
+    unused7 = out;
+    strRep = (int *)(*(int *)(out + 8) + -0xc);
+    if (strRep != &g_nullStringRep) {
+      *strRep = *strRep + 1;
     }
   }
-  local_28 = 0x50;
+  ehContext = 0x50;
   if (local_c != (undefined4 *)0x0) {
     if (local_c[-3] != -1) {
-      piVar9 = local_c + -3;
-      if (piVar9 == &DAT_00513d58) {
+      strRep = local_c + -3;
+      if (strRep == &g_nullStringRep) {
         iVar7 = 1;
       }
-      else if (piVar9 == &DAT_00513d58) {
+      else if (strRep == &g_nullStringRep) {
         iVar7 = 1;
       }
       else {
-        *piVar9 = *piVar9 + -1;
-        iVar7 = *piVar9 + 1;
+        *strRep = *strRep + -1;
+        iVar7 = *strRep + 1;
       }
       if (iVar7 != 0) goto LAB_0043f8f5;
     }
-    local_ec = local_c + -3;
-    local_f0 = local_c + -3;
+    unused3 = local_c + -3;
+    unused2 = local_c + -3;
     operator_delete();
   }
 LAB_0043f8f5:
-  *in_FS_OFFSET = local_38;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return out;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043f910  FUN_0043f910   (649 bytes)   [unnamed]
+// 0x0043f910  ParseMappingLine   (649 bytes)   [analysis]
+//   parses one line of the letter mapping (byte, letter class, display byte)
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x0043f954) */
-int __cdecl FUN_0043f910(int param_1,char *param_2)
+int __cdecl ParseMappingLine(int mapping,char *line)
 
 {
-  uint uVar1;
+  uint len;
   int iVar2;
   char *pcVar3;
   char *pcVar4;
-  int *piVar5;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_48;
-  undefined1 local_24 [8];
-  int local_1c;
-  undefined1 local_14 [8];
+  int *rep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 str [8];
+  int str3;
+  undefined1 str2 [8];
   undefined4 *local_c;
   
   __InitExceptBlockLDTC(0x4f5c8c);
-  local_c = (undefined4 *)&DAT_00513d64;
-  iVar2 = FUN_004dcce8(param_2,&DAT_004f5d58);
-  if (param_2[iVar2] != '\0') {
-    pcVar4 = param_2 + iVar2;
+  local_c = (undefined4 *)&g_emptyStringData;
+  iVar2 = FUN_004dcce8(line,&DAT_004f5d58);
+  if (line[iVar2] != '\0') {
+    pcVar4 = line + iVar2;
     pcVar3 = thunk_FUN_004dcc90(pcVar4,&DAT_004f5d58);
     if (pcVar3 != (char *)0x0) {
-      iVar2 = FUN_004d1c6c((int)local_24,(undefined4 *)pcVar4,(int)pcVar3 - (int)pcVar4);
-      FUN_004cf384((int)local_14,iVar2);
-      if (local_1c != 0) {
-        if (*(int *)(local_1c + -0xc) != -1) {
-          piVar5 = (int *)(local_1c + -0xc);
-          if (piVar5 == &DAT_00513d58) {
+      iVar2 = std::string::string_from_buf((int)str,(undefined4 *)pcVar4,(int)pcVar3 - (int)pcVar4);
+      std::string::operator_assign((int)str2,iVar2);
+      if (str3 != 0) {
+        if (*(int *)(str3 + -0xc) != -1) {
+          rep = (int *)(str3 + -0xc);
+          if (rep == &g_nullStringRep) {
             iVar2 = 1;
           }
-          else if (piVar5 == &DAT_00513d58) {
+          else if (rep == &g_nullStringRep) {
             iVar2 = 1;
           }
           else {
-            *piVar5 = *piVar5 + -1;
-            iVar2 = *piVar5 + 1;
+            *rep = *rep + -1;
+            iVar2 = *rep + 1;
           }
           if (iVar2 != 0) goto LAB_0043fa35;
         }
         operator_delete();
-        local_1c = 0;
+        str3 = 0;
       }
     }
   }
 LAB_0043fa35:
-  *(undefined4 *)(param_1 + 8) = 0;
+  *(undefined4 *)(mapping + 8) = 0;
   if (local_c[-3] == -1 || local_c[-3] + 1 < 0) {
-    uVar1 = local_c[-1];
-    piVar5 = std::string::__getRep(param_1,uVar1,uVar1);
-    *(int **)(param_1 + 8) = piVar5 + 3;
-    memcpy(*(undefined4 **)(param_1 + 8),local_c,uVar1);
+    len = local_c[-1];
+    rep = std::string::__getRep(mapping,len,len);
+    *(int **)(mapping + 8) = rep + 3;
+    memcpy(*(undefined4 **)(mapping + 8),local_c,len);
   }
   else {
-    *(undefined4 **)(param_1 + 8) = local_c;
-    piVar5 = (int *)(*(int *)(param_1 + 8) + -0xc);
-    if (piVar5 != &DAT_00513d58) {
-      *piVar5 = *piVar5 + 1;
+    *(undefined4 **)(mapping + 8) = local_c;
+    rep = (int *)(*(int *)(mapping + 8) + -0xc);
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
   if (local_c != (undefined4 *)0x0) {
     if (local_c[-3] != -1) {
-      piVar5 = local_c + -3;
-      if (piVar5 == &DAT_00513d58) {
+      rep = local_c + -3;
+      if (rep == &g_nullStringRep) {
         iVar2 = 1;
       }
-      else if (piVar5 == &DAT_00513d58) {
+      else if (rep == &g_nullStringRep) {
         iVar2 = 1;
       }
       else {
-        *piVar5 = *piVar5 + -1;
-        iVar2 = *piVar5 + 1;
+        *rep = *rep + -1;
+        iVar2 = *rep + 1;
       }
       if (iVar2 != 0) goto LAB_0043fb7e;
     }
     operator_delete();
   }
 LAB_0043fb7e:
-  *in_FS_OFFSET = local_48;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return mapping;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043fb9c  FUN_0043fb9c   (476 bytes)   [unnamed]
+// 0x0043fb9c  WriteDefinitionRecord   (476 bytes)   [analysis]
+//   writes one definition record (headwords, qualifiers and text, XOR 0xBD) and returns its offset
 //   file placement: inferred (address adjacency)
-uint __cdecl FUN_0043fb9c(int *param_1,int param_2)
+uint __cdecl WriteDefinitionRecord(int *writer,int definition)
 
 {
-  int *piVar1;
+  int *newRep;
   uint uVar2;
   uint uVar3;
   int iVar4;
   byte *pbVar5;
   byte *pbVar6;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  undefined1 local_14 [8];
-  byte *local_c;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 str [8];
+  byte *buffer;
   
   __InitExceptBlockLDTC(0x4f5d20);
-  local_c = (byte *)0x0;
-  iVar4 = *(int *)(*(int *)(param_2 + 8) + -0xc);
+  buffer = (byte *)0x0;
+  iVar4 = *(int *)(*(int *)(definition + 8) + -0xc);
   if (iVar4 == -1 || iVar4 + 1 < 0) {
-    uVar3 = *(uint *)(*(int *)(param_2 + 8) + -4);
-    piVar1 = std::string::__getRep(local_14,uVar3,uVar3);
-    local_c = (byte *)(piVar1 + 3);
-    memcpy((undefined4 *)local_c,*(undefined4 **)(param_2 + 8),uVar3);
+    uVar3 = *(uint *)(*(int *)(definition + 8) + -4);
+    newRep = std::string::__getRep(str,uVar3,uVar3);
+    buffer = (byte *)(newRep + 3);
+    memcpy((undefined4 *)buffer,*(undefined4 **)(definition + 8),uVar3);
   }
   else {
-    local_c = *(byte **)(param_2 + 8);
-    pbVar6 = local_c + -0xc;
-    if (pbVar6 != (byte *)&DAT_00513d58) {
+    buffer = *(byte **)(definition + 8);
+    pbVar6 = buffer + -0xc;
+    if (pbVar6 != (byte *)&g_nullStringRep) {
       *(int *)pbVar6 = *(int *)pbVar6 + 1;
     }
   }
-  if (1 < *(int *)(local_c + -0xc) + 1) {
-    FUN_004d48d8((int)local_14);
+  if (1 < *(int *)(buffer + -0xc) + 1) {
+    std::string::__unshare((int)str);
   }
-  pbVar5 = local_c + -0xc;
-  pbVar6 = local_c;
-  if (pbVar5 != (byte *)&DAT_00513d58) {
+  pbVar5 = buffer + -0xc;
+  pbVar6 = buffer;
+  if (pbVar5 != (byte *)&g_nullStringRep) {
     pbVar5[0] = 0xff;
     pbVar5[1] = 0xff;
     pbVar5[2] = 0xff;
     pbVar5[3] = 0xff;
   }
   while( true ) {
-    if (1 < *(int *)(local_c + -0xc) + 1) {
-      FUN_004d48d8((int)local_14);
+    if (1 < *(int *)(buffer + -0xc) + 1) {
+      std::string::__unshare((int)str);
     }
-    pbVar5 = local_c + -0xc;
-    if (pbVar5 != (byte *)&DAT_00513d58) {
+    pbVar5 = buffer + -0xc;
+    if (pbVar5 != (byte *)&g_nullStringRep) {
       pbVar5[0] = 0xff;
       pbVar5[1] = 0xff;
       pbVar5[2] = 0xff;
       pbVar5[3] = 0xff;
     }
-    if (local_c + *(int *)(local_c + -4) <= pbVar6) break;
+    if (buffer + *(int *)(buffer + -4) <= pbVar6) break;
     *pbVar6 = *pbVar6 ^ 0xbd;
     pbVar6 = pbVar6 + 1;
   }
-  std::string::replace_fill((int)local_14,*(uint *)(local_c + -4),0,1,0xbd);
-  uVar3 = *(uint *)(local_c + -4);
-  uVar2 = FUN_004def90(local_c,1,uVar3,param_1);
+  std::string::replace_fill((int)str,*(uint *)(buffer + -4),0,1,0xbd);
+  uVar3 = *(uint *)(buffer + -4);
+  uVar2 = FUN_004def90(buffer,1,uVar3,writer);
   uVar3 = (uint)(uVar3 == uVar2);
-  if (local_c != (byte *)0x0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      pbVar6 = local_c + -0xc;
-      if (pbVar6 == (byte *)&DAT_00513d58) {
+  if (buffer != (byte *)0x0) {
+    if (*(int *)(buffer + -0xc) != -1) {
+      pbVar6 = buffer + -0xc;
+      if (pbVar6 == (byte *)&g_nullStringRep) {
         iVar4 = 1;
       }
-      else if (pbVar6 == (byte *)&DAT_00513d58) {
+      else if (pbVar6 == (byte *)&g_nullStringRep) {
         iVar4 = 1;
       }
       else {
@@ -1693,32 +1713,18 @@ uint __cdecl FUN_0043fb9c(int *param_1,int param_2)
     operator_delete();
   }
 LAB_0043fd66:
-  *in_FS_OFFSET = local_38;
+  *sehChainHead = sehPrevFrame;
   return uVar3;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043fd78  FUN_0043fd78   (29 bytes)   [unnamed]
+// 0x0043fd78  DefinitionRecordLess   (29 bytes)   [analysis]
+//   order of two definition entries by their stored offset
 //   file placement: inferred (address adjacency)
-bool __cdecl FUN_0043fd78(int param_1,int param_2)
+bool __cdecl DefinitionRecordLess(int a,int b)
 
 {
-  return *(int *)(*(int *)(param_1 + 8) + 0x20) < *(int *)(*(int *)(param_2 + 8) + 0x20);
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0043fd98  FUN_0043fd98   (48 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-undefined4 * __cdecl FUN_0043fd98(undefined4 *param_1)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x4f5f48);
-  *param_1 = &DictionaryMaintainer::vftable;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  return *(int *)(*(int *)(a + 8) + 0x20) < *(int *)(*(int *)(b + 8) + 0x20);
 }
 
 } // namespace tea

@@ -1,0 +1,1503 @@
+{
+ "0x00401000": {
+  "ppuVar1": "startupTable"
+ },
+ "0x00401012": {
+  "ppuVar1": "startupTable"
+ },
+ "0x00401059": {
+  "param_1": "info"
+ },
+ "0x00401140": {
+  "piVar1": "tlsArray"
+ },
+ "0x004012cc": {
+  "param_1": "argc",
+  "param_2": "argv",
+  "bVar1": "started",
+  "uVar2": "exitCode",
+  "iVar3": "scratch",
+  "iVar4": "cmp",
+  "cVar5": "outputMode",
+  "piVar6": "intOut",
+  "local_5264": "pathsData2",
+  "local_51ec": "valueNameBuf",
+  "local_51a8": "moduleDir",
+  "local_4ef0": "annotationLen",
+  "local_4eec": "wordLen",
+  "local_4ee8": "annotationArg",
+  "local_4ee4": "annotation",
+  "local_4ed8": "wordLetters",
+  "local_4ed0": "lastLength",
+  "local_4ecc": "length",
+  "local_4ec5": "status",
+  "local_4ec4": "dictIndex",
+  "local_4ea5": "firstChar",
+  "local_4ea4": "lineLen",
+  "local_4e18": "patternIndex",
+  "local_4e14": "hadError",
+  "local_4d9c": "firstMissingPath",
+  "local_4d98": "dictList",
+  "local_4d48": "patternArg",
+  "local_4cc4": "argIndex",
+  "local_4cc8": "shortestArg",
+  "local_4ccc": "longestArg",
+  "local_4cd0": "annotationsArg",
+  "local_4cd4": "balancesArg",
+  "local_4cd8": "variablesArg",
+  "local_4cdc": "ignoredArg",
+  "local_4ce0": "outputArg",
+  "local_4cb8": "quiet",
+  "local_4cb4": "longest",
+  "local_4cb0": "shortest",
+  "local_4bf8": "dictNumber",
+  "local_4bf0": "longestSetting",
+  "local_4bec": "shortestSetting",
+  "local_4bdc": "lastSep",
+  "local_4bd8": "moduleLen",
+  "local_4b64": "filtered",
+  "local_4b5c": "filteredData",
+  "local_4b54": "word",
+  "local_4b4c": "wordData",
+  "local_4b44": "matchSet",
+  "local_4b0c": "inputEngine",
+  "local_4704": "inputEngineRawWord",
+  "local_300": "expanded",
+  "local_2f8": "expandedData",
+  "local_2f0": "query",
+  "local_2e8": "queryData",
+  "local_2e0": "slot",
+  "local_2dc": "patternStr",
+  "local_2d4": "patternStrData",
+  "local_29c": "valueText",
+  "local_294": "valueTextData",
+  "local_28c": "persist",
+  "local_284": "common",
+  "local_274": "balanceText",
+  "local_26c": "balanceTextData",
+  "local_264": "balancePrefix",
+  "local_25c": "balancePrefixData",
+  "local_254": "dictionaryPaths",
+  "local_24c": "dictionaryPathsData",
+  "local_244": "openDictionaries",
+  "local_23c": "openDictionariesData",
+  "local_234": "profile",
+  "local_224": "profileExpansionHash",
+  "local_214": "ignoreUnusedPunctuation",
+  "local_74": "showAnnotations",
+  "local_70": "showBalances",
+  "local_44": "key",
+  "local_3c": "keyData",
+  "local_34": "owner",
+  "local_2c": "ownerData",
+  "local_24": "patterns",
+  "local_20": "patternsBegin",
+  "local_1c": "patternsEnd",
+  "local_c": "patternsCapacityEnd",
+  "local_8": "probe"
+ },
+ "0x0040483c": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last",
+  "iVar1": "str",
+  "iVar2": "prevRefs",
+  "piVar3": "strRep"
+ },
+ "0x004048f4": {
+  "param_1": "vec",
+  "param_2": "pos",
+  "param_3": "value",
+  "uVar1": "len",
+  "iVar2": "refs",
+  "iVar3": "newCapacity",
+  "iVar4": "storage",
+  "iVar5": "slot",
+  "piVar6": "rep",
+  "local_c": "badAlloc",
+  "local_8": "end"
+ },
+ "0x00404d2c": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "destEnd"
+ },
+ "0x00404d5c": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest",
+  "iVar1": "refs",
+  "uVar2": "len",
+  "iVar3": "src",
+  "iVar4": "dst",
+  "piVar5": "rep"
+ },
+ "0x00404ea8": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x004050b4": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last"
+ },
+ "0x004051bc": {
+  "param_1": "self",
+  "param_2": "paths",
+  "puVar1": "dst",
+  "uVar2": "remaining",
+  "uVar3": "chunk",
+  "puVar4": "src",
+  "puVar5": "p",
+  "bVar6": "backwards"
+ },
+ "0x004052f4": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last"
+ },
+ "0x0040530c": {
+  "param_1": "paths",
+  "pcVar1": "found",
+  "iVar2": "count",
+  "uVar3": "semicolon",
+  "piVar4": "strRep",
+  "local_e8": "len",
+  "local_e0": "semicolonPos",
+  "local_bc": "list",
+  "local_198": "dict",
+  "local_18": "newList",
+  "local_14": "remaining",
+  "local_c": "remainingData",
+  "local_28": "path",
+  "local_20": "pathData",
+  "local_8c": "rest",
+  "local_7c": "newDict",
+  "local_13c": "tailLen",
+  "local_18c": "available",
+  "local_194": "copyLen",
+  "local_18d": "nul",
+  "local_1a8": "slot",
+  "local_2f8": "lengthErrorText",
+  "local_418": "rangeErrorText",
+  "local_40": "lengthError",
+  "local_58": "rangeError",
+  "local_f0": "lengthErrorMsg",
+  "local_140": "rangeErrorMsg"
+ },
+ "0x004061d0": {
+  "param_1": "vec",
+  "param_2": "pos",
+  "param_3": "value",
+  "iVar1": "newCapacity",
+  "puVar2": "storage",
+  "iVar3": "index",
+  "local_8": "badAlloc"
+ },
+ "0x004063a8": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "destEnd"
+ },
+ "0x004063cc": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest"
+ },
+ "0x0040644c": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x00406464": {
+  "param_1": "self",
+  "piVar1": "refs",
+  "puVar2": "dict",
+  "piVar3": "cacheSlot",
+  "piVar4": "entry"
+ },
+ "0x00406564": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "value"
+ },
+ "0x00406584": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest"
+ },
+ "0x004065a8": {
+  "param_1": "self",
+  "iVar1": "byteSize"
+ },
+ "0x004065c8": {
+  "param_1": "self",
+  "uVar1": "loaded",
+  "iVar4": "i",
+  "uVar2": "path"
+ },
+ "0x00406600": {
+  "param_1": "self",
+  "param_2": "index",
+  "uVar1": "loaded"
+ },
+ "0x004066fc": {
+  "param_1": "self",
+  "param_2": "index",
+  "uVar1": "loaded"
+ },
+ "0x00406720": {
+  "param_1": "self",
+  "param_2": "index",
+  "uVar1": "path"
+ },
+ "0x00406744": {
+  "param_1": "self",
+  "param_2": "index"
+ },
+ "0x00406760": {
+  "param_1": "self",
+  "param_2": "index",
+  "param_3": "length"
+ },
+ "0x00406780": {
+  "param_1": "self",
+  "param_2": "index",
+  "param_3": "letterClass",
+  "iVar1": "dict"
+ },
+ "0x004067a0": {
+  "param_1": "self",
+  "param_2": "index"
+ },
+ "0x00406814": {
+  "param_1": "self",
+  "param_2": "path",
+  "iVar1": "refs",
+  "uVar2": "len",
+  "piVar3": "rep"
+ },
+ "0x00406a2c": {
+  "param_1": "self",
+  "param_2": "reload",
+  "sVar1": "numUsed",
+  "pcVar2": "row",
+  "bVar3": "haveTime",
+  "i": "len",
+  "uVar5": "unloaded",
+  "puVar6": "entry",
+  "iVar7": "node",
+  "uVar8": "count",
+  "uVar9": "got",
+  "iVar10": "depth",
+  "piVar11": "p",
+  "piVar12": "q",
+  "bVar13": "backwards",
+  "cVar14": "followLinks",
+  "p_Var15": "fileTimeOut",
+  "local_74": "bits",
+  "local_70": "prefix",
+  "local_6c": "bitsLeft",
+  "local_68": "code",
+  "local_64": "letterClass",
+  "local_62": "codeLen",
+  "local_61": "symByte",
+  "local_60": "nextNode",
+  "local_5c": "magic",
+  "local_59": "formatDigit",
+  "local_40": "file",
+  "local_3c": "sym",
+  "local_38": "sehPrevFrame",
+  "local_14": "pathStr"
+ },
+ "0x0040711c": {
+  "param_1": "self",
+  "i": "i",
+  "puVar2": "p",
+  "pcVar3": "text",
+  "uVar4": "len"
+ },
+ "0x004071a0": {
+  "param_1": "self",
+  "bVar1": "haveTime"
+ },
+ "0x00407210": {
+  "param_1": "result",
+  "param_2": "self"
+ },
+ "0x00407264": {
+  "param_1": "self",
+  "param_2": "totalWords",
+  "param_3": "totalLinked",
+  "param_4": "shortest",
+  "param_5": "longest",
+  "piVar1": "count",
+  "i": "length"
+ },
+ "0x004072cc": {
+  "param_1": "self",
+  "param_2": "out",
+  "iVar1": "loadedOrLen",
+  "local_f0": "numberText",
+  "local_64": "definitionCount",
+  "local_59": "loaded",
+  "local_24": "title",
+  "local_1c": "titleData",
+  "local_14": "description",
+  "local_c": "descriptionData"
+ },
+ "0x00407528": {
+  "param_1": "result",
+  "param_2": "self",
+  "local_474": "buf",
+  "local_14": "text",
+  "local_c": "textData",
+  "local_6c": "dst",
+  "local_58": "data"
+ },
+ "0x00407768": {
+  "param_1": "result",
+  "param_2": "self"
+ },
+ "0x00407ae0": {
+  "param_1": "result",
+  "param_2": "path",
+  "len": "sepLen",
+  "iVar2": "refs",
+  "uVar4": "searchLen",
+  "local_cc": "pathArg",
+  "local_c": "remainingData",
+  "local_14": "remaining",
+  "local_24": "tail",
+  "local_1c": "tailData",
+  "local_10c": "haveTail",
+  "local_110": "sep",
+  "local_108": "sepPos",
+  "local_34": "name",
+  "local_2c": "nameData",
+  "local_44": "component",
+  "local_3c": "componentData",
+  "local_a4": "withSep",
+  "local_9c": "withSepData"
+ },
+ "0x00408894": {
+  "param_1": "~p",
+  "param_2": "~ch",
+  "param_3": "~n",
+  "pcVar1": "q"
+ },
+ "0x004088c0": {
+  "param_1": "result",
+  "param_2": "lhs",
+  "param_3": "rhs",
+  "uVar1": "len",
+  "iVar2": "sum",
+  "iVar3": "refs",
+  "piVar4": "rep",
+  "local_14": "tmp",
+  "local_c": "tmpData"
+ },
+ "0x00408b40": {
+  "param_1": "result",
+  "param_2": "str",
+  "uVar1": "len",
+  "iVar2": "sum",
+  "piVar3": "rep",
+  "iVar4": "refs",
+  "puVar5": "suffixArg",
+  "local_24": "tmp",
+  "local_1c": "tmpData",
+  "local_14": "suffix",
+  "local_c": "suffixData"
+ },
+ "0x00408ec4": {
+  "param_1": "result",
+  "param_2": "path",
+  "iVar1": "refs",
+  "uVar2": "len",
+  "sVar3": "err",
+  "local_54": "dst",
+  "local_50": "src",
+  "local_40": "data"
+ },
+ "0x00409000": {
+  "param_1": "path",
+  "pcVar1": "colon",
+  "iVar2": "colonPos",
+  "bVar3": "relative"
+ },
+ "0x0040909c": {
+  "param_1": "result",
+  "DVar1": "len",
+  "puVar2": "lastSep",
+  "iVar3": "dir",
+  "local_14": "dirStr",
+  "local_c": "dirData"
+ },
+ "0x00409208": {
+  "param_1": "result",
+  "param_2": "paths",
+  "bVar1": "relative",
+  "pcVar3": "semicolon",
+  "iVar4": "pos",
+  "piVar5": "rep",
+  "uVar6": "len",
+  "puVar7": "listArg",
+  "local_14": "list",
+  "local_c": "listData",
+  "local_24": "dir",
+  "local_1c": "dirData",
+  "local_34": "dir2",
+  "local_2c": "dir2Data"
+ },
+ "0x0040965c": {
+  "param_1": "path",
+  "param_2": "wantWriteTime",
+  "param_3": "timeOut",
+  "bVar2": "ok2"
+ },
+ "0x00409a5c": {
+  "param_1": "self",
+  "param_2": "dictList",
+  "param_3": "dictIndex"
+ },
+ "0x00409b6c": {
+  "param_1": "self",
+  "param_2": "length",
+  "bVar1": "opened",
+  "iVar3": "loaded",
+  "uVar6": "linkMode"
+ },
+ "0x00409c78": {
+  "param_1": "self",
+  "param_2": "matchSet",
+  "puVar1": "nextPtr",
+  "iVar2": "dict",
+  "iVar3": "codeLen",
+  "cVar4": "ch",
+  "bVar5": "ok",
+  "piVar6": "engines",
+  "iVar7": "symbol",
+  "uVar8": "bit",
+  "pcVar9": "rawNext",
+  "iVar10": "huffNodes",
+  "pbVar11": "logicOps",
+  "iVar12": "singleEngine",
+  "iVar13": "bitPos",
+  "uVar14": "bits",
+  "local_28": "rawOut",
+  "local_24": "lettersOut",
+  "local_20": "budget",
+  "local_c": "bitEnd",
+  "local_8": "bitPtr"
+ },
+ "0x0040a09c": {
+  "param_1": "mode",
+  "param_2": "wordBuf",
+  "param_3": "length",
+  "param_4": "ops",
+  "param_5": "engines",
+  "pbVar1": "target",
+  "piVar2": "nextEngine",
+  "bVar3": "matched",
+  "iVar4": "minLength",
+  "bVar5": "op",
+  "pbVar6": "stackTop",
+  "local_2c": "parenStack",
+  "local_c": "engine",
+  "local_8": "result"
+ },
+ "0x0040a218": {
+  "param_1": "self",
+  "puVar1": "other",
+  "DVar4": "status",
+  "pvVar5": "hFile",
+  "bVar3": "result",
+  "local_8": "bytesRead",
+  "in_ECX": "initialEcx"
+ },
+ "0x0040a338": {
+  "param_1": "self",
+  "pcVar1": "annotation"
+ },
+ "0x0040a360": {
+  "param_1": "self",
+  "param_2": "op"
+ },
+ "0x0040a37c": {
+  "param_1": "self",
+  "param_2": "cursor",
+  "param_3": "bc",
+  "param_4": "outVarPos",
+  "param_5": "outEndPos",
+  "param_6": "outExtra",
+  "uVar1": "op",
+  "puVar3": "opSlot",
+  "uVar5": "extraByte",
+  "iVar6": "templateLen",
+  "uVar8": "k",
+  "local_79": "hasPrefix",
+  "local_80": "p",
+  "local_84": "anagramLen",
+  "local_88": "templateExtra",
+  "local_8c": "anagramExtra",
+  "local_90": "templateVarPos",
+  "local_94": "anagramPos",
+  "local_98": "startPos",
+  "local_a4": "headerEnd",
+  "local_f4": "tailLen",
+  "local_144": "available",
+  "local_145": "nul",
+  "local_14c": "eraseLen",
+  "local_168": "minLenPos",
+  "local_16c": "extraPos",
+  "local_174": "anagramLenBytes",
+  "local_178": "bytePos",
+  "local_180": "byteSrc"
+ },
+ "0x0040ae38": {
+  "param_1": "self",
+  "param_2": "cursorRef",
+  "param_3": "bc",
+  "param_4": "outVarPos",
+  "param_5": "outEndPos",
+  "param_6": "outExtra",
+  "pbVar1": "next",
+  "bVar2": "ch",
+  "bVar3": "escaped",
+  "uVar4": "groupCountByte",
+  "uVar5": "op",
+  "pcVar6": "terminator",
+  "iVar7": "countPos",
+  "puVar8": "opSlot",
+  "iVar9": "countPos2",
+  "iVar10": "letterClass",
+  "iVar12": "groupCount",
+  "local_58": "classByte",
+  "local_38": "listStart",
+  "local_14": "subExtra",
+  "local_10": "minLen",
+  "local_c": "groupPos",
+  "local_8": "p"
+ },
+ "0x0040b6d8": {
+  "param_1": "self",
+  "param_2": "cursorRef",
+  "param_3": "bc",
+  "param_4": "outExtra",
+  "param_5": "templateExtra",
+  "pbVar1": "next",
+  "bVar2": "ch",
+  "bVar3": "escaped",
+  "uVar4": "op",
+  "iVar5": "count",
+  "puVar6": "opSlot",
+  "iVar7": "n",
+  "piVar8": "countAt",
+  "pcVar9": "q",
+  "local_524": "counts",
+  "acStack_138": "varCountsByDigit",
+  "local_120": "subPatternPos2",
+  "local_11a": "singlesOp",
+  "local_118": "countByte",
+  "local_117": "multiplesOp",
+  "local_116": "varCount",
+  "local_115": "varsOp",
+  "local_114": "letterClass",
+  "local_108": "varCounts",
+  "local_c8": "classPos",
+  "local_c4": "choiceClass",
+  "local_c0": "allowed",
+  "local_bb": "countByte2",
+  "local_ba": "subOp",
+  "local_b9": "subFirstOp",
+  "local_b8": "subPattern",
+  "local_8c": "poolIndex",
+  "local_74": "subLen",
+  "local_5c": "distinctLetters",
+  "local_58": "i",
+  "local_54": "letterCount",
+  "local_50": "subPatternPos",
+  "local_4c": "p",
+  "local_24": "choiceSet",
+  "local_1c": "choiceSetData",
+  "local_14": "subBc",
+  "local_c": "subBcData"
+ },
+ "0x0040c468": {
+  "param_1": "self",
+  "param_2": "dictList",
+  "param_3": "dictIndex",
+  "param_4": "patternText",
+  "param_5": "ignoreUnusedPunctuation",
+  "cVar1": "lastOp",
+  "iVar2": "minLen",
+  "pcVar3": "found",
+  "uVar4": "pos",
+  "uVar5": "pos2",
+  "puVar6": "src",
+  "puVar7": "p",
+  "puVar8": "dst",
+  "bVar9": "op",
+  "local_d0": "text",
+  "local_d4": "extra",
+  "local_d8": "varPos",
+  "local_dc": "endPos",
+  "local_19c": "i",
+  "local_1a0": "idx",
+  "local_1a8": "next",
+  "local_204": "terminators",
+  "local_205": "op2",
+  "local_20c": "idx2",
+  "local_214": "next2",
+  "local_21c": "erasePos",
+  "local_270": "eraseLen",
+  "local_269": "nul",
+  "local_278": "afterEnd",
+  "local_1fc": "eraseLen2",
+  "local_1f5": "nul2",
+  "local_184": "clearLen",
+  "local_17d": "nul3",
+  "local_17c": "len2",
+  "local_12c": "len1",
+  "local_190": "bcRef",
+  "local_18c": "varPos2",
+  "local_198": "bcRef2",
+  "len": "textLen"
+ },
+ "0x0040d5b8": {
+  "param_1": "self"
+ },
+ "0x0040d5c8": {
+  "param_1": "self"
+ },
+ "0x0040d5d8": {
+  "param_1": "self"
+ },
+ "0x0040d6b4": {
+  "param_1": "self",
+  "param_2": "shortest"
+ },
+ "0x0040d6e8": {
+  "param_1": "self",
+  "param_2": "longest"
+ },
+ "0x0040d71c": {
+  "param_1": "self",
+  "param_2": "length"
+ },
+ "0x0040d73c": {
+  "param_1": "self",
+  "param_2": "wordBuf",
+  "bVar1": "ch",
+  "iVar2": "matched",
+  "pcVar3": "punctBefore",
+  "pbVar4": "filtered",
+  "local_c": "raw",
+  "local_5": "punctCount"
+ },
+ "0x0040d844": {
+  "param_1": "self",
+  "param_2": "out",
+  "bVar1": "first",
+  "iVar2": "count",
+  "uVar3": "letter",
+  "iVar4": "k",
+  "piVar5": "balanceAt",
+  "local_10": "letterClass",
+  "local_8": "sign"
+ },
+ "0x0040d944": {
+  "param_1": "self",
+  "iVar1": "minLength"
+ },
+ "0x0040d960": {
+  "param_1": "self",
+  "iVar1": "maxLength"
+ },
+ "0x0040d97c": {
+  "param_1": "var",
+  "param_2": "letter",
+  "iVar1": "taken"
+ },
+ "0x0040d9c8": {
+  "param_1": "var"
+ },
+ "0x0040d9e4": {
+  "param_1": "letter",
+  "i": "value"
+ },
+ "0x0040da14": {
+  "puVar1": "value",
+  "iVar2": "i"
+ },
+ "0x0040da30": {
+  "param_1": "snapshot",
+  "puVar1": "value",
+  "iVar2": "i"
+ },
+ "0x0040da50": {
+  "param_1": "snapshot",
+  "iVar1": "i",
+  "puVar2": "value"
+ },
+ "0x0040da88": {
+  "param_1": "self"
+ },
+ "0x0040dae0": {
+  "param_1": "self"
+ },
+ "0x0040dbb8": {
+  "param_1": "self",
+  "param_2": "str",
+  "local_8": "i",
+  "uVar1": "len",
+  "uVar2": "pos",
+  "iVar3": "index"
+ },
+ "0x0040dc5c": {
+  "param_1": "self"
+ },
+ "0x0040dc68": {
+  "param_1": "self",
+  "param_2": "index"
+ },
+ "0x0040dc80": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "wordBuf",
+  "bVar1": "letter",
+  "pcVar2": "pc"
+ },
+ "0x0040dca0": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "letters",
+  "bVar1": "letter",
+  "pbVar2": "pc",
+  "uVar3": "remaining",
+  "local_104": "hist"
+ },
+ "0x0040dd14": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "letters",
+  "pbVar1": "pc",
+  "pbVar2": "count",
+  "local_104": "hist"
+ },
+ "0x0040dd78": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "wordBuf",
+  "param_4": "punctIdx",
+  "param_5": "slack",
+  "iVar1": "filteredIdx",
+  "bVar2": "op",
+  "bVar3": "choice",
+  "bVar4": "operand",
+  "uVar5": "remaining",
+  "uVar6": "left",
+  "pbVar7": "after",
+  "pbVar8": "pc",
+  "bVar9": "negated",
+  "local_64": "extra",
+  "local_48": "subLen",
+  "local_1c": "innerSaved",
+  "local_10": "saved"
+ },
+ "0x0040e3f8": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "hist",
+  "param_4": "budget",
+  "bVar1": "letter",
+  "uVar2": "remaining",
+  "uVar3": "left",
+  "pbVar4": "next",
+  "pbVar5": "pc",
+  "bVar6": "wasNegative"
+ },
+ "0x0040e430": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "hist",
+  "param_4": "budget",
+  "bVar1": "mult"
+ },
+ "0x0040e474": {
+  "param_1": "self",
+  "param_2": "bc"
+ },
+ "0x0040e480": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "hist",
+  "param_4": "idx",
+  "param_5": "mult",
+  "param_6": "allowed",
+  "param_7": "budget",
+  "param_8": "numLetters",
+  "pcVar1": "allowedAt",
+  "iVar2": "result",
+  "pcVar3": "histAt"
+ },
+ "0x0040e570": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "hist",
+  "param_4": "budget",
+  "param_5": "numLetters",
+  "iVar1": "choiceSet"
+ },
+ "0x0040e5b4": {
+  "param_1": "self",
+  "param_2": "varCounts",
+  "param_3": "hist",
+  "var": "var",
+  "param_5": "budget",
+  "param_6": "numLetters",
+  "pcVar1": "value",
+  "iVar2": "result",
+  "iVar3": "found",
+  "puVar4": "valueSlot",
+  "pbVar5": "letterAt",
+  "local_11": "count"
+ },
+ "0x0040e700": {
+  "param_1": "self",
+  "param_2": "varCounts",
+  "param_3": "hist",
+  "param_4": "budget",
+  "param_5": "numLetters",
+  "bVar1": "count",
+  "bVar2": "letter",
+  "pbVar3": "value",
+  "iVar4": "var",
+  "local_14": "countAt"
+ },
+ "0x0040e79c": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "letters",
+  "param_4": "op",
+  "param_5": "mult",
+  "param_6": "sub",
+  "param_7": "punctIdx",
+  "param_8": "budget",
+  "param_9": "n",
+  "param_10": "numLetters",
+  "pbVar1": "p",
+  "pbVar2": "runEnd",
+  "i": "start",
+  "local_50": "result",
+  "local_4c": "triesLeft",
+  "local_48": "subExtra",
+  "local_44": "subMin",
+  "local_1c": "saved"
+ },
+ "0x0040ea58": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "letters",
+  "param_4": "punctIdx",
+  "param_5": "budget",
+  "param_6": "n",
+  "param_7": "numLetters",
+  "iVar1": "sub",
+  "local_10c": "hist",
+  "local_9": "op",
+  "local_8": "engine"
+ },
+ "0x0040eb20": {
+  "param_1": "bc",
+  "param_2": "letters",
+  "param_3": "n",
+  "cVar1": "op",
+  "uVar2": "count",
+  "pbVar3": "pc",
+  "pbVar4": "named"
+ },
+ "0x0040ebec": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "wordBuf",
+  "param_4": "punctIdx",
+  "param_5": "slack",
+  "param_6": "n",
+  "pbVar1": "pc",
+  "local_10": "saved"
+ },
+ "0x0040ed84": {
+  "self": "snapshot"
+ },
+ "0x0040edbc": {
+  "param_1": "result",
+  "param_2": "word",
+  "param_3": "mode",
+  "uVar1": "ch",
+  "iVar3": "isLetter",
+  "piVar4": "rep",
+  "puVar5": "expansion",
+  "local_64": "p",
+  "local_14": "out",
+  "local_c": "outData"
+ },
+ "0x0040f26c": {
+  "param_1": "self",
+  "param_2": "keyPath",
+  "puVar1": "extension",
+  "iVar2": "scratch",
+  "puVar3": "dst",
+  "pcVar6": "len",
+  "puVar7": "p",
+  "iVar8": "keyPathCopy",
+  "piVar9": "intOut",
+  "ppuVar10": "nameSrc",
+  "uVar11": "i",
+  "cVar12": "invalid",
+  "bVar13": "backwards",
+  "puVar14": "listArg",
+  "local_55c": "nameAt",
+  "local_4e4": "dictionaryNames",
+  "local_464": "groupingSense",
+  "local_1cc": "resolved",
+  "local_1c4": "resolvedData",
+  "local_1ac": "candidateResolved",
+  "local_1a4": "candidateResolvedData",
+  "local_19c": "candidate",
+  "local_194": "candidateData",
+  "local_18c": "defaultPath",
+  "local_184": "defaultPathData",
+  "local_1c": "dictionaryList",
+  "local_14": "dictionaryListData",
+  "local_c": "persist",
+  "uVar4": "found",
+  "uVar5": "found2",
+  "local_210": "keyPathData"
+ },
+ "0x0041130c": {
+  "param_1": "result",
+  "param_2": "expansions",
+  "param_3": "query",
+  "uVar1": "len",
+  "cVar2": "ch",
+  "iVar3": "queryLen",
+  "iVar4": "i",
+  "piVar5": "rep",
+  "local_14": "out",
+  "local_c": "outData"
+ },
+ "0x00411570": {
+  "param_1": "options",
+  "uVar1": "found",
+  "cVar4": "missing"
+ },
+ "0x00411910": {
+  "pcVar1": "token",
+  "iVar2": "value"
+ },
+ "0x0041193c": {
+  "param_1": "self",
+  "param_2": "keyPath",
+  "param_3": "create",
+  "param_4": "tryLocalMachine",
+  "hKey": "hRoot",
+  "local_2c": "disposition"
+ },
+ "0x00411a4c": {
+  "param_1": "self",
+  "param_2": "valueName",
+  "param_3": "out",
+  "iVar1": "probe",
+  "auStackY_1000c": "buf",
+  "uStackY_102c": "retAddr",
+  "local_c": "typeAndSize"
+ },
+ "0x00411ac0": {
+  "param_1": "self",
+  "param_2": "valueName",
+  "param_3": "out",
+  "local_10": "typeAndSize",
+  "local_8": "value"
+ },
+ "0x00411b14": {
+  "param_1": "self",
+  "param_2": "valueName",
+  "param_3": "defaultText",
+  "param_4": "logFont",
+  "uVar1": "len",
+  "uVar2": "found",
+  "iVar3": "refs",
+  "local_14": "text",
+  "local_c": "textData"
+ },
+ "0x00411c80": {
+  "param_1": "self",
+  "param_2": "valueName",
+  "param_3": "colour",
+  "cVar1": "found",
+  "uVar2": "result",
+  "uVar3": "ret",
+  "local_14": "text",
+  "local_c": "textData"
+ },
+ "0x00411d78": {
+  "param_1": "text",
+  "param_2": "colour",
+  "bVar1": "red",
+  "pcVar2": "token",
+  "uVar4": "green",
+  "uVar5": "blue",
+  "iVar3": "value"
+ },
+ "0x00411dd8": {
+  "param_1": "text",
+  "param_2": "logFont",
+  "uVar1": "value",
+  "iVar2": "byteValue",
+  "puVar3": "faceName"
+ },
+ "0x00411e94": {
+  "param_1": "self"
+ },
+ "0x0041204c": {
+  "param_1": "self",
+  "param_2": "dictList",
+  "param_3": "dictIndex",
+  "param_4": "query",
+  "param_5": "shortest",
+  "param_6": "longest",
+  "param_7": "ignoreUnusedPunctuation",
+  "cVar1": "ch",
+  "uVar2": "status",
+  "iVar3": "n",
+  "uVar4": "opPos",
+  "uVar5": "pos",
+  "local_2cc": "i",
+  "local_2b4": "opsRef3",
+  "local_2ad": "opByte",
+  "local_2ac": "opsRef2",
+  "local_2a4": "slot3",
+  "local_298": "slot2",
+  "local_290": "engine",
+  "local_28c": "eraseLen2",
+  "local_285": "nul2",
+  "local_23c": "opsRef",
+  "local_234": "slot",
+  "local_225": "negate",
+  "local_224": "eraseLen",
+  "local_21d": "nul",
+  "local_21c": "available",
+  "local_1cc": "tailLen",
+  "local_178": "beforeLast",
+  "local_170": "lastPos",
+  "local_169": "lastCh",
+  "local_168": "trailingCloses",
+  "local_164": "balanced",
+  "local_15c": "idx",
+  "local_154": "prevIdx",
+  "local_150": "closes",
+  "local_14c": "opens",
+  "local_148": "notDepth",
+  "local_13d": "logicOp",
+  "local_13c": "prevPos",
+  "local_138": "rest",
+  "local_134": "opPos2",
+  "local_e8": "searchPos",
+  "local_e4": "start",
+  "local_e0": "depth",
+  "local_b8": "newEngine",
+  "local_14": "leaf",
+  "local_c": "leafData",
+  "local_29c": "nullEngine",
+  "local_22c": "nullEngine2"
+ },
+ "0x004133f0": {
+  "param_1": "self",
+  "param_2": "other",
+  "iVar1": "refs",
+  "uVar2": "len",
+  "piVar3": "rep"
+ },
+ "0x004134dc": {
+  "param_1": "vec",
+  "param_2": "pos",
+  "param_3": "value",
+  "iVar1": "newCapacity",
+  "puVar2": "storage",
+  "iVar3": "index",
+  "local_8": "badAlloc"
+ },
+ "0x004136b4": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "destEnd"
+ },
+ "0x004136d8": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest"
+ },
+ "0x00413758": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x00413770": {
+  "param_1": "self",
+  "param_2": "length",
+  "iVar1": "minLength",
+  "iVar2": "engine",
+  "uVar3": "count",
+  "uVar4": "i",
+  "local_8": "possible"
+ },
+ "0x00413804": {
+  "param_1": "self",
+  "param_2": "prefix",
+  "param_3": "out",
+  "puVar1": "rep",
+  "iVar2": "byteSize",
+  "uVar3": "len",
+  "local_111": "nul",
+  "local_110": "len2",
+  "local_c4": "len1"
+ },
+ "0x00413da4": {
+  "param_1": "self",
+  "param_2": "first",
+  "param_3": "last",
+  "iVar1": "byteSize",
+  "uVar2": "possible",
+  "pbVar3": "ops",
+  "piVar4": "engines",
+  "iVar5": "length"
+ },
+ "0x00413e18": {
+  "param_1": "self",
+  "puVar1": "rep",
+  "iVar2": "engine",
+  "iVar3": "prevRefs",
+  "uVar4": "i",
+  "local_125": "nul",
+  "local_124": "len2",
+  "local_d8": "len1",
+  "local_80": "strRep",
+  "local_8": "engineObj"
+ },
+ "0x00414468": {
+  "param_1": "vec",
+  "param_2": "n",
+  "puVar1": "end",
+  "puVar2": "newEnd",
+  "iVar3": "size",
+  "puVar4": "cut",
+  "iVar5": "removed",
+  "local_8": "nullValue"
+ },
+ "0x00414508": {
+  "puVar1": "storage",
+  "iVar2": "count",
+  "puVar3": "growBy",
+  "local_3c": "size",
+  "local_38": "newCapacity",
+  "local_8": "badAlloc",
+  "local_2c": "sehPrevFrame"
+ },
+ "0x004147b0": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "value"
+ },
+ "0x004147d0": {
+  "param_1": "first",
+  "param_2": "n",
+  "param_3": "value"
+ },
+ "0x0041484c": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest"
+ },
+ "0x00414870": {
+  "param_1": "owner",
+  "param_2": "key",
+  "bVar1": "ok"
+ },
+ "0x00414888": {
+  "param_1": "owner",
+  "param_2": "key",
+  "iVar1": "isLetter",
+  "uVar2": "ch",
+  "bVar3": "keyChar",
+  "pbVar4": "p",
+  "pbVar5": "q",
+  "pcVar6": "keyAt",
+  "local_8": "letterCount"
+ },
+ "0x00414a00": {
+  "param_1": "input",
+  "param_2": "state",
+  "param_3": "polynomial",
+  "bVar1": "topByte",
+  "iVar2": "k",
+  "pbVar3": "p",
+  "pbVar4": "q",
+  "uVar5": "carry",
+  "local_c": "bit"
+ },
+ "0x00414a84": {
+  "param_1": "owner",
+  "param_2": "key",
+  "bVar1": "ok"
+ },
+ "0x00414a9c": {
+  "param_1": "owner",
+  "param_2": "key",
+  "bVar1": "ok"
+ },
+ "0x00414ab4": {
+  "param_1": "result",
+  "param_2": "subdir",
+  "uVar1": "len",
+  "iVar2": "status",
+  "uVar4": "clearLen",
+  "local_1cc": "folder",
+  "local_b5": "nul"
+ },
+ "0x00414ea8": {
+  "param_1": "self",
+  "param_2": "owner",
+  "param_3": "key",
+  "uVar1": "result",
+  "DVar2": "len",
+  "iVar3": "assigned",
+  "local_804": "keyBuf",
+  "local_404": "ownerBuf"
+ },
+ "0x00414f4c": {
+  "param_1": "~count",
+  "param_2": "~size"
+ },
+ "0x004155f0": {
+  "param_1": "~size"
+ },
+ "0x00415600": {
+  "param_1": "~p"
+ },
+ "0x0041687c": {
+  "param_1": "self",
+  "iVar1": "rep"
+ },
+ "0x00416bd0": {
+  "param_1": "self",
+  "param_2": "~other"
+ },
+ "0x00416c68": {
+  "param_1": "self",
+  "param_2": "~s"
+ },
+ "0x00416e74": {
+  "param_1": "self",
+  "param_2": "~s"
+ },
+ "0x00416ffc": {
+  "param_1": "~alloc",
+  "param_2": "~capacity",
+  "param_3": "~length",
+  "piVar1": "nullRep",
+  "piVar2": "rep",
+  "puVar3": "allocArg",
+  "local_15": "nul"
+ },
+ "0x004172ec": {
+  "param_1": "~rep"
+ },
+ "0x00417320": {
+  "param_1": "self",
+  "param_2": "~pos",
+  "param_3": "~n1",
+  "param_4": "~s",
+  "param_5": "~n2"
+ },
+ "0x00417760": {
+  "param_1": "self",
+  "param_2": "~what"
+ },
+ "0x004177ec": {
+  "param_1": "self",
+  "uVar1": "data"
+ },
+ "0x00418dec": {
+  "param_1": "self",
+  "param_2": "~s",
+  "param_3": "~n"
+ },
+ "0x0041a7fc": {
+  "param_1": "self",
+  "uVar1": "len",
+  "uVar2": "len2",
+  "newRep": "rep",
+  "puVar4": "src",
+  "puVar5": "dst"
+ },
+ "0x0041ab68": {
+  "param_1": "self",
+  "param_2": "~other",
+  "iVar1": "otherLen",
+  "uVar6": "room"
+ },
+ "0x0041ac7c": {
+  "param_1": "self",
+  "param_2": "~other",
+  "uVar1": "len"
+ },
+ "0x0041aca0": {
+  "param_1": "self",
+  "param_2": "~pos",
+  "param_3": "~n1",
+  "param_4": "~other",
+  "uVar1": "otherLen",
+  "uVar2": "otherLen2",
+  "uVar3": "otherData",
+  "uVar4": "zero"
+ },
+ "0x0041acdc": {
+  "param_1": "self",
+  "param_2": "~pos",
+  "param_3": "~other"
+ },
+ "0x0041ae90": {
+  "param_1": "self",
+  "param_2": "~pos",
+  "param_3": "~n1",
+  "param_4": "~count",
+  "param_5": "~ch"
+ },
+ "0x0041b368": {
+  "param_1": "result",
+  "param_2": "self",
+  "param_3": "~pos",
+  "param_4": "~n"
+ },
+ "0x0041b484": {
+  "param_1": "self",
+  "param_2": "~n"
+ },
+ "0x0041ea4c": {
+  "param_1": "exceptMsg",
+  "param_2": "~format"
+ },
+ "0x0041ed9c": {
+  "param_1": "~s",
+  "param_2": "~ch",
+  "param_3": "~n"
+ },
+ "0x0041eddc": {
+  "param_1": "~dest",
+  "param_2": "~src",
+  "param_3": "~n"
+ },
+ "0x0041ee4c": {
+  "param_1": "~dest",
+  "param_2": "~ch",
+  "param_3": "~n"
+ },
+ "0x0041ef2c": {
+  "param_1": "~s",
+  "param_2": "~ch"
+ },
+ "0x0041ef80": {
+  "param_1": "~s"
+ },
+ "0x0041f118": {
+  "param_1": "~s",
+  "param_2": "~reject"
+ },
+ "0x0041f178": {
+  "param_1": "~s1",
+  "param_2": "~s2"
+ },
+ "0x0041f1c0": {
+  "param_1": "~dest",
+  "param_2": "~src",
+  "param_3": "~n"
+ },
+ "0x0041f210": {
+  "param_1": "~s1",
+  "param_2": "~s2",
+  "param_3": "~n"
+ },
+ "0x0041f284": {
+  "param_1": "~s",
+  "param_2": "~ch"
+ },
+ "0x0041f304": {
+  "param_1": "~s",
+  "param_2": "~delimiters"
+ },
+ "0x0041ffa0": {
+  "param_1": "~path",
+  "param_2": "~mode"
+ },
+ "0x00420b6c": {
+  "param_1": "~stream",
+  "param_2": "~format"
+ },
+ "0x00421590": {
+  "param_1": "~s"
+ },
+ "0x00421660": {
+  "param_1": "~buf",
+  "param_2": "~format"
+ },
+ "0x00422548": {
+  "param_1": "~ch"
+ },
+ "0x00422574": {
+  "param_1": "~ch"
+ },
+ "0x004225a0": {
+  "param_1": "~ch"
+ },
+ "0x004225cc": {
+  "param_1": "~ch"
+ },
+ "0x00422750": {
+  "param_1": "~ch",
+  "param_2": "~mask"
+ },
+ "0x00424238": {
+  "param_1": "~ch"
+ },
+ "0x0042428c": {
+  "param_1": "~ch"
+ },
+ "0x00424b58": {
+  "param_1": "~s"
+ },
+ "0x00427e50": {
+  "param_1": "typeDesc",
+  "param_2": "object",
+  "param_3": "objectDtor",
+  "param_4": "copyCtor",
+  "param_5": "copyCtorMask",
+  "param_6": "throwFlags",
+  "param_7": "throwFile",
+  "param_8": "throwLine",
+  "param_9": "throwReturn",
+  "local_34": "record",
+  "local_30": "objectOffset",
+  "local_2c": "baseTypeDesc"
+ },
+ "0x004280a0": {
+  "param_1": "~typeDesc",
+  "param_2": "~object",
+  "param_3": "~objectDtor",
+  "param_4": "~copyCtor",
+  "param_5": "~copyCtorMask",
+  "param_6": "~throwFlags",
+  "param_7": "~throwFile",
+  "param_8": "~throwLine",
+  "in_stack_00000000": "throwReturn"
+ }
+}

@@ -1,10 +1,28 @@
 // TEACON.exe — runtime / library code "rwstd_facet_imp"
-// 3 functions, 0x0041c3ec..0x0041c68c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 4 functions, 0x0041c020..0x0041c68c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
 
 namespace tea {
+
+// ----------------------------------------------------------------------------------------------------
+// 0x0041c020  __rwstd::facet_imp::facet_imp   (84 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores __rwstd::facet_imp's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl __rwstd::facet_imp::facet_imp(undefined4 *self,undefined4 param_2,undefined4 param_3)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x4309dc);
+  __rwstd::ref_counted::ref_counted(self,param_2);
+  *self = &__rwstd::facet_imp::vftable;
+  self[2] = 0;
+  self[3] = param_3;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041c3ec  __rwstd::facet_imp::vf2   (48 bytes)   [rtti:vtable virtual slot 2; function defined from vtable-slot]
@@ -14,7 +32,7 @@ namespace tea {
 /* WARNING: Removing unreachable block (ram,0x0041c480) */
 /* WARNING: Removing unreachable block (ram,0x0041c48a) */
 /* WARNING: Removing unreachable block (ram,0x0041c544) */
-byte * __rwstd::facet_imp::vf2(int *param_1,byte *param_2,char *param_3,ushort param_4,undefined4 param_5, char *param_6,byte *param_7,char *param_8,byte *param_9,undefined4 *param_10, undefined4 *param_11,char *param_12,ushort param_13,undefined4 param_14, char *param_15,byte *param_16,char *param_17,byte *param_18)
+byte * __rwstd::facet_imp::vf2(int *self,byte *param_2,char *param_3,ushort param_4,undefined4 param_5, char *param_6,byte *param_7,char *param_8,byte *param_9,undefined4 *param_10, undefined4 *param_11,char *param_12,ushort param_13,undefined4 param_14, char *param_15,byte *param_16,char *param_17,byte *param_18)
 
 {
   ushort *puVar1;
@@ -37,9 +55,9 @@ byte * __rwstd::facet_imp::vf2(int *param_1,byte *param_2,char *param_3,ushort p
   char in_CF;
   char *in_stack_00000000;
   
-  *(char *)param_1 = ((char)*param_1 - (char)param_1) - in_CF;
-  *(char *)param_1 = (char)*param_1 + (char)param_1;
-  pbVar8 = (byte *)((int)param_1 + *param_1);
+  *(char *)self = ((char)*self - (char)self) - in_CF;
+  *(char *)self = (char)*self + (char)self;
+  pbVar8 = (byte *)((int)self + *self);
   bVar6 = (byte)pbVar8;
   *pbVar8 = *pbVar8 ^ bVar6;
   *pbVar8 = *pbVar8 + bVar6;
@@ -132,20 +150,20 @@ code_r0x0041c4a4:
 // ----------------------------------------------------------------------------------------------------
 // 0x0041c648  __rwstd::facet_imp::~facet_imp   (66 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as __rwstd::facet_imp::_dtor
-void __cdecl __rwstd::facet_imp::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl __rwstd::facet_imp::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x430ba0);
-  if (param_1 != (undefined4 *)0x0) {
-    __rwstd::ref_counted::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    __rwstd::ref_counted::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

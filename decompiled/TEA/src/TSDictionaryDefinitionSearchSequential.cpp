@@ -12,26 +12,26 @@ namespace tea {
 int * __cdecl TSDictionaryDefinitionSearchSequential::TSDictionaryDefinitionSearchSequential(int *param_1,int param_2,int param_3,int param_4,undefined4 *param_5)
 
 {
-  LONG LVar1;
-  LPCSTR pCVar2;
+  LONG lDistanceToMove;
+  LPCSTR fileName;
   int *piVar3;
   int iVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4ec950);
   *param_1 = *(int *)(*(int *)(param_2 + 0xc) + param_3 * 4);
   param_1[3] = param_4;
   param_1[0x44] = 0;
   param_1[2] = *(int *)(*param_1 + 0x2408);
-  pCVar2 = (LPCSTR)(**(code **)(*(int *)*param_1 + 0x18))();
-  piVar3 = fopen(pCVar2,&DAT_004eb416);
+  fileName = (LPCSTR)(**(code **)(*(int *)*param_1 + 0x18))();
+  piVar3 = fopen(fileName,&DAT_004eb416);
   param_1[1] = (int)piVar3;
   if (piVar3 != (int *)0x0) {
     setvbuf(piVar3,0,0,0x40000);
-    LVar1 = *(LONG *)(*param_1 + 0x2404);
-    param_1[0x44] = LVar1;
-    iVar4 = fseek((int *)param_1[1],LVar1,0);
+    lDistanceToMove = *(LONG *)(*param_1 + 0x2404);
+    param_1[0x44] = lDistanceToMove;
+    iVar4 = fseek((int *)param_1[1],lDistanceToMove,0);
     if (iVar4 != 0) {
       FUN_004de7cc((int *)param_1[1]);
       param_1[1] = 0;
@@ -40,21 +40,21 @@ int * __cdecl TSDictionaryDefinitionSearchSequential::TSDictionaryDefinitionSear
   iVar4 = *param_1;
   *param_5 = *(undefined4 *)(iVar4 + 0x2008);
   param_5[1] = *(undefined4 *)(iVar4 + 0x200c);
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004108b8  TSDictionaryDefinitionSearchSequential::~TSDictionaryDefinitionSearchSequential   (41 bytes)   [rtti:dtor destructor]
 //   written in code as TSDictionaryDefinitionSearchSequential::_dtor
-void __cdecl TSDictionaryDefinitionSearchSequential::_dtor(int param_1,byte param_2)
+void __cdecl TSDictionaryDefinitionSearchSequential::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
-    if (*(int **)(param_1 + 4) != (int *)0x0) {
-      FUN_004de7cc(*(int **)(param_1 + 4));
+  if (self != 0) {
+    if (*(int **)(self + 4) != (int *)0x0) {
+      FUN_004de7cc(*(int **)(self + 4));
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -73,43 +73,43 @@ int * __cdecl TSDictionaryDefinitionSearchSequential::Next(int *param_1,int para
   bool bVar1;
   DWORD DVar2;
   int iVar3;
-  undefined3 extraout_var;
-  uint *puVar4;
+  undefined3 regHigh;
+  uint *i;
   int *piVar5;
-  byte *pbVar6;
+  byte *ops;
   uint uVar7;
-  uint uVar8;
-  undefined4 *in_FS_OFFSET;
-  undefined1 local_83c [1000];
+  uint matchEngine;
+  undefined4 *sehChainHead;
+  undefined1 wordBuf [1000];
   byte local_454 [1000];
   byte *local_6c;
-  uint *local_68;
-  int local_64;
+  uint *j;
+  int length;
   byte *local_60;
-  undefined4 local_5c;
-  undefined4 local_58;
+  undefined4 unused;
+  undefined4 unused2;
   int *local_54;
   int local_50;
   uint local_4c;
-  undefined4 local_48;
-  undefined2 local_38;
-  int local_2c;
-  undefined4 local_24;
-  uint *local_20;
-  uint *local_1c;
-  undefined4 local_c;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined4 vec;
+  uint *first;
+  uint *last;
+  undefined4 unused3;
   
   __InitExceptBlockLDTC(0x4ec990);
   if (param_1[1] == 0) {
 LAB_00410cd8:
     if (param_2 < 0) {
       piVar5 = (int *)0x0;
-      *in_FS_OFFSET = local_48;
+      *sehChainHead = sehPrevFrame;
     }
     else {
       *(undefined1 *)(param_1 + 4) = 0;
       piVar5 = param_1 + 4;
-      *in_FS_OFFSET = local_48;
+      *sehChainHead = sehPrevFrame;
     }
     return piVar5;
   }
@@ -126,9 +126,9 @@ LAB_00410cc1:
       }
       else {
         piVar5 = (int *)param_1[1];
-        pbVar6 = (byte *)*piVar5;
+        ops = (byte *)*piVar5;
         *piVar5 = *piVar5 + 1;
-        local_4c = (uint)*pbVar6;
+        local_4c = (uint)*ops;
       }
       if (local_4c != 0xffffffff) {
         local_4c = local_4c * 2;
@@ -155,18 +155,18 @@ LAB_00410cc1:
               piVar5 = (int *)(param_1[1] + 8);
               *piVar5 = *piVar5 + -1;
               if (*piVar5 < 0) {
-                uVar8 = FUN_004df398((int *)param_1[1]);
+                matchEngine = FUN_004df398((int *)param_1[1]);
               }
               else {
                 piVar5 = (int *)param_1[1];
-                pbVar6 = (byte *)*piVar5;
+                ops = (byte *)*piVar5;
                 *piVar5 = *piVar5 + 1;
-                uVar8 = (uint)*pbVar6;
+                matchEngine = (uint)*ops;
               }
-              if ((uVar8 == 0xffffffff) || (uVar8 == 0xbd)) break;
+              if ((matchEngine == 0xffffffff) || (matchEngine == 0xbd)) break;
               if (uVar7 < 0x7f) {
                 uVar7 = uVar7 + 1;
-                *local_6c = (byte)uVar8 ^ 0xbd;
+                *local_6c = (byte)matchEngine ^ 0xbd;
                 local_6c = local_6c + 1;
               }
             }
@@ -177,15 +177,15 @@ LAB_00410cc1:
           } while (local_50 < (int)local_4c);
         }
       }
-      local_20 = (uint *)0x0;
-      local_1c = (uint *)0x0;
-      local_c = 0;
-      local_58 = 0x100;
-      local_5c = 1;
-      local_24 = 0x100;
-      local_2c = local_2c + 1;
-      local_38 = 0x20;
-      FUN_00479bd4(param_1[3],(int)&local_24);
+      first = (uint *)0x0;
+      last = (uint *)0x0;
+      unused3 = 0;
+      unused2 = 0x100;
+      unused = 1;
+      vec = 0x100;
+      ehDtorCount = ehDtorCount + 1;
+      ehContext = 0x20;
+      MatchEngineSet::CopyEngines(param_1[3],(int)&vec);
       do {
         piVar5 = (int *)(param_1[1] + 8);
         *piVar5 = *piVar5 + -1;
@@ -194,9 +194,9 @@ LAB_00410cc1:
         }
         else {
           piVar5 = (int *)param_1[1];
-          pbVar6 = (byte *)*piVar5;
+          ops = (byte *)*piVar5;
           *piVar5 = *piVar5 + 1;
-          uVar7 = (uint)*pbVar6;
+          uVar7 = (uint)*ops;
         }
         while( true ) {
           if ((uVar7 == 0xffffffff) || (uVar7 == 0xbd)) goto LAB_00410c2a;
@@ -209,19 +209,19 @@ LAB_00410cc1:
           }
           else {
             piVar5 = (int *)param_1[1];
-            pbVar6 = (byte *)*piVar5;
+            ops = (byte *)*piVar5;
             *piVar5 = *piVar5 + 1;
-            uVar7 = (uint)*pbVar6;
+            uVar7 = (uint)*ops;
           }
         }
         local_60 = local_454;
         local_454[0] = (byte)uVar7 ^ 0xbd;
-        local_38 = 0x20;
-        local_64 = 0;
+        ehContext = 0x20;
+        length = 0;
         do {
           local_60 = local_60 + 1;
-          local_83c[local_64] = (char)iVar3;
-          local_64 = local_64 + 1;
+          wordBuf[length] = (char)iVar3;
+          length = length + 1;
           piVar5 = (int *)(param_1[1] + 8);
           *piVar5 = *piVar5 + -1;
           if (*piVar5 < 0) {
@@ -229,28 +229,28 @@ LAB_00410cc1:
           }
           else {
             piVar5 = (int *)param_1[1];
-            pbVar6 = (byte *)*piVar5;
+            ops = (byte *)*piVar5;
             *piVar5 = *piVar5 + 1;
-            uVar7 = (uint)*pbVar6;
+            uVar7 = (uint)*ops;
           }
           if (uVar7 == 0xffffffff) goto LAB_00410c2a;
           *local_60 = (byte)uVar7 ^ 0xbd;
           iVar3 = *(int *)(*param_1 + 8 + (uVar7 ^ 0xbd) * 8);
-        } while (((uVar7 != 0xbd) && (iVar3 < 0xff)) && (local_64 < 0x65));
+        } while (((uVar7 != 0xbd) && (iVar3 < 0xff)) && (length < 0x65));
         *local_60 = 0;
-        local_83c[local_64] = 0xff;
-        local_38 = 0x20;
-        for (local_68 = local_20; local_68 < local_1c; local_68 = local_68 + 1) {
-          uVar8 = *local_68;
-          if (((1 < uVar8) && (iVar3 = MatchEngine::GetMinLength(uVar8), iVar3 <= local_64)) &&
-             (iVar3 = MatchEngine::GetMaxLength(uVar8), local_64 <= iVar3)) {
-            MatchEngine::SetWordLength(uVar8,local_64);
-            bVar1 = MatchEngine::MatchWord(uVar8,(int)local_83c);
-            if (CONCAT31(extraout_var,bVar1) != 0) {
-              *local_68 = 1;
-              for (puVar4 = local_20; (puVar4 < local_1c && (*puVar4 < 2)); puVar4 = puVar4 + 1) {
+        wordBuf[length] = 0xff;
+        ehContext = 0x20;
+        for (j = first; j < last; j = j + 1) {
+          matchEngine = *j;
+          if (((1 < matchEngine) && (iVar3 = MatchEngine::GetMinLength(matchEngine), iVar3 <= length)) &&
+             (iVar3 = MatchEngine::GetMaxLength(matchEngine), length <= iVar3)) {
+            MatchEngine::SetWordLength(matchEngine,length);
+            bVar1 = MatchEngine::MatchWord(matchEngine,(int)wordBuf);
+            if (CONCAT31(regHigh,bVar1) != 0) {
+              *j = 1;
+              for (i = first; (i < last && (*i < 2)); i = i + 1) {
               }
-              if (puVar4 == local_1c) {
+              if (i == last) {
                 do {
                   if (uVar7 == 0xbd) break;
                   piVar5 = (int *)(param_1[1] + 8);
@@ -260,9 +260,9 @@ LAB_00410cc1:
                   }
                   else {
                     piVar5 = (int *)param_1[1];
-                    pbVar6 = (byte *)*piVar5;
+                    ops = (byte *)*piVar5;
                     *piVar5 = *piVar5 + 1;
-                    uVar7 = (uint)*pbVar6;
+                    uVar7 = (uint)*ops;
                   }
                 } while (uVar7 != 0xffffffff);
               }
@@ -277,50 +277,51 @@ LAB_00410cc1:
 LAB_00410c2a:
   if (uVar7 == 0xbd) {
     if (*(int *)(*(int *)(param_1[3] + 0x28) + -4) == 0) {
-      pbVar6 = (byte *)0x0;
+      ops = (byte *)0x0;
     }
     else {
-      pbVar6 = *(byte **)(param_1[3] + 0x28);
+      ops = *(byte **)(param_1[3] + 0x28);
     }
-    uVar8 = MatchEngineSet::EvalLogic(0,0,0,pbVar6,(int *)local_20);
-    if (uVar8 != 0) {
+    matchEngine = MatchEngineSet::EvalLogic(0,0,0,ops,(int *)first);
+    if (matchEngine != 0) {
       piVar5 = param_1 + 4;
-      local_2c = local_2c + -1;
-      FUN_00410d88(&local_24,(int)local_20,(int)local_1c);
+      ehDtorCount = ehDtorCount + -1;
+      std::_Destroy_range_ptr_410d88(&vec,(int)first,(int)last);
       operator_delete();
-      *in_FS_OFFSET = local_48;
+      *sehChainHead = sehPrevFrame;
       return piVar5;
     }
   }
-  local_2c = local_2c + -1;
-  FUN_00410d88(&local_24,(int)local_20,(int)local_1c);
+  ehDtorCount = ehDtorCount + -1;
+  std::_Destroy_range_ptr_410d88(&vec,(int)first,(int)last);
   operator_delete();
-  local_38 = 0;
+  ehContext = 0;
   goto LAB_00410cc1;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00410d88  FUN_00410d88   (22 bytes)   [unnamed]
+// 0x00410d88  std::_Destroy_range_ptr_410d88   (22 bytes)   [analysis (matched TEACON.exe, duplicated code)]
+//   same masked bytes as TEACON.exe 0x004050b4 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of pointers (nothing to do; the loop is left in)
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_00410d88(undefined4 param_1,int param_2,int param_3)
+void __cdecl std::_Destroy_range_ptr_410d88(undefined4 vec,int first,int last)
 
 {
-  for (; param_3 != param_2; param_2 = param_2 + 4) {
+  for (; last != first; first = first + 4) {
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00410da0  FUN_00410da0   (60 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_00410da0(int *param_1,int *param_2,int *param_3)
+// 0x00410da0  TSDictionaryDefinitionSearchSequential::GetRange   (60 bytes)   [analysis]
+//   the definition offsets found (begin and end)
+void __cdecl TSDictionaryDefinitionSearchSequential::GetRange(int *self,int *first,int *last)
 
 {
-  *param_3 = 0;
-  *param_2 = 0;
-  if (*param_1 != 0) {
-    *param_2 = param_1[0x44] - *(int *)(*param_1 + 0x2404);
-    *param_3 = *(int *)(*param_1 + 0x2408) - *(int *)(*param_1 + 0x2404);
+  *last = 0;
+  *first = 0;
+  if (*self != 0) {
+    *first = self[0x44] - *(int *)(*self + 0x2404);
+    *last = *(int *)(*self + 0x2408) - *(int *)(*self + 0x2404);
   }
   return;
 }

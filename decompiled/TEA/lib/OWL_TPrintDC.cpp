@@ -8,7 +8,7 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0049cc00  OWL::TPrintDC::vf24   (32 bytes)   [rtti:vtable virtual slot 24; function defined from vtable-slot]
-void OWL::TPrintDC::vf24(char *param_1,byte *param_2,char param_3)
+void OWL::TPrintDC::vf24(char *self,byte *param_2,char param_3)
 
 {
   undefined1 uVar1;
@@ -19,10 +19,10 @@ void OWL::TPrintDC::vf24(char *param_1,byte *param_2,char param_3)
   undefined1 *puVar4;
   undefined4 *unaff_ESI;
   undefined1 *unaff_EDI;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   
-  *param_1 = *param_1 + (char)param_1;
-  *(char *)((int)param_1 * 2) = *(char *)((int)param_1 * 2) + param_3;
+  *self = *self + (char)self;
+  *(char *)((int)self * 2) = *(char *)((int)self * 2) + param_3;
   unaff_EDI[0x57] = unaff_EDI[0x57] + param_3 + -1;
   bVar2 = *param_2;
   uVar3 = SUB42(param_2,0);
@@ -51,7 +51,7 @@ void OWL::TPrintDC::vf24(char *param_1,byte *param_2,char param_3)
     operator_delete();
   }
 LAB_0049cc93:
-  *in_FS_OFFSET = *(undefined4 *)(puVar4 + -0x28);
+  *sehChainHead = *(undefined4 *)(puVar4 + -0x28);
   return;
 }
 

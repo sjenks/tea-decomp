@@ -1,5 +1,5 @@
 // TSMerge.exe — runtime / library code "code_0x00428000"
-// 40 functions, 0x004284cc..0x0042bc6c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 35 functions, 0x004284cc..0x0042bc6c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -11,24 +11,24 @@ namespace tea {
 void __cdecl FUN_004284cc(int *param_1,int param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  tagRECT local_70;
-  undefined4 local_60;
-  undefined2 local_50;
-  int local_44;
-  undefined4 local_3c [12];
+  undefined4 *sehChainHead;
+  tagRECT rect;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined4 lParam [12];
   int local_c;
-  undefined4 local_8;
+  undefined4 unused;
   
   __InitExceptBlockLDTC(0x469cc8);
   if (param_1[7] != 0) {
     if (*(int *)(*(int *)param_1[7] + 0xc) == 0) {
       local_c = param_1[7];
       if (local_c != 0) {
-        local_8 = *(undefined4 *)(local_c + 0xc);
-        local_50 = 0x14;
+        unused = *(undefined4 *)(local_c + 0xc);
+        ehContext = 0x14;
         (*(code *)**(undefined4 **)(local_c + 0xc))();
-        local_50 = 8;
+        ehContext = 8;
       }
     }
     else {
@@ -40,38 +40,38 @@ void __cdecl FUN_004284cc(int *param_1,int param_2)
      (*(int *)(*(int *)param_1[7] + 0xc) == 0)) {
     FUN_0042d484(*(int *)param_1[7],0,0x8000000,0);
     (**(code **)(*(int *)(*(int *)param_1[7] + 8) + 0x10))();
-    local_70.left = 0;
-    local_70.top = 0;
-    local_70.right = 0;
-    local_70.bottom = 0;
-    FUN_0042d568(*param_1,&local_70);
-    local_50 = 0x20;
-    FUN_00425634(local_3c,*(undefined4 *)(*param_1 + 0xc),&local_70.left,0x3eb,(uint *)0xffffffff);
-    local_44 = local_44 + 2;
-    local_50 = 0x2c;
-    FUN_004256d0((int)local_3c,(uint *)param_1[0xd],'\x01');
-    FUN_0042d1a4(*(int *)param_1[7],0x404,0,(LPARAM)local_3c);
-    local_44 = local_44 + -2;
+    rect.left = 0;
+    rect.top = 0;
+    rect.right = 0;
+    rect.bottom = 0;
+    FUN_0042d568(*param_1,&rect);
+    ehContext = 0x20;
+    FUN_00425634(lParam,*(undefined4 *)(*param_1 + 0xc),&rect.left,0x3eb,(uint *)0xffffffff);
+    ehDtorCount = ehDtorCount + 2;
+    ehContext = 0x2c;
+    FUN_004256d0((int)lParam,(uint *)param_1[0xd],'\x01');
+    FUN_0042d1a4(*(int *)param_1[7],0x404,0,(LPARAM)lParam);
+    ehDtorCount = ehDtorCount + -2;
     operator_delete_array();
   }
-  *in_FS_OFFSET = local_60;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004286b0  FUN_004286b0   (42 bytes)   [unnamed]
-LRESULT __stdcall FUN_004286b0(HWND param_1,UINT param_2,WPARAM param_3,LPARAM param_4)
+LRESULT __stdcall FUN_004286b0(HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam)
 
 {
-  LRESULT LVar1;
+  LRESULT lResult;
   
-  if (param_2 == 0x87) {
-    LVar1 = 0x104;
+  if (msg == 0x87) {
+    lResult = 0x104;
   }
   else {
-    LVar1 = DefWindowProcA(param_1,param_2,param_3,param_4);
+    lResult = DefWindowProcA(hWnd,msg,wParam,lParam);
   }
-  return LVar1;
+  return lResult;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -94,136 +94,67 @@ void __cdecl FUN_00428e6c(int *param_1)
   uint uVar1;
   uint uVar2;
   int iVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined1 local_48 [12];
+  undefined4 *sehChainHead;
+  undefined1 rect [12];
   int local_3c;
   int local_38;
   int local_34;
-  undefined4 local_30;
-  undefined2 local_20;
-  int local_14;
-  uint *local_c [2];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  uint *tmpBufferBase [2];
   
   __InitExceptBlockLDTC(0x469f4c);
-  GH_PIECE(local_48, 0, undefined4) = 0;
-  GH_PIECE(local_48, 4, undefined4) = 0;
-  GH_PIECE(local_48, 8, undefined4) = 0;
+  GH_PIECE(rect, 0, undefined4) = 0;
+  GH_PIECE(rect, 4, undefined4) = 0;
+  GH_PIECE(rect, 8, undefined4) = 0;
   local_3c = 0;
-  FUN_0042d52c(*param_1,(LPRECT)local_48);
+  FUN_0042d52c(*param_1,(LPRECT)rect);
   iVar3 = *(int *)(*param_1 + 0x14);
   if (iVar3 != 0) {
-    ScreenToClient(*(HWND *)(iVar3 + 0xc),(LPPOINT)local_48);
-    ScreenToClient(*(HWND *)(iVar3 + 0xc),(LPPOINT)(local_48 + 8));
+    ScreenToClient(*(HWND *)(iVar3 + 0xc),(LPPOINT)rect);
+    ScreenToClient(*(HWND *)(iVar3 + 0xc),(LPPOINT)(rect + 8));
   }
-  local_20 = 8;
-  FUN_0042027c((int *)local_c,0x104);
-  local_14 = local_14 + 2;
-  local_20 = 0x14;
-  GetWindowTextA(*(HWND *)(*param_1 + 0xc),(LPSTR)local_c[0],0x104);
-  FUN_00418b6c(&local_38,param_1[6],local_c[0]);
+  ehContext = 8;
+  FUN_0042027c((int *)tmpBufferBase,0x104);
+  ehDtorCount = ehDtorCount + 2;
+  ehContext = 0x14;
+  GetWindowTextA(*(HWND *)(*param_1 + 0xc),(LPSTR)tmpBufferBase[0],0x104);
+  FUN_00418b6c(&local_38,param_1[6],tmpBufferBase[0]);
   uVar1 = FUN_0042d3ec(*param_1);
   if ((uVar1 & 0x200) == 0) {
-    local_3c = GH_PIECE(local_48, 4, undefined4) + local_34;
+    local_3c = GH_PIECE(rect, 4, undefined4) + local_34;
   }
   else {
-    uVar2 = -((local_3c - GH_PIECE(local_48, 4, undefined4)) - local_34);
+    uVar2 = -((local_3c - GH_PIECE(rect, 4, undefined4)) - local_34);
     iVar3 = (int)uVar2 >> 1;
     if (iVar3 < 0) {
       iVar3 = iVar3 + (uint)((uVar2 & 1) != 0);
     }
-    FUN_0041d740((int *)local_48,0,iVar3);
+    FUN_0041d740((int *)rect,0,iVar3);
   }
   if ((uVar1 & 1) == 0) {
     if ((uVar1 & 2) == 0) {
-      GH_PIECE(local_48, 8, undefined4) = GH_PIECE(local_48, 0, undefined4) + local_38;
+      GH_PIECE(rect, 8, undefined4) = GH_PIECE(rect, 0, undefined4) + local_38;
     }
     else {
-      GH_PIECE(local_48, 0, undefined4) = GH_PIECE(local_48, 8, undefined4) - local_38;
+      GH_PIECE(rect, 0, undefined4) = GH_PIECE(rect, 8, undefined4) - local_38;
     }
   }
   else {
-    uVar1 = -((GH_PIECE(local_48, 8, undefined4) - GH_PIECE(local_48, 0, undefined4)) - local_38);
+    uVar1 = -((GH_PIECE(rect, 8, undefined4) - GH_PIECE(rect, 0, undefined4)) - local_38);
     iVar3 = (int)uVar1 >> 1;
     if (iVar3 < 0) {
       iVar3 = iVar3 + (uint)((uVar1 & 1) != 0);
     }
-    FUN_0041d740((int *)local_48,iVar3,0);
+    FUN_0041d740((int *)rect,iVar3,0);
   }
-  FUN_0042d59c(*param_1,(HWND)0x0,GH_PIECE(local_48, 0, undefined4),GH_PIECE(local_48, 4, undefined4),GH_PIECE(local_48, 8, undefined4) - GH_PIECE(local_48, 0, undefined4),
-               local_3c - GH_PIECE(local_48, 4, undefined4),4);
-  local_14 = local_14 + -2;
-  OWL::TTmpBufferBase::_dtor((undefined4*)local_c,0);
-  *in_FS_OFFSET = local_30;
+  FUN_0042d59c(*param_1,(HWND)0x0,GH_PIECE(rect, 0, undefined4),GH_PIECE(rect, 4, undefined4),GH_PIECE(rect, 8, undefined4) - GH_PIECE(rect, 0, undefined4),
+               local_3c - GH_PIECE(rect, 4, undefined4),4);
+  ehDtorCount = ehDtorCount + -2;
+  OWL::TTmpBufferBase::_dtor((undefined4*)tmpBufferBase,0);
+  *sehChainHead = sehPrevFrame;
   return;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00429de0  FUN_00429de0   (102 bytes)   [unnamed]
-undefined4 * __cdecl FUN_00429de0(undefined4 *param_1,int *param_2)
-
-{
-  undefined4 *puVar1;
-  int iVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x46a198);
-  *param_1 = &OWL::TStreamer::vftable;
-  param_1[1] = param_2;
-  *param_1 = &OWL::TNewStreamer::vftable;
-  *param_1 = &OWL::TUrlLink::Streamer::vftable;
-  if (param_2 == (int *)0x0) {
-    iVar2 = 0;
-  }
-  else {
-    iVar2 = *param_2;
-  }
-  puVar1 = FUN_004567e4((int)param_2,iVar2,(int *)&DAT_00404628,(int *)&DAT_00429d5c,0);
-  param_1[2] = puVar1;
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00429e48  FUN_00429e48   (358 bytes)   [unnamed]
-/* WARNING: Removing unreachable block (ram,0x00429f95) */
-int * __cdecl FUN_00429e48(int *param_1,int param_2)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x46a1b0);
-  if (param_2 == 0) {
-    *param_1 = (int)param_1 + 0x4f;
-    *(int *)((int)param_1 + 0x4f) = (int)param_1 + 0x43;
-    *(int *)((int)param_1 + 0x53) = (int)param_1 + 0x47;
-    param_1[1] = (int)param_1 + 0x43;
-    param_1[2] = (int)param_1 + 0x47;
-    *(undefined4 *)((int)param_1 + 0x3f) = 0;
-    *(undefined4 *)((int)param_1 + 0x4b) = 0;
-    *(undefined ***)((int)param_1 + 0x43) = &OWL::TEventHandler::vftable;
-    *(undefined ***)((int)param_1 + 0x47) = &OWL::TStreamableBase::vftable;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    FUN_0042ab84((int *)((int)param_1 + 0x4f),1);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-  }
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x27;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0x27;
-  FUN_00447bb4(param_1,1);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x27;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0x27;
-  param_1[3] = (int)&OWL::TUrlLink::vftable;
-  *(undefined ***)param_1[1] = &PTR_LAB_0046a2a0;
-  *(undefined ***)param_1[2] = &PTR_LAB_0046a2ac;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_0046a2b8;
-  param_1[8] = 0;
-  param_1[9] = 0;
-  param_1[10] = 0;
-  param_1[0xd] = 0;
-  param_1[0xd] = (int)&DAT_00471d68;
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -232,7 +163,7 @@ void __cdecl FUN_0042a07c(int param_1,int *param_2)
 
 {
   int *piVar1;
-  undefined4 local_14 [3];
+  undefined4 streamer [3];
   undefined4 local_8;
   
   local_8 = 0;
@@ -245,7 +176,7 @@ void __cdecl FUN_0042a07c(int param_1,int *param_2)
   else {
     piVar1 = *(int **)(param_1 + 8);
   }
-  piVar1 = FUN_00447b4c(local_14,piVar1);
+  piVar1 = OWL::TStatic::Streamer::Streamer(streamer,piVar1);
   (**(code **)(*piVar1 + 4))();
   return;
 }
@@ -256,7 +187,7 @@ void __cdecl FUN_0042a190(int param_1,int *param_2)
 
 {
   int *piVar1;
-  undefined4 local_14 [3];
+  undefined4 streamer [3];
   undefined4 local_8;
   
   if (param_1 == 0) {
@@ -265,10 +196,10 @@ void __cdecl FUN_0042a190(int param_1,int *param_2)
   else {
     piVar1 = *(int **)(param_1 + 8);
   }
-  FUN_00447b4c(local_14,piVar1);
+  OWL::TStatic::Streamer::Streamer(streamer,piVar1);
   local_8 = 1;
   FUN_00422d00(param_2,&local_8,4);
-  OWL::TStatic::Streamer::vf2((int)local_14,param_2);
+  OWL::TStatic::Streamer::vf2((int)streamer,param_2);
   return;
 }
 
@@ -277,28 +208,28 @@ void __cdecl FUN_0042a190(int param_1,int *param_2)
 undefined4 * __cdecl FUN_0042a1e4(int *param_1)
 
 {
-  undefined4 *puVar1;
-  int *piVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
+  undefined4 *streamer;
+  int *urlLink;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46a1f0);
-  puVar1 = (undefined4 *)operator_new();
-  if (puVar1 != (undefined4 *)0x0) {
+  streamer = (undefined4 *)operator_new();
+  if (streamer != (undefined4 *)0x0) {
     if (param_1 == (int *)0x0) {
-      piVar2 = (int *)operator_new();
-      if (piVar2 == (int *)0x0) {
+      urlLink = (int *)operator_new();
+      if (urlLink == (int *)0x0) {
         param_1 = (int *)0x0;
       }
       else {
-        FUN_00429e48(piVar2,0);
-        param_1 = (int *)piVar2[2];
+        OWL::TUrlLink::TUrlLink(urlLink,0);
+        param_1 = (int *)urlLink[2];
       }
     }
-    FUN_00429de0(puVar1,param_1);
+    OWL::TUrlLink::Streamer::Streamer(streamer,param_1);
   }
-  *in_FS_OFFSET = local_30;
-  return puVar1;
+  *sehChainHead = sehPrevFrame;
+  return streamer;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -315,15 +246,15 @@ void __cdecl FUN_0042a42c(undefined4 *param_1)
 void __cdecl FUN_0042a49c(int param_1)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46a388);
   (**(code **)(*(int *)(param_1 + 8) + 0x18))();
   if (param_1 != 0) {
     (*(code *)**(undefined4 **)(param_1 + 8))();
   }
-  *in_FS_OFFSET = local_30;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -348,8 +279,8 @@ undefined4 __cdecl FUN_0042a4f6(int *param_1,int *param_2)
 undefined * __stdcall FUN_0042a51f(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46a3b9);
   if (DAT_0046a3a8 == '\0') {
@@ -357,7 +288,7 @@ undefined * __stdcall FUN_0042a51f(void)
     DAT_0047704c = 1;
     DAT_0046a3a8 = DAT_0046a3a8 + '\x01';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return &DAT_00476e5c;
 }
 
@@ -370,15 +301,15 @@ uint __stdcall FUN_0042a584(void)
   HWND hWnd;
   uint uVar2;
   PHKEY ppHVar3;
-  LSTATUS LVar4;
+  LSTATUS regStatus;
   undefined *puVar5;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   char cVar6;
-  BYTE local_c4 [128];
-  DWORD local_44 [6];
-  undefined2 local_2c;
-  int local_20;
-  HKEY local_18 [5];
+  BYTE data [128];
+  DWORD type [6];
+  undefined2 ehContext;
+  int ehDtorCount;
+  HKEY phkResult [5];
   
   __InitExceptBlockLDTC(0x46a3ee);
   uVar2 = DAT_0046a3d4;
@@ -398,7 +329,7 @@ uint __stdcall FUN_0042a584(void)
        (DAT_0046a3d8 != 0)) {
       uVar2 = SendMessageA(hWnd,DAT_0046a3d8,0,0);
       DAT_0046a3d4 = uVar2;
-      *in_FS_OFFSET = local_44[2];
+      *sehChainHead = type[2];
       return uVar2;
     }
     DAT_0046a3d4 = 3;
@@ -410,25 +341,25 @@ uint __stdcall FUN_0042a584(void)
       }
     }
     else {
-      local_44[1] = 0x80;
-      local_2c = 8;
-      ppHVar3 = FUN_00410bac(local_18,(HKEY)0x80000001,(uint *)"Control Panel\\Desktop",
+      type[1] = 0x80;
+      ehContext = 8;
+      ppHVar3 = FUN_00410bac(phkResult,(HKEY)0x80000001,(uint *)"Control Panel\\Desktop",
                              0xf003f,0);
-      local_20 = local_20 + 1;
-      LVar4 = RegQueryValueExA(*ppHVar3,"WheelScrollLines",(LPDWORD)0x0,local_44,local_c4,
-                               local_44 + 1);
-      cVar6 = LVar4 != 0;
-      local_20 = local_20 + -1;
-      OWL::TRegKey::_dtor((int *)local_18,2);
+      ehDtorCount = ehDtorCount + 1;
+      regStatus = RegQueryValueExA(*ppHVar3,"WheelScrollLines",(LPDWORD)0x0,type,data,
+                               type + 1);
+      cVar6 = regStatus != 0;
+      ehDtorCount = ehDtorCount + -1;
+      OWL::TRegKey::_dtor((int *)phkResult,2);
       if (cVar6 != '\0') {
-        DAT_0046a3d4 = FUN_0045c908((char *)local_c4,(int *)0x0,10);
+        DAT_0046a3d4 = FUN_0045c908((char *)data,(int *)0x0,10);
       }
     }
     uVar2 = DAT_0046a3d4;
-    *in_FS_OFFSET = local_44[2];
+    *sehChainHead = type[2];
   }
   else {
-    *in_FS_OFFSET = local_44[2];
+    *sehChainHead = type[2];
   }
   return uVar2;
 }
@@ -467,8 +398,8 @@ undefined4 __cdecl FUN_0042a769(int param_1)
 
 {
   undefined4 uVar1;
-  BOOL BVar2;
-  int iVar3;
+  BOOL ok;
+  int textLen;
   LPSTR lpString;
   
   if (*(int *)(param_1 + 0xc) == 0) {
@@ -481,11 +412,11 @@ undefined4 __cdecl FUN_0042a769(int param_1)
         uVar1 = CONCAT31((int3)((uint)uVar1 >> 8),1);
       }
       else {
-        BVar2 = IsIconic(*(HWND *)(param_1 + 0xc));
-        if (BVar2 != 0) {
-          iVar3 = GetWindowTextLengthA(*(HWND *)(param_1 + 0xc));
+        ok = IsIconic(*(HWND *)(param_1 + 0xc));
+        if (ok != 0) {
+          textLen = GetWindowTextLengthA(*(HWND *)(param_1 + 0xc));
           lpString = (LPSTR)operator_new_array();
-          GetWindowTextA(*(HWND *)(param_1 + 0xc),lpString,iVar3 + 1);
+          GetWindowTextA(*(HWND *)(param_1 + 0xc),lpString,textLen + 1);
           SetWindowTextA(*(HWND *)(param_1 + 0xc),lpString);
           operator_delete_array();
         }
@@ -523,15 +454,15 @@ undefined * __cdecl FUN_0042a81f(int param_1)
 {
   undefined4 *puVar1;
   int iVar2;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_3c;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   DWORD local_18 [3];
-  int local_c;
+  int str;
   
   __InitExceptBlockLDTC(0x46a43c);
   if (param_1 == 0) {
-    *in_FS_OFFSET = local_3c;
+    *sehChainHead = sehPrevFrame;
     return "MSWHEEL_ROLLMSG" + 0xf;
   }
   FUN_004435d0(local_18);
@@ -543,26 +474,26 @@ undefined * __cdecl FUN_0042a81f(int param_1)
   }
   puVar1 = FUN_0045666c(param_1,iVar2,0x40467c);
   FUN_0045677c((int)puVar1);
-  FUN_00457ef4(&DAT_0047707c,(byte *)"%s, %u, %s.\nError: %s");
-  if (local_c != 0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      piVar3 = (int *)(local_c + -0xc);
-      if (piVar3 == &DAT_00471d5c) {
+  sprintf(&DAT_0047707c,(byte *)"%s, %u, %s.\nError: %s");
+  if (str != 0) {
+    if (*(int *)(str + -0xc) != -1) {
+      strRep = (int *)(str + -0xc);
+      if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
-      else if (piVar3 == &DAT_00471d5c) {
+      else if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar2 = *piVar3 + 1;
+        *strRep = *strRep + -1;
+        iVar2 = *strRep + 1;
       }
       if (iVar2 != 0) goto LAB_0042a92d;
     }
     operator_delete();
   }
 LAB_0042a92d:
-  *in_FS_OFFSET = local_3c;
+  *sehChainHead = sehPrevFrame;
   return &DAT_0047707c;
 }
 
@@ -599,32 +530,15 @@ LAB_0042a994:
 void __stdcall FUN_0042a9c7(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46a45c);
   if (DAT_0046a3a8 != '\0') {
     DAT_0046a3a8 = '\0';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0042aa1c  FUN_0042aa1c   (61 bytes)   [unnamed]
-undefined4 * __cdecl FUN_0042aa1c(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x46a830);
-  *param_1 = &OWL::TCommandEnabler::vftable;
-  param_1[1] = param_2;
-  param_1[2] = param_3;
-  param_1[3] = 0;
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -632,76 +546,11 @@ undefined4 * __cdecl FUN_0042aa1c(undefined4 *param_1,undefined4 param_2,undefin
 void __cdecl FUN_0042aa68(int param_1)
 
 {
-  WINDOWPLACEMENT local_30;
+  WINDOWPLACEMENT placement;
   
-  local_30.length = 0x2c;
-  GetWindowPlacement(*(HWND *)(param_1 + 0xc),&local_30);
+  placement.length = 0x2c;
+  GetWindowPlacement(*(HWND *)(param_1 + 0xc),&placement);
   return;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0042aa94  FUN_0042aa94   (237 bytes)   [unnamed]
-int * __cdecl FUN_0042aa94(int *param_1,int param_2,undefined4 param_3,uint *param_4,int param_5)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x46a848);
-  if (param_2 == 0) {
-    *param_1 = (int)param_1 + 0x8a;
-    param_1[1] = (int)param_1 + 0x8e;
-    *(undefined4 *)((int)param_1 + 0x86) = 0;
-    *(undefined ***)((int)param_1 + 0x8a) = &OWL::TEventHandler::vftable;
-    *(undefined ***)((int)param_1 + 0x8e) = &OWL::TStreamableBase::vftable;
-  }
-  param_1[2] = (int)&OWL::TWindow::vftable;
-  *(undefined ***)*param_1 = &PTR_LAB_0046906c;
-  *(undefined ***)param_1[1] = &PTR_LAB_00469078;
-  param_1[3] = 0;
-  param_1[4] = 0;
-  param_1[0xc] = 0;
-  param_1[0xf] = 0;
-  param_1[0x10] = 0;
-  param_1[0x15] = 0;
-  param_1[0x17] = 0;
-  param_1[0x1a] = 0;
-  param_1[0x1c] = 0;
-  FUN_0042ac60((int)param_1,param_3,param_4,param_5);
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0042ab84  FUN_0042ab84   (218 bytes)   [unnamed]
-int * __cdecl FUN_0042ab84(int *param_1,int param_2)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x46a86c);
-  if (param_2 == 0) {
-    *param_1 = (int)param_1 + 0x8a;
-    param_1[1] = (int)param_1 + 0x8e;
-    *(undefined4 *)((int)param_1 + 0x86) = 0;
-    *(undefined ***)((int)param_1 + 0x8a) = &OWL::TEventHandler::vftable;
-    *(undefined ***)((int)param_1 + 0x8e) = &OWL::TStreamableBase::vftable;
-  }
-  param_1[2] = (int)&OWL::TWindow::vftable;
-  *(undefined ***)*param_1 = &PTR_LAB_0046906c;
-  *(undefined ***)param_1[1] = &PTR_LAB_00469078;
-  param_1[3] = 0;
-  param_1[4] = 0;
-  param_1[0xc] = 0;
-  param_1[0xf] = 0;
-  param_1[0x10] = 0;
-  param_1[0x15] = 0;
-  param_1[0x17] = 0;
-  param_1[0x1a] = 0;
-  param_1[0x1c] = 0;
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -805,15 +654,15 @@ void __cdecl FUN_0042acb4(int param_1,undefined4 param_2,int param_3)
 void __cdecl FUN_0042b218(int param_1,undefined4 param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46a8dc);
   if (*(undefined4 **)(param_1 + 0x44) != (undefined4 *)0x0) {
     (**(code **)**(undefined4 **)(param_1 + 0x44))();
   }
   *(undefined4 *)(param_1 + 0x44) = param_2;
-  *in_FS_OFFSET = local_30;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -829,14 +678,14 @@ undefined4 __cdecl FUN_0042b294(int param_1)
   int *piVar5;
   undefined4 *puVar6;
   uint local_3c;
-  uint local_38;
-  undefined4 local_30;
+  uint unused;
+  undefined4 unused2;
   undefined4 local_2c;
-  uint local_28;
-  undefined4 local_20;
+  uint unused3;
+  undefined4 unused4;
   undefined4 local_1c;
-  undefined4 local_18;
-  undefined4 local_10;
+  undefined4 unused5;
+  undefined4 unused6;
   uint local_c;
   uint local_8;
   
@@ -850,9 +699,9 @@ undefined4 __cdecl FUN_0042b294(int param_1)
       else {
         puVar6 = *(undefined4 **)(param_1 + 0x14);
       }
-      local_18 = *(undefined4 *)(*(int *)(iVar4 + 99) + 4);
+      unused5 = *(undefined4 *)(*(int *)(iVar4 + 99) + 4);
       local_1c = 0x7fff;
-      local_10 = 0;
+      unused6 = 0;
       cVar2 = (**(code **)(puVar6[2] + 0x84))();
       if (cVar2 != '\0') {
         uVar3 = FUN_004179cc(*puVar6,(int)&local_1c);
@@ -879,8 +728,8 @@ undefined4 __cdecl FUN_0042b294(int param_1)
     if (param_1 == *piVar5) {
       if (iVar4 == 0) {
         local_2c = 0;
-        local_28 = local_c;
-        local_20 = 0;
+        unused3 = local_c;
+        unused4 = 0;
         puVar6 = *(undefined4 **)(param_1 + 0x6c);
         cVar2 = (**(code **)(*(int *)((int)puVar6 + 0x1b) + 0x2c))();
         if (cVar2 != '\0') {
@@ -908,8 +757,8 @@ undefined4 __cdecl FUN_0042b294(int param_1)
         }
       }
       local_3c = local_8;
-      local_38 = local_c;
-      local_30 = 0;
+      unused = local_c;
+      unused2 = 0;
       cVar2 = (**(code **)(puVar6[2] + 0x84))();
       if (cVar2 == '\0') {
         uVar3 = FUN_0042b294((int)puVar6);
@@ -927,53 +776,53 @@ undefined4 __cdecl FUN_0042b294(int param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042b67c  FUN_0042b67c   (369 bytes)   [unnamed]
-void __cdecl FUN_0042b67c(undefined4 *param_1,HWND param_2,undefined4 *param_3)
+void __cdecl FUN_0042b67c(undefined4 *window,HWND hWnd2,undefined4 *param_3)
 
 {
   undefined4 *puVar1;
   char cVar2;
   HWND hWnd;
-  LRESULT LVar3;
+  LRESULT lResult;
   undefined4 local_30;
-  undefined4 local_2c;
-  undefined4 local_24;
-  undefined4 local_20;
-  undefined4 local_1c;
-  undefined4 local_14;
-  HWND local_10;
+  undefined4 unused;
+  undefined4 unused2;
+  undefined4 unused3;
+  undefined4 unused4;
+  undefined4 unused5;
+  HWND hWnd3;
   char local_9;
-  HWND local_8;
+  HWND unused6;
   
-  hWnd = param_2;
-  if (param_3[2] == param_1[3]) {
-    for (; (hWnd != (HWND)0x0 && (hWnd != (HWND)param_1[3])); hWnd = GetParent(hWnd)) {
-      local_8 = hWnd;
-      LVar3 = FUN_0042bc6c(hWnd,param_1[0x1b]);
-      if ((LVar3 != 0) &&
-         ((**(code **)(*(int *)(LVar3 + 8) + 0x50))(), (*(byte *)(param_3 + 3) & 1) != 0)) {
+  hWnd = hWnd2;
+  if (param_3[2] == window[3]) {
+    for (; (hWnd != (HWND)0x0 && (hWnd != (HWND)window[3])); hWnd = GetParent(hWnd)) {
+      unused6 = hWnd;
+      lResult = FUN_0042bc6c(hWnd,window[0x1b]);
+      if ((lResult != 0) &&
+         ((**(code **)(*(int *)(lResult + 8) + 0x50))(), (*(byte *)(param_3 + 3) & 1) != 0)) {
         return;
       }
     }
   }
-  OWL::TWindow::vf20(param_1,(int)param_3);
-  if (((param_3[2] == param_1[3]) && ((*(byte *)(param_3 + 3) & 1) == 0)) &&
+  OWL::TWindow::EvCommandEnable(window,(int)param_3);
+  if (((param_3[2] == window[3]) && ((*(byte *)(param_3 + 3) & 1) == 0)) &&
      ((*(byte *)(param_3 + 3) & 2) == 0)) {
     local_9 = '\0';
-    local_1c = param_3[1];
-    local_20 = 0;
-    local_14 = 0;
-    while ((local_10 = param_2, LVar3 = FUN_0042bc6c(param_2,param_1[0x1b]), LVar3 == 0 ||
-           (cVar2 = (**(code **)(*(int *)(LVar3 + 8) + 0x84))(), cVar2 == '\0'))) {
-      if ((param_2 == (HWND)0x0) || (param_2 == (HWND)param_1[3])) goto LAB_0042b779;
-      param_2 = GetParent(param_2);
+    unused4 = param_3[1];
+    unused3 = 0;
+    unused5 = 0;
+    while ((hWnd3 = hWnd2, lResult = FUN_0042bc6c(hWnd2,window[0x1b]), lResult == 0 ||
+           (cVar2 = (**(code **)(*(int *)(lResult + 8) + 0x84))(), cVar2 == '\0'))) {
+      if ((hWnd2 == (HWND)0x0) || (hWnd2 == (HWND)window[3])) goto LAB_0042b779;
+      hWnd2 = GetParent(hWnd2);
     }
     local_9 = '\x01';
 LAB_0042b779:
     if (local_9 == '\0') {
-      local_2c = param_3[1];
+      unused = param_3[1];
       local_30 = 0x7fff;
-      local_24 = 0;
-      puVar1 = (undefined4 *)param_1[0x1b];
+      unused2 = 0;
+      puVar1 = (undefined4 *)window[0x1b];
       cVar2 = (**(code **)(*(int *)((int)puVar1 + 0x1b) + 0x2c))();
       if ((cVar2 != '\0') &&
          (FUN_004179cc(*puVar1,(int)&local_30), (*(byte *)(param_3 + 3) & 1) != 0)) {
@@ -991,15 +840,15 @@ LAB_0042b779:
 undefined4 * __cdecl FUN_0042b80c(undefined4 *param_1)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46ab5c);
   *param_1 = 0;
   param_1[1] = 0;
   param_1[2] = 0;
   param_1[3] = 0;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -1090,17 +939,17 @@ undefined4 __cdecl FUN_0042bbb4(int param_1,undefined4 param_2,undefined4 param_
   int *piVar4;
   byte bVar5;
   int local_14;
-  undefined4 local_10;
-  undefined4 local_c;
-  undefined4 local_8;
+  undefined4 unused;
+  undefined4 unused2;
+  undefined4 unused3;
   
   bVar5 = 0;
   iVar2 = *(int *)(param_1 + 0x6c);
   piVar3 = (int *)(iVar2 + 0x57);
   local_14 = *piVar3;
-  local_10 = *(undefined4 *)(iVar2 + 0x5b);
-  local_c = *(undefined4 *)(iVar2 + 0x5f);
-  local_8 = *(undefined4 *)(iVar2 + 99);
+  unused = *(undefined4 *)(iVar2 + 0x5b);
+  unused2 = *(undefined4 *)(iVar2 + 0x5f);
+  unused3 = *(undefined4 *)(iVar2 + 99);
   *piVar3 = param_1;
   *(undefined4 *)(iVar2 + 0x5b) = param_2;
   *(undefined4 *)(iVar2 + 0x5f) = param_3;
@@ -1141,34 +990,34 @@ int __cdecl FUN_0042bc1c(int param_1,int param_2,undefined4 param_3,int param_4)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042bc6c  FUN_0042bc6c   (85 bytes)   [unnamed]
-LRESULT __cdecl FUN_0042bc6c(HWND param_1,LPARAM param_2)
+LRESULT __cdecl FUN_0042bc6c(HWND hWnd,LPARAM lParam)
 
 {
-  LRESULT LVar1;
+  LRESULT lResult;
   DWORD DVar2;
   WNDPROC lpPrevWndFunc;
-  DWORD local_8;
+  DWORD lpdwProcessId;
   
-  if (param_1 == (HWND)0x0) {
-    LVar1 = 0;
+  if (hWnd == (HWND)0x0) {
+    lResult = 0;
   }
   else {
-    GetWindowThreadProcessId(param_1,&local_8);
+    GetWindowThreadProcessId(hWnd,&lpdwProcessId);
     DVar2 = GetCurrentProcessId();
-    if (DVar2 == local_8) {
-      lpPrevWndFunc = (WNDPROC)GetWindowLongA(param_1,-4);
+    if (DVar2 == lpdwProcessId) {
+      lpPrevWndFunc = (WNDPROC)GetWindowLongA(hWnd,-4);
       if (lpPrevWndFunc == (WNDPROC)0x0) {
-        LVar1 = 0;
+        lResult = 0;
       }
       else {
-        LVar1 = CallWindowProcA(lpPrevWndFunc,param_1,(*(UINT *)&DAT_0046ad80),0,param_2);
+        lResult = CallWindowProcA(lpPrevWndFunc,hWnd,(*(UINT *)&DAT_0046ad80),0,lParam);
       }
     }
     else {
-      LVar1 = 0;
+      lResult = 0;
     }
   }
-  return LVar1;
+  return lResult;
 }
 
 } // namespace tea

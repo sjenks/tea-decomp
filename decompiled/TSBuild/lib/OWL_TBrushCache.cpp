@@ -9,21 +9,21 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0043c20c  OWL::TBrushCache::~TBrushCache   (93 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TBrushCache::_dtor
-void __cdecl OWL::TBrushCache::_dtor(int param_1,byte param_2)
+void __cdecl OWL::TBrushCache::_dtor(int self,byte dtorFlags)
 
 {
-  int iVar1;
+  int i;
   
-  if (param_1 != 0) {
-    for (iVar1 = 0; iVar1 < *(int *)(param_1 + 0xc0); iVar1 = iVar1 + 1) {
-      if (*(int *)(param_1 + iVar1 * 0xc) != 0) {
-        FUN_004282f8(*(uint *)(param_1 + iVar1 * 0xc));
-        *(undefined4 *)(param_1 + iVar1 * 0xc) = 0;
-        *(undefined4 *)(param_1 + 4 + iVar1 * 0xc) = 0;
-        *(undefined4 *)(param_1 + 8 + iVar1 * 0xc) = 0;
+  if (self != 0) {
+    for (i = 0; i < *(int *)(self + 0xc0); i = i + 1) {
+      if (*(int *)(self + i * 0xc) != 0) {
+        FUN_004282f8(*(uint *)(self + i * 0xc));
+        *(undefined4 *)(self + i * 0xc) = 0;
+        *(undefined4 *)(self + 4 + i * 0xc) = 0;
+        *(undefined4 *)(self + 8 + i * 0xc) = 0;
       }
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

@@ -1,10 +1,26 @@
 // TSBuild.exe — runtime / library code "OWL_TDiagGroupDef"
-// 2 functions, 0x0041f6d8..0x0041fa88. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 3 functions, 0x0041f668..0x0041fa88. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
 
 namespace tea {
+
+// ----------------------------------------------------------------------------------------------------
+// 0x0041f668  OWL::TDiagGroupDef::TDiagGroupDef   (74 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TDiagGroupDef's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl OWL::TDiagGroupDef::TDiagGroupDef(undefined4 *self,undefined4 param_2,byte param_3,char param_4)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x479ad8);
+  OWL::TDiagBase::TDiagBase(self,param_2,param_3,param_4);
+  *self = &OWL::TDiagGroupDef::vftable;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041f6d8  OWL::TDiagGroupDef::vf0   (10 bytes)   [rtti:vtable virtual slot 0]
@@ -17,20 +33,20 @@ undefined4 __stdcall OWL::TDiagGroupDef::vf0(void)
 // ----------------------------------------------------------------------------------------------------
 // 0x0041fa88  OWL::TDiagGroupDef::~TDiagGroupDef   (66 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as OWL::TDiagGroupDef::_dtor
-void __cdecl OWL::TDiagGroupDef::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl OWL::TDiagGroupDef::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x479b38);
-  if (param_1 != (undefined4 *)0x0) {
-    OWL::TDiagBase::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    OWL::TDiagBase::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

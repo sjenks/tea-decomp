@@ -7,1189 +7,1189 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0040f26c  TEAViewProfileWindows::Load   (7863 bytes)   [analysis (inferred)]
-//   reads fonts, colours, view settings and the open-dictionary list from the registry profile; class membership inferred from position next to the destructor
+// 0x0040f26c  TEAViewProfileWindows::TEAViewProfileWindows   (7863 bytes)   [analysis]
+//   constructor: sets every setting to its default, then reads the pattern options, fonts, colours, view settings and the dictionary list from the registry profile at keyPath; the dictionary list defaults to every bundled dictionary that exists
 /* WARNING: Removing unreachable block (ram,0x0040f2dc) */
 /* WARNING: Removing unreachable block (ram,0x0040f331) */
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-int __cdecl TEAViewProfileWindows::Load(int param_1,int param_2)
+int __cdecl TEAViewProfileWindows::TEAViewProfileWindows(int self,int keyPath)
 
 {
-  undefined *puVar1;
-  int iVar2;
-  undefined4 *puVar3;
-  undefined4 uVar4;
-  uint uVar5;
-  char *pcVar6;
-  uint *puVar7;
-  int iVar8;
-  int *piVar9;
-  undefined **ppuVar10;
-  uint uVar11;
-  undefined4 *in_FS_OFFSET;
-  char cVar12;
-  byte bVar13;
-  undefined1 *puVar14;
-  undefined **local_55c;
-  undefined4 local_4e4 [12];
-  undefined1 *local_4b4;
-  undefined4 local_4b0;
-  int local_4ac;
-  int local_4a8;
-  int *local_4a4;
-  undefined1 *local_498;
-  undefined4 local_494;
-  int local_490;
-  int local_48c;
-  undefined1 *local_480;
-  undefined4 local_47c;
-  int local_478;
-  int local_474;
-  int *local_470;
-  int local_464;
-  undefined1 *local_460;
-  undefined4 local_45c;
-  int local_458;
-  int local_454;
-  int *local_450;
-  undefined1 *local_444;
-  undefined4 local_440;
-  int local_43c;
-  int local_438;
-  int *local_434;
-  undefined1 *local_428;
-  undefined4 local_424;
-  int local_420;
-  int local_41c;
-  int *local_418;
-  undefined1 *local_40c;
-  undefined4 local_408;
-  int local_404;
-  int local_400;
-  int *local_3fc;
-  undefined1 *local_3f0;
-  undefined4 local_3ec;
-  int local_3e8;
-  int local_3e4;
-  int *local_3e0;
-  undefined1 *local_3d4;
-  undefined4 local_3d0;
-  int local_3cc;
-  int local_3c8;
-  int *local_3c4;
-  undefined1 *local_3b8;
-  undefined4 local_3b4;
-  int local_3b0;
-  int local_3ac;
-  int *local_3a8;
-  undefined1 *local_39c;
-  undefined4 local_398;
-  int local_394;
-  int local_390;
-  int *local_38c;
-  undefined1 *local_388;
-  undefined4 local_384;
-  int local_380;
-  int local_37c;
-  int *local_378;
-  undefined1 *local_364;
-  undefined4 local_360;
-  int local_35c;
-  int local_358;
-  int *local_354;
-  undefined1 *local_350;
-  undefined4 local_34c;
-  int local_348;
-  int local_344;
-  int *local_340;
-  undefined1 *local_32c;
-  undefined4 local_328;
-  int local_324;
-  int local_320;
-  int *local_31c;
-  undefined1 *local_310;
-  undefined4 local_30c;
-  int local_308;
-  int local_304;
-  int *local_300;
-  undefined1 *local_2fc;
-  undefined4 local_2f8;
-  int local_2f4;
-  int local_2f0;
-  int *local_2ec;
-  undefined1 *local_2d8;
-  undefined4 local_2d4;
-  int local_2d0;
-  int local_2cc;
-  int *local_2c8;
-  undefined1 *local_2c4;
-  undefined4 local_2c0;
-  int local_2bc;
-  int local_2b8;
-  int *local_2b4;
-  undefined1 *local_2a0;
-  undefined4 local_29c;
-  int local_298;
-  int local_294;
-  int *local_290;
-  undefined1 *local_28c;
-  undefined4 local_288;
-  int local_284;
-  int local_280;
-  int *local_27c;
-  undefined1 *local_268;
-  undefined4 local_264;
-  int local_260;
-  int local_25c;
-  int *local_258;
-  undefined1 *local_254;
-  undefined4 local_250;
-  int local_24c;
-  int local_248;
-  undefined4 *local_234;
-  undefined4 *local_230;
-  uint local_22c;
-  int local_228;
-  int *local_224;
-  int *local_220;
-  uint local_21c;
-  int *local_218;
-  int local_214;
-  undefined4 local_210;
-  undefined4 local_20c;
-  int local_208;
-  undefined1 *local_204;
-  undefined4 local_200;
-  int local_1fc;
-  undefined1 *local_1f8;
-  undefined4 local_1f4;
-  undefined4 local_1f0;
-  undefined2 local_1e0;
-  int local_1d4;
-  undefined1 local_1cc [8];
-  int local_1c4;
-  undefined1 local_1bc [8];
-  int local_1b4;
-  undefined1 local_1ac [8];
-  int local_1a4;
-  undefined1 local_19c [8];
-  LPCSTR local_194;
-  undefined1 local_18c [8];
-  int local_184;
-  undefined1 local_17c [8];
-  int local_174;
-  undefined1 local_16c [8];
-  int local_164;
-  undefined1 local_15c [8];
-  int local_154;
-  undefined1 local_14c [8];
-  int local_144;
-  undefined1 local_13c [8];
-  int local_134;
-  undefined1 local_12c [8];
-  int local_124;
-  undefined1 local_11c [8];
-  int local_114;
-  undefined1 local_10c [8];
-  int local_104;
-  undefined1 local_fc [8];
-  int local_f4;
-  undefined1 local_ec [8];
-  int local_e4;
-  undefined1 local_dc [8];
-  int local_d4;
-  undefined1 local_cc [8];
-  int local_c4;
-  undefined1 local_bc [8];
-  int local_b4;
-  undefined1 local_ac [8];
-  int local_a4;
-  undefined1 local_9c [8];
-  int local_94;
-  undefined1 local_8c [8];
-  int local_84;
-  undefined1 local_7c [8];
-  int local_74;
-  undefined1 local_6c [8];
-  int local_64;
-  undefined1 local_5c [8];
-  int local_54;
-  undefined1 local_4c [8];
-  int local_44;
-  undefined1 local_3c [8];
-  int local_34;
-  undefined1 local_2c [8];
-  int local_24;
-  undefined1 local_1c [8];
-  uint *local_14;
-  char local_c [8];
+  undefined *extension;
+  int scratch;
+  undefined4 *dst;
+  undefined4 found;
+  uint found2;
+  char *len;
+  uint *p;
+  int keyPathCopy;
+  int *intOut;
+  undefined **nameSrc;
+  uint i;
+  undefined4 *sehChainHead;
+  char invalid;
+  byte backwards;
+  undefined1 *listArg;
+  undefined **nameAt;
+  undefined4 dictionaryNames [12];
+  undefined1 *unused;
+  undefined4 unused2;
+  int unused3;
+  int unused4;
+  int *strRep;
+  undefined1 *unused5;
+  undefined4 unused6;
+  int unused7;
+  int unused8;
+  undefined1 *unused9;
+  undefined4 unused10;
+  int unused11;
+  int unused12;
+  int *strRep2;
+  int groupingSense;
+  undefined1 *unused13;
+  undefined4 unused14;
+  int unused15;
+  int unused16;
+  int *strRep3;
+  undefined1 *unused17;
+  undefined4 unused18;
+  int unused19;
+  int unused20;
+  int *strRep4;
+  undefined1 *unused21;
+  undefined4 unused22;
+  int unused23;
+  int unused24;
+  int *strRep5;
+  undefined1 *unused25;
+  undefined4 unused26;
+  int unused27;
+  int unused28;
+  int *strRep6;
+  undefined1 *unused29;
+  undefined4 unused30;
+  int unused31;
+  int unused32;
+  int *strRep7;
+  undefined1 *unused33;
+  undefined4 unused34;
+  int unused35;
+  int unused36;
+  int *strRep8;
+  undefined1 *unused37;
+  undefined4 unused38;
+  int unused39;
+  int unused40;
+  int *strRep9;
+  undefined1 *unused41;
+  undefined4 unused42;
+  int unused43;
+  int unused44;
+  int *strRep10;
+  undefined1 *unused45;
+  undefined4 unused46;
+  int unused47;
+  int unused48;
+  int *strRep11;
+  undefined1 *unused49;
+  undefined4 unused50;
+  int unused51;
+  int unused52;
+  int *strRep12;
+  undefined1 *unused53;
+  undefined4 unused54;
+  int unused55;
+  int unused56;
+  int *strRep13;
+  undefined1 *unused57;
+  undefined4 unused58;
+  int unused59;
+  int unused60;
+  int *strRep14;
+  undefined1 *unused61;
+  undefined4 unused62;
+  int unused63;
+  int unused64;
+  int *strRep15;
+  undefined1 *unused65;
+  undefined4 unused66;
+  int unused67;
+  int unused68;
+  int *strRep16;
+  undefined1 *unused69;
+  undefined4 unused70;
+  int unused71;
+  int unused72;
+  int *strRep17;
+  undefined1 *unused73;
+  undefined4 unused74;
+  int unused75;
+  int unused76;
+  int *strRep18;
+  undefined1 *unused77;
+  undefined4 unused78;
+  int unused79;
+  int unused80;
+  int *strRep19;
+  undefined1 *unused81;
+  undefined4 unused82;
+  int unused83;
+  int unused84;
+  int *strRep20;
+  undefined1 *unused85;
+  undefined4 unused86;
+  int unused87;
+  int unused88;
+  int *strRep21;
+  undefined1 *unused89;
+  undefined4 unused90;
+  int unused91;
+  int unused92;
+  undefined4 *dest;
+  undefined4 *src;
+  uint unused93;
+  int unused94;
+  int *newRep;
+  int *newData;
+  uint len2;
+  int *strRep22;
+  int unused95;
+  undefined4 keyPathData;
+  undefined4 unused96;
+  int unused97;
+  undefined1 *unused98;
+  undefined4 unused99;
+  int unused100;
+  undefined1 *unused101;
+  undefined4 unused102;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 resolved [8];
+  int resolvedData;
+  undefined1 valueName [8];
+  int str7;
+  undefined1 candidateResolved [8];
+  int candidateResolvedData;
+  undefined1 candidate [8];
+  LPCSTR candidateData;
+  undefined1 defaultPath [8];
+  int defaultPathData;
+  undefined1 valueName2 [8];
+  int str8;
+  undefined1 valueName3 [8];
+  int str9;
+  undefined1 valueName4 [8];
+  int str10;
+  undefined1 valueName5 [8];
+  int str11;
+  undefined1 valueName6 [8];
+  int str12;
+  undefined1 valueName7 [8];
+  int str13;
+  undefined1 valueName8 [8];
+  int str14;
+  undefined1 valueName9 [8];
+  int str15;
+  undefined1 valueName10 [8];
+  int str16;
+  undefined1 valueName11 [8];
+  int str17;
+  undefined1 str [8];
+  int str18;
+  undefined1 valueName12 [8];
+  int str19;
+  undefined1 str2 [8];
+  int str20;
+  undefined1 valueName13 [8];
+  int str21;
+  undefined1 valueName14 [8];
+  int str22;
+  undefined1 str3 [8];
+  int str23;
+  undefined1 valueName15 [8];
+  int str24;
+  undefined1 str4 [8];
+  int str25;
+  undefined1 valueName16 [8];
+  int str26;
+  undefined1 str5 [8];
+  int str27;
+  undefined1 valueName17 [8];
+  int str28;
+  undefined1 str6 [8];
+  int str29;
+  undefined1 dictionaryList [8];
+  uint *dictionaryListData;
+  char persist [8];
   
-  bVar13 = 0;
+  backwards = 0;
   __InitExceptBlockLDTC(0x42da74);
-  local_1f4 = 0;
-  *(undefined4 *)(param_1 + 8) = 0;
-  local_1f8 = &DAT_0042fac0;
-  *(undefined1 **)(param_1 + 8) = &DAT_0042fac0;
-  local_1fc = param_1;
-  local_200 = 0;
-  local_208 = param_1 + 0x10;
-  *(undefined4 *)(param_1 + 0x18) = 0;
-  local_204 = &DAT_0042fac0;
-  *(undefined1 **)(param_1 + 0x18) = &DAT_0042fac0;
-  local_1d4 = local_1d4 + 2;
-  *(undefined4 *)(param_1 + 0x24) = 0;
-  *(undefined4 *)(param_1 + 0x2c) = 0xffffff;
-  *(undefined4 *)(param_1 + 0x1b0) = 0;
-  *(undefined4 *)(param_1 + 0x1b4) = 1;
-  *(undefined4 *)(param_1 + 0x1b8) = 1;
-  *(undefined1 *)(param_1 + 0x1bc) = 0;
-  *(undefined4 *)(param_1 + 0x1c0) = 1;
-  *(undefined4 *)(param_1 + 0x1c4) = 1;
-  *(undefined4 *)(param_1 + 0x1c8) = 0;
-  iVar8 = param_1 + 0x1e0;
-  local_20c = 0;
-  *(undefined4 *)(param_1 + 0x1e8) = 0;
-  local_1e0 = 0x2c;
-  iVar2 = *(int *)(*(int *)(param_2 + 8) + -0xc);
-  if (iVar2 == -1 || iVar2 + 1 < 0) {
-    local_21c = *(uint *)(*(int *)(param_2 + 8) + -4);
-    local_224 = std::string::__getRep(iVar8,local_21c,local_21c);
-    local_220 = local_224 + 3;
-    *(int **)(param_1 + 0x1e8) = local_220;
-    local_22c = local_21c;
-    local_230 = *(undefined4 **)(param_2 + 8);
-    local_234 = *(undefined4 **)(param_1 + 0x1e8);
-    local_228 = iVar8;
-    memcpy(local_234,local_230,local_21c);
+  unused102 = 0;
+  *(undefined4 *)(self + 8) = 0;
+  unused101 = &g_emptyStringData;
+  *(undefined1 **)(self + 8) = &g_emptyStringData;
+  unused100 = self;
+  unused99 = 0;
+  unused97 = self + 0x10;
+  *(undefined4 *)(self + 0x18) = 0;
+  unused98 = &g_emptyStringData;
+  *(undefined1 **)(self + 0x18) = &g_emptyStringData;
+  ehDtorCount = ehDtorCount + 2;
+  *(undefined4 *)(self + 0x24) = 0;
+  *(undefined4 *)(self + 0x2c) = 0xffffff;
+  *(undefined4 *)(self + 0x1b0) = 0;
+  *(undefined4 *)(self + 0x1b4) = 1;
+  *(undefined4 *)(self + 0x1b8) = 1;
+  *(undefined1 *)(self + 0x1bc) = 0;
+  *(undefined4 *)(self + 0x1c0) = 1;
+  *(undefined4 *)(self + 0x1c4) = 1;
+  *(undefined4 *)(self + 0x1c8) = 0;
+  keyPathCopy = self + 0x1e0;
+  unused96 = 0;
+  *(undefined4 *)(self + 0x1e8) = 0;
+  ehContext = 0x2c;
+  scratch = *(int *)(*(int *)(keyPath + 8) + -0xc);
+  if (scratch == -1 || scratch + 1 < 0) {
+    len2 = *(uint *)(*(int *)(keyPath + 8) + -4);
+    newRep = std::string::__getRep(keyPathCopy,len2,len2);
+    newData = newRep + 3;
+    *(int **)(self + 0x1e8) = newData;
+    unused93 = len2;
+    src = *(undefined4 **)(keyPath + 8);
+    dest = *(undefined4 **)(self + 0x1e8);
+    unused94 = keyPathCopy;
+    memcpy(dest,src,len2);
   }
   else {
-    local_210 = *(undefined4 *)(param_2 + 8);
-    *(undefined4 *)(param_1 + 0x1e8) = local_210;
-    local_218 = (int *)(*(int *)(param_1 + 0x1e8) + -0xc);
-    local_214 = iVar8;
-    if (local_218 != &DAT_0042fab4) {
-      *local_218 = *local_218 + 1;
+    keyPathData = *(undefined4 *)(keyPath + 8);
+    *(undefined4 *)(self + 0x1e8) = keyPathData;
+    strRep22 = (int *)(*(int *)(self + 0x1e8) + -0xc);
+    unused95 = keyPathCopy;
+    if (strRep22 != &g_nullStringRep) {
+      *strRep22 = *strRep22 + 1;
     }
   }
-  local_1d4 = local_1d4 + 1;
-  local_1e0 = 8;
-  LoadPatternOptions(param_1,param_2);
-  local_1e0 = 0x44;
-  Persist::Persist(local_c,param_2,'\0','\0');
-  local_1d4 = local_1d4 + 1;
-  puVar7 = (uint *)(param_1 + 0x30);
-  local_1e0 = 0x5c;
-  iVar2 = std::string::string_from_cstr((int)local_2c,(uint *)"0,0,0,-16,0,0,0,400,0,0,0,0,0,0,0,49,Courier New");
-  local_1d4 = local_1d4 + 1;
-  std::string::string_from_cstr((int)local_3c,(uint *)"FontPattern");
-  local_1d4 = local_1d4 + 1;
-  FUN_00411b14((int)local_c,(int)local_3c,iVar2,puVar7);
-  local_1d4 = local_1d4 + -1;
-  if (local_34 != 0) {
-    if (*(int *)(local_34 + -0xc) != -1) {
-      piVar9 = (int *)(local_34 + -0xc);
-      if (piVar9 == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehDtorCount = ehDtorCount + 1;
+  ehContext = 8;
+  LoadPatternOptions(self,keyPath);
+  ehContext = 0x44;
+  Persist::Persist(persist,keyPath,'\0','\0');
+  ehDtorCount = ehDtorCount + 1;
+  p = (uint *)(self + 0x30);
+  ehContext = 0x5c;
+  scratch = std::string::string_from_cstr((int)str6,(uint *)"0,0,0,-16,0,0,0,400,0,0,0,0,0,0,0,49,Courier New");
+  ehDtorCount = ehDtorCount + 1;
+  std::string::string_from_cstr((int)valueName17,(uint *)"FontPattern");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryFont((int)persist,(int)valueName17,scratch,p);
+  ehDtorCount = ehDtorCount + -1;
+  if (str28 != 0) {
+    if (*(int *)(str28 + -0xc) != -1) {
+      intOut = (int *)(str28 + -0xc);
+      if (intOut == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (piVar9 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (intOut == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *piVar9 = *piVar9 + -1;
-        iVar2 = *piVar9 + 1;
+        *intOut = *intOut + -1;
+        scratch = *intOut + 1;
       }
-      if (iVar2 != 0) goto LAB_0040f5d3;
+      if (scratch != 0) goto LAB_0040f5d3;
     }
-    local_248 = local_34 + -0xc;
-    local_24c = local_34 + -0xc;
+    unused92 = str28 + -0xc;
+    unused91 = str28 + -0xc;
     operator_delete();
-    local_250 = 0;
-    local_254 = local_3c;
-    local_34 = 0;
+    unused90 = 0;
+    unused89 = valueName17;
+    str28 = 0;
   }
 LAB_0040f5d3:
-  local_1e0 = 0x50;
-  local_1d4 = local_1d4 + -1;
-  if (local_24 != 0) {
-    if (*(int *)(local_24 + -0xc) != -1) {
-      local_258 = (int *)(local_24 + -0xc);
-      if (local_258 == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehContext = 0x50;
+  ehDtorCount = ehDtorCount + -1;
+  if (str29 != 0) {
+    if (*(int *)(str29 + -0xc) != -1) {
+      strRep21 = (int *)(str29 + -0xc);
+      if (strRep21 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_258 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep21 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_258 = *local_258 + -1;
-        iVar2 = *local_258 + 1;
+        *strRep21 = *strRep21 + -1;
+        scratch = *strRep21 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040f688;
+      if (scratch != 0) goto LAB_0040f688;
     }
-    local_25c = local_24 + -0xc;
-    local_260 = local_24 + -0xc;
+    unused88 = str29 + -0xc;
+    unused87 = str29 + -0xc;
     operator_delete();
-    local_264 = 0;
-    local_268 = local_2c;
-    local_24 = 0;
+    unused86 = 0;
+    unused85 = str6;
+    str29 = 0;
   }
 LAB_0040f688:
-  puVar7 = (uint *)(param_1 + 0x70);
-  local_1e0 = 0x80;
-  iVar2 = std::string::string_from_cstr((int)local_4c,(uint *)"0,0,0,-16,0,0,0,400,0,0,0,0,0,0,0,49,Courier New");
-  local_1d4 = local_1d4 + 1;
-  std::string::string_from_cstr((int)local_5c,(uint *)"FontOutput");
-  local_1d4 = local_1d4 + 1;
-  FUN_00411b14((int)local_c,(int)local_5c,iVar2,puVar7);
-  local_1d4 = local_1d4 + -1;
-  if (local_54 != 0) {
-    if (*(int *)(local_54 + -0xc) != -1) {
-      local_27c = (int *)(local_54 + -0xc);
-      if (local_27c == &DAT_0042fab4) {
-        iVar2 = 1;
+  p = (uint *)(self + 0x70);
+  ehContext = 0x80;
+  scratch = std::string::string_from_cstr((int)str5,(uint *)"0,0,0,-16,0,0,0,400,0,0,0,0,0,0,0,49,Courier New");
+  ehDtorCount = ehDtorCount + 1;
+  std::string::string_from_cstr((int)valueName16,(uint *)"FontOutput");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryFont((int)persist,(int)valueName16,scratch,p);
+  ehDtorCount = ehDtorCount + -1;
+  if (str26 != 0) {
+    if (*(int *)(str26 + -0xc) != -1) {
+      strRep20 = (int *)(str26 + -0xc);
+      if (strRep20 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_27c == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep20 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_27c = *local_27c + -1;
-        iVar2 = *local_27c + 1;
+        *strRep20 = *strRep20 + -1;
+        scratch = *strRep20 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040f78b;
+      if (scratch != 0) goto LAB_0040f78b;
     }
-    local_280 = local_54 + -0xc;
-    local_284 = local_54 + -0xc;
+    unused84 = str26 + -0xc;
+    unused83 = str26 + -0xc;
     operator_delete();
-    local_288 = 0;
-    local_28c = local_5c;
-    local_54 = 0;
+    unused82 = 0;
+    unused81 = valueName16;
+    str26 = 0;
   }
 LAB_0040f78b:
-  local_1e0 = 0x50;
-  local_1d4 = local_1d4 + -1;
-  if (local_44 != 0) {
-    if (*(int *)(local_44 + -0xc) != -1) {
-      local_290 = (int *)(local_44 + -0xc);
-      if (local_290 == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehContext = 0x50;
+  ehDtorCount = ehDtorCount + -1;
+  if (str27 != 0) {
+    if (*(int *)(str27 + -0xc) != -1) {
+      strRep19 = (int *)(str27 + -0xc);
+      if (strRep19 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_290 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep19 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_290 = *local_290 + -1;
-        iVar2 = *local_290 + 1;
+        *strRep19 = *strRep19 + -1;
+        scratch = *strRep19 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040f840;
+      if (scratch != 0) goto LAB_0040f840;
     }
-    local_294 = local_44 + -0xc;
-    local_298 = local_44 + -0xc;
+    unused80 = str27 + -0xc;
+    unused79 = str27 + -0xc;
     operator_delete();
-    local_29c = 0;
-    local_2a0 = local_4c;
-    local_44 = 0;
+    unused78 = 0;
+    unused77 = str5;
+    str27 = 0;
   }
 LAB_0040f840:
-  puVar7 = (uint *)(param_1 + 0xb0);
-  local_1e0 = 0xa4;
-  iVar2 = std::string::string_from_cstr((int)local_6c,(uint *)"0,0,0,-16,0,0,0,400,255,0,0,0,0,0,0,49,Courier New");
-  local_1d4 = local_1d4 + 1;
-  std::string::string_from_cstr((int)local_7c,(uint *)"FontOutputAnnotation");
-  local_1d4 = local_1d4 + 1;
-  FUN_00411b14((int)local_c,(int)local_7c,iVar2,puVar7);
-  local_1d4 = local_1d4 + -1;
-  if (local_74 != 0) {
-    if (*(int *)(local_74 + -0xc) != -1) {
-      local_2b4 = (int *)(local_74 + -0xc);
-      if (local_2b4 == &DAT_0042fab4) {
-        iVar2 = 1;
+  p = (uint *)(self + 0xb0);
+  ehContext = 0xa4;
+  scratch = std::string::string_from_cstr((int)str4,(uint *)"0,0,0,-16,0,0,0,400,255,0,0,0,0,0,0,49,Courier New");
+  ehDtorCount = ehDtorCount + 1;
+  std::string::string_from_cstr((int)valueName15,(uint *)"FontOutputAnnotation");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryFont((int)persist,(int)valueName15,scratch,p);
+  ehDtorCount = ehDtorCount + -1;
+  if (str24 != 0) {
+    if (*(int *)(str24 + -0xc) != -1) {
+      strRep18 = (int *)(str24 + -0xc);
+      if (strRep18 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_2b4 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep18 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_2b4 = *local_2b4 + -1;
-        iVar2 = *local_2b4 + 1;
+        *strRep18 = *strRep18 + -1;
+        scratch = *strRep18 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040f945;
+      if (scratch != 0) goto LAB_0040f945;
     }
-    local_2b8 = local_74 + -0xc;
-    local_2bc = local_74 + -0xc;
+    unused76 = str24 + -0xc;
+    unused75 = str24 + -0xc;
     operator_delete();
-    local_2c0 = 0;
-    local_2c4 = local_7c;
-    local_74 = 0;
+    unused74 = 0;
+    unused73 = valueName15;
+    str24 = 0;
   }
 LAB_0040f945:
-  local_1e0 = 0x50;
-  local_1d4 = local_1d4 + -1;
-  if (local_64 != 0) {
-    if (*(int *)(local_64 + -0xc) != -1) {
-      local_2c8 = (int *)(local_64 + -0xc);
-      if (local_2c8 == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehContext = 0x50;
+  ehDtorCount = ehDtorCount + -1;
+  if (str25 != 0) {
+    if (*(int *)(str25 + -0xc) != -1) {
+      strRep17 = (int *)(str25 + -0xc);
+      if (strRep17 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_2c8 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep17 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_2c8 = *local_2c8 + -1;
-        iVar2 = *local_2c8 + 1;
+        *strRep17 = *strRep17 + -1;
+        scratch = *strRep17 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040f9fa;
+      if (scratch != 0) goto LAB_0040f9fa;
     }
-    local_2cc = local_64 + -0xc;
-    local_2d0 = local_64 + -0xc;
+    unused72 = str25 + -0xc;
+    unused71 = str25 + -0xc;
     operator_delete();
-    local_2d4 = 0;
-    local_2d8 = local_6c;
-    local_64 = 0;
+    unused70 = 0;
+    unused69 = str4;
+    str25 = 0;
   }
 LAB_0040f9fa:
-  puVar7 = (uint *)(param_1 + 0xf0);
-  local_1e0 = 200;
-  iVar2 = std::string::string_from_cstr((int)local_8c,(uint *)"0,0,0,-13,0,0,0,400,0,0,0,0,0,0,0,49,Courier New");
-  local_1d4 = local_1d4 + 1;
-  std::string::string_from_cstr((int)local_9c,(uint *)"FontPrinting");
-  local_1d4 = local_1d4 + 1;
-  FUN_00411b14((int)local_c,(int)local_9c,iVar2,puVar7);
-  local_1d4 = local_1d4 + -1;
-  if (local_94 != 0) {
-    if (*(int *)(local_94 + -0xc) != -1) {
-      local_2ec = (int *)(local_94 + -0xc);
-      if (local_2ec == &DAT_0042fab4) {
-        iVar2 = 1;
+  p = (uint *)(self + 0xf0);
+  ehContext = 200;
+  scratch = std::string::string_from_cstr((int)str3,(uint *)"0,0,0,-13,0,0,0,400,0,0,0,0,0,0,0,49,Courier New");
+  ehDtorCount = ehDtorCount + 1;
+  std::string::string_from_cstr((int)valueName14,(uint *)"FontPrinting");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryFont((int)persist,(int)valueName14,scratch,p);
+  ehDtorCount = ehDtorCount + -1;
+  if (str22 != 0) {
+    if (*(int *)(str22 + -0xc) != -1) {
+      strRep16 = (int *)(str22 + -0xc);
+      if (strRep16 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_2ec == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep16 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_2ec = *local_2ec + -1;
-        iVar2 = *local_2ec + 1;
+        *strRep16 = *strRep16 + -1;
+        scratch = *strRep16 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040fb1d;
+      if (scratch != 0) goto LAB_0040fb1d;
     }
-    local_2f0 = local_94 + -0xc;
-    local_2f4 = local_94 + -0xc;
+    unused68 = str22 + -0xc;
+    unused67 = str22 + -0xc;
     operator_delete();
-    local_2f8 = 0;
-    local_2fc = local_9c;
-    local_94 = 0;
+    unused66 = 0;
+    unused65 = valueName14;
+    str22 = 0;
   }
 LAB_0040fb1d:
-  local_1e0 = 0x50;
-  local_1d4 = local_1d4 + -1;
-  if (local_84 != 0) {
-    if (*(int *)(local_84 + -0xc) != -1) {
-      local_300 = (int *)(local_84 + -0xc);
-      if (local_300 == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehContext = 0x50;
+  ehDtorCount = ehDtorCount + -1;
+  if (str23 != 0) {
+    if (*(int *)(str23 + -0xc) != -1) {
+      strRep15 = (int *)(str23 + -0xc);
+      if (strRep15 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_300 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep15 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_300 = *local_300 + -1;
-        iVar2 = *local_300 + 1;
+        *strRep15 = *strRep15 + -1;
+        scratch = *strRep15 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040fbd5;
+      if (scratch != 0) goto LAB_0040fbd5;
     }
-    local_304 = local_84 + -0xc;
-    local_308 = local_84 + -0xc;
+    unused64 = str23 + -0xc;
+    unused63 = str23 + -0xc;
     operator_delete();
-    local_30c = 0;
-    local_310 = local_8c;
-    local_84 = 0;
+    unused62 = 0;
+    unused61 = str3;
+    str23 = 0;
   }
 LAB_0040fbd5:
-  puVar7 = (uint *)(param_1 + 0x2c);
-  local_1e0 = 0xec;
-  std::string::string_from_cstr((int)local_ac,(uint *)"DefinitionBackgroundColor");
-  local_1d4 = local_1d4 + 1;
-  FUN_00411c80((int)local_c,(int)local_ac,puVar7);
-  local_1d4 = local_1d4 + -1;
-  if (local_a4 != 0) {
-    if (*(int *)(local_a4 + -0xc) != -1) {
-      local_31c = (int *)(local_a4 + -0xc);
-      if (local_31c == &DAT_0042fab4) {
-        iVar2 = 1;
+  p = (uint *)(self + 0x2c);
+  ehContext = 0xec;
+  std::string::string_from_cstr((int)valueName13,(uint *)"DefinitionBackgroundColor");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryColour((int)persist,(int)valueName13,p);
+  ehDtorCount = ehDtorCount + -1;
+  if (str21 != 0) {
+    if (*(int *)(str21 + -0xc) != -1) {
+      strRep14 = (int *)(str21 + -0xc);
+      if (strRep14 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_31c == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep14 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_31c = *local_31c + -1;
-        iVar2 = *local_31c + 1;
+        *strRep14 = *strRep14 + -1;
+        scratch = *strRep14 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040fcd7;
+      if (scratch != 0) goto LAB_0040fcd7;
     }
-    local_320 = local_a4 + -0xc;
-    local_324 = local_a4 + -0xc;
+    unused60 = str21 + -0xc;
+    unused59 = str21 + -0xc;
     operator_delete();
-    local_328 = 0;
-    local_32c = local_ac;
-    local_a4 = 0;
+    unused58 = 0;
+    unused57 = valueName13;
+    str21 = 0;
   }
 LAB_0040fcd7:
-  puVar7 = (uint *)(param_1 + 0x170);
-  local_1e0 = 0x104;
-  std::string::string_from_cstr((int)local_bc,(uint *)"255,0,0,-16,0,0,0,400,255,0,0,0,3,2,1,18,Times New Roman");
-  puVar14 = local_bc;
-  local_1d4 = local_1d4 + 1;
-  std::string::string_from_cstr((int)local_cc,(uint *)"DefinitionHighlightFont");
-  local_1d4 = local_1d4 + 1;
-  FUN_00411b14((int)local_c,(int)local_cc,(int)puVar14,puVar7);
-  local_1d4 = local_1d4 + -1;
-  if (local_c4 != 0) {
-    if (*(int *)(local_c4 + -0xc) != -1) {
-      local_340 = (int *)(local_c4 + -0xc);
-      if (local_340 == &DAT_0042fab4) {
-        iVar2 = 1;
+  p = (uint *)(self + 0x170);
+  ehContext = 0x104;
+  std::string::string_from_cstr((int)str2,(uint *)"255,0,0,-16,0,0,0,400,255,0,0,0,3,2,1,18,Times New Roman");
+  listArg = str2;
+  ehDtorCount = ehDtorCount + 1;
+  std::string::string_from_cstr((int)valueName12,(uint *)"DefinitionHighlightFont");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryFont((int)persist,(int)valueName12,(int)listArg,p);
+  ehDtorCount = ehDtorCount + -1;
+  if (str19 != 0) {
+    if (*(int *)(str19 + -0xc) != -1) {
+      strRep13 = (int *)(str19 + -0xc);
+      if (strRep13 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_340 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep13 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_340 = *local_340 + -1;
-        iVar2 = *local_340 + 1;
+        *strRep13 = *strRep13 + -1;
+        scratch = *strRep13 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040fe06;
+      if (scratch != 0) goto LAB_0040fe06;
     }
-    local_344 = local_c4 + -0xc;
-    local_348 = local_c4 + -0xc;
+    unused56 = str19 + -0xc;
+    unused55 = str19 + -0xc;
     operator_delete();
-    local_34c = 0;
-    local_350 = local_cc;
-    local_c4 = 0;
+    unused54 = 0;
+    unused53 = valueName12;
+    str19 = 0;
   }
 LAB_0040fe06:
-  local_1e0 = 0x50;
-  local_1d4 = local_1d4 + -1;
-  if (local_b4 != 0) {
-    if (*(int *)(local_b4 + -0xc) != -1) {
-      local_354 = (int *)(local_b4 + -0xc);
-      if (local_354 == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehContext = 0x50;
+  ehDtorCount = ehDtorCount + -1;
+  if (str20 != 0) {
+    if (*(int *)(str20 + -0xc) != -1) {
+      strRep12 = (int *)(str20 + -0xc);
+      if (strRep12 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_354 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep12 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_354 = *local_354 + -1;
-        iVar2 = *local_354 + 1;
+        *strRep12 = *strRep12 + -1;
+        scratch = *strRep12 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040fed0;
+      if (scratch != 0) goto LAB_0040fed0;
     }
-    local_358 = local_b4 + -0xc;
-    local_35c = local_b4 + -0xc;
+    unused52 = str20 + -0xc;
+    unused51 = str20 + -0xc;
     operator_delete();
-    local_360 = 0;
-    local_364 = local_bc;
-    local_b4 = 0;
+    unused50 = 0;
+    unused49 = str2;
+    str20 = 0;
   }
 LAB_0040fed0:
-  puVar7 = (uint *)(param_1 + 0x130);
-  local_1e0 = 0x128;
-  std::string::string_from_cstr((int)local_dc,(uint *)"0,0,0,-16,0,0,0,400,0,0,0,0,3,2,1,18,Times New Roman");
-  puVar14 = local_dc;
-  local_1d4 = local_1d4 + 1;
-  std::string::string_from_cstr((int)local_ec,(uint *)"DefinitionDefaultFont");
-  local_1d4 = local_1d4 + 1;
-  FUN_00411b14((int)local_c,(int)local_ec,(int)puVar14,puVar7);
-  local_1d4 = local_1d4 + -1;
-  if (local_e4 != 0) {
-    if (*(int *)(local_e4 + -0xc) != -1) {
-      local_378 = (int *)(local_e4 + -0xc);
-      if (local_378 == &DAT_0042fab4) {
-        iVar2 = 1;
+  p = (uint *)(self + 0x130);
+  ehContext = 0x128;
+  std::string::string_from_cstr((int)str,(uint *)"0,0,0,-16,0,0,0,400,0,0,0,0,3,2,1,18,Times New Roman");
+  listArg = str;
+  ehDtorCount = ehDtorCount + 1;
+  std::string::string_from_cstr((int)valueName11,(uint *)"DefinitionDefaultFont");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryFont((int)persist,(int)valueName11,(int)listArg,p);
+  ehDtorCount = ehDtorCount + -1;
+  if (str17 != 0) {
+    if (*(int *)(str17 + -0xc) != -1) {
+      strRep11 = (int *)(str17 + -0xc);
+      if (strRep11 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_378 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep11 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_378 = *local_378 + -1;
-        iVar2 = *local_378 + 1;
+        *strRep11 = *strRep11 + -1;
+        scratch = *strRep11 + 1;
       }
-      if (iVar2 != 0) goto LAB_0040fff9;
+      if (scratch != 0) goto LAB_0040fff9;
     }
-    local_37c = local_e4 + -0xc;
-    local_380 = local_e4 + -0xc;
+    unused48 = str17 + -0xc;
+    unused47 = str17 + -0xc;
     operator_delete();
-    local_384 = 0;
-    local_388 = local_ec;
-    local_e4 = 0;
+    unused46 = 0;
+    unused45 = valueName11;
+    str17 = 0;
   }
 LAB_0040fff9:
-  local_1e0 = 0x50;
-  local_1d4 = local_1d4 + -1;
-  if (local_d4 != 0) {
-    if (*(int *)(local_d4 + -0xc) != -1) {
-      local_38c = (int *)(local_d4 + -0xc);
-      if (local_38c == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehContext = 0x50;
+  ehDtorCount = ehDtorCount + -1;
+  if (str18 != 0) {
+    if (*(int *)(str18 + -0xc) != -1) {
+      strRep10 = (int *)(str18 + -0xc);
+      if (strRep10 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_38c == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep10 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_38c = *local_38c + -1;
-        iVar2 = *local_38c + 1;
+        *strRep10 = *strRep10 + -1;
+        scratch = *strRep10 + 1;
       }
-      if (iVar2 != 0) goto LAB_004100c3;
+      if (scratch != 0) goto LAB_004100c3;
     }
-    local_390 = local_d4 + -0xc;
-    local_394 = local_d4 + -0xc;
+    unused44 = str18 + -0xc;
+    unused43 = str18 + -0xc;
     operator_delete();
-    local_398 = 0;
-    local_39c = local_dc;
-    local_d4 = 0;
+    unused42 = 0;
+    unused41 = str;
+    str18 = 0;
   }
 LAB_004100c3:
-  puVar3 = (undefined4 *)(param_1 + 0x24);
-  local_1e0 = 0x14c;
-  std::string::string_from_cstr((int)local_fc,(uint *)"ViewMultipleDictionaries");
-  local_1d4 = local_1d4 + 1;
-  uVar4 = Persist::QueryValue((int)local_c,(int)local_fc,puVar3);
-  if (((char)uVar4 == '\0') || ((-1 < *(int *)(param_1 + 0x24) && (*(int *)(param_1 + 0x24) < 3))))
+  dst = (undefined4 *)(self + 0x24);
+  ehContext = 0x14c;
+  std::string::string_from_cstr((int)valueName10,(uint *)"ViewMultipleDictionaries");
+  ehDtorCount = ehDtorCount + 1;
+  found = Persist::QueryDword((int)persist,(int)valueName10,dst);
+  if (((char)found == '\0') || ((-1 < *(int *)(self + 0x24) && (*(int *)(self + 0x24) < 3))))
   {
-    cVar12 = '\0';
+    invalid = '\0';
   }
   else {
-    cVar12 = '\x01';
+    invalid = '\x01';
   }
-  local_1d4 = local_1d4 + -1;
-  if (local_f4 != 0) {
-    if (*(int *)(local_f4 + -0xc) != -1) {
-      local_3a8 = (int *)(local_f4 + -0xc);
-      if (local_3a8 == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehDtorCount = ehDtorCount + -1;
+  if (str16 != 0) {
+    if (*(int *)(str16 + -0xc) != -1) {
+      strRep9 = (int *)(str16 + -0xc);
+      if (strRep9 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_3a8 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep9 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_3a8 = *local_3a8 + -1;
-        iVar2 = *local_3a8 + 1;
+        *strRep9 = *strRep9 + -1;
+        scratch = *strRep9 + 1;
       }
-      if (iVar2 != 0) goto LAB_004101e5;
+      if (scratch != 0) goto LAB_004101e5;
     }
-    local_3ac = local_f4 + -0xc;
-    local_3b0 = local_f4 + -0xc;
+    unused40 = str16 + -0xc;
+    unused39 = str16 + -0xc;
     operator_delete();
-    local_3b4 = 0;
-    local_3b8 = local_fc;
-    local_f4 = 0;
+    unused38 = 0;
+    unused37 = valueName10;
+    str16 = 0;
   }
 LAB_004101e5:
-  if (cVar12 != '\0') {
-    *(undefined4 *)(param_1 + 0x24) = 0;
+  if (invalid != '\0') {
+    *(undefined4 *)(self + 0x24) = 0;
   }
-  puVar3 = (undefined4 *)(param_1 + 0x1b0);
-  local_1e0 = 0x164;
-  std::string::string_from_cstr((int)local_10c,(uint *)"ViewSorting");
-  local_1d4 = local_1d4 + 1;
-  Persist::QueryValue((int)local_c,(int)local_10c,puVar3);
-  local_1d4 = local_1d4 + -1;
-  if (local_104 != 0) {
-    if (*(int *)(local_104 + -0xc) != -1) {
-      local_3c4 = (int *)(local_104 + -0xc);
-      if (local_3c4 == &DAT_0042fab4) {
-        iVar2 = 1;
+  dst = (undefined4 *)(self + 0x1b0);
+  ehContext = 0x164;
+  std::string::string_from_cstr((int)valueName9,(uint *)"ViewSorting");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryDword((int)persist,(int)valueName9,dst);
+  ehDtorCount = ehDtorCount + -1;
+  if (str15 != 0) {
+    if (*(int *)(str15 + -0xc) != -1) {
+      strRep8 = (int *)(str15 + -0xc);
+      if (strRep8 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_3c4 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep8 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_3c4 = *local_3c4 + -1;
-        iVar2 = *local_3c4 + 1;
+        *strRep8 = *strRep8 + -1;
+        scratch = *strRep8 + 1;
       }
-      if (iVar2 != 0) goto LAB_004102f6;
+      if (scratch != 0) goto LAB_004102f6;
     }
-    local_3c8 = local_104 + -0xc;
-    local_3cc = local_104 + -0xc;
+    unused36 = str15 + -0xc;
+    unused35 = str15 + -0xc;
     operator_delete();
-    local_3d0 = 0;
-    local_3d4 = local_10c;
-    local_104 = 0;
+    unused34 = 0;
+    unused33 = valueName9;
+    str15 = 0;
   }
 LAB_004102f6:
-  puVar3 = (undefined4 *)(param_1 + 0x1b4);
-  local_1e0 = 0x17c;
-  std::string::string_from_cstr((int)local_11c,(uint *)"ViewSortingAscending");
-  local_1d4 = local_1d4 + 1;
-  Persist::QueryValue((int)local_c,(int)local_11c,puVar3);
-  local_1d4 = local_1d4 + -1;
-  if (local_114 != 0) {
-    if (*(int *)(local_114 + -0xc) != -1) {
-      local_3e0 = (int *)(local_114 + -0xc);
-      if (local_3e0 == &DAT_0042fab4) {
-        iVar2 = 1;
+  dst = (undefined4 *)(self + 0x1b4);
+  ehContext = 0x17c;
+  std::string::string_from_cstr((int)valueName8,(uint *)"ViewSortingAscending");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryDword((int)persist,(int)valueName8,dst);
+  ehDtorCount = ehDtorCount + -1;
+  if (str14 != 0) {
+    if (*(int *)(str14 + -0xc) != -1) {
+      strRep7 = (int *)(str14 + -0xc);
+      if (strRep7 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_3e0 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep7 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_3e0 = *local_3e0 + -1;
-        iVar2 = *local_3e0 + 1;
+        *strRep7 = *strRep7 + -1;
+        scratch = *strRep7 + 1;
       }
-      if (iVar2 != 0) goto LAB_00410400;
+      if (scratch != 0) goto LAB_00410400;
     }
-    local_3e4 = local_114 + -0xc;
-    local_3e8 = local_114 + -0xc;
+    unused32 = str14 + -0xc;
+    unused31 = str14 + -0xc;
     operator_delete();
-    local_3ec = 0;
-    local_3f0 = local_11c;
-    local_114 = 0;
+    unused30 = 0;
+    unused29 = valueName8;
+    str14 = 0;
   }
 LAB_00410400:
-  puVar3 = (undefined4 *)(param_1 + 0x1b8);
-  local_1e0 = 0x194;
-  std::string::string_from_cstr((int)local_12c,(uint *)"ViewLengthGrouping");
-  local_1d4 = local_1d4 + 1;
-  Persist::QueryValue((int)local_c,(int)local_12c,puVar3);
-  local_1d4 = local_1d4 + -1;
-  if (local_124 != 0) {
-    if (*(int *)(local_124 + -0xc) != -1) {
-      local_3fc = (int *)(local_124 + -0xc);
-      if (local_3fc == &DAT_0042fab4) {
-        iVar2 = 1;
+  dst = (undefined4 *)(self + 0x1b8);
+  ehContext = 0x194;
+  std::string::string_from_cstr((int)valueName7,(uint *)"ViewLengthGrouping");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryDword((int)persist,(int)valueName7,dst);
+  ehDtorCount = ehDtorCount + -1;
+  if (str13 != 0) {
+    if (*(int *)(str13 + -0xc) != -1) {
+      strRep6 = (int *)(str13 + -0xc);
+      if (strRep6 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_3fc == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep6 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_3fc = *local_3fc + -1;
-        iVar2 = *local_3fc + 1;
+        *strRep6 = *strRep6 + -1;
+        scratch = *strRep6 + 1;
       }
-      if (iVar2 != 0) goto LAB_0041050a;
+      if (scratch != 0) goto LAB_0041050a;
     }
-    local_400 = local_124 + -0xc;
-    local_404 = local_124 + -0xc;
+    unused28 = str13 + -0xc;
+    unused27 = str13 + -0xc;
     operator_delete();
-    local_408 = 0;
-    local_40c = local_12c;
-    local_124 = 0;
+    unused26 = 0;
+    unused25 = valueName7;
+    str13 = 0;
   }
 LAB_0041050a:
-  puVar3 = (undefined4 *)(param_1 + 0x1c0);
-  local_1e0 = 0x1ac;
-  std::string::string_from_cstr((int)local_13c,(uint *)"ViewShowAnnotations");
-  local_1d4 = local_1d4 + 1;
-  Persist::QueryValue((int)local_c,(int)local_13c,puVar3);
-  local_1d4 = local_1d4 + -1;
-  if (local_134 != 0) {
-    if (*(int *)(local_134 + -0xc) != -1) {
-      local_418 = (int *)(local_134 + -0xc);
-      if (local_418 == &DAT_0042fab4) {
-        iVar2 = 1;
+  dst = (undefined4 *)(self + 0x1c0);
+  ehContext = 0x1ac;
+  std::string::string_from_cstr((int)valueName6,(uint *)"ViewShowAnnotations");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryDword((int)persist,(int)valueName6,dst);
+  ehDtorCount = ehDtorCount + -1;
+  if (str12 != 0) {
+    if (*(int *)(str12 + -0xc) != -1) {
+      strRep5 = (int *)(str12 + -0xc);
+      if (strRep5 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_418 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep5 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_418 = *local_418 + -1;
-        iVar2 = *local_418 + 1;
+        *strRep5 = *strRep5 + -1;
+        scratch = *strRep5 + 1;
       }
-      if (iVar2 != 0) goto LAB_00410614;
+      if (scratch != 0) goto LAB_00410614;
     }
-    local_41c = local_134 + -0xc;
-    local_420 = local_134 + -0xc;
+    unused24 = str12 + -0xc;
+    unused23 = str12 + -0xc;
     operator_delete();
-    local_424 = 0;
-    local_428 = local_13c;
-    local_134 = 0;
+    unused22 = 0;
+    unused21 = valueName6;
+    str12 = 0;
   }
 LAB_00410614:
-  puVar3 = (undefined4 *)(param_1 + 0x1c4);
-  local_1e0 = 0x1c4;
-  std::string::string_from_cstr((int)local_14c,(uint *)"ViewShowBalances");
-  local_1d4 = local_1d4 + 1;
-  Persist::QueryValue((int)local_c,(int)local_14c,puVar3);
-  local_1d4 = local_1d4 + -1;
-  if (local_144 != 0) {
-    if (*(int *)(local_144 + -0xc) != -1) {
-      local_434 = (int *)(local_144 + -0xc);
-      if (local_434 == &DAT_0042fab4) {
-        iVar2 = 1;
+  dst = (undefined4 *)(self + 0x1c4);
+  ehContext = 0x1c4;
+  std::string::string_from_cstr((int)valueName5,(uint *)"ViewShowBalances");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryDword((int)persist,(int)valueName5,dst);
+  ehDtorCount = ehDtorCount + -1;
+  if (str11 != 0) {
+    if (*(int *)(str11 + -0xc) != -1) {
+      strRep4 = (int *)(str11 + -0xc);
+      if (strRep4 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_434 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep4 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_434 = *local_434 + -1;
-        iVar2 = *local_434 + 1;
+        *strRep4 = *strRep4 + -1;
+        scratch = *strRep4 + 1;
       }
-      if (iVar2 != 0) goto LAB_0041071e;
+      if (scratch != 0) goto LAB_0041071e;
     }
-    local_438 = local_144 + -0xc;
-    local_43c = local_144 + -0xc;
+    unused20 = str11 + -0xc;
+    unused19 = str11 + -0xc;
     operator_delete();
-    local_440 = 0;
-    local_444 = local_14c;
-    local_144 = 0;
+    unused18 = 0;
+    unused17 = valueName5;
+    str11 = 0;
   }
 LAB_0041071e:
-  puVar3 = (undefined4 *)(param_1 + 0x1c8);
-  local_1e0 = 0x1dc;
-  std::string::string_from_cstr((int)local_15c,(uint *)"ViewDoubleClick");
-  local_1d4 = local_1d4 + 1;
-  Persist::QueryValue((int)local_c,(int)local_15c,puVar3);
-  local_1d4 = local_1d4 + -1;
-  if (local_154 != 0) {
-    if (*(int *)(local_154 + -0xc) != -1) {
-      local_450 = (int *)(local_154 + -0xc);
-      if (local_450 == &DAT_0042fab4) {
-        iVar2 = 1;
+  dst = (undefined4 *)(self + 0x1c8);
+  ehContext = 0x1dc;
+  std::string::string_from_cstr((int)valueName4,(uint *)"ViewDoubleClick");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryDword((int)persist,(int)valueName4,dst);
+  ehDtorCount = ehDtorCount + -1;
+  if (str10 != 0) {
+    if (*(int *)(str10 + -0xc) != -1) {
+      strRep3 = (int *)(str10 + -0xc);
+      if (strRep3 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_450 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep3 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_450 = *local_450 + -1;
-        iVar2 = *local_450 + 1;
+        *strRep3 = *strRep3 + -1;
+        scratch = *strRep3 + 1;
       }
-      if (iVar2 != 0) goto LAB_00410828;
+      if (scratch != 0) goto LAB_00410828;
     }
-    local_454 = local_154 + -0xc;
-    local_458 = local_154 + -0xc;
+    unused16 = str10 + -0xc;
+    unused15 = str10 + -0xc;
     operator_delete();
-    local_45c = 0;
-    local_460 = local_15c;
-    local_154 = 0;
+    unused14 = 0;
+    unused13 = valueName4;
+    str10 = 0;
   }
 LAB_00410828:
-  piVar9 = &local_464;
-  local_1e0 = 500;
-  std::string::string_from_cstr((int)local_16c,(uint *)"ViewLengthGroupingSense");
-  local_1d4 = local_1d4 + 1;
-  uVar4 = Persist::QueryValue((int)local_c,(int)local_16c,piVar9);
-  if ((((char)uVar4 == '\0') || (local_464 < -1)) || (1 < local_464)) {
-    cVar12 = '\0';
+  intOut = &groupingSense;
+  ehContext = 500;
+  std::string::string_from_cstr((int)valueName3,(uint *)"ViewLengthGroupingSense");
+  ehDtorCount = ehDtorCount + 1;
+  found = Persist::QueryDword((int)persist,(int)valueName3,intOut);
+  if ((((char)found == '\0') || (groupingSense < -1)) || (1 < groupingSense)) {
+    invalid = '\0';
   }
   else {
-    cVar12 = '\x01';
+    invalid = '\x01';
   }
-  local_1d4 = local_1d4 + -1;
-  if (local_164 != 0) {
-    if (*(int *)(local_164 + -0xc) != -1) {
-      local_470 = (int *)(local_164 + -0xc);
-      if (local_470 == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehDtorCount = ehDtorCount + -1;
+  if (str9 != 0) {
+    if (*(int *)(str9 + -0xc) != -1) {
+      strRep2 = (int *)(str9 + -0xc);
+      if (strRep2 == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_470 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep2 == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_470 = *local_470 + -1;
-        iVar2 = *local_470 + 1;
+        *strRep2 = *strRep2 + -1;
+        scratch = *strRep2 + 1;
       }
-      if (iVar2 != 0) goto LAB_00410950;
+      if (scratch != 0) goto LAB_00410950;
     }
-    local_474 = local_164 + -0xc;
-    local_478 = local_164 + -0xc;
+    unused12 = str9 + -0xc;
+    unused11 = str9 + -0xc;
     operator_delete();
-    local_47c = 0;
-    local_480 = local_16c;
-    local_164 = 0;
+    unused10 = 0;
+    unused9 = valueName3;
+    str9 = 0;
   }
 LAB_00410950:
-  if (cVar12 != '\0') {
-    *(undefined1 *)(param_1 + 0x1bc) = (undefined1)local_464;
+  if (invalid != '\0') {
+    *(undefined1 *)(self + 0x1bc) = (undefined1)groupingSense;
   }
-  local_55c = &PTR_s_OutputLower_0042d554;
-  uVar11 = 0;
+  nameAt = &PTR_s_OutputLower_0042d554;
+  i = 0;
   do {
-    puVar3 = (undefined4 *)(uVar11 * 4 + param_1 + 0x1cc);
-    local_1e0 = 0x20c;
-    std::string::string_from_cstr((int)local_17c,(uint *)*local_55c);
-    local_1d4 = local_1d4 + 1;
-    uVar5 = Persist::QueryValue((int)local_c,(int)local_17c,puVar3);
-    cVar12 = (uVar5 & 0xff) == 0;
-    local_1d4 = local_1d4 + -1;
-    if (local_174 != 0) {
-      if (*(int *)(local_174 + -0xc) != -1) {
-        piVar9 = (int *)(local_174 + -0xc);
-        if (piVar9 == &DAT_0042fab4) {
-          iVar2 = 1;
+    dst = (undefined4 *)(i * 4 + self + 0x1cc);
+    ehContext = 0x20c;
+    std::string::string_from_cstr((int)valueName2,(uint *)*nameAt);
+    ehDtorCount = ehDtorCount + 1;
+    found2 = Persist::QueryDword((int)persist,(int)valueName2,dst);
+    invalid = (found2 & 0xff) == 0;
+    ehDtorCount = ehDtorCount + -1;
+    if (str8 != 0) {
+      if (*(int *)(str8 + -0xc) != -1) {
+        intOut = (int *)(str8 + -0xc);
+        if (intOut == &g_nullStringRep) {
+          scratch = 1;
         }
-        else if (piVar9 == &DAT_0042fab4) {
-          iVar2 = 1;
+        else if (intOut == &g_nullStringRep) {
+          scratch = 1;
         }
         else {
-          *piVar9 = *piVar9 + -1;
-          iVar2 = *piVar9 + 1;
+          *intOut = *intOut + -1;
+          scratch = *intOut + 1;
         }
-        if (iVar2 != 0) goto LAB_00410a73;
+        if (scratch != 0) goto LAB_00410a73;
       }
-      local_48c = local_174 + -0xc;
-      local_490 = local_174 + -0xc;
+      unused8 = str8 + -0xc;
+      unused7 = str8 + -0xc;
       operator_delete();
-      local_494 = 0;
-      local_498 = local_17c;
-      local_174 = 0;
+      unused6 = 0;
+      unused5 = valueName2;
+      str8 = 0;
     }
 LAB_00410a73:
-    if (cVar12 != '\0') {
-      *(undefined4 *)(param_1 + 0x1cc + uVar11 * 4) = 1;
+    if (invalid != '\0') {
+      *(undefined4 *)(self + 0x1cc + i * 4) = 1;
     }
-    uVar11 = uVar11 + 1;
-    local_55c = local_55c + 1;
-  } while (uVar11 < 4);
-  local_1e0 = 0x224;
-  std::string::string_from_cstr((int)local_18c,(uint *)"Dictionaries\\Unedited English.tsd");
-  local_1d4 = local_1d4 + 1;
-  FUN_00409208((int)local_1c,(int)local_18c);
-  if (local_184 != 0) {
-    if (*(int *)(local_184 + -0xc) != -1) {
-      local_4a4 = (int *)(local_184 + -0xc);
-      if (local_4a4 == &DAT_0042fab4) {
-        iVar2 = 1;
+    i = i + 1;
+    nameAt = nameAt + 1;
+  } while (i < 4);
+  ehContext = 0x224;
+  std::string::string_from_cstr((int)defaultPath,(uint *)"Dictionaries\\Unedited English.tsd");
+  ehDtorCount = ehDtorCount + 1;
+  ResolveRelativePaths((int)dictionaryList,(int)defaultPath);
+  if (defaultPathData != 0) {
+    if (*(int *)(defaultPathData + -0xc) != -1) {
+      strRep = (int *)(defaultPathData + -0xc);
+      if (strRep == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (local_4a4 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *local_4a4 = *local_4a4 + -1;
-        iVar2 = *local_4a4 + 1;
+        *strRep = *strRep + -1;
+        scratch = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_00410b95;
+      if (scratch != 0) goto LAB_00410b95;
     }
-    local_4a8 = local_184 + -0xc;
-    local_4ac = local_184 + -0xc;
+    unused4 = defaultPathData + -0xc;
+    unused3 = defaultPathData + -0xc;
     operator_delete();
-    local_4b0 = 0;
-    local_4b4 = local_18c;
-    local_184 = 0;
+    unused2 = 0;
+    unused = defaultPath;
+    defaultPathData = 0;
   }
 LAB_00410b95:
-  ppuVar10 = &PTR_s_1913_Webster_s_Unabridged_0042d698;
-  puVar3 = local_4e4;
-  for (iVar2 = 0xc; iVar2 != 0; iVar2 = iVar2 + -1) {
-    *puVar3 = *ppuVar10;
-    ppuVar10 = ppuVar10 + (uint)bVar13 * -2 + 1;
-    puVar3 = puVar3 + (uint)bVar13 * -2 + 1;
+  nameSrc = &PTR_s_1913_Webster_s_Unabridged_0042d698;
+  dst = dictionaryNames;
+  for (scratch = 0xc; scratch != 0; scratch = scratch + -1) {
+    *dst = *nameSrc;
+    nameSrc = nameSrc + (uint)backwards * -2 + 1;
+    dst = dst + (uint)backwards * -2 + 1;
   }
-  uVar11 = 0;
-  local_55c = (undefined **)local_4e4;
+  i = 0;
+  nameAt = (undefined **)dictionaryNames;
   do {
-    local_1e0 = 0x23c;
-    std::string::string_from_cstr((int)local_19c,(uint *)"Dictionaries\\");
-    local_1d4 = local_1d4 + 1;
-    local_1e0 = 0x248;
-    puVar7 = (uint *)*local_55c;
-    uVar5 = *(uint *)(local_194 + -4);
-    pcVar6 = strlen(puVar7);
-    FUN_00417320((int)local_19c,uVar5,0,(uint)puVar7,(uint)pcVar6,0,(uint)pcVar6);
-    puVar1 = PTR_DAT_0042bc44;
-    uVar5 = *(uint *)(local_194 + -4);
-    pcVar6 = strlen((uint *)PTR_DAT_0042bc44);
-    FUN_00417320((int)local_19c,uVar5,0,(uint)puVar1,(uint)pcVar6,0,(uint)pcVar6);
-    local_1e0 = 0x254;
-    FUN_00409208((int)local_1ac,(int)local_19c);
-    local_1d4 = local_1d4 + 1;
-    FUN_00416bd0((int)local_19c,(int)local_1ac);
-    local_1d4 = local_1d4 + -1;
-    if (local_1a4 != 0) {
-      if (*(int *)(local_1a4 + -0xc) != -1) {
-        piVar9 = (int *)(local_1a4 + -0xc);
-        if (piVar9 == &DAT_0042fab4) {
-          iVar2 = 1;
+    ehContext = 0x23c;
+    std::string::string_from_cstr((int)candidate,(uint *)"Dictionaries\\");
+    ehDtorCount = ehDtorCount + 1;
+    ehContext = 0x248;
+    p = (uint *)*nameAt;
+    found2 = *(uint *)(candidateData + -4);
+    len = strlen(p);
+    std::string::replace((int)candidate,found2,0,(uint)p,(uint)len,0,(uint)len);
+    extension = PTR_DAT_0042bc44;
+    found2 = *(uint *)(candidateData + -4);
+    len = strlen((uint *)PTR_DAT_0042bc44);
+    std::string::replace((int)candidate,found2,0,(uint)extension,(uint)len,0,(uint)len);
+    ehContext = 0x254;
+    ResolveRelativePaths((int)candidateResolved,(int)candidate);
+    ehDtorCount = ehDtorCount + 1;
+    std::string::operator_assign((int)candidate,(int)candidateResolved);
+    ehDtorCount = ehDtorCount + -1;
+    if (candidateResolvedData != 0) {
+      if (*(int *)(candidateResolvedData + -0xc) != -1) {
+        intOut = (int *)(candidateResolvedData + -0xc);
+        if (intOut == &g_nullStringRep) {
+          scratch = 1;
         }
-        else if (piVar9 == &DAT_0042fab4) {
-          iVar2 = 1;
+        else if (intOut == &g_nullStringRep) {
+          scratch = 1;
         }
         else {
-          *piVar9 = *piVar9 + -1;
-          iVar2 = *piVar9 + 1;
+          *intOut = *intOut + -1;
+          scratch = *intOut + 1;
         }
-        if (iVar2 != 0) goto LAB_00410d36;
+        if (scratch != 0) goto LAB_00410d36;
       }
       operator_delete();
-      local_1a4 = 0;
+      candidateResolvedData = 0;
     }
 LAB_00410d36:
-    local_1e0 = 0x248;
-    iVar2 = thunk_FUN_0041ffa0(local_194,0);
-    if (iVar2 == 0) {
-      std::string::replace_fill((int)local_1c,local_14[-1],0,1,0x3b);
-      std::string::append((int)local_1c,(int)local_19c);
+    ehContext = 0x248;
+    scratch = thunk_access(candidateData,0);
+    if (scratch == 0) {
+      std::string::replace_fill((int)dictionaryList,dictionaryListData[-1],0,1,0x3b);
+      std::string::append((int)dictionaryList,(int)candidate);
     }
-    local_1d4 = local_1d4 + -1;
-    if (local_194 != (LPCSTR)0x0) {
-      if (*(int *)(local_194 + -0xc) != -1) {
-        piVar9 = (int *)(local_194 + -0xc);
-        if (piVar9 == &DAT_0042fab4) {
-          iVar2 = 1;
+    ehDtorCount = ehDtorCount + -1;
+    if (candidateData != (LPCSTR)0x0) {
+      if (*(int *)(candidateData + -0xc) != -1) {
+        intOut = (int *)(candidateData + -0xc);
+        if (intOut == &g_nullStringRep) {
+          scratch = 1;
         }
-        else if (piVar9 == &DAT_0042fab4) {
-          iVar2 = 1;
+        else if (intOut == &g_nullStringRep) {
+          scratch = 1;
         }
         else {
-          *piVar9 = *piVar9 + -1;
-          iVar2 = *piVar9 + 1;
+          *intOut = *intOut + -1;
+          scratch = *intOut + 1;
         }
-        if (iVar2 != 0) goto LAB_00410e25;
+        if (scratch != 0) goto LAB_00410e25;
       }
       operator_delete();
-      local_194 = (LPCSTR)0x0;
+      candidateData = (LPCSTR)0x0;
     }
 LAB_00410e25:
-    uVar11 = uVar11 + 1;
-    local_55c = local_55c + 1;
-  } while (uVar11 < 0xc);
-  puVar14 = local_1c;
-  local_1e0 = 0x278;
-  std::string::string_from_cstr((int)local_1bc,(uint *)"ViewDefinitionDictionary");
-  local_1d4 = local_1d4 + 1;
-  Persist::QueryValueSized((int)local_c,(int)local_1bc,(int)puVar14);
-  local_1d4 = local_1d4 + -1;
-  if (local_1b4 != 0) {
-    if (*(int *)(local_1b4 + -0xc) != -1) {
-      piVar9 = (int *)(local_1b4 + -0xc);
-      if (piVar9 == &DAT_0042fab4) {
-        iVar2 = 1;
+    i = i + 1;
+    nameAt = nameAt + 1;
+  } while (i < 0xc);
+  listArg = dictionaryList;
+  ehContext = 0x278;
+  std::string::string_from_cstr((int)valueName,(uint *)"ViewDefinitionDictionary");
+  ehDtorCount = ehDtorCount + 1;
+  Persist::QueryString((int)persist,(int)valueName,(int)listArg);
+  ehDtorCount = ehDtorCount + -1;
+  if (str7 != 0) {
+    if (*(int *)(str7 + -0xc) != -1) {
+      intOut = (int *)(str7 + -0xc);
+      if (intOut == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (piVar9 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (intOut == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *piVar9 = *piVar9 + -1;
-        iVar2 = *piVar9 + 1;
+        *intOut = *intOut + -1;
+        scratch = *intOut + 1;
       }
-      if (iVar2 != 0) goto LAB_00410f3b;
+      if (scratch != 0) goto LAB_00410f3b;
     }
     operator_delete();
-    local_1b4 = 0;
+    str7 = 0;
   }
 LAB_00410f3b:
-  local_1e0 = 0x290;
-  FUN_00409208((int)local_1cc,(int)local_1c);
-  local_1d4 = local_1d4 + 1;
-  FUN_00416bd0((int)local_1c,(int)local_1cc);
-  local_1d4 = local_1d4 + -1;
-  if (local_1c4 != 0) {
-    if (*(int *)(local_1c4 + -0xc) != -1) {
-      piVar9 = (int *)(local_1c4 + -0xc);
-      if (piVar9 == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehContext = 0x290;
+  ResolveRelativePaths((int)resolved,(int)dictionaryList);
+  ehDtorCount = ehDtorCount + 1;
+  std::string::operator_assign((int)dictionaryList,(int)resolved);
+  ehDtorCount = ehDtorCount + -1;
+  if (resolvedData != 0) {
+    if (*(int *)(resolvedData + -0xc) != -1) {
+      intOut = (int *)(resolvedData + -0xc);
+      if (intOut == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (piVar9 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (intOut == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *piVar9 = *piVar9 + -1;
-        iVar2 = *piVar9 + 1;
+        *intOut = *intOut + -1;
+        scratch = *intOut + 1;
       }
-      if (iVar2 != 0) goto LAB_00411034;
+      if (scratch != 0) goto LAB_00411034;
     }
     operator_delete();
-    local_1c4 = 0;
+    resolvedData = 0;
   }
 LAB_00411034:
-  local_1e0 = 0x50;
-  puVar3 = FUN_0040530c(local_14);
-  *(undefined4 **)(param_1 + 0x28) = puVar3;
-  local_1d4 = local_1d4 + -1;
-  if (local_14 != (uint *)0x0) {
-    if (local_14[-3] != 0xffffffff) {
-      puVar7 = local_14 + -3;
-      if (puVar7 == &DAT_0042fab4) {
-        iVar2 = 1;
+  ehContext = 0x50;
+  dst = TSDictionaryList::Open(dictionaryListData);
+  *(undefined4 **)(self + 0x28) = dst;
+  ehDtorCount = ehDtorCount + -1;
+  if (dictionaryListData != (uint *)0x0) {
+    if (dictionaryListData[-3] != 0xffffffff) {
+      p = dictionaryListData + -3;
+      if (p == &g_nullStringRep) {
+        scratch = 1;
       }
-      else if (puVar7 == &DAT_0042fab4) {
-        iVar2 = 1;
+      else if (p == &g_nullStringRep) {
+        scratch = 1;
       }
       else {
-        *puVar7 = *puVar7 - 1;
-        iVar2 = *puVar7 + 1;
+        *p = *p - 1;
+        scratch = *p + 1;
       }
-      if (iVar2 != 0) goto LAB_004110f9;
+      if (scratch != 0) goto LAB_004110f9;
     }
     operator_delete();
-    local_14 = (uint *)0x0;
+    dictionaryListData = (uint *)0x0;
   }
 LAB_004110f9:
-  local_1d4 = local_1d4 + -1;
-  Persist::_dtor((int)local_c,2);
-  *in_FS_OFFSET = local_1f0;
-  return param_1;
+  ehDtorCount = ehDtorCount + -1;
+  Persist::_dtor((int)persist,2);
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00411148  TEAViewProfileWindows::~TEAViewProfileWindows   (449 bytes)   [rtti:dtor destructor]
 //   written in code as TEAViewProfileWindows::_dtor
-void __cdecl TEAViewProfileWindows::_dtor(int param_1,byte param_2)
+void __cdecl TEAViewProfileWindows::_dtor(int self,byte dtorFlags)
 
 {
-  int iVar1;
-  int *piVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x42dd38);
-  if (param_1 == 0) goto LAB_004112f9;
-  TSDictionaryList::ReleaseDictionaries(*(int *)(param_1 + 0x28));
-  if (*(int *)(param_1 + 0x1e8) != 0) {
-    if (*(int *)(*(int *)(param_1 + 0x1e8) + -0xc) != -1) {
-      piVar2 = (int *)(*(int *)(param_1 + 0x1e8) + -0xc);
-      if (piVar2 == &DAT_0042fab4) {
-        iVar1 = 1;
+  if (self == 0) goto LAB_004112f9;
+  TSDictionaryList::ReleaseDictionaries(*(int *)(self + 0x28));
+  if (*(int *)(self + 0x1e8) != 0) {
+    if (*(int *)(*(int *)(self + 0x1e8) + -0xc) != -1) {
+      strRep = (int *)(*(int *)(self + 0x1e8) + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar2 == &DAT_0042fab4) {
-        iVar1 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar1 = *piVar2 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar1 != 0) goto LAB_004111f6;
+      if (prevRefs != 0) goto LAB_004111f6;
     }
     operator_delete();
-    *(undefined4 *)(param_1 + 0x1e8) = 0;
+    *(undefined4 *)(self + 0x1e8) = 0;
   }
 LAB_004111f6:
-  if (*(int *)(param_1 + 0x18) != 0) {
-    if (*(int *)(*(int *)(param_1 + 0x18) + -0xc) != -1) {
-      piVar2 = (int *)(*(int *)(param_1 + 0x18) + -0xc);
-      if (piVar2 == &DAT_0042fab4) {
-        iVar1 = 1;
+  if (*(int *)(self + 0x18) != 0) {
+    if (*(int *)(*(int *)(self + 0x18) + -0xc) != -1) {
+      strRep = (int *)(*(int *)(self + 0x18) + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar2 == &DAT_0042fab4) {
-        iVar1 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar1 = *piVar2 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar1 != 0) goto LAB_0041126a;
+      if (prevRefs != 0) goto LAB_0041126a;
     }
     operator_delete();
-    *(undefined4 *)(param_1 + 0x18) = 0;
+    *(undefined4 *)(self + 0x18) = 0;
   }
 LAB_0041126a:
-  if (*(int *)(param_1 + 8) != 0) {
-    if (*(int *)(*(int *)(param_1 + 8) + -0xc) != -1) {
-      piVar2 = (int *)(*(int *)(param_1 + 8) + -0xc);
-      if (piVar2 == &DAT_0042fab4) {
-        iVar1 = 1;
+  if (*(int *)(self + 8) != 0) {
+    if (*(int *)(*(int *)(self + 8) + -0xc) != -1) {
+      strRep = (int *)(*(int *)(self + 8) + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar2 == &DAT_0042fab4) {
-        iVar1 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar1 = *piVar2 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar1 != 0) goto LAB_004112e9;
+      if (prevRefs != 0) goto LAB_004112e9;
     }
     operator_delete();
-    *(undefined4 *)(param_1 + 8) = 0;
+    *(undefined4 *)(self + 8) = 0;
   }
 LAB_004112e9:
-  if ((param_2 & 1) != 0) {
+  if ((dtorFlags & 1) != 0) {
     operator_delete();
   }
 LAB_004112f9:
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

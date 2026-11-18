@@ -1,5 +1,5 @@
 // TEA.exe — runtime / library code "OWL_TOpenSaveDialog"
-// 4 functions, 0x004c2888..0x004c2c54. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 5 functions, 0x004c2888..0x004c2c54. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -9,13 +9,13 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x004c2888  OWL::TOpenSaveDialog::TData::~TData   (45 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TOpenSaveDialog::TData::_dtor
-void __cdecl OWL::TOpenSaveDialog::TData::_dtor(int param_1,byte param_2)
+void __cdecl OWL::TOpenSaveDialog::TData::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
+  if (self != 0) {
     operator_delete_array();
     operator_delete_array();
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -24,14 +24,14 @@ void __cdecl OWL::TOpenSaveDialog::TData::_dtor(int param_1,byte param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004c296c  OWL::TOpenSaveDialog::vf14   (69 bytes)   [rtti:vtable virtual slot 14]
-undefined4 __cdecl OWL::TOpenSaveDialog::vf14(undefined4 *param_1,int *param_2,undefined *param_3)
+undefined4 __cdecl OWL::TOpenSaveDialog::vf14(undefined4 *self,int *param_2,undefined *param_3)
 
 {
   undefined4 uVar1;
   
-  param_2[2] = (int)param_1;
-  uVar1 = FUN_0048e808(param_1[1],(int *)&DAT_00510888,param_2,param_3);
-  if (((char)uVar1 == '\0') && (uVar1 = OWL::TCommonDialog::Find(param_1,param_2,param_3), (char)uVar1 == '\0'))
+  param_2[2] = (int)self;
+  uVar1 = FUN_0048e808(self[1],(int *)&DAT_00510888,param_2,param_3);
+  if (((char)uVar1 == '\0') && (uVar1 = OWL::TCommonDialog::Find(self,param_2,param_3), (char)uVar1 == '\0'))
   {
     return 0;
   }
@@ -39,19 +39,59 @@ undefined4 __cdecl OWL::TOpenSaveDialog::vf14(undefined4 *param_1,int *param_2,u
 }
 
 // ----------------------------------------------------------------------------------------------------
+// 0x004c2ab4  OWL::TOpenSaveDialog::TOpenSaveDialog   (347 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TOpenSaveDialog's vtable at its vptr offset (+0xc) in this
+int * __cdecl OWL::TOpenSaveDialog::TOpenSaveDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,int param_5,int param_6, int param_7)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x5108b4);
+  if (vbasesBuilt == 0) {
+    *self = (int)(self + 0x22);
+    self[0x22] = (int)(self + 0x1f);
+    self[0x23] = (int)(self + 0x20);
+    self[1] = (int)(self + 0x1f);
+    self[2] = (int)(self + 0x20);
+    self[0x1e] = 0;
+    self[0x21] = 0;
+    self[0x1f] = (int)&OWL::TEventHandler::vftable;
+    self[0x20] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::TWindow_4a4fbc(self + 0x22,1);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+  }
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x5c;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -0x5c;
+  OWL::TCommonDialog::TCommonDialog(self,1,param_3,0,param_7);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x5c;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 0x5c;
+  self[3] = (int)&OWL::TOpenSaveDialog::vftable;
+  *(undefined ***)self[1] = &PTR_LAB_00510b4c;
+  *(undefined ***)self[2] = &PTR_LAB_00510b58;
+  *(undefined ***)(*self + 8) = &PTR_LAB_00510b64;
+  self[0x1d] = param_4;
+  FUN_004c29b4(self,param_5);
+  self[0x13] = param_6;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
 // 0x004c2c10  OWL::TOpenSaveDialog::vf1   (67 bytes)   [rtti:vtable virtual slot 1]
-bool __cdecl OWL::TOpenSaveDialog::vf1(int *param_1,int param_2,undefined4 param_3)
+bool __cdecl OWL::TOpenSaveDialog::vf1(int *self,int param_2,undefined4 param_3)
 
 {
   bool bVar1;
   int iVar2;
   
-  bVar1 = OWL::TDialog::vf1(param_1,param_2,param_3);
+  bVar1 = OWL::TDialog::vf1(self,param_2,param_3);
   if (bVar1) {
     bVar1 = true;
   }
   else if (param_2 == DAT_005108a0) {
-    iVar2 = (**(code **)(param_1[3] + 0x3c))();
+    iVar2 = (**(code **)(self[3] + 0x3c))();
     bVar1 = iVar2 != 0;
   }
   else {

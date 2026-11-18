@@ -2,9 +2,9 @@
  {
   "addr": "0x4012cc",
   "name": "main",
-  "module": "main",
   "source": "analysis",
-  "note": "console entry: parses options, loads the profile, compiles the pattern, streams matches (references the usage/banner strings)"
+  "note": "console entry: licence check against common.ini, profile and dictionary list from the registry (OpenDictionary%d), options /D /H /A /S /L /N /B /X /U /O /Q, then for each pattern (arguments, or lines of standard input) and each dictionary: compile, walk the length range and print every match",
+  "module": "main"
  },
  {
   "addr": "0x41130c",
@@ -22,15 +22,15 @@
  {
   "addr": "0x40edbc",
   "name": "FilterWordByCaseMode",
-  "source": "analysis (inferred)",
-  "note": "copies a word into a new string under mode 1..4 (all / letters only / letters upper-cased / letters lower-cased)"
+  "source": "analysis",
+  "note": "copies a word under a mode: 0 unchanged, 1 every character, 2 letters only, 3 letters lower-cased, 4 letters upper-cased; characters >= 0x80 are replaced by their expansion from g_charExpansions"
  },
  {
   "addr": "0x40f26c",
-  "name": "TEAViewProfileWindows::Load",
+  "name": "TEAViewProfileWindows::TEAViewProfileWindows",
   "cls": "TEAViewProfileWindows",
-  "source": "analysis (inferred)",
-  "note": "reads fonts, colours, view settings and the open-dictionary list from the registry profile; class membership inferred from position next to the destructor"
+  "source": "analysis",
+  "note": "constructor: sets every setting to its default, then reads the pattern options, fonts, colours, view settings and the dictionary list from the registry profile at keyPath; the dictionary list defaults to every bundled dictionary that exists"
  },
  {
   "addr": "0x406464",
@@ -186,30 +186,30 @@
  {
   "addr": "0x40a37c",
   "name": "MatchEngine::CompilePattern",
-  "cls": "MatchEngine",
-  "source": "notes (structure checked)",
-  "note": "recursive [template][;anagram] parser; mutually recursive with CompileTemplate / CompileAnagram. Not read line by line"
+  "source": "notes+analysis",
+  "note": "compiles \"[template][;anagram]\" into 0xf9 <minLen> <extra> ... 0xfc; for an anagram part emits 0xf4 <numLetters> <minCount:4> then CompileAnagram's code; recursive through CompileTemplate for sub-patterns",
+  "cls": "MatchEngine"
  },
  {
   "addr": "0x40ae38",
   "name": "MatchEngine::CompileTemplate",
-  "cls": "MatchEngine",
-  "source": "notes (inferred)",
-  "note": "template-side compiler (choice lists, escapes per your notes). Role inferred from call structure"
+  "source": "notes+analysis",
+  "note": "compiles the template part: letters and '.'/'?' into a 0xf0 group, choice lists [..] / [^..] and digit variables into a 0xf1 group, punctuation 0xfe/0xff, '*' as 0xf2 wildcard, (..) sub-patterns via CompilePattern; returns the minimum letter count or -1 with the status set",
+  "cls": "MatchEngine"
  },
  {
   "addr": "0x40b6d8",
   "name": "MatchEngine::CompileAnagram",
-  "cls": "MatchEngine",
-  "source": "notes (inferred)",
-  "note": "anagram-side compiler; uses the Pattern pool. Role inferred from call structure"
+  "source": "notes+analysis",
+  "note": "compiles the anagram part in stages: sub-patterns (0xfa count pool-index), choice lists (0xf7 count pool-index), letter variables (0xf8 + ten counts), then named letters as singles (0xf5) or multiples (0xf6); returns the letter count or -1 with the status set",
+  "cls": "MatchEngine"
  },
  {
   "addr": "0x40c468",
   "name": "MatchEngine::Compile",
-  "cls": "MatchEngine",
   "source": "notes+analysis",
-  "note": "compiles one leaf pattern and selects the fast-path matcher stored at +0x114c"
+  "note": "compiles one leaf pattern: appends ')' and runs CompilePattern, records min/max length, removes trailing ' ' punctuation pairs, picks the matcher (MatchFixedTemplate / MatchDistinctAnagram / MatchMultiAnagram when the code is a single stage, else MatchGeneral) and fills the punctuation table",
+  "cls": "MatchEngine"
  },
  {
   "addr": "0x40d5b8",
@@ -312,9 +312,9 @@
  {
   "addr": "0x40dd78",
   "name": "MatchEngine::RunTemplateVM",
-  "cls": "MatchEngine",
-  "source": "notes",
-  "note": "backtracking template bytecode interpreter. Entry checked; body not read"
+  "source": "notes+analysis",
+  "note": "template interpreter: fixed letters (0xf0), letter/choice/variable groups (0xf1), punctuation (0xfe/0xff), wildcards (0xf2/0xf3), sub-patterns (0xf9..0xfb); backtracks and restores variable bindings on failure",
+  "cls": "MatchEngine"
  },
  {
   "addr": "0x40e3f8",
@@ -347,16 +347,16 @@
  {
   "addr": "0x40e5b4",
   "name": "MatchEngine::AnagramVariables",
-  "cls": "MatchEngine",
-  "source": "notes",
-  "note": "anagram opcode 0xf8. Entry checked; body not read"
+  "source": "notes+analysis",
+  "note": "anagram opcode 0xf8: tries each unclaimed letter (not bound to another variable) for each free variable in turn, recursing; then runs the next stage",
+  "cls": "MatchEngine"
  },
  {
   "addr": "0x40e79c",
   "name": "MatchEngine::AnagramSubPattern",
-  "cls": "MatchEngine",
-  "source": "notes",
-  "note": "anagram opcode 0xfa. Entry checked; body not read"
+  "source": "notes+analysis",
+  "note": "anagram opcodes 0xfa/0xfb: places a sub-pattern over each run of unclaimed letters (claimed letters carry bit 7), longest first, and continues with the rest of the anagram",
+  "cls": "MatchEngine"
  },
  {
   "addr": "0x40ea58",
@@ -458,17 +458,17 @@
  },
  {
   "addr": "0x411a4c",
-  "name": "Persist::QueryValueSized",
+  "name": "Persist::QueryString",
   "cls": "Persist",
   "source": "analysis",
-  "note": "RegQueryValueExA wrapper"
+  "note": "reads a REG_SZ value (up to 64 KB) into a std::string; true if present"
  },
  {
   "addr": "0x411ac0",
-  "name": "Persist::QueryValue",
+  "name": "Persist::QueryDword",
   "cls": "Persist",
   "source": "analysis",
-  "note": "RegQueryValueExA wrapper"
+  "note": "reads a REG_DWORD value; true if present"
  },
  {
   "addr": "0x41204c",
@@ -592,5 +592,890 @@
   "name": "free",
   "source": "analysis (usage pattern)",
   "note": "called by operator delete"
+ },
+ {
+  "addr": "0x42fab4",
+  "name": "g_nullStringRep",
+  "data": true,
+  "source": "analysis",
+  "note": "the shared rep of every empty std::string (refs, capacity, length); never freed"
+ },
+ {
+  "addr": "0x42fac0",
+  "name": "g_emptyStringData",
+  "data": true,
+  "source": "analysis",
+  "note": "character data of the shared empty rep (g_nullStringRep + 12): what an empty std::string points at"
+ },
+ {
+  "addr": "0x42fce8",
+  "name": "g_stringNpos",
+  "data": true,
+  "source": "analysis",
+  "note": "std::string::npos"
+ },
+ {
+  "addr": "0x434684",
+  "name": "g_varsActive",
+  "data": true,
+  "source": "analysis",
+  "note": "0 until a letter variable is first touched while testing the current word (VariableValues)"
+ },
+ {
+  "addr": "0x434688",
+  "name": "g_varValues",
+  "data": true,
+  "source": "analysis",
+  "note": "letter class bound to each of the 10 letter variables; 0xfe = unbound"
+ },
+ {
+  "addr": "0x42c930",
+  "name": "g_exclusiveVariables",
+  "data": true,
+  "source": "analysis",
+  "note": "registry option VariablesExclusive: different variables must stand for different letters"
+ },
+ {
+  "addr": "0x434680",
+  "name": "g_balanceCount",
+  "data": true,
+  "source": "analysis",
+  "note": "how many anagram stages succeeded for the current word (balance is shown only when exactly 1)"
+ },
+ {
+  "addr": "0x434280",
+  "name": "g_balance",
+  "data": true,
+  "source": "analysis",
+  "note": "per letter class: word letters minus the anagram's named letters, for the \" -XY+Z\" balance text"
+ },
+ {
+  "addr": "0x42c990",
+  "name": "g_anagramStageOps",
+  "data": true,
+  "source": "analysis",
+  "note": "anagram stage handlers indexed by opcode (0xf0..): singles, multiples, choice lists, variables"
+ },
+ {
+  "addr": "0x40da88",
+  "name": "std::string::string",
+  "source": "analysis",
+  "note": "default constructor: data = the shared empty rep"
+ },
+ {
+  "addr": "0x40a360",
+  "name": "MatchEngine::Emit",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "records the opcode just emitted (last opcode, opcode count) and returns it"
+ },
+ {
+  "addr": "0x40e474",
+  "name": "MatchEngine::AnagramEnd",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "anagram stage opcode 0xfc (end): returns the code pointer just before the operand"
+ },
+ {
+  "addr": "0x40e700",
+  "name": "MatchEngine::AnagramBoundVariables",
+  "cls": "MatchEngine",
+  "source": "analysis",
+  "note": "anagram stage for letter variables: removes the letters of already-bound variables, then binds the free ones (AnagramVariables)"
+ },
+ {
+  "addr": "0x42c484",
+  "name": "g_inputEngineHead",
+  "data": true,
+  "source": "analysis",
+  "note": "first InputEngine in the global list (InputEngine::OpenFile closes another engine's file from it when out of handles)"
+ },
+ {
+  "addr": "0x42c488",
+  "name": "g_inputEngineTail",
+  "data": true,
+  "source": "analysis",
+  "note": "last InputEngine in the global list"
+ },
+ {
+  "addr": "0x42b5e4",
+  "name": "g_dictionaryCache",
+  "data": true,
+  "source": "analysis",
+  "note": "std::vector<TSDictionaryList::Dictionary *> of every open dictionary, shared by all lists (each Dictionary is reference counted)"
+ },
+ {
+  "addr": "0x42b5e8",
+  "name": "g_dictionaryCacheBegin",
+  "data": true,
+  "source": "analysis",
+  "note": "g_dictionaryCache begin pointer"
+ },
+ {
+  "addr": "0x42b5ec",
+  "name": "g_dictionaryCacheEnd",
+  "data": true,
+  "source": "analysis",
+  "note": "g_dictionaryCache end pointer"
+ },
+ {
+  "addr": "0x42b5fc",
+  "name": "g_dictionaryCacheCapacityEnd",
+  "data": true,
+  "source": "analysis",
+  "note": "g_dictionaryCache end-of-storage pointer"
+ },
+ {
+  "addr": "0x42b604",
+  "name": "g_dictionaryCacheInitialised",
+  "data": true,
+  "source": "analysis",
+  "note": "guard flag for the static constructor of g_dictionaryCache"
+ },
+ {
+  "addr": "0x42b610",
+  "name": "g_lengthLimitsInitialised",
+  "data": true,
+  "source": "analysis",
+  "note": "guard flag for a pair of static ints initialised to 0x7fffffff"
+ },
+ {
+  "addr": "0x4050b4",
+  "name": "std::_Destroy_range_ptr",
+  "source": "analysis",
+  "note": "destroys a range of pointers (nothing to do; the loop is left in)"
+ },
+ {
+  "addr": "0x4052f4",
+  "name": "std::_Destroy_range_ptr_4052f4",
+  "source": "analysis",
+  "note": "destroys a range of pointers (nothing to do)"
+ },
+ {
+  "addr": "0x40644c",
+  "name": "std::_Destroy_range_ptr_40644c",
+  "source": "analysis",
+  "note": "destroys a range of pointers (nothing to do)"
+ },
+ {
+  "addr": "0x4050cc",
+  "name": "InitDictionaryCache",
+  "source": "analysis",
+  "note": "static initialiser: empty g_dictionaryCache (256 reserved) and two length limits of 0x7fffffff"
+ },
+ {
+  "addr": "0x405164",
+  "name": "DestroyDictionaryCache",
+  "source": "analysis",
+  "note": "static destructor of g_dictionaryCache"
+ },
+ {
+  "addr": "0x4051bc",
+  "name": "TSDictionaryList::TSDictionaryList",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "constructor: copies the ';'-separated path list and starts an empty vector of Dictionary pointers"
+ },
+ {
+  "addr": "0x40530c",
+  "name": "TSDictionaryList::Open",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "builds a TSDictionaryList from a ';'-separated list of .tsd paths: reuses dictionaries already in g_dictionaryCache (adding a reference) and loads the others"
+ },
+ {
+  "addr": "0x4061d0",
+  "name": "std::vector_ptr::insert_aux",
+  "source": "analysis",
+  "note": "std::vector<T *> insert at a position, growing the storage (doubling, at least 256) when full"
+ },
+ {
+  "addr": "0x4063a8",
+  "name": "std::copy_backward_ptr",
+  "source": "analysis",
+  "note": "copy_backward over a range of pointers"
+ },
+ {
+  "addr": "0x4063cc",
+  "name": "std::copy_ptr",
+  "source": "analysis",
+  "note": "copy over a range of pointers"
+ },
+ {
+  "addr": "0x406564",
+  "name": "std::find_ptr",
+  "source": "analysis",
+  "note": "find over a range of pointers"
+ },
+ {
+  "addr": "0x406584",
+  "name": "std::copy_ptr_406584",
+  "source": "analysis",
+  "note": "copy over a range of pointers (vector erase)"
+ },
+ {
+  "addr": "0x4065c8",
+  "name": "TSDictionaryList::GetFirstMissingPath",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "path of the first dictionary that is not loaded (IsLoaded false), or 0 when all loaded"
+ },
+ {
+  "addr": "0x406600",
+  "name": "TSDictionaryList::IsLoaded",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "Dictionary::GetSummaryText (slot 7) of dictionary `index` into a temporary; returns its loaded flag"
+ },
+ {
+  "addr": "0x4066fc",
+  "name": "TSDictionaryList::EnsureCurrent",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "Dictionary::EnsureCurrent (slot 3) of dictionary `index`: reloads it if the file changed; returns its loaded flag"
+ },
+ {
+  "addr": "0x406720",
+  "name": "TSDictionaryList::GetPath",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "slot 4 of dictionary `index`: the path's character data"
+ },
+ {
+  "addr": "0x406780",
+  "name": "TSDictionaryList::GetLetterChar",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "canonical[letterClass] of dictionary `index`: the byte that displays a letter class"
+ },
+ {
+  "addr": "0x4067a0",
+  "name": "TSDictionaryList::GetNumUsedLetters",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "number of letter classes used by dictionary `index`"
+ },
+ {
+  "addr": "0x407200",
+  "name": "TSDictionaryList::Dictionary::GetPathData",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "virtual",
+  "source": "analysis",
+  "note": "vtable slot 4: the path's character data"
+ },
+ {
+  "addr": "0x407254",
+  "name": "TSDictionaryList::Dictionary::GetFileName",
+  "cls": "TSDictionaryList::Dictionary",
+  "kind": "virtual",
+  "source": "analysis",
+  "note": "vtable slot 6: the path's character data (used as the file to open)"
+ },
+ {
+  "addr": "0x416bd0",
+  "name": "std::string::operator_assign",
+  "source": "analysis",
+  "note": "std::string assignment from another string (shares the rep)"
+ },
+ {
+  "addr": "0x417320",
+  "name": "std::string::replace",
+  "source": "analysis",
+  "note": "replace(pos, n1, const char *s, n2, ...): with n1 = 0 at the end it appends s"
+ },
+ {
+  "addr": "0x421660",
+  "name": "sprintf",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x401012",
+  "name": "__startup",
+  "source": "analysis",
+  "note": "C runtime start: records the TLS index, initialises the RTL and calls the program's main through the startup table"
+ },
+ {
+  "addr": "0x401140",
+  "name": "__getTlsBlock",
+  "source": "analysis",
+  "note": "this thread's TLS block (FS:[0x2c][tls index])"
+ },
+ {
+  "addr": "0x401150",
+  "name": "InitRegistryPaths",
+  "source": "analysis",
+  "note": "static initialiser of g_registryKeyPath and g_appDataSubdir"
+ },
+ {
+  "addr": "0x4011a8",
+  "name": "DestroyRegistryPaths",
+  "source": "analysis",
+  "note": "static destructor of g_registryKeyPath and g_appDataSubdir"
+ },
+ {
+  "addr": "0x434260",
+  "name": "g_registryKeyPath",
+  "data": true,
+  "source": "analysis",
+  "note": "std::string \"Software\\Crossword Man\\TEA Crossword Helper 2.11\""
+ },
+ {
+  "addr": "0x434268",
+  "name": "g_registryKeyPathData",
+  "data": true,
+  "source": "analysis",
+  "note": "character data of g_registryKeyPath"
+ },
+ {
+  "addr": "0x434270",
+  "name": "g_appDataSubdir",
+  "data": true,
+  "source": "analysis",
+  "note": "std::string \"\\Crossword Man\\TEA Crossword Helper 2.11\""
+ },
+ {
+  "addr": "0x434278",
+  "name": "g_appDataSubdirData",
+  "data": true,
+  "source": "analysis",
+  "note": "character data of g_appDataSubdir"
+ },
+ {
+  "addr": "0x40483c",
+  "name": "std::_Destroy_range_string",
+  "source": "analysis",
+  "note": "destroys the std::string objects in [first, last)"
+ },
+ {
+  "addr": "0x4048f4",
+  "name": "std::vector_string::insert_aux",
+  "source": "analysis",
+  "note": "std::vector<std::string> insert at a position, growing the storage (doubling, at least 64) when full"
+ },
+ {
+  "addr": "0x404d2c",
+  "name": "std::copy_backward_string",
+  "source": "analysis",
+  "note": "copy_backward over std::string objects (16 bytes each)"
+ },
+ {
+  "addr": "0x404d5c",
+  "name": "std::uninitialized_copy_string",
+  "source": "analysis",
+  "note": "copy-constructs std::string objects from [first, last) into raw storage"
+ },
+ {
+  "addr": "0x404ea8",
+  "name": "std::_Destroy_range_16",
+  "source": "analysis",
+  "note": "destroys a range of 16-byte objects with trivial destructors (nothing to do)"
+ },
+ {
+  "addr": "0x407ae0",
+  "name": "ExpandLongPathName",
+  "source": "analysis",
+  "note": "rebuilds a path component by component from the end, replacing each with the name FindFirstFileA reports (long name, on-disk case)"
+ },
+ {
+  "addr": "0x408894",
+  "name": "memrchr",
+  "source": "analysis",
+  "note": "last occurrence of a character in [p, p + n], or 0"
+ },
+ {
+  "addr": "0x4088c0",
+  "name": "std::operator_plus",
+  "source": "analysis",
+  "note": "result = lhs + rhs for two std::string"
+ },
+ {
+  "addr": "0x408b40",
+  "name": "AppendChar",
+  "source": "analysis",
+  "note": "result = str + std::string(1, c) (the character is not visible in the decompiled call to the fill constructor)"
+ },
+ {
+  "addr": "0x41b484",
+  "name": "std::string::string_fill",
+  "source": "analysis",
+  "note": "std::string(n, c); throws length_error for npos (the character argument is not visible)"
+ },
+ {
+  "addr": "0x409000",
+  "name": "IsRelativePath",
+  "source": "analysis",
+  "note": "true unless the path starts with '\\' or has a drive colon followed by '\\'"
+ },
+ {
+  "addr": "0x409208",
+  "name": "ResolveRelativePaths",
+  "source": "analysis",
+  "note": "prefixes the program directory to each entry of a ';'-separated path list when the first entry is relative"
+ },
+ {
+  "addr": "0x411b14",
+  "name": "Persist::QueryFont",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "reads a font value (\"height width escapement ... facename\") into a LOGFONT; the default text is used when the value is absent"
+ },
+ {
+  "addr": "0x411c80",
+  "name": "Persist::QueryColour",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "reads a colour value (\"r g b\") into a COLORREF; true if present"
+ },
+ {
+  "addr": "0x411d78",
+  "name": "ParseColour",
+  "source": "analysis",
+  "note": "\"r g b\" -> COLORREF (r | g << 8 | b << 16)"
+ },
+ {
+  "addr": "0x411dd8",
+  "name": "ParseLogFont",
+  "source": "analysis",
+  "note": "space-separated LOGFONT fields (height, width, escapement, orientation, weight, italic, underline, strikeout, charset, out/clip precision, quality, pitch) then the face name"
+ },
+ {
+  "addr": "0x411910",
+  "name": "NextTokenInt",
+  "source": "analysis",
+  "note": "atoi of the next strtok token (0 when there is none)"
+ },
+ {
+  "addr": "0x42def8",
+  "name": "g_fieldSeparators",
+  "data": true,
+  "source": "analysis",
+  "note": "strtok separators for the registry font and colour values"
+ },
+ {
+  "addr": "0x41f304",
+  "name": "strtok",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x424b58",
+  "name": "atoi",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x41f1c0",
+  "name": "strncpy",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x411e94",
+  "name": "MatchEngineSet::MatchEngineSet",
+  "cls": "MatchEngineSet",
+  "source": "analysis",
+  "note": "constructor: empty engine vector (256 reserved), empty logic opcode string"
+ },
+ {
+  "addr": "0x414ea8",
+  "name": "Common::ReadLicense",
+  "cls": "Common",
+  "source": "analysis",
+  "note": "reads LicenseOwner and LicenseKey from the [License] section of the file at self's path: 0 no file named, 1 not found, 2 both read"
+ },
+ {
+  "addr": "0x4133f0",
+  "name": "std::logic_error::logic_error_copy",
+  "source": "analysis",
+  "note": "copy constructor of std::logic_error (copies the message string)"
+ },
+ {
+  "addr": "0x4134dc",
+  "name": "std::vector_MatchEngine_ptr::insert_aux",
+  "source": "analysis",
+  "note": "std::vector<MatchEngine *> insert at a position, growing the storage when full"
+ },
+ {
+  "addr": "0x4136b4",
+  "name": "std::copy_backward_ptr_4136b4",
+  "source": "analysis",
+  "note": "copy_backward over a range of pointers"
+ },
+ {
+  "addr": "0x4136d8",
+  "name": "std::copy_ptr_4136d8",
+  "source": "analysis",
+  "note": "copy over a range of pointers"
+ },
+ {
+  "addr": "0x413758",
+  "name": "std::_Destroy_range_ptr_413758",
+  "source": "analysis",
+  "note": "destroys a range of pointers (nothing to do)"
+ },
+ {
+  "addr": "0x413770",
+  "name": "MatchEngineSet::SetWordLength",
+  "cls": "MatchEngineSet",
+  "source": "analysis",
+  "note": "tells every leaf whose length range admits `length` the current word length; 0 when the query is a single leaf that cannot match that length"
+ },
+ {
+  "addr": "0x413804",
+  "name": "MatchEngineSet::GetBalanceText",
+  "cls": "MatchEngineSet",
+  "source": "analysis",
+  "note": "for a single-leaf query, the anagram balance (\" -XY+Z\") with `prefix` inserted in front; empty otherwise"
+ },
+ {
+  "addr": "0x413da4",
+  "name": "MatchEngineSet::GetLengthRange",
+  "cls": "MatchEngineSet",
+  "source": "analysis",
+  "note": "shortest and longest word length (1..100) the logic can accept, by evaluating it in length-check mode for each length; first = 101 when none"
+ },
+ {
+  "addr": "0x413e18",
+  "name": "MatchEngineSet::Clear",
+  "cls": "MatchEngineSet",
+  "source": "analysis",
+  "note": "deletes every leaf engine and empties the logic opcodes"
+ },
+ {
+  "addr": "0x414468",
+  "name": "std::vector_MatchEngine_ptr::resize",
+  "source": "analysis",
+  "note": "resize(n) with null pointers"
+ },
+ {
+  "addr": "0x414508",
+  "name": "std::vector_MatchEngine_ptr::insert_fill",
+  "source": "analysis",
+  "note": "inserts n copies of a value at a position, growing the storage when needed"
+ },
+ {
+  "addr": "0x4147b0",
+  "name": "std::fill_ptr",
+  "source": "analysis",
+  "note": "fill a range of pointers with a value"
+ },
+ {
+  "addr": "0x4147d0",
+  "name": "std::fill_n_ptr",
+  "source": "analysis",
+  "note": "fill n pointers with a value"
+ },
+ {
+  "addr": "0x41484c",
+  "name": "std::copy_ptr_41484c",
+  "source": "analysis",
+  "note": "copy over a range of pointers"
+ },
+ {
+  "addr": "0x414888",
+  "name": "CheckLicenseKeyImpl",
+  "source": "analysis",
+  "note": "licence check: hashes \"TEAWIN\" and the letters of the owner name (upper-cased, last to first) with LicenseHashByte, then compares each derived letter with the 10-letter key"
+ },
+ {
+  "addr": "0x414870",
+  "name": "CheckLicenseKey",
+  "source": "analysis",
+  "note": "CheckLicenseKeyImpl"
+ },
+ {
+  "addr": "0x414a84",
+  "name": "CheckLicenseKey2",
+  "source": "analysis",
+  "note": "CheckLicenseKeyImpl (second entry point)"
+ },
+ {
+  "addr": "0x414a9c",
+  "name": "CheckLicenseKey3",
+  "source": "analysis",
+  "note": "CheckLicenseKeyImpl (third entry point)"
+ },
+ {
+  "addr": "0x414a00",
+  "name": "LicenseHashByte",
+  "source": "analysis",
+  "note": "feeds one byte into the 64-bit licence hash: shift left, XOR the polynomial when the outgoing bit differs from the input bit"
+ },
+ {
+  "addr": "0x434694",
+  "name": "g_licenseHash",
+  "data": true,
+  "source": "analysis",
+  "note": "64-bit licence hash state (low dword)"
+ },
+ {
+  "addr": "0x434698",
+  "name": "g_licenseHashHigh",
+  "data": true,
+  "source": "analysis",
+  "note": "64-bit licence hash state (high dword)"
+ },
+ {
+  "addr": "0x42e700",
+  "name": "g_licensePolynomial",
+  "data": true,
+  "source": "analysis",
+  "note": "8-byte polynomial for LicenseHashByte"
+ },
+ {
+  "addr": "0x42e708",
+  "name": "g_licenseSeed",
+  "data": true,
+  "source": "analysis",
+  "note": "pointer to \"TEAWIN\", hashed before the owner name"
+ },
+ {
+  "addr": "0x414ab4",
+  "name": "GetCommonIniPath",
+  "source": "analysis",
+  "note": "SHGetFolderPathA folder + subdirectory + \"\\common.ini\" when that folder exists; empty otherwise"
+ },
+ {
+  "addr": "0x41ffa0",
+  "name": "access",
+  "source": "analysis",
+  "note": "C runtime access(path, mode): 0 when the path exists"
+ },
+ {
+  "addr": "0x41acdc",
+  "name": "std::string::insert",
+  "source": "analysis",
+  "note": "insert(pos, const std::string &)"
+ },
+ {
+  "addr": "0x4225cc",
+  "name": "islower",
+  "source": "analysis",
+  "note": "_isctype(c, C1_LOWER)"
+ },
+ {
+  "addr": "0x42428c",
+  "name": "toupper",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x422548",
+  "name": "isalnum",
+  "source": "analysis",
+  "note": "_isctype(c, C1_ALPHA | C1_DIGIT)"
+ },
+ {
+  "addr": "0x424238",
+  "name": "tolower",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x422574",
+  "name": "isalpha",
+  "source": "analysis",
+  "note": "_isctype(c, C1_ALPHA)"
+ },
+ {
+  "addr": "0x4225a0",
+  "name": "isdigit",
+  "source": "analysis",
+  "note": "_isctype(c, C1_DIGIT)"
+ },
+ {
+  "addr": "0x422750",
+  "name": "_isctype",
+  "source": "analysis",
+  "note": "tests a character's classification bits (C1_* mask)"
+ },
+ {
+  "addr": "0x42ce84",
+  "name": "g_charExpansions",
+  "data": true,
+  "source": "analysis",
+  "note": "for each byte >= 0x80: the ASCII spelling used when filtering words (e.g. a ligature as two letters), or 0"
+ },
+ {
+  "addr": "0x416c68",
+  "name": "std::string::assign_cstr",
+  "source": "analysis",
+  "note": "assigns a NUL-terminated string"
+ },
+ {
+  "addr": "0x420b6c",
+  "name": "fprintf",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x421590",
+  "name": "puts",
+  "source": "analysis",
+  "note": "writes a line to standard output"
+ },
+ {
+  "addr": "0x420684",
+  "name": "_flsbuf",
+  "source": "analysis",
+  "note": "slow path of putc: flushes the stream buffer and stores one character"
+ },
+ {
+  "addr": "0x41a7fc",
+  "name": "std::string::__unshare",
+  "source": "analysis",
+  "note": "gives the string its own copy of a shared rep before it is modified"
+ },
+ {
+  "addr": "0x4320a8",
+  "name": "g_stderr",
+  "data": true,
+  "source": "analysis",
+  "note": "FILE for standard error"
+ },
+ {
+  "addr": "0x432090",
+  "name": "g_stdoutPtr",
+  "data": true,
+  "source": "analysis",
+  "note": "standard output buffer pointer (inline putc)"
+ },
+ {
+  "addr": "0x432098",
+  "name": "g_stdoutLevel",
+  "data": true,
+  "source": "analysis",
+  "note": "standard output buffer level (inline putc)"
+ },
+ {
+  "addr": "0x41f210",
+  "name": "strncmp",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x41f178",
+  "name": "strcmp",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x4280a0",
+  "name": "_ThrowExceptionLDTC",
+  "source": "analysis",
+  "note": "Borland throw: records the exception type descriptor and object in the thread's exception state and raises it"
+ },
+ {
+  "addr": "0x427e50",
+  "name": "__raiseException",
+  "source": "analysis",
+  "note": "builds the Borland exception record (type, object copy, source position) and calls RaiseException"
+ },
+ {
+  "addr": "0x41ea4c",
+  "name": "__rwstd::except_msg_string::format",
+  "source": "analysis",
+  "note": "formats a library exception message (printf-style) into a buffer; the result is used to build the exception's what() string"
+ },
+ {
+  "addr": "0x41687c",
+  "name": "std::string::size",
+  "source": "analysis",
+  "note": "length of the string (rep->length)"
+ },
+ {
+  "addr": "0x416740",
+  "name": "std::string::__getRepOf",
+  "source": "analysis",
+  "note": "the rep header of a string (data - 12)"
+ },
+ {
+  "addr": "0x4177ec",
+  "name": "std::string::data",
+  "source": "analysis",
+  "note": "pointer to the character data"
+ },
+ {
+  "addr": "0x416734",
+  "name": "std::string::__data",
+  "source": "analysis",
+  "note": "pointer to the character data"
+ },
+ {
+  "addr": "0x4172ec",
+  "name": "std::string::__rep_data",
+  "source": "analysis",
+  "note": "character data of a rep (rep + 12)"
+ },
+ {
+  "addr": "0x4168f8",
+  "name": "std::allocator::allocator",
+  "source": "analysis",
+  "note": "(empty)"
+ },
+ {
+  "addr": "0x416de0",
+  "name": "__rwstd::except_msg_string::msgstr",
+  "source": "analysis",
+  "note": "the formatted message text"
+ },
+ {
+  "addr": "0x417760",
+  "name": "std::length_error::length_error",
+  "source": "analysis",
+  "note": "constructs a std::length_error from a message string"
+ },
+ {
+  "addr": "0x416de8",
+  "name": "std::logic_error::logic_error",
+  "source": "analysis",
+  "note": "constructs a std::logic_error from a message string"
+ },
+ {
+  "addr": "0x41aca0",
+  "name": "std::string::replace_str",
+  "source": "analysis",
+  "note": "replace(pos, n1, const std::string &)"
+ },
+ {
+  "addr": "0x416784",
+  "name": "std::string::__nullref",
+  "source": "analysis",
+  "note": "the shared empty rep (g_nullStringRep)"
+ },
+ {
+  "addr": "0x41b368",
+  "name": "std::string::substr",
+  "source": "analysis",
+  "note": "result = substr(pos, n)"
+ },
+ {
+  "addr": "0x418dec",
+  "name": "std::string::string_from_buf",
+  "source": "analysis",
+  "note": "std::string(const char *s, size_type n)"
+ },
+ {
+  "addr": "0x41ef2c",
+  "name": "strchr",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x42c4bc",
+  "name": "g_choiceListTerminators",
+  "data": true,
+  "source": "analysis",
+  "note": "characters that end a choice list: \"]\" and friends"
+ },
+ {
+  "addr": "0x42c4c0",
+  "name": "g_spaceTerminators",
+  "data": true,
+  "source": "analysis",
+  "note": "4-byte buffer copied into a local and searched with strchr while trimming trailing punctuation"
+ },
+ {
+  "addr": "0x41f118",
+  "name": "strcspn",
+  "source": "analysis"
+ },
+ {
+  "addr": "0x42e040",
+  "name": "g_logicOperators",
+  "data": true,
+  "source": "analysis",
+  "note": "\"&|\": the characters that split a query into leaves"
  }
 ]

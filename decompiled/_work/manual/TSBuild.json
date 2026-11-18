@@ -1,0 +1,917 @@
+[
+ {
+  "addr": "0x485bcc",
+  "name": "g_nullStringRep",
+  "data": true,
+  "source": "analysis",
+  "note": "the shared rep of every empty std::string (refs, capacity, length); never freed"
+ },
+ {
+  "addr": "0x485bd8",
+  "name": "g_emptyStringData",
+  "data": true,
+  "source": "analysis",
+  "note": "character data of the shared empty rep (g_nullStringRep + 12)"
+ },
+ {
+  "addr": "0x485f20",
+  "name": "g_stringNpos",
+  "data": true,
+  "source": "analysis",
+  "note": "std::string::npos"
+ },
+ {
+  "addr": "0x403870",
+  "name": "OwlMain",
+  "source": "analysis",
+  "note": "creates and runs the \"TEA&Sympathy Dictionary Builder\" application"
+ },
+ {
+  "addr": "0x401140",
+  "name": "__getTlsBlock",
+  "source": "analysis",
+  "note": "this thread's TLS block (FS:[0x2c][tls index])"
+ },
+ {
+  "addr": "0x401150",
+  "name": "InitStaticStrings",
+  "source": "analysis",
+  "note": "static initialiser of two global strings"
+ },
+ {
+  "addr": "0x4011a8",
+  "name": "DestroyStaticStrings",
+  "source": "analysis",
+  "note": "static destructor of two global strings"
+ },
+ {
+  "addr": "0x40234c",
+  "name": "DMDialog::PumpMessages",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "processes pending window messages during a build; true when the user asked to stop"
+ },
+ {
+  "addr": "0x4029ac",
+  "name": "DMDialog::GetControlText",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "the text of an edit control as a std::string"
+ },
+ {
+  "addr": "0x4029e8",
+  "name": "DMDialog::UpdateControls",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "enables the Build button only when the word list and output names are filled in"
+ },
+ {
+  "addr": "0x40339c",
+  "name": "DMDialog::ReadOptions",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "reads the sort/frequency radio buttons and check boxes into the profile"
+ },
+ {
+  "addr": "0x403518",
+  "name": "DMDialog::ClampLengthEdit",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "re-reads a length edit and writes back the clamped value"
+ },
+ {
+  "addr": "0x403554",
+  "name": "DMDialog::SetIntText",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "writes a number into an edit control"
+ },
+ {
+  "addr": "0x403588",
+  "name": "DMDialog::GetIntText",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "reads a number from an edit control (atoi)"
+ },
+ {
+  "addr": "0x4035b8",
+  "name": "DMDialog::SetWordListFile",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "sets the word list name and proposes the output name with a .tsd extension"
+ },
+ {
+  "addr": "0x405118",
+  "name": "BitWriter::FlushWord",
+  "source": "analysis",
+  "note": "writes the pending 16-bit word of the bit stream to the file (sets g_writeFailed on error)"
+ },
+ {
+  "addr": "0x405140",
+  "name": "BitWriter::BitWriter",
+  "source": "analysis",
+  "note": "bit stream on a FILE"
+ },
+ {
+  "addr": "0x405158",
+  "name": "BitWriter::WriteBits",
+  "source": "analysis",
+  "note": "appends an nbits-long code to the 16-bit-word bit stream, flushing full words"
+ },
+ {
+  "addr": "0x4051e4",
+  "name": "BitWriter::WriteBytes",
+  "source": "analysis",
+  "note": "writes bytes through the Huffman code table"
+ },
+ {
+  "addr": "0x405228",
+  "name": "BitWriter::AlignToWord",
+  "source": "analysis",
+  "note": "pads the stream to a 32-bit boundary"
+ },
+ {
+  "addr": "0x405248",
+  "name": "BitWriter::Flush",
+  "source": "analysis",
+  "note": "writes out any pending bits"
+ },
+ {
+  "addr": "0x405268",
+  "name": "ScaleFrequency",
+  "source": "analysis",
+  "note": "frequency scaled to the Huffman weight range (floating-point arithmetic not visible; ends in __ftol)"
+ },
+ {
+  "addr": "0x405308",
+  "name": "ReverseHuffmanCodes",
+  "source": "analysis",
+  "note": "reverses the bits of every byte code so the stream can be written low bit first"
+ },
+ {
+  "addr": "0x405368",
+  "name": "HuffmanNodeLess",
+  "source": "analysis",
+  "note": "order of two Huffman nodes by weight (for the heap)"
+ },
+ {
+  "addr": "0x405398",
+  "name": "AddBitToSubtree",
+  "source": "analysis",
+  "note": "appends one bit to the code of every leaf under a Huffman tree node"
+ },
+ {
+  "addr": "0x4053d4",
+  "name": "StoreCodesAndFree",
+  "source": "analysis",
+  "note": "walks a Huffman (sub)tree storing each leaf byte code and code length in the tables, freeing the nodes"
+ },
+ {
+  "addr": "0x405414",
+  "name": "BuildHuffmanCodes",
+  "source": "analysis",
+  "note": "builds the Huffman tree from the byte frequencies (lightest two nodes merged repeatedly), then assigns each byte its code and length"
+ },
+ {
+  "addr": "0x405568",
+  "name": "ParseDefinitionLine",
+  "source": "analysis",
+  "note": "splits one definition line of the input into headwords, qualifiers and text (RTF braces \"\\{}\" escaped)"
+ },
+ {
+  "addr": "0x405ae0",
+  "name": "ParseMappingLine",
+  "source": "analysis",
+  "note": "parses one line of the letter mapping file (byte, letter class, display byte)"
+ },
+ {
+  "addr": "0x405d6c",
+  "name": "WriteDefinitionRecord",
+  "source": "analysis",
+  "note": "writes one definition record (headwords, qualifiers and text, XOR 0xBD) and returns its offset"
+ },
+ {
+  "addr": "0x405f48",
+  "name": "DefinitionRecordLess",
+  "source": "analysis",
+  "note": "order of two definition entries by their stored offset"
+ },
+ {
+  "addr": "0x415af0",
+  "name": "std::vector_16::_dtor",
+  "source": "analysis",
+  "note": "destructor of a vector of 16-byte elements"
+ },
+ {
+  "addr": "0x415b98",
+  "name": "std::vector_WordMap2::_dtor",
+  "source": "analysis",
+  "note": "destructor of a vector of word maps"
+ },
+ {
+  "addr": "0x415d40",
+  "name": "std::vector_WordMap::_dtor",
+  "source": "analysis",
+  "note": "destructor of a vector of word maps"
+ },
+ {
+  "addr": "0x415d78",
+  "name": "WordMap2::_dtor",
+  "source": "analysis",
+  "note": "destructor of a word map (erases every node, frees the buffers)"
+ },
+ {
+  "addr": "0x415dec",
+  "name": "WordMap::_dtor",
+  "source": "analysis",
+  "note": "destructor of a word map"
+ },
+ {
+  "addr": "0x415e60",
+  "name": "WordMap3::_dtor",
+  "source": "analysis",
+  "note": "destructor of a word map"
+ },
+ {
+  "addr": "0x415ed4",
+  "name": "InitRegistryPaths",
+  "source": "analysis",
+  "note": "static initialiser of the registry key path strings"
+ },
+ {
+  "addr": "0x415f14",
+  "name": "DestroyRegistryPaths",
+  "source": "analysis",
+  "note": "static destructor of the registry key path strings"
+ },
+ {
+  "addr": "0x415fb8",
+  "name": "TSBuildProfile::TSBuildProfile",
+  "cls": "TSBuildProfile",
+  "source": "analysis",
+  "note": "constructor: empty file names, default lengths, frequency and sort options"
+ },
+ {
+  "addr": "0x419d5c",
+  "name": "GetRichEditVersion",
+  "source": "analysis",
+  "note": "2 when RICHED20.DLL can be loaded, else 1"
+ },
+ {
+  "addr": "0x419ddb",
+  "name": "InitRichEditStreamer",
+  "source": "analysis",
+  "note": "static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x419e31",
+  "name": "DestroyRichEditStreamer",
+  "source": "analysis",
+  "note": "static destructor of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x419e84",
+  "name": "OWL::TRichEdit::GetModule",
+  "source": "analysis",
+  "note": "the rich-edit DLL module"
+ },
+ {
+  "addr": "0x419e8c",
+  "name": "OWL::TRichEdit::GetModuleInstance",
+  "source": "analysis",
+  "note": "the rich-edit DLL module object"
+ },
+ {
+  "addr": "0x4061d0",
+  "name": "std::_Destroy_range_WordMap",
+  "source": "analysis",
+  "note": "destroys the word maps in [first, last)"
+ },
+ {
+  "addr": "0x4062a0",
+  "name": "WordMap::erase_range",
+  "source": "analysis",
+  "note": "__rb_tree::erase(first, last)"
+ },
+ {
+  "addr": "0x4063a4",
+  "name": "WordMap::__erase",
+  "source": "analysis",
+  "note": "returns a subtree's nodes to the free list, releasing each key string"
+ },
+ {
+  "addr": "0x4064dc",
+  "name": "WordMap::erase",
+  "source": "analysis",
+  "note": "__rb_tree::erase(iterator) (red-black delete)"
+ },
+ {
+  "addr": "0x406e78",
+  "name": "__rwstd::__rb_tree::__set_node_406e78",
+  "source": "analysis",
+  "note": "stores a node pointer"
+ },
+ {
+  "addr": "0x406f08",
+  "name": "WriteTsdDictionary",
+  "source": "analysis",
+  "note": "builds the .tsd dictionary: calibration pass, letter statistics, Huffman code, per-length word streams, definition output passes (\"Calibrating dictionary - \", \"Definition output pass \")"
+ },
+ {
+  "addr": "0x40ea08",
+  "name": "std::vector_WordMap::vector",
+  "source": "analysis",
+  "note": "vector of n copies of a word map"
+ },
+ {
+  "addr": "0x40edb8",
+  "name": "WordMap::__copy",
+  "source": "analysis",
+  "note": "copies a subtree under a parent node"
+ },
+ {
+  "addr": "0x40ee24",
+  "name": "WordMap::__get_node",
+  "source": "analysis",
+  "note": "takes a node from the free list and copy-constructs the value"
+ },
+ {
+  "addr": "0x40f3a4",
+  "name": "WordMap2::erase",
+  "source": "analysis",
+  "note": "__rb_tree::erase(iterator) (red-black delete)"
+ },
+ {
+  "addr": "0x40fd40",
+  "name": "__rwstd::__rb_tree::__set_node_40fd40",
+  "source": "analysis",
+  "note": "stores a node pointer"
+ },
+ {
+  "addr": "0x40fdf4",
+  "name": "std::vector_WordMap2::vector",
+  "source": "analysis",
+  "note": "vector of n copies of a word map"
+ },
+ {
+  "addr": "0x410620",
+  "name": "std::_Destroy_range_WordMap2",
+  "source": "analysis",
+  "note": "destroys the word maps in [first, last)"
+ },
+ {
+  "addr": "0x411598",
+  "name": "WordMap2::lower_bound",
+  "source": "analysis",
+  "note": "first node whose key is not less than the string"
+ },
+ {
+  "addr": "0x411694",
+  "name": "WordMap2::insert_unique",
+  "source": "analysis",
+  "note": "insert unless an equal key exists"
+ },
+ {
+  "addr": "0x411904",
+  "name": "WordMap2::__insert",
+  "source": "analysis",
+  "note": "links a new node under the parent and rebalances"
+ },
+ {
+  "addr": "0x411c88",
+  "name": "std::vector_ptr::insert_aux_411c88",
+  "source": "analysis",
+  "note": "std::vector<T *> insert at a position, growing the storage when full"
+ },
+ {
+  "addr": "0x412010",
+  "name": "WordMap3::erase_range",
+  "source": "analysis",
+  "note": "__rb_tree::erase(first, last)"
+ },
+ {
+  "addr": "0x412114",
+  "name": "WordMap3::__erase",
+  "source": "analysis",
+  "note": "returns a subtree's nodes to the free list"
+ },
+ {
+  "addr": "0x412790",
+  "name": "WordMap3::lower_bound",
+  "source": "analysis",
+  "note": "first node whose key is not less than the string"
+ },
+ {
+  "addr": "0x4128f0",
+  "name": "WordMap3::erase",
+  "source": "analysis",
+  "note": "__rb_tree::erase(iterator)"
+ },
+ {
+  "addr": "0x41328c",
+  "name": "__rwstd::__rb_tree::__set_node_41328c",
+  "source": "analysis",
+  "note": "stores a node pointer"
+ },
+ {
+  "addr": "0x4132dc",
+  "name": "WordMap3::insert_unique",
+  "source": "analysis",
+  "note": "insert unless an equal key exists"
+ },
+ {
+  "addr": "0x41354c",
+  "name": "WordMap3::__insert",
+  "source": "analysis",
+  "note": "links a new node under the parent and rebalances"
+ },
+ {
+  "addr": "0x413864",
+  "name": "WordMap3::__get_node",
+  "source": "analysis",
+  "note": "takes a node from the free list and copy-constructs the value"
+ },
+ {
+  "addr": "0x413a78",
+  "name": "std::vector_string::resize",
+  "source": "analysis",
+  "note": "resize(n) of a vector of strings"
+ },
+ {
+  "addr": "0x413bd8",
+  "name": "std::vector_string::insert_fill",
+  "source": "analysis",
+  "note": "inserts n copies of a string at a position"
+ },
+ {
+  "addr": "0x413e80",
+  "name": "std::fill_string",
+  "source": "analysis",
+  "note": "assigns a string to every element of a range"
+ },
+ {
+  "addr": "0x413eac",
+  "name": "std::uninitialized_fill_n_string",
+  "source": "analysis",
+  "note": "copy-constructs n strings"
+ },
+ {
+  "addr": "0x413fec",
+  "name": "std::copy_string",
+  "source": "analysis",
+  "note": "copy over a range of strings"
+ },
+ {
+  "addr": "0x419b20",
+  "name": "ShowHtmlHelp",
+  "source": "analysis",
+  "note": "opens the help file with HtmlHelpA; reports \"Help library not found\" / \"Can't open help\""
+ },
+ {
+  "addr": "0x419bf0",
+  "name": "LoadHtmlHelp",
+  "source": "analysis",
+  "note": "finds hhctrl.ocx through its CLSID in the registry and gets HtmlHelpA"
+ },
+ {
+  "addr": "0x4162e4",
+  "name": "TSBuildProfile::Load",
+  "cls": "TSBuildProfile",
+  "source": "analysis",
+  "note": "reads BuilderMapping (default.tsm), BuilderWordList, BuilderShortest, BuilderLongest, BuilderFrequency and BuilderSort"
+ },
+ {
+  "addr": "0x416918",
+  "name": "ResolveDataPath",
+  "source": "analysis",
+  "note": "full path of a file in the program's data folder"
+ },
+ {
+  "addr": "0x416c8c",
+  "name": "TSBuildProfile::Save",
+  "cls": "TSBuildProfile",
+  "source": "analysis",
+  "note": "writes BuilderMapping, BuilderWordList, BuilderShortest, BuilderLongest, BuilderFrequency and BuilderSort"
+ },
+ {
+  "addr": "0x41740c",
+  "name": "DMDialog::SetAbort",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "records that the user asked to stop"
+ },
+ {
+  "addr": "0x417718",
+  "name": "ExpandLongPathName",
+  "source": "analysis",
+  "note": "rebuilds a path component by component from the end, replacing each with the name FindFirstFileA reports (long name, on-disk case)"
+ },
+ {
+  "addr": "0x418afc",
+  "name": "IsRelativePath",
+  "source": "analysis",
+  "note": "true unless the path starts with '\\' or has a drive colon followed by '\\'"
+ },
+ {
+  "addr": "0x418d04",
+  "name": "GetMyDocumentsDirectory",
+  "source": "analysis",
+  "note": "the user's documents folder (SHGetSpecialFolderLocation), or the program directory"
+ },
+ {
+  "addr": "0x41901c",
+  "name": "ResolveRelativePath",
+  "source": "analysis",
+  "note": "prefixes the program directory to a relative path"
+ },
+ {
+  "addr": "0x41946c",
+  "name": "IsAnsiTextFile",
+  "source": "analysis",
+  "note": "reads the start of a file and rejects it when IsTextUnicode says it is Unicode"
+ },
+ {
+  "addr": "0x419664",
+  "name": "ReadDescriptionLine",
+  "source": "analysis",
+  "note": "reads the first line of the word list (the dictionary description) into a buffer"
+ },
+ {
+  "addr": "0x4198b4",
+  "name": "Persist::Persist",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "opens or creates the registry key (machine-wide first when asked)"
+ },
+ {
+  "addr": "0x474fd8",
+  "name": "g_writeFailed",
+  "data": true,
+  "source": "analysis",
+  "note": "set when a write to the dictionary file fails"
+ },
+ {
+  "addr": "0x48b450",
+  "name": "g_huffmanCodes",
+  "data": true,
+  "source": "analysis",
+  "note": "Huffman code of each byte (bit-reversed for output)"
+ },
+ {
+  "addr": "0x48b850",
+  "name": "g_huffmanCodeLengths",
+  "data": true,
+  "source": "analysis",
+  "note": "Huffman code length of each byte"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 9,
+  "name": "GetCount",
+  "source": "analysis",
+  "note": "LB_GETCOUNT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 10,
+  "name": "FindString",
+  "source": "analysis",
+  "note": "LB_FINDSTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 11,
+  "name": "FindExactString",
+  "source": "analysis",
+  "note": "the slot that holds CB_FINDSTRINGEXACT in TComboBox (no message of its own here)"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 12,
+  "name": "GetTopIndex",
+  "source": "analysis",
+  "note": "LB_GETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 13,
+  "name": "SetTopIndex",
+  "source": "analysis",
+  "note": "LB_SETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 14,
+  "name": "GetHorizontalExtent",
+  "source": "analysis",
+  "note": "LB_GETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 15,
+  "name": "SetHorizontalExtent",
+  "source": "analysis",
+  "note": "LB_SETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 16,
+  "name": "GetStringLen",
+  "source": "analysis",
+  "note": "LB_GETTEXTLEN"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 17,
+  "name": "GetString",
+  "source": "analysis",
+  "note": "LB_GETTEXT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 18,
+  "name": "GetItemData",
+  "source": "analysis",
+  "note": "LB_GETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 19,
+  "name": "SetItemData",
+  "source": "analysis",
+  "note": "LB_SETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 20,
+  "name": "GetItemHeight",
+  "source": "analysis",
+  "note": "LB_GETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 21,
+  "name": "SetItemHeight",
+  "source": "analysis",
+  "note": "LB_SETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 22,
+  "name": "ClearList",
+  "source": "analysis",
+  "note": "LB_RESETCONTENT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 23,
+  "name": "DirectoryList",
+  "source": "analysis",
+  "note": "LB_DIR"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 24,
+  "name": "AddString",
+  "source": "analysis",
+  "note": "LB_ADDSTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 25,
+  "name": "InsertString",
+  "source": "analysis",
+  "note": "LB_INSERTSTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 26,
+  "name": "DeleteString",
+  "source": "analysis",
+  "note": "LB_DELETESTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 27,
+  "name": "GetSelIndex",
+  "source": "analysis",
+  "note": "LB_GETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 28,
+  "name": "SetSelIndex",
+  "source": "analysis",
+  "note": "LB_SETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 9,
+  "name": "GetCount",
+  "source": "analysis",
+  "note": "CB_GETCOUNT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 10,
+  "name": "FindString",
+  "source": "analysis",
+  "note": "CB_FINDSTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 11,
+  "name": "FindExactString",
+  "source": "analysis",
+  "note": "CB_FINDSTRINGEXACT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 12,
+  "name": "GetTopIndex",
+  "source": "analysis",
+  "note": "CB_GETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 13,
+  "name": "SetTopIndex",
+  "source": "analysis",
+  "note": "CB_SETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 14,
+  "name": "GetHorizontalExtent",
+  "source": "analysis",
+  "note": "CB_GETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 15,
+  "name": "SetHorizontalExtent",
+  "source": "analysis",
+  "note": "CB_SETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 16,
+  "name": "GetStringLen",
+  "source": "analysis",
+  "note": "CB_GETLBTEXTLEN"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 17,
+  "name": "GetString",
+  "source": "analysis",
+  "note": "CB_GETLBTEXT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 18,
+  "name": "GetItemData",
+  "source": "analysis",
+  "note": "CB_GETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 19,
+  "name": "SetItemData",
+  "source": "analysis",
+  "note": "CB_SETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 20,
+  "name": "GetItemHeight",
+  "source": "analysis",
+  "note": "CB_GETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 21,
+  "name": "SetItemHeight",
+  "source": "analysis",
+  "note": "CB_SETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 22,
+  "name": "ClearList",
+  "source": "analysis",
+  "note": "CB_RESETCONTENT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 23,
+  "name": "DirectoryList",
+  "source": "analysis",
+  "note": "CB_DIR"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 24,
+  "name": "AddString",
+  "source": "analysis",
+  "note": "CB_ADDSTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 25,
+  "name": "InsertString",
+  "source": "analysis",
+  "note": "CB_INSERTSTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 26,
+  "name": "DeleteString",
+  "source": "analysis",
+  "note": "CB_DELETESTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 27,
+  "name": "GetSelIndex",
+  "source": "analysis",
+  "note": "CB_GETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 28,
+  "name": "SetSelIndex",
+  "source": "analysis",
+  "note": "CB_SETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 31,
+  "name": "GetSelStringIndex",
+  "source": "analysis",
+  "note": "CB_FINDSTRINGEXACT of the given text"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 32,
+  "name": "SetSelString",
+  "source": "analysis",
+  "note": "CB_SELECTSTRING"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 13,
+  "name": "GetSelection",
+  "source": "analysis",
+  "note": "EM_GETSEL"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 15,
+  "name": "SetSelection",
+  "source": "analysis",
+  "note": "EM_SETSEL"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 17,
+  "name": "Paste",
+  "source": "analysis",
+  "note": "WM_PASTE"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 18,
+  "name": "CharFromPos",
+  "source": "analysis",
+  "note": "EM_CHARFROMPOS"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 19,
+  "name": "PosFromChar",
+  "source": "analysis",
+  "note": "EM_POSFROMCHAR"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 12,
+  "name": "GetSubText",
+  "source": "analysis",
+  "note": "text between two positions (EM_LINEINDEX / EM_LINEFROMCHAR per line)"
+ },
+ {
+  "slotClass": "OWL::TRichEdit",
+  "slot": 25,
+  "name": "ReadFromFile",
+  "source": "analysis",
+  "note": "loads a file into the control (stream in, EM_SETMODIFY)"
+ },
+ {
+  "slotClass": "OWL::TRichEdit",
+  "slot": 29,
+  "name": "WriteToFile",
+  "source": "analysis",
+  "note": "saves the control to a file (stream out, EM_SETMODIFY)"
+ }
+]

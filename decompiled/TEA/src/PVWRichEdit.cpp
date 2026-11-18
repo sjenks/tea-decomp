@@ -1,5 +1,5 @@
 // TEA.exe — application module "PVWRichEdit"
-// 18 functions, 0x00419bb8..0x0041ae3c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 34 functions, 0x00419bb8..0x00469f48. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -8,15 +8,15 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00419bb8  PVWRichEdit::Find   (70 bytes)   [owl:response-table response-table-find]
-//   also: PVWRichEdit::vf8 [rtti:vtable]
-undefined4 __cdecl PVWRichEdit::Find(undefined4 *param_1,int *param_2,undefined *param_3)
+//   also: PVWRichEdit::Find [rtti:vtable]; PVWRichEdit::vf8 [rtti:vtable]
+undefined4 __cdecl PVWRichEdit::Find(undefined4 *self,int *eventInfo,undefined *equal)
 
 {
-  undefined4 uVar1;
+  undefined4 found;
   
-  param_2[2] = (int)param_1;
-  uVar1 = FUN_0048e808(param_1[1],(int *)&PVWRichEdit::__entries,param_2,param_3);
-  if (((char)uVar1 == '\0') && (uVar1 = OWL::TRichEdit::Find(param_1,param_2,param_3), (char)uVar1 == '\0'))
+  eventInfo[2] = (int)self;
+  found = FUN_0048e808(self[1],(int *)&PVWRichEdit::__entries,eventInfo,equal);
+  if (((char)found == '\0') && (found = OWL::TRichEdit::Find(self,eventInfo,equal), (char)found == '\0'))
   {
     return 0;
   }
@@ -24,109 +24,109 @@ undefined4 __cdecl PVWRichEdit::Find(undefined4 *param_1,int *param_2,undefined 
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419c00  FUN_00419c00   (410 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-int * __cdecl FUN_00419c00(int *param_1,int param_2,undefined4 *param_3,undefined4 param_4,int *param_5, int param_6)
+// 0x00419c00  PVWRichEdit::PVWRichEdit   (410 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores PVWRichEdit's vtable at its vptr offset (+0xc) in this
+int * __cdecl PVWRichEdit::PVWRichEdit(int *self,int vbasesBuilt,undefined4 *param_3,undefined4 param_4,int *param_5, int param_6)
 
 {
   uint uVar1;
   undefined4 uVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4ee76c);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 0x20);
-    param_1[0x20] = (int)(param_1 + 0x1d);
-    param_1[0x21] = (int)(param_1 + 0x1e);
-    param_1[1] = (int)(param_1 + 0x1d);
-    param_1[2] = (int)(param_1 + 0x1e);
-    param_1[0x1c] = 0;
-    param_1[0x1f] = 0;
-    param_1[0x1d] = (int)&OWL::TEventHandler::vftable;
-    param_1[0x1e] = (int)&OWL::TStreamableBase::vftable;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    FUN_004a4fbc(param_1 + 0x20,1);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
+  if (vbasesBuilt == 0) {
+    *self = (int)(self + 0x20);
+    self[0x20] = (int)(self + 0x1d);
+    self[0x21] = (int)(self + 0x1e);
+    self[1] = (int)(self + 0x1d);
+    self[2] = (int)(self + 0x1e);
+    self[0x1c] = 0;
+    self[0x1f] = 0;
+    self[0x1d] = (int)&OWL::TEventHandler::vftable;
+    self[0x1e] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::TWindow_4a4fbc(self + 0x20,1);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
   }
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -8;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -8;
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -8;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -8;
   if (param_3 == (undefined4 *)0x0) {
     uVar2 = 0;
   }
   else {
     uVar2 = *param_3;
   }
-  FUN_00468d58(param_1,1,uVar2,param_4,(uint *)("Beta Test Expiry" + 0x10),*param_5,
+  OWL::TRichEdit::TRichEdit(self,1,uVar2,param_4,(uint *)("Beta Test Expiry" + 0x10),*param_5,
                param_5[1],param_5[2] - *param_5,param_5[3] - param_5[1],(uint *)0x0,0);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 8;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 8;
-  param_1[3] = (int)&PVWRichEdit::vftable;
-  *(undefined ***)param_1[1] = &PTR_LAB_004f06f8;
-  *(undefined ***)param_1[2] = &PTR_LAB_004f0704;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_004f0710;
-  param_1[0x1a] = (int)param_3;
-  param_1[0x1b] = 0;
-  param_1[0xc] = 0;
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 8;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 8;
+  self[3] = (int)&PVWRichEdit::vftable;
+  *(undefined ***)self[1] = &PTR_LAB_004f06f8;
+  *(undefined ***)self[2] = &PTR_LAB_004f0704;
+  *(undefined ***)(*self + 8) = &PVWRichEdit::vftable_TWindow;
+  self[0x1a] = (int)param_3;
+  self[0x1b] = 0;
+  self[0xc] = 0;
   uVar1 = 0x50a31044;
-  param_1[0xd] = 0;
+  self[0xd] = 0;
   if (param_6 != 0) {
     uVar1 = 0x50a31844;
   }
-  FUN_004a7988(*param_1,0x100180,uVar1,0);
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  FUN_004a7988(*self,0x100180,uVar1,0);
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00419db8  PVWRichEdit::~PVWRichEdit   (294 bytes)   [rtti:dtor destructor]
 //   written in code as PVWRichEdit::_dtor
-void __cdecl PVWRichEdit::_dtor(int *param_1,uint param_2)
+void __cdecl PVWRichEdit::_dtor(int *self,uint dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4ee790);
-  if (param_1 != (int *)0x0) {
-    param_1[3] = (int)&PVWRichEdit::vftable;
-    *(undefined ***)param_1[1] = &PTR_LAB_004f06f8;
-    *(undefined ***)param_1[2] = &PTR_LAB_004f0704;
-    *(undefined ***)(*param_1 + 8) = &PTR_LAB_004f0710;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -8;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -8;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -4;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -4;
-    OWL::TEditFile::_dtor(param_1,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 4;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 4;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 8;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 8;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0x20,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 0x1e,0);
+  if (self != (int *)0x0) {
+    self[3] = (int)&PVWRichEdit::vftable;
+    *(undefined ***)self[1] = &PTR_LAB_004f06f8;
+    *(undefined ***)self[2] = &PTR_LAB_004f0704;
+    *(undefined ***)(*self + 8) = &PVWRichEdit::vftable_TWindow;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -8;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -8;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -4;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -4;
+    OWL::TEditFile::_dtor(self,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 4;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 4;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 8;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 8;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0x20,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 0x1e,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00419ee0  PVWRichEdit::EvLButtonDblClk   (41 bytes)   [owl:response-table message-handler]
 //   WM_LBUTTONDBLCLK
-void __cdecl PVWRichEdit::EvLButtonDblClk(int *param_1)
+void __cdecl PVWRichEdit::EvLButtonDblClk(int *self)
 
 {
   char cVar1;
   
-  cVar1 = (**(code **)(*(int *)(param_1[0x1a] + 0xc) + 0x5c))();
+  cVar1 = (**(code **)(*(int *)(self[0x1a] + 0xc) + 0x5c))();
   if (cVar1 == '\0') {
-    FUN_004a5774(*param_1);
+    FUN_004a5774(*self);
   }
   return;
 }
@@ -134,181 +134,181 @@ void __cdecl PVWRichEdit::EvLButtonDblClk(int *param_1)
 // ----------------------------------------------------------------------------------------------------
 // 0x00419f0c  PVWRichEdit::NotifyAtChild_512   (36 bytes)   [owl:response-table message-handler]
 //   EV_NOTIFY_AT_CHILD(code 512)
-void __cdecl PVWRichEdit::NotifyAtChild_512(int *param_1)
+void __cdecl PVWRichEdit::NotifyAtChild_512(int *self)
 
 {
-  GetDlgCtrlID(*(HWND *)(*param_1 + 0xc));
-  (**(code **)(*(int *)(param_1[0x1a] + 0xc) + 0x54))();
+  GetDlgCtrlID(*(HWND *)(*self + 0xc));
+  (**(code **)(*(int *)(self[0x1a] + 0xc) + 0x54))();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00419f30  PVWRichEdit::NotifyAtChild_768   (106 bytes)   [owl:response-table message-handler]
 //   EV_NOTIFY_AT_CHILD(code 768)
-void __cdecl PVWRichEdit::NotifyAtChild_768(int *param_1)
+void __cdecl PVWRichEdit::NotifyAtChild_768(int *self)
 
 {
   int iVar1;
   
-  if (param_1[0x1b] == 0) {
-    iVar1 = FUN_004a76a8(*param_1,0xb8,0,0);
+  if (self[0x1b] == 0) {
+    iVar1 = FUN_004a76a8(*self,0xb8,0,0);
     if (iVar1 != 0) {
-      param_1[0x1b] = 1;
-      GetDlgCtrlID(*(HWND *)(*param_1 + 0xc));
-      (**(code **)(*(int *)(param_1[0x1a] + 0xc) + 0x58))();
-      param_1[0x1b] = 0;
+      self[0x1b] = 1;
+      GetDlgCtrlID(*(HWND *)(*self + 0xc));
+      (**(code **)(*(int *)(self[0x1a] + 0xc) + 0x58))();
+      self[0x1b] = 0;
     }
   }
-  FUN_004a76a8(*param_1,0xb9,0,0);
+  FUN_004a76a8(*self,0xb9,0,0);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419f9c  FUN_00419f9c   (2694 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
+// 0x00419f9c  PVWRichEdit::GetWordAt   (2694 bytes)   [analysis]
+//   the word around a character position of the rich text (selection scanned without moving the caret)
 /* WARNING: Removing unreachable block (ram,0x0041a1eb) */
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-int __cdecl FUN_00419f9c(int param_1,int *param_2,int param_3,int param_4)
+int __cdecl PVWRichEdit::GetWordAt(int self,int *position,int word_,int lParam)
 
 {
-  uint uVar1;
+  uint len;
   int iVar2;
   int iVar3;
   uint *puVar4;
   uint uVar5;
-  int *piVar6;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uVar7;
-  undefined *puVar8;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 objectDtor;
+  undefined *copyCtor;
   uint uVar9;
-  undefined4 uVar10;
-  undefined4 uVar11;
-  undefined4 uVar12;
-  undefined1 local_428 [248];
-  undefined4 local_330;
-  int *local_320;
-  undefined1 local_308 [248];
-  undefined4 local_210;
-  undefined *local_200;
-  undefined4 local_1f8;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined1 exceptMsg [248];
+  undefined4 unused;
+  int *newData;
+  undefined1 exceptMsg2 [248];
+  undefined4 unused2;
+  undefined *unused3;
+  undefined4 charFormat;
   uint local_1f4;
   byte local_1f0;
-  undefined4 *local_1b4;
-  undefined4 *local_1b0;
-  undefined4 *local_1ac;
-  undefined4 *local_1a8;
-  uint local_1a4;
-  int local_1a0;
-  int *local_19c;
-  int *local_198;
-  int local_194;
-  undefined4 *local_190;
-  undefined4 local_18c;
+  undefined4 *unused4;
+  undefined4 *unused5;
+  undefined4 *dest;
+  undefined4 *unused6;
+  uint unused7;
+  int unused8;
+  int *newRep;
+  int *newData2;
+  int unused9;
+  undefined4 *unused10;
+  undefined4 unused11;
   uint local_188;
   undefined1 local_184 [36];
   uint local_160;
-  undefined1 *local_15c;
-  undefined4 local_158;
-  int *local_154;
-  int *local_150;
-  int *local_14c;
-  int *local_148;
-  uint local_144;
-  undefined1 *local_140;
-  int *local_13c;
-  int *local_138;
-  uint local_134;
-  int *local_130;
-  undefined1 *local_12c;
-  int *local_128;
-  undefined4 local_124;
-  uint *local_118;
+  undefined1 *unused12;
+  undefined4 unused13;
+  int *unused14;
+  int *unused15;
+  int *newData3;
+  int *unused16;
+  uint unused17;
+  undefined1 *unused18;
+  int *newRep2;
+  int *unused19;
+  uint len2;
+  int *strRep2;
+  undefined1 *unused20;
+  int *unused21;
+  undefined4 unused22;
+  uint *msgText;
   uint local_114;
-  undefined1 *local_110;
-  undefined4 local_10c;
-  int *local_108;
-  int *local_104;
-  int *local_100;
-  int *local_fc;
-  uint local_f8;
-  undefined1 *local_f4;
-  int *local_f0;
-  int *local_ec;
-  int *local_e8;
-  undefined1 *local_e4;
-  int *local_e0;
-  undefined4 local_dc;
-  uint *local_d0;
-  undefined1 *local_cc;
-  undefined4 local_c8;
-  int local_c4;
-  int local_c0;
-  uint local_bc;
+  undefined1 *unused23;
+  undefined4 unused24;
+  int *unused25;
+  int *unused26;
+  int *unused27;
+  int *unused28;
+  uint unused29;
+  undefined1 *unused30;
+  int *newRep3;
+  int *unused31;
+  int *strRep3;
+  undefined1 *unused32;
+  int *unused33;
+  undefined4 unused34;
+  uint *msgText2;
+  undefined1 *unused35;
+  undefined4 unused36;
+  int unused37;
+  int unused38;
+  uint n;
   byte local_b8 [12];
-  int local_ac;
+  int range;
   int local_a8;
   int local_a4;
-  int local_a0;
+  int range2;
   int local_9c;
-  undefined4 local_98;
-  undefined2 local_88;
-  int local_7c;
-  undefined1 local_74 [8];
-  int *local_6c;
-  undefined1 local_64 [8];
-  int *local_5c;
-  undefined **local_54 [2];
-  undefined1 local_4c [8];
-  int *local_44;
-  undefined **local_3c [2];
-  undefined1 local_34 [8];
-  int *local_2c;
-  undefined1 local_24 [8];
-  int local_1c;
-  undefined1 local_14 [8];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [8];
+  int *str4;
+  undefined1 str2 [8];
+  int *str5;
+  undefined **outOfRange [2];
+  undefined1 newStr [8];
+  int *unused39;
+  undefined **lengthError [2];
+  undefined1 newStr2 [8];
+  int *unused40;
+  undefined1 result [8];
+  int str6;
+  undefined1 str3 [8];
   undefined4 *local_c;
   
   __InitExceptBlockLDTC(0x4ee848);
-  local_a0 = 0;
+  range2 = 0;
   local_9c = -1;
-  iVar2 = GetWindowTextLengthA(*(HWND *)(*param_2 + 0xc));
-  if (param_4 == 0) {
-    FUN_004691fc(param_2,(LPARAM)&local_a0);
+  iVar2 = GetWindowTextLengthA(*(HWND *)(*position + 0xc));
+  if (lParam == 0) {
+    OWL::TRichEdit::GetSelection_4691fc(position,(LPARAM)&range2);
   }
   else {
-    local_a0 = FUN_004a76a8(*param_2,0xd7,0,param_4);
-    local_9c = local_a0;
-    if (iVar2 <= local_a0) {
+    range2 = FUN_004a76a8(*position,0xd7,0,lParam);
+    local_9c = range2;
+    if (iVar2 <= range2) {
       local_9c = 0;
     }
   }
   local_a4 = 0;
-  if (local_a0 == local_9c) {
-    HideCaret(*(HWND *)(*param_2 + 0xc));
-    FUN_004a76a8(*param_2,0xb,0,0);
-    local_1f8 = 0x3c;
+  if (range2 == local_9c) {
+    HideCaret(*(HWND *)(*position + 0xc));
+    FUN_004a76a8(*position,0xb,0,0);
+    charFormat = 0x3c;
     local_1f4 = 0;
-    local_ac = local_a0;
+    range = range2;
     local_a8 = local_9c;
     while (local_a8 = local_a8 + 1, local_a8 <= iVar2) {
-      FUN_0046924c(param_2,(LPARAM)&local_ac);
-      FUN_004690f0(param_2,(LPARAM)&local_1f8,'\x01');
+      OWL::TRichEdit::SetSelection_46924c(position,(LPARAM)&range);
+      OWL::TRichEdit::GetCharFormat(position,(LPARAM)&charFormat,'\x01');
       if (((local_1f4 & 4) == 0) || ((local_1f0 & 4) == 0)) break;
     }
     local_a8 = local_a8 + -1;
-    while (local_ac = local_ac + -1, -1 < local_ac) {
-      FUN_0046924c(param_2,(LPARAM)&local_ac);
-      FUN_004690f0(param_2,(LPARAM)&local_1f8,'\x01');
+    while (range = range + -1, -1 < range) {
+      OWL::TRichEdit::SetSelection_46924c(position,(LPARAM)&range);
+      OWL::TRichEdit::GetCharFormat(position,(LPARAM)&charFormat,'\x01');
       if (((local_1f4 & 4) == 0) || ((local_1f0 & 4) == 0)) break;
     }
-    local_ac = local_ac + 1;
-    FUN_0046924c(param_2,(LPARAM)&local_a0);
-    local_a0 = local_ac;
+    range = range + 1;
+    OWL::TRichEdit::SetSelection_46924c(position,(LPARAM)&range2);
+    range2 = range;
     local_9c = local_a8;
     memset((undefined4 *)local_b8,0,10);
     for (; local_9c + 1 <= iVar2; local_9c = local_9c + 1) {
-      (**(code **)(param_2[3] + 0x30))();
-      iVar3 = FUN_0043c6d4(local_b8[0]);
+      (**(code **)(position[3] + 0x30))();
+      iVar3 = CollationCode(local_b8[0]);
       if (iVar3 == 0) break;
       if (((char)local_b8[0] < '0') || ('9' < (char)local_b8[0])) {
         local_a4 = 0;
@@ -318,189 +318,189 @@ int __cdecl FUN_00419f9c(int param_1,int *param_2,int param_3,int param_4)
       }
     }
     do {
-      if (local_a0 < 1) goto LAB_0041a1a1;
-      (**(code **)(param_2[3] + 0x30))();
-      iVar2 = FUN_0043c6d4(local_b8[0]);
+      if (range2 < 1) goto LAB_0041a1a1;
+      (**(code **)(position[3] + 0x30))();
+      iVar2 = CollationCode(local_b8[0]);
       if (iVar2 == 0) goto LAB_0041a1a1;
-      local_a0 = local_a0 + -1;
+      range2 = range2 + -1;
     } while( true );
   }
 LAB_0041a1bd:
-  local_c = (undefined4 *)&DAT_00513d64;
-  local_200 = &DAT_00513d64;
-  local_7c = local_7c + 1;
-  local_88 = 0x20;
-  if (local_a0 < local_9c) {
-    local_bc = (local_9c - local_a0) * 2 + 1;
+  local_c = (undefined4 *)&g_emptyStringData;
+  unused3 = &g_emptyStringData;
+  ehDtorCount = ehDtorCount + 1;
+  ehContext = 0x20;
+  if (range2 < local_9c) {
+    n = (local_9c - range2) * 2 + 1;
     puVar4 = (uint *)operator_new_array();
-    memset(puVar4,0,local_bc);
-    (**(code **)(param_2[3] + 0x30))();
-    FUN_004cf41c((int)local_14,puVar4);
+    memset(puVar4,0,n);
+    (**(code **)(position[3] + 0x30))();
+    std::string::assign_cstr((int)str3,puVar4);
     operator_delete_array();
   }
   uVar5 = local_c[-1] - local_a4;
-  local_88 = 0x2c;
-  FUN_004d6118((int)local_24,(int)local_14,uVar5,DAT_005140ac);
-  local_7c = local_7c + 1;
-  FUN_004cf384(param_3,(int)local_24);
-  local_7c = local_7c + -1;
-  if (local_1c != 0) {
-    if (*(int *)(local_1c + -0xc) != -1) {
-      piVar6 = (int *)(local_1c + -0xc);
-      if (piVar6 == &DAT_00513d58) {
+  ehContext = 0x2c;
+  std::string::substr((int)result,(int)str3,uVar5,g_stringNpos);
+  ehDtorCount = ehDtorCount + 1;
+  std::string::operator_assign(word_,(int)result);
+  ehDtorCount = ehDtorCount + -1;
+  if (str6 != 0) {
+    if (*(int *)(str6 + -0xc) != -1) {
+      strRep = (int *)(str6 + -0xc);
+      if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
-      else if (piVar6 == &DAT_00513d58) {
+      else if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
       else {
-        *piVar6 = *piVar6 + -1;
-        iVar2 = *piVar6 + 1;
+        *strRep = *strRep + -1;
+        iVar2 = *strRep + 1;
       }
       if (iVar2 != 0) goto LAB_0041a32b;
     }
-    local_c0 = local_1c + -0xc;
-    local_c4 = local_1c + -0xc;
+    unused38 = str6 + -0xc;
+    unused37 = str6 + -0xc;
     operator_delete();
-    local_c8 = 0;
-    local_cc = local_24;
-    local_1c = 0;
-    local_210 = 0;
+    unused36 = 0;
+    unused35 = result;
+    str6 = 0;
+    unused2 = 0;
   }
 LAB_0041a32b:
-  local_88 = 0x20;
-  if (DAT_005140ac - 0xe < uVar5) {
-    uVar12 = 0;
-    uVar11 = 0;
-    uVar10 = 0;
+  ehContext = 0x20;
+  if (g_stringNpos - 0xe < uVar5) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
     uVar9 = 1;
-    puVar8 = &LAB_00408370;
-    uVar7 = 0;
-    local_88 = 0x50;
-    local_d0 = (uint *)FUN_004dc320(local_308,PTR_s_invalid_string_size_parameter_in_00516d20);
-    std::string::string_from_cstr((int)local_64,local_d0);
-    local_7c = local_7c + 2;
-    local_3c[0] = &std::logic_error::vftable;
-    local_dc = 0;
-    local_2c = (int *)0x0;
-    local_88 = 0x5c;
-    if (local_5c[-3] == -1 || local_5c[-3] + 1 < 0) {
-      uVar1 = local_5c[-1];
-      local_f0 = std::string::__getRep(local_34,uVar1,uVar1);
-      local_f4 = local_34;
-      local_320 = local_f0 + 3;
-      local_fc = local_5c;
-      local_100 = local_320;
-      local_f8 = uVar1;
-      local_ec = local_320;
-      local_2c = local_320;
-      memcpy(local_320,local_5c,uVar1);
+    copyCtor = &LAB_00408370;
+    objectDtor = 0;
+    ehContext = 0x50;
+    msgText2 = (uint *)__rwstd::except_msg_string::format(exceptMsg2,PTR_s_invalid_string_size_parameter_in_00516d20);
+    std::string::string_from_cstr((int)str2,msgText2);
+    ehDtorCount = ehDtorCount + 2;
+    lengthError[0] = &std::logic_error::vftable;
+    unused34 = 0;
+    unused40 = (int *)0x0;
+    ehContext = 0x5c;
+    if (str5[-3] == -1 || str5[-3] + 1 < 0) {
+      len = str5[-1];
+      newRep3 = std::string::__getRep(newStr2,len,len);
+      unused30 = newStr2;
+      newData = newRep3 + 3;
+      unused28 = str5;
+      unused27 = newData;
+      unused29 = len;
+      unused31 = newData;
+      unused40 = newData;
+      memcpy(newData,str5,len);
     }
     else {
-      local_e4 = local_34;
-      local_e0 = local_5c;
-      local_2c = local_5c;
-      local_e8 = local_5c + -3;
-      if (local_e8 != &DAT_00513d58) {
-        *local_e8 = *local_e8 + 1;
+      unused32 = newStr2;
+      unused33 = str5;
+      unused40 = str5;
+      strRep3 = str5 + -3;
+      if (strRep3 != &g_nullStringRep) {
+        *strRep3 = *strRep3 + 1;
       }
     }
-    local_88 = 0x50;
-    local_3c[0] = &std::length_error::vftable;
-    local_7c = local_7c + 2;
-    if (local_5c != (int *)0x0) {
-      if (local_5c[-3] != -1) {
-        piVar6 = local_5c + -3;
-        if (piVar6 == &DAT_00513d58) {
+    ehContext = 0x50;
+    lengthError[0] = &std::length_error::vftable;
+    ehDtorCount = ehDtorCount + 2;
+    if (str5 != (int *)0x0) {
+      if (str5[-3] != -1) {
+        strRep = str5 + -3;
+        if (strRep == &g_nullStringRep) {
           iVar2 = 1;
         }
-        else if (piVar6 == &DAT_00513d58) {
+        else if (strRep == &g_nullStringRep) {
           iVar2 = 1;
         }
         else {
-          *piVar6 = *piVar6 + -1;
-          iVar2 = *piVar6 + 1;
+          *strRep = *strRep + -1;
+          iVar2 = *strRep + 1;
         }
         if (iVar2 != 0) goto LAB_0041a560;
       }
-      local_104 = local_5c + -3;
-      local_108 = local_5c + -3;
+      unused26 = str5 + -3;
+      unused25 = str5 + -3;
       operator_delete();
-      local_10c = 0;
-      local_110 = local_64;
-      local_5c = (int *)0x0;
-      local_330 = 0;
+      unused24 = 0;
+      unused23 = str2;
+      str5 = (int *)0x0;
+      unused = 0;
     }
 LAB_0041a560:
-    local_88 = 0x44;
-    FUN_004e7cc4((uint *)&DAT_00408314,(undefined4*)local_3c,uVar7,puVar8,uVar9,uVar10,uVar11,uVar12);
+    ehContext = 0x44;
+    _ThrowExceptionLDTC((uint *)&DAT_00408314,(undefined4*)lengthError,objectDtor,copyCtor,uVar9,throwFlags,throwFile,throwLine);
   }
   uVar9 = local_c[-1];
   if (uVar5 < uVar9) {
     local_114 = uVar9 - uVar5;
     if (uVar9 < uVar5) {
-      uVar12 = 0;
-      uVar11 = 0;
-      uVar10 = 0;
+      throwLine = 0;
+      throwFile = 0;
+      throwFlags = 0;
       uVar9 = 1;
-      puVar8 = &LAB_004084c8;
-      uVar7 = 0;
-      local_88 = 0x80;
-      local_118 = (uint *)FUN_004dc320(local_428,PTR_s_string_index_out_of_range_in_fun_00516d2c);
-      std::string::string_from_cstr((int)local_74,local_118);
-      local_7c = local_7c + 2;
-      local_54[0] = &std::logic_error::vftable;
-      local_124 = 0;
-      local_44 = (int *)0x0;
-      local_88 = 0x8c;
-      if (local_6c[-3] == -1 || local_6c[-3] + 1 < 0) {
-        local_134 = local_6c[-1];
-        local_13c = std::string::__getRep(local_4c,local_134,local_134);
-        local_140 = local_4c;
-        local_14c = local_13c + 3;
-        local_144 = local_134;
-        local_148 = local_6c;
-        local_138 = local_14c;
-        local_44 = local_14c;
-        memcpy(local_14c,local_6c,local_134);
+      copyCtor = &LAB_004084c8;
+      objectDtor = 0;
+      ehContext = 0x80;
+      msgText = (uint *)__rwstd::except_msg_string::format(exceptMsg,PTR_s_string_index_out_of_range_in_fun_00516d2c);
+      std::string::string_from_cstr((int)str,msgText);
+      ehDtorCount = ehDtorCount + 2;
+      outOfRange[0] = &std::logic_error::vftable;
+      unused22 = 0;
+      unused39 = (int *)0x0;
+      ehContext = 0x8c;
+      if (str4[-3] == -1 || str4[-3] + 1 < 0) {
+        len2 = str4[-1];
+        newRep2 = std::string::__getRep(newStr,len2,len2);
+        unused18 = newStr;
+        newData3 = newRep2 + 3;
+        unused17 = len2;
+        unused16 = str4;
+        unused19 = newData3;
+        unused39 = newData3;
+        memcpy(newData3,str4,len2);
       }
       else {
-        local_12c = local_4c;
-        local_128 = local_6c;
-        local_44 = local_6c;
-        local_130 = local_6c + -3;
-        if (local_130 != &DAT_00513d58) {
-          *local_130 = *local_130 + 1;
+        unused20 = newStr;
+        unused21 = str4;
+        unused39 = str4;
+        strRep2 = str4 + -3;
+        if (strRep2 != &g_nullStringRep) {
+          *strRep2 = *strRep2 + 1;
         }
       }
-      local_88 = 0x80;
-      local_54[0] = &std::out_of_range::vftable;
-      local_7c = local_7c + 2;
-      if (local_6c != (int *)0x0) {
-        if (local_6c[-3] != -1) {
-          piVar6 = local_6c + -3;
-          if (piVar6 == &DAT_00513d58) {
+      ehContext = 0x80;
+      outOfRange[0] = &std::out_of_range::vftable;
+      ehDtorCount = ehDtorCount + 2;
+      if (str4 != (int *)0x0) {
+        if (str4[-3] != -1) {
+          strRep = str4 + -3;
+          if (strRep == &g_nullStringRep) {
             iVar2 = 1;
           }
-          else if (piVar6 == &DAT_00513d58) {
+          else if (strRep == &g_nullStringRep) {
             iVar2 = 1;
           }
           else {
-            *piVar6 = *piVar6 + -1;
-            iVar2 = *piVar6 + 1;
+            *strRep = *strRep + -1;
+            iVar2 = *strRep + 1;
           }
           if (iVar2 != 0) goto LAB_0041a7cf;
         }
-        local_150 = local_6c + -3;
-        local_154 = local_6c + -3;
+        unused15 = str4 + -3;
+        unused14 = str4 + -3;
         operator_delete();
-        local_158 = 0;
-        local_15c = local_74;
-        local_6c = (int *)0x0;
+        unused13 = 0;
+        unused12 = str;
+        str4 = (int *)0x0;
       }
 LAB_0041a7cf:
-      local_88 = 0x44;
-      FUN_004e7cc4((uint *)&DAT_0040846c,(undefined4*)local_54,uVar7,puVar8,uVar9,uVar10,uVar11,uVar12);
+      ehContext = 0x44;
+      _ThrowExceptionLDTC((uint *)&DAT_0040846c,(undefined4*)outOfRange,objectDtor,copyCtor,uVar9,throwFlags,throwFile,throwLine);
     }
     local_160 = local_c[-1] - uVar5;
     local_184[0] = 0;
@@ -508,234 +508,240 @@ LAB_0041a7cf:
     if (local_114 < local_160) {
       local_188 = local_114;
     }
-    FUN_004cfad4((int)local_14,uVar5,local_188,(uint)local_184,0,0,0);
+    std::string::replace((int)str3,uVar5,local_188,(uint)local_184,0,0,0);
   }
   else {
-    std::string::replace_fill((int)local_14,uVar9,0,uVar5 - uVar9,0);
+    std::string::replace_fill((int)str3,uVar9,0,uVar5 - uVar9,0);
   }
-  if (local_c + -3 != &DAT_00513d58) {
+  if (local_c + -3 != &g_nullStringRep) {
     local_c[-3] = 0;
   }
-  local_88 = 0xb0;
-  local_18c = 0;
-  *(undefined4 *)(param_1 + 8) = 0;
+  ehContext = 0xb0;
+  unused11 = 0;
+  *(undefined4 *)(self + 8) = 0;
   if (local_c[-3] == -1 || local_c[-3] + 1 < 0) {
     uVar5 = local_c[-1];
-    local_19c = std::string::__getRep(param_1,uVar5,uVar5);
-    local_198 = local_19c + 3;
-    *(int **)(param_1 + 8) = local_198;
-    local_1a0 = param_1;
-    local_1a8 = local_c;
-    local_1ac = *(undefined4 **)(param_1 + 8);
-    local_1a4 = uVar5;
-    memcpy(local_1ac,local_c,uVar5);
+    newRep = std::string::__getRep(self,uVar5,uVar5);
+    newData2 = newRep + 3;
+    *(int **)(self + 8) = newData2;
+    unused8 = self;
+    unused6 = local_c;
+    dest = *(undefined4 **)(self + 8);
+    unused7 = uVar5;
+    memcpy(dest,local_c,uVar5);
   }
   else {
-    local_190 = local_c;
-    *(undefined4 **)(param_1 + 8) = local_c;
-    local_194 = param_1;
-    piVar6 = (int *)(*(int *)(param_1 + 8) + -0xc);
-    if (piVar6 != &DAT_00513d58) {
-      *piVar6 = *piVar6 + 1;
+    unused10 = local_c;
+    *(undefined4 **)(self + 8) = local_c;
+    unused9 = self;
+    strRep = (int *)(*(int *)(self + 8) + -0xc);
+    if (strRep != &g_nullStringRep) {
+      *strRep = *strRep + 1;
     }
   }
-  local_88 = 200;
+  ehContext = 200;
   if (local_c != (undefined4 *)0x0) {
     if (local_c[-3] != -1) {
-      piVar6 = local_c + -3;
-      if (piVar6 == &DAT_00513d58) {
+      strRep = local_c + -3;
+      if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
-      else if (piVar6 == &DAT_00513d58) {
+      else if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
       else {
-        *piVar6 = *piVar6 + -1;
-        iVar2 = *piVar6 + 1;
+        *strRep = *strRep + -1;
+        iVar2 = *strRep + 1;
       }
       if (iVar2 != 0) goto LAB_0041aa01;
     }
-    local_1b0 = local_c + -3;
-    local_1b4 = local_c + -3;
+    unused5 = local_c + -3;
+    unused4 = local_c + -3;
     operator_delete();
   }
 LAB_0041aa01:
-  *in_FS_OFFSET = local_98;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return self;
 LAB_0041a1a1:
-  FUN_004a76a8(*param_2,0xb,1,0);
-  ShowCaret(*(HWND *)(*param_2 + 0xc));
+  FUN_004a76a8(*position,0xb,1,0);
+  ShowCaret(*(HWND *)(*position + 0xc));
   goto LAB_0041a1bd;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041aa24  PVWRichEdit::vf20   (88 bytes)   [rtti:vtable virtual slot 20]
-void __cdecl PVWRichEdit::vf20(int *param_1)
+// 0x0041aa24  PVWRichEdit::SetupWindow   (88 bytes)   [rtti:vtable virtual slot 30]
+//   override of OWL::TWindow vtable slot 30, from PVWRichEdit's OWL::TWindow subobject vtable at 0x004f0710 (through the this-adjusting thunk at 0x004226ff); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: PVWRichEdit::vf20 [rtti:vtable]
+void __cdecl PVWRichEdit::SetupWindow(int *self)
 
 {
-  uint uVar1;
+  uint eventMask;
   int iVar2;
   
-  OWL::TRichEdit::vf20(param_1);
-  uVar1 = FUN_004693e8(param_1);
-  if ((uVar1 & 0x4080001) != 0x4080001) {
-    FUN_00469408(param_1,uVar1 | 0x4080001);
+  OWL::TRichEdit::vf20(self);
+  eventMask = OWL::TRichEdit::GetEventMask(self);
+  if ((eventMask & 0x4080001) != 0x4080001) {
+    OWL::TRichEdit::SetEventMask(self,eventMask | 0x4080001);
   }
-  iVar2 = FUN_00469b1c('\0');
+  iVar2 = OWL::TRichEdit::UseRichEdit2('\0');
   if (1 < iVar2) {
-    FUN_004a76a8(*param_1,0x45b,1,0);
+    FUN_004a76a8(*self,0x45b,1,0);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041aa7c  PVWRichEdit::vf21   (7 bytes)   [rtti:vtable virtual slot 21]
-undefined1 __stdcall PVWRichEdit::vf21(void)
+// 0x0041aa7c  PVWRichEdit::CanClose   (7 bytes)   [rtti:vtable virtual slot 15]
+//   override of OWL::TWindow vtable slot 15, from PVWRichEdit's OWL::TWindow subobject vtable at 0x004f0710 (through the this-adjusting thunk at 0x00422738); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: PVWRichEdit::vf21 [rtti:vtable]
+undefined1 __stdcall PVWRichEdit::CanClose(void)
 
 {
   return 1;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041aa84  PVWRichEdit::vf32   (7 bytes)   [rtti:vtable virtual slot 32]
-undefined1 __stdcall PVWRichEdit::vf32(void)
+// 0x0041aa84  PVWRichEdit::SetDocTitle   (7 bytes)   [rtti:vtable virtual slot 14]
+//   override of OWL::TWindow vtable slot 14, from PVWRichEdit's OWL::TWindow subobject vtable at 0x004f0710 (through the this-adjusting thunk at 0x0042274b); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: PVWRichEdit::vf32 [rtti:vtable]
+undefined1 __stdcall PVWRichEdit::SetDocTitle(void)
 
 {
   return 1;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041aa8c  FUN_0041aa8c   (63 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_0041aa8c(int *param_1,LPCSTR param_2)
+// 0x0041aa8c  PVWRichEdit::SetPlainText   (63 bytes)   [analysis]
+//   sets the window text and scrolls to the top
+void __cdecl PVWRichEdit::SetPlainText(int *self,LPCSTR text)
 
 {
-  if (param_1[0x1b] == 0) {
-    param_1[0x1b] = 1;
-    SetWindowTextA(*(HWND *)(*param_1 + 0xc),param_2);
-    param_1[0x1b] = 0;
-    FUN_004a76a8(*param_1,0xb9,0,0);
+  if (self[0x1b] == 0) {
+    self[0x1b] = 1;
+    SetWindowTextA(*(HWND *)(*self + 0xc),text);
+    self[0x1b] = 0;
+    FUN_004a76a8(*self,0xb9,0,0);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041aacc  FUN_0041aacc   (450 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-int __cdecl FUN_0041aacc(int param_1,int *param_2)
+// 0x0041aacc  PVWRichEdit::GetText   (450 bytes)   [analysis]
+//   the whole window text as a std::string
+int __cdecl PVWRichEdit::GetText(int self,int *out)
 
 {
-  uint uVar1;
+  uint len;
   int iVar2;
   uint *lpString;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  undefined1 local_14 [8];
+  int *rep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 str [8];
   undefined4 *local_c;
   
   __InitExceptBlockLDTC(0x4ee968);
-  iVar2 = GetWindowTextLengthA(*(HWND *)(*param_2 + 0xc));
+  iVar2 = GetWindowTextLengthA(*(HWND *)(*out + 0xc));
   lpString = (uint *)operator_new_array();
-  GetWindowTextA(*(HWND *)(*param_2 + 0xc),(LPSTR)lpString,iVar2 + 1);
-  std::string::string_from_cstr((int)local_14,lpString);
+  GetWindowTextA(*(HWND *)(*out + 0xc),(LPSTR)lpString,iVar2 + 1);
+  std::string::string_from_cstr((int)str,lpString);
   operator_delete_array();
-  *(undefined4 *)(param_1 + 8) = 0;
+  *(undefined4 *)(self + 8) = 0;
   if (local_c[-3] == -1 || local_c[-3] + 1 < 0) {
-    uVar1 = local_c[-1];
-    piVar3 = std::string::__getRep(param_1,uVar1,uVar1);
-    *(int **)(param_1 + 8) = piVar3 + 3;
-    memcpy(*(undefined4 **)(param_1 + 8),local_c,uVar1);
+    len = local_c[-1];
+    rep = std::string::__getRep(self,len,len);
+    *(int **)(self + 8) = rep + 3;
+    memcpy(*(undefined4 **)(self + 8),local_c,len);
   }
   else {
-    *(undefined4 **)(param_1 + 8) = local_c;
-    piVar3 = (int *)(*(int *)(param_1 + 8) + -0xc);
-    if (piVar3 != &DAT_00513d58) {
-      *piVar3 = *piVar3 + 1;
+    *(undefined4 **)(self + 8) = local_c;
+    rep = (int *)(*(int *)(self + 8) + -0xc);
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
   if (local_c != (undefined4 *)0x0) {
     if (local_c[-3] != -1) {
-      piVar3 = local_c + -3;
-      if (piVar3 == &DAT_00513d58) {
+      rep = local_c + -3;
+      if (rep == &g_nullStringRep) {
         iVar2 = 1;
       }
-      else if (piVar3 == &DAT_00513d58) {
+      else if (rep == &g_nullStringRep) {
         iVar2 = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar2 = *piVar3 + 1;
+        *rep = *rep + -1;
+        iVar2 = *rep + 1;
       }
       if (iVar2 != 0) goto LAB_0041ac73;
     }
     operator_delete();
   }
 LAB_0041ac73:
-  *in_FS_OFFSET = local_38;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041ac90  FUN_0041ac90   (110 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_0041ac90(int *param_1,int param_2)
+// 0x0041ac90  PVWRichEdit::SetText   (110 bytes)   [analysis]
+//   sets RTF when the text is RTF, plain text otherwise
+void __cdecl PVWRichEdit::SetText(int *self,int text)
 
 {
-  char *pcVar1;
+  char *len;
   uint uVar2;
   uint local_c;
-  undefined2 local_8;
+  undefined2 unused;
   
   local_c = DAT_004ed250;
-  local_8 = DAT_004ed254;
-  if (5 < *(uint *)(*(int *)(param_2 + 8) + -4)) {
-    pcVar1 = strlen(&local_c);
-    uVar2 = FUN_004d40d0(param_2,0,5,(byte *)&local_c,(uint)pcVar1);
+  unused = DAT_004ed254;
+  if (5 < *(uint *)(*(int *)(text + 8) + -4)) {
+    len = strlen(&local_c);
+    uVar2 = std::string::compare(text,0,5,(byte *)&local_c,(uint)len);
     if (uVar2 == 0) {
-      FUN_0041ad00(param_1,param_2);
+      PVWRichEdit::SetRtf(self,text);
       return;
     }
   }
-  FUN_0041aa8c(param_1,*(LPCSTR *)(param_2 + 8));
+  PVWRichEdit::SetPlainText(self,*(LPCSTR *)(text + 8));
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041ad00  FUN_0041ad00   (68 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_0041ad00(int *param_1,int param_2)
+// 0x0041ad00  PVWRichEdit::SetRtf   (68 bytes)   [analysis]
+//   loads RTF (SetRichText) and scrolls to the top
+void __cdecl PVWRichEdit::SetRtf(int *self,int text)
 
 {
-  if (param_1[0x1b] == 0) {
-    param_1[0x1b] = 1;
-    FUN_00483a88(*(HWND *)(*param_1 + 0xc),param_2,0);
-    param_1[0x1b] = 0;
-    FUN_004a76a8(*param_1,0xb9,0,0);
+  if (self[0x1b] == 0) {
+    self[0x1b] = 1;
+    SetRichText(*(HWND *)(*self + 0xc),text,0);
+    self[0x1b] = 0;
+    FUN_004a76a8(*self,0xb9,0,0);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041ad44  PVWRichEdit::vf30   (129 bytes)   [rtti:vtable virtual slot 30]
-void __cdecl PVWRichEdit::vf30(int *param_1,LONG *param_2)
+void __cdecl PVWRichEdit::vf30(int *self,LONG *param_2)
 
 {
-  tagPOINT local_14;
-  int local_c;
+  tagPOINT pt;
+  int range;
   int local_8;
   
-  SetFocus(*(HWND *)(*param_1 + 0xc));
-  local_c = 0;
+  SetFocus(*(HWND *)(*self + 0xc));
+  range = 0;
   local_8 = -1;
-  FUN_004691fc(param_1,(LPARAM)&local_c);
-  if (local_c == local_8) {
-    local_14.x = *param_2;
-    local_14.y = param_2[1];
-    ScreenToClient(*(HWND *)(*param_1 + 0xc),&local_14);
-    local_c = FUN_004a76a8(*param_1,0xd7,0,(LPARAM)&local_14);
-    local_8 = local_c;
-    FUN_0046924c(param_1,(LPARAM)&local_c);
+  OWL::TRichEdit::GetSelection_4691fc(self,(LPARAM)&range);
+  if (range == local_8) {
+    pt.x = *param_2;
+    pt.y = param_2[1];
+    ScreenToClient(*(HWND *)(*self + 0xc),&pt);
+    range = FUN_004a76a8(*self,0xd7,0,(LPARAM)&pt);
+    local_8 = range;
+    OWL::TRichEdit::SetSelection_46924c(self,(LPARAM)&range);
   }
   return;
 }
@@ -750,48 +756,495 @@ void __stdcall PVWRichEdit::vf31(void)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041add0  PVWRichEdit::vf9   (106 bytes)   [rtti:vtable virtual slot 9]
-void __cdecl PVWRichEdit::vf9(int *param_1)
+void __cdecl PVWRichEdit::vf9(int *self)
 
 {
-  undefined4 local_40;
-  undefined4 local_3c;
+  undefined4 charFormat;
+  undefined4 unused;
   
-  if (param_1[0x1b] == 0) {
-    param_1[0x1b] = 1;
-    SetWindowTextA(*(HWND *)(*param_1 + 0xc),"Beta Test Expiry" + 0x10);
-    local_40 = 0x3c;
-    local_3c = 0;
-    FUN_004857f4((int)&local_40);
-    FUN_00469120(param_1,(LPARAM)&local_40,4);
-    param_1[0x1b] = 0;
-    FUN_004a76a8(*param_1,0xb9,0,0);
+  if (self[0x1b] == 0) {
+    self[0x1b] = 1;
+    SetWindowTextA(*(HWND *)(*self + 0xc),"Beta Test Expiry" + 0x10);
+    charFormat = 0x3c;
+    unused = 0;
+    OWL::TCharFormat::SetDefaults((int)&charFormat);
+    OWL::TRichEdit::SetCharFormat(self,(LPARAM)&charFormat,4);
+    self[0x1b] = 0;
+    FUN_004a76a8(*self,0xb9,0,0);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041ae3c  FUN_0041ae3c   (172 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_0041ae3c(undefined4 *param_1,int param_2)
+// 0x0041ae3c  PVWRichEdit::ApplyFont   (172 bytes)   [analysis]
+//   sets a character format from a LOGFONT scaled to the screen DPI and a colour
+void __cdecl PVWRichEdit::ApplyFont(undefined4 *colour,int charFormat)
 
 {
   undefined4 uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_50;
-  int local_2c;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  int windowDC;
   int local_27;
   
   __InitExceptBlockLDTC(0x4ee9d8);
-  FUN_004a8760(&local_2c);
+  FUN_004a8760(&windowDC);
   (**(code **)(local_27 + 0xc))();
-  FUN_00485770(param_2,param_1 + 1);
-  uVar1 = FUN_004e3c04();
-  *(undefined4 *)(param_2 + 0xc) = uVar1;
-  FUN_00485738(param_2,*(undefined1 *)((int)param_1 + 0x1b));
-  FUN_004856d4(param_2,param_1);
-  OWL::TWindowDC::_dtor(&local_2c,0);
-  *in_FS_OFFSET = local_50;
+  OWL::TCharFormat::GetFontInfo(charFormat,colour + 1);
+  uVar1 = __ftol();
+  *(undefined4 *)(charFormat + 0xc) = uVar1;
+  OWL::TCharFormat::SetCharSet(charFormat,*(undefined1 *)((int)colour + 0x1b));
+  OWL::TCharFormat::SetTextColor(charFormat,colour);
+  OWL::TWindowDC::_dtor(&windowDC,0);
+  *sehChainHead = sehPrevFrame;
   return;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004695dc  PVWRichEdit::GetClassName   (37 bytes)   [rtti:vtable virtual slot 29]
+//   override of OWL::TWindow vtable slot 29, from PVWRichEdit's OWL::TWindow subobject vtable at 0x004f0710 (through the this-adjusting thunk at 0x00422712); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TRichEdit::vf11 [rtti:vtable]
+char * __stdcall PVWRichEdit::GetClassName(void)
+
+{
+  int iVar1;
+  char *pcVar2;
+  char load;
+  
+  load = '\0';
+  OWL::TRichEdit::GetModuleName();
+  iVar1 = OWL::TRichEdit::UseRichEdit2(load);
+  if (iVar1 < 2) {
+    pcVar2 = "RICHEDIT";
+  }
+  else {
+    pcVar2 = "RichEdit20A";
+  }
+  return pcVar2;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00469604  OWL::TRichEdit::GetModuleName   (8 bytes)   [analysis]
+//   the rich-edit class library name
+//   file placement: inferred (address adjacency)
+undefined4 __stdcall OWL::TRichEdit::GetModuleName(void)
+
+{
+  undefined4 *dllLoader;
+  
+  dllLoader = (undefined4 *)OWL::TRichEdit::GetDllLoader();
+  return *dllLoader;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x0046960c  OWL::TRichEdit::vf20   (206 bytes)   [rtti:vtable virtual slot 20]
+//   file placement: inferred (address adjacency)
+void __cdecl OWL::TRichEdit::vf20(int *self)
+
+{
+  int prevRefs;
+  undefined4 extraout_ECX;
+  undefined4 extraout_EDX;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 local_14 [8];
+  char *str;
+  
+  __InitExceptBlockLDTC(0x4fcf18);
+  OWL::TEditFile::SetupWindow(self);
+  FUN_004c0e0c((int)local_14,*(int *)(*self + 0x70),0x7f2b);
+  FUN_004c28b8(str,extraout_EDX,extraout_ECX,(int)(self + 0xe),(uint *)str);
+  if (str != (char *)0x0) {
+    if (*(int *)(str + -0xc) != -1) {
+      strRep = (int *)(str + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
+      }
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
+      }
+      else {
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
+      }
+      if (prevRefs != 0) goto LAB_004696c9;
+    }
+    operator_delete();
+  }
+LAB_004696c9:
+  *sehChainHead = sehPrevFrame;
+  return;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004696dc  OWL::TRichEdit::StreamInCallback   (69 bytes)   [analysis]
+//   EDITSTREAM callback reading from a buffer
+//   file placement: inferred (address adjacency)
+undefined4 __stdcall OWL::TRichEdit::StreamInCallback(int *cookie,undefined1 *buffer,int size,undefined4 *read)
+
+{
+  undefined4 uVar1;
+  
+  if ((*(byte *)(*cookie + 0x30) & 2) == 0) {
+    FUN_004d4534(cookie,buffer,size);
+    uVar1 = FUN_004d44ec((int)cookie);
+    *read = uVar1;
+  }
+  else {
+    *read = 0;
+  }
+  return 0;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00469724  OWL::TRichEdit::StreamOutCallback   (144 bytes)   [analysis]
+//   EDITSTREAM callback appending to a buffer
+//   file placement: inferred (address adjacency)
+undefined4 __stdcall OWL::TRichEdit::StreamOutCallback(int *cookie,int buffer,int size,int *written)
+
+{
+  int local_1c [3];
+  int local_10 [3];
+  
+  FUN_004d6cac(local_10,cookie);
+  FUN_004d4f98(cookie,buffer,size);
+  FUN_004d6cac(local_1c,cookie);
+  *written = local_1c[0] - local_10[0];
+  return 0;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004697b4  PVWRichEdit::Transfer   (7 bytes)   [rtti:vtable virtual slot 22]
+//   override of OWL::TWindow vtable slot 22, from PVWRichEdit's OWL::TWindow subobject vtable at 0x004f0710 (through the this-adjusting thunk at 0x00422725); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TRichEdit::vf10 [rtti:vtable]
+undefined4 __stdcall PVWRichEdit::Transfer(void)
+
+{
+  return 0;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004697bc  OWL::TRichEdit::ReadFromStream   (58 bytes)   [analysis]
+//   streams text in through the buffer callback
+//   file placement: inferred (address adjacency)
+bool __cdecl OWL::TRichEdit::ReadFromStream(int *self,undefined4 unused,WPARAM format)
+
+{
+  undefined4 editStream;
+  int local_c;
+  code *unused2;
+  
+  editStream = unused;
+  local_c = 0;
+  unused2 = OWL::TRichEdit::StreamInCallback;
+  OWL::TRichEdit::StreamIn(self,format,(LPARAM)&editStream);
+  return local_c == 0;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004697f8  OWL::TRichEdit::WriteToStream   (58 bytes)   [analysis]
+//   streams text out through the buffer callback
+//   file placement: inferred (address adjacency)
+bool __cdecl OWL::TRichEdit::WriteToStream(int *self,undefined4 unused,WPARAM format)
+
+{
+  undefined4 editStream;
+  int local_c;
+  code *unused2;
+  
+  editStream = unused;
+  local_c = 0;
+  unused2 = OWL::TRichEdit::StreamOutCallback;
+  OWL::TRichEdit::StreamOut(self,format,(LPARAM)&editStream);
+  return local_c == 0;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00469834  OWL::TRichEdit::ReadFromFile   (287 bytes)   [rtti:vtable virtual slot 25]
+//   vtable slot 25; loads a file into the control (stream in, EM_SETMODIFY)
+//   file placement: inferred (address adjacency)
+undefined4 __cdecl OWL::TRichEdit::ReadFromFile(int *self,LPCSTR fileName)
+
+{
+  bool bVar1;
+  undefined4 uVar2;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  int unused [34];
+  
+  __InitExceptBlockLDTC(0x4fcf58);
+  if ((fileName == (LPCSTR)0x0) && (fileName = (LPCSTR)self[0x18], fileName == (LPCSTR)0x0)) {
+    uVar2 = 0;
+    *sehChainHead = sehPrevFrame;
+  }
+  else {
+    std::basic_ifstream_char::basic_ifstream(unused,0,fileName,6,0x1b6);
+    if ((*(byte *)(unused[0] + 0x30) & 5) == 0) {
+      (**(code **)(self[3] + 0x24))();
+      bVar1 = OWL::TRichEdit::ReadFromStream(self,unused,self[0x19]);
+      if (bVar1) {
+        uVar2 = FUN_004a76a8(*self,0xb9,0,0);
+        uVar2 = CONCAT31((int3)((uint)uVar2 >> 8),1);
+        std::basic_ifstream_char::_dtor(unused,2);
+        *sehChainHead = sehPrevFrame;
+        return uVar2;
+      }
+    }
+    uVar2 = 0;
+    std::basic_ifstream_char::_dtor(unused,2);
+    *sehChainHead = sehPrevFrame;
+  }
+  return uVar2;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00469954  OWL::TRichEdit::WriteToFile   (279 bytes)   [rtti:vtable virtual slot 29]
+//   vtable slot 29; saves the control to a file (stream out, EM_SETMODIFY)
+//   file placement: inferred (address adjacency)
+undefined4 __cdecl OWL::TRichEdit::WriteToFile(int *self,LPCSTR fileName)
+
+{
+  bool bVar1;
+  undefined4 uVar2;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  int unused [33];
+  
+  __InitExceptBlockLDTC(0x4fcf98);
+  if ((fileName == (LPCSTR)0x0) && (fileName = (LPCSTR)self[0x18], fileName == (LPCSTR)0x0)) {
+    uVar2 = 0;
+    *sehChainHead = sehPrevFrame;
+  }
+  else {
+    std::basic_ofstream_char::basic_ofstream(unused,0,fileName,10,0x1b6);
+    if (((*(byte *)(unused[0] + 0x30) & 5) == 0) &&
+       (bVar1 = OWL::TRichEdit::WriteToStream(self,unused,self[0x19]), bVar1)) {
+      uVar2 = FUN_004a76a8(*self,0xb9,0,0);
+      uVar2 = CONCAT31((int3)((uint)uVar2 >> 8),1);
+      std::basic_ofstream_char::_dtor(unused,2);
+      *sehChainHead = sehPrevFrame;
+    }
+    else {
+      uVar2 = 0;
+      std::basic_ofstream_char::_dtor(unused,2);
+      *sehChainHead = sehPrevFrame;
+    }
+  }
+  return uVar2;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00469a6c  OWL::TRichEditModule::TRichEditModule   (97 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TRichEditModule's vtable at its vptr offset (+0x0) in this
+//   file placement: inferred (address adjacency)
+undefined4 * __cdecl OWL::TRichEditModule::TRichEditModule(undefined4 *self)
+
+{
+  int iVar1;
+  char *libFileName;
+  undefined4 *sehChainHead;
+  char cVar3;
+  char cVar4;
+  char cVar5;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x4fcfc8);
+  cVar5 = '\x01';
+  cVar4 = '\x01';
+  cVar3 = '\x01';
+  iVar1 = OWL::TRichEdit::UseRichEdit2('\0');
+  if (iVar1 < 2) {
+    libFileName = "RICHED32.DLL";
+  }
+  else {
+    libFileName = "RICHED20.DLL";
+  }
+  OWL::TModule::TModule(self,(uint *)libFileName,cVar3,cVar4,cVar5);
+  *self = &OWL::TRichEditModule::vftable;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00469b1c  OWL::TRichEdit::UseRichEdit2   (48 bytes)   [analysis]
+//   whether the RichEdit 2.0 control is available
+//   file placement: inferred (address adjacency)
+undefined4 __cdecl OWL::TRichEdit::UseRichEdit2(char load)
+
+{
+  if (DAT_004fcbec == '\0') {
+    if (load == '\0') {
+      DAT_004fcbe8 = GetRichEditVersion();
+    }
+    else {
+      DAT_004fcbe8 = 1;
+    }
+    DAT_004fcbec = DAT_004fcbec + '\x01';
+  }
+  return DAT_004fcbe8;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00469b4c  OWL::TErrorMode::~TErrorMode   (35 bytes)   [rtti:dtor destructor]
+//   written in code as OWL::TErrorMode::_dtor
+//   file placement: inferred (address adjacency)
+void __cdecl OWL::TErrorMode::_dtor(UINT *self,byte dtorFlags)
+
+{
+  if (self != (UINT *)0x0) {
+    SetErrorMode(*self);
+    if ((dtorFlags & 1) != 0) {
+      operator_delete();
+    }
+  }
+  return;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00469bd0  OWL::TRichEditModule::~TRichEditModule   (67 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
+//   written in code as OWL::TRichEditModule::_dtor
+//   file placement: inferred (address adjacency)
+void __cdecl OWL::TRichEditModule::_dtor(undefined4 *self,byte dtorFlags)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x4fd354);
+  if (self != (undefined4 *)0x0) {
+    OWL::TModule::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
+      operator_delete();
+    }
+  }
+  *sehChainHead = sehPrevFrame;
+  return;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00469e1c  ParseLinkTarget   (299 bytes)   [analysis]
+//   parses a link of the definition text into word and number
+//   file placement: inferred (address adjacency)
+int __cdecl ParseLinkTarget(int text,int len,int *number)
+
+{
+  int iVar1;
+  int iVar2;
+  byte ch;
+  byte *pbVar4;
+  byte *pbVar5;
+  byte ch2;
+  
+  pbVar4 = *(byte **)(text + 8);
+  pbVar5 = *(byte **)(len + 8);
+  *number = 0;
+  do {
+    while ((ch2 = *pbVar4, ch2 != 0 && (iVar1 = CollationCode(ch2), iVar1 == 0))) {
+      pbVar4 = pbVar4 + 1;
+    }
+    while ((ch = *pbVar5, ch != 0 && (iVar1 = CollationCode(ch), iVar1 == 0))) {
+      pbVar5 = pbVar5 + 1;
+    }
+    if (ch2 == 0) {
+      if (ch == 0) {
+        return 0;
+      }
+      return -1;
+    }
+    if (ch == 0) {
+      return 1;
+    }
+    if ((((char)ch2 < '1') || ('9' < (char)ch2)) &&
+       (((char)ch < '1' || ('9' < (char)ch)))) {
+      if ((&DAT_004f50d8)[ch2] != '\0') {
+        ch2 = (&DAT_004f50d8)[ch2];
+      }
+      if ((&DAT_004f50d8)[ch] != '\0') {
+        ch = (&DAT_004f50d8)[ch];
+      }
+      if (ch != ch2) {
+        return (int)(char)ch2 - (int)(char)ch;
+      }
+      pbVar4 = pbVar4 + 1;
+      pbVar5 = pbVar5 + 1;
+    }
+    else {
+      iVar1 = atoi((char *)pbVar4);
+      iVar2 = atoi((char *)pbVar5);
+      if (iVar1 - iVar2 != 0) {
+        return iVar1 - iVar2;
+      }
+      do {
+        pbVar4 = pbVar4 + 1;
+        if ((char)*pbVar4 < '0') break;
+      } while ((char)*pbVar4 < ':');
+      do {
+        pbVar5 = pbVar5 + 1;
+        if ((char)*pbVar5 < '0') break;
+      } while ((char)*pbVar5 < ':');
+    }
+    *number = *number + 1;
+  } while( true );
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00469f48  DefinitionLinkLess   (198 bytes)   [analysis]
+//   order of two definition links
+//   file placement: inferred (address adjacency)
+bool __cdecl DefinitionLinkLess(int a,int b)
+
+{
+  int iVar1;
+  int iVar2;
+  bool bVar3;
+  int number;
+  undefined4 unused;
+  int len;
+  int text;
+  
+  if (*(int *)(a + 0x10) == *(int *)(b + 0x10)) {
+    iVar2 = 0;
+    do {
+      iVar1 = *(int *)(a + 0x20) - *(int *)(a + 0x1c);
+      if (iVar1 < 0) {
+        iVar1 = iVar1 + 0xf;
+      }
+      if (iVar1 >> 4 == 0) {
+        text = a + 0x58;
+      }
+      else if (iVar2 == 0) {
+        text = *(int *)(a + 0x1c);
+      }
+      else {
+        text = *(int *)(a + 0x3c);
+      }
+      iVar1 = *(int *)(b + 0x20) - *(int *)(b + 0x1c);
+      if (iVar1 < 0) {
+        iVar1 = iVar1 + 0xf;
+      }
+      if (iVar1 >> 4 == 0) {
+        len = b + 0x58;
+      }
+      else if (iVar2 == 0) {
+        len = *(int *)(b + 0x1c);
+      }
+      else {
+        len = *(int *)(b + 0x3c);
+      }
+      iVar1 = ParseLinkTarget(text,len,&number);
+      if (iVar1 != 0) {
+        return iVar1 < 0;
+      }
+      iVar2 = iVar2 + 1;
+      unused = 0;
+    } while (iVar2 < 2);
+    bVar3 = false;
+  }
+  else {
+    bVar3 = *(int *)(a + 0x10) - *(int *)(b + 0x10) < 0;
+  }
+  return bVar3;
 }
 
 } // namespace tea

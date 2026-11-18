@@ -5,11 +5,12 @@ SHA-256 `17654f120447e967b41e97b801f862ad0a780dde475b66b75003117c8639883a`
 | | |
 |---|---|
 | Functions decompiled | 3029 (+3 that Ghidra could not decompile, listed below) |
-| Application functions (`src/`) | 215, of which 61 have a recovered name (28.4%) |
+| Application functions (`src/`) | 215, of which 213 have a recovered name (99.1%) |
 | Runtime / library functions (`lib/`) | 2814 |
 | **Compiles** | **192 files, 0 errors** — 192 object files produced |
 | Mechanical repairs needed for C++ | 215 in 45 files |
 | Links into a program | no — 1156 symbols undefined (e.g. `DictionaryMaintainer::vftable`, `DAT_00485bcc`, `_tls_index`) |
+| Variables (parameters and locals) | 16752; 579 named by hand, 6964 by rule, 8090 still with Ghidra's storage name. In `src/`: 2583, of which 552 keep a storage name (78.6% named) |
 | Globals declared in `decomp.h` | 1107 |
 | Classes recovered from RTTI | 228 (8 application classes) |
 | OWL response tables (message maps) | 22, 18 tied to their class |
@@ -35,30 +36,39 @@ Each was applied at a location the compiler reported, in a fixed way; see ../REA
 
 | source tag | functions |
 |---|---|
-| unnamed | 2028 |
+| unnamed | 1697 |
 | rtti:vtable | 602 |
 | owl:response-table | 187 |
 | rtti:dtor | 185 |
+| rtti:vtable-store | 117 |
+| analysis | 85 |
+| analysis (matched TEACON.exe) | 38 |
+| analysis (matched TEA.exe, duplicated code) | 36 |
+| analysis (matched TEACON.exe, duplicated code) | 24 |
+| analysis (matched TEA.exe) | 22 |
 | analysis (usage pattern) (matched TEACON.exe) | 13 |
+| analysis (position-matched TEA.exe) | 6 |
 | analysis (usage pattern) (position-matched TEACON.exe) | 5 |
-| analysis (matched TEACON.exe) | 3 |
+| analysis (position-matched TEACON.exe) | 4 |
+| notes (matched TEA.exe, duplicated code) | 3 |
 | analysis (usage pattern) (matched TEA.exe) | 3 |
-| notes (position-matched TEA.exe) | 1 |
 | analysis (usage pattern, less certain) (position-matched TEACON.exe) | 1 |
 | analysis (usage pattern, less certain) (matched TEACON.exe) | 1 |
+
+Every renamed variable, with the rule or hand assignment behind it, is listed in [varnames.tsv](varnames.tsv).
 
 ## Application modules (`src/`)
 
 | file | functions | named | address range |
 |---|---|---|---|
-| [src/DMDialog.cpp](src/DMDialog.cpp) | 63 | 31 | 0x00401000 – 0x00405f68 |
-| [src/DMApplication.cpp](src/DMApplication.cpp) | 9 | 8 | 0x00403778 – 0x00404158 |
-| [src/DictionaryMaintainer.cpp](src/DictionaryMaintainer.cpp) | 21 | 12 | 0x00405fbc – 0x00415fb8 |
-| [src/OccurrenceListCache.cpp](src/OccurrenceListCache.cpp) | 88 | 2 | 0x00405ff4 – 0x00414a7c |
-| [src/TSBuildProfile.cpp](src/TSBuildProfile.cpp) | 5 | 1 | 0x004160b8 – 0x004171b4 |
-| [src/TSDictionaryBuilderProgressBar.cpp](src/TSDictionaryBuilderProgressBar.cpp) | 15 | 3 | 0x00417310 – 0x004198b4 |
-| [src/Persist.cpp](src/Persist.cpp) | 8 | 3 | 0x00419998 – 0x00419bf0 |
-| [src/Help.cpp](src/Help.cpp) | 6 | 1 | 0x00419d14 – 0x00419e8c |
+| [src/DMDialog.cpp](src/DMDialog.cpp) | 63 | 61 | 0x00401000 – 0x0041740c |
+| [src/DMApplication.cpp](src/DMApplication.cpp) | 9 | 9 | 0x00403778 – 0x00404158 |
+| [src/DictionaryMaintainer.cpp](src/DictionaryMaintainer.cpp) | 21 | 21 | 0x00405f68 – 0x00415f14 |
+| [src/OccurrenceListCache.cpp](src/OccurrenceListCache.cpp) | 88 | 88 | 0x00405ff4 – 0x00414a7c |
+| [src/TSBuildProfile.cpp](src/TSBuildProfile.cpp) | 5 | 5 | 0x00415fb8 – 0x00416c8c |
+| [src/TSDictionaryBuilderProgressBar.cpp](src/TSDictionaryBuilderProgressBar.cpp) | 14 | 14 | 0x004171b4 – 0x00419664 |
+| [src/Persist.cpp](src/Persist.cpp) | 9 | 9 | 0x004198b4 – 0x00419bf0 |
+| [src/Help.cpp](src/Help.cpp) | 6 | 6 | 0x00419d14 – 0x00419e8c |
 
 ## Application classes (8)
 

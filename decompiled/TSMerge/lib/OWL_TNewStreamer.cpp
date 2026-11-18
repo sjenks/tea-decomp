@@ -8,14 +8,14 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00410058  OWL::TNewStreamer::vf0   (47 bytes)   [rtti:vtable virtual slot 0; function defined from vtable-slot]
-void __cdecl OWL::TNewStreamer::vf0(int param_1)
+void __cdecl OWL::TNewStreamer::vf0(int self)
 
 {
   int *piVar1;
   int iVar2;
   undefined4 *puVar3;
   
-  piVar1 = *(int **)(param_1 + 4);
+  piVar1 = *(int **)(self + 4);
   if (piVar1 == (int *)0x0) {
     iVar2 = 0;
   }

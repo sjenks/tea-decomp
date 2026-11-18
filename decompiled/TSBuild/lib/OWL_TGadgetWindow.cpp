@@ -1,5 +1,5 @@
 // TSBuild.exe — runtime / library code "OWL_TGadgetWindow"
-// 37 functions, 0x00421318..0x00427604. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 38 functions, 0x00421318..0x00427604. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,72 +7,160 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00421318  OWL::TGadgetWindow::vf3   (11 bytes)   [rtti:vtable virtual slot 3]
-undefined4 __cdecl OWL::TGadgetWindow::vf3(int param_1)
+// 0x00421318  OWL::TGadgetWindow::GetTooltip   (11 bytes)   [rtti:vtable virtual slot 1]
+//   override of OWL::TWindow vtable slot 1, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x004277ca); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TGadgetWindow::vf3 [rtti:vtable]
+undefined4 __cdecl OWL::TGadgetWindow::GetTooltip(int self)
 
 {
-  return *(undefined4 *)(param_1 + 0x3b);
+  return *(undefined4 *)(self + 0x3b);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004251dc  OWL::TGadgetWindow::Find   (70 bytes)   [owl:response-table response-table-find]
-//   also: OWL::TGadgetWindow::vf26 [rtti:vtable]
-undefined4 __cdecl OWL::TGadgetWindow::Find(undefined4 *param_1,int *param_2,undefined *param_3)
+//   also: OWL::TGadgetWindow::Find [rtti:vtable]; OWL::TGadgetWindow::vf26 [rtti:vtable]
+undefined4 __cdecl OWL::TGadgetWindow::Find(undefined4 *self,int *param_2,undefined *param_3)
 
 {
   undefined4 uVar1;
   
-  param_2[2] = (int)param_1;
-  uVar1 = FUN_00422b68(param_1[4],(int *)&OWL::TGadgetWindow::__entries,param_2,param_3);
+  param_2[2] = (int)self;
+  uVar1 = FUN_00422b68(self[4],(int *)&OWL::TGadgetWindow::__entries,param_2,param_3);
   if (((char)uVar1 == '\0') &&
-     (uVar1 = OWL::TWindow::Find((undefined4 *)*param_1,param_2,param_3), (char)uVar1 == '\0')) {
+     (uVar1 = OWL::TWindow::Find((undefined4 *)*self,param_2,param_3), (char)uVar1 == '\0')) {
     return 0;
   }
   return 1;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00425710  OWL::TGadgetWindow::~TGadgetWindow   (325 bytes)   [rtti:dtor destructor]
-//   written in code as OWL::TGadgetWindow::_dtor
-void __cdecl OWL::TGadgetWindow::_dtor(int *param_1,uint param_2)
+// 0x004253f4  OWL::TGadgetWindow::TGadgetWindow   (757 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TGadgetWindow's vtable at its vptr offset (+0x18) in this
+int * __cdecl OWL::TGadgetWindow::TGadgetWindow(int *self,int vbasesBuilt,undefined4 param_3,undefined1 param_4,uint *param_5, int param_6)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_34;
+  bool bVar1;
+  int metric;
+  undefined4 *sehChainHead;
+  tagTEXTMETRICA textMetrics;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  uint *local_8;
+  
+  __InitExceptBlockLDTC(0x47b0cc);
+  ehContext = 8;
+  if (vbasesBuilt == 0) {
+    *self = (int)self + 0x5d;
+    *(int *)((int)self + 0x5d) = (int)self + 0x51;
+    *(int *)((int)self + 0x61) = (int)self + 0x55;
+    self[4] = (int)self + 0x51;
+    self[5] = (int)self + 0x55;
+    *(undefined4 *)((int)self + 0x4d) = 0;
+    *(undefined4 *)((int)self + 0x59) = 0;
+    *(undefined ***)((int)self + 0x51) = &OWL::TEventHandler::vftable;
+    *(undefined ***)((int)self + 0x55) = &OWL::TStreamableBase::vftable;
+    ehDtorCount = ehDtorCount + 1;
+    *(int *)(self[4] + -4) = *(int *)(self[4] + -4) + 0x96;
+    OWL::TWindow::TWindow_435d18((int *)((int)self + 0x5d),1);
+    ehDtorCount = ehDtorCount + 1;
+    *(int *)(self[4] + -4) = *(int *)(self[4] + -4) + -0x96;
+  }
+  OWL::TGadgetList::TGadgetList(self + 1);
+  ehDtorCount = ehDtorCount + 1;
+  self[6] = (int)&OWL::TGadgetWindow::vftable;
+  self[1] = (int)&PTR_LAB_0047b3d0;
+  *(undefined ***)self[4] = &PTR_LAB_0047b3f0;
+  *(undefined ***)self[5] = &PTR_LAB_0047b3fc;
+  *(undefined ***)(*self + 8) = &OWL::TGadgetWindow::vftable_TWindow;
+  self[10] = 1;
+  *(undefined1 *)((int)self + 0x2f) = 0;
+  *(undefined1 *)((int)self + 0x2e) = 0;
+  *(undefined1 *)((int)self + 0x2d) = *(undefined1 *)((int)self + 0x2e);
+  *(undefined1 *)(self + 0xb) = *(undefined1 *)((int)self + 0x2d);
+  *(undefined1 *)(self + 0x12) = 0;
+  *(undefined4 *)((int)self + 0x49) = 0;
+  FUN_00435df4(*self,param_3,(uint *)0x0,param_6);
+  FUN_00438618(*self,0,0x2000000,0);
+  bVar1 = FUN_0041b9e4();
+  if (!bVar1) {
+    FUN_00438618(*self,0,0x800000,0);
+  }
+  self[8] = 0;
+  self[9] = 0;
+  if ((param_5 == (uint *)0x0) &&
+     (param_5 = (uint *)operator_new(), local_8 = param_5, param_5 != (uint *)0x0)) {
+    ehContext = 0x20;
+    FUN_00425224(param_5,6,'\0',0);
+    ehContext = 0x14;
+    param_5 = local_8;
+  }
+  self[7] = (int)param_5;
+  *(undefined1 *)((int)self + 0x35) = param_4;
+  *(bool *)((int)self + 0x31) = *(char *)((int)self + 0x35) != '\0';
+  *(bool *)((int)self + 0x32) = *(char *)((int)self + 0x35) != '\x01';
+  *(undefined1 *)((int)self + 0x36) = 1;
+  *(undefined1 *)((int)self + 0x33) = 0;
+  *(undefined1 *)(self + 0xd) = 1;
+  FUN_00423bf8(self[7],&textMetrics);
+  *(char *)(self + 0xc) = (char)textMetrics.tmHeight + (char)textMetrics.tmExternalLeading;
+  *(uint *)(*self + 0x2c) = (uint)*(byte *)(self + 0xc);
+  if ((*(byte *)(*self + 0x1a) & 0x80) != 0) {
+    metric = GetSystemMetrics(DAT_0047d520);
+    *(int *)(*self + 0x2c) = *(int *)(*self + 0x2c) + metric * 2;
+  }
+  *(undefined4 *)(*self + 0x5c) = DAT_0048c698;
+  *(undefined4 *)((int)self + 0x37) = 0;
+  *(undefined4 *)((int)self + 0x3b) = 0;
+  *(undefined1 *)((int)self + 0x3f) = 0;
+  self[0x10] = 0;
+  self[0x11] = 4;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00425710  OWL::TGadgetWindow::~TGadgetWindow   (325 bytes)   [rtti:dtor destructor]
+//   written in code as OWL::TGadgetWindow::_dtor
+void __cdecl OWL::TGadgetWindow::_dtor(int *self,uint dtorFlags)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x47b128);
-  if (param_1 != (int *)0x0) {
-    param_1[6] = (int)&OWL::TGadgetWindow::vftable;
-    param_1[1] = (int)&PTR_LAB_0047b3d0;
-    *(undefined ***)param_1[4] = &PTR_LAB_0047b3f0;
-    *(undefined ***)param_1[5] = &PTR_LAB_0047b3fc;
-    *(undefined ***)(*param_1 + 8) = &PTR_LAB_0047b408;
-    if ((uint *)param_1[7] != (uint *)0x0) {
-      OWL::TGdiObject::_dtor((uint *)param_1[7],0);
+  if (self != (int *)0x0) {
+    self[6] = (int)&OWL::TGadgetWindow::vftable;
+    self[1] = (int)&PTR_LAB_0047b3d0;
+    *(undefined ***)self[4] = &PTR_LAB_0047b3f0;
+    *(undefined ***)self[5] = &PTR_LAB_0047b3fc;
+    *(undefined ***)(*self + 8) = &OWL::TGadgetWindow::vftable_TWindow;
+    if ((uint *)self[7] != (uint *)0x0) {
+      OWL::TGdiObject::_dtor((uint *)self[7],0);
       operator_delete();
     }
-    if (*(undefined4 **)((int)param_1 + 0x37) != (undefined4 *)0x0) {
-      (**(code **)**(undefined4 **)((int)param_1 + 0x37))();
+    if (*(undefined4 **)((int)self + 0x37) != (undefined4 *)0x0) {
+      (**(code **)**(undefined4 **)((int)self + 0x37))();
     }
-    OWL::TGadgetList::_dtor(param_1 + 1,0);
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[4] + -4) = *(int *)(param_1[4] + -4) + 0x96;
-      OWL::TWindow::_dtor((undefined4 *)((int)param_1 + 0x5d),0);
-      *(int *)(param_1[4] + -4) = *(int *)(param_1[4] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor((undefined4 *)((int)param_1 + 0x55),0);
+    OWL::TGadgetList::_dtor(self + 1,0);
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[4] + -4) = *(int *)(self[4] + -4) + 0x96;
+      OWL::TWindow::_dtor((undefined4 *)((int)self + 0x5d),0);
+      *(int *)(self[4] + -4) = *(int *)(self[4] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor((undefined4 *)((int)self + 0x55),0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_34;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00425858  OWL::TGadgetWindow::EvSysColorChange   (31 bytes)   [owl:response-table message-handler]
 //   WM_SYSCOLORCHANGE
-void OWL::TGadgetWindow::EvSysColorChange(undefined4 param_1,undefined4 param_2,int *param_3,int param_4)
+void OWL::TGadgetWindow::EvSysColorChange(undefined4 self,undefined4 param_2,int *param_3,int param_4)
 
 {
   int *piVar1;
@@ -85,146 +173,150 @@ void OWL::TGadgetWindow::EvSysColorChange(undefined4 param_1,undefined4 param_2,
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00425878  OWL::TGadgetWindow::vf12   (145 bytes)   [rtti:vtable virtual slot 12]
-void __cdecl OWL::TGadgetWindow::vf12(int *param_1,int param_2)
+// 0x00425878  OWL::TGadgetWindow::IdleAction   (145 bytes)   [rtti:vtable virtual slot 11]
+//   override of OWL::TWindow vtable slot 11, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x0042777e); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TGadgetWindow::vf12 [rtti:vtable]
+void __cdecl OWL::TGadgetWindow::IdleAction(int *self,int param_2)
 
 {
   int *piVar1;
   POINT Point;
-  HWND pHVar2;
-  tagPOINT local_c;
+  HWND hWnd;
+  tagPOINT pt;
   
-  if ((param_2 == 0) && (param_1[9] != 0)) {
-    local_c.x = 0;
-    local_c.y = 0;
-    GetCursorPos(&local_c);
-    Point.y = local_c.y;
-    Point.x = local_c.x;
-    pHVar2 = WindowFromPoint(Point);
-    if (pHVar2 != *(HWND *)(*param_1 + 0xc)) {
-      FUN_00436d48(*param_1,0x200,0,0xffffffff);
+  if ((param_2 == 0) && (self[9] != 0)) {
+    pt.x = 0;
+    pt.y = 0;
+    GetCursorPos(&pt);
+    Point.y = pt.y;
+    Point.x = pt.x;
+    hWnd = WindowFromPoint(Point);
+    if (hWnd != *(HWND *)(*self + 0xc)) {
+      FUN_00436d48(*self,0x200,0,0xffffffff);
     }
   }
-  for (piVar1 = (int *)param_1[2]; piVar1 != (int *)0x0; piVar1 = *(int **)((int)piVar1 + 0x3e)) {
+  for (piVar1 = (int *)self[2]; piVar1 != (int *)0x0; piVar1 = *(int **)((int)piVar1 + 0x3e)) {
     (**(code **)(*piVar1 + 0x10))();
   }
-  OWL::TWindow::vf11(*param_1,param_2);
+  OWL::TWindow::IdleAction(*self,param_2);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00425a50  OWL::TGadgetWindow::vf13   (55 bytes)   [rtti:vtable virtual slot 13]
-void __cdecl OWL::TGadgetWindow::vf13(int *param_1)
+void __cdecl OWL::TGadgetWindow::vf13(int *self)
 
 {
-  if (*(int *)(*param_1 + 0xc) != 0) {
-    (**(code **)(param_1[6] + 0x48))();
-    (**(code **)(*(int *)(*param_1 + 8) + 0x6c))();
+  if (*(int *)(*self + 0xc) != 0) {
+    (**(code **)(self[6] + 0x48))();
+    (**(code **)(*(int *)(*self + 8) + 0x6c))();
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00425a88  OWL::TGadgetWindow::vf14   (204 bytes)   [rtti:vtable virtual slot 14]
-void __cdecl OWL::TGadgetWindow::vf14(int *param_1,undefined4 *param_2)
+void __cdecl OWL::TGadgetWindow::vf14(int *self,undefined4 *param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_34;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x47b18c);
-  _vector_new_ldtc_((int *)0x0,0x10,param_1[3],1,(undefined*)FUN_00425b54);
-  if ((*(char *)((int)param_1 + 0x31) != '\0') || (*(char *)((int)param_1 + 0x32) != '\0')) {
-    (**(code **)(param_1[6] + 0x44))();
+  _vector_new_ldtc_((int *)0x0,0x10,self[3],1,(undefined*)FUN_00425b54);
+  if ((*(char *)((int)self + 0x31) != '\0') || (*(char *)((int)self + 0x32) != '\0')) {
+    (**(code **)(self[6] + 0x44))();
   }
-  if (*(char *)((int)param_1 + 0x31) == '\0') {
-    *param_2 = *(undefined4 *)(*param_1 + 0x28);
+  if (*(char *)((int)self + 0x31) == '\0') {
+    *param_2 = *(undefined4 *)(*self + 0x28);
   }
   else {
     *param_2 = 0;
   }
-  if (*(char *)((int)param_1 + 0x32) == '\0') {
-    param_2[1] = *(undefined4 *)(*param_1 + 0x2c);
+  if (*(char *)((int)self + 0x32) == '\0') {
+    param_2[1] = *(undefined4 *)(*self + 0x2c);
   }
-  else if (param_1[3] == 0) {
+  else if (self[3] == 0) {
     param_2[1] = 0;
   }
   else {
     param_2[1] = 0;
   }
   operator_delete_array();
-  *in_FS_OFFSET = local_34;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00425c40  OWL::TGadgetWindow::vf1   (25 bytes)   [rtti:vtable virtual slot 1]
-void __cdecl OWL::TGadgetWindow::vf1(int *param_1)
+// 0x00425c40  OWL::TGadgetWindow::Create   (25 bytes)   [rtti:vtable virtual slot 4]
+//   override of OWL::TWindow vtable slot 4, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x004277a4); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TGadgetWindow::vf1 [rtti:vtable]
+void __cdecl OWL::TGadgetWindow::Create(int *self)
 
 {
-  FUN_00425bf0(param_1);
-  OWL::TWindow::vf4(*param_1);
+  FUN_00425bf0(self);
+  OWL::TWindow::Create(*self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00425c5c  OWL::TGadgetWindow::vf2   (131 bytes)   [rtti:vtable virtual slot 2]
-void __cdecl OWL::TGadgetWindow::vf2(int *param_1,int param_2)
+void __cdecl OWL::TGadgetWindow::vf2(int *self,int param_2)
 
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  int *piVar3;
+  int *self2;
   
-  if ((param_2 != *(char *)((int)param_1 + 0x35)) || ((char)param_1[0xd] != '\0')) {
-    if (param_2 != *(char *)((int)param_1 + 0x35)) {
-      uVar1 = *(undefined1 *)((int)param_1 + 0x31);
-      *(undefined1 *)((int)param_1 + 0x31) = *(undefined1 *)((int)param_1 + 0x32);
-      *(undefined1 *)((int)param_1 + 0x32) = uVar1;
-      *(char *)((int)param_1 + 0x35) = (char)param_2;
-      *(undefined1 *)(param_1 + 0xd) = 1;
+  if ((param_2 != *(char *)((int)self + 0x35)) || ((char)self[0xd] != '\0')) {
+    if (param_2 != *(char *)((int)self + 0x35)) {
+      uVar1 = *(undefined1 *)((int)self + 0x31);
+      *(undefined1 *)((int)self + 0x31) = *(undefined1 *)((int)self + 0x32);
+      *(undefined1 *)((int)self + 0x32) = uVar1;
+      *(char *)((int)self + 0x35) = (char)param_2;
+      *(undefined1 *)(self + 0xd) = 1;
     }
-    piVar3 = param_1;
-    uVar2 = FUN_00425bf0(param_1);
-    (**(code **)(param_1[6] + 0x34))(uVar2,param_1[6],piVar3,param_1);
+    self2 = self;
+    uVar2 = FUN_00425bf0(self);
+    (**(code **)(self[6] + 0x34))(uVar2,self[6],self2,self);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00425ce0  OWL::TGadgetWindow::vf16   (182 bytes)   [rtti:vtable virtual slot 16]
-void __cdecl OWL::TGadgetWindow::vf16(int *param_1,int *param_2)
+void __cdecl OWL::TGadgetWindow::vf16(int *self,int *param_2)
 
 {
-  int iVar1;
+  int metric;
   int local_14;
   int local_10;
   int local_c;
   int local_8;
   
-  FUN_00423fac(param_1 + 10,&local_8,&local_c,&local_10,&local_14,(uint)*(byte *)(param_1 + 0xc));
-  if (*(int *)(*param_1 + 0x28) == 0) {
+  FUN_00423fac(self + 10,&local_8,&local_c,&local_10,&local_14,(uint)*(byte *)(self + 0xc));
+  if (*(int *)(*self + 0x28) == 0) {
     *param_2 = 0;
     param_2[2] = 0;
   }
   else {
     *param_2 = local_8;
-    param_2[2] = *(int *)(*param_1 + 0x28) - local_c;
-    if ((*(byte *)(*param_1 + 0x1a) & 0x80) != 0) {
-      iVar1 = GetSystemMetrics(DAT_0047d520);
-      param_2[2] = param_2[2] + iVar1 * -2;
+    param_2[2] = *(int *)(*self + 0x28) - local_c;
+    if ((*(byte *)(*self + 0x1a) & 0x80) != 0) {
+      metric = GetSystemMetrics(DAT_0047d520);
+      param_2[2] = param_2[2] + metric * -2;
     }
   }
-  if (*(int *)(*param_1 + 0x2c) == 0) {
+  if (*(int *)(*self + 0x2c) == 0) {
     param_2[1] = 0;
     param_2[3] = 0;
   }
   else {
     param_2[1] = local_10;
-    param_2[3] = *(int *)(*param_1 + 0x2c) - local_14;
-    if ((*(byte *)(*param_1 + 0x1a) & 0x80) != 0) {
-      iVar1 = GetSystemMetrics(DAT_0047d518);
-      param_2[3] = param_2[3] + iVar1 * -2;
+    param_2[3] = *(int *)(*self + 0x2c) - local_14;
+    if ((*(byte *)(*self + 0x1a) & 0x80) != 0) {
+      metric = GetSystemMetrics(DAT_0047d518);
+      param_2[3] = param_2[3] + metric * -2;
     }
   }
   return;
@@ -232,19 +324,19 @@ void __cdecl OWL::TGadgetWindow::vf16(int *param_1,int *param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00425d98  OWL::TGadgetWindow::vf20   (70 bytes)   [rtti:vtable virtual slot 20]
-void __cdecl OWL::TGadgetWindow::vf20(int param_1,int param_2,int param_3,int *param_4)
+void __cdecl OWL::TGadgetWindow::vf20(int self,int param_2,int param_3,int *param_4)
 
 {
-  int iVar1;
+  int metric;
   
   if ((*(int *)(param_2 + 0x1a) == 1) && (*(int *)(param_3 + 0x1a) == 1)) {
-    if (*(char *)(param_1 + 0x35) == '\0') {
-      iVar1 = GetSystemMetrics(DAT_0047d518);
-      *param_4 = *param_4 - iVar1;
+    if (*(char *)(self + 0x35) == '\0') {
+      metric = GetSystemMetrics(DAT_0047d518);
+      *param_4 = *param_4 - metric;
     }
     else {
-      iVar1 = GetSystemMetrics(DAT_0047d520);
-      param_4[1] = param_4[1] - iVar1;
+      metric = GetSystemMetrics(DAT_0047d520);
+      param_4[1] = param_4[1] - metric;
     }
   }
   return;
@@ -252,16 +344,16 @@ void __cdecl OWL::TGadgetWindow::vf20(int param_1,int param_2,int param_3,int *p
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00425de0  OWL::TGadgetWindow::vf18   (402 bytes)   [rtti:vtable virtual slot 18]
-int * __cdecl OWL::TGadgetWindow::vf18(int *param_1,int param_2)
+int * __cdecl OWL::TGadgetWindow::vf18(int *self,int param_2)
 
 {
   bool bVar1;
-  int iVar2;
+  int i;
   int iVar3;
   int *piVar4;
   int *piVar5;
   int *piVar6;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   byte bVar7;
   int local_6c;
   int local_68;
@@ -272,45 +364,45 @@ int * __cdecl OWL::TGadgetWindow::vf18(int *param_1,int param_2)
   int local_54;
   int local_50;
   int local_4c;
-  undefined4 local_48;
-  undefined4 local_44;
-  undefined4 local_40;
-  undefined4 local_3c;
-  undefined4 local_38;
-  undefined4 local_34;
-  undefined2 local_24;
-  int local_18;
-  undefined4 local_10;
-  undefined4 local_c;
+  undefined4 unused;
+  undefined4 unused2;
+  undefined4 unused3;
+  undefined4 unused4;
+  undefined4 unused5;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined4 unused6;
+  undefined4 unused7;
   int *local_8;
   
   bVar7 = 0;
   __InitExceptBlockLDTC(0x47b1f0);
-  local_24 = 8;
-  local_10 = 0;
-  local_c = 0;
+  ehContext = 8;
+  unused6 = 0;
+  unused7 = 0;
   local_8 = _vector_new_ldtc_((int *)0x0,0x10,*(int *)(param_2 + 0xc),1,(undefined*)FUN_00425b54);
-  local_18 = local_18 + 2;
-  local_24 = 0x2c;
+  ehDtorCount = ehDtorCount + 2;
+  ehContext = 0x2c;
   (**(code **)(*(int *)(param_2 + 0x18) + 0x44))();
   local_4c = 0;
-  local_48 = 0;
-  local_44 = 0;
-  local_40 = 0;
+  unused = 0;
+  unused2 = 0;
+  unused3 = 0;
   iVar3 = 0;
   for (piVar5 = *(int **)(param_2 + 8); piVar5 != (int *)0x0; piVar5 = *(int **)((int)piVar5 + 0x3e)
       ) {
     piVar4 = (int *)((int)piVar5 + 10);
     piVar6 = &local_5c;
-    for (iVar2 = 4; iVar2 != 0; iVar2 = iVar2 + -1) {
+    for (i = 4; i != 0; i = i + -1) {
       *piVar6 = *piVar4;
       piVar4 = piVar4 + (uint)bVar7 * -2 + 1;
       piVar6 = piVar6 + (uint)bVar7 * -2 + 1;
     }
-    local_24 = 0x2c;
+    ehContext = 0x2c;
     piVar4 = local_8 + iVar3 * 4;
     piVar6 = &local_6c;
-    for (iVar2 = 4; iVar2 != 0; iVar2 = iVar2 + -1) {
+    for (i = 4; i != 0; i = i + -1) {
       *piVar6 = *piVar4;
       piVar4 = piVar4 + (uint)bVar7 * -2 + 1;
       piVar6 = piVar6 + (uint)bVar7 * -2 + 1;
@@ -324,8 +416,8 @@ int * __cdecl OWL::TGadgetWindow::vf18(int *param_1,int param_2)
     }
     if (!bVar1) {
       (**(code **)(*piVar5 + 0xc))();
-      local_3c = 0;
-      local_38 = 0;
+      unused4 = 0;
+      unused5 = 0;
       if ((local_5c == 0) && (local_58 == 0)) {
         bVar1 = false;
       }
@@ -341,48 +433,48 @@ int * __cdecl OWL::TGadgetWindow::vf18(int *param_1,int param_2)
   }
   *(undefined1 *)(param_2 + 0x34) = 0;
   piVar5 = &local_4c;
-  piVar4 = param_1;
+  piVar4 = self;
   for (iVar3 = 4; iVar3 != 0; iVar3 = iVar3 + -1) {
     *piVar4 = *piVar5;
     piVar5 = piVar5 + (uint)bVar7 * -2 + 1;
     piVar4 = piVar4 + (uint)bVar7 * -2 + 1;
   }
-  local_18 = local_18 + -2;
+  ehDtorCount = ehDtorCount + -2;
   operator_delete_array();
-  *in_FS_OFFSET = local_34;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00426880  OWL::TGadgetWindow::vf17   (57 bytes)   [rtti:vtable virtual slot 17]
-void __cdecl OWL::TGadgetWindow::vf17(int param_1,int param_2,int *param_3)
+void __cdecl OWL::TGadgetWindow::vf17(int self,int param_2,int *param_3)
 
 {
   if (param_2 == 0) {
-    FUN_00425f74(param_1,param_3);
+    FUN_00425f74(self,param_3);
     return;
   }
   if (param_2 != 1) {
-    FUN_0042652c(param_1,param_3);
+    FUN_0042652c(self,param_3);
     return;
   }
-  FUN_00426244(param_1,param_3);
+  FUN_00426244(self,param_3);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004268cc  OWL::TGadgetWindow::vf5   (38 bytes)   [rtti:vtable virtual slot 5]
-void __cdecl OWL::TGadgetWindow::vf5(int *param_1,int param_2,int param_3,int param_4)
+void __cdecl OWL::TGadgetWindow::vf5(int *self,int param_2,int param_3,int param_4)
 
 {
-  OWL::TGadgetList::vf1(param_1 + 1,param_2,param_3,param_4);
-  FUN_00425bf0(param_1);
+  OWL::TGadgetList::vf1(self + 1,param_2,param_3,param_4);
+  FUN_00425bf0(self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004268f4  OWL::TGadgetWindow::vf6   (38 bytes)   [rtti:vtable virtual slot 6]
-void OWL::TGadgetWindow::vf6(undefined4 param_1,undefined4 param_2,undefined4 param_3,int *param_4,int *param_5 ,int param_6,int param_7)
+void OWL::TGadgetWindow::vf6(undefined4 self,undefined4 param_2,undefined4 param_3,int *param_4,int *param_5 ,int param_6,int param_7)
 
 {
   OWL::TGadgetList::vf2((int)(param_4 + 1),param_2,param_3,param_4 + 1,param_5,param_6,param_7);
@@ -392,46 +484,46 @@ void OWL::TGadgetWindow::vf6(undefined4 param_1,undefined4 param_2,undefined4 pa
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042691c  OWL::TGadgetWindow::vf8   (63 bytes)   [rtti:vtable virtual slot 8]
-void __cdecl OWL::TGadgetWindow::vf8(int *param_1,int *param_2)
+void __cdecl OWL::TGadgetWindow::vf8(int *self,int *param_2)
 
 {
-  *(int **)((int)param_2 + 6) = param_1;
+  *(int **)((int)param_2 + 6) = self;
   (**(code **)(*param_2 + 0x20))();
-  if (*(int *)(*param_1 + 0xc) != 0) {
+  if (*(int *)(*self + 0xc) != 0) {
     (**(code **)(*param_2 + 0x1c))();
   }
   if (*(char *)((int)param_2 + 5) != '\0') {
-    *(char *)((int)param_1 + 0x33) = *(char *)((int)param_1 + 0x33) + '\x01';
+    *(char *)((int)self + 0x33) = *(char *)((int)self + 0x33) + '\x01';
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042695c  OWL::TGadgetWindow::vf7   (33 bytes)   [rtti:vtable virtual slot 7]
-int __cdecl OWL::TGadgetWindow::vf7(int param_1,int param_2)
+int __cdecl OWL::TGadgetWindow::vf7(int self,int param_2)
 
 {
   int iVar1;
   
-  if (param_1 != *(int *)(param_2 + 6)) {
+  if (self != *(int *)(param_2 + 6)) {
     return 0;
   }
-  iVar1 = OWL::TGadgetList::vf3((int *)(param_1 + 4),param_2);
+  iVar1 = OWL::TGadgetList::vf3((int *)(self + 4),param_2);
   return iVar1;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00426980  OWL::TGadgetWindow::vf9   (127 bytes)   [rtti:vtable virtual slot 9]
-void __cdecl OWL::TGadgetWindow::vf9(int param_1,int *param_2)
+void __cdecl OWL::TGadgetWindow::vf9(int self,int *param_2)
 
 {
   if (*(char *)((int)param_2 + 5) != '\0') {
-    *(char *)(param_1 + 0x33) = *(char *)(param_1 + 0x33) + -1;
+    *(char *)(self + 0x33) = *(char *)(self + 0x33) + -1;
   }
-  if (param_2 == *(int **)(param_1 + 0x24)) {
-    *(undefined4 *)(param_1 + 0x24) = 0;
+  if (param_2 == *(int **)(self + 0x24)) {
+    *(undefined4 *)(self + 0x24) = 0;
   }
-  FUN_00425974(param_1,(int)param_2);
+  FUN_00425974(self,(int)param_2);
   (**(code **)(*param_2 + 0x28))();
   *(undefined4 *)((int)param_2 + 6) = 0;
   *(undefined4 *)((int)param_2 + 0x3e) = 0;
@@ -442,151 +534,157 @@ void __cdecl OWL::TGadgetWindow::vf9(int param_1,int *param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00426a00  OWL::TGadgetWindow::vf10   (86 bytes)   [rtti:vtable virtual slot 10]
-void __cdecl OWL::TGadgetWindow::vf10(int param_1,undefined4 param_2)
+void __cdecl OWL::TGadgetWindow::vf10(int self,undefined4 param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x47b244);
-  if (*(undefined4 **)(param_1 + 0x37) != (undefined4 *)0x0) {
-    (**(code **)**(undefined4 **)(param_1 + 0x37))();
+  if (*(undefined4 **)(self + 0x37) != (undefined4 *)0x0) {
+    (**(code **)**(undefined4 **)(self + 0x37))();
   }
-  *(undefined4 *)(param_1 + 0x37) = param_2;
-  *in_FS_OFFSET = local_30;
+  *(undefined4 *)(self + 0x37) = param_2;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00426a58  OWL::TGadgetWindow::vf11   (151 bytes)   [rtti:vtable virtual slot 11]
-undefined4 __cdecl OWL::TGadgetWindow::vf11(int param_1,int param_2,int param_3)
+undefined4 __cdecl OWL::TGadgetWindow::vf11(int self,int param_2,int param_3)
 
 {
   undefined4 uVar1;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   int local_3c;
-  int local_38;
-  int local_34;
-  int local_30;
-  undefined4 local_2c;
-  undefined2 local_1c;
-  undefined4 *local_8;
+  int unused;
+  int unused2;
+  int unused3;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  undefined4 *celArray;
   
   __InitExceptBlockLDTC(0x47b274);
-  if (*(int *)(param_1 + 0x37) == 0) {
+  if (*(int *)(self + 0x37) == 0) {
     if (param_2 == 0) {
       param_2 = 10;
     }
     if (param_3 == 0) {
       param_3 = 10;
     }
-    local_8 = (undefined4 *)operator_new();
-    if (local_8 != (undefined4 *)0x0) {
-      local_1c = 0x14;
+    celArray = (undefined4 *)operator_new();
+    if (celArray != (undefined4 *)0x0) {
+      ehContext = 0x14;
       local_3c = param_2;
-      local_38 = param_3;
-      local_34 = param_2;
-      local_30 = param_3;
-      FUN_0041eb38(local_8,&local_3c,1,10,5,1);
+      unused = param_3;
+      unused2 = param_2;
+      unused3 = param_3;
+      OWL::TCelArray::TCelArray_41eb38(celArray,&local_3c,1,10,5,1);
     }
-    *(undefined4 **)(param_1 + 0x37) = local_8;
+    *(undefined4 **)(self + 0x37) = celArray;
   }
-  uVar1 = *(undefined4 *)(param_1 + 0x37);
-  *in_FS_OFFSET = local_2c;
+  uVar1 = *(undefined4 *)(self + 0x37);
+  *sehChainHead = sehPrevFrame;
   return uVar1;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00426af0  OWL::TGadgetWindow::vf21   (193 bytes)   [rtti:vtable virtual slot 21]
-bool __cdecl OWL::TGadgetWindow::vf21(int *param_1)
+// 0x00426af0  OWL::TGadgetWindow::SetupWindow   (193 bytes)   [rtti:vtable virtual slot 30]
+//   override of OWL::TWindow vtable slot 30, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x00427732); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TGadgetWindow::vf21 [rtti:vtable]
+bool __cdecl OWL::TGadgetWindow::SetupWindow(int *self)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
-  OWL::TWindow::vf30(*param_1);
-  if ((char)param_1[0x12] != '\0') {
-    FUN_0042590c(param_1);
+  OWL::TWindow::SetupWindow(*self);
+  if ((char)self[0x12] != '\0') {
+    FUN_0042590c(self);
   }
-  if ((char)param_1[0xd] != '\0') {
-    (**(code **)(param_1[6] + 0x34))();
+  if ((char)self[0xd] != '\0') {
+    (**(code **)(self[6] + 0x34))();
   }
-  (**(code **)(param_1[6] + 0x38))();
-  if (*(char *)((int)param_1 + 0x31) == '\0') {
+  (**(code **)(self[6] + 0x38))();
+  if (*(char *)((int)self + 0x31) == '\0') {
 LAB_00426b45:
-    if ((*(char *)((int)param_1 + 0x32) == '\0') || (*(int *)(*param_1 + 0x2c) == 0))
+    if ((*(char *)((int)self + 0x32) == '\0') || (*(int *)(*self + 0x2c) == 0))
     goto LAB_00426b91;
   }
-  else if (*(int *)(*param_1 + 0x28) == 0) goto LAB_00426b45;
-  if (*(char *)((int)param_1 + 0x31) != '\0') {
-    *(undefined4 *)(*param_1 + 0x28) = 0;
+  else if (*(int *)(*self + 0x28) == 0) goto LAB_00426b45;
+  if (*(char *)((int)self + 0x31) != '\0') {
+    *(undefined4 *)(*self + 0x28) = 0;
   }
-  if (*(char *)((int)param_1 + 0x32) != '\0') {
-    *(undefined4 *)(*param_1 + 0x2c) = 0;
+  if (*(char *)((int)self + 0x32) != '\0') {
+    *(undefined4 *)(*self + 0x2c) = 0;
   }
-  (**(code **)(param_1[6] + 0x34))();
-  FUN_00438730(*param_1,(HWND)0x0,0,0,0,0,0x16);
+  (**(code **)(self[6] + 0x34))();
+  FUN_00438730(*self,(HWND)0x0,0,0,0,0,0x16);
 LAB_00426b91:
-  BVar1 = PostMessageA(*(HWND *)(*param_1 + 0xc),0x7ef2,0,0);
-  return BVar1 != 0;
+  ok = PostMessageA(*(HWND *)(*self + 0xc),0x7ef2,0,0);
+  return ok != 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00426bb4  OWL::TGadgetWindow::vf22   (105 bytes)   [rtti:vtable virtual slot 22]
-void __cdecl OWL::TGadgetWindow::vf22(int *param_1)
+// 0x00426bb4  OWL::TGadgetWindow::CleanupWindow   (105 bytes)   [rtti:vtable virtual slot 31]
+//   override of OWL::TWindow vtable slot 31, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x0042771f); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TGadgetWindow::vf22 [rtti:vtable]
+void __cdecl OWL::TGadgetWindow::CleanupWindow(int *self)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
-  if (*(int *)((int)param_1 + 0x49) != 0) {
-    BVar1 = KillTimer(*(HWND *)(*param_1 + 0xc),*(UINT_PTR *)((int)param_1 + 0x49));
-    if (BVar1 != 0) {
-      *(undefined4 *)((int)param_1 + 0x49) = 0;
+  if (*(int *)((int)self + 0x49) != 0) {
+    ok = KillTimer(*(HWND *)(*self + 0xc),*(UINT_PTR *)((int)self + 0x49));
+    if (ok != 0) {
+      *(undefined4 *)((int)self + 0x49) = 0;
     }
   }
-  if (param_1[9] != 0) {
-    (**(code **)(*(int *)param_1[9] + 0x40))();
-    param_1[9] = 0;
+  if (self[9] != 0) {
+    (**(code **)(*(int *)self[9] + 0x40))();
+    self[9] = 0;
   }
-  OWL::TWindow::vf31();
+  OWL::TWindow::CleanupWindow();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00426c20  OWL::TGadgetWindow::vf23   (134 bytes)   [rtti:vtable virtual slot 23]
-void __cdecl OWL::TGadgetWindow::vf23(int *param_1,LPMSG param_2)
+// 0x00426c20  OWL::TGadgetWindow::PreProcessMsg   (134 bytes)   [rtti:vtable virtual slot 10]
+//   override of OWL::TWindow vtable slot 10, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x00427791); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TGadgetWindow::vf23 [rtti:vtable]
+void __cdecl OWL::TGadgetWindow::PreProcessMsg(int *self,LPMSG lParam)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
-  if (*(int *)((int)param_1 + 0x3b) != 0) {
-    BVar1 = IsWindow(*(HWND *)(**(int **)((int)param_1 + 0x3b) + 0xc));
-    if (BVar1 != 0) {
-      if (*(HWND *)(*param_1 + 0xc) != param_2->hwnd) {
-        BVar1 = IsChild(*(HWND *)(*param_1 + 0xc),param_2->hwnd);
-        if (BVar1 == 0) goto LAB_00426c96;
+  if (*(int *)((int)self + 0x3b) != 0) {
+    ok = IsWindow(*(HWND *)(**(int **)((int)self + 0x3b) + 0xc));
+    if (ok != 0) {
+      if (*(HWND *)(*self + 0xc) != lParam->hwnd) {
+        ok = IsChild(*(HWND *)(*self + 0xc),lParam->hwnd);
+        if (ok == 0) goto LAB_00426c96;
       }
-      if ((0x1ff < param_2->message) && (param_2->message < 0x20e)) {
-        FUN_00438338(**(int **)((int)param_1 + 0x3b),0x407,0,(LPARAM)param_2);
+      if ((0x1ff < lParam->message) && (lParam->message < 0x20e)) {
+        FUN_00438338(**(int **)((int)self + 0x3b),0x407,0,(LPARAM)lParam);
       }
     }
   }
 LAB_00426c96:
-  OWL::TWindow::vf10(*param_1,param_2);
+  OWL::TWindow::PreProcessMsg(*self,lParam);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00426ca8  OWL::TGadgetWindow::EvMsg_7ef2   (49 bytes)   [owl:response-table message-handler]
 //   message 0x7ef2
-void __cdecl OWL::TGadgetWindow::EvMsg_7ef2(int param_1)
+void __cdecl OWL::TGadgetWindow::EvMsg_7ef2(int self)
 
 {
   int *piVar1;
   
-  if (*(char *)(param_1 + 0x3f) != '\0') {
-    (**(code **)(*(int *)(param_1 + 0x18) + 0x10))();
+  if (*(char *)(self + 0x3f) != '\0') {
+    (**(code **)(*(int *)(self + 0x18) + 0x10))();
   }
-  for (piVar1 = *(int **)(param_1 + 8); piVar1 != (int *)0x0; piVar1 = *(int **)((int)piVar1 + 0x3e)
+  for (piVar1 = *(int **)(self + 8); piVar1 != (int *)0x0; piVar1 = *(int **)((int)piVar1 + 0x3e)
       ) {
     (**(code **)(*piVar1 + 0x1c))();
   }
@@ -596,23 +694,23 @@ void __cdecl OWL::TGadgetWindow::EvMsg_7ef2(int param_1)
 // ----------------------------------------------------------------------------------------------------
 // 0x00426cdc  OWL::TGadgetWindow::EvWindowPosChanging   (129 bytes)   [owl:response-table message-handler]
 //   WM_WINDOWPOSCHANGING
-void __cdecl OWL::TGadgetWindow::EvWindowPosChanging(int *param_1,int param_2)
+void __cdecl OWL::TGadgetWindow::EvWindowPosChanging(int *self,int windowPos)
 
 {
-  FUN_00436428(*param_1);
-  if ((*(byte *)(param_2 + 0x18) & 1) == 0) {
-    *(undefined4 *)(*param_1 + 0x28) = *(undefined4 *)(param_2 + 0x10);
-    *(undefined4 *)(*param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x14);
-    if (((char)param_1[0xd] != '\0') || (*(char *)((int)param_1 + 0x33) != '\0')) {
-      (**(code **)(param_1[6] + 0x48))();
-      (**(code **)(*(int *)(*param_1 + 8) + 0x6c))();
+  FUN_00436428(*self);
+  if ((*(byte *)(windowPos + 0x18) & 1) == 0) {
+    *(undefined4 *)(*self + 0x28) = *(undefined4 *)(windowPos + 0x10);
+    *(undefined4 *)(*self + 0x2c) = *(undefined4 *)(windowPos + 0x14);
+    if (((char)self[0xd] != '\0') || (*(char *)((int)self + 0x33) != '\0')) {
+      (**(code **)(self[6] + 0x48))();
+      (**(code **)(*(int *)(*self + 8) + 0x6c))();
     }
-    FUN_00425bf0(param_1);
-    if (*(char *)((int)param_1 + 0x31) != '\0') {
-      *(undefined4 *)(param_2 + 0x10) = *(undefined4 *)(*param_1 + 0x28);
+    FUN_00425bf0(self);
+    if (*(char *)((int)self + 0x31) != '\0') {
+      *(undefined4 *)(windowPos + 0x10) = *(undefined4 *)(*self + 0x28);
     }
-    if (*(char *)((int)param_1 + 0x32) != '\0') {
-      *(undefined4 *)(param_2 + 0x14) = *(undefined4 *)(*param_1 + 0x2c);
+    if (*(char *)((int)self + 0x32) != '\0') {
+      *(undefined4 *)(windowPos + 0x14) = *(undefined4 *)(*self + 0x2c);
     }
   }
   return;
@@ -620,31 +718,31 @@ void __cdecl OWL::TGadgetWindow::EvWindowPosChanging(int *param_1,int param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00426d60  OWL::TGadgetWindow::vf15   (313 bytes)   [rtti:vtable virtual slot 15]
-void __cdecl OWL::TGadgetWindow::vf15(int param_1,undefined4 *param_2,undefined4 param_3,int *param_4)
+void __cdecl OWL::TGadgetWindow::vf15(int self,undefined4 *param_2,undefined4 param_3,int *param_4)
 
 {
   int *piVar1;
   bool bVar2;
   HDC hdc;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   tagPOINT *lppoint;
-  tagPOINT local_40;
-  LONG local_38;
-  LONG local_34;
-  undefined4 local_30;
-  undefined2 local_20;
-  int local_14;
-  HRGN local_c [2];
+  tagPOINT pt;
+  LONG unused;
+  LONG unused2;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  HRGN region [2];
   
   __InitExceptBlockLDTC(0x47b2b4);
-  local_40.x = 0;
-  local_40.y = 0;
-  lppoint = &local_40;
+  pt.x = 0;
+  pt.y = 0;
+  lppoint = &pt;
   hdc = (HDC)(**(code **)(*(int *)((int)param_2 + 5) + 0x5c))();
   GetViewportOrgEx(hdc,lppoint);
-  local_38 = local_40.x;
-  local_34 = local_40.y;
-  for (piVar1 = *(int **)(param_1 + 8); piVar1 != (int *)0x0; piVar1 = *(int **)((int)piVar1 + 0x3e)
+  unused = pt.x;
+  unused2 = pt.y;
+  for (piVar1 = *(int **)(self + 8); piVar1 != (int *)0x0; piVar1 = *(int **)((int)piVar1 + 0x3e)
       ) {
     if ((((*(int *)((int)piVar1 + 10) < param_4[2]) && (*param_4 < *(int *)((int)piVar1 + 0x12))) &&
         (*(int *)((int)piVar1 + 0xe) < param_4[3])) && (param_4[1] < *(int *)((int)piVar1 + 0x16)))
@@ -660,191 +758,197 @@ void __cdecl OWL::TGadgetWindow::vf15(int param_1,undefined4 *param_2,undefined4
         (**(code **)(*piVar1 + 0x30))();
       }
       else {
-        local_20 = 8;
-        FUN_0042f998((int *)local_c);
-        local_14 = local_14 + 1;
-        local_20 = 0x14;
-        GetClipRgn((HDC)*param_2,local_c[0]);
+        ehContext = 8;
+        FUN_0042f998((int *)region);
+        ehDtorCount = ehDtorCount + 1;
+        ehContext = 0x14;
+        GetClipRgn((HDC)*param_2,region[0]);
         IntersectClipRect((HDC)*param_2,*(int *)((int)piVar1 + 10),*(int *)((int)piVar1 + 0xe),
                           *(int *)((int)piVar1 + 0x12),*(int *)((int)piVar1 + 0x16));
         (**(code **)(*piVar1 + 0x30))();
-        SelectClipRgn((HDC)*param_2,local_c[0]);
-        local_14 = local_14 + -1;
-        OWL::TRegion::_dtor((undefined4*)local_c,2);
-        local_20 = 0;
+        SelectClipRgn((HDC)*param_2,region[0]);
+        ehDtorCount = ehDtorCount + -1;
+        OWL::TRegion::_dtor((undefined4*)region,2);
+        ehContext = 0;
       }
     }
   }
   (**(code **)(*(int *)((int)param_2 + 5) + 0x2c))();
-  *in_FS_OFFSET = local_30;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00426ef4  OWL::TGadgetWindow::vf19   (46 bytes)   [rtti:vtable virtual slot 19]
-void __cdecl OWL::TGadgetWindow::vf19(int param_1,int param_2)
+// 0x00426ef4  OWL::TGadgetWindow::Paint   (46 bytes)   [rtti:vtable virtual slot 21]
+//   override of OWL::TWindow vtable slot 21, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x00427745); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TGadgetWindow::vf19 [rtti:vtable]
+void __cdecl OWL::TGadgetWindow::Paint(int self,int param_2)
 
 {
   (**(code **)(*(int *)(param_2 + 5) + 0x14))();
-  (**(code **)(*(int *)(param_1 + 0x18) + 0x3c))();
+  (**(code **)(*(int *)(self + 0x18) + 0x3c))();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00426f24  OWL::TGadgetWindow::EvLButtonDown   (125 bytes)   [owl:response-table message-handler]
 //   WM_LBUTTONDOWN
-void __cdecl OWL::TGadgetWindow::EvLButtonDown(int *param_1)
+void __cdecl OWL::TGadgetWindow::EvLButtonDown(int *self)
 
 {
   int *piVar1;
   
-  if (param_1[8] == 0) {
-    piVar1 = FUN_0042503c((int)(param_1 + 1));
+  if (self[8] == 0) {
+    piVar1 = FUN_0042503c((int)(self + 1));
   }
   else {
-    piVar1 = (int *)param_1[8];
+    piVar1 = (int *)self[8];
   }
-  if ((piVar1 != (int *)0x0) && (((*(byte *)((int)piVar1 + 0x42) & 1) != 0 || (param_1[8] != 0)))) {
+  if ((piVar1 != (int *)0x0) && (((*(byte *)((int)piVar1 + 0x42) & 1) != 0 || (self[8] != 0)))) {
     (**(code **)(*piVar1 + 0x44))();
   }
-  OWL::TWindow::EvLButtonDown(*param_1);
+  OWL::TWindow::EvLButtonDown(*self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00426fa4  OWL::TGadgetWindow::EvLButtonUp   (109 bytes)   [owl:response-table message-handler]
 //   WM_LBUTTONUP
-void __cdecl OWL::TGadgetWindow::EvLButtonUp(int *param_1)
+void __cdecl OWL::TGadgetWindow::EvLButtonUp(int *self)
 
 {
   int *piVar1;
   
-  if (param_1[8] == 0) {
-    piVar1 = FUN_0042503c((int)(param_1 + 1));
+  if (self[8] == 0) {
+    piVar1 = FUN_0042503c((int)(self + 1));
   }
   else {
-    piVar1 = (int *)param_1[8];
+    piVar1 = (int *)self[8];
   }
-  if ((piVar1 != (int *)0x0) && (((*(byte *)((int)piVar1 + 0x42) & 1) != 0 || (param_1[8] != 0)))) {
+  if ((piVar1 != (int *)0x0) && (((*(byte *)((int)piVar1 + 0x42) & 1) != 0 || (self[8] != 0)))) {
     (**(code **)(*piVar1 + 0x4c))();
   }
-  FUN_00436428(*param_1);
+  FUN_00436428(*self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00427014  OWL::TGadgetWindow::EvLButtonDblClk   (42 bytes)   [owl:response-table message-handler]
 //   WM_LBUTTONDBLCLK
-void __cdecl OWL::TGadgetWindow::EvLButtonDblClk(int *param_1)
+void __cdecl OWL::TGadgetWindow::EvLButtonDblClk(int *self)
 
 {
-  OWL::TGadgetWindow::EvLButtonUp(param_1);
-  OWL::TGadgetWindow::EvLButtonDown(param_1);
+  OWL::TGadgetWindow::EvLButtonUp(self);
+  OWL::TGadgetWindow::EvLButtonDown(self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00427040  OWL::TGadgetWindow::EvRButtonDown   (119 bytes)   [owl:response-table message-handler]
 //   WM_RBUTTONDOWN
-void __cdecl OWL::TGadgetWindow::EvRButtonDown(int *param_1)
+void __cdecl OWL::TGadgetWindow::EvRButtonDown(int *self)
 
 {
   int *piVar1;
   
-  if (param_1[8] == 0) {
-    piVar1 = FUN_0042503c((int)(param_1 + 1));
+  if (self[8] == 0) {
+    piVar1 = FUN_0042503c((int)(self + 1));
   }
   else {
-    piVar1 = (int *)param_1[8];
+    piVar1 = (int *)self[8];
   }
-  if ((piVar1 != (int *)0x0) && (((*(byte *)((int)piVar1 + 0x42) & 1) != 0 || (param_1[8] != 0)))) {
+  if ((piVar1 != (int *)0x0) && (((*(byte *)((int)piVar1 + 0x42) & 1) != 0 || (self[8] != 0)))) {
     (**(code **)(*piVar1 + 0x48))();
   }
-  FUN_00436428(*param_1);
+  FUN_00436428(*self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004270b8  OWL::TGadgetWindow::EvRButtonUp   (109 bytes)   [owl:response-table message-handler]
 //   WM_RBUTTONUP
-void __cdecl OWL::TGadgetWindow::EvRButtonUp(int *param_1)
+void __cdecl OWL::TGadgetWindow::EvRButtonUp(int *self)
 
 {
   int *piVar1;
   
-  if (param_1[8] == 0) {
-    piVar1 = FUN_0042503c((int)(param_1 + 1));
+  if (self[8] == 0) {
+    piVar1 = FUN_0042503c((int)(self + 1));
   }
   else {
-    piVar1 = (int *)param_1[8];
+    piVar1 = (int *)self[8];
   }
-  if ((piVar1 != (int *)0x0) && (((*(byte *)((int)piVar1 + 0x42) & 1) != 0 || (param_1[8] != 0)))) {
+  if ((piVar1 != (int *)0x0) && (((*(byte *)((int)piVar1 + 0x42) & 1) != 0 || (self[8] != 0)))) {
     (**(code **)(*piVar1 + 0x50))();
   }
-  FUN_00436428(*param_1);
+  FUN_00436428(*self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00427128  OWL::TGadgetWindow::EvMouseMove   (298 bytes)   [owl:response-table message-handler]
 //   WM_MOUSEMOVE
-void __cdecl OWL::TGadgetWindow::EvMouseMove(int *param_1)
+void __cdecl OWL::TGadgetWindow::EvMouseMove(int *self)
 
 {
   int *piVar1;
   
-  if (param_1[8] == 0) {
-    piVar1 = FUN_0042503c((int)(param_1 + 1));
-    if (piVar1 != (int *)param_1[9]) {
-      if (param_1[9] != 0) {
+  if (self[8] == 0) {
+    piVar1 = FUN_0042503c((int)(self + 1));
+    if (piVar1 != (int *)self[9]) {
+      if (self[9] != 0) {
         (*(code *)PTR_FUN_0047af14)();
       }
-      param_1[9] = (int)piVar1;
-      if (param_1[9] != 0) {
+      self[9] = (int)piVar1;
+      if (self[9] != 0) {
         (*(code *)PTR_FUN_0047af20)();
       }
     }
   }
-  else if (param_1[8] != 0) {
+  else if (self[8] != 0) {
     (*(code *)PTR_FUN_0047af08)();
   }
-  FUN_00436428(*param_1);
+  FUN_00436428(*self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00427278  OWL::TGadgetWindow::vf4   (178 bytes)   [rtti:vtable virtual slot 4]
-void __cdecl OWL::TGadgetWindow::vf4(int *param_1,byte param_2)
+// 0x00427278  OWL::TGadgetWindow::EnableTooltip   (178 bytes)   [rtti:vtable virtual slot 2]
+//   override of OWL::TWindow vtable slot 2, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x004277b7); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TGadgetWindow::vf4 [rtti:vtable]
+void __cdecl OWL::TGadgetWindow::EnableTooltip(int *self,byte wParam)
 
 {
-  int *piVar1;
+  int *tooltip;
   int iVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x47b2e4);
-  if (*(int *)((int)param_1 + 0x3b) == 0) {
-    iVar2 = *param_1;
+  if (*(int *)((int)self + 0x3b) == 0) {
+    iVar2 = *self;
     do {
       if (*(int *)(iVar2 + 0x14) == 0) break;
       iVar2 = *(int *)(iVar2 + 0x14);
     } while ((*(byte *)(iVar2 + 0x74) & 0x10) == 0);
-    piVar1 = (int *)operator_new();
-    if (piVar1 != (int *)0x0) {
-      FUN_00430958(piVar1,0,iVar2,'\x01',0);
+    tooltip = (int *)operator_new();
+    if (tooltip != (int *)0x0) {
+      OWL::TTooltip::TTooltip(tooltip,0,iVar2,'\x01',0);
     }
-    FUN_00427348(param_1,piVar1);
+    FUN_00427348(self,tooltip);
   }
-  else if (*(int *)(**(int **)((int)param_1 + 0x3b) + 0xc) != 0) {
-    FUN_00438338(**(int **)((int)param_1 + 0x3b),0x401,(uint)param_2,0);
+  else if (*(int *)(**(int **)((int)self + 0x3b) + 0xc) != 0) {
+    FUN_00438338(**(int **)((int)self + 0x3b),0x401,(uint)wParam,0);
   }
-  *in_FS_OFFSET = local_2c;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00427428  OWL::TGadgetWindow::vf24   (203 bytes)   [rtti:vtable virtual slot 24]
-undefined4 __cdecl OWL::TGadgetWindow::vf24(int *param_1,int param_2,HWND param_3,undefined4 param_4)
+// 0x00427428  OWL::TGadgetWindow::EvCommand   (203 bytes)   [rtti:vtable virtual slot 18]
+//   override of OWL::TWindow vtable slot 18, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x0042776b); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TGadgetWindow::vf24 [rtti:vtable]
+undefined4 __cdecl OWL::TGadgetWindow::EvCommand(int *self,int param_2,HWND hWnd,undefined4 param_4)
 
 {
   int iVar1;
@@ -853,15 +957,15 @@ undefined4 __cdecl OWL::TGadgetWindow::vf24(int *param_1,int param_2,HWND param_
   int iVar4;
   undefined4 *unaff_ESI;
   undefined4 local_14;
-  int local_10;
-  undefined4 local_8;
+  int unused;
+  undefined4 unused2;
   
   local_14 = 0;
-  local_10 = param_2;
-  local_8 = 0;
-  cVar2 = (**(code **)(param_1[6] + 0x68))();
+  unused = param_2;
+  unused2 = 0;
+  cVar2 = (**(code **)(self[6] + 0x68))();
   if (cVar2 == '\0') {
-    for (iVar1 = *(int *)(*param_1 + 0x14); iVar1 != 0; iVar1 = *(int *)(iVar1 + 0x14)) {
+    for (iVar1 = *(int *)(*self + 0x14); iVar1 != 0; iVar1 = *(int *)(iVar1 + 0x14)) {
       if (iVar1 == 0) {
         iVar4 = 0;
       }
@@ -873,48 +977,50 @@ undefined4 __cdecl OWL::TGadgetWindow::vf24(int *param_1,int param_2,HWND param_
     }
     if ((iVar1 == 0) ||
        ((unaff_ESI != (undefined4 *)0x0 &&
-        (iVar4 = (**(code **)(unaff_ESI[3] + 0x24))(), iVar4 == *(int *)(*param_1 + 0xc))))) {
-      uVar3 = OWL::TWindow::vf18((undefined4 *)*param_1,param_2,param_3,param_4);
+        (iVar4 = (**(code **)(unaff_ESI[3] + 0x24))(), iVar4 == *(int *)(*self + 0xc))))) {
+      uVar3 = OWL::TWindow::EvCommand((undefined4 *)*self,param_2,hWnd,param_4);
     }
     else {
       uVar3 = (**(code **)(*(int *)(iVar1 + 8) + 0x48))();
     }
   }
   else {
-    FUN_00422b40(param_1[4],(int)&local_14);
+    FUN_00422b40(self[4],(int)&local_14);
     uVar3 = 0;
   }
   return uVar3;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004274f4  OWL::TGadgetWindow::vf25   (147 bytes)   [rtti:vtable virtual slot 25]
-void __cdecl OWL::TGadgetWindow::vf25(int *param_1,int param_2)
+// 0x004274f4  OWL::TGadgetWindow::EvCommandEnable   (147 bytes)   [rtti:vtable virtual slot 20]
+//   override of OWL::TWindow vtable slot 20, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x00427758); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TGadgetWindow::vf25 [rtti:vtable]
+void __cdecl OWL::TGadgetWindow::EvCommandEnable(int *self,int param_2)
 
 {
   int iVar1;
   char cVar2;
   undefined4 local_14;
-  undefined4 local_10;
-  undefined4 local_8;
+  undefined4 unused;
+  undefined4 unused2;
   
-  local_10 = *(undefined4 *)(param_2 + 4);
+  unused = *(undefined4 *)(param_2 + 4);
   local_14 = 0x7fff;
-  local_8 = 0;
-  cVar2 = (**(code **)(param_1[6] + 0x68))();
+  unused2 = 0;
+  cVar2 = (**(code **)(self[6] + 0x68))();
   if (cVar2 == '\0') {
-    iVar1 = *(int *)(*param_1 + 0x14);
-    if ((iVar1 != 0) && (*(int *)(*param_1 + 0xc) == *(int *)(param_2 + 8))) {
+    iVar1 = *(int *)(*self + 0x14);
+    if ((iVar1 != 0) && (*(int *)(*self + 0xc) == *(int *)(param_2 + 8))) {
       *(undefined4 *)(param_2 + 8) = *(undefined4 *)(iVar1 + 0xc);
       (**(code **)(*(int *)(iVar1 + 8) + 0x50))();
       if ((*(byte *)(param_2 + 0xc) & 1) != 0) {
         return;
       }
     }
-    OWL::TWindow::vf20((undefined4 *)*param_1,param_2);
+    OWL::TWindow::EvCommandEnable((undefined4 *)*self,param_2);
   }
   else {
-    FUN_00422b40(param_1[4],(int)&local_14);
+    FUN_00422b40(self[4],(int)&local_14);
   }
   return;
 }
@@ -922,20 +1028,20 @@ void __cdecl OWL::TGadgetWindow::vf25(int *param_1,int param_2)
 // ----------------------------------------------------------------------------------------------------
 // 0x00427604  OWL::TGadgetWindow::TLayoutInfo::~TLayoutInfo   (67 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as OWL::TGadgetWindow::TLayoutInfo::_dtor
-void __cdecl OWL::TGadgetWindow::TLayoutInfo::_dtor(int param_1,byte param_2)
+void __cdecl OWL::TGadgetWindow::TLayoutInfo::_dtor(int self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x47b33c);
-  if (param_1 != 0) {
+  if (self != 0) {
     operator_delete_array();
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

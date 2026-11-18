@@ -9,98 +9,98 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0040dae0  Pattern::Pattern   (89 bytes)   [analysis]
 //   constructor: count=0 and 256 empty 16-byte strings
-undefined4 * __cdecl Pattern::Pattern(undefined4 *param_1)
+undefined4 * __cdecl Pattern::Pattern(undefined4 *self)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x42c958);
-  *param_1 = 0;
-  _vector_new_ldtc_(param_1 + 2,0x10,0x100,1,(undefined*)FUN_0040da88);
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  *self = 0;
+  _vector_new_ldtc_(self + m_pool / 4,0x10,0x100,1,(undefined*)std::string::string);
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040db54  Pattern::~Pattern   (100 bytes)   [rtti:dtor destructor]
 //   written in code as Pattern::_dtor
-void __cdecl Pattern::_dtor(int param_1,byte param_2)
+void __cdecl Pattern::_dtor(int self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x42c97c);
-  if (param_1 != 0) {
-    _vector_delete_ldtc_(param_1 + 8,0x10,0x100,1,(undefined*)std::string::_dtor);
-    if ((param_2 & 1) != 0) {
+  if (self != 0) {
+    _vector_delete_ldtc_(self + m_pool,0x10,0x100,1,(undefined*)std::string::_dtor);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040dbb8  Pattern::Add   (161 bytes)   [analysis]
 //   returns the index of an equal entry or appends (capacity 256)
-int __cdecl Pattern::Add(int *param_1,int param_2)
+int __cdecl Pattern::Add(int *self,int str)
 
 {
-  uint uVar1;
-  uint uVar2;
-  int iVar3;
-  int local_8;
+  uint len;
+  uint pos;
+  int index;
+  int i;
   
-  local_8 = 0;
+  i = 0;
   do {
-    if (*param_1 <= local_8) {
-      if (*param_1 < 0x100) {
-        std::string::assign((int)(param_1 + *param_1 * 4 + 2),param_2);
-        iVar3 = *param_1;
-        *param_1 = *param_1 + 1;
+    if (*self <= i) {
+      if (*self < 0x100) {
+        std::string::assign((int)(self + *self * 4 + 2),str);
+        index = *self;
+        *self = *self + 1;
       }
       else {
-        iVar3 = -1;
+        index = -1;
       }
-      return iVar3;
+      return index;
     }
-    uVar1 = *(uint *)(*(int *)(param_2 + 8) + -4);
-    if (uVar1 == *(uint *)(param_1[local_8 * 4 + 4] + -4)) {
-      uVar2 = 0;
-      if (uVar1 != 0) {
+    len = *(uint *)(*(int *)(str + 8) + -4);
+    if (len == *(uint *)(self[i * 4 + 4] + -4)) {
+      pos = 0;
+      if (len != 0) {
         do {
-          if (*(char *)(*(int *)(param_2 + 8) + uVar2) !=
-              *(char *)(param_1[local_8 * 4 + 4] + uVar2)) break;
-          uVar2 = uVar2 + 1;
-        } while (uVar2 < uVar1);
+          if (*(char *)(*(int *)(str + 8) + pos) !=
+              *(char *)(self[i * 4 + 4] + pos)) break;
+          pos = pos + 1;
+        } while (pos < len);
       }
-      if (uVar1 <= uVar2) {
-        return local_8;
+      if (len <= pos) {
+        return i;
       }
     }
-    local_8 = local_8 + 1;
+    i = i + 1;
   } while( true );
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040dc5c  Pattern::Clear   (12 bytes)   [analysis]
 //   count = 0
-void __cdecl Pattern::Clear(undefined4 *param_1)
+void __cdecl Pattern::Clear(undefined4 *self)
 
 {
-  *param_1 = 0;
+  *self = 0;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040dc68  Pattern::At   (21 bytes)   [analysis]
 //   address of slot n (8 + n*16)
-int __cdecl Pattern::At(int param_1,byte param_2)
+int __cdecl Pattern::At(int self,byte index)
 
 {
-  return param_1 + (uint)param_2 * 0x10 + 8;
+  return self + (uint)index * 0x10 + 8;
 }
 
 } // namespace tea

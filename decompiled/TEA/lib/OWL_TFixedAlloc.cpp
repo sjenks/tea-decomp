@@ -9,31 +9,31 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0049739c  OWL::__TFixedAlloc::~__TFixedAlloc   (429 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::__TFixedAlloc::_dtor
-void __cdecl OWL::__TFixedAlloc::_dtor(int param_1,byte param_2)
+void __cdecl OWL::__TFixedAlloc::_dtor(int self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x507b98);
-  if (param_1 != 0) {
-    FUN_0048c8b0(param_1 + 0x117,0);
-    FUN_0048c8b0(param_1 + 0xfe,0);
-    FUN_0048c8b0(param_1 + 0xe5,0);
-    FUN_0048c8b0(param_1 + 0xcc,0);
-    FUN_0048c8b0(param_1 + 0xb3,0);
-    FUN_0048c8b0(param_1 + 0x9a,0);
-    FUN_0048c8b0(param_1 + 0x81,0);
-    FUN_0048c8b0(param_1 + 0x68,0);
-    FUN_0048c8b0(param_1 + 0x4f,0);
-    FUN_0048c8b0(param_1 + 0x36,0);
-    FUN_0048c8b0(param_1 + 0x1d,0);
-    FUN_0048c8b0(param_1 + 4,0);
-    if ((param_2 & 1) != 0) {
+  if (self != 0) {
+    FUN_0048c8b0(self + 0x117,0);
+    FUN_0048c8b0(self + 0xfe,0);
+    FUN_0048c8b0(self + 0xe5,0);
+    FUN_0048c8b0(self + 0xcc,0);
+    FUN_0048c8b0(self + 0xb3,0);
+    FUN_0048c8b0(self + 0x9a,0);
+    FUN_0048c8b0(self + 0x81,0);
+    FUN_0048c8b0(self + 0x68,0);
+    FUN_0048c8b0(self + 0x4f,0);
+    FUN_0048c8b0(self + 0x36,0);
+    FUN_0048c8b0(self + 0x1d,0);
+    FUN_0048c8b0(self + 4,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

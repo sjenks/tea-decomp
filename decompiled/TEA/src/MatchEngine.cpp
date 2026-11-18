@@ -1,5 +1,5 @@
 // TEA.exe — application module "MatchEngine"
-// 38 functions, 0x00411264..0x00460050. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 39 functions, 0x00411264..0x00460050. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -9,64 +9,64 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x00411264  MatchEngine::~MatchEngine   (200 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as MatchEngine::_dtor
-void __cdecl MatchEngine::_dtor(int param_1,byte param_2)
+void __cdecl MatchEngine::_dtor(int self,byte dtorFlags)
 
 {
-  int iVar1;
-  int *piVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4eca40);
-  if (param_1 == 0) goto LAB_0041131b;
-  if (*(int *)(param_1 + 0x1010) != 0) {
-    if (*(int *)(*(int *)(param_1 + 0x1010) + -0xc) != -1) {
-      piVar2 = (int *)(*(int *)(param_1 + 0x1010) + -0xc);
-      if (piVar2 == &DAT_00513d58) {
-        iVar1 = 1;
+  if (self == 0) goto LAB_0041131b;
+  if (*(int *)(self + m_bcData) != 0) {
+    if (*(int *)(*(int *)(self + m_bcData) + -0xc) != -1) {
+      strRep = (int *)(*(int *)(self + m_bcData) + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar2 == &DAT_00513d58) {
-        iVar1 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar1 = *piVar2 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar1 != 0) goto LAB_004112fc;
+      if (prevRefs != 0) goto LAB_004112fc;
     }
     operator_delete();
-    *(undefined4 *)(param_1 + 0x1010) = 0;
+    *(undefined4 *)(self + m_bcData) = 0;
   }
 LAB_004112fc:
-  Pattern::_dtor(param_1,2);
-  if ((param_2 & 1) != 0) {
+  Pattern::_dtor(self,2);
+  if ((dtorFlags & 1) != 0) {
     operator_delete();
   }
 LAB_0041131b:
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00411498  std::logic_error::vf1   (11 bytes)   [rtti:vtable virtual slot 1; function defined from vtable-slot]
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl std::logic_error::vf1(int param_1)
+undefined4 __cdecl std::logic_error::vf1(int self)
 
 {
-  return *(undefined4 *)(param_1 + 0x10);
+  return *(undefined4 *)(self + 0x10);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004114a4  std::vector<TSDictionaryList::Dictionary *>::~vector   (54 bytes)   [rtti:dtor destructor]
 //   written in code as std::vector_TSDictionaryList_Dictionary_ptr::_dtor
 //   file placement: inferred (address adjacency)
-void __cdecl std::vector_TSDictionaryList_Dictionary_ptr::_dtor(int param_1,byte param_2)
+void __cdecl std::vector_TSDictionaryList_Dictionary_ptr::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
-    FUN_0040771c(param_1,*(int *)(param_1 + 4),*(int *)(param_1 + 8));
+  if (self != 0) {
+    std::_Destroy_range_ptr_40771c(self,*(int *)(self + 4),*(int *)(self + 8));
     operator_delete();
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -77,13 +77,13 @@ void __cdecl std::vector_TSDictionaryList_Dictionary_ptr::_dtor(int param_1,byte
 // 0x004114dc  std::vector<const MatchEngine *>::~vector   (54 bytes)   [rtti:dtor destructor]
 //   written in code as std::vector_const_MatchEngine_ptr::_dtor
 //   file placement: inferred (address adjacency)
-void __cdecl std::vector_const_MatchEngine_ptr::_dtor(int param_1,byte param_2)
+void __cdecl std::vector_const_MatchEngine_ptr::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
-    FUN_00410d88(param_1,*(int *)(param_1 + 4),*(int *)(param_1 + 8));
+  if (self != 0) {
+    std::_Destroy_range_ptr_410d88(self,*(int *)(self + 4),*(int *)(self + 8));
     operator_delete();
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -94,13 +94,13 @@ void __cdecl std::vector_const_MatchEngine_ptr::_dtor(int param_1,byte param_2)
 // 0x00411514  std::vector<long>::~vector   (54 bytes)   [rtti:dtor destructor]
 //   written in code as std::vector_long::_dtor
 //   file placement: inferred (address adjacency)
-void __cdecl std::vector_long::_dtor(int param_1,byte param_2)
+void __cdecl std::vector_long::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
-    FUN_0040957c(param_1,*(int *)(param_1 + 4),*(int *)(param_1 + 8));
+  if (self != 0) {
+    std::_Destroy_range_ptr_40957c(self,*(int *)(self + 4),*(int *)(self + 8));
     operator_delete();
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -111,13 +111,13 @@ void __cdecl std::vector_long::_dtor(int param_1,byte param_2)
 // 0x00411568  std::vector<std::string>::~vector   (54 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as std::vector_std_string::_dtor
 //   file placement: inferred (address adjacency)
-void __cdecl std::vector_std_string::_dtor(int param_1,byte param_2)
+void __cdecl std::vector_std_string::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
-    FUN_0040b4f0(param_1,*(int *)(param_1 + 4),*(int *)(param_1 + 8));
+  if (self != 0) {
+    std::_Destroy_range_string(self,*(int *)(self + 4),*(int *)(self + 8));
     operator_delete();
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -125,1311 +125,1322 @@ void __cdecl std::vector_std_string::_dtor(int param_1,byte param_2)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004115a0  @MsgHookProc$qqsiuil   (222 bytes, 2 ranges)   [unnamed]
-//   written in code as MsgHookProc_qqsiuil
+// 0x004115a0  MsgHookProc   (222 bytes, 2 ranges)   [analysis]
+//   exported keyboard hook (@MsgHookProc$qqsiuil): F1, or Ctrl+Tab, in a child of a popup posts the registered help message to that popup; F1 in a menu posts it to the main window
 //   file placement: inferred (address adjacency)
-undefined4 __stdcall MsgHookProc_qqsiuil(int param_1,undefined4 param_2,undefined4 *param_3)
+undefined4 __stdcall MsgHookProc(int code_,undefined4 wParam,undefined4 *msg)
 
 {
-  SHORT SVar1;
-  uint uVar2;
-  HWND pHVar3;
+  SHORT ctrlState;
+  uint style;
+  HWND hWnd2;
   HWND hWnd;
   
                     /* 0x115a0  2  @MsgHookProc$qqsiuil */
-  if ((-1 < param_1) && (param_3 != (undefined4 *)0x0)) {
-    if (param_1 == 0) {
-      if ((param_3[1] == 0x100) &&
-         ((param_3[2] == 0x70 || ((param_3[2] == 9 && (SVar1 = GetKeyState(0x11), SVar1 < 0)))))) {
+  if ((-1 < code_) && (msg != (undefined4 *)0x0)) {
+    if (code_ == 0) {
+      if ((msg[1] == 0x100) &&
+         ((msg[2] == 0x70 || ((msg[2] == 9 && (ctrlState = GetKeyState(0x11), ctrlState < 0)))))) {
         hWnd = (HWND)0x0;
-        pHVar3 = (HWND)*param_3;
-        while ((pHVar3 != (HWND)0x0 &&
-               (uVar2 = GetWindowLongA(pHVar3,-0x10), hWnd = pHVar3, (uVar2 & 0x40000000) != 0))) {
-          pHVar3 = (HWND)GetWindowLongA(pHVar3,-8);
+        hWnd2 = (HWND)*msg;
+        while ((hWnd2 != (HWND)0x0 &&
+               (style = GetWindowLongA(hWnd2,-0x10), hWnd = hWnd2, (style & 0x40000000) != 0))) {
+          hWnd2 = (HWND)GetWindowLongA(hWnd2,-8);
         }
-        if ((hWnd != (HWND)0x0) && (uVar2 = GetWindowLongA(hWnd,-0x10), (uVar2 & 0x80000000) != 0))
+        if ((hWnd != (HWND)0x0) && (style = GetWindowLongA(hWnd,-0x10), (style & 0x80000000) != 0))
         {
-          PostMessageA(hWnd,DAT_0051ac78,param_3[2],0);
+          PostMessageA(hWnd,g_helpMessageId,msg[2],0);
           return 1;
         }
       }
     }
-    else if (((param_1 == 2) && (param_3[1] == 0x100)) && (param_3[2] == 0x70)) {
-      PostMessageA(DAT_0051ac8c,DAT_0051ac78,2,0);
+    else if (((code_ == 2) && (msg[1] == 0x100)) && (msg[2] == 0x70)) {
+      PostMessageA(g_hWndMain,g_helpMessageId,2,0);
     }
   }
   return 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00431474  MatchEngine::CompilePattern   (2751 bytes)   [notes (structure checked) (position-matched TEACON.exe)]
-//   paired with TEACON.exe 0x0040a37c by position between identical neighbours; the bodies differ (2748 vs 2751 bytes), so treat the name as probable. recursive [template][;anagram] parser; mutually recursive with CompileTemplate / CompileAnagram. Not read line by line
-/* WARNING: Restarted to delay deadcode elimination for space: stack */
-int __cdecl MatchEngine::CompilePattern(int *param_1,int *param_2,int param_3,int *param_4,int *param_5,int *param_6)
+// 0x00431458  MatchEngine::Emit   (25 bytes)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x0040a360. records the opcode just emitted (last opcode, opcode count) and returns it
+undefined4 __cdecl MatchEngine::Emit(int self,undefined4 op)
 
 {
-  undefined4 uVar1;
-  undefined4 *puVar2;
-  undefined1 *puVar3;
-  int iVar4;
-  undefined1 uVar5;
-  int iVar6;
-  undefined4 *in_FS_OFFSET;
-  undefined *puVar7;
-  uint uVar8;
-  undefined4 uVar9;
-  undefined4 uVar10;
-  undefined4 uVar11;
-  undefined1 local_390 [248];
-  undefined4 local_298;
-  int *local_288;
-  undefined1 local_270 [240];
-  int *local_180;
-  undefined4 *local_17c;
-  int local_178;
-  int local_174 [2];
-  int local_16c;
-  int local_168;
-  int local_164;
-  int local_160;
-  int local_15c;
-  int local_158;
-  undefined4 *local_154;
-  int local_150;
-  uint local_14c;
-  undefined1 local_145;
-  uint local_144;
-  undefined1 *local_140;
-  undefined4 local_13c;
-  int *local_138;
-  int *local_134;
-  int *local_130;
-  int *local_12c;
-  int *local_128;
-  uint local_124;
-  undefined1 *local_120;
-  int *local_11c;
-  int *local_118;
-  uint local_114;
-  int *local_110;
-  undefined1 *local_10c;
-  int *local_108;
-  undefined4 local_104;
-  uint *local_f8;
-  uint local_f4;
-  undefined1 *local_f0;
-  undefined4 local_ec;
-  int *local_e8;
-  int *local_e4;
-  int *local_e0;
-  int *local_dc;
-  int *local_d8;
-  uint local_d4;
-  undefined1 *local_d0;
-  int *local_cc;
-  int *local_c8;
-  uint local_c4;
-  int *local_c0;
-  undefined1 *local_bc;
-  int *local_b8;
-  undefined4 local_b4;
-  uint *local_a8;
-  uint local_a4;
-  undefined1 local_9d;
-  int local_9c;
-  int local_98;
-  int local_94;
-  int local_90;
-  int local_8c;
-  int local_88;
-  int local_84;
-  char *local_80;
-  char local_79;
-  undefined4 local_78;
-  undefined2 local_68;
-  int local_5c;
-  undefined1 local_54 [8];
-  int *local_4c;
-  undefined1 local_44 [8];
-  int *local_3c;
-  undefined **local_34 [2];
-  undefined1 local_2c [8];
-  int *local_24;
-  undefined **local_1c [2];
-  undefined1 local_14 [8];
-  int *local_c;
-  
-  __InitExceptBlockLDTC(0x4f2de4);
-  local_79 = *(int *)(*(int *)(param_3 + 8) + -4) != 0;
-  iVar6 = 0;
-  local_80 = (char *)*param_2;
-  local_84 = 0;
-  local_88 = 0;
-  local_8c = 0;
-  local_90 = -1;
-  local_94 = 0;
-  local_98 = *(int *)(*(int *)(param_3 + 8) + -4);
-  uVar1 = FUN_00431458((int)param_1,0xf9);
-  std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(char)uVar1);
-  std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,0x20);
-  std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,0x20);
-  if (((*local_80 != ';') && (*local_80 != ')')) &&
-     (iVar6 = MatchEngine::CompileTemplate((int)param_1,(int *)&local_80,param_3,&local_90,param_5,&local_88),
-     iVar6 == -1)) {
-    *in_FS_OFFSET = local_78;
-    return -1;
-  }
-  if (*local_80 != ';') goto LAB_00431bdb;
-  local_80 = local_80 + 1;
-  local_94 = *(int *)(*(int *)(param_3 + 8) + -4);
-  std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,0xf4);
-  local_9c = FUN_00408ec0(param_1[1099],param_1[0x44c]);
-  local_9d = (undefined1)local_9c;
-  std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(undefined1)local_9c);
-  local_a4 = *(int *)(*(int *)(param_3 + 8) + -4) + 4;
-  if ((*(int *)&DAT_005140ac) - 0xeU < local_a4) {
-    uVar11 = 0;
-    uVar10 = 0;
-    uVar9 = 0;
-    uVar8 = 1;
-    puVar7 = &LAB_00408370;
-    uVar1 = 0;
-    local_68 = 0x14;
-    local_a8 = (uint *)FUN_004dc320(local_270,PTR_s_invalid_string_size_parameter_in_00516d20);
-    std::string::string_from_cstr((int)local_44,local_a8);
-    local_5c = local_5c + 2;
-    local_1c[0] = &std::logic_error::vftable;
-    local_b4 = 0;
-    local_c = (int *)0x0;
-    local_68 = 0x20;
-    if (local_3c[-3] == -1 || local_3c[-3] + 1 < 0) {
-      local_c4 = local_3c[-1];
-      local_cc = std::string::__getRep(local_14,local_c4,local_c4);
-      local_d0 = local_14;
-      local_288 = local_cc + 3;
-      local_d4 = local_c4;
-      local_d8 = local_3c;
-      local_dc = local_288;
-      local_c8 = local_288;
-      local_c = local_288;
-      memcpy(local_288,local_3c,local_c4);
-    }
-    else {
-      local_bc = local_14;
-      local_b8 = local_3c;
-      local_c = local_3c;
-      local_c0 = local_3c + -3;
-      if (local_c0 != &DAT_00513d58) {
-        *local_c0 = *local_c0 + 1;
-      }
-    }
-    local_68 = 0x14;
-    local_1c[0] = &std::length_error::vftable;
-    local_5c = local_5c + 2;
-    if (local_3c != (int *)0x0) {
-      if (local_3c[-3] != -1) {
-        local_e0 = local_3c + -3;
-        if (local_e0 == &DAT_00513d58) {
-          iVar4 = 1;
-        }
-        else if (local_e0 == &DAT_00513d58) {
-          iVar4 = 1;
-        }
-        else {
-          *local_e0 = *local_e0 + -1;
-          iVar4 = *local_e0 + 1;
-        }
-        if (iVar4 != 0) goto LAB_00431854;
-      }
-      local_e4 = local_3c + -3;
-      local_e8 = local_3c + -3;
-      operator_delete();
-      local_ec = 0;
-      local_f0 = local_44;
-      local_3c = (int *)0x0;
-      local_298 = 0;
-    }
-LAB_00431854:
-    local_68 = 8;
-    FUN_004e7cc4((uint *)&DAT_00408314,(undefined4*)local_1c,uVar1,puVar7,uVar8,uVar9,uVar10,uVar11);
-  }
-  if (local_a4 < *(uint *)(*(int *)(param_3 + 8) + -4)) {
-    local_f4 = *(int *)(*(int *)(param_3 + 8) + -4) - local_a4;
-    if (*(uint *)(*(int *)(param_3 + 8) + -4) < local_a4) {
-      uVar11 = 0;
-      uVar10 = 0;
-      uVar9 = 0;
-      uVar8 = 1;
-      puVar7 = &LAB_004084c8;
-      uVar1 = 0;
-      local_68 = 0x44;
-      local_f8 = (uint *)FUN_004dc320(local_390,PTR_s_string_index_out_of_range_in_fun_00516d2c);
-      std::string::string_from_cstr((int)local_54,local_f8);
-      local_5c = local_5c + 2;
-      local_34[0] = &std::logic_error::vftable;
-      local_104 = 0;
-      local_24 = (int *)0x0;
-      local_68 = 0x50;
-      if (local_4c[-3] == -1 || local_4c[-3] + 1 < 0) {
-        local_114 = local_4c[-1];
-        local_11c = std::string::__getRep(local_2c,local_114,local_114);
-        local_120 = local_2c;
-        local_12c = local_11c + 3;
-        local_124 = local_114;
-        local_128 = local_4c;
-        local_118 = local_12c;
-        local_24 = local_12c;
-        memcpy(local_12c,local_4c,local_114);
-      }
-      else {
-        local_10c = local_2c;
-        local_108 = local_4c;
-        local_24 = local_4c;
-        local_110 = local_4c + -3;
-        if (local_110 != &DAT_00513d58) {
-          *local_110 = *local_110 + 1;
-        }
-      }
-      local_68 = 0x44;
-      local_34[0] = &std::out_of_range::vftable;
-      local_5c = local_5c + 2;
-      if (local_4c != (int *)0x0) {
-        if (local_4c[-3] != -1) {
-          local_130 = local_4c + -3;
-          if (local_130 == &DAT_00513d58) {
-            iVar4 = 1;
-          }
-          else if (local_130 == &DAT_00513d58) {
-            iVar4 = 1;
-          }
-          else {
-            *local_130 = *local_130 + -1;
-            iVar4 = *local_130 + 1;
-          }
-          if (iVar4 != 0) goto LAB_00431aeb;
-        }
-        local_134 = local_4c + -3;
-        local_138 = local_4c + -3;
-        operator_delete();
-        local_13c = 0;
-        local_140 = local_54;
-        local_4c = (int *)0x0;
-      }
-LAB_00431aeb:
-      local_68 = 8;
-      FUN_004e7cc4((uint *)&DAT_0040846c,(undefined4*)local_34,uVar1,puVar7,uVar8,uVar9,uVar10,uVar11);
-    }
-    local_144 = *(int *)(*(int *)(param_3 + 8) + -4) - local_a4;
-    local_145 = 0;
-    local_14c = local_144;
-    if (local_f4 < local_144) {
-      local_14c = local_f4;
-    }
-    FUN_004cfad4(param_3,local_a4,local_14c,(uint)&local_145,0,0,0);
-  }
-  else {
-    std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,
-                 local_a4 - *(int *)(*(int *)(param_3 + 8) + -4),0);
-  }
-  puVar2 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-  if (puVar2 != &DAT_00513d58) {
-    *puVar2 = 0;
-  }
-  local_84 = MatchEngine::CompileAnagram(param_1,(undefined4*)&local_80,param_3,&local_8c,local_88);
-  if (local_84 == -1) {
-    *in_FS_OFFSET = local_78;
-    return -1;
-  }
-  if (local_79 != '\0') {
-    *param_5 = *(int *)(*(int *)(param_3 + 8) + -4) + 1;
-  }
-LAB_00431bdb:
-  if (((iVar6 == 0) && (local_88 == 0)) && (local_88 = local_8c, iVar6 = local_84, 0 < local_8c)) {
-    *param_4 = local_98;
-  }
-  if (iVar6 < 0x81) {
-    if (0 < local_88) {
-      if ((local_8c < 15000) && (iVar6 < local_84 + local_8c)) {
-        local_88 = (local_84 + local_8c) - iVar6;
-      }
-      if (-1 < local_90) {
-        *param_4 = local_98;
-      }
-      local_150 = local_98;
-      if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-        FUN_004d48d8(param_3);
-      }
-      local_154 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-      if (local_154 != &DAT_00513d58) {
-        *local_154 = 0xffffffff;
-      }
-      puVar3 = (undefined1 *)(*(int *)(param_3 + 8) + local_150);
-      uVar1 = FUN_00431458((int)param_1,0xfa);
-      *puVar3 = (char)uVar1;
-      *param_6 = *param_6 + local_88;
-    }
-    if (-1 < local_90) {
-      local_158 = local_90;
-      if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-        FUN_004d48d8(param_3);
-      }
-      puVar2 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-      if (puVar2 != &DAT_00513d58) {
-        *puVar2 = 0xffffffff;
-      }
-      if (*(char *)(*(int *)(param_3 + 8) + local_158) == -0xe) {
-        local_15c = local_90;
-        if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-          FUN_004d48d8(param_3);
-        }
-        puVar2 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-        if (puVar2 != &DAT_00513d58) {
-          *puVar2 = 0xffffffff;
-        }
-        *(undefined1 *)(*(int *)(param_3 + 8) + local_15c) = 0xf3;
-      }
-      else {
-        local_160 = local_90;
-        if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-          FUN_004d48d8(param_3);
-        }
-        puVar2 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-        if (puVar2 != &DAT_00513d58) {
-          *puVar2 = 0xffffffff;
-        }
-        if (*(char *)(*(int *)(param_3 + 8) + local_160) == -6) {
-          local_164 = local_90;
-          if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-            FUN_004d48d8(param_3);
-          }
-          puVar2 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-          if (puVar2 != &DAT_00513d58) {
-            *puVar2 = 0xffffffff;
-          }
-          *(undefined1 *)(*(int *)(param_3 + 8) + local_164) = 0xfb;
-        }
-      }
-    }
-    local_168 = local_98 + 1;
-    if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-      FUN_004d48d8(param_3);
-    }
-    puVar2 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-    if (puVar2 != &DAT_00513d58) {
-      *puVar2 = 0xffffffff;
-    }
-    *(char *)(*(int *)(param_3 + 8) + local_168) = (char)iVar6;
-    local_16c = local_98 + 2;
-    if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-      FUN_004d48d8(param_3);
-    }
-    puVar2 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-    if (puVar2 != &DAT_00513d58) {
-      *puVar2 = 0xffffffff;
-    }
-    if (local_88 < 0x65) {
-      uVar5 = (undefined1)local_88;
-    }
-    else {
-      uVar5 = 0x65;
-    }
-    *(undefined1 *)(*(int *)(param_3 + 8) + local_16c) = uVar5;
-    if (local_94 != 0) {
-      local_174[0] = local_84;
-      uVar8 = 0;
-      local_180 = local_174;
-      do {
-        local_178 = local_94 + uVar8 + 2;
-        if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-          FUN_004d48d8(param_3);
-        }
-        local_17c = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-        if (local_17c != &DAT_00513d58) {
-          *local_17c = 0xffffffff;
-        }
-        *(char *)(*(int *)(param_3 + 8) + local_178) = (char)*local_180;
-        uVar8 = uVar8 + 1;
-        local_180 = (int *)((int)local_180 + 1);
-      } while (uVar8 < 4);
-    }
-    std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,0xfc);
-    *param_2 = (int)local_80;
-    *in_FS_OFFSET = local_78;
-  }
-  else {
-    param_1[0x409] = 4;
-    iVar6 = -1;
-    *in_FS_OFFSET = local_78;
-  }
-  return iVar6;
+  *(char *)(self + m_lastOp) = (char)op;
+  *(int *)(self + m_opCount) = *(int *)(self + m_opCount) + 1;
+  return op;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00431f34  MatchEngine::CompileTemplate   (2223 bytes, 2 ranges)   [notes (inferred) (position-matched TEACON.exe)]
-//   paired with TEACON.exe 0x0040ae38 by position between identical neighbours; the bodies differ (2202 vs 2223 bytes), so treat the name as probable. template-side compiler (choice lists, escapes per your notes). Role inferred from call structure
-int __cdecl MatchEngine::CompileTemplate(int param_1,int *param_2,int param_3,int *param_4,int *param_5,undefined4 *param_6)
+// 0x00431474  MatchEngine::CompilePattern   (2751 bytes)   [notes+analysis (position-matched TEACON.exe)]
+//   paired with TEACON.exe 0x0040a37c by position between identical neighbours; the bodies differ (2748 vs 2751 bytes), so treat the name as probable. compiles "[template][;anagram]" into 0xf9 <minLen> <extra> ... 0xfc; for an anagram part emits 0xf4 <numLetters> <minCount:4> then CompileAnagram's code; recursive through CompileTemplate for sub-patterns
+/* WARNING: Restarted to delay deadcode elimination for space: stack */
+int __cdecl MatchEngine::CompilePattern(int *self,int *cursor,int bc,int *outVarPos,int *outEndPos,int *outExtra)
 
 {
-  byte *pbVar1;
-  byte bVar2;
-  bool bVar3;
-  undefined1 uVar4;
-  undefined4 uVar5;
-  char *pcVar6;
-  int iVar7;
-  undefined1 *puVar8;
-  int iVar9;
-  int iVar10;
-  undefined4 *puVar11;
-  int iVar12;
-  undefined1 local_58;
-  char local_38;
-  int local_14;
-  int local_10;
-  int local_c;
-  byte *local_8;
+  undefined4 op;
+  undefined4 *strRep;
+  undefined1 *opSlot;
+  int prevRefs;
+  undefined1 extraByte;
+  int templateLen;
+  undefined4 *sehChainHead;
+  undefined *copyCtor;
+  uint k;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined1 exceptMsg [248];
+  undefined4 unused;
+  int *newData;
+  undefined1 exceptMsg2 [240];
+  int *byteSrc;
+  undefined4 *strRep2;
+  int bytePos;
+  int anagramLenBytes [2];
+  int extraPos;
+  int minLenPos;
+  int templateVarPos2;
+  int templateVarPos3;
+  int templateVarPos4;
+  int templateVarPos5;
+  undefined4 *strRep3;
+  int startPos2;
+  uint eraseLen;
+  undefined1 nul;
+  uint available;
+  undefined1 *unused2;
+  undefined4 unused3;
+  int *unused4;
+  int *unused5;
+  int *strRep4;
+  int *newData2;
+  int *unused6;
+  uint unused7;
+  undefined1 *unused8;
+  int *newRep;
+  int *unused9;
+  uint len;
+  int *strRep5;
+  undefined1 *unused10;
+  int *unused11;
+  undefined4 unused12;
+  uint *msgText;
+  uint tailLen;
+  undefined1 *unused13;
+  undefined4 unused14;
+  int *unused15;
+  int *unused16;
+  int *strRep6;
+  int *unused17;
+  int *unused18;
+  uint unused19;
+  undefined1 *unused20;
+  int *newRep2;
+  int *unused21;
+  uint len2;
+  int *strRep7;
+  undefined1 *unused22;
+  int *unused23;
+  undefined4 unused24;
+  uint *msgText2;
+  uint headerEnd;
+  undefined1 unused25;
+  int numUsedLetters;
+  int startPos;
+  int anagramPos;
+  int templateVarPos;
+  int anagramExtra;
+  int templateExtra;
+  int anagramLen;
+  char *p;
+  char hasPrefix;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [8];
+  int *str3;
+  undefined1 str2 [8];
+  int *str4;
+  undefined **outOfRange [2];
+  undefined1 newStr [8];
+  int *unused26;
+  undefined **lengthError [2];
+  undefined1 newStr2 [8];
+  int *unused27;
   
-  local_8 = (byte *)*param_2;
-  local_c = 0;
-  local_10 = 0;
-  iVar12 = 0;
+  __InitExceptBlockLDTC(0x4f2de4);
+  hasPrefix = *(int *)(*(int *)(bc + 8) + -4) != 0;
+  templateLen = 0;
+  p = (char *)*cursor;
+  anagramLen = 0;
+  templateExtra = 0;
+  anagramExtra = 0;
+  templateVarPos = -1;
+  anagramPos = 0;
+  startPos = *(int *)(*(int *)(bc + 8) + -4);
+  op = MatchEngine::Emit((int)self,0xf9);
+  std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(char)op);
+  std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,0x20);
+  std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,0x20);
+  if (((*p != ';') && (*p != ')')) &&
+     (templateLen = MatchEngine::CompileTemplate((int)self,(int *)&p,bc,&templateVarPos,outEndPos,&templateExtra),
+     templateLen == -1)) {
+    *sehChainHead = sehPrevFrame;
+    return -1;
+  }
+  if (*p != ';') goto LAB_00431bdb;
+  p = p + 1;
+  anagramPos = *(int *)(*(int *)(bc + 8) + -4);
+  std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,0xf4);
+  numUsedLetters = TSDictionaryList::GetNumUsedLetters(self[m_dictList / 4],self[m_dictIndex / 4]);
+  unused25 = (undefined1)numUsedLetters;
+  std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(undefined1)numUsedLetters);
+  headerEnd = *(int *)(*(int *)(bc + 8) + -4) + 4;
+  if ((*(int *)&g_stringNpos) - 0xeU < headerEnd) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
+    k = 1;
+    copyCtor = &LAB_00408370;
+    op = 0;
+    ehContext = 0x14;
+    msgText2 = (uint *)__rwstd::except_msg_string::format(exceptMsg2,PTR_s_invalid_string_size_parameter_in_00516d20);
+    std::string::string_from_cstr((int)str2,msgText2);
+    ehDtorCount = ehDtorCount + 2;
+    lengthError[0] = &std::logic_error::vftable;
+    unused24 = 0;
+    unused27 = (int *)0x0;
+    ehContext = 0x20;
+    if (str4[-3] == -1 || str4[-3] + 1 < 0) {
+      len2 = str4[-1];
+      newRep2 = std::string::__getRep(newStr2,len2,len2);
+      unused20 = newStr2;
+      newData = newRep2 + 3;
+      unused19 = len2;
+      unused18 = str4;
+      unused17 = newData;
+      unused21 = newData;
+      unused27 = newData;
+      memcpy(newData,str4,len2);
+    }
+    else {
+      unused22 = newStr2;
+      unused23 = str4;
+      unused27 = str4;
+      strRep7 = str4 + -3;
+      if (strRep7 != &g_nullStringRep) {
+        *strRep7 = *strRep7 + 1;
+      }
+    }
+    ehContext = 0x14;
+    lengthError[0] = &std::length_error::vftable;
+    ehDtorCount = ehDtorCount + 2;
+    if (str4 != (int *)0x0) {
+      if (str4[-3] != -1) {
+        strRep6 = str4 + -3;
+        if (strRep6 == &g_nullStringRep) {
+          prevRefs = 1;
+        }
+        else if (strRep6 == &g_nullStringRep) {
+          prevRefs = 1;
+        }
+        else {
+          *strRep6 = *strRep6 + -1;
+          prevRefs = *strRep6 + 1;
+        }
+        if (prevRefs != 0) goto LAB_00431854;
+      }
+      unused16 = str4 + -3;
+      unused15 = str4 + -3;
+      operator_delete();
+      unused14 = 0;
+      unused13 = str2;
+      str4 = (int *)0x0;
+      unused = 0;
+    }
+LAB_00431854:
+    ehContext = 8;
+    _ThrowExceptionLDTC((uint *)&DAT_00408314,(undefined4*)lengthError,op,copyCtor,k,throwFlags,throwFile,throwLine);
+  }
+  if (headerEnd < *(uint *)(*(int *)(bc + 8) + -4)) {
+    tailLen = *(int *)(*(int *)(bc + 8) + -4) - headerEnd;
+    if (*(uint *)(*(int *)(bc + 8) + -4) < headerEnd) {
+      throwLine = 0;
+      throwFile = 0;
+      throwFlags = 0;
+      k = 1;
+      copyCtor = &LAB_004084c8;
+      op = 0;
+      ehContext = 0x44;
+      msgText = (uint *)__rwstd::except_msg_string::format(exceptMsg,PTR_s_string_index_out_of_range_in_fun_00516d2c);
+      std::string::string_from_cstr((int)str,msgText);
+      ehDtorCount = ehDtorCount + 2;
+      outOfRange[0] = &std::logic_error::vftable;
+      unused12 = 0;
+      unused26 = (int *)0x0;
+      ehContext = 0x50;
+      if (str3[-3] == -1 || str3[-3] + 1 < 0) {
+        len = str3[-1];
+        newRep = std::string::__getRep(newStr,len,len);
+        unused8 = newStr;
+        newData2 = newRep + 3;
+        unused7 = len;
+        unused6 = str3;
+        unused9 = newData2;
+        unused26 = newData2;
+        memcpy(newData2,str3,len);
+      }
+      else {
+        unused10 = newStr;
+        unused11 = str3;
+        unused26 = str3;
+        strRep5 = str3 + -3;
+        if (strRep5 != &g_nullStringRep) {
+          *strRep5 = *strRep5 + 1;
+        }
+      }
+      ehContext = 0x44;
+      outOfRange[0] = &std::out_of_range::vftable;
+      ehDtorCount = ehDtorCount + 2;
+      if (str3 != (int *)0x0) {
+        if (str3[-3] != -1) {
+          strRep4 = str3 + -3;
+          if (strRep4 == &g_nullStringRep) {
+            prevRefs = 1;
+          }
+          else if (strRep4 == &g_nullStringRep) {
+            prevRefs = 1;
+          }
+          else {
+            *strRep4 = *strRep4 + -1;
+            prevRefs = *strRep4 + 1;
+          }
+          if (prevRefs != 0) goto LAB_00431aeb;
+        }
+        unused5 = str3 + -3;
+        unused4 = str3 + -3;
+        operator_delete();
+        unused3 = 0;
+        unused2 = str;
+        str3 = (int *)0x0;
+      }
+LAB_00431aeb:
+      ehContext = 8;
+      _ThrowExceptionLDTC((uint *)&DAT_0040846c,(undefined4*)outOfRange,op,copyCtor,k,throwFlags,throwFile,throwLine);
+    }
+    available = *(int *)(*(int *)(bc + 8) + -4) - headerEnd;
+    nul = 0;
+    eraseLen = available;
+    if (tailLen < available) {
+      eraseLen = tailLen;
+    }
+    std::string::replace(bc,headerEnd,eraseLen,(uint)&nul,0,0,0);
+  }
+  else {
+    std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,
+                 headerEnd - *(int *)(*(int *)(bc + 8) + -4),0);
+  }
+  strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+  if (strRep != &g_nullStringRep) {
+    *strRep = 0;
+  }
+  anagramLen = MatchEngine::CompileAnagram(self,(undefined4*)&p,bc,&anagramExtra,templateExtra);
+  if (anagramLen == -1) {
+    *sehChainHead = sehPrevFrame;
+    return -1;
+  }
+  if (hasPrefix != '\0') {
+    *outEndPos = *(int *)(*(int *)(bc + 8) + -4) + 1;
+  }
+LAB_00431bdb:
+  if (((templateLen == 0) && (templateExtra == 0)) && (templateExtra = anagramExtra, templateLen = anagramLen, 0 < anagramExtra)) {
+    *outVarPos = startPos;
+  }
+  if (templateLen < 0x81) {
+    if (0 < templateExtra) {
+      if ((anagramExtra < 15000) && (templateLen < anagramLen + anagramExtra)) {
+        templateExtra = (anagramLen + anagramExtra) - templateLen;
+      }
+      if (-1 < templateVarPos) {
+        *outVarPos = startPos;
+      }
+      startPos2 = startPos;
+      if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+        std::string::__unshare(bc);
+      }
+      strRep3 = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+      if (strRep3 != &g_nullStringRep) {
+        *strRep3 = 0xffffffff;
+      }
+      opSlot = (undefined1 *)(*(int *)(bc + 8) + startPos2);
+      op = MatchEngine::Emit((int)self,0xfa);
+      *opSlot = (char)op;
+      *outExtra = *outExtra + templateExtra;
+    }
+    if (-1 < templateVarPos) {
+      templateVarPos5 = templateVarPos;
+      if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+        std::string::__unshare(bc);
+      }
+      strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+      if (strRep != &g_nullStringRep) {
+        *strRep = 0xffffffff;
+      }
+      if (*(char *)(*(int *)(bc + 8) + templateVarPos5) == -0xe) {
+        templateVarPos4 = templateVarPos;
+        if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+          std::string::__unshare(bc);
+        }
+        strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+        if (strRep != &g_nullStringRep) {
+          *strRep = 0xffffffff;
+        }
+        *(undefined1 *)(*(int *)(bc + 8) + templateVarPos4) = 0xf3;
+      }
+      else {
+        templateVarPos3 = templateVarPos;
+        if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+          std::string::__unshare(bc);
+        }
+        strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+        if (strRep != &g_nullStringRep) {
+          *strRep = 0xffffffff;
+        }
+        if (*(char *)(*(int *)(bc + 8) + templateVarPos3) == -6) {
+          templateVarPos2 = templateVarPos;
+          if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+            std::string::__unshare(bc);
+          }
+          strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+          if (strRep != &g_nullStringRep) {
+            *strRep = 0xffffffff;
+          }
+          *(undefined1 *)(*(int *)(bc + 8) + templateVarPos2) = 0xfb;
+        }
+      }
+    }
+    minLenPos = startPos + 1;
+    if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+      std::string::__unshare(bc);
+    }
+    strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+    if (strRep != &g_nullStringRep) {
+      *strRep = 0xffffffff;
+    }
+    *(char *)(*(int *)(bc + 8) + minLenPos) = (char)templateLen;
+    extraPos = startPos + 2;
+    if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+      std::string::__unshare(bc);
+    }
+    strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+    if (strRep != &g_nullStringRep) {
+      *strRep = 0xffffffff;
+    }
+    if (templateExtra < 0x65) {
+      extraByte = (undefined1)templateExtra;
+    }
+    else {
+      extraByte = 0x65;
+    }
+    *(undefined1 *)(*(int *)(bc + 8) + extraPos) = extraByte;
+    if (anagramPos != 0) {
+      anagramLenBytes[0] = anagramLen;
+      k = 0;
+      byteSrc = anagramLenBytes;
+      do {
+        bytePos = anagramPos + k + 2;
+        if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+          std::string::__unshare(bc);
+        }
+        strRep2 = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+        if (strRep2 != &g_nullStringRep) {
+          *strRep2 = 0xffffffff;
+        }
+        *(char *)(*(int *)(bc + 8) + bytePos) = (char)*byteSrc;
+        k = k + 1;
+        byteSrc = (int *)((int)byteSrc + 1);
+      } while (k < 4);
+    }
+    std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,0xfc);
+    *cursor = (int)p;
+    *sehChainHead = sehPrevFrame;
+  }
+  else {
+    self[m_status / 4] = 4;
+    templateLen = -1;
+    *sehChainHead = sehPrevFrame;
+  }
+  return templateLen;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00431f34  MatchEngine::CompileTemplate   (2223 bytes, 2 ranges)   [notes+analysis (position-matched TEACON.exe)]
+//   paired with TEACON.exe 0x0040ae38 by position between identical neighbours; the bodies differ (2202 vs 2223 bytes), so treat the name as probable. compiles the template part: letters and '.'/'?' into a 0xf0 group, choice lists [..] / [^..] and digit variables into a 0xf1 group, punctuation 0xfe/0xff, '*' as 0xf2 wildcard, (..) sub-patterns via CompilePattern; returns the minimum letter count or -1 with the status set
+int __cdecl MatchEngine::CompileTemplate(int self,int *cursorRef,int bc,int *outVarPos,int *outEndPos,undefined4 *outExtra)
+
+{
+  byte *next;
+  byte ch;
+  bool escaped;
+  undefined1 groupCountByte;
+  undefined4 op;
+  char *terminator;
+  int countPos;
+  undefined1 *opSlot;
+  int countPos2;
+  int letterClass;
+  undefined4 *strRep;
+  int groupCount;
+  undefined1 classByte;
+  char listStart;
+  int subExtra;
+  int minLen;
+  int groupPos;
+  byte *p;
+  
+  p = (byte *)*cursorRef;
+  groupPos = 0;
+  minLen = 0;
+  groupCount = 0;
   do {
     while( true ) {
-      iVar10 = local_c;
-      bVar2 = *local_8;
-      if ((bVar2 == 0x3b) || (bVar2 == 0x29)) goto LAB_0043276a;
-      if (bVar2 == 0x5d) {
-        *(undefined4 *)(param_1 + 0x1024) = 9;
+      letterClass = groupPos;
+      ch = *p;
+      if ((ch == 0x3b) || (ch == 0x29)) goto LAB_0043276a;
+      if (ch == 0x5d) {
+        *(undefined4 *)(self + m_status) = 9;
         return -1;
       }
-      if (*local_8 == 0x5e) {
-        *(undefined4 *)(param_1 + 0x1024) = 0xc;
+      if (*p == 0x5e) {
+        *(undefined4 *)(self + m_status) = 0xc;
         return -1;
       }
-      if (*local_8 == 0) {
-        *(undefined4 *)(param_1 + 0x1024) = 7;
+      if (*p == 0) {
+        *(undefined4 *)(self + m_status) = 7;
         return -1;
       }
-      uVar4 = (undefined1)iVar12;
-      if (*local_8 == 0x28) break;
-      if (*local_8 == 0x2a) {
-        *param_6 = 15000;
-        if (local_c != 0) {
-          iVar10 = local_c + 1;
-          if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-            FUN_004d48d8(param_3);
+      groupCountByte = (undefined1)groupCount;
+      if (*p == 0x28) break;
+      if (*p == 0x2a) {
+        *outExtra = 15000;
+        if (groupPos != 0) {
+          letterClass = groupPos + 1;
+          if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+            std::string::__unshare(bc);
           }
-          puVar11 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-          if (puVar11 != &DAT_00513d58) {
-            *puVar11 = 0xffffffff;
+          strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+          if (strRep != &g_nullStringRep) {
+            *strRep = 0xffffffff;
           }
-          *(undefined1 *)(*(int *)(param_3 + 8) + iVar10) = uVar4;
-          local_10 = local_10 + iVar12;
+          *(undefined1 *)(*(int *)(bc + 8) + letterClass) = groupCountByte;
+          minLen = minLen + groupCount;
         }
-        local_8 = local_8 + 1;
-        local_c = *(int *)(*(int *)(param_3 + 8) + -4);
-        *param_4 = local_c;
-        uVar5 = FUN_00431458(param_1,0xf2);
-        std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(char)uVar5);
-        std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,0x20);
-        *param_5 = *(int *)(*(int *)(param_3 + 8) + -4);
-        iVar12 = MatchEngine::CompileTemplate(param_1,(int *)&local_8,param_3,param_4,param_5,param_6);
-        if (iVar12 == -1) {
+        p = p + 1;
+        groupPos = *(int *)(*(int *)(bc + 8) + -4);
+        *outVarPos = groupPos;
+        op = MatchEngine::Emit(self,0xf2);
+        std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(char)op);
+        std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,0x20);
+        *outEndPos = *(int *)(*(int *)(bc + 8) + -4);
+        groupCount = MatchEngine::CompileTemplate(self,(int *)&p,bc,outVarPos,outEndPos,outExtra);
+        if (groupCount == -1) {
           return -1;
         }
         goto LAB_0043276a;
       }
-      if (*local_8 == 0x5b) {
-        if (local_c == 0) {
-          local_c = *(int *)(*(int *)(param_3 + 8) + -4);
-          uVar5 = FUN_00431458(param_1,0xf1);
-          std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(char)uVar5);
-          std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,0x20);
-          iVar12 = 0;
+      if (*p == 0x5b) {
+        if (groupPos == 0) {
+          groupPos = *(int *)(*(int *)(bc + 8) + -4);
+          op = MatchEngine::Emit(self,0xf1);
+          std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(char)op);
+          std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,0x20);
+          groupCount = 0;
         }
         else {
-          if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-            FUN_004d48d8(param_3);
+          if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+            std::string::__unshare(bc);
           }
-          puVar11 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-          if (puVar11 != &DAT_00513d58) {
-            *puVar11 = 0xffffffff;
+          strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+          if (strRep != &g_nullStringRep) {
+            *strRep = 0xffffffff;
           }
-          puVar8 = (undefined1 *)(*(int *)(param_3 + 8) + iVar10);
-          uVar5 = FUN_00431458(param_1,0xf1);
-          *puVar8 = (char)uVar5;
+          opSlot = (undefined1 *)(*(int *)(bc + 8) + letterClass);
+          op = MatchEngine::Emit(self,0xf1);
+          *opSlot = (char)op;
         }
-        if (local_8[1] == 0x5e) {
-          local_8 = local_8 + 1;
-          std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(byte)iVar12 | 0xc0);
+        if (p[1] == 0x5e) {
+          p = p + 1;
+          std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(byte)groupCount | 0xc0);
         }
         else {
-          std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(byte)iVar12 | 0x40);
+          std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(byte)groupCount | 0x40);
         }
-        if (local_8[1] == 0x5d) {
-          *(undefined4 *)(param_1 + 0x1024) = 0xe;
+        if (p[1] == 0x5d) {
+          *(undefined4 *)(self + m_status) = 0xe;
           return -1;
         }
-        iVar10 = *(int *)(*(int *)(param_3 + 8) + -4);
-        std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,0x20);
+        letterClass = *(int *)(*(int *)(bc + 8) + -4);
+        std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,0x20);
         while( true ) {
-          local_8 = local_8 + 1;
-          pcVar6 = thunk_FUN_004dc924(PTR_s_ptr_004f2d24,*local_8);
-          if (pcVar6 != (char *)0x0) break;
-          if ((*local_8 == 0x5c) && (local_8[1] != 0)) {
-            local_8 = local_8 + 1;
+          p = p + 1;
+          terminator = thunk_strchr(PTR_s_ptr_004f2d24,*p);
+          if (terminator != (char *)0x0) break;
+          if ((*p == 0x5c) && (p[1] != 0)) {
+            p = p + 1;
           }
-          iVar7 = *(int *)(*(int *)(*(int *)(*(int *)(param_1 + 0x112c) + 0xc) +
-                                   *(int *)(param_1 + 0x1130) * 4) + 8 + (uint)*local_8 * 8);
-          if (iVar7 == 0xff) break;
-          std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(char)iVar7);
+          countPos = *(int *)(*(int *)(*(int *)(*(int *)(self + m_dictList) + 0xc) +
+                                   *(int *)(self + m_dictIndex) * 4) + 8 + (uint)*p * 8);
+          if (countPos == 0xff) break;
+          std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(char)countPos);
         }
-        if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-          FUN_004d48d8(param_3);
+        if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+          std::string::__unshare(bc);
         }
-        puVar11 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-        if (puVar11 != &DAT_00513d58) {
-          *puVar11 = 0xffffffff;
+        strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+        if (strRep != &g_nullStringRep) {
+          *strRep = 0xffffffff;
         }
-        local_38 = (char)iVar10;
-        *(char *)(*(int *)(param_3 + 8) + iVar10) =
-             *(char *)(*(int *)(param_3 + 8) + -4) - (local_38 + '\x01');
-        if (*local_8 != 0x5d) {
-          if ((*local_8 == 0x29) && (local_8[1] == 0)) {
-            *(undefined4 *)(param_1 + 0x1024) = 5;
+        listStart = (char)letterClass;
+        *(char *)(*(int *)(bc + 8) + letterClass) =
+             *(char *)(*(int *)(bc + 8) + -4) - (listStart + '\x01');
+        if (*p != 0x5d) {
+          if ((*p == 0x29) && (p[1] == 0)) {
+            *(undefined4 *)(self + m_status) = 5;
           }
           else {
-            *(undefined4 *)(param_1 + 0x1024) = 2;
+            *(undefined4 *)(self + m_status) = 2;
           }
           return -1;
         }
       }
-      else if ((*local_8 < 0x30) || (0x39 < *local_8)) {
-        bVar3 = false;
-        if (*local_8 == 0x5c) {
-          bVar3 = true;
-          pbVar1 = local_8 + 2;
-          local_8 = local_8 + 1;
-          if (*pbVar1 == 0) {
-            *(undefined4 *)(param_1 + 0x1024) = 0xd;
+      else if ((*p < 0x30) || (0x39 < *p)) {
+        escaped = false;
+        if (*p == 0x5c) {
+          escaped = true;
+          next = p + 2;
+          p = p + 1;
+          if (*next == 0) {
+            *(undefined4 *)(self + m_status) = 0xd;
             return -1;
           }
         }
-        iVar10 = *(int *)(*(int *)(*(int *)(*(int *)(param_1 + 0x112c) + 0xc) +
-                                  *(int *)(param_1 + 0x1130) * 4) + 8 + (uint)*local_8 * 8);
-        if (((iVar10 == 0xff) && ((bVar3 || ((*local_8 != 0x2e && (*local_8 != 0x3f)))))) ||
-           ((iVar10 != 0xff && (bVar3)))) {
-          if (local_c != 0) {
-            iVar9 = local_c + 1;
-            iVar7 = *(int *)(*(int *)(param_3 + 8) + -0xc);
-            if (iVar7 != 0 && 0 < iVar7 + 1) {
-              FUN_004d48d8(param_3);
+        letterClass = *(int *)(*(int *)(*(int *)(*(int *)(self + m_dictList) + 0xc) +
+                                  *(int *)(self + m_dictIndex) * 4) + 8 + (uint)*p * 8);
+        if (((letterClass == 0xff) && ((escaped || ((*p != 0x2e && (*p != 0x3f)))))) ||
+           ((letterClass != 0xff && (escaped)))) {
+          if (groupPos != 0) {
+            countPos2 = groupPos + 1;
+            countPos = *(int *)(*(int *)(bc + 8) + -0xc);
+            if (countPos != 0 && 0 < countPos + 1) {
+              std::string::__unshare(bc);
             }
-            puVar11 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-            if (puVar11 != &DAT_00513d58) {
-              *puVar11 = 0xffffffff;
+            strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+            if (strRep != &g_nullStringRep) {
+              *strRep = 0xffffffff;
             }
-            *(undefined1 *)(*(int *)(param_3 + 8) + iVar9) = uVar4;
-            local_10 = local_10 + iVar12;
-            local_c = 0;
+            *(undefined1 *)(*(int *)(bc + 8) + countPos2) = groupCountByte;
+            minLen = minLen + groupCount;
+            groupPos = 0;
           }
-          if (iVar10 == 0xff) {
-            uVar5 = FUN_00431458(param_1,0xff);
-            std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(char)uVar5);
-            std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,*local_8);
-            *(undefined1 *)(param_1 + 0x1028 + (uint)*local_8) = 0xff;
+          if (letterClass == 0xff) {
+            op = MatchEngine::Emit(self,0xff);
+            std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(char)op);
+            std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,*p);
+            *(undefined1 *)(self + 0x1028 + (uint)*p) = 0xff;
           }
           else {
-            uVar5 = FUN_00431458(param_1,0xfe);
-            std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(char)uVar5);
-            std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,*local_8);
-            *(undefined1 *)(param_1 + 0x1028 + (uint)*local_8) = 0xfe;
-            local_8 = local_8 + -1;
+            op = MatchEngine::Emit(self,0xfe);
+            std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(char)op);
+            std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,*p);
+            *(undefined1 *)(self + 0x1028 + (uint)*p) = 0xfe;
+            p = p + -1;
           }
-          iVar12 = -1;
+          groupCount = -1;
         }
         else {
-          if (local_c == 0) {
-            local_c = *(int *)(*(int *)(param_3 + 8) + -4);
-            uVar5 = FUN_00431458(param_1,0xf0);
-            std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(char)uVar5);
-            std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,0x20);
-            iVar12 = 0;
+          if (groupPos == 0) {
+            groupPos = *(int *)(*(int *)(bc + 8) + -4);
+            op = MatchEngine::Emit(self,0xf0);
+            std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(char)op);
+            std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,0x20);
+            groupCount = 0;
           }
-          if ((iVar10 != 0xff) && ((bVar3 || ((*local_8 != 0x2e && (*local_8 != 0x3f)))))) {
-            std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(char)iVar12);
-            local_58 = (undefined1)iVar10;
-            std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,local_58);
+          if ((letterClass != 0xff) && ((escaped || ((*p != 0x2e && (*p != 0x3f)))))) {
+            std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(char)groupCount);
+            classByte = (undefined1)letterClass;
+            std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,classByte);
           }
         }
       }
       else {
-        if (local_c == 0) {
-          local_c = *(int *)(*(int *)(param_3 + 8) + -4);
-          uVar5 = FUN_00431458(param_1,0xf1);
-          std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(char)uVar5);
-          std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,0x20);
-          iVar12 = 0;
+        if (groupPos == 0) {
+          groupPos = *(int *)(*(int *)(bc + 8) + -4);
+          op = MatchEngine::Emit(self,0xf1);
+          std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(char)op);
+          std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,0x20);
+          groupCount = 0;
         }
         else {
-          if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-            FUN_004d48d8(param_3);
+          if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+            std::string::__unshare(bc);
           }
-          puVar11 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-          if (puVar11 != &DAT_00513d58) {
-            *puVar11 = 0xffffffff;
+          strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+          if (strRep != &g_nullStringRep) {
+            *strRep = 0xffffffff;
           }
-          puVar8 = (undefined1 *)(*(int *)(param_3 + 8) + iVar10);
-          uVar5 = FUN_00431458(param_1,0xf1);
-          *puVar8 = (char)uVar5;
+          opSlot = (undefined1 *)(*(int *)(bc + 8) + letterClass);
+          op = MatchEngine::Emit(self,0xf1);
+          *opSlot = (char)op;
         }
-        std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(byte)iVar12 | 0x80);
-        std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,*local_8 - 0x30);
+        std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(byte)groupCount | 0x80);
+        std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,*p - 0x30);
       }
-      iVar10 = *(int *)(*(int *)(param_3 + 8) + -4);
-      if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-        FUN_004d48d8(param_3);
+      letterClass = *(int *)(*(int *)(bc + 8) + -4);
+      if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+        std::string::__unshare(bc);
       }
-      puVar11 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-      if (puVar11 != &DAT_00513d58) {
-        *puVar11 = 0xffffffff;
+      strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+      if (strRep != &g_nullStringRep) {
+        *strRep = 0xffffffff;
       }
-      if (*(char *)(*(int *)(param_3 + 8) + iVar10 + -2) == -1) {
-        if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-          FUN_004d48d8(param_3);
+      if (*(char *)(*(int *)(bc + 8) + letterClass + -2) == -1) {
+        if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+          std::string::__unshare(bc);
         }
-        puVar11 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-        if (puVar11 != &DAT_00513d58) {
-          *puVar11 = 0xffffffff;
+        strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+        if (strRep != &g_nullStringRep) {
+          *strRep = 0xffffffff;
         }
-        if (*(char *)(*(int *)(param_3 + 8) + iVar10 + -1) != ' ') goto LAB_0043274d;
+        if (*(char *)(*(int *)(bc + 8) + letterClass + -1) != ' ') goto LAB_0043274d;
       }
       else {
 LAB_0043274d:
-        *param_5 = iVar10;
+        *outEndPos = letterClass;
       }
-      iVar12 = iVar12 + 1;
-      local_8 = local_8 + 1;
+      groupCount = groupCount + 1;
+      p = p + 1;
     }
-    if (local_c != 0) {
-      iVar7 = local_c + 1;
-      iVar10 = *(int *)(*(int *)(param_3 + 8) + -0xc);
-      if (iVar10 != 0 && 0 < iVar10 + 1) {
-        FUN_004d48d8(param_3);
+    if (groupPos != 0) {
+      countPos = groupPos + 1;
+      letterClass = *(int *)(*(int *)(bc + 8) + -0xc);
+      if (letterClass != 0 && 0 < letterClass + 1) {
+        std::string::__unshare(bc);
       }
-      puVar11 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-      if (puVar11 != &DAT_00513d58) {
-        *puVar11 = 0xffffffff;
+      strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+      if (strRep != &g_nullStringRep) {
+        *strRep = 0xffffffff;
       }
-      *(undefined1 *)(*(int *)(param_3 + 8) + iVar7) = uVar4;
-      local_10 = local_10 + iVar12;
-      local_c = 0;
+      *(undefined1 *)(*(int *)(bc + 8) + countPos) = groupCountByte;
+      minLen = minLen + groupCount;
+      groupPos = 0;
     }
-    local_8 = local_8 + 1;
-    local_14 = 0;
-    iVar12 = MatchEngine::CompilePattern((int *)param_1,(int *)&local_8,param_3,param_4,param_5,&local_14);
-    if (iVar12 == -1) {
+    p = p + 1;
+    subExtra = 0;
+    groupCount = MatchEngine::CompilePattern((int *)self,(int *)&p,bc,outVarPos,outEndPos,&subExtra);
+    if (groupCount == -1) {
       return -1;
     }
-    local_10 = local_10 + iVar12;
-    local_8 = local_8 + 1;
-  } while (local_14 < 1);
-  *param_6 = *param_6 + local_14;
-  iVar12 = MatchEngine::CompileTemplate(param_1,(int *)&local_8,param_3,param_4,param_5,param_6);
-  if (iVar12 == -1) {
-    local_10 = -1;
+    minLen = minLen + groupCount;
+    p = p + 1;
+  } while (subExtra < 1);
+  *outExtra = *outExtra + subExtra;
+  groupCount = MatchEngine::CompileTemplate(self,(int *)&p,bc,outVarPos,outEndPos,outExtra);
+  if (groupCount == -1) {
+    minLen = -1;
   }
   else {
-    local_10 = local_10 + iVar12;
+    minLen = minLen + groupCount;
 LAB_0043276a:
-    if (local_c != 0) {
-      iVar10 = local_c + 1;
-      if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-        FUN_004d48d8(param_3);
+    if (groupPos != 0) {
+      letterClass = groupPos + 1;
+      if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+        std::string::__unshare(bc);
       }
-      puVar11 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-      if (puVar11 != &DAT_00513d58) {
-        *puVar11 = 0xffffffff;
+      strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+      if (strRep != &g_nullStringRep) {
+        *strRep = 0xffffffff;
       }
-      *(char *)(*(int *)(param_3 + 8) + iVar10) = (char)iVar12;
-      local_10 = local_10 + iVar12;
+      *(char *)(*(int *)(bc + 8) + letterClass) = (char)groupCount;
+      minLen = minLen + groupCount;
     }
-    std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,0xfc);
-    *param_2 = (int)local_8;
+    std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,0xfc);
+    *cursorRef = (int)p;
   }
-  return local_10;
+  return minLen;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004327e8  MatchEngine::CompileAnagram   (3500 bytes)   [notes (inferred) (position-matched TEACON.exe)]
-//   paired with TEACON.exe 0x0040b6d8 by position between identical neighbours; the bodies differ (3470 vs 3500 bytes), so treat the name as probable. anagram-side compiler; uses the Pattern pool. Role inferred from call structure
+// 0x004327e8  MatchEngine::CompileAnagram   (3500 bytes)   [notes+analysis (position-matched TEACON.exe)]
+//   paired with TEACON.exe 0x0040b6d8 by position between identical neighbours; the bodies differ (3470 vs 3500 bytes), so treat the name as probable. compiles the anagram part in stages: sub-patterns (0xfa count pool-index), choice lists (0xf7 count pool-index), letter variables (0xf8 + ten counts), then named letters as singles (0xf5) or multiples (0xf6); returns the letter count or -1 with the status set
 /* WARNING: Removing unreachable block (ram,0x004328f8) */
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-int __cdecl MatchEngine::CompileAnagram(int *param_1,undefined4 *param_2,int param_3,undefined4 *param_4,int param_5)
+int __cdecl MatchEngine::CompileAnagram(int *self,undefined4 *cursorRef,int bc,undefined4 *outExtra,int templateExtra)
 
 {
-  byte *pbVar1;
-  byte bVar2;
-  bool bVar3;
-  undefined4 uVar4;
-  int iVar5;
-  undefined1 *puVar6;
-  int iVar7;
-  int *piVar8;
-  char *pcVar9;
-  undefined4 *in_FS_OFFSET;
-  int local_524 [251];
-  char acStack_138 [20];
-  undefined4 *local_124;
-  int local_120;
-  undefined1 local_11c;
-  undefined1 local_11b;
-  undefined1 local_11a;
-  undefined1 local_119;
-  undefined1 local_118;
-  undefined1 local_117;
-  char local_116;
-  undefined1 local_115;
-  int local_114;
-  int local_110;
-  byte local_109;
-  char local_108 [16];
-  undefined1 *local_f8;
-  undefined4 local_f4;
-  int local_f0;
-  int local_ec;
-  int local_e0;
-  int local_d4;
-  int local_d0;
-  undefined4 *local_cc;
-  int local_c8;
-  int local_c4;
-  uint local_c0;
-  undefined1 local_bc;
-  undefined1 local_bb;
-  undefined1 local_ba;
-  char local_b9;
-  int local_b8;
-  undefined1 *local_b4;
-  undefined4 local_b0;
-  undefined *local_ac;
-  undefined *local_a8;
-  int *local_a4;
-  undefined *local_98;
-  undefined *local_94;
-  int *local_90;
-  int local_8c;
-  undefined *local_80;
-  undefined *local_7c;
-  int *local_78;
-  int local_74;
-  int local_70;
-  int local_6c;
-  undefined1 *local_68;
-  undefined *local_64;
-  undefined4 local_60;
-  int local_5c;
-  int local_58;
-  int local_54;
-  int local_50;
-  byte *local_4c;
-  undefined4 local_48;
-  undefined2 local_38;
-  int local_2c;
-  undefined1 local_24 [8];
-  int local_1c;
-  undefined1 local_14 [8];
-  undefined *local_c;
+  byte *next;
+  byte ch;
+  bool escaped;
+  undefined4 op;
+  int count;
+  undefined1 *opSlot;
+  int n;
+  int *countAt;
+  char *q;
+  undefined4 *sehChainHead;
+  int counts [251];
+  char varCountsByDigit [20];
+  undefined4 *strRep;
+  int subPatternPos2;
+  undefined1 unused;
+  undefined1 unused2;
+  undefined1 singlesOp;
+  undefined1 unused3;
+  undefined1 countByte;
+  undefined1 multiplesOp;
+  char varCount;
+  undefined1 varsOp;
+  int letterClass;
+  int unused4;
+  byte unused5;
+  char varCounts [16];
+  undefined1 *unused6;
+  undefined4 unused7;
+  int unused8;
+  int unused9;
+  int unused10;
+  int unused11;
+  int unused12;
+  undefined4 *strRep2;
+  int classPos;
+  int choiceClass;
+  uint allowed;
+  undefined1 unused13;
+  undefined1 countByte2;
+  undefined1 subOp;
+  char subFirstOp;
+  int subPattern;
+  undefined1 *unused14;
+  undefined4 unused15;
+  undefined *unused16;
+  undefined *unused17;
+  int *strRep3;
+  undefined *unused18;
+  undefined *unused19;
+  int *strRep4;
+  int poolIndex;
+  undefined *unused20;
+  undefined *unused21;
+  int *strRep5;
+  int subLen;
+  int outEndPos;
+  int outVarPos;
+  undefined1 *unused22;
+  undefined *unused23;
+  undefined4 unused24;
+  int distinctLetters;
+  int i;
+  int letterCount;
+  int subPatternPos;
+  byte *p;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 choiceSet [8];
+  int choiceSetData;
+  undefined1 subBc [8];
+  undefined *subBcData;
   
   __InitExceptBlockLDTC(0x4f2e98);
-  piVar8 = local_524;
-  local_4c = (byte *)*param_2;
-  local_50 = -1;
-  local_54 = 0;
-  local_58 = 0;
+  countAt = counts;
+  p = (byte *)*cursorRef;
+  subPatternPos = -1;
+  letterCount = 0;
+  i = 0;
   do {
-    *piVar8 = 0;
-    local_58 = local_58 + 1;
-    piVar8 = piVar8 + 1;
-  } while (local_58 < 0x100);
-  for (; *local_4c != 0x29; local_4c = local_4c + 1) {
-    if (*local_4c == 0x5c) {
-      pbVar1 = local_4c + 2;
-      local_4c = local_4c + 1;
-      if (*pbVar1 == 0) {
-        param_1[0x409] = 0xd;
-        *in_FS_OFFSET = local_48;
+    *countAt = 0;
+    i = i + 1;
+    countAt = countAt + 1;
+  } while (i < 0x100);
+  for (; *p != 0x29; p = p + 1) {
+    if (*p == 0x5c) {
+      next = p + 2;
+      p = p + 1;
+      if (*next == 0) {
+        self[m_status / 4] = 0xd;
+        *sehChainHead = sehPrevFrame;
         return -1;
       }
     }
     else {
-      if (*local_4c == 0x3b) {
-        param_1[0x409] = 6;
-        *in_FS_OFFSET = local_48;
+      if (*p == 0x3b) {
+        self[m_status / 4] = 6;
+        *sehChainHead = sehPrevFrame;
         return -1;
       }
-      if (*local_4c == 0) {
-        param_1[0x409] = 7;
-        *in_FS_OFFSET = local_48;
+      if (*p == 0) {
+        self[m_status / 4] = 7;
+        *sehChainHead = sehPrevFrame;
         return -1;
       }
-      if (*local_4c == 0x28) {
-        local_60 = 0;
-        local_68 = local_14;
-        local_64 = &DAT_00513d64;
-        local_c = &DAT_00513d64;
-        local_2c = local_2c + 1;
-        local_38 = 0x20;
-        local_4c = local_4c + 1;
-        local_74 = MatchEngine::CompilePattern(param_1,(int *)&local_4c,(int)local_14,&local_6c,&local_70,param_4);
-        if (local_74 == -1) {
-          iVar7 = -1;
-          local_2c = local_2c + -1;
-          if (local_c != (undefined *)0x0) {
-            if (*(int *)(local_c + -0xc) != -1) {
-              local_78 = (int *)(local_c + -0xc);
-              if (local_78 == &DAT_00513d58) {
-                iVar5 = 1;
+      if (*p == 0x28) {
+        unused24 = 0;
+        unused22 = subBc;
+        unused23 = &g_emptyStringData;
+        subBcData = &g_emptyStringData;
+        ehDtorCount = ehDtorCount + 1;
+        ehContext = 0x20;
+        p = p + 1;
+        subLen = MatchEngine::CompilePattern(self,(int *)&p,(int)subBc,&outVarPos,&outEndPos,outExtra);
+        if (subLen == -1) {
+          n = -1;
+          ehDtorCount = ehDtorCount + -1;
+          if (subBcData != (undefined *)0x0) {
+            if (*(int *)(subBcData + -0xc) != -1) {
+              strRep5 = (int *)(subBcData + -0xc);
+              if (strRep5 == &g_nullStringRep) {
+                count = 1;
               }
-              else if (local_78 == &DAT_00513d58) {
-                iVar5 = 1;
+              else if (strRep5 == &g_nullStringRep) {
+                count = 1;
               }
               else {
-                *local_78 = *local_78 + -1;
-                iVar5 = *local_78 + 1;
+                *strRep5 = *strRep5 + -1;
+                count = *strRep5 + 1;
               }
-              if (iVar5 != 0) goto LAB_004329c5;
+              if (count != 0) goto LAB_004329c5;
             }
-            local_7c = local_c + -0xc;
-            local_80 = local_c + -0xc;
+            unused21 = subBcData + -0xc;
+            unused20 = subBcData + -0xc;
             operator_delete();
           }
 LAB_004329c5:
-          *in_FS_OFFSET = local_48;
-          return iVar7;
+          *sehChainHead = sehPrevFrame;
+          return n;
         }
-        local_8c = Pattern::Add(param_1,(int)local_14);
-        if (local_8c < 0) {
-          param_1[0x409] = 3;
-          iVar7 = -1;
-          local_2c = local_2c + -1;
-          if (local_c != (undefined *)0x0) {
-            if (*(int *)(local_c + -0xc) != -1) {
-              local_90 = (int *)(local_c + -0xc);
-              if (local_90 == &DAT_00513d58) {
-                iVar5 = 1;
+        poolIndex = Pattern::Add(self,(int)subBc);
+        if (poolIndex < 0) {
+          self[m_status / 4] = 3;
+          n = -1;
+          ehDtorCount = ehDtorCount + -1;
+          if (subBcData != (undefined *)0x0) {
+            if (*(int *)(subBcData + -0xc) != -1) {
+              strRep4 = (int *)(subBcData + -0xc);
+              if (strRep4 == &g_nullStringRep) {
+                count = 1;
               }
-              else if (local_90 == &DAT_00513d58) {
-                iVar5 = 1;
+              else if (strRep4 == &g_nullStringRep) {
+                count = 1;
               }
               else {
-                *local_90 = *local_90 + -1;
-                iVar5 = *local_90 + 1;
+                *strRep4 = *strRep4 + -1;
+                count = *strRep4 + 1;
               }
-              if (iVar5 != 0) goto LAB_00432aad;
+              if (count != 0) goto LAB_00432aad;
             }
-            local_94 = local_c + -0xc;
-            local_98 = local_c + -0xc;
+            unused19 = subBcData + -0xc;
+            unused18 = subBcData + -0xc;
             operator_delete();
           }
 LAB_00432aad:
-          *in_FS_OFFSET = local_48;
-          return iVar7;
+          *sehChainHead = sehPrevFrame;
+          return n;
         }
-        local_524[local_8c] = local_524[local_8c] + 1;
-        local_54 = local_54 + local_74;
-        local_2c = local_2c + -1;
-        if (local_c != (undefined *)0x0) {
-          if (*(int *)(local_c + -0xc) != -1) {
-            local_a4 = (int *)(local_c + -0xc);
-            if (local_a4 == &DAT_00513d58) {
-              iVar7 = 1;
+        counts[poolIndex] = counts[poolIndex] + 1;
+        letterCount = letterCount + subLen;
+        ehDtorCount = ehDtorCount + -1;
+        if (subBcData != (undefined *)0x0) {
+          if (*(int *)(subBcData + -0xc) != -1) {
+            strRep3 = (int *)(subBcData + -0xc);
+            if (strRep3 == &g_nullStringRep) {
+              n = 1;
             }
-            else if (local_a4 == &DAT_00513d58) {
-              iVar7 = 1;
+            else if (strRep3 == &g_nullStringRep) {
+              n = 1;
             }
             else {
-              *local_a4 = *local_a4 + -1;
-              iVar7 = *local_a4 + 1;
+              *strRep3 = *strRep3 + -1;
+              n = *strRep3 + 1;
             }
-            if (iVar7 != 0) goto LAB_00432b7f;
+            if (n != 0) goto LAB_00432b7f;
           }
-          local_a8 = local_c + -0xc;
-          local_ac = local_c + -0xc;
+          unused17 = subBcData + -0xc;
+          unused16 = subBcData + -0xc;
           operator_delete();
-          local_b0 = 0;
-          local_c = (undefined *)0x0;
-          local_b4 = local_14;
+          unused15 = 0;
+          subBcData = (undefined *)0x0;
+          unused14 = subBc;
         }
 LAB_00432b7f:
-        local_38 = 0;
+        ehContext = 0;
       }
     }
   }
-  piVar8 = local_524;
-  local_58 = 0;
+  countAt = counts;
+  i = 0;
   do {
-    if (0 < *piVar8) {
-      local_b8 = FUN_00434cb8((int)param_1,(byte)local_58);
-      local_b9 = **(char **)(local_b8 + 8);
-      if (local_b9 == -6) {
-        local_50 = *(int *)(*(int *)(param_3 + 8) + -4);
+    if (0 < *countAt) {
+      subPattern = Pattern::At((int)self,(byte)i);
+      subFirstOp = **(char **)(subPattern + 8);
+      if (subFirstOp == -6) {
+        subPatternPos = *(int *)(*(int *)(bc + 8) + -4);
       }
-      uVar4 = FUN_00431458((int)param_1,0xfa);
-      local_ba = (undefined1)uVar4;
-      std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,local_ba);
-      local_bb = (undefined1)*piVar8;
-      std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,local_bb);
-      local_bc = (byte)local_58;
-      std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(byte)local_58);
+      op = MatchEngine::Emit((int)self,0xfa);
+      subOp = (undefined1)op;
+      std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,subOp);
+      countByte2 = (undefined1)*countAt;
+      std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,countByte2);
+      unused13 = (byte)i;
+      std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(byte)i);
     }
-    *piVar8 = 0;
-    local_58 = local_58 + 1;
-    piVar8 = piVar8 + 1;
-  } while (local_58 < 0x100);
-  for (local_4c = (byte *)*param_2; (bVar2 = *local_4c, bVar2 != 0 && (bVar2 != 0x29));
-      local_4c = local_4c + 1) {
-    if (bVar2 == 0x5c) {
-      local_4c = local_4c + 1;
+    *countAt = 0;
+    i = i + 1;
+    countAt = countAt + 1;
+  } while (i < 0x100);
+  for (p = (byte *)*cursorRef; (ch = *p, ch != 0 && (ch != 0x29));
+      p = p + 1) {
+    if (ch == 0x5c) {
+      p = p + 1;
     }
-    else if (*local_4c == 0x28) {
-      iVar7 = 1;
+    else if (*p == 0x28) {
+      n = 1;
       do {
-        pbVar1 = local_4c + 1;
-        if ((*pbVar1 == 0x5c) && (local_4c[2] != 0)) {
-          pbVar1 = local_4c + 3;
+        next = p + 1;
+        if ((*next == 0x5c) && (p[2] != 0)) {
+          next = p + 3;
         }
-        local_4c = pbVar1;
-        bVar2 = *local_4c;
-        if (bVar2 != 0) {
-          if (bVar2 == 0x28) {
-            iVar7 = iVar7 + 1;
+        p = next;
+        ch = *p;
+        if (ch != 0) {
+          if (ch == 0x28) {
+            n = n + 1;
           }
-          else if (bVar2 == 0x29) {
-            iVar7 = iVar7 + -1;
+          else if (ch == 0x29) {
+            n = n + -1;
           }
         }
-      } while (0 < iVar7);
+      } while (0 < n);
     }
     else {
-      if (*local_4c == 0x5d) {
-        param_1[0x409] = 9;
-        *in_FS_OFFSET = local_48;
+      if (*p == 0x5d) {
+        self[m_status / 4] = 9;
+        *sehChainHead = sehPrevFrame;
         return -1;
       }
-      if (*local_4c == 0x5b) {
-        pbVar1 = local_4c + 1;
-        if (*pbVar1 == 0x5e) {
-          local_4c = local_4c + 1;
+      if (*p == 0x5b) {
+        next = p + 1;
+        if (*next == 0x5e) {
+          p = p + 1;
         }
-        local_c0 = (uint)(*pbVar1 != 0x5e);
-        if (local_4c[1] == 0x5d) {
-          param_1[0x409] = 0xe;
-          *in_FS_OFFSET = local_48;
+        allowed = (uint)(*next != 0x5e);
+        if (p[1] == 0x5d) {
+          self[m_status / 4] = 0xe;
+          *sehChainHead = sehPrevFrame;
           return -1;
         }
-        local_38 = 0x50;
-        local_1c = 0;
-        FUN_004d6234((int)local_24,0x100);
-        local_2c = local_2c + 1;
-        local_38 = 0x68;
+        ehContext = 0x50;
+        choiceSetData = 0;
+        std::string::string_fill((int)choiceSet,0x100);
+        ehDtorCount = ehDtorCount + 1;
+        ehContext = 0x68;
         while( true ) {
-          local_4c = local_4c + 1;
-          pcVar9 = thunk_FUN_004dc924(PTR_s_ptr_004f2d24,*local_4c);
-          if (pcVar9 != (char *)0x0) break;
-          if ((*local_4c == 0x5c) && (local_4c[1] != 0)) {
-            local_4c = local_4c + 1;
+          p = p + 1;
+          q = thunk_strchr(PTR_s_ptr_004f2d24,*p);
+          if (q != (char *)0x0) break;
+          if ((*p == 0x5c) && (p[1] != 0)) {
+            p = p + 1;
           }
-          local_c4 = *(int *)(*(int *)(*(int *)(param_1[1099] + 0xc) + param_1[0x44c] * 4) + 8 +
-                             (uint)*local_4c * 8);
-          local_38 = 0x68;
-          if (local_c4 == 0xff) break;
-          local_c8 = local_c4;
-          if (1 < *(int *)(local_1c + -0xc) + 1) {
-            FUN_004d48d8((int)local_24);
+          choiceClass = *(int *)(*(int *)(*(int *)(self[m_dictList / 4] + 0xc) + self[m_dictIndex / 4] * 4) + 8 +
+                             (uint)*p * 8);
+          ehContext = 0x68;
+          if (choiceClass == 0xff) break;
+          classPos = choiceClass;
+          if (1 < *(int *)(choiceSetData + -0xc) + 1) {
+            std::string::__unshare((int)choiceSet);
           }
-          local_cc = (undefined4 *)(local_1c + -0xc);
-          if (local_cc != &DAT_00513d58) {
-            *local_cc = 0xffffffff;
+          strRep2 = (undefined4 *)(choiceSetData + -0xc);
+          if (strRep2 != &g_nullStringRep) {
+            *strRep2 = 0xffffffff;
           }
-          *(undefined1 *)(local_1c + local_c8) = (undefined1)local_c0;
+          *(undefined1 *)(choiceSetData + classPos) = (undefined1)allowed;
         }
-        iVar7 = Pattern::Add(param_1,(int)local_24);
-        if (iVar7 < 0) {
-          param_1[0x409] = 3;
-          iVar7 = -1;
-          local_2c = local_2c + -1;
-          if (local_1c != 0) {
-            if (*(int *)(local_1c + -0xc) != -1) {
-              piVar8 = (int *)(local_1c + -0xc);
-              if (piVar8 == &DAT_00513d58) {
-                iVar5 = 1;
+        n = Pattern::Add(self,(int)choiceSet);
+        if (n < 0) {
+          self[m_status / 4] = 3;
+          n = -1;
+          ehDtorCount = ehDtorCount + -1;
+          if (choiceSetData != 0) {
+            if (*(int *)(choiceSetData + -0xc) != -1) {
+              countAt = (int *)(choiceSetData + -0xc);
+              if (countAt == &g_nullStringRep) {
+                count = 1;
               }
-              else if (piVar8 == &DAT_00513d58) {
-                iVar5 = 1;
+              else if (countAt == &g_nullStringRep) {
+                count = 1;
               }
               else {
-                *piVar8 = *piVar8 + -1;
-                iVar5 = *piVar8 + 1;
+                *countAt = *countAt + -1;
+                count = *countAt + 1;
               }
-              if (iVar5 != 0) goto LAB_00432eee;
+              if (count != 0) goto LAB_00432eee;
             }
-            local_d0 = local_1c + -0xc;
-            local_d4 = local_1c + -0xc;
+            unused12 = choiceSetData + -0xc;
+            unused11 = choiceSetData + -0xc;
             operator_delete();
           }
 LAB_00432eee:
-          *in_FS_OFFSET = local_48;
-          return iVar7;
+          *sehChainHead = sehPrevFrame;
+          return n;
         }
-        local_524[iVar7] = local_524[iVar7] + 1;
-        if (*local_4c != 0x5d) {
-          if ((*local_4c == 0x29) && (local_4c[1] == 0)) {
-            param_1[0x409] = 5;
+        counts[n] = counts[n] + 1;
+        if (*p != 0x5d) {
+          if ((*p == 0x29) && (p[1] == 0)) {
+            self[m_status / 4] = 5;
           }
           else {
-            param_1[0x409] = 2;
+            self[m_status / 4] = 2;
           }
-          iVar7 = -1;
-          local_2c = local_2c + -1;
-          if (local_1c != 0) {
-            if (*(int *)(local_1c + -0xc) != -1) {
-              piVar8 = (int *)(local_1c + -0xc);
-              if (piVar8 == &DAT_00513d58) {
-                iVar5 = 1;
+          n = -1;
+          ehDtorCount = ehDtorCount + -1;
+          if (choiceSetData != 0) {
+            if (*(int *)(choiceSetData + -0xc) != -1) {
+              countAt = (int *)(choiceSetData + -0xc);
+              if (countAt == &g_nullStringRep) {
+                count = 1;
               }
-              else if (piVar8 == &DAT_00513d58) {
-                iVar5 = 1;
+              else if (countAt == &g_nullStringRep) {
+                count = 1;
               }
               else {
-                *piVar8 = *piVar8 + -1;
-                iVar5 = *piVar8 + 1;
+                *countAt = *countAt + -1;
+                count = *countAt + 1;
               }
-              if (iVar5 != 0) goto LAB_00432fc2;
+              if (count != 0) goto LAB_00432fc2;
             }
-            local_e0 = local_1c + -0xc;
+            unused10 = choiceSetData + -0xc;
             operator_delete();
           }
 LAB_00432fc2:
-          *in_FS_OFFSET = local_48;
-          return iVar7;
+          *sehChainHead = sehPrevFrame;
+          return n;
         }
-        local_54 = local_54 + 1;
-        local_2c = local_2c + -1;
-        if (local_1c != 0) {
-          if (*(int *)(local_1c + -0xc) != -1) {
-            piVar8 = (int *)(local_1c + -0xc);
-            if (piVar8 == &DAT_00513d58) {
-              iVar7 = 1;
+        letterCount = letterCount + 1;
+        ehDtorCount = ehDtorCount + -1;
+        if (choiceSetData != 0) {
+          if (*(int *)(choiceSetData + -0xc) != -1) {
+            countAt = (int *)(choiceSetData + -0xc);
+            if (countAt == &g_nullStringRep) {
+              n = 1;
             }
-            else if (piVar8 == &DAT_00513d58) {
-              iVar7 = 1;
+            else if (countAt == &g_nullStringRep) {
+              n = 1;
             }
             else {
-              *piVar8 = *piVar8 + -1;
-              iVar7 = *piVar8 + 1;
+              *countAt = *countAt + -1;
+              n = *countAt + 1;
             }
-            if (iVar7 != 0) goto LAB_0043306e;
+            if (n != 0) goto LAB_0043306e;
           }
-          local_ec = local_1c + -0xc;
-          local_f0 = local_1c + -0xc;
+          unused9 = choiceSetData + -0xc;
+          unused8 = choiceSetData + -0xc;
           operator_delete();
-          local_f4 = 0;
-          local_1c = 0;
-          local_f8 = local_24;
+          unused7 = 0;
+          choiceSetData = 0;
+          unused6 = choiceSet;
         }
 LAB_0043306e:
-        local_38 = 0;
+        ehContext = 0;
       }
     }
   }
-  piVar8 = local_524;
-  local_58 = 0;
+  countAt = counts;
+  i = 0;
   do {
-    if (0 < *piVar8) {
-      uVar4 = FUN_00431458((int)param_1,0xf7);
-      local_108[0xf] = (char)uVar4;
-      std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,local_108[0xf]);
-      local_108[0xe] = (char)*piVar8;
-      std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,local_108[0xe]);
-      local_108[0xd] = (byte)local_58;
-      std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(byte)local_58);
+    if (0 < *countAt) {
+      op = MatchEngine::Emit((int)self,0xf7);
+      varCounts[0xf] = (char)op;
+      std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,varCounts[0xf]);
+      varCounts[0xe] = (char)*countAt;
+      std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,varCounts[0xe]);
+      varCounts[0xd] = (byte)i;
+      std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(byte)i);
     }
-    *piVar8 = 0;
-    local_58 = local_58 + 1;
-    piVar8 = piVar8 + 1;
-  } while (local_58 < 0x100);
-  pcVar9 = local_108;
-  local_4c = (byte *)*param_2;
-  local_58 = 0;
+    *countAt = 0;
+    i = i + 1;
+    countAt = countAt + 1;
+  } while (i < 0x100);
+  q = varCounts;
+  p = (byte *)*cursorRef;
+  i = 0;
   do {
-    *pcVar9 = '\0';
-    local_58 = local_58 + 1;
-    pcVar9 = pcVar9 + 1;
-  } while (local_58 < 10);
-  for (; (bVar2 = *local_4c, bVar2 != 0 && (bVar2 != 0x29)); local_4c = local_4c + 1) {
-    if (bVar2 == 0x28) {
-      iVar7 = 1;
+    *q = '\0';
+    i = i + 1;
+    q = q + 1;
+  } while (i < 10);
+  for (; (ch = *p, ch != 0 && (ch != 0x29)); p = p + 1) {
+    if (ch == 0x28) {
+      n = 1;
       do {
-        pbVar1 = local_4c + 1;
-        if ((*pbVar1 == 0x5c) && (local_4c[2] != 0)) {
-          pbVar1 = local_4c + 3;
+        next = p + 1;
+        if ((*next == 0x5c) && (p[2] != 0)) {
+          next = p + 3;
         }
-        local_4c = pbVar1;
-        bVar2 = *local_4c;
-        if (bVar2 != 0) {
-          if (bVar2 == 0x28) {
-            iVar7 = iVar7 + 1;
+        p = next;
+        ch = *p;
+        if (ch != 0) {
+          if (ch == 0x28) {
+            n = n + 1;
           }
-          else if (bVar2 == 0x29) {
-            iVar7 = iVar7 + -1;
+          else if (ch == 0x29) {
+            n = n + -1;
           }
         }
-        pbVar1 = local_4c;
-      } while (0 < iVar7);
+        next = p;
+      } while (0 < n);
     }
     else {
-      pbVar1 = local_4c;
-      if (*local_4c == 0x5b) {
-        while (local_4c = pbVar1, pbVar1 = local_4c + 1, *pbVar1 != 0x5d) {
-          if ((*pbVar1 == 0x5c) && (local_4c[2] != 0)) {
-            pbVar1 = local_4c + 2;
+      next = p;
+      if (*p == 0x5b) {
+        while (p = next, next = p + 1, *next != 0x5d) {
+          if ((*next == 0x5c) && (p[2] != 0)) {
+            next = p + 2;
           }
         }
       }
-      else if (*local_4c == 0x2a) {
-        local_50 = -1;
-        *param_4 = 15000;
+      else if (*p == 0x2a) {
+        subPatternPos = -1;
+        *outExtra = 15000;
       }
       else {
-        bVar2 = *local_4c;
-        if ((bVar2 < 0x30) || (0x39 < bVar2)) {
-          if (bVar2 != 0x20) {
-            bVar3 = false;
-            if ((*local_4c == 0x5c) && (local_4c[1] != 0)) {
-              bVar3 = true;
-              local_4c = local_4c + 1;
+        ch = *p;
+        if ((ch < 0x30) || (0x39 < ch)) {
+          if (ch != 0x20) {
+            escaped = false;
+            if ((*p == 0x5c) && (p[1] != 0)) {
+              escaped = true;
+              p = p + 1;
             }
-            local_109 = *local_4c;
-            local_110 = param_1[0x44c];
-            local_114 = *(int *)(*(int *)(*(int *)(param_1[1099] + 0xc) + param_1[0x44c] * 4) + 8 +
-                                (uint)*local_4c * 8);
-            if ((local_114 == 0xff) && ((bVar3 || ((*local_4c != 0x2e && (*local_4c != 0x3f)))))) {
-              param_1[0x409] = 0xb;
-              *in_FS_OFFSET = local_48;
+            unused5 = *p;
+            unused4 = self[m_dictIndex / 4];
+            letterClass = *(int *)(*(int *)(*(int *)(self[m_dictList / 4] + 0xc) + self[m_dictIndex / 4] * 4) + 8 +
+                                (uint)*p * 8);
+            if ((letterClass == 0xff) && ((escaped || ((*p != 0x2e && (*p != 0x3f)))))) {
+              self[m_status / 4] = 0xb;
+              *sehChainHead = sehPrevFrame;
               return -1;
             }
-            if ((local_114 == 0xff) || ((!bVar3 && ((*local_4c == 0x2e || (*local_4c == 0x3f)))))) {
-              FUN_00431458((int)param_1,0xf2);
+            if ((letterClass == 0xff) || ((!escaped && ((*p == 0x2e || (*p == 0x3f)))))) {
+              MatchEngine::Emit((int)self,0xf2);
             }
             else {
-              local_524[local_114] = local_524[local_114] + 1;
+              counts[letterClass] = counts[letterClass] + 1;
             }
-            local_54 = local_54 + 1;
-            pbVar1 = local_4c;
+            letterCount = letterCount + 1;
+            next = p;
           }
         }
         else {
-          acStack_138[bVar2] = acStack_138[bVar2] + '\x01';
-          local_54 = local_54 + 1;
-          pbVar1 = local_4c;
+          varCountsByDigit[ch] = varCountsByDigit[ch] + '\x01';
+          letterCount = letterCount + 1;
+          next = p;
         }
       }
     }
-    local_4c = pbVar1;
+    p = next;
   }
-  pcVar9 = local_108;
-  local_58 = 0;
+  q = varCounts;
+  i = 0;
   do {
-    if (*pcVar9 != '\0') break;
-    local_58 = local_58 + 1;
-    pcVar9 = pcVar9 + 1;
-  } while (local_58 < 10);
-  if (local_58 < 10) {
-    uVar4 = FUN_00431458((int)param_1,0xf8);
-    local_115 = (undefined1)uVar4;
-    std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,local_115);
-    local_58 = 0;
-    pcVar9 = local_108;
+    if (*q != '\0') break;
+    i = i + 1;
+    q = q + 1;
+  } while (i < 10);
+  if (i < 10) {
+    op = MatchEngine::Emit((int)self,0xf8);
+    varsOp = (undefined1)op;
+    std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,varsOp);
+    i = 0;
+    q = varCounts;
     do {
-      local_116 = *pcVar9;
-      std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,local_116);
-      local_58 = local_58 + 1;
-      pcVar9 = pcVar9 + 1;
-    } while (local_58 < 10);
+      varCount = *q;
+      std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,varCount);
+      i = i + 1;
+      q = q + 1;
+    } while (i < 10);
   }
-  iVar7 = 0;
-  local_5c = 0;
-  local_58 = 0;
-  piVar8 = local_524;
+  n = 0;
+  distinctLetters = 0;
+  i = 0;
+  countAt = counts;
   do {
-    iVar5 = *piVar8;
-    if (0 < iVar5) {
-      local_5c = local_5c + 1;
+    count = *countAt;
+    if (0 < count) {
+      distinctLetters = distinctLetters + 1;
     }
-    if (iVar7 < iVar5) {
-      iVar7 = iVar5;
+    if (n < count) {
+      n = count;
     }
-    local_58 = local_58 + 1;
-    piVar8 = piVar8 + 1;
-  } while (local_58 < 0x100);
-  if (iVar7 < 2) {
-    if (iVar7 == 1) {
-      uVar4 = FUN_00431458((int)param_1,0xf5);
-      local_11a = (undefined1)uVar4;
-      std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,local_11a);
-      local_11b = (undefined1)local_5c;
-      std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(undefined1)local_5c);
-      local_58 = 0;
-      piVar8 = local_524;
+    i = i + 1;
+    countAt = countAt + 1;
+  } while (i < 0x100);
+  if (n < 2) {
+    if (n == 1) {
+      op = MatchEngine::Emit((int)self,0xf5);
+      singlesOp = (undefined1)op;
+      std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,singlesOp);
+      unused2 = (undefined1)distinctLetters;
+      std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(undefined1)distinctLetters);
+      i = 0;
+      countAt = counts;
       do {
-        if (0 < *piVar8) {
-          local_11c = (byte)local_58;
-          std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(byte)local_58);
+        if (0 < *countAt) {
+          unused = (byte)i;
+          std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(byte)i);
         }
-        local_58 = local_58 + 1;
-        piVar8 = piVar8 + 1;
-      } while (local_58 < 0x100);
+        i = i + 1;
+        countAt = countAt + 1;
+      } while (i < 0x100);
     }
   }
   else {
-    uVar4 = FUN_00431458((int)param_1,0xf6);
-    local_117 = (undefined1)uVar4;
-    std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,local_117);
-    local_58 = 0;
-    piVar8 = local_524;
+    op = MatchEngine::Emit((int)self,0xf6);
+    multiplesOp = (undefined1)op;
+    std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,multiplesOp);
+    i = 0;
+    countAt = counts;
     do {
-      if (0 < *piVar8) {
-        local_118 = (undefined1)*piVar8;
-        std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,local_118);
-        local_119 = (byte)local_58;
-        std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,1,(byte)local_58);
+      if (0 < *countAt) {
+        countByte = (undefined1)*countAt;
+        std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,countByte);
+        unused3 = (byte)i;
+        std::string::replace_fill(bc,*(uint *)(*(int *)(bc + 8) + -4),0,1,(byte)i);
       }
-      local_58 = local_58 + 1;
-      piVar8 = piVar8 + 1;
-    } while (local_58 < 0x100);
+      i = i + 1;
+      countAt = countAt + 1;
+    } while (i < 0x100);
   }
-  *param_2 = local_4c;
-  if ((-1 < local_50) && (param_5 == 0)) {
-    local_120 = local_50;
-    if (1 < *(int *)(*(int *)(param_3 + 8) + -0xc) + 1) {
-      FUN_004d48d8(param_3);
+  *cursorRef = p;
+  if ((-1 < subPatternPos) && (templateExtra == 0)) {
+    subPatternPos2 = subPatternPos;
+    if (1 < *(int *)(*(int *)(bc + 8) + -0xc) + 1) {
+      std::string::__unshare(bc);
     }
-    local_124 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-    if (local_124 != &DAT_00513d58) {
-      *local_124 = 0xffffffff;
+    strRep = (undefined4 *)(*(int *)(bc + 8) + -0xc);
+    if (strRep != &g_nullStringRep) {
+      *strRep = 0xffffffff;
     }
-    puVar6 = (undefined1 *)(*(int *)(param_3 + 8) + local_120);
-    uVar4 = FUN_00431458((int)param_1,0xfb);
-    *puVar6 = (char)uVar4;
+    opSlot = (undefined1 *)(*(int *)(bc + 8) + subPatternPos2);
+    op = MatchEngine::Emit((int)self,0xfb);
+    *opSlot = (char)op;
   }
-  *in_FS_OFFSET = local_48;
-  return local_54;
+  *sehChainHead = sehPrevFrame;
+  return letterCount;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00433594  MatchEngine::Compile   (4431 bytes)   [notes+analysis (position-matched TEACON.exe)]
-//   paired with TEACON.exe 0x0040c468 by position between identical neighbours; the bodies differ (4431 vs 4431 bytes), so treat the name as probable. compiles one leaf pattern and selects the fast-path matcher stored at +0x114c
+//   paired with TEACON.exe 0x0040c468 by position between identical neighbours; the bodies differ (4431 vs 4431 bytes), so treat the name as probable. compiles one leaf pattern: appends ')' and runs CompilePattern, records min/max length, removes trailing ' ' punctuation pairs, picks the matcher (MatchFixedTemplate / MatchDistinctAnagram / MatchMultiAnagram when the code is a single stage, else MatchGeneral) and fills the punctuation table
 /* WARNING: Removing unreachable block (ram,0x00433693) */
 /* WARNING: Removing unreachable block (ram,0x0043378a) */
 /* WARNING: Removing unreachable block (ram,0x00433736) */
@@ -1459,450 +1470,450 @@ LAB_0043306e:
 /* WARNING: Removing unreachable block (ram,0x00433b4b) */
 /* WARNING: Removing unreachable block (ram,0x00433b99) */
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-void __cdecl MatchEngine::Compile(int *param_1,int param_2,int param_3,uint *param_4,int param_5)
+void __cdecl MatchEngine::Compile(int *self,int dictList,int dictIndex,uint *patternText,int ignoreUnusedPunctuation)
 
 {
-  char cVar1;
-  int iVar2;
-  char *pcVar3;
-  uint uVar4;
-  uint uVar5;
-  undefined4 *puVar6;
-  uint *puVar7;
-  undefined4 *puVar8;
-  undefined4 *in_FS_OFFSET;
-  byte bVar9;
-  undefined4 uVar10;
-  undefined *puVar11;
-  undefined4 uVar12;
-  undefined4 uVar13;
-  undefined4 uVar14;
-  undefined1 local_6c8 [248];
-  undefined4 local_5d0;
-  int *local_5c0;
-  int *local_5b0;
-  undefined1 local_5a8 [816];
-  uint local_278;
-  uint local_274;
-  uint local_270;
-  undefined1 local_269;
-  undefined1 *local_268;
-  undefined4 local_264;
-  int *local_260;
-  int *local_25c;
-  int *local_258;
-  int *local_254;
-  int *local_250;
-  uint local_24c;
-  undefined1 *local_248;
-  int *local_244;
-  int *local_240;
-  uint local_23c;
-  int *local_238;
-  undefined1 *local_234;
-  int *local_230;
-  undefined4 local_22c;
-  uint *local_220;
-  uint local_21c;
-  undefined4 *local_218;
-  uint local_214;
-  undefined4 *local_210;
-  uint local_20c;
-  byte local_205;
-  undefined4 local_204;
-  undefined1 local_200;
-  uint local_1fc;
-  undefined1 local_1f5;
-  undefined1 *local_1f4;
-  undefined4 local_1f0;
-  int *local_1ec;
-  int *local_1e8;
-  int *local_1e4;
-  int *local_1e0;
-  int *local_1dc;
-  uint local_1d8;
-  undefined1 *local_1d4;
-  int *local_1d0;
-  int *local_1cc;
-  uint local_1c8;
-  int *local_1c4;
-  undefined1 *local_1c0;
-  int *local_1bc;
-  undefined4 local_1b8;
-  uint *local_1ac;
-  int local_1a8;
-  undefined4 *local_1a4;
-  uint local_1a0;
-  uint local_19c;
-  int *local_198;
-  undefined4 *local_194;
-  int *local_190;
-  int local_18c;
-  undefined4 *local_188;
-  uint local_184;
-  undefined1 local_17d;
-  uint local_17c;
-  uint local_12c;
-  uint local_dc;
-  int local_d8;
-  int local_d4;
-  undefined4 *local_d0;
-  char *local_cc;
-  undefined4 local_c8;
-  undefined2 local_b8;
-  int local_ac;
-  undefined1 local_a4 [8];
-  int *local_9c;
-  undefined **local_94 [2];
-  undefined1 local_8c [8];
-  int *local_84;
-  undefined1 local_7c [8];
-  int *local_74;
-  undefined **local_6c [2];
-  undefined1 local_64 [8];
-  int *local_5c;
+  char lastOp;
+  int minLen;
+  char *found;
+  uint pos;
+  uint pos2;
+  undefined4 *src;
+  uint *p;
+  undefined4 *dst;
+  undefined4 *sehChainHead;
+  byte op;
+  undefined4 objectDtor;
+  undefined *copyCtor;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined1 exceptMsg [248];
+  undefined4 unused;
+  int *newData;
+  int *unused2;
+  undefined1 exceptMsg2 [816];
+  uint afterEnd;
+  uint unused3;
+  uint eraseLen;
+  undefined1 nul;
+  undefined1 *unused4;
+  undefined4 unused5;
+  int *unused6;
+  int *unused7;
+  int *strRep;
+  int *newData2;
+  int *unused8;
+  uint unused9;
+  undefined1 *unused10;
+  int *newRep;
+  int *unused11;
+  uint len3;
+  int *strRep2;
+  undefined1 *unused12;
+  int *unused13;
+  undefined4 unused14;
+  uint *msgText;
+  uint erasePos;
+  undefined4 *strRep3;
+  uint next2;
+  undefined4 *strRep4;
+  uint idx2;
+  byte op2;
+  undefined4 terminators;
+  undefined1 unused15;
+  uint eraseLen2;
+  undefined1 nul2;
+  undefined1 *unused16;
+  undefined4 unused17;
+  int *unused18;
+  int *unused19;
+  int *strRep5;
+  int *unused20;
+  int *unused21;
+  uint unused22;
+  undefined1 *unused23;
+  int *newRep2;
+  int *unused24;
+  uint len4;
+  int *strRep6;
+  undefined1 *unused25;
+  int *unused26;
+  undefined4 unused27;
+  uint *msgText2;
+  int next;
+  undefined4 *strRep7;
+  uint idx;
+  uint i;
+  int *bcRef2;
+  undefined4 *strRep8;
+  int *bcRef;
+  int varPos2;
+  undefined4 *strRep9;
+  uint clearLen;
+  undefined1 nul3;
+  uint len2;
+  uint len1;
+  uint endPos;
+  int varPos;
+  int extra;
+  undefined4 *text;
+  char *len;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [8];
+  int *str3;
+  undefined **outOfRange [2];
+  undefined1 newStr [8];
+  int *unused28;
+  undefined1 str2 [8];
+  int *str4;
+  undefined **outOfRange2 [2];
+  undefined1 newStr2 [8];
+  int *unused29;
   
-  bVar9 = 0;
+  op = 0;
   __InitExceptBlockLDTC(0x4f2fdc);
-  param_1[1099] = param_2;
-  param_1[0x44c] = param_3;
-  memset(param_1 + 0x40a,0,0x100);
-  local_cc = strlen(param_4);
-  local_d0 = (undefined4 *)operator_new_array();
-  uVar4 = 0xffffffff;
+  self[m_dictList / 4] = dictList;
+  self[m_dictIndex / 4] = dictIndex;
+  memset(self + 0x40a,0,0x100);
+  len = strlen(patternText);
+  text = (undefined4 *)operator_new_array();
+  pos = 0xffffffff;
   do {
-    puVar7 = param_4;
-    if (uVar4 == 0) break;
-    uVar4 = uVar4 - 1;
-    puVar7 = (uint *)((int)param_4 + (uint)bVar9 * -2 + 1);
-    uVar5 = *param_4;
-    param_4 = puVar7;
-  } while ((char)uVar5 != '\0');
-  uVar4 = ~uVar4;
-  puVar6 = (undefined4 *)((int)puVar7 - uVar4);
-  puVar8 = local_d0;
-  for (uVar5 = uVar4 >> 2; uVar5 != 0; uVar5 = uVar5 - 1) {
-    *puVar8 = *puVar6;
-    puVar6 = puVar6 + (uint)bVar9 * -2 + 1;
-    puVar8 = puVar8 + (uint)bVar9 * -2 + 1;
+    p = patternText;
+    if (pos == 0) break;
+    pos = pos - 1;
+    p = (uint *)((int)patternText + (uint)op * -2 + 1);
+    pos2 = *patternText;
+    patternText = p;
+  } while ((char)pos2 != '\0');
+  pos = ~pos;
+  src = (undefined4 *)((int)p - pos);
+  dst = text;
+  for (pos2 = pos >> 2; pos2 != 0; pos2 = pos2 - 1) {
+    *dst = *src;
+    src = src + (uint)op * -2 + 1;
+    dst = dst + (uint)op * -2 + 1;
   }
-  for (uVar4 = uVar4 & 3; uVar4 != 0; uVar4 = uVar4 - 1) {
-    *(undefined1 *)puVar8 = *(undefined1 *)puVar6;
-    puVar6 = (undefined4 *)((int)puVar6 + (uint)bVar9 * -2 + 1);
-    puVar8 = (undefined4 *)((int)puVar8 + (uint)bVar9 * -2 + 1);
+  for (pos = pos & 3; pos != 0; pos = pos - 1) {
+    *(undefined1 *)dst = *(undefined1 *)src;
+    src = (undefined4 *)((int)src + (uint)op * -2 + 1);
+    dst = (undefined4 *)((int)dst + (uint)op * -2 + 1);
   }
-  *(char *)((int)local_d0 + (int)local_cc) = ')';
-  ((undefined1 *)((int)local_d0 + 1))[(int)local_cc] = 0;
-  local_d4 = 0;
-  param_1[0x409] = 0;
-  param_1[0x408] = 0;
-  *(undefined1 *)(param_1 + 0x451) = 0xfd;
-  param_1[0x452] = 0;
-  FUN_00434cac(param_1);
-  local_d8 = -1;
-  local_dc = 0xffffffff;
-  if (*(int *)(param_1[0x404] + -4) == 0) {
-    std::string::replace_fill((int)(param_1 + 0x402),*(uint *)(param_1[0x404] + -4),0,
-                 -*(int *)(param_1[0x404] + -4),0);
+  *(char *)((int)text + (int)len) = ')';
+  ((undefined1 *)((int)text + 1))[(int)len] = 0;
+  extra = 0;
+  self[m_status / 4] = 0;
+  self[m_valid / 4] = 0;
+  *(undefined1 *)(self + m_lastOp / 4) = 0xfd;
+  self[m_opCount / 4] = 0;
+  Pattern::Clear(self);
+  varPos = -1;
+  endPos = 0xffffffff;
+  if (*(int *)(self[m_bcData / 4] + -4) == 0) {
+    std::string::replace_fill((int)(self + m_bc / 4),*(uint *)(self[m_bcData / 4] + -4),0,
+                 -*(int *)(self[m_bcData / 4] + -4),0);
   }
   else {
-    local_12c = *(uint *)(param_1[0x404] + -4);
-    local_17c = *(uint *)(param_1[0x404] + -4);
-    local_17d = 0;
-    local_184 = local_17c;
-    if (local_12c < local_17c) {
-      local_184 = local_12c;
+    len1 = *(uint *)(self[m_bcData / 4] + -4);
+    len2 = *(uint *)(self[m_bcData / 4] + -4);
+    nul3 = 0;
+    clearLen = len2;
+    if (len1 < len2) {
+      clearLen = len1;
     }
-    FUN_004cfad4((int)(param_1 + 0x402),0,local_184,(uint)&local_17d,0,0,0);
+    std::string::replace((int)(self + m_bc / 4),0,clearLen,(uint)&nul3,0,0,0);
   }
-  local_188 = (undefined4 *)(param_1[0x404] + -0xc);
-  if (local_188 != &DAT_00513d58) {
-    *local_188 = 0;
+  strRep9 = (undefined4 *)(self[m_bcData / 4] + -0xc);
+  if (strRep9 != &g_nullStringRep) {
+    *strRep9 = 0;
   }
-  iVar2 = MatchEngine::CompilePattern(param_1,(int *)&local_d0,(int)(param_1 + 0x402),&local_d8,(int *)&local_dc,
-                       &local_d4);
-  if (iVar2 != -1) {
-    if (*(char *)((int)local_d0 + 1) == '\0') {
-      if (local_d4 + iVar2 == 0) {
-        param_1[0x409] = 1;
-        iVar2 = -1;
+  minLen = MatchEngine::CompilePattern(self,(int *)&text,(int)(self + m_bc / 4),&varPos,(int *)&endPos,
+                       &extra);
+  if (minLen != -1) {
+    if (*(char *)((int)text + 1) == '\0') {
+      if (extra + minLen == 0) {
+        self[m_status / 4] = 1;
+        minLen = -1;
       }
     }
     else {
-      param_1[0x409] = 8;
-      iVar2 = -1;
+      self[m_status / 4] = 8;
+      minLen = -1;
     }
   }
-  if (-1 < local_d8) {
-    local_190 = param_1 + 0x402;
-    local_18c = local_d8;
-    if (1 < *(int *)(param_1[0x404] + -0xc) + 1) {
-      FUN_004d48d8((int)local_190);
+  if (-1 < varPos) {
+    bcRef = self + m_bc / 4;
+    varPos2 = varPos;
+    if (1 < *(int *)(self[m_bcData / 4] + -0xc) + 1) {
+      std::string::__unshare((int)bcRef);
     }
-    local_194 = (undefined4 *)(local_190[2] + -0xc);
-    if (local_194 != &DAT_00513d58) {
-      *local_194 = 0xffffffff;
+    strRep8 = (undefined4 *)(bcRef[2] + -0xc);
+    if (strRep8 != &g_nullStringRep) {
+      *strRep8 = 0xffffffff;
     }
-    *(undefined1 *)(local_190[2] + local_18c) = 0xfb;
+    *(undefined1 *)(bcRef[2] + varPos2) = 0xfb;
   }
   operator_delete_array();
-  if (iVar2 == -1) {
-    *in_FS_OFFSET = local_c8;
+  if (minLen == -1) {
+    *sehChainHead = sehPrevFrame;
   }
   else {
-    param_1[0x406] = iVar2;
-    param_1[0x407] = iVar2 + local_d4;
-    if (0x65 < param_1[0x407]) {
-      param_1[0x407] = 0x65;
+    self[m_minLen / 4] = minLen;
+    self[m_maxLen / 4] = minLen + extra;
+    if (0x65 < self[m_maxLen / 4]) {
+      self[m_maxLen / 4] = 0x65;
     }
-    param_1[0x408] = 1;
-    local_198 = param_1 + 0x402;
-    std::string::replace_fill((int)local_198,*(uint *)(param_1[0x404] + -4),0,1,0xfd);
-    param_1[0x453] = (int)MatchEngine::MatchGeneral;
-    if (param_1[0x452] == 2) {
-      cVar1 = (char)param_1[0x451];
-      if (cVar1 == -0x10) {
-        param_1[0x453] = (int)MatchEngine::MatchFixedTemplate;
+    self[m_valid / 4] = 1;
+    bcRef2 = self + m_bc / 4;
+    std::string::replace_fill((int)bcRef2,*(uint *)(self[m_bcData / 4] + -4),0,1,0xfd);
+    self[m_matcher / 4] = (int)MatchEngine::MatchGeneral;
+    if (self[m_opCount / 4] == 2) {
+      lastOp = (char)self[m_lastOp / 4];
+      if (lastOp == -0x10) {
+        self[m_matcher / 4] = (int)MatchEngine::MatchFixedTemplate;
       }
-      else if (cVar1 == -0xb) {
-        param_1[0x453] = (int)MatchEngine::MatchDistinctAnagram;
+      else if (lastOp == -0xb) {
+        self[m_matcher / 4] = (int)MatchEngine::MatchDistinctAnagram;
       }
-      else if (cVar1 == -10) {
-        param_1[0x453] = (int)MatchEngine::MatchMultiAnagram;
+      else if (lastOp == -10) {
+        self[m_matcher / 4] = (int)MatchEngine::MatchMultiAnagram;
       }
     }
-    for (local_19c = 0; (int)local_19c < *(int *)(param_1[0x404] + -4); local_19c = local_19c + 1) {
-      local_1a0 = local_19c;
-      if (1 < *(int *)(param_1[0x404] + -0xc) + 1) {
-        FUN_004d48d8((int)(param_1 + 0x402));
+    for (i = 0; (int)i < *(int *)(self[m_bcData / 4] + -4); i = i + 1) {
+      idx = i;
+      if (1 < *(int *)(self[m_bcData / 4] + -0xc) + 1) {
+        std::string::__unshare((int)(self + m_bc / 4));
       }
-      local_1a4 = (undefined4 *)(param_1[0x404] + -0xc);
-      if (local_1a4 != &DAT_00513d58) {
-        *local_1a4 = 0xffffffff;
+      strRep7 = (undefined4 *)(self[m_bcData / 4] + -0xc);
+      if (strRep7 != &g_nullStringRep) {
+        *strRep7 = 0xffffffff;
       }
-      bVar9 = *(byte *)(param_1[0x404] + local_1a0);
-      if (0xee < bVar9) {
-        if (bVar9 == 0xff) {
-          local_1a8 = local_19c + 1;
-          if (1 < *(int *)(param_1[0x404] + -0xc) + 1) {
-            FUN_004d48d8((int)(param_1 + 0x402));
+      op = *(byte *)(self[m_bcData / 4] + idx);
+      if (0xee < op) {
+        if (op == 0xff) {
+          next = i + 1;
+          if (1 < *(int *)(self[m_bcData / 4] + -0xc) + 1) {
+            std::string::__unshare((int)(self + m_bc / 4));
           }
-          uVar4 = local_19c;
-          if ((undefined4 *)(param_1[0x404] + -0xc) != &DAT_00513d58) {
-            *(undefined4 *)(param_1[0x404] + -0xc) = 0xffffffff;
+          pos = i;
+          if ((undefined4 *)(self[m_bcData / 4] + -0xc) != &g_nullStringRep) {
+            *(undefined4 *)(self[m_bcData / 4] + -0xc) = 0xffffffff;
           }
-          if (*(char *)(param_1[0x404] + local_1a8) != ' ') break;
-          local_dc = local_dc - 2;
-          if (*(uint *)(param_1[0x404] + -4) < local_19c) {
-            uVar14 = 0;
-            uVar13 = 0;
-            uVar12 = 0;
-            uVar5 = 1;
-            puVar11 = &LAB_004084c8;
-            uVar10 = 0;
-            local_b8 = 0x80;
-            local_1ac = (uint *)FUN_004dc320(local_5a8,
+          if (*(char *)(self[m_bcData / 4] + next) != ' ') break;
+          endPos = endPos - 2;
+          if (*(uint *)(self[m_bcData / 4] + -4) < i) {
+            throwLine = 0;
+            throwFile = 0;
+            throwFlags = 0;
+            pos2 = 1;
+            copyCtor = &LAB_004084c8;
+            objectDtor = 0;
+            ehContext = 0x80;
+            msgText2 = (uint *)__rwstd::except_msg_string::format(exceptMsg2,
                                              PTR_s_string_index_out_of_range_in_fun_00516d2c);
-            std::string::string_from_cstr((int)local_7c,local_1ac);
-            local_ac = local_ac + 2;
-            local_6c[0] = &std::logic_error::vftable;
-            local_1b8 = 0;
-            local_5c = (int *)0x0;
-            local_b8 = 0x8c;
-            if (local_74[-3] == -1 || local_74[-3] + 1 < 0) {
-              local_1c8 = local_74[-1];
-              local_1d0 = std::string::__getRep(local_64,local_1c8,local_1c8);
-              local_1d4 = local_64;
-              local_5c0 = local_1d0 + 3;
-              local_1d8 = local_1c8;
-              local_1dc = local_74;
-              local_1e0 = local_5c0;
-              local_1cc = local_5c0;
-              local_5c = local_5c0;
-              memcpy(local_5c0,local_74,local_1c8);
+            std::string::string_from_cstr((int)str2,msgText2);
+            ehDtorCount = ehDtorCount + 2;
+            outOfRange2[0] = &std::logic_error::vftable;
+            unused27 = 0;
+            unused29 = (int *)0x0;
+            ehContext = 0x8c;
+            if (str4[-3] == -1 || str4[-3] + 1 < 0) {
+              len4 = str4[-1];
+              newRep2 = std::string::__getRep(newStr2,len4,len4);
+              unused23 = newStr2;
+              newData = newRep2 + 3;
+              unused22 = len4;
+              unused21 = str4;
+              unused20 = newData;
+              unused24 = newData;
+              unused29 = newData;
+              memcpy(newData,str4,len4);
             }
             else {
-              local_1c0 = local_64;
-              local_1bc = local_74;
-              local_5c = local_74;
-              local_5b0 = local_74;
-              local_1c4 = local_74 + -3;
-              if (local_1c4 != &DAT_00513d58) {
-                *local_1c4 = *local_1c4 + 1;
+              unused25 = newStr2;
+              unused26 = str4;
+              unused29 = str4;
+              unused2 = str4;
+              strRep6 = str4 + -3;
+              if (strRep6 != &g_nullStringRep) {
+                *strRep6 = *strRep6 + 1;
               }
             }
-            local_b8 = 0x80;
-            local_6c[0] = &std::out_of_range::vftable;
-            local_ac = local_ac + 2;
-            if (local_74 != (int *)0x0) {
-              if (local_74[-3] != -1) {
-                local_1e4 = local_74 + -3;
-                if (local_1e4 == &DAT_00513d58) {
-                  iVar2 = 1;
+            ehContext = 0x80;
+            outOfRange2[0] = &std::out_of_range::vftable;
+            ehDtorCount = ehDtorCount + 2;
+            if (str4 != (int *)0x0) {
+              if (str4[-3] != -1) {
+                strRep5 = str4 + -3;
+                if (strRep5 == &g_nullStringRep) {
+                  minLen = 1;
                 }
-                else if (local_1e4 == &DAT_00513d58) {
-                  iVar2 = 1;
+                else if (strRep5 == &g_nullStringRep) {
+                  minLen = 1;
                 }
                 else {
-                  *local_1e4 = *local_1e4 + -1;
-                  iVar2 = *local_1e4 + 1;
+                  *strRep5 = *strRep5 + -1;
+                  minLen = *strRep5 + 1;
                 }
-                if (iVar2 != 0) goto LAB_0043412d;
+                if (minLen != 0) goto LAB_0043412d;
               }
-              local_1e8 = local_74 + -3;
-              local_1ec = local_74 + -3;
+              unused19 = str4 + -3;
+              unused18 = str4 + -3;
               operator_delete();
-              local_1f0 = 0;
-              local_1f4 = local_7c;
-              local_74 = (int *)0x0;
-              local_5d0 = 0;
+              unused17 = 0;
+              unused16 = str2;
+              str4 = (int *)0x0;
+              unused = 0;
             }
 LAB_0043412d:
-            local_b8 = 0x74;
-            FUN_004e7cc4((uint *)&DAT_0040846c,(undefined4*)local_6c,uVar10,puVar11,uVar5,uVar12,uVar13,uVar14);
+            ehContext = 0x74;
+            _ThrowExceptionLDTC((uint *)&DAT_0040846c,(undefined4*)outOfRange2,objectDtor,copyCtor,pos2,throwFlags,throwFile,throwLine);
           }
-          local_1fc = *(int *)(param_1[0x404] + -4) - uVar4;
-          local_1f5 = 0;
-          if (2 < local_1fc) {
-            local_1fc = 2;
+          eraseLen2 = *(int *)(self[m_bcData / 4] + -4) - pos;
+          nul2 = 0;
+          if (2 < eraseLen2) {
+            eraseLen2 = 2;
           }
-          FUN_004cfad4((int)(param_1 + 0x402),uVar4,local_1fc,(uint)&local_1f5,0,0,0);
-          local_19c = local_19c - 1;
+          std::string::replace((int)(self + m_bc / 4),pos,eraseLen2,(uint)&nul2,0,0,0);
+          i = i - 1;
         }
-        else if (((bVar9 != 0xf9) && (bVar9 != 0xfa)) && (bVar9 != 0xfb)) break;
+        else if (((op != 0xf9) && (op != 0xfa)) && (op != 0xfb)) break;
       }
     }
-    uVar4 = *(uint *)(param_1[0x404] + -4);
+    pos = *(uint *)(self[m_bcData / 4] + -4);
     do {
       while( true ) {
         do {
-          uVar5 = uVar4;
-          uVar4 = uVar5 - 1;
-          if ((int)uVar5 < 1) goto LAB_00434602;
-          local_204 = DAT_004f2d28;
-          local_200 = DAT_004f2d2c;
-          local_20c = uVar4;
-          if (*(int *)(param_1[0x404] + -0xc) != 0 && 0 < *(int *)(param_1[0x404] + -0xc) + 1) {
-            FUN_004d48d8((int)(param_1 + 0x402));
+          pos2 = pos;
+          pos = pos2 - 1;
+          if ((int)pos2 < 1) goto LAB_00434602;
+          terminators = DAT_004f2d28;
+          unused15 = DAT_004f2d2c;
+          idx2 = pos;
+          if (*(int *)(self[m_bcData / 4] + -0xc) != 0 && 0 < *(int *)(self[m_bcData / 4] + -0xc) + 1) {
+            std::string::__unshare((int)(self + m_bc / 4));
           }
-          local_210 = (undefined4 *)(param_1[0x404] + -0xc);
-          if (local_210 != &DAT_00513d58) {
-            *local_210 = 0xffffffff;
+          strRep4 = (undefined4 *)(self[m_bcData / 4] + -0xc);
+          if (strRep4 != &g_nullStringRep) {
+            *strRep4 = 0xffffffff;
           }
-          local_205 = *(byte *)(param_1[0x404] + local_20c);
-        } while (local_205 < 0xef);
-        if (local_205 != 0xff) break;
-        local_214 = uVar5;
-        if (1 < *(int *)(param_1[0x404] + -0xc) + 1) {
-          FUN_004d48d8((int)(param_1 + 0x402));
+          op2 = *(byte *)(self[m_bcData / 4] + idx2);
+        } while (op2 < 0xef);
+        if (op2 != 0xff) break;
+        next2 = pos2;
+        if (1 < *(int *)(self[m_bcData / 4] + -0xc) + 1) {
+          std::string::__unshare((int)(self + m_bc / 4));
         }
-        local_218 = (undefined4 *)(param_1[0x404] + -0xc);
-        if (local_218 != &DAT_00513d58) {
-          *local_218 = 0xffffffff;
+        strRep3 = (undefined4 *)(self[m_bcData / 4] + -0xc);
+        if (strRep3 != &g_nullStringRep) {
+          *strRep3 = 0xffffffff;
         }
-        if (*(char *)(param_1[0x404] + local_214) != ' ') goto LAB_00434602;
-        if ((int)uVar4 < (int)local_dc) {
-          local_dc = local_dc - 2;
+        if (*(char *)(self[m_bcData / 4] + next2) != ' ') goto LAB_00434602;
+        if ((int)pos < (int)endPos) {
+          endPos = endPos - 2;
         }
-        local_21c = uVar4;
-        if (*(uint *)(param_1[0x404] + -4) < uVar4) {
-          uVar14 = 0;
-          uVar13 = 0;
-          uVar12 = 0;
-          uVar4 = 1;
-          puVar11 = &LAB_004084c8;
-          uVar10 = 0;
-          local_b8 = 0xbc;
-          local_220 = (uint *)FUN_004dc320(local_6c8,PTR_s_string_index_out_of_range_in_fun_00516d2c
+        erasePos = pos;
+        if (*(uint *)(self[m_bcData / 4] + -4) < pos) {
+          throwLine = 0;
+          throwFile = 0;
+          throwFlags = 0;
+          pos = 1;
+          copyCtor = &LAB_004084c8;
+          objectDtor = 0;
+          ehContext = 0xbc;
+          msgText = (uint *)__rwstd::except_msg_string::format(exceptMsg,PTR_s_string_index_out_of_range_in_fun_00516d2c
                                           );
-          std::string::string_from_cstr((int)local_a4,local_220);
-          local_ac = local_ac + 2;
-          local_94[0] = &std::logic_error::vftable;
-          local_22c = 0;
-          local_84 = (int *)0x0;
-          local_b8 = 200;
-          if (local_9c[-3] == -1 || local_9c[-3] + 1 < 0) {
-            local_23c = local_9c[-1];
-            local_244 = std::string::__getRep(local_8c,local_23c,local_23c);
-            local_248 = local_8c;
-            local_254 = local_244 + 3;
-            local_24c = local_23c;
-            local_250 = local_9c;
-            local_240 = local_254;
-            local_84 = local_254;
-            memcpy(local_254,local_9c,local_23c);
+          std::string::string_from_cstr((int)str,msgText);
+          ehDtorCount = ehDtorCount + 2;
+          outOfRange[0] = &std::logic_error::vftable;
+          unused14 = 0;
+          unused28 = (int *)0x0;
+          ehContext = 200;
+          if (str3[-3] == -1 || str3[-3] + 1 < 0) {
+            len3 = str3[-1];
+            newRep = std::string::__getRep(newStr,len3,len3);
+            unused10 = newStr;
+            newData2 = newRep + 3;
+            unused9 = len3;
+            unused8 = str3;
+            unused11 = newData2;
+            unused28 = newData2;
+            memcpy(newData2,str3,len3);
           }
           else {
-            local_234 = local_8c;
-            local_230 = local_9c;
-            local_84 = local_9c;
-            local_238 = local_9c + -3;
-            if (local_238 != &DAT_00513d58) {
-              *local_238 = *local_238 + 1;
+            unused12 = newStr;
+            unused13 = str3;
+            unused28 = str3;
+            strRep2 = str3 + -3;
+            if (strRep2 != &g_nullStringRep) {
+              *strRep2 = *strRep2 + 1;
             }
           }
-          local_b8 = 0xbc;
-          local_94[0] = &std::out_of_range::vftable;
-          local_ac = local_ac + 2;
-          if (local_9c != (int *)0x0) {
-            if (local_9c[-3] != -1) {
-              local_258 = local_9c + -3;
-              if (local_258 == &DAT_00513d58) {
-                iVar2 = 1;
+          ehContext = 0xbc;
+          outOfRange[0] = &std::out_of_range::vftable;
+          ehDtorCount = ehDtorCount + 2;
+          if (str3 != (int *)0x0) {
+            if (str3[-3] != -1) {
+              strRep = str3 + -3;
+              if (strRep == &g_nullStringRep) {
+                minLen = 1;
               }
-              else if (local_258 == &DAT_00513d58) {
-                iVar2 = 1;
+              else if (strRep == &g_nullStringRep) {
+                minLen = 1;
               }
               else {
-                *local_258 = *local_258 + -1;
-                iVar2 = *local_258 + 1;
+                *strRep = *strRep + -1;
+                minLen = *strRep + 1;
               }
-              if (iVar2 != 0) goto LAB_0043456e;
+              if (minLen != 0) goto LAB_0043456e;
             }
-            local_25c = local_9c + -3;
-            local_260 = local_9c + -3;
+            unused7 = str3 + -3;
+            unused6 = str3 + -3;
             operator_delete();
-            local_264 = 0;
-            local_268 = local_a4;
-            local_9c = (int *)0x0;
+            unused5 = 0;
+            unused4 = str;
+            str3 = (int *)0x0;
           }
 LAB_0043456e:
-          local_b8 = 0xb0;
-          FUN_004e7cc4((uint *)&DAT_0040846c,(undefined4*)local_94,uVar10,puVar11,uVar4,uVar12,uVar13,uVar14);
+          ehContext = 0xb0;
+          _ThrowExceptionLDTC((uint *)&DAT_0040846c,(undefined4*)outOfRange,objectDtor,copyCtor,pos,throwFlags,throwFile,throwLine);
         }
-        local_270 = *(int *)(param_1[0x404] + -4) - local_21c;
-        local_269 = 0;
-        if (2 < local_270) {
-          local_270 = 2;
+        eraseLen = *(int *)(self[m_bcData / 4] + -4) - erasePos;
+        nul = 0;
+        if (2 < eraseLen) {
+          eraseLen = 2;
         }
-        FUN_004cfad4((int)(param_1 + 0x402),local_21c,local_270,(uint)&local_269,0,0,0);
-        uVar4 = uVar5 - 2;
+        std::string::replace((int)(self + m_bc / 4),erasePos,eraseLen,(uint)&nul,0,0,0);
+        pos = pos2 - 2;
       }
-      pcVar3 = thunk_FUN_004dc924((char *)&local_204,local_205);
-    } while (pcVar3 == (char *)0x0);
+      found = thunk_strchr((char *)&terminators,op2);
+    } while (found == (char *)0x0);
 LAB_00434602:
-    pcVar3 = thunk_memchr((char *)(param_1 + 0x40a),-2,0x100);
-    param_1[0x44a] = (uint)(pcVar3 != (char *)0x0);
-    pcVar3 = thunk_memchr((char *)(param_1 + 0x40a),-1,0x100);
-    if (pcVar3 != (char *)0x0) {
-      param_1[0x44a] = 1;
-      if (param_5 == 0) {
-        uVar4 = 0;
+    found = thunk_memchr((char *)(self + 0x40a),-2,0x100);
+    self[m_needsRaw / 4] = (uint)(found != (char *)0x0);
+    found = thunk_memchr((char *)(self + 0x40a),-1,0x100);
+    if (found != (char *)0x0) {
+      self[m_needsRaw / 4] = 1;
+      if (ignoreUnusedPunctuation == 0) {
+        pos = 0;
         do {
-          if (*(char *)((int)param_1 + uVar4 + 0x1028) == '\0') {
-            *(undefined1 *)((int)param_1 + uVar4 + 0x1028) = 0xff;
+          if (*(char *)((int)self + pos + 0x1028) == '\0') {
+            *(undefined1 *)((int)self + pos + 0x1028) = 0xff;
           }
-          uVar4 = uVar4 + 1;
-        } while (uVar4 < 0x100);
+          pos = pos + 1;
+        } while (pos < 0x100);
       }
-      if (local_dc != 0xffffffff) {
-        local_274 = local_dc;
-        std::string::replace_fill((int)(param_1 + 0x402),local_dc,0,1,0xff);
-        local_278 = local_dc + 1;
-        std::string::replace_fill((int)(param_1 + 0x402),local_278,0,1,0);
+      if (endPos != 0xffffffff) {
+        unused3 = endPos;
+        std::string::replace_fill((int)(self + m_bc / 4),endPos,0,1,0xff);
+        afterEnd = endPos + 1;
+        std::string::replace_fill((int)(self + m_bc / 4),afterEnd,0,1,0);
       }
     }
-    *in_FS_OFFSET = local_c8;
+    *sehChainHead = sehPrevFrame;
   }
   return;
 }
@@ -1910,92 +1921,92 @@ LAB_00434602:
 // ----------------------------------------------------------------------------------------------------
 // 0x004346e4  MatchEngine::IsValid   (14 bytes)   [analysis (position-matched TEACON.exe)]
 //   same masked bytes as TEACON.exe 0x0040d5b8 (14 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. returns the int at +0x1020; MatchEngineSet::Compile treats 0 as a compile failure
-undefined4 __cdecl MatchEngine::IsValid(int param_1)
+undefined4 __cdecl MatchEngine::IsValid(int self)
 
 {
-  return *(undefined4 *)(param_1 + 0x1020);
+  return *(undefined4 *)(self + m_valid);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004346f4  MatchEngine::GetStatus   (14 bytes)   [analysis (position-matched TEACON.exe)]
 //   paired with TEACON.exe 0x0040d5c8 by position between identical neighbours; the bodies differ (14 vs 14 bytes), so treat the name as probable. returns the status byte at +0x1024
-undefined4 __cdecl MatchEngine::GetStatus(int param_1)
+undefined4 __cdecl MatchEngine::GetStatus(int self)
 
 {
-  return *(undefined4 *)(param_1 + 0x1024);
+  return *(undefined4 *)(self + m_status);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00434704  MatchEngine::MatchEngine   (194 bytes)   [analysis (position-matched TEACON.exe)]
 //   paired with TEACON.exe 0x0040d5d8 by position between identical neighbours; the bodies differ (191 vs 194 bytes), so treat the name as probable. constructor: Pattern pool, empty bytecode string, shortest=1, longest=100, matcher=MatchGeneral
 /* WARNING: Removing unreachable block (ram,0x00434755) */
-undefined4 * __cdecl MatchEngine::MatchEngine(undefined4 *param_1)
+undefined4 * __cdecl MatchEngine::MatchEngine(undefined4 *self)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4f30d8);
-  Pattern::Pattern(param_1);
-  param_1[0x404] = 0;
-  param_1[0x404] = &DAT_00513d64;
-  param_1[0x408] = 0;
-  param_1[0x409] = 1;
-  param_1[1099] = 0;
-  param_1[0x44c] = 0xffffffff;
-  param_1[0x44d] = 1;
-  param_1[0x44e] = 100;
-  param_1[0x453] = MatchEngine::MatchGeneral;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  Pattern::Pattern(self);
+  self[m_bcData / 4] = 0;
+  self[m_bcData / 4] = &g_emptyStringData;
+  self[m_valid / 4] = 0;
+  self[m_status / 4] = 1;
+  self[m_dictList / 4] = 0;
+  self[m_dictIndex / 4] = 0xffffffff;
+  self[m_shortest / 4] = 1;
+  self[m_longest / 4] = 100;
+  self[m_matcher / 4] = MatchEngine::MatchGeneral;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004347e4  MatchEngine::SetShortest   (51 bytes)   [analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040d6b4. clamps to 1..100 and stores at +0x1134
-void __cdecl MatchEngine::SetShortest(int param_1,int param_2)
+void __cdecl MatchEngine::SetShortest(int self,int shortest)
 
 {
-  if (param_2 < 2) {
-    *(undefined4 *)(param_1 + 0x1134) = 1;
+  if (shortest < 2) {
+    *(undefined4 *)(self + m_shortest) = 1;
     return;
   }
-  if (99 < param_2) {
-    *(undefined4 *)(param_1 + 0x1134) = 100;
+  if (99 < shortest) {
+    *(undefined4 *)(self + m_shortest) = 100;
     return;
   }
-  *(int *)(param_1 + 0x1134) = param_2;
+  *(int *)(self + m_shortest) = shortest;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00434818  MatchEngine::SetLongest   (51 bytes)   [analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040d6e8. clamps to 1..100 and stores at +0x1138
-void __cdecl MatchEngine::SetLongest(int param_1,int param_2)
+void __cdecl MatchEngine::SetLongest(int self,int longest)
 
 {
-  if (param_2 < 2) {
-    *(undefined4 *)(param_1 + 0x1138) = 1;
+  if (longest < 2) {
+    *(undefined4 *)(self + m_longest) = 1;
     return;
   }
-  if (99 < param_2) {
-    *(undefined4 *)(param_1 + 0x1138) = 100;
+  if (99 < longest) {
+    *(undefined4 *)(self + m_longest) = 100;
     return;
   }
-  *(int *)(param_1 + 0x1138) = param_2;
+  *(int *)(self + m_longest) = longest;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043484c  MatchEngine::GetLengthKind   (41 bytes)   [analysis]
 //   1 when max_len > 100 (open-ended), -1 when min_len < max_len, 0 for a fixed length. TEA.exe only
-undefined4 __cdecl MatchEngine::GetLengthKind(int param_1)
+undefined4 __cdecl MatchEngine::GetLengthKind(int self)
 
 {
-  if (100 < *(int *)(param_1 + 0x101c)) {
+  if (100 < *(int *)(self + m_maxLen)) {
     return 1;
   }
-  if (*(int *)(param_1 + 0x1018) < *(int *)(param_1 + 0x101c)) {
+  if (*(int *)(self + m_minLen) < *(int *)(self + m_maxLen)) {
     return 0xffffffff;
   }
   return 0;
@@ -2004,118 +2015,118 @@ undefined4 __cdecl MatchEngine::GetLengthKind(int param_1)
 // ----------------------------------------------------------------------------------------------------
 // 0x00434878  MatchEngine::SetWordLength   (31 bytes)   [analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040d71c. stores the candidate length (+0x113c) and the slack over the template minimum (+0x1140)
-void __cdecl MatchEngine::SetWordLength(int param_1,int param_2)
+void __cdecl MatchEngine::SetWordLength(int self,int length)
 
 {
-  *(int *)(param_1 + 0x113c) = param_2;
-  *(int *)(param_1 + 0x1140) = param_2 - *(int *)(param_1 + 0x1018);
+  *(int *)(self + m_curLen) = length;
+  *(int *)(self + m_slack) = length - *(int *)(self + m_minLen);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00434898  MatchEngine::MatchWord   (262 bytes)   [analysis (position-matched TEACON.exe)]
 //   paired with TEACON.exe 0x0040d73c by position between identical neighbours; the bodies differ (262 vs 262 bytes), so treat the name as probable. builds the punctuation-prefix and filtered raw buffers when needed, then calls the selected matcher
-bool __cdecl MatchEngine::MatchWord(int param_1,int param_2)
+bool __cdecl MatchEngine::MatchWord(int self,int wordBuf)
 
 {
-  byte bVar1;
-  int iVar2;
-  char *pcVar3;
-  byte *pbVar4;
-  byte *local_c;
-  char local_5;
+  byte ch;
+  int matched;
+  char *punctBefore;
+  byte *filtered;
+  byte *raw;
+  char punctCount;
   
   MatchEngine::ResetMatchState();
-  if (*(int *)(param_1 + 0x1128) == 0) {
+  if (*(int *)(self + m_needsRaw) == 0) {
 LAB_0043496b:
-    iVar2 = (**(code **)(param_1 + 0x114c))
-                      (param_1,*(int *)(param_1 + 0x1010) + 3,param_2,0,
-                       *(undefined4 *)(param_1 + 0x1140),*(undefined4 *)(param_1 + 0x113c));
-    return iVar2 != 0;
+    matched = (**(code **)(self + m_matcher))
+                      (self,*(int *)(self + m_bcData) + 3,wordBuf,0,
+                       *(undefined4 *)(self + m_slack),*(undefined4 *)(self + m_curLen));
+    return matched != 0;
   }
-  pcVar3 = (char *)(param_2 + 0x80);
-  pbVar4 = (byte *)(param_2 + 0x100);
-  local_5 = '\0';
-  local_c = (byte *)(param_2 + 1000);
+  punctBefore = (char *)(wordBuf + 0x80);
+  filtered = (byte *)(wordBuf + 0x100);
+  punctCount = '\0';
+  raw = (byte *)(wordBuf + 1000);
 LAB_004348d7:
-  bVar1 = *local_c;
-  if (*(int *)(*(int *)(*(int *)(*(int *)(param_1 + 0x112c) + 0xc) + *(int *)(param_1 + 0x1130) * 4)
-               + 8 + (uint)bVar1 * 8) == 0xff) {
-    if ((pcVar3 == (char *)(param_2 + *(int *)(param_1 + 0x113c) + 0x80U)) &&
-       ((bVar1 == 0 || (bVar1 == 0x20)))) {
-      *pcVar3 = local_5;
+  ch = *raw;
+  if (*(int *)(*(int *)(*(int *)(*(int *)(self + m_dictList) + 0xc) + *(int *)(self + m_dictIndex) * 4)
+               + 8 + (uint)ch * 8) == 0xff) {
+    if ((punctBefore == (char *)(wordBuf + *(int *)(self + m_curLen) + 0x80U)) &&
+       ((ch == 0 || (ch == 0x20)))) {
+      *punctBefore = punctCount;
 LAB_00434968:
-      *pbVar4 = 0;
+      *filtered = 0;
       goto LAB_0043496b;
     }
-    if (*(char *)(param_1 + 0x1028 + (uint)bVar1) == -1) {
-      *pbVar4 = bVar1;
-      pbVar4 = pbVar4 + 1;
-      local_5 = local_5 + '\x01';
+    if (*(char *)(self + 0x1028 + (uint)ch) == -1) {
+      *filtered = ch;
+      filtered = filtered + 1;
+      punctCount = punctCount + '\x01';
     }
   }
   else {
-    *pbVar4 = bVar1;
-    pbVar4 = pbVar4 + 1;
-    *pcVar3 = local_5;
-    pcVar3 = pcVar3 + 1;
-    if ((char *)(param_2 + *(int *)(param_1 + 0x113c) + 0x80U) < pcVar3) goto LAB_00434968;
+    *filtered = ch;
+    filtered = filtered + 1;
+    *punctBefore = punctCount;
+    punctBefore = punctBefore + 1;
+    if ((char *)(wordBuf + *(int *)(self + m_curLen) + 0x80U) < punctBefore) goto LAB_00434968;
   }
-  local_c = local_c + 1;
+  raw = raw + 1;
   goto LAB_004348d7;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004349a0  MatchEngine::FormatBalance   (255 bytes)   [notes (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040d844. renders the anagram balance table as text. Entry checked; body only skimmed
-void __cdecl MatchEngine::FormatBalance(int param_1,int param_2)
+void __cdecl MatchEngine::FormatBalance(int self,int out)
 
 {
-  bool bVar1;
-  int iVar2;
-  undefined4 uVar3;
-  int iVar4;
-  int *piVar5;
-  int local_10;
-  uint local_8;
+  bool first;
+  int count;
+  undefined4 letter;
+  int k;
+  int *balanceAt;
+  int letterClass;
+  uint sign;
   
-  if (DAT_0051ac60 == 1) {
-    local_8 = 0;
+  if (g_balanceCount == 1) {
+    sign = 0;
     do {
-      bVar1 = true;
-      piVar5 = &DAT_0051a860;
-      local_10 = 0;
+      first = true;
+      balanceAt = &g_balance;
+      letterClass = 0;
       do {
-        if ((*piVar5 != 0) && (0 < *piVar5 == local_8)) {
-          if (bVar1) {
-            if (local_8 == 0) {
-              std::string::replace_fill(param_2,*(uint *)(*(int *)(param_2 + 8) + -4),0,1,0x2d);
+        if ((*balanceAt != 0) && (0 < *balanceAt == sign)) {
+          if (first) {
+            if (sign == 0) {
+              std::string::replace_fill(out,*(uint *)(*(int *)(out + 8) + -4),0,1,0x2d);
             }
             else {
-              std::string::replace_fill(param_2,*(uint *)(*(int *)(param_2 + 8) + -4),0,1,0x2b);
+              std::string::replace_fill(out,*(uint *)(*(int *)(out + 8) + -4),0,1,0x2b);
             }
-            bVar1 = false;
+            first = false;
           }
-          if (local_8 == 0) {
-            iVar2 = -*piVar5;
+          if (sign == 0) {
+            count = -*balanceAt;
           }
           else {
-            iVar2 = *piVar5;
+            count = *balanceAt;
           }
-          iVar4 = 0;
-          if (0 < iVar2) {
+          k = 0;
+          if (0 < count) {
             do {
-              uVar3 = FUN_00408ea0(*(int *)(param_1 + 0x112c),*(int *)(param_1 + 0x1130),local_10);
-              std::string::replace_fill(param_2,*(uint *)(*(int *)(param_2 + 8) + -4),0,1,(char)uVar3);
-              iVar4 = iVar4 + 1;
-            } while (iVar4 < iVar2);
+              letter = TSDictionaryList::GetLetterChar(*(int *)(self + m_dictList),*(int *)(self + m_dictIndex),letterClass);
+              std::string::replace_fill(out,*(uint *)(*(int *)(out + 8) + -4),0,1,(char)letter);
+              k = k + 1;
+            } while (k < count);
           }
         }
-        local_10 = local_10 + 1;
-        piVar5 = piVar5 + 1;
-      } while (local_10 < 0x100);
-      local_8 = local_8 + 1;
-    } while ((int)local_8 < 2);
+        letterClass = letterClass + 1;
+        balanceAt = balanceAt + 1;
+      } while (letterClass < 0x100);
+      sign = sign + 1;
+    } while ((int)sign < 2);
   }
   return;
 }
@@ -2123,807 +2134,808 @@ void __cdecl MatchEngine::FormatBalance(int param_1,int param_2)
 // ----------------------------------------------------------------------------------------------------
 // 0x00434aa0  MatchEngine::GetMinLength   (28 bytes)   [analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040d944. max(shortest setting, compiled min_len)
-int __cdecl MatchEngine::GetMinLength(int param_1)
+int __cdecl MatchEngine::GetMinLength(int self)
 
 {
-  int iVar1;
+  int minLength;
   
-  iVar1 = *(int *)(param_1 + 0x1134);
-  if (*(int *)(param_1 + 0x1134) < *(int *)(param_1 + 0x1018)) {
-    iVar1 = *(int *)(param_1 + 0x1018);
+  minLength = *(int *)(self + m_shortest);
+  if (*(int *)(self + m_shortest) < *(int *)(self + m_minLen)) {
+    minLength = *(int *)(self + m_minLen);
   }
-  return iVar1;
+  return minLength;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00434abc  MatchEngine::GetMaxLength   (28 bytes)   [analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040d960. min(longest setting, compiled max_len)
-int __cdecl MatchEngine::GetMaxLength(int param_1)
+int __cdecl MatchEngine::GetMaxLength(int self)
 
 {
-  int iVar1;
+  int maxLength;
   
-  iVar1 = *(int *)(param_1 + 0x101c);
-  if (*(int *)(param_1 + 0x1138) < *(int *)(param_1 + 0x101c)) {
-    iVar1 = *(int *)(param_1 + 0x1138);
+  maxLength = *(int *)(self + m_maxLen);
+  if (*(int *)(self + m_longest) < *(int *)(self + m_maxLen)) {
+    maxLength = *(int *)(self + m_longest);
   }
-  return iVar1;
+  return maxLength;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00434ad8  FUN_00434ad8   (87 bytes)   [unnamed]
+// 0x00434ad8  std::string::string   (87 bytes)   [analysis]
+//   default constructor: data = the shared empty rep
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x00434b16) */
-int __cdecl FUN_00434ad8(int param_1)
+int __cdecl std::string::string(int self)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4f30f8);
-  *(undefined4 *)(param_1 + 8) = 0;
-  *(undefined **)(param_1 + 8) = &DAT_00513d64;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  *(undefined4 *)(self + 8) = 0;
+  *(undefined **)(self + 8) = &g_emptyStringData;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0045f0dc  MatchEngine::MatchFixedTemplate   (32 bytes)   [notes+analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040dc80. fast path: (offset, letter) pairs compared in sequence until an opcode >= 0xf0
-byte * MatchEngine::MatchFixedTemplate(undefined4 param_1,int param_2,int param_3)
+byte * MatchEngine::MatchFixedTemplate(undefined4 self,int bc,int wordBuf)
 
 {
-  byte bVar1;
-  char *pcVar2;
+  byte letter;
+  char *pc;
   
-  pcVar2 = (char *)(param_2 + 1);
+  pc = (char *)(bc + 1);
   do {
-    bVar1 = pcVar2[1];
-    if (0xef < bVar1) {
-      return (byte *)(pcVar2 + 1);
+    letter = pc[1];
+    if (0xef < letter) {
+      return (byte *)(pc + 1);
     }
-    pcVar2 = pcVar2 + 2;
-  } while (*(char *)(param_3 + (uint)bVar1) == *pcVar2);
+    pc = pc + 2;
+  } while (*(char *)(wordBuf + (uint)letter) == *pc);
   return (byte *)0x0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0045f0fc  MatchEngine::MatchDistinctAnagram   (114 bytes)   [notes (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040dca0. fast path for anagrams of distinct letters. Entry checked; body not read
-byte * MatchEngine::MatchDistinctAnagram(undefined4 param_1,int param_2,byte *param_3)
+byte * MatchEngine::MatchDistinctAnagram(undefined4 self,int bc,byte *letters)
 
 {
-  byte bVar1;
-  byte *pbVar2;
-  uint uVar3;
-  char local_104 [256];
+  byte letter;
+  byte *pc;
+  uint remaining;
+  char hist [256];
   
-  uVar3 = (uint)*(byte *)(param_2 + 7);
-  pbVar2 = (byte *)(param_2 + 8);
-  memset((undefined4 *)local_104,0,(uint)*(byte *)(param_2 + 1));
-  for (; *param_3 != 0xff; param_3 = param_3 + 1) {
-    local_104[*param_3] = local_104[*param_3] + '\x01';
+  remaining = (uint)*(byte *)(bc + 7);
+  pc = (byte *)(bc + 8);
+  memset((undefined4 *)hist,0,(uint)*(byte *)(bc + 1));
+  for (; *letters != 0xff; letters = letters + 1) {
+    hist[*letters] = hist[*letters] + '\x01';
   }
   do {
-    if ((int)uVar3 < 1) {
-      return pbVar2;
+    if ((int)remaining < 1) {
+      return pc;
     }
-    bVar1 = *pbVar2;
-    pbVar2 = pbVar2 + 1;
-    uVar3 = uVar3 - 1;
-  } while (local_104[bVar1] != '\0');
+    letter = *pc;
+    pc = pc + 1;
+    remaining = remaining - 1;
+  } while (hist[letter] != '\0');
   return (byte *)0x0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0045f170  MatchEngine::MatchMultiAnagram   (99 bytes)   [notes (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040dd14. fast path for anagrams with repeated letters. Entry checked; body not read
-byte * MatchEngine::MatchMultiAnagram(undefined4 param_1,int param_2,byte *param_3)
+byte * MatchEngine::MatchMultiAnagram(undefined4 self,int bc,byte *letters)
 
 {
-  byte *pbVar1;
-  byte *pbVar2;
-  byte local_104 [256];
+  byte *pc;
+  byte *count;
+  byte hist [256];
   
-  pbVar1 = (byte *)(param_2 + 6);
-  memset((undefined4 *)local_104,0,(uint)*(byte *)(param_2 + 1));
-  for (; *param_3 != 0xff; param_3 = param_3 + 1) {
-    local_104[*param_3] = local_104[*param_3] + 1;
+  pc = (byte *)(bc + 6);
+  memset((undefined4 *)hist,0,(uint)*(byte *)(bc + 1));
+  for (; *letters != 0xff; letters = letters + 1) {
+    hist[*letters] = hist[*letters] + 1;
   }
   do {
-    pbVar2 = pbVar1 + 1;
-    pbVar1 = pbVar1 + 2;
-    if (0xef < *pbVar2) {
-      return pbVar1;
+    count = pc + 1;
+    pc = pc + 2;
+    if (0xef < *count) {
+      return pc;
     }
-  } while (*pbVar2 <= local_104[*pbVar1]);
+  } while (*count <= hist[*pc]);
   return (byte *)0x0;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0045f1d4  MatchEngine::RunTemplateVM   (1671 bytes, 2 ranges)   [notes (position-matched TEACON.exe)]
-//   paired with TEACON.exe 0x0040dd78 by position between identical neighbours; the bodies differ (1659 vs 1671 bytes), so treat the name as probable. backtracking template bytecode interpreter. Entry checked; body not read
-byte * MatchEngine::RunTemplateVM(int param_1,byte *param_2,byte *param_3,int param_4,int param_5)
+// 0x0045f1d4  MatchEngine::RunTemplateVM   (1671 bytes, 2 ranges)   [notes+analysis (position-matched TEACON.exe)]
+//   paired with TEACON.exe 0x0040dd78 by position between identical neighbours; the bodies differ (1659 vs 1671 bytes), so treat the name as probable. template interpreter: fixed letters (0xf0), letter/choice/variable groups (0xf1), punctuation (0xfe/0xff), wildcards (0xf2/0xf3), sub-patterns (0xf9..0xfb); backtracks and restores variable bindings on failure
+byte * MatchEngine::RunTemplateVM(int self,byte *bc,byte *wordBuf,int punctIdx,int slack)
 
 {
-  int iVar1;
-  byte bVar2;
-  byte bVar3;
-  byte bVar4;
-  uint uVar5;
-  uint uVar6;
-  undefined3 extraout_var;
-  byte *pbVar7;
-  byte *pbVar8;
-  undefined4 *in_FS_OFFSET;
-  bool bVar9;
-  int local_6c;
-  uint local_50;
-  undefined4 local_48;
-  uint local_24 [4];
-  uint local_14 [4];
+  int filteredIdx;
+  byte op;
+  byte choice;
+  byte operand;
+  uint remaining;
+  uint left;
+  undefined3 regHigh;
+  byte *after;
+  byte *pc;
+  undefined4 *sehChainHead;
+  bool negated;
+  int extra;
+  uint n;
+  undefined4 sehPrevFrame;
+  uint innerSaved [4];
+  uint saved [4];
   
   __InitExceptBlockLDTC(0x4fa748);
-  local_14[0] = (*(uint *)&DAT_0051ac64);
-  if ((*(uint *)&DAT_0051ac64) == 1) {
-    VariableValues::Save((int)local_14);
+  saved[0] = (*(uint *)&g_varsActive);
+  if ((*(uint *)&g_varsActive) == 1) {
+    VariableValues::Save((int)saved);
   }
   do {
     while( true ) {
       while( true ) {
-        bVar2 = *param_2;
-        pbVar8 = param_2 + 1;
-        if (bVar2 == 0xfc) {
-          local_14[0] = local_14[0] | 2;
-          if (local_14[0] == 0) {
-            (*(uint *)&DAT_0051ac64) = 0;
+        op = *bc;
+        pc = bc + 1;
+        if (op == 0xfc) {
+          saved[0] = saved[0] | 2;
+          if (saved[0] == 0) {
+            (*(uint *)&g_varsActive) = 0;
           }
-          else if (local_14[0] == 1) {
-            VariableValues::Restore((int)local_14);
+          else if (saved[0] == 1) {
+            VariableValues::Restore((int)saved);
           }
-          *in_FS_OFFSET = local_48;
-          return pbVar8;
+          *sehChainHead = sehPrevFrame;
+          return pc;
         }
-        if (bVar2 != 0xf0) break;
-        bVar2 = *pbVar8;
-        param_2 = MatchEngine::MatchFixedTemplate(param_1,(int)param_2,(int)param_3);
-        if (param_2 == (byte *)0x0) {
-          pbVar8 = (byte *)0x0;
-          if (local_14[0] == 0) {
-            (*(uint *)&DAT_0051ac64) = 0;
+        if (op != 0xf0) break;
+        op = *pc;
+        bc = MatchEngine::MatchFixedTemplate(self,(int)bc,(int)wordBuf);
+        if (bc == (byte *)0x0) {
+          pc = (byte *)0x0;
+          if (saved[0] == 0) {
+            (*(uint *)&g_varsActive) = 0;
           }
-          else if (local_14[0] == 1) {
-            VariableValues::Restore((int)local_14);
+          else if (saved[0] == 1) {
+            VariableValues::Restore((int)saved);
           }
-          *in_FS_OFFSET = local_48;
-          return pbVar8;
+          *sehChainHead = sehPrevFrame;
+          return pc;
         }
-        param_3 = param_3 + bVar2;
+        wordBuf = wordBuf + op;
       }
-      if (bVar2 == 0xf1) break;
-      if (bVar2 == 0xf3) {
-        pbVar8 = param_2 + 2;
-        bVar2 = param_3[param_5 + 0x80];
-        while (param_2 = MatchEngine::RunTemplateVM(param_1,pbVar8,param_3 + param_5,param_4,0),
-              param_2 == (byte *)0x0) {
-          if ((int)(uint)bVar2 <= param_4) {
-            pbVar8 = (byte *)0x0;
-            if (local_14[0] == 0) {
-              (*(uint *)&DAT_0051ac64) = 0;
+      if (op == 0xf1) break;
+      if (op == 0xf3) {
+        pc = bc + 2;
+        op = wordBuf[slack + 0x80];
+        while (bc = MatchEngine::RunTemplateVM(self,pc,wordBuf + slack,punctIdx,0),
+              bc == (byte *)0x0) {
+          if ((int)(uint)op <= punctIdx) {
+            pc = (byte *)0x0;
+            if (saved[0] == 0) {
+              (*(uint *)&g_varsActive) = 0;
             }
-            else if (local_14[0] == 1) {
-              VariableValues::Restore((int)local_14);
+            else if (saved[0] == 1) {
+              VariableValues::Restore((int)saved);
             }
-            *in_FS_OFFSET = local_48;
-            return pbVar8;
+            *sehChainHead = sehPrevFrame;
+            return pc;
           }
-          param_4 = param_4 + 1;
+          punctIdx = punctIdx + 1;
         }
       }
-      else if (bVar2 == 0xf2) {
-        pbVar8 = param_2 + 2;
+      else if (op == 0xf2) {
+        pc = bc + 2;
         while( true ) {
-          bVar2 = param_3[0x80];
-          for (; (param_2 = MatchEngine::RunTemplateVM(param_1,pbVar8,param_3,param_4,param_5),
-                 param_2 == (byte *)0x0 && (param_4 < (int)(uint)bVar2)); param_4 = param_4 + 1) {
+          op = wordBuf[0x80];
+          for (; (bc = MatchEngine::RunTemplateVM(self,pc,wordBuf,punctIdx,slack),
+                 bc == (byte *)0x0 && (punctIdx < (int)(uint)op)); punctIdx = punctIdx + 1) {
           }
-          if (param_2 != (byte *)0x0) break;
-          if (param_5 == 0) {
-            pbVar8 = (byte *)0x0;
-            if (local_14[0] == 0) {
-              (*(uint *)&DAT_0051ac64) = 0;
+          if (bc != (byte *)0x0) break;
+          if (slack == 0) {
+            pc = (byte *)0x0;
+            if (saved[0] == 0) {
+              (*(uint *)&g_varsActive) = 0;
             }
-            else if (local_14[0] == 1) {
-              VariableValues::Restore((int)local_14);
+            else if (saved[0] == 1) {
+              VariableValues::Restore((int)saved);
             }
-            *in_FS_OFFSET = local_48;
-            return pbVar8;
+            *sehChainHead = sehPrevFrame;
+            return pc;
           }
-          param_3 = param_3 + 1;
-          param_5 = param_5 + -1;
+          wordBuf = wordBuf + 1;
+          slack = slack + -1;
         }
       }
-      else if (bVar2 == 0xf9) {
-        bVar2 = *pbVar8;
-        param_2 = MatchEngine::MatchGeneral(param_1,(char *)(param_2 + 3),param_3,param_4,0,(uint)bVar2);
-        if (param_2 == (byte *)0x0) {
-          pbVar8 = (byte *)0x0;
-          if (local_14[0] == 0) {
-            (*(uint *)&DAT_0051ac64) = 0;
+      else if (op == 0xf9) {
+        op = *pc;
+        bc = MatchEngine::MatchGeneral(self,(char *)(bc + 3),wordBuf,punctIdx,0,(uint)op);
+        if (bc == (byte *)0x0) {
+          pc = (byte *)0x0;
+          if (saved[0] == 0) {
+            (*(uint *)&g_varsActive) = 0;
           }
-          else if (local_14[0] == 1) {
-            VariableValues::Restore((int)local_14);
+          else if (saved[0] == 1) {
+            VariableValues::Restore((int)saved);
           }
-          *in_FS_OFFSET = local_48;
-          return pbVar8;
+          *sehChainHead = sehPrevFrame;
+          return pc;
         }
-        param_3 = param_3 + bVar2;
+        wordBuf = wordBuf + op;
       }
-      else if (bVar2 == 0xfb) {
-        bVar2 = *pbVar8;
-        if ((int)(uint)param_2[2] < param_5) {
-          pbVar8 = (byte *)0x0;
-          if (local_14[0] == 0) {
-            (*(uint *)&DAT_0051ac64) = 0;
+      else if (op == 0xfb) {
+        op = *pc;
+        if ((int)(uint)bc[2] < slack) {
+          pc = (byte *)0x0;
+          if (saved[0] == 0) {
+            (*(uint *)&g_varsActive) = 0;
           }
-          else if (local_14[0] == 1) {
-            VariableValues::Restore((int)local_14);
+          else if (saved[0] == 1) {
+            VariableValues::Restore((int)saved);
           }
-          *in_FS_OFFSET = local_48;
-          return pbVar8;
+          *sehChainHead = sehPrevFrame;
+          return pc;
         }
-        pbVar8 = MatchEngine::MatchGeneral(param_1,(char *)(param_2 + 3),param_3,param_4,param_5,
-                              (uint)bVar2 + param_5);
-        if ((pbVar8 == (byte *)0x0) ||
-           (param_2 = MatchEngine::RunTemplateVM(param_1,pbVar8,param_3 + (uint)bVar2 + param_5,param_4,0),
-           param_2 == (byte *)0x0)) {
-          pbVar8 = (byte *)0x0;
-          if (local_14[0] == 0) {
-            (*(uint *)&DAT_0051ac64) = 0;
+        pc = MatchEngine::MatchGeneral(self,(char *)(bc + 3),wordBuf,punctIdx,slack,
+                              (uint)op + slack);
+        if ((pc == (byte *)0x0) ||
+           (bc = MatchEngine::RunTemplateVM(self,pc,wordBuf + (uint)op + slack,punctIdx,0),
+           bc == (byte *)0x0)) {
+          pc = (byte *)0x0;
+          if (saved[0] == 0) {
+            (*(uint *)&g_varsActive) = 0;
           }
-          else if (local_14[0] == 1) {
-            VariableValues::Restore((int)local_14);
+          else if (saved[0] == 1) {
+            VariableValues::Restore((int)saved);
           }
-          *in_FS_OFFSET = local_48;
-          return pbVar8;
+          *sehChainHead = sehPrevFrame;
+          return pc;
         }
       }
-      else if (bVar2 == 0xfa) {
-        local_50 = (uint)*pbVar8;
-        bVar2 = param_2[2];
-        pbVar8 = param_2 + 3;
-        local_6c = 0;
+      else if (op == 0xfa) {
+        n = (uint)*pc;
+        op = bc[2];
+        pc = bc + 3;
+        extra = 0;
         while( true ) {
-          local_24[0] = (*(uint *)&DAT_0051ac64);
-          if ((*(uint *)&DAT_0051ac64) == 1) {
-            VariableValues::Save((int)local_24);
+          innerSaved[0] = (*(uint *)&g_varsActive);
+          if ((*(uint *)&g_varsActive) == 1) {
+            VariableValues::Save((int)innerSaved);
           }
-          pbVar7 = MatchEngine::MatchGeneral(param_1,(char *)pbVar8,param_3,param_4,local_6c,local_50);
-          if ((pbVar7 != (byte *)0x0) &&
-             (param_2 = MatchEngine::RunTemplateVM(param_1,pbVar7,param_3 + local_50,param_4,param_5),
-             param_2 != (byte *)0x0)) break;
-          local_50 = local_50 + 1;
-          param_5 = param_5 + -1;
-          local_6c = local_6c + 1;
-          if ((param_5 < 0) || ((int)(uint)bVar2 < local_6c)) {
-            pbVar8 = (byte *)0x0;
-            if (local_24[0] == 0) {
-              (*(uint *)&DAT_0051ac64) = 0;
+          after = MatchEngine::MatchGeneral(self,(char *)pc,wordBuf,punctIdx,extra,n);
+          if ((after != (byte *)0x0) &&
+             (bc = MatchEngine::RunTemplateVM(self,after,wordBuf + n,punctIdx,slack),
+             bc != (byte *)0x0)) break;
+          n = n + 1;
+          slack = slack + -1;
+          extra = extra + 1;
+          if ((slack < 0) || ((int)(uint)op < extra)) {
+            pc = (byte *)0x0;
+            if (innerSaved[0] == 0) {
+              (*(uint *)&g_varsActive) = 0;
             }
-            else if (local_24[0] == 1) {
-              VariableValues::Restore((int)local_24);
+            else if (innerSaved[0] == 1) {
+              VariableValues::Restore((int)innerSaved);
             }
-            if (local_14[0] == 0) {
-              (*(uint *)&DAT_0051ac64) = 0;
+            if (saved[0] == 0) {
+              (*(uint *)&g_varsActive) = 0;
             }
-            else if (local_14[0] == 1) {
-              VariableValues::Restore((int)local_14);
+            else if (saved[0] == 1) {
+              VariableValues::Restore((int)saved);
             }
-            *in_FS_OFFSET = local_48;
-            return pbVar8;
+            *sehChainHead = sehPrevFrame;
+            return pc;
           }
-          if (local_24[0] == 0) {
-            (*(uint *)&DAT_0051ac64) = 0;
+          if (innerSaved[0] == 0) {
+            (*(uint *)&g_varsActive) = 0;
           }
-          else if (local_24[0] == 1) {
-            VariableValues::Restore((int)local_24);
+          else if (innerSaved[0] == 1) {
+            VariableValues::Restore((int)innerSaved);
           }
         }
-        local_24[0] = local_24[0] | 2;
-        if (local_24[0] == 0) {
-          (*(uint *)&DAT_0051ac64) = 0;
+        innerSaved[0] = innerSaved[0] | 2;
+        if (innerSaved[0] == 0) {
+          (*(uint *)&g_varsActive) = 0;
         }
-        else if (local_24[0] == 1) {
-          VariableValues::Restore((int)local_24);
+        else if (innerSaved[0] == 1) {
+          VariableValues::Restore((int)innerSaved);
         }
       }
       else {
-        iVar1 = param_4 + 0x100;
-        if (bVar2 == 0xff) {
-          param_4 = param_4 + 1;
+        filteredIdx = punctIdx + 0x100;
+        if (op == 0xff) {
+          punctIdx = punctIdx + 1;
         }
-        param_2 = param_2 + 2;
-        if (*pbVar8 != param_3[iVar1]) {
-          pbVar8 = (byte *)0x0;
-          if (local_14[0] == 0) {
-            (*(uint *)&DAT_0051ac64) = 0;
+        bc = bc + 2;
+        if (*pc != wordBuf[filteredIdx]) {
+          pc = (byte *)0x0;
+          if (saved[0] == 0) {
+            (*(uint *)&g_varsActive) = 0;
           }
-          else if (local_14[0] == 1) {
-            VariableValues::Restore((int)local_14);
+          else if (saved[0] == 1) {
+            VariableValues::Restore((int)saved);
           }
-          *in_FS_OFFSET = local_48;
-          return pbVar8;
+          *sehChainHead = sehPrevFrame;
+          return pc;
         }
       }
     }
-    bVar2 = *pbVar8;
-    param_2 = param_2 + 2;
-    while (bVar4 = *param_2, bVar4 < 0xf0) {
-      pbVar8 = param_2 + 1;
-      if ((bVar4 & 0x40) == 0) {
-        if ((bVar4 & 0x80) == 0) {
-          param_2 = param_2 + 2;
-          if (param_3[bVar4] != *pbVar8) {
-            pbVar8 = (byte *)0x0;
-            if (local_14[0] == 0) {
-              (*(uint *)&DAT_0051ac64) = 0;
+    op = *pc;
+    bc = bc + 2;
+    while (operand = *bc, operand < 0xf0) {
+      pc = bc + 1;
+      if ((operand & 0x40) == 0) {
+        if ((operand & 0x80) == 0) {
+          bc = bc + 2;
+          if (wordBuf[operand] != *pc) {
+            pc = (byte *)0x0;
+            if (saved[0] == 0) {
+              (*(uint *)&g_varsActive) = 0;
             }
-            else if (local_14[0] == 1) {
-              VariableValues::Restore((int)local_14);
+            else if (saved[0] == 1) {
+              VariableValues::Restore((int)saved);
             }
-            *in_FS_OFFSET = local_48;
-            return pbVar8;
+            *sehChainHead = sehPrevFrame;
+            return pc;
           }
         }
         else {
-          param_2 = param_2 + 2;
-          bVar9 = VariableValues::Bind((uint)*pbVar8,param_3[bVar4 & 0xffffff7f]);
-          if (CONCAT31(extraout_var,bVar9) == 0) {
-            pbVar8 = (byte *)0x0;
-            if (local_14[0] == 0) {
-              (*(uint *)&DAT_0051ac64) = 0;
+          bc = bc + 2;
+          negated = VariableValues::Bind((uint)*pc,wordBuf[operand & 0xffffff7f]);
+          if (CONCAT31(regHigh,negated) == 0) {
+            pc = (byte *)0x0;
+            if (saved[0] == 0) {
+              (*(uint *)&g_varsActive) = 0;
             }
-            else if (local_14[0] == 1) {
-              VariableValues::Restore((int)local_14);
+            else if (saved[0] == 1) {
+              VariableValues::Restore((int)saved);
             }
-            *in_FS_OFFSET = local_48;
-            return pbVar8;
+            *sehChainHead = sehPrevFrame;
+            return pc;
           }
         }
       }
       else {
-        param_2 = param_2 + 2;
-        bVar9 = (bVar4 & 0x80) != 0;
-        uVar5 = (uint)*pbVar8;
+        bc = bc + 2;
+        negated = (operand & 0x80) != 0;
+        remaining = (uint)*pc;
         do {
-          uVar6 = uVar5 - 1;
-          if ((int)uVar5 < 1) break;
-          bVar3 = *param_2;
-          param_2 = param_2 + 1;
-          uVar5 = uVar6;
-        } while (param_3[bVar4 & 0x3f] != bVar3);
-        if (-1 < (int)uVar6 == bVar9) {
-          pbVar8 = (byte *)0x0;
-          if (local_14[0] == 0) {
-            (*(uint *)&DAT_0051ac64) = 0;
+          left = remaining - 1;
+          if ((int)remaining < 1) break;
+          choice = *bc;
+          bc = bc + 1;
+          remaining = left;
+        } while (wordBuf[operand & 0x3f] != choice);
+        if (-1 < (int)left == negated) {
+          pc = (byte *)0x0;
+          if (saved[0] == 0) {
+            (*(uint *)&g_varsActive) = 0;
           }
-          else if (local_14[0] == 1) {
-            VariableValues::Restore((int)local_14);
+          else if (saved[0] == 1) {
+            VariableValues::Restore((int)saved);
           }
-          *in_FS_OFFSET = local_48;
-          return pbVar8;
+          *sehChainHead = sehPrevFrame;
+          return pc;
         }
-        if (!bVar9) {
-          while (0 < (int)uVar6) {
-            param_2 = param_2 + 1;
-            uVar6 = uVar6 - 1;
+        if (!negated) {
+          while (0 < (int)left) {
+            bc = bc + 1;
+            left = left - 1;
           }
         }
       }
     }
-    param_3 = param_3 + bVar2;
+    wordBuf = wordBuf + op;
   } while( true );
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0045f860  MatchEngine::AnagramSingleLetters   (54 bytes)   [notes+analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040e3f8. anagram opcode 0xf5 operand walker: <count> <letter...>
-byte * MatchEngine::AnagramSingleLetters(undefined4 param_1,byte *param_2,int param_3,int param_4)
+byte * MatchEngine::AnagramSingleLetters(undefined4 self,byte *bc,int hist,int budget)
 
 {
-  byte bVar1;
-  uint uVar2;
-  uint uVar3;
-  byte *pbVar4;
-  byte *pbVar5;
-  bool bVar6;
+  byte letter;
+  uint remaining;
+  uint left;
+  byte *next;
+  byte *pc;
+  bool wasNegative;
   
-  uVar2 = (uint)*param_2;
-  pbVar5 = param_2 + 1;
+  remaining = (uint)*bc;
+  pc = bc + 1;
   do {
-    uVar3 = uVar2 - 1;
-    if ((int)uVar2 < 1) {
-      return pbVar5;
+    left = remaining - 1;
+    if ((int)remaining < 1) {
+      return pc;
     }
-    pbVar4 = pbVar5 + 1;
-    bVar1 = *pbVar5;
-    uVar2 = uVar3;
-    pbVar5 = pbVar4;
-  } while ((*(char *)(param_3 + (uint)bVar1) != '\0') ||
-          (bVar6 = param_4 < 0, param_4 = param_4 + 1, bVar6));
+    next = pc + 1;
+    letter = *pc;
+    remaining = left;
+    pc = next;
+  } while ((*(char *)(hist + (uint)letter) != '\0') ||
+          (wasNegative = budget < 0, budget = budget + 1, wasNegative));
   return (byte *)0x0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0045f898  MatchEngine::AnagramMultiLetters   (67 bytes)   [notes+analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040e430. anagram opcode 0xf6: (multiplicity, letter) pairs checked against the letter histogram with an omission budget
-byte * MatchEngine::AnagramMultiLetters(undefined4 param_1,byte *param_2,int param_3,int param_4)
+byte * MatchEngine::AnagramMultiLetters(undefined4 self,byte *bc,int hist,int budget)
 
 {
-  byte bVar1;
+  byte mult;
   
   while( true ) {
-    bVar1 = *param_2;
-    if (0xef < bVar1) {
-      return param_2;
+    mult = *bc;
+    if (0xef < mult) {
+      return bc;
     }
-    if ((*(byte *)(param_3 + (uint)param_2[1]) < bVar1) &&
-       (param_4 = param_4 + ((uint)bVar1 - (uint)*(byte *)(param_3 + (uint)param_2[1])), 0 < param_4
+    if ((*(byte *)(hist + (uint)bc[1]) < mult) &&
+       (budget = budget + ((uint)mult - (uint)*(byte *)(hist + (uint)bc[1])), 0 < budget
        )) break;
-    param_2 = param_2 + 2;
+    bc = bc + 2;
   }
   return (byte *)0x0;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0045f8dc  FUN_0045f8dc   (10 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-int FUN_0045f8dc(undefined4 param_1,int param_2)
+// 0x0045f8dc  MatchEngine::AnagramEnd   (10 bytes)   [analysis (position-matched TEACON.exe)]
+//   same masked bytes as TEACON.exe 0x0040e474 (10 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. anagram stage opcode 0xfc (end): returns the code pointer just before the operand
+int MatchEngine::AnagramEnd(undefined4 self,int bc)
 
 {
-  return param_2 + -1;
+  return bc + -1;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0045f8e8  MatchEngine::AnagramChoiceLists   (239 bytes)   [notes (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040e480. anagram opcode 0xf7 solver. Entry checked; body not read
-int MatchEngine::AnagramChoiceLists(undefined4 param_1,byte *param_2,int param_3,int param_4,int param_5,int param_6, int param_7,undefined4 param_8)
+int MatchEngine::AnagramChoiceLists(undefined4 self,byte *bc,int hist,int idx,int mult,int allowed, int budget,undefined4 numLetters)
 
 {
-  char *pcVar1;
-  int iVar2;
-  char *pcVar3;
+  char *allowedAt;
+  int result;
+  char *histAt;
   
-  pcVar1 = (char *)(param_6 + param_4);
-  pcVar3 = (char *)(param_3 + param_4);
+  allowedAt = (char *)(allowed + idx);
+  histAt = (char *)(hist + idx);
   do {
-    if (param_4 < 0) {
-      if (param_7 < 0) {
-        if (param_5 < 2) {
-          iVar2 = (*(code *)(&PTR_FUN_004fa308)[*param_2])
-                            (param_1,param_2 + 1,param_3,param_7 + 1,param_8);
+    if (idx < 0) {
+      if (budget < 0) {
+        if (mult < 2) {
+          result = (*(code *)(&g_anagramStageOps)[*bc])
+                            (self,bc + 1,hist,budget + 1,numLetters);
         }
         else {
-          iVar2 = MatchEngine::AnagramChoiceLists(param_1,param_2,param_3,param_4,param_5 + -1,param_6,param_7 + 1,
-                               param_8);
+          result = MatchEngine::AnagramChoiceLists(self,bc,hist,idx,mult + -1,allowed,budget + 1,
+                               numLetters);
         }
       }
       else {
-        iVar2 = 0;
+        result = 0;
       }
-      return iVar2;
+      return result;
     }
-    if ((*pcVar3 != '\0') && (*pcVar1 != '\0')) {
-      *pcVar3 = *pcVar3 + -1;
-      if (param_5 < 2) {
-        iVar2 = (*(code *)(&PTR_FUN_004fa308)[*param_2])
-                          (param_1,param_2 + 1,param_3,param_7,param_8);
+    if ((*histAt != '\0') && (*allowedAt != '\0')) {
+      *histAt = *histAt + -1;
+      if (mult < 2) {
+        result = (*(code *)(&g_anagramStageOps)[*bc])
+                          (self,bc + 1,hist,budget,numLetters);
       }
       else {
-        iVar2 = MatchEngine::AnagramChoiceLists(param_1,param_2,param_3,param_4,param_5 + -1,param_6,param_7,param_8);
+        result = MatchEngine::AnagramChoiceLists(self,bc,hist,idx,mult + -1,allowed,budget,numLetters);
       }
-      *pcVar3 = *pcVar3 + '\x01';
-      if (iVar2 != 0) {
-        return iVar2;
+      *histAt = *histAt + '\x01';
+      if (result != 0) {
+        return result;
       }
     }
-    param_4 = param_4 + -1;
-    pcVar1 = pcVar1 + -1;
-    pcVar3 = pcVar3 + -1;
+    idx = idx + -1;
+    allowedAt = allowedAt + -1;
+    histAt = histAt + -1;
   } while( true );
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0045f9d8  MatchEngine::AnagramChoiceListsOp   (67 bytes)   [analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040e570. fetches the Pattern pool slot and calls AnagramChoiceLists
-void MatchEngine::AnagramChoiceListsOp(int param_1,byte *param_2,int param_3,int param_4,int param_5)
+void MatchEngine::AnagramChoiceListsOp(int self,byte *bc,int hist,int budget,int numLetters)
 
 {
-  int iVar1;
+  int choiceSet;
   
-  iVar1 = FUN_00434cb8(param_1,param_2[1]);
-  MatchEngine::AnagramChoiceLists(param_1,param_2 + 2,param_3,param_5 + -1,(uint)*param_2,*(int *)(iVar1 + 8),param_4,
-               param_5);
+  choiceSet = Pattern::At(self,bc[1]);
+  MatchEngine::AnagramChoiceLists(self,bc + 2,hist,numLetters + -1,(uint)*bc,*(int *)(choiceSet + 8),budget,
+               numLetters);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0045fa1c  MatchEngine::AnagramVariables   (332 bytes)   [notes (matched TEACON.exe)]
-//   identical body to TEACON.exe 0x0040e5b4. anagram opcode 0xf8. Entry checked; body not read
-int MatchEngine::AnagramVariables(undefined4 param_1,int param_2,byte *param_3,int param_4,int param_5,int param_6)
+// 0x0045fa1c  MatchEngine::AnagramVariables   (332 bytes)   [notes+analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x0040e5b4. anagram opcode 0xf8: tries each unclaimed letter (not bound to another variable) for each free variable in turn, recursing; then runs the next stage
+int MatchEngine::AnagramVariables(undefined4 self,int varCounts,byte *hist,int var,int budget,int numLetters)
 
 {
-  char *pcVar1;
-  int iVar2;
-  int iVar3;
-  undefined1 *puVar4;
-  byte *pbVar5;
-  byte local_11;
+  char *value;
+  int result;
+  int found;
+  undefined1 *valueSlot;
+  byte *letterAt;
+  byte count;
   
-  pbVar5 = (byte *)(param_2 + param_4);
-  while ((param_4 < 10 &&
-         ((local_11 = *pbVar5, local_11 == 0 || (pcVar1 = VariableValues::Get(param_4), *pcVar1 != -2)))))
+  letterAt = (byte *)(varCounts + var);
+  while ((var < 10 &&
+         ((count = *letterAt, count == 0 || (value = VariableValues::Get(var), *value != -2)))))
   {
-    param_4 = param_4 + 1;
-    pbVar5 = pbVar5 + 1;
+    var = var + 1;
+    letterAt = letterAt + 1;
   }
-  if (param_4 < 10) {
-    for (pbVar5 = param_3; pbVar5 < param_3 + param_6; pbVar5 = pbVar5 + 1) {
-      if (*pbVar5 != 0) {
-        iVar2 = VariableValues::IsLetterBound((char)pbVar5 - (char)param_3);
-        if (iVar2 == 0) {
-          iVar2 = (uint)local_11 - (uint)*pbVar5;
-          if (iVar2 < 1) {
-            *pbVar5 = *pbVar5 - local_11;
+  if (var < 10) {
+    for (letterAt = hist; letterAt < hist + numLetters; letterAt = letterAt + 1) {
+      if (*letterAt != 0) {
+        result = VariableValues::IsLetterBound((char)letterAt - (char)hist);
+        if (result == 0) {
+          result = (uint)count - (uint)*letterAt;
+          if (result < 1) {
+            *letterAt = *letterAt - count;
           }
           else {
-            if (0 < param_5 + iVar2) goto LAB_0045fb2a;
-            param_5 = param_5 + iVar2;
-            *pbVar5 = 0;
+            if (0 < budget + result) goto LAB_0045fb2a;
+            budget = budget + result;
+            *letterAt = 0;
           }
-          pcVar1 = VariableValues::Get(param_4);
-          *pcVar1 = (char)pbVar5 - (char)param_3;
-          iVar3 = MatchEngine::AnagramVariables(param_1,param_2,param_3,param_4 + 1,param_5,param_6);
-          puVar4 = VariableValues::Get(param_4);
-          *puVar4 = 0xfe;
-          *pbVar5 = local_11 - (char)iVar2;
-          if (0 < iVar2) {
-            param_5 = param_5 - iVar2;
+          value = VariableValues::Get(var);
+          *value = (char)letterAt - (char)hist;
+          found = MatchEngine::AnagramVariables(self,varCounts,hist,var + 1,budget,numLetters);
+          valueSlot = VariableValues::Get(var);
+          *valueSlot = 0xfe;
+          *letterAt = count - (char)result;
+          if (0 < result) {
+            budget = budget - result;
           }
-          if (iVar3 != 0) {
-            return iVar3;
+          if (found != 0) {
+            return found;
           }
         }
       }
 LAB_0045fb2a:
     }
-    if ((int)(param_5 + (uint)local_11) < 1) {
-      iVar2 = MatchEngine::AnagramVariables(param_1,param_2,param_3,param_4 + 1,param_5 + (uint)local_11,param_6);
+    if ((int)(budget + (uint)count) < 1) {
+      result = MatchEngine::AnagramVariables(self,varCounts,hist,var + 1,budget + (uint)count,numLetters);
     }
     else {
-      iVar2 = 0;
+      result = 0;
     }
   }
   else {
-    iVar2 = (*(code *)(&PTR_FUN_004fa308)[*(byte *)(param_2 + 10)])
-                      (param_1,param_2 + 0xb,param_3,param_5,param_6);
+    result = (*(code *)(&g_anagramStageOps)[*(byte *)(varCounts + 10)])
+                      (self,varCounts + 0xb,hist,budget,numLetters);
   }
-  return iVar2;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0045fb68  FUN_0045fb68   (155 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-int FUN_0045fb68(undefined4 param_1,byte *param_2,byte *param_3,int param_4,int param_5)
+// 0x0045fb68  MatchEngine::AnagramBoundVariables   (155 bytes)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x0040e700. anagram stage for letter variables: removes the letters of already-bound variables, then binds the free ones (AnagramVariables)
+int MatchEngine::AnagramBoundVariables(undefined4 self,byte *varCounts,byte *hist,int budget,int numLetters)
 
 {
-  byte bVar1;
-  byte bVar2;
-  byte *pbVar3;
-  int iVar4;
-  byte *local_14;
+  byte count;
+  byte letter;
+  byte *value;
+  int var;
+  byte *countAt;
   
-  iVar4 = 0;
-  local_14 = param_2;
+  var = 0;
+  countAt = varCounts;
   do {
-    bVar1 = *local_14;
-    if (bVar1 != 0) {
-      pbVar3 = VariableValues::Get(iVar4);
-      bVar2 = *pbVar3;
-      if (bVar2 != 0xfe) {
-        if (param_3[bVar2] < bVar1) {
-          param_4 = param_4 + ((uint)bVar1 - (uint)param_3[bVar2]);
-          if (0 < param_4) {
+    count = *countAt;
+    if (count != 0) {
+      value = VariableValues::Get(var);
+      letter = *value;
+      if (letter != 0xfe) {
+        if (hist[letter] < count) {
+          budget = budget + ((uint)count - (uint)hist[letter]);
+          if (0 < budget) {
             return 0;
           }
-          param_3[bVar2] = 0;
+          hist[letter] = 0;
         }
         else {
-          param_3[bVar2] = param_3[bVar2] - bVar1;
+          hist[letter] = hist[letter] - count;
         }
       }
     }
-    iVar4 = iVar4 + 1;
-    local_14 = local_14 + 1;
-  } while (iVar4 < 10);
-  iVar4 = MatchEngine::AnagramVariables(param_1,(int)param_2,param_3,0,param_4,param_5);
-  return iVar4;
+    var = var + 1;
+    countAt = countAt + 1;
+  } while (var < 10);
+  var = MatchEngine::AnagramVariables(self,(int)varCounts,hist,0,budget,numLetters);
+  return var;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0045fc04  MatchEngine::AnagramSubPattern   (696 bytes)   [notes (position-matched TEACON.exe)]
-//   paired with TEACON.exe 0x0040e79c by position between identical neighbours; the bodies differ (698 vs 696 bytes), so treat the name as probable. anagram opcode 0xfa. Entry checked; body not read
-int MatchEngine::AnagramSubPattern(int param_1,byte *param_2,int param_3,char param_4,int param_5,int param_6, int param_7,uint param_8,int param_9,undefined4 param_10)
+// 0x0045fc04  MatchEngine::AnagramSubPattern   (696 bytes)   [notes+analysis (position-matched TEACON.exe)]
+//   paired with TEACON.exe 0x0040e79c by position between identical neighbours; the bodies differ (698 vs 696 bytes), so treat the name as probable. anagram opcodes 0xfa/0xfb: places a sub-pattern over each run of unclaimed letters (claimed letters carry bit 7), longest first, and continues with the rest of the anagram
+int MatchEngine::AnagramSubPattern(int self,byte *bc,int letters,char op,int mult,int sub, int punctIdx,uint budget,int n,undefined4 numLetters)
 
 {
-  byte *pbVar1;
-  byte *pbVar2;
-  int iVar3;
-  undefined4 *in_FS_OFFSET;
-  byte *local_54;
-  int local_50;
-  uint local_4c;
-  uint local_48;
-  undefined4 local_38;
-  uint local_14 [4];
+  byte *p;
+  byte *runEnd;
+  int i;
+  undefined4 *sehChainHead;
+  byte *result;
+  int triesLeft;
+  uint subExtra;
+  uint subMin;
+  undefined4 sehPrevFrame;
+  uint saved [4];
   
   __InitExceptBlockLDTC(0x4fa854);
-  local_48 = (uint)*(byte *)(param_6 + 1);
-  local_4c = (uint)*(byte *)(param_6 + 2);
-  local_50 = 0x7fffffff;
-  if ((param_4 == -5) && (param_5 == 1)) {
-    if ((int)param_8 < 0) {
-      local_48 = local_48 + local_4c;
-      local_50 = 0;
+  subMin = (uint)*(byte *)(sub + 1);
+  subExtra = (uint)*(byte *)(sub + 2);
+  triesLeft = 0x7fffffff;
+  if ((op == -5) && (mult == 1)) {
+    if ((int)budget < 0) {
+      subMin = subMin + subExtra;
+      triesLeft = 0;
     }
-    else if ((int)local_4c < (int)param_8) {
-      local_48 = local_48 + local_4c;
-      local_50 = 0;
+    else if ((int)subExtra < (int)budget) {
+      subMin = subMin + subExtra;
+      triesLeft = 0;
     }
     else {
-      local_4c = param_8;
-      local_50 = 1;
+      subExtra = budget;
+      triesLeft = 1;
     }
   }
-  else if ((int)(param_9 - local_48) < (int)local_4c) {
-    local_4c = param_9 - local_48;
+  else if ((int)(n - subMin) < (int)subExtra) {
+    subExtra = n - subMin;
   }
   do {
-    if (((int)local_4c < 0) || (local_50 == 0)) {
-      local_48 = param_8 + local_48;
-      if ((int)local_48 < 1) {
-        if (param_5 < 2) {
-          pbVar1 = MatchEngine::RunAnagramVM(param_1,param_2,(byte *)param_3,param_7,local_48,param_9,param_10);
-          *in_FS_OFFSET = local_38;
+    if (((int)subExtra < 0) || (triesLeft == 0)) {
+      subMin = budget + subMin;
+      if ((int)subMin < 1) {
+        if (mult < 2) {
+          p = MatchEngine::RunAnagramVM(self,bc,(byte *)letters,punctIdx,subMin,n,numLetters);
+          *sehChainHead = sehPrevFrame;
         }
         else {
-          pbVar1 = (byte *)MatchEngine::AnagramSubPattern(param_1,param_2,param_3,param_4,param_5 + -1,param_6,param_7
-                                        ,local_48,param_9,param_10);
-          *in_FS_OFFSET = local_38;
+          p = (byte *)MatchEngine::AnagramSubPattern(self,bc,letters,op,mult + -1,sub,punctIdx
+                                        ,subMin,n,numLetters);
+          *sehChainHead = sehPrevFrame;
         }
       }
       else {
-        pbVar1 = (byte *)0x0;
-        *in_FS_OFFSET = local_38;
+        p = (byte *)0x0;
+        *sehChainHead = sehPrevFrame;
       }
-      return (int)pbVar1;
+      return (int)p;
     }
-    for (iVar3 = param_9 - (local_48 + local_4c); -1 < iVar3; iVar3 = iVar3 + -1) {
-      local_14[0] = (*(uint *)&DAT_0051ac64);
-      if ((*(uint *)&DAT_0051ac64) == 1) {
-        VariableValues::Save((int)local_14);
+    for (i = n - (subMin + subExtra); -1 < i; i = i + -1) {
+      saved[0] = (*(uint *)&g_varsActive);
+      if ((*(uint *)&g_varsActive) == 1) {
+        VariableValues::Save((int)saved);
       }
-      pbVar1 = (byte *)(param_3 + iVar3);
-      pbVar2 = pbVar1 + local_4c + local_48;
-      for (; (pbVar1 < pbVar2 && ((*pbVar1 & 0x80) == 0)); pbVar1 = pbVar1 + 1) {
+      p = (byte *)(letters + i);
+      runEnd = p + subExtra + subMin;
+      for (; (p < runEnd && ((*p & 0x80) == 0)); p = p + 1) {
       }
-      if ((pbVar2 == pbVar1) &&
-         (pbVar1 = MatchEngine::MatchGeneral(param_1,(char *)(param_6 + 3),(byte *)(param_3 + iVar3),param_7,
-                                local_4c,local_48 + local_4c), pbVar1 != (byte *)0x0)) {
-        for (pbVar1 = (byte *)(param_3 + iVar3); pbVar1 < pbVar2; pbVar1 = pbVar1 + 1) {
-          *pbVar1 = *pbVar1 ^ 0x80;
+      if ((runEnd == p) &&
+         (p = MatchEngine::MatchGeneral(self,(char *)(sub + 3),(byte *)(letters + i),punctIdx,
+                                subExtra,subMin + subExtra), p != (byte *)0x0)) {
+        for (p = (byte *)(letters + i); p < runEnd; p = p + 1) {
+          *p = *p ^ 0x80;
         }
-        if (param_5 < 2) {
-          local_54 = MatchEngine::RunAnagramVM(param_1,param_2,(byte *)param_3,param_7,param_8 - local_4c,param_9
-                                  ,param_10);
+        if (mult < 2) {
+          result = MatchEngine::RunAnagramVM(self,bc,(byte *)letters,punctIdx,budget - subExtra,n
+                                  ,numLetters);
         }
         else {
-          local_54 = (byte *)MatchEngine::AnagramSubPattern(param_1,param_2,param_3,param_4,param_5 + -1,param_6,
-                                          param_7,param_8 - local_4c,param_9,param_10);
+          result = (byte *)MatchEngine::AnagramSubPattern(self,bc,letters,op,mult + -1,sub,
+                                          punctIdx,budget - subExtra,n,numLetters);
         }
-        for (pbVar1 = (byte *)(param_3 + iVar3); pbVar1 < pbVar2; pbVar1 = pbVar1 + 1) {
-          *pbVar1 = *pbVar1 ^ 0x80;
+        for (p = (byte *)(letters + i); p < runEnd; p = p + 1) {
+          *p = *p ^ 0x80;
         }
-        if (local_54 != (byte *)0x0) {
-          local_14[0] = local_14[0] | 2;
-          if (local_14[0] == 0) {
-            (*(uint *)&DAT_0051ac64) = 0;
+        if (result != (byte *)0x0) {
+          saved[0] = saved[0] | 2;
+          if (saved[0] == 0) {
+            (*(uint *)&g_varsActive) = 0;
           }
-          else if (local_14[0] == 1) {
-            VariableValues::Restore((int)local_14);
+          else if (saved[0] == 1) {
+            VariableValues::Restore((int)saved);
           }
-          *in_FS_OFFSET = local_38;
-          return (int)local_54;
+          *sehChainHead = sehPrevFrame;
+          return (int)result;
         }
       }
-      if (local_14[0] == 0) {
-        (*(uint *)&DAT_0051ac64) = 0;
+      if (saved[0] == 0) {
+        (*(uint *)&g_varsActive) = 0;
       }
-      else if (local_14[0] == 1) {
-        VariableValues::Restore((int)local_14);
+      else if (saved[0] == 1) {
+        VariableValues::Restore((int)saved);
       }
     }
-    local_50 = local_50 + -1;
-    local_4c = local_4c - 1;
+    triesLeft = triesLeft + -1;
+    subExtra = subExtra - 1;
   } while( true );
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0045febc  MatchEngine::RunAnagramVM   (200 bytes)   [notes (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040ea58. anagram bytecode interpreter. Entry checked; body not read
-byte * MatchEngine::RunAnagramVM(int param_1,byte *param_2,byte *param_3,undefined4 param_4,uint param_5, int param_6,undefined4 param_7)
+byte * MatchEngine::RunAnagramVM(int self,byte *bc,byte *letters,undefined4 punctIdx,uint budget, int n,undefined4 numLetters)
 
 {
-  int iVar1;
-  char local_10c [259];
-  byte local_9;
-  int local_8;
+  int sub;
+  char hist [259];
+  byte op;
+  int engine;
   
-  local_9 = *param_2;
-  if (local_9 != 0xfc) {
-    local_8 = param_1;
-    if ((local_9 == 0xfa) || (local_9 == 0xfb)) {
-      iVar1 = FUN_00434cb8(param_1,param_2[2]);
-      param_2 = (byte *)MatchEngine::AnagramSubPattern(local_8,param_2 + 3,(int)param_3,local_9,(uint)param_2[1],
-                                     *(int *)(iVar1 + 8),param_4,param_5,param_6,param_7);
+  op = *bc;
+  if (op != 0xfc) {
+    engine = self;
+    if ((op == 0xfa) || (op == 0xfb)) {
+      sub = Pattern::At(self,bc[2]);
+      bc = (byte *)MatchEngine::AnagramSubPattern(engine,bc + 3,(int)letters,op,(uint)bc[1],
+                                     *(int *)(sub + 8),punctIdx,budget,n,numLetters);
     }
     else {
-      memset((undefined4 *)local_10c,0,0x100);
-      while (0 < param_6) {
-        local_10c[*param_3] = local_10c[*param_3] + '\x01';
-        param_3 = param_3 + 1;
-        param_6 = param_6 + -1;
+      memset((undefined4 *)hist,0,0x100);
+      while (0 < n) {
+        hist[*letters] = hist[*letters] + '\x01';
+        letters = letters + 1;
+        n = n + -1;
       }
-      param_2 = (byte *)(*(code *)(&PTR_FUN_004fa308)[local_9])
-                                  (local_8,param_2 + 1,local_10c,param_5,param_7);
+      bc = (byte *)(*(code *)(&g_anagramStageOps)[op])
+                                  (engine,bc + 1,hist,budget,numLetters);
     }
   }
-  return param_2;
+  return bc;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0045ff84  MatchEngine::ComputeBalance   (124 bytes, 2 ranges)   [notes+analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0040eb20. fills the 256-entry balance table: +1 per candidate letter, minus the letters the anagram consumed
-void MatchEngine::ComputeBalance(char *param_1,byte *param_2,int param_3)
+void MatchEngine::ComputeBalance(char *bc,byte *letters,int n)
 
 {
-  char cVar1;
-  uint uVar2;
-  byte *pbVar3;
-  byte *pbVar4;
+  char op;
+  uint count;
+  byte *pc;
+  byte *named;
   
-  DAT_0051ac60 = DAT_0051ac60 + 1;
-  memset(&DAT_0051a860,0,0x400);
-  cVar1 = *param_1;
-  pbVar3 = (byte *)(param_1 + 1);
-  if ((cVar1 == -0xb) || (cVar1 == -10)) {
-    while (0 < param_3) {
-      (&DAT_0051a860)[*param_2] = (&DAT_0051a860)[*param_2] + 1;
-      param_2 = param_2 + 1;
-      param_3 = param_3 + -1;
+  g_balanceCount = g_balanceCount + 1;
+  memset(&g_balance,0,0x400);
+  op = *bc;
+  pc = (byte *)(bc + 1);
+  if ((op == -0xb) || (op == -10)) {
+    while (0 < n) {
+      (&g_balance)[*letters] = (&g_balance)[*letters] + 1;
+      letters = letters + 1;
+      n = n + -1;
     }
-    if (cVar1 == -0xb) {
-      pbVar4 = (byte *)(param_1 + 2);
-      uVar2 = (uint)*pbVar3;
-      while (0 < (int)uVar2) {
-        (&DAT_0051a860)[*pbVar4] = (&DAT_0051a860)[*pbVar4] + -1;
-        pbVar4 = pbVar4 + 1;
-        uVar2 = uVar2 - 1;
+    if (op == -0xb) {
+      named = (byte *)(bc + 2);
+      count = (uint)*pc;
+      while (0 < (int)count) {
+        (&g_balance)[*named] = (&g_balance)[*named] + -1;
+        named = named + 1;
+        count = count - 1;
       }
     }
     else {
-      for (; *pbVar3 < 0xf0; pbVar3 = pbVar3 + 2) {
-        (&DAT_0051a860)[pbVar3[1]] = (&DAT_0051a860)[pbVar3[1]] - (uint)*pbVar3;
+      for (; *pc < 0xf0; pc = pc + 2) {
+        (&g_balance)[pc[1]] = (&g_balance)[pc[1]] - (uint)*pc;
       }
     }
   }
@@ -2933,70 +2945,70 @@ void MatchEngine::ComputeBalance(char *param_1,byte *param_2,int param_3)
 // ----------------------------------------------------------------------------------------------------
 // 0x00460050  MatchEngine::MatchGeneral   (403 bytes, 2 ranges)   [analysis (matched TEACON.exe by position and size)]
 //   corresponds to TEACON.exe by position and size (bodies differ only where the larger GUI structures shift offsets). Default matcher installed by the constructor
-byte * MatchEngine::MatchGeneral(int param_1,char *param_2,byte *param_3,int param_4,int param_5,int param_6)
+byte * MatchEngine::MatchGeneral(int self,char *bc,byte *wordBuf,int punctIdx,int slack,int n)
 
 {
-  byte *pbVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  uint local_14 [4];
+  byte *pc;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  uint saved [4];
   
   __InitExceptBlockLDTC(0x4fa8ac);
-  local_14[0] = (*(uint *)&DAT_0051ac64);
-  if ((*(uint *)&DAT_0051ac64) == 1) {
-    VariableValues::Save((int)local_14);
+  saved[0] = (*(uint *)&g_varsActive);
+  if ((*(uint *)&g_varsActive) == 1) {
+    VariableValues::Save((int)saved);
   }
   while( true ) {
-    pbVar1 = (byte *)(param_2 + 1);
-    if (*param_2 == 0xfc) {
-      local_14[0] = local_14[0] | 2;
-      if (local_14[0] == 0) {
-        (*(uint *)&DAT_0051ac64) = 0;
+    pc = (byte *)(bc + 1);
+    if (*bc == 0xfc) {
+      saved[0] = saved[0] | 2;
+      if (saved[0] == 0) {
+        (*(uint *)&g_varsActive) = 0;
       }
-      else if (local_14[0] == 1) {
-        VariableValues::Restore((int)local_14);
+      else if (saved[0] == 1) {
+        VariableValues::Restore((int)saved);
       }
-      *in_FS_OFFSET = local_38;
-      return pbVar1;
+      *sehChainHead = sehPrevFrame;
+      return pc;
     }
-    if (*param_2 == 0xf4) break;
-    param_2 = (char *)MatchEngine::RunTemplateVM(param_1,(byte *)param_2,param_3,param_4,param_5);
-    if ((byte *)param_2 == (byte *)0x0) {
-      pbVar1 = (byte *)0x0;
-      if (local_14[0] == 0) {
-        (*(uint *)&DAT_0051ac64) = 0;
+    if (*bc == 0xf4) break;
+    bc = (char *)MatchEngine::RunTemplateVM(self,(byte *)bc,wordBuf,punctIdx,slack);
+    if ((byte *)bc == (byte *)0x0) {
+      pc = (byte *)0x0;
+      if (saved[0] == 0) {
+        (*(uint *)&g_varsActive) = 0;
       }
-      else if (local_14[0] == 1) {
-        VariableValues::Restore((int)local_14);
+      else if (saved[0] == 1) {
+        VariableValues::Restore((int)saved);
       }
-      *in_FS_OFFSET = local_38;
-      return pbVar1;
+      *sehChainHead = sehPrevFrame;
+      return pc;
     }
   }
-  pbVar1 = MatchEngine::RunAnagramVM(param_1,(byte *)(param_2 + 6),param_3,param_4,
-                        param_6 - *(int *)(param_2 + 2),param_6,(uint)*pbVar1);
-  if (pbVar1 != (byte *)0x0) {
-    MatchEngine::ComputeBalance(param_2 + 6,param_3,param_6);
-    local_14[0] = local_14[0] | 2;
-    pbVar1 = pbVar1 + 1;
-    if (local_14[0] == 0) {
-      (*(uint *)&DAT_0051ac64) = 0;
+  pc = MatchEngine::RunAnagramVM(self,(byte *)(bc + 6),wordBuf,punctIdx,
+                        n - *(int *)(bc + 2),n,(uint)*pc);
+  if (pc != (byte *)0x0) {
+    MatchEngine::ComputeBalance(bc + 6,wordBuf,n);
+    saved[0] = saved[0] | 2;
+    pc = pc + 1;
+    if (saved[0] == 0) {
+      (*(uint *)&g_varsActive) = 0;
     }
-    else if (local_14[0] == 1) {
-      VariableValues::Restore((int)local_14);
+    else if (saved[0] == 1) {
+      VariableValues::Restore((int)saved);
     }
-    *in_FS_OFFSET = local_38;
-    return pbVar1;
+    *sehChainHead = sehPrevFrame;
+    return pc;
   }
-  pbVar1 = (byte *)0x0;
-  if (local_14[0] == 0) {
-    (*(uint *)&DAT_0051ac64) = 0;
+  pc = (byte *)0x0;
+  if (saved[0] == 0) {
+    (*(uint *)&g_varsActive) = 0;
   }
-  else if (local_14[0] == 1) {
-    VariableValues::Restore((int)local_14);
+  else if (saved[0] == 1) {
+    VariableValues::Restore((int)saved);
   }
-  *in_FS_OFFSET = local_38;
-  return pbVar1;
+  *sehChainHead = sehPrevFrame;
+  return pc;
 }
 
 } // namespace tea

@@ -47,29 +47,29 @@ class DefinitionRichEdit : public PVWRichEdit, public virtual OWL::TEventHandler
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x0046a010  DefinitionRichEdit::Find
     //   [ 9] 0x0041add0  PVWRichEdit::vf9
-    //   [10] 0x004697b4  OWL::TRichEdit::vf10
-    //   [11] 0x004695dc  OWL::TRichEdit::vf11
-    //   [12] 0x0046928c  OWL::TRichEdit::vf12
-    //   [13] 0x004691c4  OWL::TRichEdit::vf13
+    //   [10] 0x004697b4  PVWRichEdit::Transfer
+    //   [11] 0x004695dc  PVWRichEdit::GetClassName
+    //   [12] 0x0046928c  OWL::TRichEdit::GetSubText
+    //   [13] 0x004691c4  OWL::TRichEdit::GetSelection
     //   [14] 0x00422018  OWL::TEdit::vf14
-    //   [15] 0x0046921c  OWL::TRichEdit::vf15
+    //   [15] 0x0046921c  OWL::TRichEdit::SetSelection
     //   [16] 0x004692dc  OWL::TRichEdit::vf16
-    //   [17] 0x00469384  OWL::TRichEdit::vf17
-    //   [18] 0x00422084  OWL::TEdit::vf18
-    //   [19] 0x004220b0  OWL::TEdit::vf19
-    //   [20] 0x0041aa24  PVWRichEdit::vf20
-    //   [21] 0x0041aa7c  PVWRichEdit::vf21
+    //   [17] 0x00469384  OWL::TRichEdit::Paste
+    //   [18] 0x00422084  OWL::TEdit::CharFromPos
+    //   [19] 0x004220b0  OWL::TEdit::PosFromChar
+    //   [20] 0x0041aa24  PVWRichEdit::SetupWindow
+    //   [21] 0x0041aa7c  PVWRichEdit::CanClose
     //   [22] 0x004b8b90  OWL::TEditFile::vf22
     //   [23] 0x004b7eac  OWL::TEditFile::vf23
     //   [24] 0x004b815c  OWL::TEditFile::vf24
-    //   [25] 0x00469834  OWL::TRichEdit::vf25
+    //   [25] 0x00469834  OWL::TRichEdit::ReadFromFile
     //   [26] 0x004b7ef8  OWL::TEditFile::vf26
     //   [27] 0x004b83b4  OWL::TEditFile::vf27
     //   [28] 0x004b8634  OWL::TEditFile::vf28
-    //   [29] 0x00469954  OWL::TRichEdit::vf29
+    //   [29] 0x00469954  OWL::TRichEdit::WriteToFile
     //   [30] 0x0041ad44  PVWRichEdit::vf30
     //   [31] 0x0046a27c  DefinitionRichEdit::vf31
-    //   [32] 0x0041aa84  PVWRichEdit::vf32
+    //   [32] 0x0041aa84  PVWRichEdit::SetDocTitle
     // response table at 0x004fd440 (1 entries)
     //   WM_KEYDOWN                                   -> 0x0046a360  DefinitionRichEdit::EvKeyDown
 };
@@ -86,19 +86,19 @@ class DefinitionViewFrame : public OWL::TDecoratedFrame, public virtual OWL::TEv
     //   [ 0] 0x00472edc  DefinitionViewFrame::~DefinitionViewFrame
     //   [ 1] 0x004afa14  OWL::TDecoratedFrame::vf1
     //   [ 2] 0x004aec4c  OWL::TDecoratedFrame::vf2
-    //   [ 3] 0x004aebdc  OWL::TDecoratedFrame::vf3
-    //   [ 4] 0x004ae9f8  OWL::TDecoratedFrame::vf4
+    //   [ 3] 0x004aebdc  OWL::TDecoratedFrame::PreProcessMsg
+    //   [ 4] 0x004ae9f8  OWL::TDecoratedFrame::TFrameWindow_vf7
     //   [ 5] 0x004afadc  OWL::TDecoratedFrame::vf5
-    //   [ 6] 0x004afbc4  OWL::TDecoratedFrame::vf6
-    //   [ 7] 0x004afc04  OWL::TDecoratedFrame::vf7
+    //   [ 6] 0x004afbc4  OWL::TDecoratedFrame::TFrameWindow_vf4
+    //   [ 7] 0x004afc04  OWL::TDecoratedFrame::TFrameWindow_vf5
     //   [ 8] 0x004afb58  OWL::TDecoratedFrame::vf8
-    //   [ 9] 0x004730e4  DefinitionViewFrame::vf9
-    //   [10] 0x004ae9c4  OWL::TDecoratedFrame::vf10
-    //   [11] 0x004aeb9c  OWL::TDecoratedFrame::vf11
-    //   [12] 0x004aefd0  OWL::TDecoratedFrame::vf12
-    //   [13] 0x004af148  OWL::TDecoratedFrame::vf13
+    //   [ 9] 0x004730e4  DefinitionViewFrame::SetupWindow
+    //   [10] 0x004ae9c4  OWL::TDecoratedFrame::CleanupWindow
+    //   [11] 0x004aeb9c  OWL::TDecoratedFrame::RemoveChild
+    //   [12] 0x004aefd0  OWL::TDecoratedFrame::EvCommand
+    //   [13] 0x004af148  OWL::TDecoratedFrame::EvCommandEnable
     //   [14] 0x004ae1b4  OWL::TDecoratedFrame::Find
-    //   [15] 0x00473138  DefinitionViewFrame::vf15
+    //   [15] 0x00473138  DefinitionViewFrame::Destroy
 };
 ```
 
@@ -116,54 +116,54 @@ class DefinitionViewWindows : public PropertiesViewWindows, public virtual OWL::
     //   [ 0] 0x0046a6a4  DefinitionViewWindows::~DefinitionViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x0046c4e4  DefinitionViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x0046bc90  DefinitionViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0046bac4  DefinitionViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x0046c4e4  DefinitionViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x0046bc90  DefinitionViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0046bac4  DefinitionViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x0046a3c4  DefinitionViewWindows::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00415174  PropertiesViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x0046c210  DefinitionViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x0046c534  DefinitionViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x0046bcac  DefinitionViewWindows::vf47
-    //   [48] 0x0046bdf0  DefinitionViewWindows::vf48
-    //   [49] 0x0046be30  DefinitionViewWindows::vf49
-    //   [50] 0x0046bff4  DefinitionViewWindows::vf50
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00415174  PropertiesViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x0046c210  DefinitionViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x0046c534  DefinitionViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x0046bcac  DefinitionViewWindows::SetupMoveableControls
+    //   [48] 0x0046bdf0  DefinitionViewWindows::OnSplitterButtonDown
+    //   [49] 0x0046be30  DefinitionViewWindows::OnSplitterDrag
+    //   [50] 0x0046bff4  DefinitionViewWindows::OnSplitterButtonUp
     // response table at 0x004fd4b8 (31 entries)
     //   WM_HELP                                      -> 0x0046e71c  DefinitionViewWindows::EvHelp
     //   WM_LBUTTONDOWN                               -> 0x00450b3c  TEAViewWindows::EvLButtonDown
@@ -214,51 +214,51 @@ class DictionaryListViewWindows : public PropertiesViewWindows, public virtual O
     //   [ 0] 0x004774f0  DictionaryListViewWindows::~DictionaryListViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x00477a98  DictionaryListViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x00477930  DictionaryListViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00477a98  DictionaryListViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x00477930  DictionaryListViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004765a0  DictionaryListViewWindows::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00477744  DictionaryListViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x004777a8  DictionaryListViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x004777dc  DictionaryListViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x00477818  DictionaryListViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00477744  DictionaryListViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x004777a8  DictionaryListViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x004777dc  DictionaryListViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x00477818  DictionaryListViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
     // response table at 0x00500270 (9 entries)
     //   EV_CHILD_NOTIFY(id 7830, code 2)             -> 0x00477b04  DictionaryListViewWindows::Child7830_Notify2
     //   EV_CHILD_NOTIFY(id 7830, code 1)             -> 0x00477ae8  DictionaryListViewWindows::Child7830_Notify1
@@ -300,51 +300,51 @@ class ExternalLookupViewWindows : public PropertiesViewWindows, public virtual O
     //   [ 0] 0x00475d20  ExternalLookupViewWindows::~ExternalLookupViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x00475fd8  ExternalLookupViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x00475ff0  ExternalLookupViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00475fd8  ExternalLookupViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x00475ff0  ExternalLookupViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00413c7c  PropertiesViewWindows::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00475f4c  ExternalLookupViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00475f4c  ExternalLookupViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
 };
 ```
 
@@ -389,51 +389,51 @@ class GridAboutBoxViewWindows : public PropertiesViewWindows, public virtual OWL
     //   [ 0] 0x004350d4  GridAboutBoxViewWindows::~GridAboutBoxViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x00415264  PropertiesViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x004352ac  GridAboutBoxViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00415264  PropertiesViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x004352ac  GridAboutBoxViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00413c7c  PropertiesViewWindows::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00415174  PropertiesViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00415174  PropertiesViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
 };
 ```
 
@@ -460,10 +460,10 @@ class GripBar : public OWL::TStatusBar, public virtual OWL::TEventHandler, publi
     /* +0x000 */ // base subobject OWL::TStatusBar
     // vtable at 0x005014a8 (28 slots)
     //   [ 0] 0x00473ba8  GripBar::~GripBar
-    //   [ 1] 0x004919b8  OWL::TGadgetWindow::vf1
+    //   [ 1] 0x004919b8  OWL::TGadgetWindow::Create
     //   [ 2] 0x004919d4  OWL::TGadgetWindow::vf2
-    //   [ 3] 0x0047bff4  OWL::TGadgetWindow::vf3
-    //   [ 4] 0x00492f98  OWL::TGadgetWindow::vf4
+    //   [ 3] 0x0047bff4  OWL::TGadgetWindow::GetTooltip
+    //   [ 4] 0x00492f98  OWL::TGadgetWindow::EnableTooltip
     //   [ 5] 0x0049daf0  OWL::TStatusBar::vf5
     //   [ 6] 0x0049266c  OWL::TGadgetWindow::vf6
     //   [ 7] 0x004926d4  OWL::TGadgetWindow::vf7
@@ -471,20 +471,20 @@ class GripBar : public OWL::TStatusBar, public virtual OWL::TEventHandler, publi
     //   [ 9] 0x004926f8  OWL::TGadgetWindow::vf9
     //   [10] 0x00492778  OWL::TGadgetWindow::vf10
     //   [11] 0x004927d0  OWL::TGadgetWindow::vf11
-    //   [12] 0x004915d4  OWL::TGadgetWindow::vf12
+    //   [12] 0x004915d4  OWL::TGadgetWindow::IdleAction
     //   [13] 0x004917c8  OWL::TGadgetWindow::vf13
     //   [14] 0x004987a0  OWL::TMessageBar::vf14
     //   [15] 0x00498638  OWL::TMessageBar::vf15
     //   [16] 0x00498770  OWL::TMessageBar::vf16
     //   [17] 0x004925f8  OWL::TGadgetWindow::vf17
     //   [18] 0x00491b58  OWL::TGadgetWindow::vf18
-    //   [19] 0x00492c14  OWL::TGadgetWindow::vf19
+    //   [19] 0x00492c14  OWL::TGadgetWindow::Paint
     //   [20] 0x0049da5c  OWL::TStatusBar::vf20
-    //   [21] 0x00492868  OWL::TGadgetWindow::vf21
-    //   [22] 0x0049292c  OWL::TGadgetWindow::vf22
-    //   [23] 0x00492998  OWL::TGadgetWindow::vf23
-    //   [24] 0x00493108  OWL::TGadgetWindow::vf24
-    //   [25] 0x004931d4  OWL::TGadgetWindow::vf25
+    //   [21] 0x00492868  OWL::TGadgetWindow::SetupWindow
+    //   [22] 0x0049292c  OWL::TGadgetWindow::CleanupWindow
+    //   [23] 0x00492998  OWL::TGadgetWindow::PreProcessMsg
+    //   [24] 0x00493108  OWL::TGadgetWindow::EvCommand
+    //   [25] 0x004931d4  OWL::TGadgetWindow::EvCommandEnable
     //   [26] 0x0049d3fc  OWL::TStatusBar::Find
     //   [27] 0x0049db38  OWL::TStatusBar::vf27
 };
@@ -517,51 +517,51 @@ class IntroductionViewWindows : public PropertiesViewWindows, public virtual OWL
     //   [ 0] 0x004134f0  IntroductionViewWindows::~IntroductionViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x00415264  PropertiesViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x004156f4  PropertiesViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00415264  PropertiesViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x004156f4  PropertiesViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00413260  IntroductionViewWindows::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00415174  PropertiesViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00415174  PropertiesViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
     // response table at 0x004ecf4c (4 entries)
     //   EV_COMMAND(1530)                             -> 0x00413610  IntroductionViewWindows::Cmd1530
     //   EV_COMMAND(29991)                            -> 0x00413630  IntroductionViewWindows::Cmd29991
@@ -582,51 +582,51 @@ class LicenseViewWindows : public PropertiesViewWindows, public virtual OWL::TEv
     //   [ 0] 0x00486488  LicenseViewWindows::~LicenseViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004865c0  LicenseViewWindows::vf8
-    //   [ 9] 0x00415264  PropertiesViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x004156f4  PropertiesViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004865c0  LicenseViewWindows::CloseWindow
+    //   [ 9] 0x00415264  PropertiesViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x004156f4  PropertiesViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00413c7c  PropertiesViewWindows::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00415174  PropertiesViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00415174  PropertiesViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
 };
 ```
 
@@ -677,51 +677,51 @@ class LookupPropertiesViewWindows : public PropertiesViewWindows, public virtual
     //   [ 0] 0x00460e4c  LookupPropertiesViewWindows::~LookupPropertiesViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004611b0  LookupPropertiesViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x00461204  LookupPropertiesViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004611b0  LookupPropertiesViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x00461204  LookupPropertiesViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00413c7c  PropertiesViewWindows::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00461520  LookupPropertiesViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x00461c00  LookupPropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004625f0  LookupPropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00461520  LookupPropertiesViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x00461c00  LookupPropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004625f0  LookupPropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
 };
 ```
 
@@ -811,8 +811,8 @@ class MatchListLabelWindows : public OWL::TStatic, public virtual OWL::TEventHan
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004c789c  OWL::TStatic::Find
     //   [ 9] 0x004c7bdc  OWL::TStatic::vf9
-    //   [10] 0x004c7ba4  OWL::TStatic::vf10
-    //   [11] 0x004c7b84  OWL::TStatic::vf11
+    //   [10] 0x004c7ba4  PVWStatic::Transfer
+    //   [11] 0x004c7b84  PVWStatic::GetClassName
 };
 ```
 
@@ -836,11 +836,11 @@ class MatchListWindows : public OWL::TControl, public virtual OWL::TEventHandler
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004292c0  MatchListWindows::Find
-    //   [ 9] 0x0042bd1c  MatchListWindows::vf9
-    //   [10] 0x0042bdac  MatchListWindows::vf10
-    //   [11] 0x0042bf44  MatchListWindows::vf11
-    //   [12] 0x0042bf50  MatchListWindows::vf12
-    //   [13] 0x0042cea8  MatchListWindows::vf13
+    //   [ 9] 0x0042bd1c  MatchListWindows::Invalidate
+    //   [10] 0x0042bdac  MatchListWindows::PreProcessMsg
+    //   [11] 0x0042bf44  MatchListWindows::GetClassName
+    //   [12] 0x0042bf50  MatchListWindows::Paint
+    //   [13] 0x0042cea8  MatchListWindows::SetupWindow
     // response table at 0x004f2240 (13 entries)
     //   WM_GETDLGCODE                                -> 0x0042cebc  MatchListWindows::EvGetDlgCode
     //   WM_KEYDOWN                                   -> 0x0042ced4  MatchListWindows::EvKeyDown
@@ -988,20 +988,20 @@ class PrintPreviewWindow : public OWL::TDecoratedFrame, public virtual OWL::TEve
     //   [ 0] 0x00426de4  PrintPreviewWindow::~PrintPreviewWindow
     //   [ 1] 0x004afa14  OWL::TDecoratedFrame::vf1
     //   [ 2] 0x004aec4c  OWL::TDecoratedFrame::vf2
-    //   [ 3] 0x004276e0  PrintPreviewWindow::vf3
-    //   [ 4] 0x004ae9f8  OWL::TDecoratedFrame::vf4
+    //   [ 3] 0x004276e0  PrintPreviewWindow::PreProcessMsg
+    //   [ 4] 0x004ae9f8  OWL::TDecoratedFrame::TFrameWindow_vf7
     //   [ 5] 0x004afadc  OWL::TDecoratedFrame::vf5
-    //   [ 6] 0x004afbc4  OWL::TDecoratedFrame::vf6
-    //   [ 7] 0x004afc04  OWL::TDecoratedFrame::vf7
+    //   [ 6] 0x004afbc4  OWL::TDecoratedFrame::TFrameWindow_vf4
+    //   [ 7] 0x004afc04  OWL::TDecoratedFrame::TFrameWindow_vf5
     //   [ 8] 0x004afb58  OWL::TDecoratedFrame::vf8
-    //   [ 9] 0x00427578  PrintPreviewWindow::vf9
-    //   [10] 0x004ae9c4  OWL::TDecoratedFrame::vf10
-    //   [11] 0x004aeb9c  OWL::TDecoratedFrame::vf11
-    //   [12] 0x004aefd0  OWL::TDecoratedFrame::vf12
-    //   [13] 0x00427a70  PrintPreviewWindow::vf13
+    //   [ 9] 0x00427578  PrintPreviewWindow::SetupWindow
+    //   [10] 0x004ae9c4  OWL::TDecoratedFrame::CleanupWindow
+    //   [11] 0x004aeb9c  OWL::TDecoratedFrame::RemoveChild
+    //   [12] 0x004aefd0  OWL::TDecoratedFrame::EvCommand
+    //   [13] 0x00427a70  PrintPreviewWindow::EvCommandEnable
     //   [14] 0x00426498  PrintPreviewWindow::Find
-    //   [15] 0x004276a4  PrintPreviewWindow::vf15
-    //   [16] 0x004277a0  PrintPreviewWindow::vf16
+    //   [15] 0x004276a4  PrintPreviewWindow::Create
+    //   [16] 0x004277a0  PrintPreviewWindow::Destroy
     //   [17] 0x00427bd8  PrintPreviewWindow::vf17
     //   [18] 0x00427b54  PrintPreviewWindow::vf18
     //   [19] 0x00427134  PrintPreviewWindow::vf19
@@ -1029,20 +1029,20 @@ class PrintPreviewWindowTEA : public PrintPreviewWindow, public virtual OWL::TEv
     //   [ 0] 0x0043be48  PrintPreviewWindowTEA::~PrintPreviewWindowTEA
     //   [ 1] 0x004afa14  OWL::TDecoratedFrame::vf1
     //   [ 2] 0x004aec4c  OWL::TDecoratedFrame::vf2
-    //   [ 3] 0x004276e0  PrintPreviewWindow::vf3
-    //   [ 4] 0x004ae9f8  OWL::TDecoratedFrame::vf4
+    //   [ 3] 0x004276e0  PrintPreviewWindow::PreProcessMsg
+    //   [ 4] 0x004ae9f8  OWL::TDecoratedFrame::TFrameWindow_vf7
     //   [ 5] 0x004afadc  OWL::TDecoratedFrame::vf5
-    //   [ 6] 0x004afbc4  OWL::TDecoratedFrame::vf6
-    //   [ 7] 0x004afc04  OWL::TDecoratedFrame::vf7
+    //   [ 6] 0x004afbc4  OWL::TDecoratedFrame::TFrameWindow_vf4
+    //   [ 7] 0x004afc04  OWL::TDecoratedFrame::TFrameWindow_vf5
     //   [ 8] 0x004afb58  OWL::TDecoratedFrame::vf8
-    //   [ 9] 0x00427578  PrintPreviewWindow::vf9
-    //   [10] 0x004ae9c4  OWL::TDecoratedFrame::vf10
-    //   [11] 0x004aeb9c  OWL::TDecoratedFrame::vf11
-    //   [12] 0x004aefd0  OWL::TDecoratedFrame::vf12
-    //   [13] 0x00427a70  PrintPreviewWindow::vf13
+    //   [ 9] 0x00427578  PrintPreviewWindow::SetupWindow
+    //   [10] 0x004ae9c4  OWL::TDecoratedFrame::CleanupWindow
+    //   [11] 0x004aeb9c  OWL::TDecoratedFrame::RemoveChild
+    //   [12] 0x004aefd0  OWL::TDecoratedFrame::EvCommand
+    //   [13] 0x00427a70  PrintPreviewWindow::EvCommandEnable
     //   [14] 0x0043bbb4  PrintPreviewWindowTEA::Find
-    //   [15] 0x004276a4  PrintPreviewWindow::vf15
-    //   [16] 0x004277a0  PrintPreviewWindow::vf16
+    //   [15] 0x004276a4  PrintPreviewWindow::Create
+    //   [16] 0x004277a0  PrintPreviewWindow::Destroy
     //   [17] 0x00427bd8  PrintPreviewWindow::vf17
     //   [18] 0x00427b54  PrintPreviewWindow::vf18
     //   [19] 0x00427134  PrintPreviewWindow::vf19
@@ -1066,51 +1066,51 @@ class PropertiesViewWindows : public OWL::TDialog, public virtual OWL::TEventHan
     //   [ 0] 0x00413f3c  PropertiesViewWindows::~PropertiesViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x00415264  PropertiesViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x004156f4  PropertiesViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00415264  PropertiesViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x004156f4  PropertiesViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00413c7c  PropertiesViewWindows::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00415174  PropertiesViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00415174  PropertiesViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
     // response table at 0x004ed37c (22 entries)
     //   message id 0 in the static table (filled at run time or WM_NULL) -> 0x004154a0  PropertiesViewWindows::EvRegisteredMsg_4154a0
     //   WM_ACTIVATE                                  -> 0x0041673c  PropertiesViewWindows::EvActivate
@@ -1118,7 +1118,7 @@ class PropertiesViewWindows : public OWL::TDialog, public virtual OWL::TEventHan
     //   WM_MENUSELECT                                -> 0x004156a4  PropertiesViewWindows::EvMenuSelect
     //   WM_PAINT                                     -> 0x004165cc  PropertiesViewWindows::EvPaint
     //   message 0x0019                               -> 0x00413cc4  PropertiesViewWindows::EvMsg_19
-    //   WM_SIZE                                      -> 0x00413cd4  PropertiesViewWindows::EvSize
+    //   WM_SIZE                                      -> 0x00413cd4  PropertiesViewWindows::EvSize_413cd4
     //   EV_COMMAND(1530)                             -> 0x00413ce4  PropertiesViewWindows::Cmd1530
     //   EV_COMMAND(5140)                             -> 0x00415c00  PropertiesViewWindows::CmEditExternalLookupSetup   // &Edit > &External Lookup > &Setup... | &External Lookup > &Setup... | &External Lookup > &Setup...
     //   EV_COMMAND(13120)                            -> 0x00415d40  PropertiesViewWindows::CmShared_415d40
@@ -1170,9 +1170,9 @@ class PVWCheckBox : public OWL::TCheckBox, public virtual OWL::TEventHandler, pu
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x00418350  PVWCheckBox::Find
-    //   [ 9] 0x004ac6ec  OWL::TCheckBox::vf9
-    //   [10] 0x004abeb8  OWL::TButton::vf10
-    //   [11] 0x004ac70c  OWL::TCheckBox::vf11
+    //   [ 9] 0x004ac6ec  OWL::TCheckBox::GetClassName
+    //   [10] 0x004abeb8  OWL::TButton::SetupWindow
+    //   [11] 0x004ac70c  OWL::TCheckBox::Transfer
     // response table at 0x004ee218 (2 entries)
     //   WM_SHOWWINDOW                                -> 0x004186c0  PVWCheckBox::EvShowWindow
     //   EV_NOTIFY_AT_CHILD(code 0 = BN_CLICKED)      -> 0x0041869c  PVWCheckBox::BNClicked
@@ -1195,9 +1195,9 @@ class PVWColourButton : public OWL::TButton, public virtual OWL::TEventHandler, 
     //   [ 6] 0x00418aa8  PVWColourButton::vf6
     //   [ 7] 0x00418a90  PVWColourButton::vf7
     //   [ 8] 0x0041875c  PVWColourButton::Find
-    //   [ 9] 0x004abe98  OWL::TButton::vf9
-    //   [10] 0x004abeb8  OWL::TButton::vf10
-    //   [11] 0x00418a10  PVWColourButton::vf11
+    //   [ 9] 0x004abe98  OWL::TButton::GetClassName
+    //   [10] 0x004abeb8  OWL::TButton::SetupWindow
+    //   [11] 0x00418a10  PVWColourButton::PreProcessMsg
     // response table at 0x004ee2c0 (2 entries)
     //   message id 0 in the static table (filled at run time or WM_NULL) -> 0x00418a70  PVWColourButton::EvRegisteredMsg_418a70
     //   EV_NOTIFY_AT_CHILD(code 0 = BN_CLICKED)      -> 0x00418e14  PVWColourButton::BNClicked
@@ -1220,33 +1220,33 @@ class PVWCombo : public OWL::TComboBox, public virtual OWL::TEventHandler, publi
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x0041c210  PVWCombo::Find
-    //   [ 9] 0x00422160  OWL::TComboBox::vf9
-    //   [10] 0x0042217c  OWL::TComboBox::vf10
-    //   [11] 0x0042219c  OWL::TComboBox::vf11
-    //   [12] 0x004221cc  OWL::TComboBox::vf12
-    //   [13] 0x004221e8  OWL::TComboBox::vf13
-    //   [14] 0x00422208  OWL::TComboBox::vf14
-    //   [15] 0x00422224  OWL::TComboBox::vf15
-    //   [16] 0x00422244  OWL::TComboBox::vf16
-    //   [17] 0x00422264  OWL::TComboBox::vf17
-    //   [18] 0x00422284  OWL::TComboBox::vf18
-    //   [19] 0x004222a4  OWL::TComboBox::vf19
-    //   [20] 0x004222c4  OWL::TComboBox::vf20
-    //   [21] 0x004222e4  OWL::TComboBox::vf21
-    //   [22] 0x00422314  OWL::TComboBox::vf22
-    //   [23] 0x00422330  OWL::TComboBox::vf23
-    //   [24] 0x00422350  OWL::TComboBox::vf24
-    //   [25] 0x00422370  OWL::TComboBox::vf25
-    //   [26] 0x00422390  OWL::TComboBox::vf26
-    //   [27] 0x004223b0  OWL::TComboBox::vf27
-    //   [28] 0x004223cc  OWL::TComboBox::vf28
-    //   [29] 0x004aceec  OWL::TComboBox::vf29
-    //   [30] 0x004ad110  OWL::TComboBox::vf30
-    //   [31] 0x004223ec  OWL::TComboBox::vf31
-    //   [32] 0x0042240c  OWL::TComboBox::vf32
-    //   [33] 0x004ad11c  OWL::TComboBox::vf33
-    //   [34] 0x004ad1d0  OWL::TComboBox::vf34
-    //   [35] 0x0041c970  PVWCombo::vf35
+    //   [ 9] 0x00422160  OWL::TComboBox::GetCount
+    //   [10] 0x0042217c  OWL::TComboBox::FindString
+    //   [11] 0x0042219c  OWL::TComboBox::FindExactString
+    //   [12] 0x004221cc  OWL::TComboBox::GetTopIndex
+    //   [13] 0x004221e8  OWL::TComboBox::SetTopIndex
+    //   [14] 0x00422208  OWL::TComboBox::GetHorizontalExtent
+    //   [15] 0x00422224  OWL::TComboBox::SetHorizontalExtent
+    //   [16] 0x00422244  OWL::TComboBox::GetStringLen
+    //   [17] 0x00422264  OWL::TComboBox::GetString
+    //   [18] 0x00422284  OWL::TComboBox::GetItemData
+    //   [19] 0x004222a4  OWL::TComboBox::SetItemData
+    //   [20] 0x004222c4  OWL::TComboBox::GetItemHeight
+    //   [21] 0x004222e4  OWL::TComboBox::SetItemHeight
+    //   [22] 0x00422314  OWL::TComboBox::ClearList
+    //   [23] 0x00422330  OWL::TComboBox::DirectoryList
+    //   [24] 0x00422350  OWL::TComboBox::AddString
+    //   [25] 0x00422370  OWL::TComboBox::InsertString
+    //   [26] 0x00422390  OWL::TComboBox::DeleteString
+    //   [27] 0x004223b0  OWL::TComboBox::GetSelIndex
+    //   [28] 0x004223cc  OWL::TComboBox::SetSelIndex
+    //   [29] 0x004aceec  OWL::TComboBox::Transfer
+    //   [30] 0x004ad110  OWL::TComboBox::GetClassName
+    //   [31] 0x004223ec  OWL::TComboBox::GetSelStringIndex
+    //   [32] 0x0042240c  OWL::TComboBox::SetSelString
+    //   [33] 0x004ad11c  OWL::TComboBox::SetupWindow
+    //   [34] 0x004ad1d0  OWL::TComboBox::CleanupWindow
+    //   [35] 0x0041c970  PVWCombo::PreProcessMsg
     // response table at 0x004eedd0 (1 entries)
     //   EV_NOTIFY_AT_CHILD(code 9)                   -> 0x0041c9e4  PVWCombo::NotifyAtChild_9
 };
@@ -1269,19 +1269,19 @@ class PVWEdit : public OWL::TEdit, public virtual OWL::TEventHandler, public vir
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x0041aef0  PVWEdit::Find
     //   [ 9] 0x0041b5d4  PVWEdit::vf9
-    //   [10] 0x004b7164  OWL::TEdit::vf10
-    //   [11] 0x004b7024  OWL::TEdit::vf11
-    //   [12] 0x004b6ec0  OWL::TEdit::vf12
-    //   [13] 0x00421ff8  OWL::TEdit::vf13
+    //   [10] 0x004b7164  OWL::TEdit::Transfer
+    //   [11] 0x004b7024  OWL::TEdit::GetClassName
+    //   [12] 0x004b6ec0  OWL::TEdit::GetSubText
+    //   [13] 0x00421ff8  OWL::TEdit::GetSelection
     //   [14] 0x00422018  OWL::TEdit::vf14
-    //   [15] 0x0042203c  OWL::TEdit::vf15
+    //   [15] 0x0042203c  OWL::TEdit::SetSelection
     //   [16] 0x004b6d08  OWL::TEdit::vf16
-    //   [17] 0x00422068  OWL::TEdit::vf17
-    //   [18] 0x00422084  OWL::TEdit::vf18
-    //   [19] 0x004220b0  OWL::TEdit::vf19
-    //   [20] 0x004b7030  OWL::TEdit::vf20
-    //   [21] 0x004b696c  OWL::TEdit::vf21
-    //   [22] 0x0041b600  PVWEdit::vf22
+    //   [17] 0x00422068  OWL::TEdit::Paste
+    //   [18] 0x00422084  OWL::TEdit::CharFromPos
+    //   [19] 0x004220b0  OWL::TEdit::PosFromChar
+    //   [20] 0x004b7030  OWL::TEdit::SetupWindow
+    //   [21] 0x004b696c  OWL::TEdit::CanClose
+    //   [22] 0x0041b600  PVWEdit::PreProcessMsg
     // response table at 0x004ee9f8 (3 entries)
     //   WM_KILLFOCUS                                 -> 0x004b6720  PVWEdit::EvKillFocus
     //   EV_NOTIFY_AT_CHILD(code 512)                 -> 0x0041b190  PVWEdit::NotifyAtChild_512
@@ -1305,32 +1305,32 @@ class PVWEnumeration : public OWL::TComboBox, public virtual OWL::TEventHandler,
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x0041be30  PVWEnumeration::Find
-    //   [ 9] 0x00422160  OWL::TComboBox::vf9
-    //   [10] 0x0042217c  OWL::TComboBox::vf10
-    //   [11] 0x0042219c  OWL::TComboBox::vf11
-    //   [12] 0x004221cc  OWL::TComboBox::vf12
-    //   [13] 0x004221e8  OWL::TComboBox::vf13
-    //   [14] 0x00422208  OWL::TComboBox::vf14
-    //   [15] 0x00422224  OWL::TComboBox::vf15
-    //   [16] 0x00422244  OWL::TComboBox::vf16
-    //   [17] 0x00422264  OWL::TComboBox::vf17
-    //   [18] 0x00422284  OWL::TComboBox::vf18
-    //   [19] 0x004222a4  OWL::TComboBox::vf19
-    //   [20] 0x004222c4  OWL::TComboBox::vf20
-    //   [21] 0x004222e4  OWL::TComboBox::vf21
-    //   [22] 0x00422314  OWL::TComboBox::vf22
-    //   [23] 0x00422330  OWL::TComboBox::vf23
-    //   [24] 0x00422350  OWL::TComboBox::vf24
-    //   [25] 0x00422370  OWL::TComboBox::vf25
-    //   [26] 0x00422390  OWL::TComboBox::vf26
-    //   [27] 0x004223b0  OWL::TComboBox::vf27
-    //   [28] 0x004223cc  OWL::TComboBox::vf28
-    //   [29] 0x004aceec  OWL::TComboBox::vf29
-    //   [30] 0x004ad110  OWL::TComboBox::vf30
-    //   [31] 0x004223ec  OWL::TComboBox::vf31
-    //   [32] 0x0042240c  OWL::TComboBox::vf32
-    //   [33] 0x0041c0dc  PVWEnumeration::vf33
-    //   [34] 0x004ad1d0  OWL::TComboBox::vf34
+    //   [ 9] 0x00422160  OWL::TComboBox::GetCount
+    //   [10] 0x0042217c  OWL::TComboBox::FindString
+    //   [11] 0x0042219c  OWL::TComboBox::FindExactString
+    //   [12] 0x004221cc  OWL::TComboBox::GetTopIndex
+    //   [13] 0x004221e8  OWL::TComboBox::SetTopIndex
+    //   [14] 0x00422208  OWL::TComboBox::GetHorizontalExtent
+    //   [15] 0x00422224  OWL::TComboBox::SetHorizontalExtent
+    //   [16] 0x00422244  OWL::TComboBox::GetStringLen
+    //   [17] 0x00422264  OWL::TComboBox::GetString
+    //   [18] 0x00422284  OWL::TComboBox::GetItemData
+    //   [19] 0x004222a4  OWL::TComboBox::SetItemData
+    //   [20] 0x004222c4  OWL::TComboBox::GetItemHeight
+    //   [21] 0x004222e4  OWL::TComboBox::SetItemHeight
+    //   [22] 0x00422314  OWL::TComboBox::ClearList
+    //   [23] 0x00422330  OWL::TComboBox::DirectoryList
+    //   [24] 0x00422350  OWL::TComboBox::AddString
+    //   [25] 0x00422370  OWL::TComboBox::InsertString
+    //   [26] 0x00422390  OWL::TComboBox::DeleteString
+    //   [27] 0x004223b0  OWL::TComboBox::GetSelIndex
+    //   [28] 0x004223cc  OWL::TComboBox::SetSelIndex
+    //   [29] 0x004aceec  OWL::TComboBox::Transfer
+    //   [30] 0x004ad110  OWL::TComboBox::GetClassName
+    //   [31] 0x004223ec  OWL::TComboBox::GetSelStringIndex
+    //   [32] 0x0042240c  OWL::TComboBox::SetSelString
+    //   [33] 0x0041c0dc  PVWEnumeration::SetupWindow
+    //   [34] 0x004ad1d0  OWL::TComboBox::CleanupWindow
     // response table at 0x004eed0c (1 entries)
     //   EV_NOTIFY_AT_CHILD(code 9)                   -> 0x0041c1e4  PVWEnumeration::NotifyAtChild_9
 };
@@ -1352,9 +1352,9 @@ class PVWFontButton : public OWL::TButton, public virtual OWL::TEventHandler, pu
     //   [ 6] 0x004194c0  PVWFontButton::vf6
     //   [ 7] 0x004194a8  PVWFontButton::vf7
     //   [ 8] 0x004190f0  PVWFontButton::Find
-    //   [ 9] 0x004abe98  OWL::TButton::vf9
-    //   [10] 0x004abeb8  OWL::TButton::vf10
-    //   [11] 0x004193e0  PVWFontButton::vf11
+    //   [ 9] 0x004abe98  OWL::TButton::GetClassName
+    //   [10] 0x004abeb8  OWL::TButton::SetupWindow
+    //   [11] 0x004193e0  PVWFontButton::PreProcessMsg
     // response table at 0x004ee50c (2 entries)
     //   message id 0 in the static table (filled at run time or WM_NULL) -> 0x00419488  PVWFontButton::EvRegisteredMsg_419488
     //   EV_NOTIFY_AT_CHILD(code 0 = BN_CLICKED)      -> 0x00419874  PVWFontButton::BNClicked
@@ -1403,28 +1403,28 @@ class PVWPathListBox : public OWL::TListBox, public virtual OWL::TEventHandler, 
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x0041ee74  PVWPathListBox::Find
-    //   [ 9] 0x00421cd0  OWL::TListBox::vf9
-    //   [10] 0x00421cec  OWL::TListBox::vf10
-    //   [11] 0x00421d0c  OWL::TListBox::vf11
-    //   [12] 0x00421d3c  OWL::TListBox::vf12
-    //   [13] 0x00421d58  OWL::TListBox::vf13
-    //   [14] 0x00421d78  OWL::TListBox::vf14
-    //   [15] 0x00421d94  OWL::TListBox::vf15
-    //   [16] 0x00421db4  OWL::TListBox::vf16
-    //   [17] 0x00421dd4  OWL::TListBox::vf17
-    //   [18] 0x00421df4  OWL::TListBox::vf18
-    //   [19] 0x00421e14  OWL::TListBox::vf19
-    //   [20] 0x00421e34  OWL::TListBox::vf20
-    //   [21] 0x00421e54  OWL::TListBox::vf21
-    //   [22] 0x00421e84  OWL::TListBox::vf22
-    //   [23] 0x00421ea0  OWL::TListBox::vf23
-    //   [24] 0x00421ec0  OWL::TListBox::vf24
-    //   [25] 0x00421ee0  OWL::TListBox::vf25
-    //   [26] 0x00421f00  OWL::TListBox::vf26
-    //   [27] 0x004bfda4  OWL::TListBox::vf27
-    //   [28] 0x004bfe0c  OWL::TListBox::vf28
-    //   [29] 0x004bfaf8  OWL::TListBox::vf29
-    //   [30] 0x004bfaec  OWL::TListBox::vf30
+    //   [ 9] 0x00421cd0  OWL::TListBox::GetCount
+    //   [10] 0x00421cec  OWL::TListBox::FindString
+    //   [11] 0x00421d0c  OWL::TListBox::FindExactString
+    //   [12] 0x00421d3c  OWL::TListBox::GetTopIndex
+    //   [13] 0x00421d58  OWL::TListBox::SetTopIndex
+    //   [14] 0x00421d78  OWL::TListBox::GetHorizontalExtent
+    //   [15] 0x00421d94  OWL::TListBox::SetHorizontalExtent
+    //   [16] 0x00421db4  OWL::TListBox::GetStringLen
+    //   [17] 0x00421dd4  OWL::TListBox::GetString
+    //   [18] 0x00421df4  OWL::TListBox::GetItemData
+    //   [19] 0x00421e14  OWL::TListBox::SetItemData
+    //   [20] 0x00421e34  OWL::TListBox::GetItemHeight
+    //   [21] 0x00421e54  OWL::TListBox::SetItemHeight
+    //   [22] 0x00421e84  OWL::TListBox::ClearList
+    //   [23] 0x00421ea0  OWL::TListBox::DirectoryList
+    //   [24] 0x00421ec0  OWL::TListBox::AddString
+    //   [25] 0x00421ee0  OWL::TListBox::InsertString
+    //   [26] 0x00421f00  OWL::TListBox::DeleteString
+    //   [27] 0x004bfda4  OWL::TListBox::GetSelIndex
+    //   [28] 0x004bfe0c  OWL::TListBox::SetSelIndex
+    //   [29] 0x004bfaf8  PVWPathListBox::Transfer
+    //   [30] 0x004bfaec  PVWPathListBox::GetClassName
     //   [31] 0x0041f12c  PVWPathListBox::vf31
     // response table at 0x004ef534 (1 entries)
     //   WM_MOUSEMOVE                                 -> 0x0041eebc  PVWPathListBox::EvMouseMove
@@ -1448,9 +1448,9 @@ class PVWPushButton : public OWL::TButton, public virtual OWL::TEventHandler, pu
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004179a8  PVWPushButton::Find
-    //   [ 9] 0x004abe98  OWL::TButton::vf9
-    //   [10] 0x004abeb8  OWL::TButton::vf10
-    //   [11] 0x00417d18  PVWPushButton::vf11
+    //   [ 9] 0x004abe98  OWL::TButton::GetClassName
+    //   [10] 0x004abeb8  OWL::TButton::SetupWindow
+    //   [11] 0x00417d18  PVWPushButton::PreProcessMsg
     // response table at 0x004ee0b0 (2 entries)
     //   WM_SHOWWINDOW                                -> 0x00417d50  PVWPushButton::EvShowWindow
     //   EV_NOTIFY_AT_CHILD(code 0 = BN_CLICKED)      -> 0x00417cf4  PVWPushButton::BNClicked
@@ -1474,10 +1474,10 @@ class PVWRadioButton : public OWL::TRadioButton, public virtual OWL::TEventHandl
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x00417dec  PVWRadioButton::Find
-    //   [ 9] 0x004c677c  OWL::TRadioButton::vf9
-    //   [10] 0x0041823c  PVWRadioButton::vf10
-    //   [11] 0x004ac70c  OWL::TCheckBox::vf11
-    //   [12] 0x00418190  PVWRadioButton::vf12
+    //   [ 9] 0x004c677c  PVWRadioButton::GetClassName
+    //   [10] 0x0041823c  PVWRadioButton::SetupWindow
+    //   [11] 0x004ac70c  OWL::TCheckBox::Transfer
+    //   [12] 0x00418190  PVWRadioButton::PreProcessMsg
     //   [13] 0x004181c8  PVWRadioButton::vf13
     // response table at 0x004ee158 (3 entries)
     //   WM_MOUSEMOVE                                 -> 0x00417e34  PVWRadioButton::EvMouseMove
@@ -1503,29 +1503,29 @@ class PVWRichEdit : public OWL::TRichEdit, public virtual OWL::TEventHandler, pu
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x00419bb8  PVWRichEdit::Find
     //   [ 9] 0x0041add0  PVWRichEdit::vf9
-    //   [10] 0x004697b4  OWL::TRichEdit::vf10
-    //   [11] 0x004695dc  OWL::TRichEdit::vf11
-    //   [12] 0x0046928c  OWL::TRichEdit::vf12
-    //   [13] 0x004691c4  OWL::TRichEdit::vf13
+    //   [10] 0x004697b4  PVWRichEdit::Transfer
+    //   [11] 0x004695dc  PVWRichEdit::GetClassName
+    //   [12] 0x0046928c  OWL::TRichEdit::GetSubText
+    //   [13] 0x004691c4  OWL::TRichEdit::GetSelection
     //   [14] 0x00422018  OWL::TEdit::vf14
-    //   [15] 0x0046921c  OWL::TRichEdit::vf15
+    //   [15] 0x0046921c  OWL::TRichEdit::SetSelection
     //   [16] 0x004692dc  OWL::TRichEdit::vf16
-    //   [17] 0x00469384  OWL::TRichEdit::vf17
-    //   [18] 0x00422084  OWL::TEdit::vf18
-    //   [19] 0x004220b0  OWL::TEdit::vf19
-    //   [20] 0x0041aa24  PVWRichEdit::vf20
-    //   [21] 0x0041aa7c  PVWRichEdit::vf21
+    //   [17] 0x00469384  OWL::TRichEdit::Paste
+    //   [18] 0x00422084  OWL::TEdit::CharFromPos
+    //   [19] 0x004220b0  OWL::TEdit::PosFromChar
+    //   [20] 0x0041aa24  PVWRichEdit::SetupWindow
+    //   [21] 0x0041aa7c  PVWRichEdit::CanClose
     //   [22] 0x004b8b90  OWL::TEditFile::vf22
     //   [23] 0x004b7eac  OWL::TEditFile::vf23
     //   [24] 0x004b815c  OWL::TEditFile::vf24
-    //   [25] 0x00469834  OWL::TRichEdit::vf25
+    //   [25] 0x00469834  OWL::TRichEdit::ReadFromFile
     //   [26] 0x004b7ef8  OWL::TEditFile::vf26
     //   [27] 0x004b83b4  OWL::TEditFile::vf27
     //   [28] 0x004b8634  OWL::TEditFile::vf28
-    //   [29] 0x00469954  OWL::TRichEdit::vf29
+    //   [29] 0x00469954  OWL::TRichEdit::WriteToFile
     //   [30] 0x0041ad44  PVWRichEdit::vf30
     //   [31] 0x0041adc8  PVWRichEdit::vf31
-    //   [32] 0x0041aa84  PVWRichEdit::vf32
+    //   [32] 0x0041aa84  PVWRichEdit::SetDocTitle
     // response table at 0x004ee6fc (3 entries)
     //   WM_LBUTTONDBLCLK                             -> 0x00419ee0  PVWRichEdit::EvLButtonDblClk
     //   EV_NOTIFY_AT_CHILD(code 512)                 -> 0x00419f0c  PVWRichEdit::NotifyAtChild_512
@@ -1550,8 +1550,8 @@ class PVWStatic : public OWL::TStatic, public virtual OWL::TEventHandler, public
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x0041b638  PVWStatic::Find
     //   [ 9] 0x004c7bdc  OWL::TStatic::vf9
-    //   [10] 0x004c7ba4  OWL::TStatic::vf10
-    //   [11] 0x004c7b84  OWL::TStatic::vf11
+    //   [10] 0x004c7ba4  PVWStatic::Transfer
+    //   [11] 0x004c7b84  PVWStatic::GetClassName
     // response table at 0x004eeb8c (1 entries)
     //   EV_NOTIFY_AT_CHILD(code 0 = BN_CLICKED)      -> 0x0041bad8  PVWStatic::BNClicked
 };
@@ -1573,8 +1573,8 @@ class PVWTabs : public OWL::TTabControl, public virtual OWL::TEventHandler, publ
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x0041ea80  PVWTabs::Find
-    //   [ 9] 0x0049eaf0  OWL::TTabControl::vf9
-    //   [10] 0x0049eadc  OWL::TTabControl::vf10
+    //   [ 9] 0x0049eaf0  OWL::TTabControl::Transfer
+    //   [10] 0x0049eadc  OWL::TTabControl::GetClassName
     // response table at 0x004ef4a4 (2 entries)
     //   WM_KEYDOWN                                   -> 0x0041ed14  PVWTabs::EvKeyDown
     //   WM_LBUTTONDBLCLK                             -> 0x0041ee00  PVWTabs::EvLButtonDblClk
@@ -1597,9 +1597,9 @@ class PVWUpDown : public OWL::TUpDown, public virtual OWL::TEventHandler, public
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x0041bafc  PVWUpDown::Find
-    //   [ 9] 0x004a20b0  OWL::TUpDown::vf9
-    //   [10] 0x004a20c4  OWL::TUpDown::vf10
-    //   [11] 0x0041bdb8  PVWUpDown::vf11
+    //   [ 9] 0x004a20b0  PVWUpDown::GetClassName
+    //   [10] 0x004a20c4  PVWUpDown::PerformCreate
+    //   [11] 0x0041bdb8  PVWUpDown::PreProcessMsg
     // response table at 0x004eec94 (1 entries)
     //   WM_VSCROLL                                   -> 0x0041bdf0  PVWUpDown::EvVScroll
 };
@@ -1623,18 +1623,18 @@ class PVWURL : public OWL::TEdit, public virtual OWL::TEventHandler, public virt
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x0041d510  PVWURL::Find
     //   [ 9] 0x004b6954  OWL::TEdit::vf9
-    //   [10] 0x004b7164  OWL::TEdit::vf10
-    //   [11] 0x004b7024  OWL::TEdit::vf11
-    //   [12] 0x004b6ec0  OWL::TEdit::vf12
-    //   [13] 0x00421ff8  OWL::TEdit::vf13
+    //   [10] 0x004b7164  OWL::TEdit::Transfer
+    //   [11] 0x004b7024  OWL::TEdit::GetClassName
+    //   [12] 0x004b6ec0  OWL::TEdit::GetSubText
+    //   [13] 0x00421ff8  OWL::TEdit::GetSelection
     //   [14] 0x00422018  OWL::TEdit::vf14
-    //   [15] 0x0042203c  OWL::TEdit::vf15
+    //   [15] 0x0042203c  OWL::TEdit::SetSelection
     //   [16] 0x004b6d08  OWL::TEdit::vf16
-    //   [17] 0x00422068  OWL::TEdit::vf17
-    //   [18] 0x00422084  OWL::TEdit::vf18
-    //   [19] 0x004220b0  OWL::TEdit::vf19
-    //   [20] 0x0041d930  PVWURL::vf20
-    //   [21] 0x004b696c  OWL::TEdit::vf21
+    //   [17] 0x00422068  OWL::TEdit::Paste
+    //   [18] 0x00422084  OWL::TEdit::CharFromPos
+    //   [19] 0x004220b0  OWL::TEdit::PosFromChar
+    //   [20] 0x0041d930  PVWURL::SetupWindow
+    //   [21] 0x004b696c  OWL::TEdit::CanClose
     //   [22] 0x0041e774  PVWURL::vf22
     //   [23] 0x0041e7a4  PVWURL::vf23
     //   [24] 0x0041e7ec  PVWURL::vf24
@@ -1664,8 +1664,8 @@ class SearchModeButton : public OWL::TStatic, public virtual OWL::TEventHandler,
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004c789c  OWL::TStatic::Find
     //   [ 9] 0x004c7bdc  OWL::TStatic::vf9
-    //   [10] 0x004c7ba4  OWL::TStatic::vf10
-    //   [11] 0x004c7b84  OWL::TStatic::vf11
+    //   [10] 0x004c7ba4  PVWStatic::Transfer
+    //   [11] 0x004c7b84  PVWStatic::GetClassName
     //   [12] 0x00450a78  SearchModeButton::vf12
 };
 ```
@@ -1681,52 +1681,52 @@ class TabbyPropertiesViewWindows : public PropertiesViewWindows, public virtual 
     //   [ 0] 0x00467f50  TabbyPropertiesViewWindows::~TabbyPropertiesViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x0046819c  TabbyPropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x00415264  PropertiesViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0046823c  TabbyPropertiesViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x0046819c  TabbyPropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00415264  PropertiesViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0046823c  TabbyPropertiesViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00467d40  TabbyPropertiesViewWindows::Find
-    //   [15] 0x00468070  TabbyPropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00468400  TabbyPropertiesViewWindows::vf18
-    //   [19] 0x00415174  PropertiesViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004680a8  TabbyPropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00468158  TabbyPropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004681fc  TabbyPropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x004683c0  TabbyPropertiesViewWindows::vf45
-    //   [46] 0x00468548  TabbyPropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
-    //   [48] 0x00468428  TabbyPropertiesViewWindows::vf48
+    //   [15] 0x00468070  TabbyPropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00468400  TabbyPropertiesViewWindows::EnableControls
+    //   [19] 0x00415174  PropertiesViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004680a8  TabbyPropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00468158  TabbyPropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004681fc  TabbyPropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x004683c0  TabbyPropertiesViewWindows::ShowHelp
+    //   [46] 0x00468548  TabbyPropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
+    //   [48] 0x00468428  TabbyPropertiesViewWindows::OnPageChanged
     // response table at 0x004fc888 (1 entries)
     //   EV_CHILD_NOTIFY(id 8030, code -551)          -> 0x00450b3c  TEAViewWindows::EvLButtonDown
 };
@@ -1785,51 +1785,51 @@ class TEADictionaryPropertiesWindows : public PropertiesViewWindows, public virt
     //   [ 0] 0x004014d0  TEADictionaryPropertiesWindows::~TEADictionaryPropertiesWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x00415264  PropertiesViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x004018d4  TEADictionaryPropertiesWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00415264  PropertiesViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x004018d4  TEADictionaryPropertiesWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00413c7c  PropertiesViewWindows::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00415174  PropertiesViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x0040209c  TEADictionaryPropertiesWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00415174  PropertiesViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x0040209c  TEADictionaryPropertiesWindows::SetupMoveableControls
 };
 ```
 
@@ -1843,20 +1843,20 @@ class TEAFrameWindow : public OWL::TDecoratedFrame, public virtual OWL::TEventHa
     //   [ 0] 0x00474188  TEAFrameWindow::~TEAFrameWindow
     //   [ 1] 0x004afa14  OWL::TDecoratedFrame::vf1
     //   [ 2] 0x004aec4c  OWL::TDecoratedFrame::vf2
-    //   [ 3] 0x004aebdc  OWL::TDecoratedFrame::vf3
-    //   [ 4] 0x004ae9f8  OWL::TDecoratedFrame::vf4
+    //   [ 3] 0x004aebdc  OWL::TDecoratedFrame::PreProcessMsg
+    //   [ 4] 0x004ae9f8  OWL::TDecoratedFrame::TFrameWindow_vf7
     //   [ 5] 0x004afadc  OWL::TDecoratedFrame::vf5
-    //   [ 6] 0x004afbc4  OWL::TDecoratedFrame::vf6
-    //   [ 7] 0x004afc04  OWL::TDecoratedFrame::vf7
+    //   [ 6] 0x004afbc4  OWL::TDecoratedFrame::TFrameWindow_vf4
+    //   [ 7] 0x004afc04  OWL::TDecoratedFrame::TFrameWindow_vf5
     //   [ 8] 0x004afb58  OWL::TDecoratedFrame::vf8
-    //   [ 9] 0x004747ac  TEAFrameWindow::vf9
-    //   [10] 0x004ae9c4  OWL::TDecoratedFrame::vf10
-    //   [11] 0x004aeb9c  OWL::TDecoratedFrame::vf11
-    //   [12] 0x004aefd0  OWL::TDecoratedFrame::vf12
-    //   [13] 0x004af148  OWL::TDecoratedFrame::vf13
+    //   [ 9] 0x004747ac  TEAFrameWindow::SetupWindow
+    //   [10] 0x004ae9c4  OWL::TDecoratedFrame::CleanupWindow
+    //   [11] 0x004aeb9c  OWL::TDecoratedFrame::RemoveChild
+    //   [12] 0x004aefd0  OWL::TDecoratedFrame::EvCommand
+    //   [13] 0x004af148  OWL::TDecoratedFrame::EvCommandEnable
     //   [14] 0x00473f30  TEAFrameWindow::Find
-    //   [15] 0x00474764  TEAFrameWindow::vf15
-    //   [16] 0x00474838  TEAFrameWindow::vf16
+    //   [15] 0x00474764  TEAFrameWindow::GetClassName
+    //   [16] 0x00474838  TEAFrameWindow::CanClose
     // response table at 0x004ff434 (43 entries)
     //   message id 0 in the static table (filled at run time or WM_NULL) -> 0x00474770  TEAFrameWindow::EvRegisteredMsg_474770
     //   WM_INITMENUPOPUP                             -> 0x0047431c  TEAFrameWindow::EvInitMenuPopup
@@ -1965,9 +1965,9 @@ class TEAProgressBar : public OWL::TButton, public virtual OWL::TEventHandler, p
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004abb94  OWL::TButton::Find
-    //   [ 9] 0x004abe98  OWL::TButton::vf9
-    //   [10] 0x004abeb8  OWL::TButton::vf10
-    //   [11] 0x004508e0  TEAProgressBar::vf11
+    //   [ 9] 0x004abe98  OWL::TButton::GetClassName
+    //   [10] 0x004abeb8  OWL::TButton::SetupWindow
+    //   [11] 0x004508e0  TEAProgressBar::PreProcessMsg
 };
 ```
 
@@ -2019,52 +2019,52 @@ class TEAPropertiesViewWindows : public TabbyPropertiesViewWindows, public virtu
     //   [ 0] 0x00404f80  TEAPropertiesViewWindows::~TEAPropertiesViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x0046819c  TabbyPropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x00415264  PropertiesViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x004062dc  TEAPropertiesViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x0046819c  TabbyPropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00415264  PropertiesViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x004062dc  TEAPropertiesViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00467d40  TabbyPropertiesViewWindows::Find
-    //   [15] 0x00468070  TabbyPropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00468400  TabbyPropertiesViewWindows::vf18
-    //   [19] 0x00405630  TEAPropertiesViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00406094  TEAPropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x00405d64  TEAPropertiesViewWindows::vf27
-    //   [28] 0x00405df0  TEAPropertiesViewWindows::vf28
-    //   [29] 0x00405d40  TEAPropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004680a8  TabbyPropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x004061d0  TEAPropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00468158  TabbyPropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004681fc  TabbyPropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x004683c0  TabbyPropertiesViewWindows::vf45
-    //   [46] 0x00468548  TabbyPropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
-    //   [48] 0x004068c8  TEAPropertiesViewWindows::vf48
+    //   [15] 0x00468070  TabbyPropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00468400  TabbyPropertiesViewWindows::EnableControls
+    //   [19] 0x00405630  TEAPropertiesViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00406094  TEAPropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x00405d64  TEAPropertiesViewWindows::OnColourChanged
+    //   [28] 0x00405df0  TEAPropertiesViewWindows::OnFontChanged
+    //   [29] 0x00405d40  TEAPropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004680a8  TabbyPropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x004061d0  TEAPropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00468158  TabbyPropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004681fc  TabbyPropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x004683c0  TabbyPropertiesViewWindows::ShowHelp
+    //   [46] 0x00468548  TabbyPropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
+    //   [48] 0x004068c8  TEAPropertiesViewWindows::OnPageChanged
 };
 ```
 
@@ -2079,51 +2079,51 @@ class TEAQuickReferenceViewWindows : public PropertiesViewWindows, public virtua
     //   [ 0] 0x00467594  TEAQuickReferenceViewWindows::~TEAQuickReferenceViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x00415264  PropertiesViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x00467898  TEAQuickReferenceViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00415264  PropertiesViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x00467898  TEAQuickReferenceViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00413c7c  PropertiesViewWindows::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00415174  PropertiesViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004677e4  TEAQuickReferenceViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00467ae8  TEAQuickReferenceViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00415174  PropertiesViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004677e4  TEAQuickReferenceViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00467ae8  TEAQuickReferenceViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
 };
 ```
 
@@ -2141,51 +2141,51 @@ class TEAStartupTipsViewWindows : public PropertiesViewWindows, public virtual O
     //   [ 0] 0x0047ad78  TEAStartupTipsViewWindows::~TEAStartupTipsViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x0047b850  TEAStartupTipsViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0047afbc  TEAStartupTipsViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x0047b850  TEAStartupTipsViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0047afbc  TEAStartupTipsViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00413c7c  PropertiesViewWindows::Find
-    //   [15] 0x0047af90  TEAStartupTipsViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x0047af58  TEAStartupTipsViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0047af90  TEAStartupTipsViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x0047af58  TEAStartupTipsViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
 };
 ```
 
@@ -2225,59 +2225,59 @@ class TEAViewWindows : public PropertiesViewWindows, public virtual OWL::TEventH
     //   [ 0] 0x004511c8  TEAViewWindows::~TEAViewWindows
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x0045d674  TEAViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x0045d634  TEAViewWindows::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x004592e0  TEAViewWindows::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x0045d674  TEAViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x0045d634  TEAViewWindows::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x004592e0  TEAViewWindows::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x00450af4  TEAViewWindows::Find
-    //   [15] 0x00454b20  TEAViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x00454b40  TEAViewWindows::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00457254  TEAViewWindows::vf21
-    //   [22] 0x0045733c  TEAViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x00458c90  TEAViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x0045680c  TEAViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x0045a61c  TEAViewWindows::vf39
-    //   [40] 0x0045a3f8  TEAViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x0045634c  TEAViewWindows::vf43
-    //   [44] 0x0045643c  TEAViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00458cd0  TEAViewWindows::vf47
-    //   [48] 0x00459c44  TEAViewWindows::vf48
-    //   [49] 0x00459c9c  TEAViewWindows::vf49
-    //   [50] 0x0045a220  TEAViewWindows::vf50
-    //   [51] 0x0045a250  TEAViewWindows::vf51
-    //   [52] 0x0045a274  TEAViewWindows::vf52
-    //   [53] 0x0045a2a4  TEAViewWindows::vf53
-    //   [54] 0x0045a42c  TEAViewWindows::vf54
-    //   [55] 0x0045a4c8  TEAViewWindows::vf55
+    //   [15] 0x00454b20  TEAViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x00454b40  TEAViewWindows::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00457254  TEAViewWindows::OnEditKillFocus
+    //   [22] 0x0045733c  TEAViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x00458c90  TEAViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x0045680c  TEAViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x0045a61c  TEAViewWindows::EvCtlColor
+    //   [40] 0x0045a3f8  TEAViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x0045634c  TEAViewWindows::ShowControlTip
+    //   [44] 0x0045643c  TEAViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00458cd0  TEAViewWindows::SetupMoveableControls
+    //   [48] 0x00459c44  TEAViewWindows::OnSplitterButtonDown
+    //   [49] 0x00459c9c  TEAViewWindows::OnSplitterDrag
+    //   [50] 0x0045a220  TEAViewWindows::OnSplitterButtonUp
+    //   [51] 0x0045a250  TEAViewWindows::OnPaneLabelDoubleClick
+    //   [52] 0x0045a274  TEAViewWindows::OnPaneLabelClick
+    //   [53] 0x0045a2a4  TEAViewWindows::OnPaneLabelContextMenu
+    //   [54] 0x0045a42c  TEAViewWindows::OnDropFiles
+    //   [55] 0x0045a4c8  TEAViewWindows::OnSysColorChange
     // response table at 0x004f7a04 (37 entries)
     //   WM_LBUTTONDOWN                               -> 0x00450b3c  TEAViewWindows::EvLButtonDown
     //   WM_MOUSEMOVE                                 -> 0x00450b4c  TEAViewWindows::EvMouseMove
@@ -2285,7 +2285,7 @@ class TEAViewWindows : public PropertiesViewWindows, public virtual OWL::TEventH
     //   WM_LBUTTONDBLCLK                             -> 0x00450b6c  TEAViewWindows::EvLButtonDblClk
     //   WM_RBUTTONDOWN                               -> 0x00450b7c  TEAViewWindows::EvRButtonDown
     //   WM_RBUTTONUP                                 -> 0x00450b8c  TEAViewWindows::EvRButtonUp
-    //   WM_SIZE                                      -> 0x00413cd4  PropertiesViewWindows::EvSize
+    //   WM_SIZE                                      -> 0x00413cd4  PropertiesViewWindows::EvSize_413cd4
     //   WM_DROPFILES                                 -> 0x00450b9c  TEAViewWindows::EvDropFiles
     //   WM_SYSCOLORCHANGE                            -> 0x00450bac  TEAViewWindows::EvSysColorChange
     //   EV_COMMAND(12690)                            -> 0x0045c5dc  TEAViewWindows::Cmd12690
@@ -2375,9 +2375,9 @@ class TSDictionaryList::Dictionary {
     //   [ 1] 0x0040bac4  TSDictionaryList::Dictionary::Load
     //   [ 2] 0x0040c1b4  TSDictionaryList::Dictionary::Unload
     //   [ 3] 0x0040c238  TSDictionaryList::Dictionary::EnsureCurrent
-    //   [ 4] 0x0040c298  TSDictionaryList::Dictionary::vf4
+    //   [ 4] 0x0040c298  TSDictionaryList::Dictionary::GetPathData
     //   [ 5] 0x0040c2a8  TSDictionaryList::Dictionary::GetFileTitle
-    //   [ 6] 0x0040c2ec  TSDictionaryList::Dictionary::vf6
+    //   [ 6] 0x0040c2ec  TSDictionaryList::Dictionary::GetFileName
     //   [ 7] 0x0040c364  TSDictionaryList::Dictionary::GetSummaryText
     //   [ 8] 0x0040c5c0  TSDictionaryList::Dictionary::GetFileDateText
     //   [ 9] 0x0040c800  TSDictionaryList::Dictionary::GetDescription
@@ -2409,51 +2409,51 @@ class TSDictionarySaveDialog : public PropertiesViewWindows, public DictionaryMa
     //   [ 0] 0x0043d32c  TSDictionarySaveDialog::~TSDictionarySaveDialog
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x0043e898  TSDictionarySaveDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0043e074  TSDictionarySaveDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x0043e898  TSDictionarySaveDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0043e074  TSDictionarySaveDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x0043cdcc  TSDictionarySaveDialog::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x0043d7ac  TSDictionarySaveDialog::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x0043d7ac  TSDictionarySaveDialog::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
     //   [48] 0x0043e8bc  TSDictionarySaveDialog::vf48
     //   [49] 0x0043e8fc  TSDictionarySaveDialog::vf49
     //   [50] 0x004e6028  __vstub_4e6028
@@ -2473,51 +2473,51 @@ class TSDictionarySaveTEADialog : public TSDictionarySaveDialog, public virtual 
     //   [ 0] 0x0043c8a4  TSDictionarySaveTEADialog::~TSDictionarySaveTEADialog
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004167d8  PropertiesViewWindows::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x0043e898  TSDictionarySaveDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0043e074  TSDictionarySaveDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004167d8  PropertiesViewWindows::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x0043e898  TSDictionarySaveDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0043e074  TSDictionarySaveDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x0043cdcc  TSDictionarySaveDialog::Find
-    //   [15] 0x0041413c  PropertiesViewWindows::vf15
-    //   [16] 0x004141fc  PropertiesViewWindows::vf16
-    //   [17] 0x00414264  PropertiesViewWindows::vf17
-    //   [18] 0x00415154  PropertiesViewWindows::vf18
-    //   [19] 0x0043d7ac  TSDictionarySaveDialog::vf19
-    //   [20] 0x0041517c  PropertiesViewWindows::vf20
-    //   [21] 0x00415184  PropertiesViewWindows::vf21
-    //   [22] 0x0041518c  PropertiesViewWindows::vf22
-    //   [23] 0x00415194  PropertiesViewWindows::vf23
-    //   [24] 0x0041519c  PropertiesViewWindows::vf24
-    //   [25] 0x004151a4  PropertiesViewWindows::vf25
-    //   [26] 0x004151ac  PropertiesViewWindows::vf26
-    //   [27] 0x004151b4  PropertiesViewWindows::vf27
-    //   [28] 0x004151bc  PropertiesViewWindows::vf28
-    //   [29] 0x004151c4  PropertiesViewWindows::vf29
-    //   [30] 0x004151cc  PropertiesViewWindows::vf30
-    //   [31] 0x004151d4  PropertiesViewWindows::vf31
-    //   [32] 0x004151dc  PropertiesViewWindows::vf32
-    //   [33] 0x00415208  PropertiesViewWindows::vf33
-    //   [34] 0x00415210  PropertiesViewWindows::vf34
-    //   [35] 0x00415254  PropertiesViewWindows::vf35
-    //   [36] 0x0041525c  PropertiesViewWindows::vf36
-    //   [37] 0x00415200  PropertiesViewWindows::vf37
-    //   [38] 0x00416964  PropertiesViewWindows::vf38
-    //   [39] 0x00416320  PropertiesViewWindows::vf39
-    //   [40] 0x0041651c  PropertiesViewWindows::vf40
-    //   [41] 0x00415328  PropertiesViewWindows::vf41
-    //   [42] 0x00415344  PropertiesViewWindows::vf42
-    //   [43] 0x004153a8  PropertiesViewWindows::vf43
-    //   [44] 0x00415e18  PropertiesViewWindows::vf44
-    //   [45] 0x00415be8  PropertiesViewWindows::vf45
-    //   [46] 0x00415e7c  PropertiesViewWindows::vf46
-    //   [47] 0x00417490  PropertiesViewWindows::vf47
+    //   [15] 0x0041413c  PropertiesViewWindows::SetupTooltips
+    //   [16] 0x004141fc  PropertiesViewWindows::DestroyTooltips
+    //   [17] 0x00414264  PropertiesViewWindows::IsTooltipActive
+    //   [18] 0x00415154  PropertiesViewWindows::EnableControls
+    //   [19] 0x0043d7ac  TSDictionarySaveDialog::OnButton
+    //   [20] 0x0041517c  PropertiesViewWindows::OnStaticClicked
+    //   [21] 0x00415184  PropertiesViewWindows::OnEditKillFocus
+    //   [22] 0x0041518c  PropertiesViewWindows::OnEditChange
+    //   [23] 0x00415194  PropertiesViewWindows::OnDoubleClick
+    //   [24] 0x0041519c  PropertiesViewWindows::OnUpDown
+    //   [25] 0x004151a4  PropertiesViewWindows::OnNotify25
+    //   [26] 0x004151ac  PropertiesViewWindows::OnNotify26
+    //   [27] 0x004151b4  PropertiesViewWindows::OnColourChanged
+    //   [28] 0x004151bc  PropertiesViewWindows::OnFontChanged
+    //   [29] 0x004151c4  PropertiesViewWindows::OnComboChange
+    //   [30] 0x004151cc  PropertiesViewWindows::OnNotify30
+    //   [31] 0x004151d4  PropertiesViewWindows::OnMouseOverControl
+    //   [32] 0x004151dc  PropertiesViewWindows::OnTextClicked
+    //   [33] 0x00415208  PropertiesViewWindows::IsResizable
+    //   [34] 0x00415210  PropertiesViewWindows::GetSectionName
+    //   [35] 0x00415254  PropertiesViewWindows::OnNotify35
+    //   [36] 0x0041525c  PropertiesViewWindows::OnSelectionCommitted
+    //   [37] 0x00415200  PropertiesViewWindows::OnPathListChanged
+    //   [38] 0x00416964  PropertiesViewWindows::EvNotify
+    //   [39] 0x00416320  PropertiesViewWindows::EvCtlColor
+    //   [40] 0x0041651c  PropertiesViewWindows::EvSize
+    //   [41] 0x00415328  PropertiesViewWindows::OnPropertyChanged
+    //   [42] 0x00415344  PropertiesViewWindows::LoadResourceString
+    //   [43] 0x004153a8  PropertiesViewWindows::ShowControlTip
+    //   [44] 0x00415e18  PropertiesViewWindows::GetLookupWord
+    //   [45] 0x00415be8  PropertiesViewWindows::ShowHelp
+    //   [46] 0x00415e7c  PropertiesViewWindows::GetControlTipText
+    //   [47] 0x00417490  PropertiesViewWindows::SetupMoveableControls
     //   [48] 0x0043e8bc  TSDictionarySaveDialog::vf48
     //   [49] 0x0043e8fc  TSDictionarySaveDialog::vf49
     //   [50] 0x0043c9b0  TSDictionarySaveTEADialog::vf50
@@ -2931,8 +2931,8 @@ class OWL::TButton : public OWL::TControl, public virtual OWL::TEventHandler, pu
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004abb94  OWL::TButton::Find
-    //   [ 9] 0x004abe98  OWL::TButton::vf9
-    //   [10] 0x004abeb8  OWL::TButton::vf10
+    //   [ 9] 0x004abe98  OWL::TButton::GetClassName
+    //   [10] 0x004abeb8  OWL::TButton::SetupWindow
     // response table at 0x0050bfc4 (2 entries)
     //   WM_GETDLGCODE                                -> 0x004abeec  OWL::TButton::EvGetDlgCode
     //   message 0x00f4                               -> 0x004abf24  OWL::TButton::EvMsg_f4
@@ -3047,10 +3047,10 @@ class OWL::TCheckBox : public OWL::TButton, public virtual OWL::TEventHandler, p
     //   [ 5] 0x004adbdc  OWL::TControl::vf5
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
-    //   [ 8] 0x004ac3c0  OWL::TCheckBox::vf8
-    //   [ 9] 0x004ac6ec  OWL::TCheckBox::vf9
-    //   [10] 0x004abeb8  OWL::TButton::vf10
-    //   [11] 0x004ac70c  OWL::TCheckBox::vf11
+    //   [ 8] 0x004ac3c0  OWL::TCheckBox::Find
+    //   [ 9] 0x004ac6ec  OWL::TCheckBox::GetClassName
+    //   [10] 0x004abeb8  OWL::TButton::SetupWindow
+    //   [11] 0x004ac70c  OWL::TCheckBox::Transfer
 };
 ```
 
@@ -3072,18 +3072,18 @@ class OWL::TChooseColorDialog : public OWL::TCommonDialog, public virtual OWL::T
     //   [ 0] 0x0048b2c4  OWL::TChooseColorDialog::~TChooseColorDialog
     //   [ 1] 0x0048b3c0  OWL::TChooseColorDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x0048c788  OWL::TCommonDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x0048b3dc  OWL::TChooseColorDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
-    //   [14] 0x0048b078  OWL::TChooseColorDialog::vf14
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x0048c788  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x0048b3dc  OWL::TChooseColorDialog::DoExecute
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
+    //   [14] 0x0048b078  OWL::TChooseColorDialog::Find
 };
 ```
 
@@ -3106,18 +3106,18 @@ class OWL::TChooseFontDialog : public OWL::TCommonDialog, public virtual OWL::TE
     //   [ 0] 0x0048b7dc  OWL::TChooseFontDialog::~TChooseFontDialog
     //   [ 1] 0x0048b8d8  OWL::TChooseFontDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x0048c788  OWL::TCommonDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x0048b8f4  OWL::TChooseFontDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
-    //   [14] 0x0048b554  OWL::TChooseFontDialog::vf14
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x0048c788  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x0048b8f4  OWL::TChooseFontDialog::DoExecute
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
+    //   [14] 0x0048b554  OWL::TChooseFontDialog::Find
 };
 ```
 
@@ -3144,33 +3144,33 @@ class OWL::TComboBox : public OWL::TListBox, public virtual OWL::TEventHandler, 
     //   [ 5] 0x004adbdc  OWL::TControl::vf5
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
-    //   [ 8] 0x004ad690  OWL::TControl::vf8
-    //   [ 9] 0x00422160  OWL::TComboBox::vf9
-    //   [10] 0x0042217c  OWL::TComboBox::vf10
-    //   [11] 0x0042219c  OWL::TComboBox::vf11
-    //   [12] 0x004221cc  OWL::TComboBox::vf12
-    //   [13] 0x004221e8  OWL::TComboBox::vf13
-    //   [14] 0x00422208  OWL::TComboBox::vf14
-    //   [15] 0x00422224  OWL::TComboBox::vf15
-    //   [16] 0x00422244  OWL::TComboBox::vf16
-    //   [17] 0x00422264  OWL::TComboBox::vf17
-    //   [18] 0x00422284  OWL::TComboBox::vf18
-    //   [19] 0x004222a4  OWL::TComboBox::vf19
-    //   [20] 0x004222c4  OWL::TComboBox::vf20
-    //   [21] 0x004222e4  OWL::TComboBox::vf21
-    //   [22] 0x00422314  OWL::TComboBox::vf22
-    //   [23] 0x00422330  OWL::TComboBox::vf23
-    //   [24] 0x00422350  OWL::TComboBox::vf24
-    //   [25] 0x00422370  OWL::TComboBox::vf25
-    //   [26] 0x00422390  OWL::TComboBox::vf26
-    //   [27] 0x004223b0  OWL::TComboBox::vf27
-    //   [28] 0x004223cc  OWL::TComboBox::vf28
-    //   [29] 0x004aceec  OWL::TComboBox::vf29
-    //   [30] 0x004ad110  OWL::TComboBox::vf30
-    //   [31] 0x004223ec  OWL::TComboBox::vf31
-    //   [32] 0x0042240c  OWL::TComboBox::vf32
-    //   [33] 0x004ad11c  OWL::TComboBox::vf33
-    //   [34] 0x004ad1d0  OWL::TComboBox::vf34
+    //   [ 8] 0x004ad690  OWL::TControl::Find
+    //   [ 9] 0x00422160  OWL::TComboBox::GetCount
+    //   [10] 0x0042217c  OWL::TComboBox::FindString
+    //   [11] 0x0042219c  OWL::TComboBox::FindExactString
+    //   [12] 0x004221cc  OWL::TComboBox::GetTopIndex
+    //   [13] 0x004221e8  OWL::TComboBox::SetTopIndex
+    //   [14] 0x00422208  OWL::TComboBox::GetHorizontalExtent
+    //   [15] 0x00422224  OWL::TComboBox::SetHorizontalExtent
+    //   [16] 0x00422244  OWL::TComboBox::GetStringLen
+    //   [17] 0x00422264  OWL::TComboBox::GetString
+    //   [18] 0x00422284  OWL::TComboBox::GetItemData
+    //   [19] 0x004222a4  OWL::TComboBox::SetItemData
+    //   [20] 0x004222c4  OWL::TComboBox::GetItemHeight
+    //   [21] 0x004222e4  OWL::TComboBox::SetItemHeight
+    //   [22] 0x00422314  OWL::TComboBox::ClearList
+    //   [23] 0x00422330  OWL::TComboBox::DirectoryList
+    //   [24] 0x00422350  OWL::TComboBox::AddString
+    //   [25] 0x00422370  OWL::TComboBox::InsertString
+    //   [26] 0x00422390  OWL::TComboBox::DeleteString
+    //   [27] 0x004223b0  OWL::TComboBox::GetSelIndex
+    //   [28] 0x004223cc  OWL::TComboBox::SetSelIndex
+    //   [29] 0x004aceec  OWL::TComboBox::Transfer
+    //   [30] 0x004ad110  OWL::TComboBox::GetClassName
+    //   [31] 0x004223ec  OWL::TComboBox::GetSelStringIndex
+    //   [32] 0x0042240c  OWL::TComboBox::SetSelString
+    //   [33] 0x004ad11c  OWL::TComboBox::SetupWindow
+    //   [34] 0x004ad1d0  OWL::TComboBox::CleanupWindow
 };
 ```
 
@@ -3223,17 +3223,17 @@ class OWL::TCommonDialog : public OWL::TDialog, public virtual OWL::TEventHandle
     //   [ 0] 0x0048c668  OWL::TCommonDialog::~TCommonDialog
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x0048c788  OWL::TCommonDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x0048c790  OWL::TCommonDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x0048c788  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x0048c790  OWL::TCommonDialog::DoExecute
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x0048c4ac  OWL::TCommonDialog::Find
     // response table at 0x005058b4 (3 entries)
     //   WM_CLOSE                                     -> 0x0048c4f4  OWL::TCommonDialog::EvClose
@@ -3264,7 +3264,7 @@ class OWL::TControl : public virtual OWL::TEventHandler, public virtual OWL::TSt
     //   [ 5] 0x004adbdc  OWL::TControl::vf5
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
-    //   [ 8] 0x004ad690  OWL::TControl::vf8
+    //   [ 8] 0x004ad690  OWL::TControl::Find
 };
 ```
 
@@ -3291,10 +3291,10 @@ class OWL::TControlBar : public OWL::TGadgetWindow, public virtual OWL::TEventHa
     /* +0x000 */ // base subobject OWL::TGadgetWindow
     // vtable at 0x00505b90 (27 slots)
     //   [ 0] 0x0048d078  OWL::TControlBar::~TControlBar
-    //   [ 1] 0x004919b8  OWL::TGadgetWindow::vf1
+    //   [ 1] 0x004919b8  OWL::TGadgetWindow::Create
     //   [ 2] 0x004919d4  OWL::TGadgetWindow::vf2
-    //   [ 3] 0x0047bff4  OWL::TGadgetWindow::vf3
-    //   [ 4] 0x00492f98  OWL::TGadgetWindow::vf4
+    //   [ 3] 0x0047bff4  OWL::TGadgetWindow::GetTooltip
+    //   [ 4] 0x00492f98  OWL::TGadgetWindow::EnableTooltip
     //   [ 5] 0x00492644  OWL::TGadgetWindow::vf5
     //   [ 6] 0x0049266c  OWL::TGadgetWindow::vf6
     //   [ 7] 0x004926d4  OWL::TGadgetWindow::vf7
@@ -3302,20 +3302,20 @@ class OWL::TControlBar : public OWL::TGadgetWindow, public virtual OWL::TEventHa
     //   [ 9] 0x004926f8  OWL::TGadgetWindow::vf9
     //   [10] 0x00492778  OWL::TGadgetWindow::vf10
     //   [11] 0x004927d0  OWL::TGadgetWindow::vf11
-    //   [12] 0x004915d4  OWL::TGadgetWindow::vf12
+    //   [12] 0x004915d4  OWL::TGadgetWindow::IdleAction
     //   [13] 0x004917c8  OWL::TGadgetWindow::vf13
     //   [14] 0x00491800  OWL::TGadgetWindow::vf14
     //   [15] 0x00492ad8  OWL::TGadgetWindow::vf15
     //   [16] 0x00491a58  OWL::TGadgetWindow::vf16
     //   [17] 0x004925f8  OWL::TGadgetWindow::vf17
     //   [18] 0x00491b58  OWL::TGadgetWindow::vf18
-    //   [19] 0x00492c14  OWL::TGadgetWindow::vf19
+    //   [19] 0x00492c14  OWL::TGadgetWindow::Paint
     //   [20] 0x00491b10  OWL::TGadgetWindow::vf20
-    //   [21] 0x00492868  OWL::TGadgetWindow::vf21
-    //   [22] 0x0049292c  OWL::TGadgetWindow::vf22
-    //   [23] 0x00492998  OWL::TGadgetWindow::vf23
-    //   [24] 0x00493108  OWL::TGadgetWindow::vf24
-    //   [25] 0x004931d4  OWL::TGadgetWindow::vf25
+    //   [21] 0x00492868  OWL::TGadgetWindow::SetupWindow
+    //   [22] 0x0049292c  OWL::TGadgetWindow::CleanupWindow
+    //   [23] 0x00492998  OWL::TGadgetWindow::PreProcessMsg
+    //   [24] 0x00493108  OWL::TGadgetWindow::EvCommand
+    //   [25] 0x004931d4  OWL::TGadgetWindow::EvCommandEnable
     //   [26] 0x00490f60  OWL::TGadgetWindow::Find
 };
 ```
@@ -3420,17 +3420,17 @@ class OWL::TDecoratedFrame : public OWL::TLayoutWindow, public virtual OWL::TEve
     //   [ 0] 0x004ae77c  OWL::TDecoratedFrame::~TDecoratedFrame
     //   [ 1] 0x004afa14  OWL::TDecoratedFrame::vf1
     //   [ 2] 0x004aec4c  OWL::TDecoratedFrame::vf2
-    //   [ 3] 0x004aebdc  OWL::TDecoratedFrame::vf3
-    //   [ 4] 0x004ae9f8  OWL::TDecoratedFrame::vf4
+    //   [ 3] 0x004aebdc  OWL::TDecoratedFrame::PreProcessMsg
+    //   [ 4] 0x004ae9f8  OWL::TDecoratedFrame::TFrameWindow_vf7
     //   [ 5] 0x004afadc  OWL::TDecoratedFrame::vf5
-    //   [ 6] 0x004afbc4  OWL::TDecoratedFrame::vf6
-    //   [ 7] 0x004afc04  OWL::TDecoratedFrame::vf7
+    //   [ 6] 0x004afbc4  OWL::TDecoratedFrame::TFrameWindow_vf4
+    //   [ 7] 0x004afc04  OWL::TDecoratedFrame::TFrameWindow_vf5
     //   [ 8] 0x004afb58  OWL::TDecoratedFrame::vf8
-    //   [ 9] 0x004ae93c  OWL::TDecoratedFrame::vf9
-    //   [10] 0x004ae9c4  OWL::TDecoratedFrame::vf10
-    //   [11] 0x004aeb9c  OWL::TDecoratedFrame::vf11
-    //   [12] 0x004aefd0  OWL::TDecoratedFrame::vf12
-    //   [13] 0x004af148  OWL::TDecoratedFrame::vf13
+    //   [ 9] 0x004ae93c  OWL::TDecoratedFrame::SetupWindow
+    //   [10] 0x004ae9c4  OWL::TDecoratedFrame::CleanupWindow
+    //   [11] 0x004aeb9c  OWL::TDecoratedFrame::RemoveChild
+    //   [12] 0x004aefd0  OWL::TDecoratedFrame::EvCommand
+    //   [13] 0x004af148  OWL::TDecoratedFrame::EvCommandEnable
     //   [14] 0x004ae1b4  OWL::TDecoratedFrame::Find
     // response table at 0x0050ca84 (3 entries)
     //   WM_ENTERIDLE                                 -> 0x004aef1c  OWL::TDecoratedFrame::EvEnteridle
@@ -3488,18 +3488,18 @@ class OWL::TDialog : public virtual OWL::TEventHandler, public virtual OWL::TStr
     //   [ 0] 0x004b0280  OWL::TDialog::~TDialog
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x004b0b44  OWL::TDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
-    //   [14] 0x004aff6c  OWL::TDialog::vf14
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x004b0b44  OWL::TDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
+    //   [14] 0x004aff6c  OWL::TDialog::Find
 };
 ```
 
@@ -3704,17 +3704,17 @@ class OWL::TDvFileOpenDialog : public OWL::TFileOpenDialog, public OWL::TDvOpenS
     //   [ 0] 0x004b4b58  OWL::TDvFileOpenDialog::~TDvFileOpenDialog
     //   [ 1] 0x004b1eb8  OWL::TDvFileOpenDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x0048c788  OWL::TCommonDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x0048c788  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
     //   [ 6] 0x004c2db8  OWL::TFileOpenDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004c296c  OWL::TOpenSaveDialog::vf14
     //   [15] 0x004c2c54  OWL::TOpenSaveDialog::vf15
 };
@@ -3731,17 +3731,17 @@ class OWL::TDvFileSaveDialog : public OWL::TFileSaveDialog, public OWL::TDvOpenS
     //   [ 0] 0x004b4c6c  OWL::TDvFileSaveDialog::~TDvFileSaveDialog
     //   [ 1] 0x004b2090  OWL::TDvFileSaveDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x0048c788  OWL::TCommonDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x0048c788  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
     //   [ 6] 0x004c2f70  OWL::TFileSaveDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004c296c  OWL::TOpenSaveDialog::vf14
     //   [15] 0x004c2c54  OWL::TOpenSaveDialog::vf15
 };
@@ -3781,18 +3781,18 @@ class OWL::TEdit : public OWL::TStatic, public virtual OWL::TEventHandler, publi
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004b5f24  OWL::TEdit::Find
     //   [ 9] 0x004b6954  OWL::TEdit::vf9
-    //   [10] 0x004b7164  OWL::TEdit::vf10
-    //   [11] 0x004b7024  OWL::TEdit::vf11
-    //   [12] 0x004b6ec0  OWL::TEdit::vf12
-    //   [13] 0x00421ff8  OWL::TEdit::vf13
+    //   [10] 0x004b7164  OWL::TEdit::Transfer
+    //   [11] 0x004b7024  OWL::TEdit::GetClassName
+    //   [12] 0x004b6ec0  OWL::TEdit::GetSubText
+    //   [13] 0x00421ff8  OWL::TEdit::GetSelection
     //   [14] 0x00422018  OWL::TEdit::vf14
-    //   [15] 0x0042203c  OWL::TEdit::vf15
+    //   [15] 0x0042203c  OWL::TEdit::SetSelection
     //   [16] 0x004b6d08  OWL::TEdit::vf16
-    //   [17] 0x00422068  OWL::TEdit::vf17
-    //   [18] 0x00422084  OWL::TEdit::vf18
-    //   [19] 0x004220b0  OWL::TEdit::vf19
-    //   [20] 0x004b7030  OWL::TEdit::vf20
-    //   [21] 0x004b696c  OWL::TEdit::vf21
+    //   [17] 0x00422068  OWL::TEdit::Paste
+    //   [18] 0x00422084  OWL::TEdit::CharFromPos
+    //   [19] 0x004220b0  OWL::TEdit::PosFromChar
+    //   [20] 0x004b7030  OWL::TEdit::SetupWindow
+    //   [21] 0x004b696c  OWL::TEdit::CanClose
     // response table at 0x0050dfcc (20 entries)
     //   EV_COMMAND(24322)                            -> 0x004b5f6c  OWL::TEdit::Cmd24322
     //   EV_COMMAND(24323)                            -> 0x004b5f88  OWL::TEdit::Cmd24323
@@ -3847,20 +3847,20 @@ class OWL::TEditFile : public OWL::TEditSearch, public virtual OWL::TEventHandle
     //   [ 5] 0x004adbdc  OWL::TControl::vf5
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
-    //   [ 8] 0x004b7650  OWL::TEditFile::vf8
+    //   [ 8] 0x004b7650  OWL::TEditFile::Find
     //   [ 9] 0x004b6954  OWL::TEdit::vf9
-    //   [10] 0x004b7164  OWL::TEdit::vf10
-    //   [11] 0x004b7024  OWL::TEdit::vf11
-    //   [12] 0x004b6ec0  OWL::TEdit::vf12
-    //   [13] 0x00421ff8  OWL::TEdit::vf13
+    //   [10] 0x004b7164  OWL::TEdit::Transfer
+    //   [11] 0x004b7024  OWL::TEdit::GetClassName
+    //   [12] 0x004b6ec0  OWL::TEdit::GetSubText
+    //   [13] 0x00421ff8  OWL::TEdit::GetSelection
     //   [14] 0x00422018  OWL::TEdit::vf14
-    //   [15] 0x0042203c  OWL::TEdit::vf15
+    //   [15] 0x0042203c  OWL::TEdit::SetSelection
     //   [16] 0x004b6d08  OWL::TEdit::vf16
-    //   [17] 0x00422068  OWL::TEdit::vf17
-    //   [18] 0x00422084  OWL::TEdit::vf18
-    //   [19] 0x004220b0  OWL::TEdit::vf19
-    //   [20] 0x004b7964  OWL::TEditFile::vf20
-    //   [21] 0x004b907c  OWL::TEditFile::vf21
+    //   [17] 0x00422068  OWL::TEdit::Paste
+    //   [18] 0x00422084  OWL::TEdit::CharFromPos
+    //   [19] 0x004220b0  OWL::TEdit::PosFromChar
+    //   [20] 0x004b7964  OWL::TEditFile::SetupWindow
+    //   [21] 0x004b907c  OWL::TEditFile::CanClose
     //   [22] 0x004b8b90  OWL::TEditFile::vf22
     //   [23] 0x004b7eac  OWL::TEditFile::vf23
     //   [24] 0x004b815c  OWL::TEditFile::vf24
@@ -3904,18 +3904,18 @@ class OWL::TEditSearch : public OWL::TEdit, public virtual OWL::TEventHandler, p
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004b9518  OWL::TEditSearch::Find
     //   [ 9] 0x004b6954  OWL::TEdit::vf9
-    //   [10] 0x004b7164  OWL::TEdit::vf10
-    //   [11] 0x004b7024  OWL::TEdit::vf11
-    //   [12] 0x004b6ec0  OWL::TEdit::vf12
-    //   [13] 0x00421ff8  OWL::TEdit::vf13
+    //   [10] 0x004b7164  OWL::TEdit::Transfer
+    //   [11] 0x004b7024  OWL::TEdit::GetClassName
+    //   [12] 0x004b6ec0  OWL::TEdit::GetSubText
+    //   [13] 0x00421ff8  OWL::TEdit::GetSelection
     //   [14] 0x00422018  OWL::TEdit::vf14
-    //   [15] 0x0042203c  OWL::TEdit::vf15
+    //   [15] 0x0042203c  OWL::TEdit::SetSelection
     //   [16] 0x004b6d08  OWL::TEdit::vf16
-    //   [17] 0x00422068  OWL::TEdit::vf17
-    //   [18] 0x00422084  OWL::TEdit::vf18
-    //   [19] 0x004220b0  OWL::TEdit::vf19
-    //   [20] 0x004b9854  OWL::TEditSearch::vf20
-    //   [21] 0x004b696c  OWL::TEdit::vf21
+    //   [17] 0x00422068  OWL::TEdit::Paste
+    //   [18] 0x00422084  OWL::TEdit::CharFromPos
+    //   [19] 0x004220b0  OWL::TEdit::PosFromChar
+    //   [20] 0x004b9854  OWL::TEditSearch::SetupWindow
+    //   [21] 0x004b696c  OWL::TEdit::CanClose
     // response table at 0x0050ea64 (7 entries)
     //   EV_COMMAND(24351)                            -> 0x004b9b6c  OWL::TEditSearch::Cmd24351
     //   EV_COMMAND_ENABLE(24351)                     -> 0x004b9d20  OWL::TEditSearch::CeRange24351to24352
@@ -4066,17 +4066,17 @@ class OWL::TFileOpenDialog : public OWL::TOpenSaveDialog, public virtual OWL::TE
     //   [ 0] 0x0045e8c4  OWL::TFileOpenDialog::~TFileOpenDialog
     //   [ 1] 0x004c2c10  OWL::TOpenSaveDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x0048c788  OWL::TCommonDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x0048c788  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
     //   [ 6] 0x004c2db8  OWL::TFileOpenDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004c296c  OWL::TOpenSaveDialog::vf14
     //   [15] 0x004c2c54  OWL::TOpenSaveDialog::vf15
 };
@@ -4092,17 +4092,17 @@ class OWL::TFileSaveDialog : public OWL::TOpenSaveDialog, public virtual OWL::TE
     //   [ 0] 0x0043ec04  OWL::TFileSaveDialog::~TFileSaveDialog
     //   [ 1] 0x004c2c10  OWL::TOpenSaveDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x0048c788  OWL::TCommonDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x0048c788  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
     //   [ 6] 0x004c2f70  OWL::TFileSaveDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004c296c  OWL::TOpenSaveDialog::vf14
     //   [15] 0x004c2c54  OWL::TOpenSaveDialog::vf15
 };
@@ -4118,17 +4118,17 @@ class OWL::TFindDialog : public OWL::TFindReplaceDialog, public virtual OWL::TEv
     //   [ 0] 0x004b9f70  OWL::TFindDialog::~TFindDialog
     //   [ 1] 0x004bcfc8  OWL::TFindReplaceDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
     //   [ 4] 0x004bd140  OWL::TFindDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x0048c790  OWL::TCommonDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x0048c790  OWL::TCommonDialog::DoExecute
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004bcd9c  OWL::TFindReplaceDialog::Find
 };
 ```
@@ -4143,17 +4143,17 @@ class OWL::TFindReplaceDialog : public OWL::TCommonDialog, public virtual OWL::T
     //   [ 0] 0x004ba0c0  OWL::TFindReplaceDialog::~TFindReplaceDialog
     //   [ 1] 0x004bcfc8  OWL::TFindReplaceDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
     //   [ 4] 0x004bcfc0  OWL::TFindReplaceDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x0048c790  OWL::TCommonDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x0048c790  OWL::TCommonDialog::DoExecute
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004bcd9c  OWL::TFindReplaceDialog::Find
     // response table at 0x0050f464 (1 entries)
     //   WM_NCDESTROY                                 -> 0x004bcfe4  OWL::TFindReplaceDialog::EvNCDestroy
@@ -4215,9 +4215,9 @@ class OWL::TFormattedStatic : public OWL::TStatic, public virtual OWL::TEventHan
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004c789c  OWL::TStatic::Find
     //   [ 9] 0x004c7bdc  OWL::TStatic::vf9
-    //   [10] 0x004c7ba4  OWL::TStatic::vf10
-    //   [11] 0x004c7b84  OWL::TStatic::vf11
-    //   [12] 0x004c466c  OWL::TFormattedStatic::vf12
+    //   [10] 0x004c7ba4  PVWStatic::Transfer
+    //   [11] 0x004c7b84  PVWStatic::GetClassName
+    //   [12] 0x004c466c  OWL::TFormattedStatic::SetupWindow
 };
 ```
 
@@ -4235,16 +4235,16 @@ class OWL::TFrameWindow : public virtual OWL::TEventHandler, public virtual OWL:
     //   [ 5] 0x0049f8d0  OWL::TFrameWindow::vf5
     //   [ 6] 0x004be340  OWL::TFrameWindow::vf6
     //   [ 7] 0x004be34c  OWL::TFrameWindow::vf7
-    //   [ 8] 0x004be420  OWL::TFrameWindow::vf8
+    //   [ 8] 0x004be420  OWL::TFrameWindow::RemoveChild
     //   [ 9] 0x004bdf38  OWL::TFrameWindow::vf9
-    //   [10] 0x004be04c  OWL::TFrameWindow::vf10
+    //   [10] 0x004be04c  OWL::TFrameWindow::PreProcessMsg
     //   [11] 0x004bdebc  Child4972344_Notify4914610_4bdebc
-    //   [12] 0x004be7fc  OWL::TFrameWindow::vf12
-    //   [13] 0x004be458  OWL::TFrameWindow::vf13
-    //   [14] 0x004bdfbc  OWL::TFrameWindow::vf14
-    //   [15] 0x004be02c  OWL::TFrameWindow::vf15
-    //   [16] 0x004bef38  OWL::TFrameWindow::vf16
-    //   [17] 0x004bf0e0  OWL::TFrameWindow::vf17
+    //   [12] 0x004be7fc  OWL::TFrameWindow::HoldFocusHWnd
+    //   [13] 0x004be458  OWL::TFrameWindow::SetDocTitle
+    //   [14] 0x004bdfbc  OWL::TFrameWindow::EvCommand
+    //   [15] 0x004be02c  OWL::TFrameWindow::EvCommandEnable
+    //   [16] 0x004bef38  OWL::TFrameWindow::SetupWindow
+    //   [17] 0x004bf0e0  OWL::TFrameWindow::CleanupWindow
     //   [18] 0x004bd840  OWL::TFrameWindow::Find
     // response table at 0x0050f7f0 (9 entries)
     //   WM_PAINT                                     -> 0x004be624  OWL::TFrameWindow::EvPaint
@@ -4339,10 +4339,10 @@ class OWL::TGadgetWindow : public OWL::TGadgetList, public virtual OWL::TEventHa
     /* +0x004 */ // base subobject OWL::TGadgetList
     // vtable at 0x00506f88 (27 slots)
     //   [ 0] 0x0049146c  OWL::TGadgetWindow::~TGadgetWindow
-    //   [ 1] 0x004919b8  OWL::TGadgetWindow::vf1
+    //   [ 1] 0x004919b8  OWL::TGadgetWindow::Create
     //   [ 2] 0x004919d4  OWL::TGadgetWindow::vf2
-    //   [ 3] 0x0047bff4  OWL::TGadgetWindow::vf3
-    //   [ 4] 0x00492f98  OWL::TGadgetWindow::vf4
+    //   [ 3] 0x0047bff4  OWL::TGadgetWindow::GetTooltip
+    //   [ 4] 0x00492f98  OWL::TGadgetWindow::EnableTooltip
     //   [ 5] 0x00492644  OWL::TGadgetWindow::vf5
     //   [ 6] 0x0049266c  OWL::TGadgetWindow::vf6
     //   [ 7] 0x004926d4  OWL::TGadgetWindow::vf7
@@ -4350,20 +4350,20 @@ class OWL::TGadgetWindow : public OWL::TGadgetList, public virtual OWL::TEventHa
     //   [ 9] 0x004926f8  OWL::TGadgetWindow::vf9
     //   [10] 0x00492778  OWL::TGadgetWindow::vf10
     //   [11] 0x004927d0  OWL::TGadgetWindow::vf11
-    //   [12] 0x004915d4  OWL::TGadgetWindow::vf12
+    //   [12] 0x004915d4  OWL::TGadgetWindow::IdleAction
     //   [13] 0x004917c8  OWL::TGadgetWindow::vf13
     //   [14] 0x00491800  OWL::TGadgetWindow::vf14
     //   [15] 0x00492ad8  OWL::TGadgetWindow::vf15
     //   [16] 0x00491a58  OWL::TGadgetWindow::vf16
     //   [17] 0x004925f8  OWL::TGadgetWindow::vf17
     //   [18] 0x00491b58  OWL::TGadgetWindow::vf18
-    //   [19] 0x00492c14  OWL::TGadgetWindow::vf19
+    //   [19] 0x00492c14  OWL::TGadgetWindow::Paint
     //   [20] 0x00491b10  OWL::TGadgetWindow::vf20
-    //   [21] 0x00492868  OWL::TGadgetWindow::vf21
-    //   [22] 0x0049292c  OWL::TGadgetWindow::vf22
-    //   [23] 0x00492998  OWL::TGadgetWindow::vf23
-    //   [24] 0x00493108  OWL::TGadgetWindow::vf24
-    //   [25] 0x004931d4  OWL::TGadgetWindow::vf25
+    //   [21] 0x00492868  OWL::TGadgetWindow::SetupWindow
+    //   [22] 0x0049292c  OWL::TGadgetWindow::CleanupWindow
+    //   [23] 0x00492998  OWL::TGadgetWindow::PreProcessMsg
+    //   [24] 0x00493108  OWL::TGadgetWindow::EvCommand
+    //   [25] 0x004931d4  OWL::TGadgetWindow::EvCommandEnable
     //   [26] 0x00490f60  OWL::TGadgetWindow::Find
     // response table at 0x00506b58 (9 entries)
     //   WM_LBUTTONDOWN                               -> 0x00492c44  OWL::TGadgetWindow::EvLButtonDown
@@ -4428,7 +4428,7 @@ class OWL::TGroupBox : public OWL::TControl, public virtual OWL::TEventHandler, 
     //   [ 5] 0x004adbdc  OWL::TControl::vf5
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
-    //   [ 8] 0x004ad690  OWL::TControl::vf8
+    //   [ 8] 0x004ad690  OWL::TControl::Find
     //   [ 9] 0x004bf634  OWL::TGroupBox::vf9
     //   [10] 0x004bf4e4  OWL::TGroupBox::vf10
 };
@@ -4459,7 +4459,7 @@ class OWL::TLayoutWindow : public virtual OWL::TEventHandler, public virtual OWL
     // vtable at 0x005076c0 (4 slots)
     //   [ 0] 0x00494cc0  OWL::TLayoutWindow::~TLayoutWindow
     //   [ 1] 0x00494df0  OWL::TLayoutWindow::vf1
-    //   [ 2] 0x004952d4  OWL::TLayoutWindow::vf2
+    //   [ 2] 0x004952d4  OWL::TLayoutWindow::RemoveChild
     //   [ 3] 0x00494abc  OWL::TLayoutWindow::Find
     // response table at 0x005074a8 (1 entries)
     //   WM_SIZE                                      -> 0x0049527c  OWL::TLayoutWindow::EvSize
@@ -4495,29 +4495,29 @@ class OWL::TListBox : public OWL::TControl, public virtual OWL::TEventHandler, p
     //   [ 5] 0x004adbdc  OWL::TControl::vf5
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
-    //   [ 8] 0x004ad690  OWL::TControl::vf8
-    //   [ 9] 0x00421cd0  OWL::TListBox::vf9
-    //   [10] 0x00421cec  OWL::TListBox::vf10
-    //   [11] 0x00421d0c  OWL::TListBox::vf11
-    //   [12] 0x00421d3c  OWL::TListBox::vf12
-    //   [13] 0x00421d58  OWL::TListBox::vf13
-    //   [14] 0x00421d78  OWL::TListBox::vf14
-    //   [15] 0x00421d94  OWL::TListBox::vf15
-    //   [16] 0x00421db4  OWL::TListBox::vf16
-    //   [17] 0x00421dd4  OWL::TListBox::vf17
-    //   [18] 0x00421df4  OWL::TListBox::vf18
-    //   [19] 0x00421e14  OWL::TListBox::vf19
-    //   [20] 0x00421e34  OWL::TListBox::vf20
-    //   [21] 0x00421e54  OWL::TListBox::vf21
-    //   [22] 0x00421e84  OWL::TListBox::vf22
-    //   [23] 0x00421ea0  OWL::TListBox::vf23
-    //   [24] 0x00421ec0  OWL::TListBox::vf24
-    //   [25] 0x00421ee0  OWL::TListBox::vf25
-    //   [26] 0x00421f00  OWL::TListBox::vf26
-    //   [27] 0x004bfda4  OWL::TListBox::vf27
-    //   [28] 0x004bfe0c  OWL::TListBox::vf28
-    //   [29] 0x004bfaf8  OWL::TListBox::vf29
-    //   [30] 0x004bfaec  OWL::TListBox::vf30
+    //   [ 8] 0x004ad690  OWL::TControl::Find
+    //   [ 9] 0x00421cd0  OWL::TListBox::GetCount
+    //   [10] 0x00421cec  OWL::TListBox::FindString
+    //   [11] 0x00421d0c  OWL::TListBox::FindExactString
+    //   [12] 0x00421d3c  OWL::TListBox::GetTopIndex
+    //   [13] 0x00421d58  OWL::TListBox::SetTopIndex
+    //   [14] 0x00421d78  OWL::TListBox::GetHorizontalExtent
+    //   [15] 0x00421d94  OWL::TListBox::SetHorizontalExtent
+    //   [16] 0x00421db4  OWL::TListBox::GetStringLen
+    //   [17] 0x00421dd4  OWL::TListBox::GetString
+    //   [18] 0x00421df4  OWL::TListBox::GetItemData
+    //   [19] 0x00421e14  OWL::TListBox::SetItemData
+    //   [20] 0x00421e34  OWL::TListBox::GetItemHeight
+    //   [21] 0x00421e54  OWL::TListBox::SetItemHeight
+    //   [22] 0x00421e84  OWL::TListBox::ClearList
+    //   [23] 0x00421ea0  OWL::TListBox::DirectoryList
+    //   [24] 0x00421ec0  OWL::TListBox::AddString
+    //   [25] 0x00421ee0  OWL::TListBox::InsertString
+    //   [26] 0x00421f00  OWL::TListBox::DeleteString
+    //   [27] 0x004bfda4  OWL::TListBox::GetSelIndex
+    //   [28] 0x004bfe0c  OWL::TListBox::SetSelIndex
+    //   [29] 0x004bfaf8  PVWPathListBox::Transfer
+    //   [30] 0x004bfaec  PVWPathListBox::GetClassName
 };
 ```
 
@@ -4635,10 +4635,10 @@ class OWL::TMessageBar : public OWL::TGadgetWindow, public virtual OWL::TEventHa
     /* +0x000 */ // base subobject OWL::TGadgetWindow
     // vtable at 0x00508134 (28 slots)
     //   [ 0] 0x00498528  OWL::TMessageBar::~TMessageBar
-    //   [ 1] 0x004919b8  OWL::TGadgetWindow::vf1
+    //   [ 1] 0x004919b8  OWL::TGadgetWindow::Create
     //   [ 2] 0x004919d4  OWL::TGadgetWindow::vf2
-    //   [ 3] 0x0047bff4  OWL::TGadgetWindow::vf3
-    //   [ 4] 0x00492f98  OWL::TGadgetWindow::vf4
+    //   [ 3] 0x0047bff4  OWL::TGadgetWindow::GetTooltip
+    //   [ 4] 0x00492f98  OWL::TGadgetWindow::EnableTooltip
     //   [ 5] 0x00492644  OWL::TGadgetWindow::vf5
     //   [ 6] 0x0049266c  OWL::TGadgetWindow::vf6
     //   [ 7] 0x004926d4  OWL::TGadgetWindow::vf7
@@ -4646,20 +4646,20 @@ class OWL::TMessageBar : public OWL::TGadgetWindow, public virtual OWL::TEventHa
     //   [ 9] 0x004926f8  OWL::TGadgetWindow::vf9
     //   [10] 0x00492778  OWL::TGadgetWindow::vf10
     //   [11] 0x004927d0  OWL::TGadgetWindow::vf11
-    //   [12] 0x004915d4  OWL::TGadgetWindow::vf12
+    //   [12] 0x004915d4  OWL::TGadgetWindow::IdleAction
     //   [13] 0x004917c8  OWL::TGadgetWindow::vf13
     //   [14] 0x004987a0  OWL::TMessageBar::vf14
     //   [15] 0x00498638  OWL::TMessageBar::vf15
     //   [16] 0x00498770  OWL::TMessageBar::vf16
     //   [17] 0x004925f8  OWL::TGadgetWindow::vf17
     //   [18] 0x00491b58  OWL::TGadgetWindow::vf18
-    //   [19] 0x00492c14  OWL::TGadgetWindow::vf19
+    //   [19] 0x00492c14  OWL::TGadgetWindow::Paint
     //   [20] 0x00491b10  OWL::TGadgetWindow::vf20
-    //   [21] 0x00492868  OWL::TGadgetWindow::vf21
-    //   [22] 0x0049292c  OWL::TGadgetWindow::vf22
-    //   [23] 0x00492998  OWL::TGadgetWindow::vf23
-    //   [24] 0x00493108  OWL::TGadgetWindow::vf24
-    //   [25] 0x004931d4  OWL::TGadgetWindow::vf25
+    //   [21] 0x00492868  OWL::TGadgetWindow::SetupWindow
+    //   [22] 0x0049292c  OWL::TGadgetWindow::CleanupWindow
+    //   [23] 0x00492998  OWL::TGadgetWindow::PreProcessMsg
+    //   [24] 0x00493108  OWL::TGadgetWindow::EvCommand
+    //   [25] 0x004931d4  OWL::TGadgetWindow::EvCommandEnable
     //   [26] 0x00490f60  OWL::TGadgetWindow::Find
     //   [27] 0x00498830  OWL::TMessageBar::vf27
 };
@@ -4795,8 +4795,8 @@ class OWL::TNumericStatic : public OWL::TStatic, public virtual OWL::TEventHandl
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004c470c  OWL::TNumericStatic::Find
     //   [ 9] 0x004c7bdc  OWL::TStatic::vf9
-    //   [10] 0x004c7ba4  OWL::TStatic::vf10
-    //   [11] 0x004c7b84  OWL::TStatic::vf11
+    //   [10] 0x004c7ba4  PVWStatic::Transfer
+    //   [11] 0x004c7b84  PVWStatic::GetClassName
     // response table at 0x00510e14 (1 entries)
     //   message 0x0464                               -> 0x004c48a4  OWL::TNumericStatic::EvMsg_464
 };
@@ -4820,17 +4820,17 @@ class OWL::TOpenSaveDialog : public OWL::TCommonDialog, public virtual OWL::TEve
     //   [ 0] 0x0043eea0  OWL::TOpenSaveDialog::~TOpenSaveDialog
     //   [ 1] 0x004c2c10  OWL::TOpenSaveDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x0048c788  OWL::TCommonDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x0048c788  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
     //   [ 6] 0x004e6028  __vstub_4e6028
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004c296c  OWL::TOpenSaveDialog::vf14
     //   [15] 0x004c2c54  OWL::TOpenSaveDialog::vf15
 };
@@ -4906,38 +4906,38 @@ class OWL::TPickListPopup : public OWL::TWindow, public virtual OWL::TEventHandl
     /* +0x086 */ OWL::TPopupMenu m_86;
     // vtable at 0x00508a10 (34 slots)
     //   [ 0] 0x0049bbf0  OWL::TPickListPopup::~TPickListPopup
-    //   [ 1] 0x00402640  OWL::TWindow::vf1
-    //   [ 2] 0x004a8104  OWL::TWindow::vf2
-    //   [ 3] 0x004a7144  OWL::TWindow::vf3
-    //   [ 4] 0x004a6e1c  OWL::TWindow::vf4
-    //   [ 5] 0x004a6dcc  OWL::TWindow::vf5
-    //   [ 6] 0x004a6be0  OWL::TWindow::vf6
-    //   [ 7] 0x0049b940  OWL::TPickListPopup::vf7
-    //   [ 8] 0x004a6f9c  OWL::TWindow::vf8
-    //   [ 9] 0x004a7254  OWL::TWindow::vf9
-    //   [10] 0x004a54b4  OWL::TWindow::vf10
-    //   [11] 0x004a5554  OWL::TWindow::vf11
-    //   [12] 0x004a61c4  OWL::TWindow::vf12
-    //   [13] 0x004a5644  OWL::TWindow::vf13
-    //   [14] 0x004a56d0  OWL::TWindow::vf14
-    //   [15] 0x004a7230  OWL::TWindow::vf15
-    //   [16] 0x004a5e38  OWL::TWindow::vf16
-    //   [17] 0x004a5cd0  OWL::TWindow::vf17
-    //   [18] 0x0049b9c0  OWL::TPickListPopup::vf18
-    //   [19] 0x004a5a18  OWL::TWindow::vf19
-    //   [20] 0x004a5b0c  OWL::TWindow::vf20
-    //   [21] 0x004a6af0  OWL::TWindow::vf21
-    //   [22] 0x004a7078  OWL::TWindow::vf22
-    //   [23] 0x004a70c4  OWL::TWindow::vf23
-    //   [24] 0x0040264c  OWL::TWindow::vf24
-    //   [25] 0x004a7b24  OWL::TWindow::vf25
-    //   [26] 0x00402670  OWL::TWindow::vf26
-    //   [27] 0x0040268c  OWL::TWindow::vf27
-    //   [28] 0x004a6c60  OWL::TWindow::vf28
-    //   [29] 0x004a6d08  OWL::TWindow::vf29
-    //   [30] 0x004a6fd8  OWL::TWindow::vf30
-    //   [31] 0x004a7070  OWL::TWindow::vf31
-    //   [32] 0x004a55f0  OWL::TWindow::vf32
+    //   [ 1] 0x00402640  OWL::TWindow::GetTooltip
+    //   [ 2] 0x004a8104  OWL::TWindow::EnableTooltip
+    //   [ 3] 0x004a7144  OWL::TWindow::Register
+    //   [ 4] 0x004a6e1c  OWL::TWindow::Create
+    //   [ 5] 0x004a6dcc  OWL::TWindow::PerformCreate
+    //   [ 6] 0x004a6be0  OWL::TWindow::Destroy
+    //   [ 7] 0x0049b940  OWL::TPickListPopup::Execute
+    //   [ 8] 0x004a6f9c  OWL::TWindow::DoExecute
+    //   [ 9] 0x004a7254  OWL::TWindow::CloseWindow
+    //   [10] 0x004a54b4  OWL::TWindow::PreProcessMsg
+    //   [11] 0x004a5554  OWL::TWindow::IdleAction
+    //   [12] 0x004a61c4  OWL::TWindow::HoldFocusHWnd
+    //   [13] 0x004a5644  OWL::TWindow::SetParent
+    //   [14] 0x004a56d0  OWL::TWindow::SetDocTitle
+    //   [15] 0x004a7230  OWL::TWindow::CanClose
+    //   [16] 0x004a5e38  OWL::TWindow::WindowProc
+    //   [17] 0x004a5cd0  OWL::TWindow::DefWindowProc
+    //   [18] 0x0049b9c0  OWL::TPickListPopup::EvCommand
+    //   [19] 0x004a5a18  OWL::TWindow::EvNotify
+    //   [20] 0x004a5b0c  OWL::TWindow::EvCommandEnable
+    //   [21] 0x004a6af0  OWL::TWindow::Paint
+    //   [22] 0x004a7078  OWL::TWindow::Transfer
+    //   [23] 0x004a70c4  OWL::TWindow::TransferData
+    //   [24] 0x0040264c  OWL::TWindow::EnableWindow
+    //   [25] 0x004a7b24  OWL::TWindow::ShowWindow
+    //   [26] 0x00402670  OWL::TWindow::Invalidate
+    //   [27] 0x0040268c  OWL::TWindow::InvalidateRect
+    //   [28] 0x004a6c60  OWL::TWindow::GetWindowClass
+    //   [29] 0x004a6d08  OWL::TWindow::GetClassName
+    //   [30] 0x004a6fd8  OWL::TWindow::SetupWindow
+    //   [31] 0x004a7070  OWL::TWindow::CleanupWindow
+    //   [32] 0x004a55f0  OWL::TWindow::RemoveChild
     //   [33] 0x004a4d44  OWL::TWindow::Find
 };
 ```
@@ -5081,38 +5081,38 @@ class OWL::TPreviewPage : public OWL::TWindow, public virtual OWL::TEventHandler
     /* +0x000 */ // base subobject OWL::TWindow
     // vtable at 0x00508c6c (34 slots)
     //   [ 0] 0x00428bac  OWL::TPreviewPage::~TPreviewPage
-    //   [ 1] 0x00402640  OWL::TWindow::vf1
-    //   [ 2] 0x004a8104  OWL::TWindow::vf2
-    //   [ 3] 0x004a7144  OWL::TWindow::vf3
-    //   [ 4] 0x004a6e1c  OWL::TWindow::vf4
-    //   [ 5] 0x004a6dcc  OWL::TWindow::vf5
-    //   [ 6] 0x004a6be0  OWL::TWindow::vf6
-    //   [ 7] 0x004a6f8c  OWL::TWindow::vf7
-    //   [ 8] 0x004a6f9c  OWL::TWindow::vf8
-    //   [ 9] 0x004a7254  OWL::TWindow::vf9
-    //   [10] 0x004a54b4  OWL::TWindow::vf10
-    //   [11] 0x004a5554  OWL::TWindow::vf11
-    //   [12] 0x004a61c4  OWL::TWindow::vf12
-    //   [13] 0x004a5644  OWL::TWindow::vf13
-    //   [14] 0x004a56d0  OWL::TWindow::vf14
-    //   [15] 0x004a7230  OWL::TWindow::vf15
-    //   [16] 0x004a5e38  OWL::TWindow::vf16
-    //   [17] 0x004a5cd0  OWL::TWindow::vf17
-    //   [18] 0x004a5968  OWL::TWindow::vf18
-    //   [19] 0x004a5a18  OWL::TWindow::vf19
-    //   [20] 0x004a5b0c  OWL::TWindow::vf20
-    //   [21] 0x0049c768  OWL::TPreviewPage::vf21
-    //   [22] 0x004a7078  OWL::TWindow::vf22
-    //   [23] 0x004a70c4  OWL::TWindow::vf23
-    //   [24] 0x0040264c  OWL::TWindow::vf24
-    //   [25] 0x004a7b24  OWL::TWindow::vf25
-    //   [26] 0x00402670  OWL::TWindow::vf26
-    //   [27] 0x0040268c  OWL::TWindow::vf27
-    //   [28] 0x004a6c60  OWL::TWindow::vf28
-    //   [29] 0x004a6d08  OWL::TWindow::vf29
-    //   [30] 0x004a6fd8  OWL::TWindow::vf30
-    //   [31] 0x004a7070  OWL::TWindow::vf31
-    //   [32] 0x004a55f0  OWL::TWindow::vf32
+    //   [ 1] 0x00402640  OWL::TWindow::GetTooltip
+    //   [ 2] 0x004a8104  OWL::TWindow::EnableTooltip
+    //   [ 3] 0x004a7144  OWL::TWindow::Register
+    //   [ 4] 0x004a6e1c  OWL::TWindow::Create
+    //   [ 5] 0x004a6dcc  OWL::TWindow::PerformCreate
+    //   [ 6] 0x004a6be0  OWL::TWindow::Destroy
+    //   [ 7] 0x004a6f8c  OWL::TWindow::Execute
+    //   [ 8] 0x004a6f9c  OWL::TWindow::DoExecute
+    //   [ 9] 0x004a7254  OWL::TWindow::CloseWindow
+    //   [10] 0x004a54b4  OWL::TWindow::PreProcessMsg
+    //   [11] 0x004a5554  OWL::TWindow::IdleAction
+    //   [12] 0x004a61c4  OWL::TWindow::HoldFocusHWnd
+    //   [13] 0x004a5644  OWL::TWindow::SetParent
+    //   [14] 0x004a56d0  OWL::TWindow::SetDocTitle
+    //   [15] 0x004a7230  OWL::TWindow::CanClose
+    //   [16] 0x004a5e38  OWL::TWindow::WindowProc
+    //   [17] 0x004a5cd0  OWL::TWindow::DefWindowProc
+    //   [18] 0x004a5968  OWL::TWindow::EvCommand
+    //   [19] 0x004a5a18  OWL::TWindow::EvNotify
+    //   [20] 0x004a5b0c  OWL::TWindow::EvCommandEnable
+    //   [21] 0x0049c768  OWL::TPreviewPage::Paint
+    //   [22] 0x004a7078  OWL::TWindow::Transfer
+    //   [23] 0x004a70c4  OWL::TWindow::TransferData
+    //   [24] 0x0040264c  OWL::TWindow::EnableWindow
+    //   [25] 0x004a7b24  OWL::TWindow::ShowWindow
+    //   [26] 0x00402670  OWL::TWindow::Invalidate
+    //   [27] 0x0040268c  OWL::TWindow::InvalidateRect
+    //   [28] 0x004a6c60  OWL::TWindow::GetWindowClass
+    //   [29] 0x004a6d08  OWL::TWindow::GetClassName
+    //   [30] 0x004a6fd8  OWL::TWindow::SetupWindow
+    //   [31] 0x004a7070  OWL::TWindow::CleanupWindow
+    //   [32] 0x004a55f0  OWL::TWindow::RemoveChild
     //   [33] 0x0049c5fc  OWL::TPreviewPage::Find
     // response table at 0x00508bc0 (1 entries)
     //   WM_SIZE                                      -> 0x0049c940  OWL::TPreviewPage::EvSize
@@ -5164,17 +5164,17 @@ class OWL::TPrintDialog : public OWL::TCommonDialog, public virtual OWL::TEventH
     //   [ 0] 0x004c41c0  OWL::TPrintDialog::~TPrintDialog
     //   [ 1] 0x004c38ac  OWL::TPrintDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x0048c788  OWL::TCommonDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x0048c788  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
     //   [ 6] 0x004c38c8  OWL::TPrintDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004c3348  OWL::TPrintDialog::vf14
 };
 ```
@@ -5218,17 +5218,17 @@ class OWL::TPrinterAbortDlg : public OWL::TDialog, public virtual OWL::TEventHan
     //   [ 0] 0x004c6120  OWL::TPrinterAbortDlg::~TPrinterAbortDlg
     //   [ 1] 0x004b0624  OWL::TDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
-    //   [ 4] 0x004b0870  OWL::TDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x004b094c  OWL::TDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
+    //   [ 4] 0x004b0870  OWL::TDialog::PerformCreate
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x004b094c  OWL::TDialog::DoExecute
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
     //   [11] 0x004c4be4  OWL::TPrinterAbortDlg::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004c4974  OWL::TPrinterAbortDlg::Find
     // response table at 0x00510eb4 (1 entries)
     //   EV_COMMAND(2)                                -> 0x004c4c48  OWL::TPrinterAbortDlg::Cmd2
@@ -5315,9 +5315,9 @@ class OWL::TRadioButton : public OWL::TCheckBox, public virtual OWL::TEventHandl
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004c65fc  OWL::TRadioButton::Find
-    //   [ 9] 0x004c677c  OWL::TRadioButton::vf9
-    //   [10] 0x004abeb8  OWL::TButton::vf10
-    //   [11] 0x004ac70c  OWL::TCheckBox::vf11
+    //   [ 9] 0x004c677c  PVWRadioButton::GetClassName
+    //   [10] 0x004abeb8  OWL::TButton::SetupWindow
+    //   [11] 0x004ac70c  OWL::TCheckBox::Transfer
     // response table at 0x005116a8 (1 entries)
     //   EV_NOTIFY_AT_CHILD(code 0 = BN_CLICKED)      -> 0x004c679c  OWL::TRadioButton::BNClicked
 };
@@ -5368,17 +5368,17 @@ class OWL::TReplaceDialog : public OWL::TFindReplaceDialog, public virtual OWL::
     //   [ 0] 0x004ba018  OWL::TReplaceDialog::~TReplaceDialog
     //   [ 1] 0x004bcfc8  OWL::TFindReplaceDialog::vf1
     //   [ 2] 0x004b0b14  OWL::TDialog::vf2
-    //   [ 3] 0x004b07f8  OWL::TDialog::vf3
+    //   [ 3] 0x004b07f8  OWL::TDialog::Create
     //   [ 4] 0x004bd284  OWL::TReplaceDialog::vf4
-    //   [ 5] 0x004b08ec  OWL::TDialog::vf5
-    //   [ 6] 0x0048c790  OWL::TCommonDialog::vf6
-    //   [ 7] 0x004b03f4  OWL::TDialog::vf7
-    //   [ 8] 0x004b0b88  OWL::TDialog::vf8
-    //   [ 9] 0x004b0be0  OWL::TDialog::vf9
-    //   [10] 0x004b0ea8  OWL::TDialog::vf10
-    //   [11] 0x0048c764  OWL::TCommonDialog::vf11
-    //   [12] 0x004b0488  OWL::TDialog::vf12
-    //   [13] 0x004b04a8  OWL::TDialog::vf13
+    //   [ 5] 0x004b08ec  OWL::TDialog::Execute
+    //   [ 6] 0x0048c790  OWL::TCommonDialog::DoExecute
+    //   [ 7] 0x004b03f4  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004b0b88  OWL::TDialog::CloseWindow
+    //   [ 9] 0x004b0be0  OWL::TDialog::Destroy
+    //   [10] 0x004b0ea8  OWL::TDialog::IdleAction
+    //   [11] 0x0048c764  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x004b0488  OWL::TDialog::GetClassName
+    //   [13] 0x004b04a8  OWL::TDialog::GetWindowClass
     //   [14] 0x004bcd9c  OWL::TFindReplaceDialog::Find
 };
 ```
@@ -5408,26 +5408,26 @@ class OWL::TRichEdit : public OWL::TEditFile, public virtual OWL::TEventHandler,
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x00468c8c  OWL::TRichEdit::Find
     //   [ 9] 0x004b6954  OWL::TEdit::vf9
-    //   [10] 0x004697b4  OWL::TRichEdit::vf10
-    //   [11] 0x004695dc  OWL::TRichEdit::vf11
-    //   [12] 0x0046928c  OWL::TRichEdit::vf12
-    //   [13] 0x004691c4  OWL::TRichEdit::vf13
+    //   [10] 0x004697b4  PVWRichEdit::Transfer
+    //   [11] 0x004695dc  PVWRichEdit::GetClassName
+    //   [12] 0x0046928c  OWL::TRichEdit::GetSubText
+    //   [13] 0x004691c4  OWL::TRichEdit::GetSelection
     //   [14] 0x00422018  OWL::TEdit::vf14
-    //   [15] 0x0046921c  OWL::TRichEdit::vf15
+    //   [15] 0x0046921c  OWL::TRichEdit::SetSelection
     //   [16] 0x004692dc  OWL::TRichEdit::vf16
-    //   [17] 0x00469384  OWL::TRichEdit::vf17
-    //   [18] 0x00422084  OWL::TEdit::vf18
-    //   [19] 0x004220b0  OWL::TEdit::vf19
+    //   [17] 0x00469384  OWL::TRichEdit::Paste
+    //   [18] 0x00422084  OWL::TEdit::CharFromPos
+    //   [19] 0x004220b0  OWL::TEdit::PosFromChar
     //   [20] 0x0046960c  OWL::TRichEdit::vf20
-    //   [21] 0x004b907c  OWL::TEditFile::vf21
+    //   [21] 0x004b907c  OWL::TEditFile::CanClose
     //   [22] 0x004b8b90  OWL::TEditFile::vf22
     //   [23] 0x004b7eac  OWL::TEditFile::vf23
     //   [24] 0x004b815c  OWL::TEditFile::vf24
-    //   [25] 0x00469834  OWL::TRichEdit::vf25
+    //   [25] 0x00469834  OWL::TRichEdit::ReadFromFile
     //   [26] 0x004b7ef8  OWL::TEditFile::vf26
     //   [27] 0x004b83b4  OWL::TEditFile::vf27
     //   [28] 0x004b8634  OWL::TEditFile::vf28
-    //   [29] 0x00469954  OWL::TRichEdit::vf29
+    //   [29] 0x00469954  OWL::TRichEdit::WriteToFile
     // response table at 0x004fcc28 (17 entries)
     //   EV_COMMAND(24322)                            -> 0x00468cd4  OWL::TRichEdit::Cmd24322
     //   EV_COMMAND(24323)                            -> 0x00468cf0  OWL::TRichEdit::Cmd24323
@@ -5634,8 +5634,8 @@ class OWL::TStatic : public OWL::TControl, public virtual OWL::TEventHandler, pu
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004c789c  OWL::TStatic::Find
     //   [ 9] 0x004c7bdc  OWL::TStatic::vf9
-    //   [10] 0x004c7ba4  OWL::TStatic::vf10
-    //   [11] 0x004c7b84  OWL::TStatic::vf11
+    //   [10] 0x004c7ba4  PVWStatic::Transfer
+    //   [11] 0x004c7b84  PVWStatic::GetClassName
     // response table at 0x00511960 (1 entries)
     //   WM_SIZE                                      -> 0x004c7b5c  OWL::TStatic::EvSize
 };
@@ -5663,10 +5663,10 @@ class OWL::TStatusBar : public OWL::TMessageBar, public virtual OWL::TEventHandl
     /* +0x000 */ // base subobject OWL::TMessageBar
     // vtable at 0x00509210 (28 slots)
     //   [ 0] 0x00473ccc  OWL::TStatusBar::~TStatusBar
-    //   [ 1] 0x004919b8  OWL::TGadgetWindow::vf1
+    //   [ 1] 0x004919b8  OWL::TGadgetWindow::Create
     //   [ 2] 0x004919d4  OWL::TGadgetWindow::vf2
-    //   [ 3] 0x0047bff4  OWL::TGadgetWindow::vf3
-    //   [ 4] 0x00492f98  OWL::TGadgetWindow::vf4
+    //   [ 3] 0x0047bff4  OWL::TGadgetWindow::GetTooltip
+    //   [ 4] 0x00492f98  OWL::TGadgetWindow::EnableTooltip
     //   [ 5] 0x0049daf0  OWL::TStatusBar::vf5
     //   [ 6] 0x0049266c  OWL::TGadgetWindow::vf6
     //   [ 7] 0x004926d4  OWL::TGadgetWindow::vf7
@@ -5674,20 +5674,20 @@ class OWL::TStatusBar : public OWL::TMessageBar, public virtual OWL::TEventHandl
     //   [ 9] 0x004926f8  OWL::TGadgetWindow::vf9
     //   [10] 0x00492778  OWL::TGadgetWindow::vf10
     //   [11] 0x004927d0  OWL::TGadgetWindow::vf11
-    //   [12] 0x004915d4  OWL::TGadgetWindow::vf12
+    //   [12] 0x004915d4  OWL::TGadgetWindow::IdleAction
     //   [13] 0x004917c8  OWL::TGadgetWindow::vf13
     //   [14] 0x004987a0  OWL::TMessageBar::vf14
     //   [15] 0x00498638  OWL::TMessageBar::vf15
     //   [16] 0x00498770  OWL::TMessageBar::vf16
     //   [17] 0x004925f8  OWL::TGadgetWindow::vf17
     //   [18] 0x00491b58  OWL::TGadgetWindow::vf18
-    //   [19] 0x00492c14  OWL::TGadgetWindow::vf19
+    //   [19] 0x00492c14  OWL::TGadgetWindow::Paint
     //   [20] 0x0049da5c  OWL::TStatusBar::vf20
-    //   [21] 0x00492868  OWL::TGadgetWindow::vf21
-    //   [22] 0x0049292c  OWL::TGadgetWindow::vf22
-    //   [23] 0x00492998  OWL::TGadgetWindow::vf23
-    //   [24] 0x00493108  OWL::TGadgetWindow::vf24
-    //   [25] 0x004931d4  OWL::TGadgetWindow::vf25
+    //   [21] 0x00492868  OWL::TGadgetWindow::SetupWindow
+    //   [22] 0x0049292c  OWL::TGadgetWindow::CleanupWindow
+    //   [23] 0x00492998  OWL::TGadgetWindow::PreProcessMsg
+    //   [24] 0x00493108  OWL::TGadgetWindow::EvCommand
+    //   [25] 0x004931d4  OWL::TGadgetWindow::EvCommandEnable
     //   [26] 0x0049d3fc  OWL::TStatusBar::Find
     //   [27] 0x0049db38  OWL::TStatusBar::vf27
     // response table at 0x005090b0 (2 entries)
@@ -5761,8 +5761,8 @@ class OWL::TTabControl : public OWL::TControl, public virtual OWL::TEventHandler
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x0049e888  OWL::TTabControl::Find
-    //   [ 9] 0x0049eaf0  OWL::TTabControl::vf9
-    //   [10] 0x0049eadc  OWL::TTabControl::vf10
+    //   [ 9] 0x0049eaf0  OWL::TTabControl::Transfer
+    //   [10] 0x0049eadc  OWL::TTabControl::GetClassName
     // response table at 0x005094d0 (2 entries)
     //   WM_HSCROLL                                   -> 0x0049eb08  OWL::TTabControl::EvHScroll
     //   WM_VSCROLL                                   -> 0x0049eaf8  OWL::TTabControl::EvVScroll
@@ -5808,8 +5808,8 @@ class OWL::TTextGadget : public OWL::TGadget {
 class OWL::TTinyCaption : public virtual OWL::TEventHandler, public virtual OWL::TStreamableBase, public virtual OWL::TWindow {
     // vtable at 0x00511e14 (3 slots)
     //   [ 0] 0x004c8028  OWL::TTinyCaption::~TTinyCaption
-    //   [ 1] 0x004c8b78  OWL::TTinyCaption::vf1
-    //   [ 2] 0x004c7fe4  OWL::TTinyCaption::vf2
+    //   [ 1] 0x004c8b78  OWL::TTinyCaption::EvCommand
+    //   [ 2] 0x004c7fe4  OWL::TTinyCaption::Find
 };
 ```
 
@@ -5854,8 +5854,8 @@ class OWL::TTooltip : public OWL::TControl, public virtual OWL::TEventHandler, p
     //   [ 5] 0x004adbdc  OWL::TControl::vf5
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
-    //   [ 8] 0x004ad690  OWL::TControl::vf8
-    //   [ 9] 0x0049f864  OWL::TTooltip::vf9
+    //   [ 8] 0x004ad690  OWL::TControl::Find
+    //   [ 9] 0x0049f864  OWL::TTooltip::GetClassName
 };
 ```
 
@@ -5896,29 +5896,29 @@ class OWL::TTreeWindow : public OWL::TListBox, public virtual OWL::TEventHandler
     //   [ 5] 0x004adbdc  OWL::TControl::vf5
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
-    //   [ 8] 0x004ad690  OWL::TControl::vf8
-    //   [ 9] 0x00421cd0  OWL::TListBox::vf9
-    //   [10] 0x00421cec  OWL::TListBox::vf10
-    //   [11] 0x00421d0c  OWL::TListBox::vf11
-    //   [12] 0x00421d3c  OWL::TListBox::vf12
-    //   [13] 0x00421d58  OWL::TListBox::vf13
-    //   [14] 0x00421d78  OWL::TListBox::vf14
-    //   [15] 0x00421d94  OWL::TListBox::vf15
-    //   [16] 0x00421db4  OWL::TListBox::vf16
-    //   [17] 0x00421dd4  OWL::TListBox::vf17
-    //   [18] 0x00421df4  OWL::TListBox::vf18
-    //   [19] 0x00421e14  OWL::TListBox::vf19
-    //   [20] 0x004ca394  OWL::TTreeWindow::vf20
-    //   [21] 0x004ca3b0  OWL::TTreeWindow::vf21
-    //   [22] 0x00421e84  OWL::TListBox::vf22
-    //   [23] 0x00421ea0  OWL::TListBox::vf23
-    //   [24] 0x00421ec0  OWL::TListBox::vf24
-    //   [25] 0x00421ee0  OWL::TListBox::vf25
-    //   [26] 0x00421f00  OWL::TListBox::vf26
-    //   [27] 0x004bfda4  OWL::TListBox::vf27
-    //   [28] 0x004bfe0c  OWL::TListBox::vf28
-    //   [29] 0x004cba3c  OWL::TTreeWindow::vf29
-    //   [30] 0x004cba30  OWL::TTreeWindow::vf30
+    //   [ 8] 0x004ad690  OWL::TControl::Find
+    //   [ 9] 0x00421cd0  OWL::TListBox::GetCount
+    //   [10] 0x00421cec  OWL::TListBox::FindString
+    //   [11] 0x00421d0c  OWL::TListBox::FindExactString
+    //   [12] 0x00421d3c  OWL::TListBox::GetTopIndex
+    //   [13] 0x00421d58  OWL::TListBox::SetTopIndex
+    //   [14] 0x00421d78  OWL::TListBox::GetHorizontalExtent
+    //   [15] 0x00421d94  OWL::TListBox::SetHorizontalExtent
+    //   [16] 0x00421db4  OWL::TListBox::GetStringLen
+    //   [17] 0x00421dd4  OWL::TListBox::GetString
+    //   [18] 0x00421df4  OWL::TListBox::GetItemData
+    //   [19] 0x00421e14  OWL::TListBox::SetItemData
+    //   [20] 0x004ca394  OWL::TTreeWindow::GetItemHeight
+    //   [21] 0x004ca3b0  OWL::TTreeWindow::SetItemHeight
+    //   [22] 0x00421e84  OWL::TListBox::ClearList
+    //   [23] 0x00421ea0  OWL::TListBox::DirectoryList
+    //   [24] 0x00421ec0  OWL::TListBox::AddString
+    //   [25] 0x00421ee0  OWL::TListBox::InsertString
+    //   [26] 0x00421f00  OWL::TListBox::DeleteString
+    //   [27] 0x004bfda4  OWL::TListBox::GetSelIndex
+    //   [28] 0x004bfe0c  OWL::TListBox::SetSelIndex
+    //   [29] 0x004cba3c  OWL::TTreeWindow::Transfer
+    //   [30] 0x004cba30  OWL::TTreeWindow::GetClassName
 };
 ```
 
@@ -5963,8 +5963,8 @@ class OWL::TUpDown : public OWL::TControl, public OWL::TBitFlags<unsigned int>, 
     //   [ 6] 0x004adc0c  OWL::TControl::vf6
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004a1ed4  OWL::TUpDown::Find
-    //   [ 9] 0x004a20b0  OWL::TUpDown::vf9
-    //   [10] 0x004a20c4  OWL::TUpDown::vf10
+    //   [ 9] 0x004a20b0  PVWUpDown::GetClassName
+    //   [10] 0x004a20c4  PVWUpDown::PerformCreate
     // response table at 0x0050a078 (2 entries)
     //   WM_VSCROLL                                   -> 0x004a2138  OWL::TUpDown::EvVScroll
     //   WM_HSCROLL                                   -> 0x004a2148  OWL::TUpDown::EvHScroll
@@ -5989,14 +5989,14 @@ class OWL::TUrlLink : public OWL::TStatic, public virtual OWL::TEventHandler, pu
     //   [ 7] 0x004adc34  OWL::TControl::vf7
     //   [ 8] 0x004a224c  OWL::TUrlLink::Find
     //   [ 9] 0x004c7bdc  OWL::TStatic::vf9
-    //   [10] 0x004c7ba4  OWL::TStatic::vf10
-    //   [11] 0x004a2490  OWL::TUrlLink::vf11
-    //   [12] 0x004a4690  OWL::TUrlLink::vf12
-    //   [13] 0x004a2784  OWL::TUrlLink::vf13
-    //   [14] 0x004a2974  OWL::TUrlLink::vf14
-    //   [15] 0x004a249c  OWL::TUrlLink::vf15
-    //   [16] 0x004a2a28  OWL::TUrlLink::vf16
-    //   [17] 0x004a2a9c  OWL::TUrlLink::vf17
+    //   [10] 0x004c7ba4  PVWStatic::Transfer
+    //   [11] 0x004a2490  OWL::TUrlLink::GetClassName
+    //   [12] 0x004a4690  OWL::TUrlLink::GetTooltip
+    //   [13] 0x004a2784  OWL::TUrlLink::EnableTooltip
+    //   [14] 0x004a2974  OWL::TUrlLink::PreProcessMsg
+    //   [15] 0x004a249c  OWL::TUrlLink::SetupWindow
+    //   [16] 0x004a2a28  OWL::TUrlLink::GetWindowClass
+    //   [17] 0x004a2a9c  OWL::TUrlLink::Paint
     //   [18] 0x004a30c4  OWL::TUrlLink::vf18
     //   [19] 0x004a3318  OWL::TUrlLink::vf19
     //   [20] 0x004a3e08  OWL::TUrlLink::vf20
@@ -6083,38 +6083,38 @@ class OWL::TView : public virtual OWL::TEventHandler, public virtual OWL::TStrea
 class OWL::TWindow : public virtual OWL::TEventHandler, public virtual OWL::TStreamableBase {
     // vtable at 0x005093fc (34 slots)
     //   [ 0] 0x004a52c0  OWL::TWindow::~TWindow
-    //   [ 1] 0x00402640  OWL::TWindow::vf1
-    //   [ 2] 0x004a8104  OWL::TWindow::vf2
-    //   [ 3] 0x004a7144  OWL::TWindow::vf3
-    //   [ 4] 0x004a6e1c  OWL::TWindow::vf4
-    //   [ 5] 0x004a6dcc  OWL::TWindow::vf5
-    //   [ 6] 0x004a6be0  OWL::TWindow::vf6
-    //   [ 7] 0x004a6f8c  OWL::TWindow::vf7
-    //   [ 8] 0x004a6f9c  OWL::TWindow::vf8
-    //   [ 9] 0x004a7254  OWL::TWindow::vf9
-    //   [10] 0x004a54b4  OWL::TWindow::vf10
-    //   [11] 0x004a5554  OWL::TWindow::vf11
-    //   [12] 0x004a61c4  OWL::TWindow::vf12
-    //   [13] 0x004a5644  OWL::TWindow::vf13
-    //   [14] 0x004a56d0  OWL::TWindow::vf14
-    //   [15] 0x004a7230  OWL::TWindow::vf15
-    //   [16] 0x004a5e38  OWL::TWindow::vf16
-    //   [17] 0x004a5cd0  OWL::TWindow::vf17
-    //   [18] 0x004a5968  OWL::TWindow::vf18
-    //   [19] 0x004a5a18  OWL::TWindow::vf19
-    //   [20] 0x004a5b0c  OWL::TWindow::vf20
-    //   [21] 0x004a6af0  OWL::TWindow::vf21
-    //   [22] 0x004a7078  OWL::TWindow::vf22
-    //   [23] 0x004a70c4  OWL::TWindow::vf23
-    //   [24] 0x0040264c  OWL::TWindow::vf24
-    //   [25] 0x004a7b24  OWL::TWindow::vf25
-    //   [26] 0x00402670  OWL::TWindow::vf26
-    //   [27] 0x0040268c  OWL::TWindow::vf27
-    //   [28] 0x004a6c60  OWL::TWindow::vf28
-    //   [29] 0x004a6d08  OWL::TWindow::vf29
-    //   [30] 0x004a6fd8  OWL::TWindow::vf30
-    //   [31] 0x004a7070  OWL::TWindow::vf31
-    //   [32] 0x004a55f0  OWL::TWindow::vf32
+    //   [ 1] 0x00402640  OWL::TWindow::GetTooltip
+    //   [ 2] 0x004a8104  OWL::TWindow::EnableTooltip
+    //   [ 3] 0x004a7144  OWL::TWindow::Register
+    //   [ 4] 0x004a6e1c  OWL::TWindow::Create
+    //   [ 5] 0x004a6dcc  OWL::TWindow::PerformCreate
+    //   [ 6] 0x004a6be0  OWL::TWindow::Destroy
+    //   [ 7] 0x004a6f8c  OWL::TWindow::Execute
+    //   [ 8] 0x004a6f9c  OWL::TWindow::DoExecute
+    //   [ 9] 0x004a7254  OWL::TWindow::CloseWindow
+    //   [10] 0x004a54b4  OWL::TWindow::PreProcessMsg
+    //   [11] 0x004a5554  OWL::TWindow::IdleAction
+    //   [12] 0x004a61c4  OWL::TWindow::HoldFocusHWnd
+    //   [13] 0x004a5644  OWL::TWindow::SetParent
+    //   [14] 0x004a56d0  OWL::TWindow::SetDocTitle
+    //   [15] 0x004a7230  OWL::TWindow::CanClose
+    //   [16] 0x004a5e38  OWL::TWindow::WindowProc
+    //   [17] 0x004a5cd0  OWL::TWindow::DefWindowProc
+    //   [18] 0x004a5968  OWL::TWindow::EvCommand
+    //   [19] 0x004a5a18  OWL::TWindow::EvNotify
+    //   [20] 0x004a5b0c  OWL::TWindow::EvCommandEnable
+    //   [21] 0x004a6af0  OWL::TWindow::Paint
+    //   [22] 0x004a7078  OWL::TWindow::Transfer
+    //   [23] 0x004a70c4  OWL::TWindow::TransferData
+    //   [24] 0x0040264c  OWL::TWindow::EnableWindow
+    //   [25] 0x004a7b24  OWL::TWindow::ShowWindow
+    //   [26] 0x00402670  OWL::TWindow::Invalidate
+    //   [27] 0x0040268c  OWL::TWindow::InvalidateRect
+    //   [28] 0x004a6c60  OWL::TWindow::GetWindowClass
+    //   [29] 0x004a6d08  OWL::TWindow::GetClassName
+    //   [30] 0x004a6fd8  OWL::TWindow::SetupWindow
+    //   [31] 0x004a7070  OWL::TWindow::CleanupWindow
+    //   [32] 0x004a55f0  OWL::TWindow::RemoveChild
     //   [33] 0x004a4d44  OWL::TWindow::Find
     // response table at 0x0050ad04 (34 entries)
     //   WM_SETCURSOR                                 -> 0x004a6af8  OWL::TWindow::EvSetCursor

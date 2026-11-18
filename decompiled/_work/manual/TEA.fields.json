@@ -1,0 +1,413 @@
+{
+ "Pattern": {
+  "0x0": {
+   "name": "count",
+   "type": "int",
+   "note": "number of pooled strings"
+  },
+  "0x8": {
+   "name": "pool",
+   "type": "std::string[256]",
+   "note": "the pooled sub-patterns and choice-list letter sets (16 bytes each)"
+  }
+ },
+ "MatchEngine": {
+  "0x1008": {
+   "name": "bc",
+   "type": "std::string",
+   "note": "compiled bytecode of the leaf"
+  },
+  "0x1010": {
+   "name": "bcData",
+   "type": "char*",
+   "note": "character data of bc"
+  },
+  "0x1018": {
+   "name": "minLen",
+   "type": "int",
+   "note": "fewest letters a match can have"
+  },
+  "0x101c": {
+   "name": "maxLen",
+   "type": "int",
+   "note": "most letters a match can have (above 100: unlimited)"
+  },
+  "0x1020": {
+   "name": "valid",
+   "type": "int",
+   "note": "the pattern compiled"
+  },
+  "0x1024": {
+   "name": "status",
+   "type": "char",
+   "note": "pattern error code (0 = none)"
+  },
+  "0x1025": {
+   "name": "punctMode",
+   "type": "char[256]",
+   "note": "per byte: 0 ignore, 0xff significant punctuation, 0xfe case-exact letter"
+  },
+  "0x1128": {
+   "name": "needsRaw",
+   "type": "int",
+   "note": "the pattern looks at punctuation or exact case"
+  },
+  "0x112c": {
+   "name": "dictList",
+   "type": "TSDictionaryList*",
+   "note": "dictionaries the leaf was compiled for"
+  },
+  "0x1130": {
+   "name": "dictIndex",
+   "type": "int",
+   "note": "which dictionary of the list"
+  },
+  "0x1134": {
+   "name": "shortest",
+   "type": "int",
+   "note": "shortest-word setting"
+  },
+  "0x1138": {
+   "name": "longest",
+   "type": "int",
+   "note": "longest-word setting"
+  },
+  "0x113c": {
+   "name": "curLen",
+   "type": "int",
+   "note": "length of the words being tested"
+  },
+  "0x1140": {
+   "name": "slack",
+   "type": "int",
+   "note": "curLen - minLen"
+  },
+  "0x1144": {
+   "name": "lastOp",
+   "type": "char",
+   "note": "last opcode emitted while compiling"
+  },
+  "0x1148": {
+   "name": "opCount",
+   "type": "int",
+   "note": "opcodes emitted while compiling"
+  },
+  "0x114c": {
+   "name": "matcher",
+   "type": "code*",
+   "note": "matcher chosen by Compile (MatchGeneral or a fast path)"
+  }
+ },
+ "InputEngine": {
+  "0x0": {
+   "name": "next",
+   "type": "InputEngine*",
+   "note": "next engine in the global list"
+  },
+  "0x4": {
+   "name": "prev",
+   "type": "InputEngine*",
+   "note": "previous engine in the global list"
+  },
+  "0x8": {
+   "name": "dictList",
+   "type": "TSDictionaryList*",
+   "note": "dictionary list"
+  },
+  "0xc": {
+   "name": "dictIndex",
+   "type": "int",
+   "note": "dictionary within the list"
+  },
+  "0x10": {
+   "name": "dict",
+   "type": "Dictionary*",
+   "note": "the dictionary being read"
+  },
+  "0x14": {
+   "name": "hFile",
+   "type": "HANDLE",
+   "note": "the open .tsd file (INVALID_HANDLE_VALUE when closed)"
+  },
+  "0x18": {
+   "name": "fileOffset",
+   "type": "uint",
+   "note": "file position to resume reading at"
+  },
+  "0x1c": {
+   "name": "wordsScanned",
+   "type": "int",
+   "note": "words decoded so far"
+  },
+  "0x20": {
+   "name": "letters",
+   "type": "byte[]",
+   "note": "the current word's letter classes (0xff-terminated), followed by punctuation and filtered copies"
+  },
+  "0x408": {
+   "name": "rawWord",
+   "type": "char[]",
+   "note": "the current word as stored, then its annotation"
+  },
+  "0x7f0": {
+   "name": "readBuf",
+   "type": "byte[0x4000]",
+   "note": "file read buffer"
+  },
+  "0x47f0": {
+   "name": "bitPtr",
+   "type": "uint*",
+   "note": "next 32-bit word of the bit stream"
+  },
+  "0x47f4": {
+   "name": "bitEnd",
+   "type": "uint*",
+   "note": "end of the buffered bit stream"
+  },
+  "0x47f8": {
+   "name": "bitPos",
+   "type": "int",
+   "note": "bits already used of the current word"
+  },
+  "0x47fc": {
+   "name": "length",
+   "type": "int",
+   "note": "word length being read"
+  },
+  "0x4800": {
+   "name": "linkMode",
+   "type": "char",
+   "note": "TSD1 link bits: 2 while reading words with link flags"
+  },
+  "0x4804": {
+   "name": "hasLinks",
+   "type": "int",
+   "note": "the current word has definitions or an occurrence list"
+  },
+  "0x4808": {
+   "name": "linkIndex",
+   "type": "int",
+   "note": "1-based count of linked words so far"
+  }
+ },
+ "TSDictionaryList": {
+  "0x0": {
+   "name": "paths",
+   "type": "char*",
+   "note": "the ';'-separated path list"
+  },
+  "0x8": {
+   "name": "dicts",
+   "type": "std::vector",
+   "note": "the dictionaries (Dictionary pointers)"
+  },
+  "0xc": {
+   "name": "dictsBegin",
+   "type": "Dictionary**",
+   "note": "dicts begin"
+  },
+  "0x10": {
+   "name": "dictsEnd",
+   "type": "Dictionary**",
+   "note": "dicts end"
+  },
+  "0x20": {
+   "name": "dictsCapacityEnd",
+   "type": "Dictionary**",
+   "note": "dicts end of storage"
+  }
+ },
+ "TSDictionaryList::Dictionary": {
+  "0x4": {
+   "name": "huffman",
+   "type": "int[768][2]",
+   "note": "per symbol {code length, letter class}, then decoding-tree nodes {child0, child1} (root 256)"
+  },
+  "0x1804": {
+   "name": "lookahead8",
+   "type": "int[256]",
+   "note": "node or symbol reached after 8 bits"
+  },
+  "0x1c04": {
+   "name": "lookahead8Len",
+   "type": "int[256]",
+   "note": "code length of that symbol"
+  },
+  "0x2004": {
+   "name": "loaded",
+   "type": "int",
+   "note": "the header loaded"
+  },
+  "0x2008": {
+   "name": "fileTime",
+   "type": "FILETIME",
+   "note": "last-write time when loaded"
+  },
+  "0x2010": {
+   "name": "refCount",
+   "type": "int",
+   "note": "lists sharing this dictionary"
+  },
+  "0x2014": {
+   "name": "description",
+   "type": "char[1000]",
+   "note": "header description"
+  },
+  "0x23fc": {
+   "name": "format",
+   "type": "int",
+   "note": "0 = TSD0, 1 = TSD1"
+  },
+  "0x2400": {
+   "name": "defStart",
+   "type": "uint",
+   "note": "definition section start (TSD1)"
+  },
+  "0x2404": {
+   "name": "defPass2",
+   "type": "uint",
+   "note": "start of headword definitions"
+  },
+  "0x2408": {
+   "name": "defEnd",
+   "type": "uint",
+   "note": "definition section end"
+  },
+  "0x240c": {
+   "name": "numLengths",
+   "type": "ushort",
+   "note": "longest word length + 1"
+  },
+  "0x2410": {
+   "name": "wordStreamOffset",
+   "type": "uint[101]",
+   "note": "file offset of each length's word stream"
+  },
+  "0x25a4": {
+   "name": "wordCount",
+   "type": "uint[101]",
+   "note": "words of each length"
+  },
+  "0x2738": {
+   "name": "occIndexOffset",
+   "type": "uint[101]",
+   "note": "full-text index of words found only in definitions"
+  },
+  "0x28cc": {
+   "name": "defLinkOffset",
+   "type": "uint[101]",
+   "note": "link table of words with definitions"
+  },
+  "0x2a60": {
+   "name": "defLinkCount",
+   "type": "uint[101]",
+   "note": "entries in that table"
+  },
+  "0x2bf4": {
+   "name": "numUsedLetters",
+   "type": "short",
+   "note": "letter classes used"
+  },
+  "0x2bf6": {
+   "name": "numTotalLetters",
+   "type": "short",
+   "note": "letter classes in the alphabet"
+  },
+  "0x2bf8": {
+   "name": "canonical",
+   "type": "char[256]",
+   "note": "letter class -> display byte"
+  },
+  "0x2cf8": {
+   "name": "symbolByte",
+   "type": "char[256]",
+   "note": "Huffman symbol -> byte value"
+  },
+  "0x2df8": {
+   "name": "numCalibrationRows",
+   "type": "ushort",
+   "note": "rows of the calibration matrix"
+  },
+  "0x2dfc": {
+   "name": "calibration",
+   "type": "char**",
+   "note": "the calibration matrix"
+  },
+  "0x2e00": {
+   "name": "lengthTables",
+   "type": "void*[101]",
+   "note": "per-length tables loaded on demand"
+  },
+  "0x2f94": {
+   "name": "path",
+   "type": "std::string",
+   "note": "the .tsd path"
+  },
+  "0x2f9c": {
+   "name": "pathData",
+   "type": "char*",
+   "note": "character data of path"
+  }
+ },
+ "MatchEngineSet": {
+  "0x0": {
+   "name": "engines",
+   "type": "std::vector",
+   "note": "one MatchEngine per leaf (null where the logic has a parenthesis)"
+  },
+  "0x4": {
+   "name": "enginesBegin",
+   "type": "MatchEngine**",
+   "note": "engines begin"
+  },
+  "0x8": {
+   "name": "enginesEnd",
+   "type": "MatchEngine**",
+   "note": "engines end"
+  },
+  "0x18": {
+   "name": "enginesCapacityEnd",
+   "type": "MatchEngine**",
+   "note": "engines end of storage"
+  },
+  "0x20": {
+   "name": "ops",
+   "type": "std::string",
+   "note": "logic opcodes, one per leaf slot"
+  },
+  "0x28": {
+   "name": "opsData",
+   "type": "char*",
+   "note": "character data of ops"
+  },
+  "0x30": {
+   "name": "status",
+   "type": "char",
+   "note": "error code of the first invalid leaf"
+  }
+ },
+ "Persist": {
+  "0x0": {
+   "name": "create",
+   "type": "char",
+   "note": "create the key when missing"
+  },
+  "0x4": {
+   "name": "hKey",
+   "type": "HKEY",
+   "note": "the open registry key"
+  }
+ },
+ "Common": {
+  "0x0": {
+   "name": "path",
+   "type": "std::string",
+   "note": "path of common.ini"
+  },
+  "0x8": {
+   "name": "pathData",
+   "type": "char*",
+   "note": "character data of path"
+  }
+ }
+}

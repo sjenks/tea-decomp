@@ -1,5 +1,5 @@
 // TEA.exe — application module "TEAFrameWindow"
-// 31 functions, 0x00473f30..0x00474e1c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 30 functions, 0x00473f30..0x00474d04. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -8,15 +8,15 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00473f30  TEAFrameWindow::Find   (70 bytes)   [owl:response-table response-table-find]
-//   also: TEAFrameWindow::vf14 [rtti:vtable]
-undefined4 __cdecl TEAFrameWindow::Find(undefined4 *param_1,int *param_2,undefined *param_3)
+//   also: TEAFrameWindow::Find [rtti:vtable]; TEAFrameWindow::vf14 [rtti:vtable]
+undefined4 __cdecl TEAFrameWindow::Find(undefined4 *self,int *param_2,undefined *param_3)
 
 {
   undefined4 uVar1;
   
-  param_2[2] = (int)param_1;
-  uVar1 = FUN_0048e808(param_1[2],(int *)&TEAFrameWindow::__entries,param_2,param_3);
-  if (((char)uVar1 == '\0') && (uVar1 = OWL::TDecoratedFrame::Find(param_1,param_2,param_3), (char)uVar1 == '\0'))
+  param_2[2] = (int)self;
+  uVar1 = FUN_0048e808(self[2],(int *)&TEAFrameWindow::__entries,param_2,param_3);
+  if (((char)uVar1 == '\0') && (uVar1 = OWL::TDecoratedFrame::Find(self,param_2,param_3), (char)uVar1 == '\0'))
   {
     return 0;
   }
@@ -24,109 +24,109 @@ undefined4 __cdecl TEAFrameWindow::Find(undefined4 *param_1,int *param_2,undefin
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00473f78  FUN_00473f78   (496 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-int * __cdecl FUN_00473f78(int *param_1,int param_2,int param_3,int *param_4)
+// 0x00473f78  TEAFrameWindow::TEAFrameWindow   (496 bytes)   [analysis]
+//   constructor: the "TEA" main frame around the client view
+int * __cdecl TEAFrameWindow::TEAFrameWindow(int *self,int vbasesBuilt,int parent,int *client)
 
 {
   int iVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4ff868);
-  if (param_2 == 0) {
-    *param_1 = (int)param_1 + 0xea;
-    *(int **)((int)param_1 + 0xea) = param_1 + 0x18;
-    param_1[0x18] = (int)(param_1 + 0x15);
-    param_1[0x19] = (int)(param_1 + 0x16);
-    *(int **)((int)param_1 + 0xee) = param_1 + 0x15;
-    *(int **)((int)param_1 + 0xf2) = param_1 + 0x16;
-    param_1[1] = (int)(param_1 + 0x18);
-    param_1[2] = (int)(param_1 + 0x15);
-    param_1[3] = (int)(param_1 + 0x16);
-    param_1[0x14] = 0;
-    param_1[0x17] = 0;
-    *(undefined4 *)((int)param_1 + 0xe6) = 0;
-    param_1[0x15] = (int)&OWL::TEventHandler::vftable;
-    param_1[0x16] = (int)&OWL::TStreamableBase::vftable;
-    *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + 0x96;
-    FUN_004a4fbc(param_1 + 0x18,1);
-    *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + -0x96;
-    *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + 0xe4;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0xe4;
-    FUN_004bda48((int *)((int)param_1 + 0xea),1);
-    *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + -0xe4;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0xe4;
+  if (vbasesBuilt == 0) {
+    *self = (int)self + 0xea;
+    *(int **)((int)self + 0xea) = self + 0x18;
+    self[0x18] = (int)(self + 0x15);
+    self[0x19] = (int)(self + 0x16);
+    *(int **)((int)self + 0xee) = self + 0x15;
+    *(int **)((int)self + 0xf2) = self + 0x16;
+    self[1] = (int)(self + 0x18);
+    self[2] = (int)(self + 0x15);
+    self[3] = (int)(self + 0x16);
+    self[0x14] = 0;
+    self[0x17] = 0;
+    *(undefined4 *)((int)self + 0xe6) = 0;
+    self[0x15] = (int)&OWL::TEventHandler::vftable;
+    self[0x16] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + 0x96;
+    OWL::TWindow::TWindow_4a4fbc(self + 0x18,1);
+    *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + -0x96;
+    *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + 0xe4;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0xe4;
+    OWL::TFrameWindow::TFrameWindow_4bda48((int *)((int)self + 0xea),1);
+    *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + -0xe4;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0xe4;
   }
-  *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + -9;
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -9;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -9;
-  if (param_4 == (int *)0x0) {
+  *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + -9;
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -9;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -9;
+  if (client == (int *)0x0) {
     iVar1 = 0;
   }
   else {
-    iVar1 = *param_4;
+    iVar1 = *client;
   }
-  FUN_004ae248(param_1,1,0,(uint *)&DAT_004ff3d1 /* "TEA" */,iVar1,1,0);
-  *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + 9;
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 9;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 9;
-  *(undefined ***)((int)param_1 + 0x35) = &TEAFrameWindow::vftable;
-  param_1[4] = (int)&PTR_LAB_004ffd28;
-  *(undefined ***)param_1[2] = &PTR_LAB_004ffd40;
-  *(undefined ***)param_1[3] = &PTR_LAB_004ffd4c;
-  *(undefined ***)(param_1[1] + 8) = &PTR_LAB_004ffd58;
-  *(undefined ***)(*param_1 + 0xc) = &PTR_LAB_004ffde8;
-  param_1[0x12] = (int)param_4;
-  param_1[0x13] = param_3;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  FUN_004ae248(self,1,0,(uint *)&DAT_004ff3d1 /* "TEA" */,iVar1,1,0);
+  *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + 9;
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 9;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 9;
+  *(undefined ***)((int)self + 0x35) = &TEAFrameWindow::vftable;
+  self[4] = (int)&PTR_LAB_004ffd28;
+  *(undefined ***)self[2] = &PTR_LAB_004ffd40;
+  *(undefined ***)self[3] = &PTR_LAB_004ffd4c;
+  *(undefined ***)(self[1] + 8) = &TEAFrameWindow::vftable_TWindow;
+  *(undefined ***)(*self + 0xc) = &TEAFrameWindow::vftable_TFrameWindow;
+  self[0x12] = (int)client;
+  self[0x13] = parent;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00474188  TEAFrameWindow::~TEAFrameWindow   (403 bytes)   [rtti:dtor destructor]
 //   written in code as TEAFrameWindow::_dtor
-void __cdecl TEAFrameWindow::_dtor(int *param_1,uint param_2)
+void __cdecl TEAFrameWindow::_dtor(int *self,uint dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4ff88c);
-  if (param_1 != (int *)0x0) {
-    *(undefined ***)((int)param_1 + 0x35) = &TEAFrameWindow::vftable;
-    param_1[4] = (int)&PTR_LAB_004ffd28;
-    *(undefined ***)param_1[2] = &PTR_LAB_004ffd40;
-    *(undefined ***)param_1[3] = &PTR_LAB_004ffd4c;
-    *(undefined ***)(param_1[1] + 8) = &PTR_LAB_004ffd58;
-    *(undefined ***)(*param_1 + 0xc) = &PTR_LAB_004ffde8;
+  if (self != (int *)0x0) {
+    *(undefined ***)((int)self + 0x35) = &TEAFrameWindow::vftable;
+    self[4] = (int)&PTR_LAB_004ffd28;
+    *(undefined ***)self[2] = &PTR_LAB_004ffd40;
+    *(undefined ***)self[3] = &PTR_LAB_004ffd4c;
+    *(undefined ***)(self[1] + 8) = &TEAFrameWindow::vftable_TWindow;
+    *(undefined ***)(*self + 0xc) = &TEAFrameWindow::vftable_TFrameWindow;
     if (DAT_0051ac7c != (HHOOK)0x0) {
       UnhookWindowsHookEx(DAT_0051ac7c);
     }
     PostQuitMessage(0);
-    *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + -9;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -9;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -9;
-    OWL::TDecoratedFrame::_dtor(param_1,0);
-    *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + 9;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 9;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 9;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + 0xe4;
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0xe4;
-      OWL::TFrameWindow::_dtor((int *)((int)param_1 + 0xea),0);
-      *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + -0xe4;
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0xe4;
-      *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0x18,0);
-      *(int *)(param_1[2] + -4) = *(int *)(param_1[2] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 0x16,0);
+    *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + -9;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -9;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -9;
+    OWL::TDecoratedFrame::_dtor(self,0);
+    *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + 9;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 9;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 9;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + 0xe4;
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0xe4;
+      OWL::TFrameWindow::_dtor((int *)((int)self + 0xea),0);
+      *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + -0xe4;
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0xe4;
+      *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0x18,0);
+      *(int *)(self[2] + -4) = *(int *)(self[2] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 0x16,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -134,203 +134,205 @@ void __cdecl TEAFrameWindow::_dtor(int *param_1,uint param_2)
 // 0x0047431c  TEAFrameWindow::EvInitMenuPopup   (1093 bytes)   [owl:response-table message-handler]
 //   WM_INITMENUPOPUP
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-void __cdecl TEAFrameWindow::EvInitMenuPopup(undefined4 *param_1,HMENU param_2,undefined4 param_3,char param_4)
+void __cdecl TEAFrameWindow::EvInitMenuPopup(undefined4 *self,HMENU hPopupMenu,undefined4 index,char sysMenu)
 
 {
-  bool bVar1;
-  UINT UVar2;
-  int *piVar3;
-  int iVar4;
+  bool isCommandEnabled;
+  UINT pos;
+  int *lookupConfiguration;
+  int prevRefs;
   UINT UVar5;
   UINT *pUVar6;
   UINT_PTR uIDNewItem;
-  uint uVar7;
-  undefined4 *in_FS_OFFSET;
-  undefined4 *puVar8;
-  uint local_c0 [9];
-  undefined1 *local_9c;
-  undefined4 local_98;
-  LPCSTR local_94;
-  LPCSTR local_90;
-  undefined1 *local_8c;
-  LPCSTR local_88;
-  UINT local_84;
-  UINT local_80;
-  UINT_PTR local_7c;
-  UINT local_78;
-  UINT local_74;
-  UINT_PTR local_70;
-  undefined1 *local_6c;
-  undefined4 local_68;
-  int local_64;
-  int local_60;
-  UINT local_5c;
-  undefined *local_58;
-  undefined4 local_54;
-  undefined2 local_44;
-  int local_38;
-  undefined1 local_30 [8];
-  int local_28;
+  uint position;
+  undefined4 *sehChainHead;
+  undefined4 *hMenu2;
+  uint name [9];
+  undefined1 *unused;
+  undefined4 unused2;
+  LPCSTR unused3;
+  LPCSTR unused4;
+  undefined1 *unused5;
+  LPCSTR unused6;
+  UINT unused7;
+  UINT unused8;
+  UINT_PTR unused9;
+  UINT unused10;
+  UINT unused11;
+  UINT_PTR unused12;
+  undefined1 *unused13;
+  undefined4 unused14;
+  int unused15;
+  int unused16;
+  UINT flags;
+  undefined *fileHistory;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 result [8];
+  int str;
   undefined1 local_20 [8];
-  LPCSTR local_18;
-  undefined4 local_10;
-  HMENU local_c;
+  LPCSTR newItem;
+  undefined4 hMenu3;
+  HMENU hMenu;
   
   __InitExceptBlockLDTC(0x4ff8f0);
-  OWL::TFrameWindow::EvInitMenuPopup((int *)*param_1,param_2,param_3,param_4);
-  if ((param_2 != (HMENU)0x0) && (param_4 == '\0')) {
-    local_44 = 8;
-    FUN_00497aec(&local_10,param_2,0);
-    local_38 = local_38 + 1;
-    local_44 = 0x14;
-    uVar7 = 0;
+  OWL::TFrameWindow::EvInitMenuPopup((int *)*self,hPopupMenu,index,sysMenu);
+  if ((hPopupMenu != (HMENU)0x0) && (sysMenu == '\0')) {
+    ehContext = 8;
+    OWL::TMenu::TMenu_497aec(&hMenu3,hPopupMenu,0);
+    ehDtorCount = ehDtorCount + 1;
+    ehContext = 0x14;
+    position = 0;
     pUVar6 = &DAT_004ff36c;
     do {
-      UVar2 = GetMenuState(local_c,*pUVar6,0);
-      if (UVar2 != 0xffffffff) {
-        (*(UINT *)&DAT_0051ac84) = pUVar6[1];
-        (*(UINT *)&DAT_0051ac88) = (*(UINT *)&DAT_0051ac84);
+      pos = GetMenuState(hMenu,*pUVar6,0);
+      if (pos != 0xffffffff) {
+        (*(UINT *)&g_contextMenuId) = pUVar6[1];
+        (*(UINT *)&DAT_0051ac88) = (*(UINT *)&g_contextMenuId);
         break;
       }
-      uVar7 = uVar7 + 1;
+      position = position + 1;
       pUVar6 = pUVar6 + 2;
-    } while (uVar7 < 0xb);
-    if ((*(UINT *)&DAT_0051ac84) == 0x3412) {
-      bVar1 = FUN_00454524(param_1[0x12],0x1d42);
-      uVar7 = (uint)bVar1;
-      puVar8 = &local_10;
-      piVar3 = (int *)FUN_00422fc4(param_1[0x13]);
-      FUN_00423e14(piVar3,(int)puVar8,uVar7);
+    } while (position < 0xb);
+    if ((*(UINT *)&g_contextMenuId) == 0x3412) {
+      isCommandEnabled = TEAViewWindows::IsCommandEnabled(self[0x12],0x1d42);
+      position = (uint)isCommandEnabled;
+      hMenu2 = &hMenu3;
+      lookupConfiguration = (int *)GetLookupConfiguration(self[0x13]);
+      LookupConfiguration::FillMenu(lookupConfiguration,(int)hMenu2,position);
     }
-    UVar2 = FUN_00497c2c((int)&local_10,0);
-    if (UVar2 == 0x1d7e) {
-      FUN_004663a0(param_1[0x13],(int)&local_10);
-      UVar2 = GetMenuItemCount(local_c);
-      local_44 = 0x14;
+    pos = FUN_00497c2c((int)&hMenu3,0);
+    if (pos == 0x1d7e) {
+      TEAAppWindows::UpdateFileMenu(self[0x13],(int)&hMenu3);
+      pos = GetMenuItemCount(hMenu);
+      ehContext = 0x14;
       do {
-        UVar2 = UVar2 - 1;
-        if ((int)UVar2 < 0) break;
-        UVar5 = FUN_00497c2c((int)&local_10,UVar2);
+        pos = pos - 1;
+        if ((int)pos < 0) break;
+        UVar5 = FUN_00497c2c((int)&hMenu3,pos);
       } while (UVar5 != 0x12e8);
-      if (-1 < (int)UVar2) {
-        local_58 = FUN_0041238c(param_1[0x13],0);
-        if (*(int *)(param_1[0x12] + 100) == 2) {
-          local_5c = 0x401;
+      if (-1 < (int)pos) {
+        fileHistory = GetFileHistory(self[0x13],0);
+        if (*(int *)(self[0x12] + 100) == 2) {
+          flags = 0x401;
         }
         else {
-          local_5c = 0x400;
+          flags = 0x400;
         }
         uIDNewItem = 0x12e8;
         do {
-          local_44 = 0x2c;
-          FUN_00412434((int)local_20,(int)local_58,uIDNewItem - 0x12e8);
-          local_44 = 0x20;
-          if (*(int *)(local_18 + -4) == 0) {
-            if (local_18 == (LPCSTR)0x0) break;
-            if (*(int *)(local_18 + -0xc) != -1) {
-              piVar3 = (int *)(local_18 + -0xc);
-              if (piVar3 == &DAT_00513d58) {
-                iVar4 = 1;
+          ehContext = 0x2c;
+          FileHistory::Get((int)local_20,(int)fileHistory,uIDNewItem - 0x12e8);
+          ehContext = 0x20;
+          if (*(int *)(newItem + -4) == 0) {
+            if (newItem == (LPCSTR)0x0) break;
+            if (*(int *)(newItem + -0xc) != -1) {
+              lookupConfiguration = (int *)(newItem + -0xc);
+              if (lookupConfiguration == &g_nullStringRep) {
+                prevRefs = 1;
               }
-              else if (piVar3 == &DAT_00513d58) {
-                iVar4 = 1;
+              else if (lookupConfiguration == &g_nullStringRep) {
+                prevRefs = 1;
               }
               else {
-                *piVar3 = *piVar3 + -1;
-                iVar4 = *piVar3 + 1;
+                *lookupConfiguration = *lookupConfiguration + -1;
+                prevRefs = *lookupConfiguration + 1;
               }
-              if (iVar4 != 0) break;
+              if (prevRefs != 0) break;
             }
-            local_88 = local_18 + -0xc;
+            unused6 = newItem + -0xc;
             operator_delete();
-            local_8c = local_20;
-            local_18 = (LPCSTR)0x0;
+            unused5 = local_20;
+            newItem = (LPCSTR)0x0;
             break;
           }
-          local_38 = local_38 + 1;
-          FUN_004e0344((undefined1 *)local_c0,&DAT_004ff3d5 /* "&%d " */);
-          local_44 = 0x38;
-          FUN_00435880((int)local_30,local_c0,(int)local_20);
-          local_38 = local_38 + 1;
-          FUN_004cf384((int)local_20,(int)local_30);
-          local_38 = local_38 + -1;
-          if (local_28 != 0) {
-            if (*(int *)(local_28 + -0xc) != -1) {
-              piVar3 = (int *)(local_28 + -0xc);
-              if (piVar3 == &DAT_00513d58) {
-                iVar4 = 1;
+          ehDtorCount = ehDtorCount + 1;
+          sprintf((undefined1 *)name,&DAT_004ff3d5 /* "&%d " */);
+          ehContext = 0x38;
+          ExpandProgramPath((int)result,name,(int)local_20);
+          ehDtorCount = ehDtorCount + 1;
+          std::string::operator_assign((int)local_20,(int)result);
+          ehDtorCount = ehDtorCount + -1;
+          if (str != 0) {
+            if (*(int *)(str + -0xc) != -1) {
+              lookupConfiguration = (int *)(str + -0xc);
+              if (lookupConfiguration == &g_nullStringRep) {
+                prevRefs = 1;
               }
-              else if (piVar3 == &DAT_00513d58) {
-                iVar4 = 1;
+              else if (lookupConfiguration == &g_nullStringRep) {
+                prevRefs = 1;
               }
               else {
-                *piVar3 = *piVar3 + -1;
-                iVar4 = *piVar3 + 1;
+                *lookupConfiguration = *lookupConfiguration + -1;
+                prevRefs = *lookupConfiguration + 1;
               }
-              if (iVar4 != 0) goto LAB_0047461f;
+              if (prevRefs != 0) goto LAB_0047461f;
             }
-            local_60 = local_28 + -0xc;
-            local_64 = local_28 + -0xc;
+            unused16 = str + -0xc;
+            unused15 = str + -0xc;
             operator_delete();
-            local_68 = 0;
-            local_6c = local_30;
-            local_28 = 0;
+            unused14 = 0;
+            unused13 = result;
+            str = 0;
           }
 LAB_0047461f:
-          local_44 = 0x20;
-          UVar5 = FUN_00497c2c((int)&local_10,UVar2);
+          ehContext = 0x20;
+          UVar5 = FUN_00497c2c((int)&hMenu3,pos);
           if (uIDNewItem == UVar5) {
-            local_80 = local_5c;
-            local_84 = UVar2;
-            local_7c = uIDNewItem;
-            ModifyMenuA(local_c,UVar2,local_5c,uIDNewItem,local_18);
+            unused8 = flags;
+            unused7 = pos;
+            unused9 = uIDNewItem;
+            ModifyMenuA(hMenu,pos,flags,uIDNewItem,newItem);
           }
           else {
-            local_74 = local_5c;
-            local_78 = UVar2;
-            local_70 = uIDNewItem;
-            InsertMenuA(local_c,UVar2,local_5c,uIDNewItem,local_18);
+            unused11 = flags;
+            unused10 = pos;
+            unused12 = uIDNewItem;
+            InsertMenuA(hMenu,pos,flags,uIDNewItem,newItem);
           }
-          UVar2 = UVar2 + 1;
-          local_38 = local_38 + -1;
-          if (local_18 != (LPCSTR)0x0) {
-            if (*(int *)(local_18 + -0xc) != -1) {
-              piVar3 = (int *)(local_18 + -0xc);
-              if (piVar3 == &DAT_00513d58) {
-                iVar4 = 1;
+          pos = pos + 1;
+          ehDtorCount = ehDtorCount + -1;
+          if (newItem != (LPCSTR)0x0) {
+            if (*(int *)(newItem + -0xc) != -1) {
+              lookupConfiguration = (int *)(newItem + -0xc);
+              if (lookupConfiguration == &g_nullStringRep) {
+                prevRefs = 1;
               }
-              else if (piVar3 == &DAT_00513d58) {
-                iVar4 = 1;
+              else if (lookupConfiguration == &g_nullStringRep) {
+                prevRefs = 1;
               }
               else {
-                *piVar3 = *piVar3 + -1;
-                iVar4 = *piVar3 + 1;
+                *lookupConfiguration = *lookupConfiguration + -1;
+                prevRefs = *lookupConfiguration + 1;
               }
-              if (iVar4 != 0) goto LAB_00474726;
+              if (prevRefs != 0) goto LAB_00474726;
             }
-            local_90 = local_18 + -0xc;
-            local_94 = local_18 + -0xc;
+            unused4 = newItem + -0xc;
+            unused3 = newItem + -0xc;
             operator_delete();
-            local_98 = 0;
-            local_9c = local_20;
-            local_18 = (LPCSTR)0x0;
+            unused2 = 0;
+            unused = local_20;
+            newItem = (LPCSTR)0x0;
           }
 LAB_00474726:
-          local_44 = 0x14;
+          ehContext = 0x14;
           uIDNewItem = uIDNewItem + 1;
         } while (uIDNewItem < 0x12f2);
       }
     }
-    local_38 = local_38 + -1;
-    OWL::TMenu::_dtor(&local_10,2);
+    ehDtorCount = ehDtorCount + -1;
+    OWL::TMenu::_dtor(&hMenu3,2);
   }
-  *in_FS_OFFSET = local_54;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00474764  TEAFrameWindow::vf15   (10 bytes)   [rtti:vtable virtual slot 15]
-char * __stdcall TEAFrameWindow::vf15(void)
+// 0x00474764  TEAFrameWindow::GetClassName   (10 bytes)   [rtti:vtable virtual slot 29]
+//   override of OWL::TWindow vtable slot 29, from TEAFrameWindow's OWL::TWindow subobject vtable at 0x004ffd58 (through the this-adjusting thunk at 0x0047594f); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: TEAFrameWindow::vf15 [rtti:vtable]
+char * __stdcall TEAFrameWindow::GetClassName(void)
 
 {
   return "TEAMainWindow";
@@ -339,56 +341,60 @@ char * __stdcall TEAFrameWindow::vf15(void)
 // ----------------------------------------------------------------------------------------------------
 // 0x00474770  TEAFrameWindow::EvRegisteredMsg_474770   (60 bytes)   [owl:response-table message-handler]
 //   message id 0 in the static table (filled at run time or WM_NULL)
-undefined4 __cdecl TEAFrameWindow::EvRegisteredMsg_474770(int param_1)
+undefined4 __cdecl TEAFrameWindow::EvRegisteredMsg_474770(int self)
 
 {
-  if (DAT_0051ac84 == 0) {
-    FUN_0046495c(*(int *)(param_1 + 0x4c));
+  if (g_contextMenuId == 0) {
+    TEAAppWindows::ShowHelpFor(*(int *)(self + 0x4c));
   }
   else {
-    FUN_0046495c(*(int *)(param_1 + 0x4c));
+    TEAAppWindows::ShowHelpFor(*(int *)(self + 0x4c));
   }
   return 1;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004747ac  TEAFrameWindow::vf9   (137 bytes)   [rtti:vtable virtual slot 9]
-void __cdecl TEAFrameWindow::vf9(int *param_1)
+// 0x004747ac  TEAFrameWindow::SetupWindow   (137 bytes)   [rtti:vtable virtual slot 30]
+//   override of OWL::TWindow vtable slot 30, from TEAFrameWindow's OWL::TWindow subobject vtable at 0x004ffd58 (through the this-adjusting thunk at 0x0047593c); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: TEAFrameWindow::vf9 [rtti:vtable]
+void __cdecl TEAFrameWindow::SetupWindow(int *self)
 
 {
   HINSTANCE hmod;
   DWORD dwThreadId;
   
-  OWL::TDecoratedFrame::vf9(param_1);
-  if (*(int *)(param_1[0x12] + 0xa0) != 0) {
-    FUN_004a7aa0(param_1[1],(HWND)0xffffffff,0,0,0,0,3);
+  OWL::TDecoratedFrame::SetupWindow(self);
+  if (*(int *)(self[0x12] + 0xa0) != 0) {
+    FUN_004a7aa0(self[1],(HWND)0xffffffff,0,0,0,0,3);
   }
   DAT_0051ac80 = 0;
   DAT_0051ac7c = (HHOOK)0x0;
-  (*(undefined4 *)&DAT_0051ac8c) = *(undefined4 *)(param_1[1] + 0xc);
-  DAT_0051ac78 = RegisterWindowMessageA("commdlg_help");
-  if (DAT_0051ac78 != 0) {
-    hmod = *(HINSTANCE *)(*(int *)(param_1[1] + 0x6c) + 0xc);
+  (*(undefined4 *)&g_hWndMain) = *(undefined4 *)(self[1] + 0xc);
+  g_helpMessageId = RegisterWindowMessageA("commdlg_help");
+  if (g_helpMessageId != 0) {
+    hmod = *(HINSTANCE *)(*(int *)(self[1] + 0x6c) + 0xc);
     dwThreadId = GetCurrentThreadId();
-    DAT_0051ac7c = SetWindowsHookExA(-1,MsgHookProc_qqsiuil,hmod,dwThreadId);
+    DAT_0051ac7c = SetWindowsHookExA(-1,MsgHookProc,hmod,dwThreadId);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00474838  TEAFrameWindow::vf16   (101 bytes)   [rtti:vtable virtual slot 16]
-bool __cdecl TEAFrameWindow::vf16(int param_1)
+// 0x00474838  TEAFrameWindow::CanClose   (101 bytes)   [rtti:vtable virtual slot 15]
+//   override of OWL::TWindow vtable slot 15, from TEAFrameWindow's OWL::TWindow subobject vtable at 0x004ffd58 (through the this-adjusting thunk at 0x00475988); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: TEAFrameWindow::vf16 [rtti:vtable]
+bool __cdecl TEAFrameWindow::CanClose(int self)
 
 {
   bool bVar1;
   
-  if ((*(int **)(param_1 + 0x48))[0x19] != 4) {
-    FUN_0045bc3c(*(int **)(param_1 + 0x48));
+  if ((*(int **)(self + 0x48))[0x19] != 4) {
+    TEAViewWindows::SaveQueryHistory(*(int **)(self + 0x48));
   }
-  bVar1 = FUN_00452cf4(*(int *)(param_1 + 0x48));
+  bVar1 = TEAViewWindows::PrepareToClose(*(int *)(self + 0x48));
   if (bVar1) {
-    IsZoomed(*(HWND *)(*(int *)(param_1 + 4) + 0xc));
-    FUN_00463bfc(*(int *)(param_1 + 0x4c));
+    IsZoomed(*(HWND *)(*(int *)(self + 4) + 0xc));
+    TEAAppWindows::SaveMainWindowSettings(*(int *)(self + 0x4c));
   }
   return bVar1;
 }
@@ -396,11 +402,11 @@ bool __cdecl TEAFrameWindow::vf16(int param_1)
 // ----------------------------------------------------------------------------------------------------
 // 0x004748a0  TEAFrameWindow::CeFilePageSetup   (40 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND_ENABLE(3780) — &File > Page Set&up...
-void __cdecl TEAFrameWindow::CeFilePageSetup(int param_1,undefined4 *param_2)
+void __cdecl TEAFrameWindow::CeFilePageSetup(int self,undefined4 *commandEnabler)
 
 {
-  FUN_00464af0(*(int *)(param_1 + 0x4c));
-  (**(code **)*param_2)();
+  TEAAppWindows::GetPrinter(*(int *)(self + 0x4c));
+  (**(code **)*commandEnabler)();
   return;
 }
 
@@ -408,50 +414,50 @@ void __cdecl TEAFrameWindow::CeFilePageSetup(int param_1,undefined4 *param_2)
 // 0x004748c8  TEAFrameWindow::CeShared_4748c8   (24 bytes)   [owl:response-table message-handler]
 //   one handler for 9 table entries: &File > &Close *; &File > &Demote *; &File > Pro&mote *; T&ools > &Options...; &Edit > Cu&t	Ctrl+X; &Edit > &Paste	Ctrl+V; &Window > Always On &Top; &Window > Tile &Horizontal; &Window > Tile &Vertical
 //   also: TEAFrameWindow::CeShared_4748c8 [owl:response-table]; TEAFrameWindow::CeShared_4748c8 [owl:response-table]; TEAFrameWindow::CeShared_4748c8 [owl:response-table]; TEAFrameWindow::CeShared_4748c8 [owl:response-table]
-void __cdecl TEAFrameWindow::CeShared_4748c8(int param_1,int *param_2)
+void __cdecl TEAFrameWindow::CeShared_4748c8(int self,int *commandEnabler)
 
 {
-  TEAViewWindows::CeShared_454478(*(int *)(param_1 + 0x48),param_2);
+  TEAViewWindows::CeShared_454478(*(int *)(self + 0x48),commandEnabler);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004748e0  TEAFrameWindow::CmFileClose   (18 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(7580) — &File > &Close * | &Close
-void __cdecl TEAFrameWindow::CmFileClose(int param_1)
+void __cdecl TEAFrameWindow::CmFileClose(int self)
 
 {
-  FUN_00464f24(*(int *)(param_1 + 0x4c));
+  TEAAppWindows::CloseDictionary(*(int *)(self + 0x4c));
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004748f4  TEAFrameWindow::CmFileDemote   (22 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(7600) — &File > &Demote * | &Demote
-void __cdecl TEAFrameWindow::CmFileDemote(int param_1)
+void __cdecl TEAFrameWindow::CmFileDemote(int self)
 
 {
-  FUN_004650a8(*(int *)(param_1 + 0x4c),3);
+  TEAAppWindows::MoveDictionary(*(int *)(self + 0x4c),3);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0047490c  TEAFrameWindow::CmFilePromote   (22 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(7590) — &File > Pro&mote * | Pro&mote
-void __cdecl TEAFrameWindow::CmFilePromote(int param_1)
+void __cdecl TEAFrameWindow::CmFilePromote(int self)
 
 {
-  FUN_004650a8(*(int *)(param_1 + 0x4c),2);
+  TEAAppWindows::MoveDictionary(*(int *)(self + 0x4c),2);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00474924  TEAFrameWindow::CmToolsOptions   (18 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(7560) — T&ools > &Options...
-void __cdecl TEAFrameWindow::CmToolsOptions(int param_1)
+void __cdecl TEAFrameWindow::CmToolsOptions(int self)
 
 {
-  FUN_00452dc8(*(undefined4 **)(param_1 + 0x48));
+  TEAViewWindows::CmOptions(*(undefined4 **)(self + 0x48));
   return;
 }
 
@@ -459,51 +465,51 @@ void __cdecl TEAFrameWindow::CmToolsOptions(int param_1)
 // 0x00474938  TEAFrameWindow::CmRange4840to4849   (240 bytes)   [owl:response-table message-handler]
 //   one handler for 10 table entries: &File > ; id 4841; id 4842; id 4843; id 4844; id 4845; id 4846; id 4847; id 4848; id 4849
 //   also: TEAFrameWindow::CmRange4840to4849 [owl:response-table]; TEAFrameWindow::CmRange4840to4849 [owl:response-table]; TEAFrameWindow::CmRange4840to4849 [owl:response-table]; TEAFrameWindow::CmRange4840to4849 [owl:response-table]
-void __cdecl TEAFrameWindow::CmRange4840to4849(int param_1,int param_2)
+void __cdecl TEAFrameWindow::CmRange4840to4849(int self,int param_2)
 
 {
-  undefined *puVar1;
-  int iVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  undefined1 local_14 [8];
-  uint *local_c;
+  undefined *fileHistory;
+  int prevRefs;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 result [8];
+  uint *strRep;
   
   __InitExceptBlockLDTC(0x4ff978);
-  puVar1 = FUN_0041238c(*(int *)(param_1 + 0x4c),0);
-  FUN_00412434((int)local_14,(int)puVar1,param_2 + -0x12e8);
-  FUN_00464bb4(*(int *)(param_1 + 0x4c),local_c);
-  FUN_0041251c((int)puVar1,local_c);
-  FUN_0045269c(*(int **)(param_1 + 0x48));
-  if (local_c != (uint *)0x0) {
-    if (local_c[-3] != 0xffffffff) {
-      local_c = local_c + -3;
-      if (local_c == &DAT_00513d58) {
-        iVar2 = 1;
+  fileHistory = GetFileHistory(*(int *)(self + 0x4c),0);
+  FileHistory::Get((int)result,(int)fileHistory,param_2 + -0x12e8);
+  TEAAppWindows::OpenDictionaries(*(int *)(self + 0x4c),strRep);
+  FileHistory::Add((int)fileHistory,strRep);
+  TEAViewWindows::RestartSearch(*(int **)(self + 0x48));
+  if (strRep != (uint *)0x0) {
+    if (strRep[-3] != 0xffffffff) {
+      strRep = strRep + -3;
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (local_c == &DAT_00513d58) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *local_c = *local_c - 1;
-        iVar2 = *local_c + 1;
+        *strRep = *strRep - 1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_00474a17;
+      if (prevRefs != 0) goto LAB_00474a17;
     }
     operator_delete();
   }
 LAB_00474a17:
-  *in_FS_OFFSET = local_38;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00474a28  TEAFrameWindow::CmFilePageSetup   (18 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(3780) — &File > Page Set&up...
-void __cdecl TEAFrameWindow::CmFilePageSetup(int param_1)
+void __cdecl TEAFrameWindow::CmFilePageSetup(int self)
 
 {
-  FUN_004536c4(*(int *)(param_1 + 0x48));
+  TEAViewWindows::CmPageSetup(*(int *)(self + 0x48));
   return;
 }
 
@@ -511,51 +517,51 @@ void __cdecl TEAFrameWindow::CmFilePageSetup(int param_1)
 // 0x00474a3c  TEAFrameWindow::CmShared_474a3c   (24 bytes)   [owl:response-table message-handler]
 //   one handler for 2 table entries: &Edit > Cu&t	Ctrl+X; &Edit > &Paste	Ctrl+V
 //   also: TEAFrameWindow::CmShared_474a3c [owl:response-table]
-void __cdecl TEAFrameWindow::CmShared_474a3c(int param_1,int param_2)
+void __cdecl TEAFrameWindow::CmShared_474a3c(int self,int param_2)
 
 {
-  TEAViewWindows::CmShared_4548d0(*(int **)(param_1 + 0x48),param_2);
+  TEAViewWindows::CmShared_4548d0(*(int **)(self + 0x48),param_2);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00474a54  TEAFrameWindow::CmToolsDictionaryBuilder   (25 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(4980) — T&ools > &Dictionary Builder
-void __cdecl TEAFrameWindow::CmToolsDictionaryBuilder(int param_1)
+void __cdecl TEAFrameWindow::CmToolsDictionaryBuilder(int self)
 
 {
-  FUN_0046583c(*(undefined4 *)(param_1 + 0x4c),(uint *)"TSBUILD");
+  TEAAppWindows::LaunchTool(*(undefined4 *)(self + 0x4c),(uint *)"TSBUILD");
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00474a70  TEAFrameWindow::CmToolsWordListMerge   (25 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(5120) — T&ools > &Word List Merge
-void __cdecl TEAFrameWindow::CmToolsWordListMerge(int param_1)
+void __cdecl TEAFrameWindow::CmToolsWordListMerge(int self)
 
 {
-  FUN_0046583c(*(undefined4 *)(param_1 + 0x4c),(uint *)"TSMERGE");
+  TEAAppWindows::LaunchTool(*(undefined4 *)(self + 0x4c),(uint *)"TSMERGE");
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00474a8c  TEAFrameWindow::CmWindowAlwaysOnTop   (78 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(14870) — &Window > Always On &Top
-void __cdecl TEAFrameWindow::CmWindowAlwaysOnTop(int param_1)
+void __cdecl TEAFrameWindow::CmWindowAlwaysOnTop(int self)
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   uint uVar2;
   
-  uVar2 = (uint)(*(int *)(*(int *)(param_1 + 0x48) + 0xa0) == 0);
+  uVar2 = (uint)(*(int *)(*(int *)(self + 0x48) + 0xa0) == 0);
   if (uVar2 == 0) {
-    pHVar1 = (HWND)0xfffffffe;
+    hWnd = (HWND)0xfffffffe;
   }
   else {
-    pHVar1 = (HWND)0xffffffff;
+    hWnd = (HWND)0xffffffff;
   }
-  FUN_004a7aa0(*(int *)(param_1 + 4),pHVar1,0,0,0,0,3);
-  *(uint *)(*(int *)(param_1 + 0x48) + 0xa0) = uVar2;
+  FUN_004a7aa0(*(int *)(self + 4),hWnd,0,0,0,0,3);
+  *(uint *)(*(int *)(self + 0x48) + 0xa0) = uVar2;
   return;
 }
 
@@ -563,30 +569,30 @@ void __cdecl TEAFrameWindow::CmWindowAlwaysOnTop(int param_1)
 // 0x00474adc  TEAFrameWindow::CmShared_474adc   (24 bytes)   [owl:response-table message-handler]
 //   one handler for 2 table entries: &Window > Tile &Horizontal; &Window > Tile &Vertical
 //   also: TEAFrameWindow::CmShared_474adc [owl:response-table]
-void __cdecl TEAFrameWindow::CmShared_474adc(int param_1,int param_2)
+void __cdecl TEAFrameWindow::CmShared_474adc(int self,int param_2)
 
 {
-  TEAViewWindows::CmShared_4548d0(*(int **)(param_1 + 0x48),param_2);
+  TEAViewWindows::CmShared_4548d0(*(int **)(self + 0x48),param_2);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00474af4  TEAFrameWindow::CmHelpQuickReference   (22 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(4820) — &Help > &Quick Reference...
-void __cdecl TEAFrameWindow::CmHelpQuickReference(int param_1)
+void __cdecl TEAFrameWindow::CmHelpQuickReference(int self)
 
 {
-  FUN_0045cbd0(*(undefined4 **)(param_1 + 0x48),0);
+  TEAViewWindows::ShowQuickReference(*(undefined4 **)(self + 0x48),0);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00474b0c  TEAFrameWindow::CmHelpStartupTips   (18 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(13390) — &Help > &Startup Tips...
-void __cdecl TEAFrameWindow::CmHelpStartupTips(int param_1)
+void __cdecl TEAFrameWindow::CmHelpStartupTips(int self)
 
 {
-  FUN_0045cd28(*(undefined4 **)(param_1 + 0x48));
+  TEAViewWindows::ShowStartupTips(*(undefined4 **)(self + 0x48));
   return;
 }
 
@@ -596,7 +602,7 @@ void __cdecl TEAFrameWindow::CmHelpStartupTips(int param_1)
 void __stdcall TEAFrameWindow::CmHelpContents(void)
 
 {
-  FUN_00464980();
+  ShowHelpContents();
   return;
 }
 
@@ -650,129 +656,102 @@ void __stdcall TEAFrameWindow::CmHelpOnlineOrdering(void)
 void __stdcall TEAFrameWindow::CmHelpOrderForm(void)
 
 {
-  int iVar1;
-  int *piVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_48;
-  undefined1 local_24 [8];
-  int local_1c;
-  undefined1 local_14 [8];
-  LPCSTR local_c;
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 paths [8];
+  int str;
+  undefined1 result [8];
+  LPCSTR file;
   
   __InitExceptBlockLDTC(0x4ff9d0);
-  std::string::string_from_cstr((int)local_24,(uint *)"ordering.url");
-  FUN_00437470((int)local_14,(int)local_24);
-  if (local_1c != 0) {
-    if (*(int *)(local_1c + -0xc) != -1) {
-      piVar2 = (int *)(local_1c + -0xc);
-      if (piVar2 == &DAT_00513d58) {
-        iVar1 = 1;
+  std::string::string_from_cstr((int)paths,(uint *)"ordering.url");
+  ResolveRelativePaths((int)result,(int)paths);
+  if (str != 0) {
+    if (*(int *)(str + -0xc) != -1) {
+      strRep = (int *)(str + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar2 == &DAT_00513d58) {
-        iVar1 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar1 = *piVar2 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar1 != 0) goto LAB_00474c64;
+      if (prevRefs != 0) goto LAB_00474c64;
     }
     operator_delete();
-    local_1c = 0;
+    str = 0;
   }
 LAB_00474c64:
-  ShellExecuteA((HWND)0x0,&DAT_004ff3f8 /* "open" */,local_c,(LPCSTR)0x0,(LPCSTR)0x0,9);
-  if (local_c != (LPCSTR)0x0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      piVar2 = (int *)(local_c + -0xc);
-      if (piVar2 == &DAT_00513d58) {
-        iVar1 = 1;
+  ShellExecuteA((HWND)0x0,&DAT_004ff3f8 /* "open" */,file,(LPCSTR)0x0,(LPCSTR)0x0,9);
+  if (file != (LPCSTR)0x0) {
+    if (*(int *)(file + -0xc) != -1) {
+      strRep = (int *)(file + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar2 == &DAT_00513d58) {
-        iVar1 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar1 = *piVar2 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar1 != 0) goto LAB_00474cf0;
+      if (prevRefs != 0) goto LAB_00474cf0;
     }
     operator_delete();
   }
 LAB_00474cf0:
-  *in_FS_OFFSET = local_48;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00474d04  TEAFrameWindow::CmHelpAboutTEA   (279 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(1770) — &Help > &About TEA...
-void __cdecl TEAFrameWindow::CmHelpAboutTEA(int param_1)
+void __cdecl TEAFrameWindow::CmHelpAboutTEA(int self)
 
 {
-  uint *puVar1;
+  uint *licenseInfo;
   int *piVar2;
-  int iVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_3b0;
-  int local_38c [222];
-  undefined1 local_14 [8];
-  int local_c;
+  int module;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  int gridAboutBoxViewWindows [222];
+  undefined1 versionText [8];
+  int str;
   
   __InitExceptBlockLDTC(0x4ffa24);
-  iVar3 = *(int *)(param_1 + 0x4c);
-  puVar1 = (uint *)FUN_00466a90(iVar3);
-  std::string::string_from_cstr((int)local_14,puVar1);
-  piVar2 = FUN_00434cd0(local_38c,0,*(undefined4 *)(param_1 + 4),iVar3,(int)local_14);
+  module = *(int *)(self + 0x4c);
+  licenseInfo = (uint *)TEAAppWindows::GetLicenseInfo(module);
+  std::string::string_from_cstr((int)versionText,licenseInfo);
+  piVar2 = GridAboutBoxViewWindows::GridAboutBoxViewWindows(gridAboutBoxViewWindows,0,*(undefined4 *)(self + 4),module,(int)versionText);
   (**(code **)(piVar2[3] + 0x14))();
-  GridAboutBoxViewWindows::_dtor(local_38c,2);
-  if (local_c != 0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      piVar2 = (int *)(local_c + -0xc);
-      if (piVar2 == &DAT_00513d58) {
-        iVar3 = 1;
+  GridAboutBoxViewWindows::_dtor(gridAboutBoxViewWindows,2);
+  if (str != 0) {
+    if (*(int *)(str + -0xc) != -1) {
+      piVar2 = (int *)(str + -0xc);
+      if (piVar2 == &g_nullStringRep) {
+        module = 1;
       }
-      else if (piVar2 == &DAT_00513d58) {
-        iVar3 = 1;
+      else if (piVar2 == &g_nullStringRep) {
+        module = 1;
       }
       else {
         *piVar2 = *piVar2 + -1;
-        iVar3 = *piVar2 + 1;
+        module = *piVar2 + 1;
       }
-      if (iVar3 != 0) goto LAB_00474e07;
+      if (module != 0) goto LAB_00474e07;
     }
     operator_delete();
   }
 LAB_00474e07:
-  *in_FS_OFFSET = local_3b0;
+  *sehChainHead = sehPrevFrame;
   return;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00474e1c  FUN_00474e1c   (182 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-int * __cdecl FUN_00474e1c(int *param_1,int param_2)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x4ffa54);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 0x20);
-    param_1[0x1f] = 0;
-    param_1[0x20] = (int)&OWL::TEventHandler::vftable;
-  }
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0xd;
-  FUN_004a8c70(param_1,1,(uint *)"TEA for Windows",&DAT_00512a1c,(undefined *)0x0);
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0xd;
-  *(undefined ***)((int)param_1 + 0x1b) = &TEAAppWindows::vftable;
-  param_1[1] = (int)&PTR_LAB_004ffc9c;
-  *(undefined ***)((int)param_1 + 0x11) = &PTR_LAB_004ffcac;
-  *(undefined ***)*param_1 = &PTR_LAB_004ffccc;
-  param_1[0x1c] = 0;
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 } // namespace tea

@@ -1,36 +1,36 @@
 address	name	name_in_code	class	kind	name_source	file	bytes
 0x00401000	entry	entry				src/DMProgressBar.cpp	2
-0x00401012	FUN_00401012	FUN_00401012				src/DMProgressBar.cpp	71
+0x00401012	__startup	__startup		function	analysis (matched TEACON.exe)	src/DMProgressBar.cpp	71
 0x00401059	__GetExceptDLLinfo	__GetExceptDLLinfo				src/DMProgressBar.cpp	5
-0x00401140	FUN_00401140	FUN_00401140				src/DMProgressBar.cpp	15
-0x00401150	FUN_00401150	FUN_00401150				src/DMProgressBar.cpp	85
-0x004011a8	FUN_004011a8	FUN_004011a8				src/DMProgressBar.cpp	163
-0x0040124c	FUN_0040124c	FUN_0040124c				src/DMProgressBar.cpp	300
+0x00401140	__getTlsBlock	__getTlsBlock		function	analysis	src/DMProgressBar.cpp	15
+0x00401150	InitStaticStrings	InitStaticStrings		function	analysis	src/DMProgressBar.cpp	85
+0x004011a8	DestroyStaticStrings	DestroyStaticStrings		function	analysis	src/DMProgressBar.cpp	163
+0x0040124c	DMProgressBar::DMProgressBar	DMProgressBar::DMProgressBar	DMProgressBar	constructor	rtti:vtable-store	src/DMProgressBar.cpp	300
 0x00401394	DMProgressBar::~DMProgressBar	DMProgressBar::_dtor	DMProgressBar	destructor	rtti:dtor	src/DMProgressBar.cpp	251
-0x00401490	FUN_00401490	FUN_00401490				src/DMProgressBar.cpp	33
+0x00401490	DMDialog::SetAbort	DMDialog::SetAbort	DMDialog	function	analysis	src/DMDialog.cpp	33
 0x004014b4	DMProgressBar::vf5	DMProgressBar::vf5	DMProgressBar	virtual	rtti:vtable	src/DMProgressBar.cpp	367
 0x00401678	DMDialog::Find	DMDialog::Find	DMDialog	response-table-find	owl:response-table	src/DMDialog.cpp	70
-0x004016c0	FUN_004016c0	FUN_004016c0				src/DMDialog.cpp	1067
+0x004016c0	DMDialog::DMDialog	DMDialog::DMDialog	DMDialog	constructor	rtti:vtable-store	src/DMDialog.cpp	1067
 0x00401b04	DMDialog::vf15	DMDialog::vf15	DMDialog	virtual	rtti:vtable	src/DMDialog.cpp	217
 0x00401be0	DMDialog::vf16	DMDialog::vf16	DMDialog	virtual	rtti:vtable	src/DMDialog.cpp	200
 0x00401ca8	DMDialog::vf17	DMDialog::vf17	DMDialog	virtual	rtti:vtable	src/DMDialog.cpp	154
 0x00401d58	DMDialog::vf11	DMDialog::vf11	DMDialog	virtual	rtti:vtable	src/DMDialog.cpp	4393
-0x00403134	FUN_00403134	FUN_00403134				src/DMDialog.cpp	41
+0x00403134	memrchr	memrchr		function	analysis (matched TEACON.exe)	src/DMDialog.cpp	41
 0x004031e4	DMDialog::EvClose	DMDialog::EvClose	DMDialog	message-handler	owl:response-table	src/DMDialog.cpp	15
-0x004031f4	FUN_004031f4	FUN_004031f4				src/DMDialog.cpp	97
-0x00403258	FUN_00403258	FUN_00403258				src/DMDialog.cpp	63
+0x004031f4	DMDialog::PumpMessages	DMDialog::PumpMessages	DMDialog	function	analysis	src/DMDialog.cpp	97
+0x00403258	DMDialog::SetStatus	DMDialog::SetStatus	DMDialog	function	analysis	src/DMDialog.cpp	63
 0x00403298	DMDialog::Cmd101	DMDialog::Cmd101	DMDialog	message-handler	owl:response-table	src/DMDialog.cpp	653
 0x00403540	DMDialog::Cmd106	DMDialog::Cmd106	DMDialog	message-handler	owl:response-table	src/DMDialog.cpp	344
 0x00403698	DMDialog::Cmd122	DMDialog::Cmd122	DMDialog	message-handler	owl:response-table	src/DMDialog.cpp	121
 0x00403784	DMDialog::CmShared_403784	DMDialog::CmShared_403784	DMDialog	message-handler	owl:response-table	src/DMDialog.cpp	412
-0x00403920	FUN_00403920	FUN_00403920				src/DMDialog.cpp	245
-0x00403a18	FUN_00403a18	FUN_00403a18				src/DMDialog.cpp	733
+0x00403920	DMDialog::UpdateControls	DMDialog::UpdateControls	DMDialog	function	analysis	src/DMDialog.cpp	245
+0x00403a18	DMDialog::BrowseFile	DMDialog::BrowseFile	DMDialog	function	analysis	src/DMDialog.cpp	733
 0x00403dd4	DMDialog::Cmd112	DMDialog::Cmd112	DMDialog	message-handler	owl:response-table	src/DMDialog.cpp	29
 0x00403df4	DMDialog::Cmd104	DMDialog::Cmd104	DMDialog	message-handler	owl:response-table	src/DMDialog.cpp	29
 0x00403e14	DMDialog::Cmd120	DMDialog::Cmd120	DMDialog	message-handler	owl:response-table	src/DMDialog.cpp	401
-0x0040402c	FUN_0040402c	FUN_0040402c				src/DMDialog.cpp	250
+0x0040402c	DMDialog::ReadOptions	DMDialog::ReadOptions	DMDialog	function	analysis	src/DMDialog.cpp	250
 0x00404128	DMApplication::vf17	DMApplication::vf17	DMApplication	virtual	rtti:vtable	src/DMApplication.cpp	236
-0x00404270	FUN_00404270	FUN_00404270				src/DMApplication.cpp	174
+0x00404270	OwlMain	OwlMain		function	analysis	src/DMApplication.cpp	174
 0x00404384	DMApplication::~DMApplication	DMApplication::_dtor	DMApplication	destructor	rtti:dtor	src/DMApplication.cpp	67
 0x004044f4	OWL::TFileSaveDialog::~TFileSaveDialog	OWL::TFileSaveDialog::_dtor	OWL::TFileSaveDialog	destructor	rtti:dtor	src/DMApplication.cpp	175
 0x004046e0	OWL::TFileOpenDialog::~TFileOpenDialog	OWL::TFileOpenDialog::_dtor	OWL::TFileOpenDialog	destructor	rtti:dtor	src/DMApplication.cpp	175
@@ -39,82 +39,82 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00404a44	std::logic_error::vf1	std::logic_error::vf1	std::logic_error	virtual	rtti:vtable	src/DMApplication.cpp	11
 0x00404a9c	std::exception::vf1	std::exception::vf1	std::exception	virtual	rtti:vtable	src/DMApplication.cpp	10
 0x00404aa8	DMDialog::~DMDialog	DMDialog::_dtor	DMDialog	destructor	rtti:dtor	src/DMDialog.cpp	1464
-0x00405060	OWL::TWindow::vf1	OWL::TWindow::vf1	OWL::TWindow	virtual	rtti:vtable	src/DMDialog.cpp	11
-0x0040506c	OWL::TWindow::vf24	OWL::TWindow::vf24	OWL::TWindow	virtual	rtti:vtable	src/DMDialog.cpp	33
-0x00405090	OWL::TWindow::vf26	OWL::TWindow::vf26	OWL::TWindow	virtual	rtti:vtable	src/DMDialog.cpp	25
-0x004050ac	OWL::TWindow::vf27	OWL::TWindow::vf27	OWL::TWindow	virtual	rtti:vtable	src/DMDialog.cpp	27
+0x00405060	OWL::TWindow::GetTooltip	OWL::TWindow::GetTooltip	OWL::TWindow	virtual	rtti:vtable	src/DMDialog.cpp	11
+0x0040506c	OWL::TWindow::EnableWindow	OWL::TWindow::EnableWindow	OWL::TWindow	virtual	rtti:vtable	src/DMDialog.cpp	33
+0x00405090	OWL::TWindow::Invalidate	OWL::TWindow::Invalidate	OWL::TWindow	virtual	rtti:vtable	src/DMDialog.cpp	25
+0x004050ac	OWL::TWindow::InvalidateRect	OWL::TWindow::InvalidateRect	OWL::TWindow	virtual	rtti:vtable	src/DMDialog.cpp	27
 0x004052c4	std::string::~basic_string	std::string::_dtor	std::string	destructor	rtti:dtor	src/DMDialog.cpp	143
 0x004055b0	OWL::TOpenSaveDialog::~TOpenSaveDialog	OWL::TOpenSaveDialog::_dtor	OWL::TOpenSaveDialog	destructor	rtti:dtor	src/DMDialog.cpp	168
 0x00405768	OWL::TStatic::~TStatic	OWL::TStatic::_dtor	OWL::TStatic	destructor	rtti:dtor	src/DMDialog.cpp	162
 0x0040587c	OWL::TRadioButton::~TRadioButton	OWL::TRadioButton::_dtor	OWL::TRadioButton	destructor	rtti:dtor	src/DMDialog.cpp	137
-0x00405984	FUN_00405984	FUN_00405984				src/DMDialog.cpp	215
-0x00405a5c	FUN_00405a5c	FUN_00405a5c				src/DMDialog.cpp	1050
-0x00405e78	FUN_00405e78	FUN_00405e78				src/DMDialog.cpp	206
-0x00405f48	FUN_00405f48	FUN_00405f48				src/DMDialog.cpp	1225
-0x004064c4	FUN_004064c4	FUN_004064c4				src/DMDialog.cpp	893
-0x004068fc	FUN_004068fc	FUN_004068fc				src/DMDialog.cpp	46
-0x0040692c	FUN_0040692c	FUN_0040692c				src/DMDialog.cpp	293
-0x00406a78	FUN_00406a78	FUN_00406a78				src/DMDialog.cpp	22
-0x00406a90	FUN_00406a90	FUN_00406a90				src/DMDialog.cpp	182
-0x00406b48	FUN_00406b48	FUN_00406b48				src/DMDialog.cpp	5595
-0x004088f4	FUN_004088f4	FUN_004088f4				src/DMDialog.cpp	2063
-0x004092d4	FUN_004092d4	FUN_004092d4				src/DMDialog.cpp	334
-0x00409424	FUN_00409424	FUN_00409424				src/DMDialog.cpp	225
-0x00409508	FUN_00409508	FUN_00409508				src/DMDialog.cpp	149
-0x004095a0	FUN_004095a0	FUN_004095a0				src/DMDialog.cpp	90
-0x004095fc	FUN_004095fc	FUN_004095fc				src/DMDialog.cpp	161
-0x004096a0	FUN_004096a0	FUN_004096a0				src/DMDialog.cpp	241
-0x00409794	FUN_00409794	FUN_00409794				src/DMDialog.cpp	62
-0x00409868	FUN_00409868	FUN_00409868				src/DMDialog.cpp	50
-0x0040989c	FUN_0040989c	FUN_0040989c				src/DMDialog.cpp	493
-0x00409a8c	FUN_00409a8c	FUN_00409a8c				src/DMDialog.cpp	326
-0x00409bd4	FUN_00409bd4	FUN_00409bd4				src/DMDialog.cpp	13
-0x00409be4	FUN_00409be4	FUN_00409be4				src/DMDialog.cpp	211
-0x00409cb8	FUN_00409cb8	FUN_00409cb8				src/DMDialog.cpp	211
-0x00409d8c	FUN_00409d8c	FUN_00409d8c				src/DMDialog.cpp	184
-0x00409e44	FUN_00409e44	FUN_00409e44				src/DMDialog.cpp	107
-0x00409eb0	FUN_00409eb0	FUN_00409eb0				src/DMDialog.cpp	34
-0x00409ed4	FUN_00409ed4	FUN_00409ed4				src/DMDialog.cpp	448
-0x0040a094	FUN_0040a094	FUN_0040a094				src/DMDialog.cpp	764
-0x0040a390	FUN_0040a390	FUN_0040a390				src/DMDialog.cpp	302
-0x0040a4c0	FUN_0040a4c0	FUN_0040a4c0				src/DMDialog.cpp	961
-0x0040a884	FUN_0040a884	FUN_0040a884				src/DMDialog.cpp	545
+0x00405984	PollCancel	PollCancel		function	analysis	src/DMDialog.cpp	215
+0x00405a5c	LoadWordList	LoadWordList		function	analysis	src/DMDialog.cpp	1050
+0x00405e78	WriteConvertedWord	WriteConvertedWord		function	analysis	src/DMDialog.cpp	206
+0x00405f48	WriteWordList	WriteWordList		function	analysis	src/DMDialog.cpp	1225
+0x004064c4	std::vector_string::insert_aux	std::vector_string::insert_aux		function	analysis (matched TEACON.exe)	src/DMDialog.cpp	893
+0x004068fc	std::copy_backward_string	std::copy_backward_string		function	analysis (matched TEACON.exe)	src/DMDialog.cpp	46
+0x0040692c	std::uninitialized_copy_string	std::uninitialized_copy_string		function	analysis (matched TEACON.exe)	src/DMDialog.cpp	293
+0x00406a78	std::_Destroy_range_16	std::_Destroy_range_16		function	analysis (matched TEACON.exe, duplicated code)	src/DMDialog.cpp	22
+0x00406a90	std::_Destroy_range_string	std::_Destroy_range_string		function	analysis (matched TEACON.exe)	src/DMDialog.cpp	182
+0x00406b48	std::operator_shl_string	std::operator_shl_string		function	analysis	src/DMDialog.cpp	5595
+0x004088f4	MergeWordLists	MergeWordLists		function	analysis	src/DMDialog.cpp	2063
+0x004092d4	CombineSortedLists	CombineSortedLists		function	analysis	src/DMDialog.cpp	334
+0x00409424	std::inplace_merge_string	std::inplace_merge_string		function	analysis	src/DMDialog.cpp	225
+0x00409508	std::__merge_sort_string	std::__merge_sort_string		function	analysis	src/DMDialog.cpp	149
+0x004095a0	std::__insertion_sort_string	std::__insertion_sort_string		function	analysis	src/DMDialog.cpp	90
+0x004095fc	std::__merge_sort_loop_string	std::__merge_sort_loop_string		function	analysis	src/DMDialog.cpp	161
+0x004096a0	std::merge_string	std::merge_string		function	analysis	src/DMDialog.cpp	241
+0x00409794	Abandon_exception::Abandon_exception	Abandon_exception::Abandon_exception	Abandon_exception	constructor	rtti:vtable-store	src/Abandon_exception.cpp	62
+0x00409868	WordLess	WordLess		function	analysis	src/Abandon_exception.cpp	50
+0x0040989c	std::__merge_adaptive_string	std::__merge_adaptive_string		function	analysis	src/Abandon_exception.cpp	493
+0x00409a8c	std::__rotate_adaptive_string	std::__rotate_adaptive_string		function	analysis	src/Abandon_exception.cpp	326
+0x00409bd4	std::__set_ptr_409bd4	std::__set_ptr_409bd4		function	analysis	src/Abandon_exception.cpp	13
+0x00409be4	std::lower_bound_string	std::lower_bound_string		function	analysis	src/Abandon_exception.cpp	211
+0x00409cb8	std::upper_bound_string	std::upper_bound_string		function	analysis	src/Abandon_exception.cpp	211
+0x00409d8c	std::__merge_backward_string	std::__merge_backward_string		function	analysis	src/Abandon_exception.cpp	184
+0x00409e44	std::rotate_string	std::rotate_string		function	analysis	src/Abandon_exception.cpp	107
+0x00409eb0	std::__gcd	std::__gcd		function	analysis	src/Abandon_exception.cpp	34
+0x00409ed4	std::__rotate_cycle_string	std::__rotate_cycle_string		function	analysis	src/Abandon_exception.cpp	448
+0x0040a094	std::__introsort_loop_wordlist	std::__introsort_loop_wordlist		function	analysis	src/Abandon_exception.cpp	764
+0x0040a390	std::__median_string	std::__median_string		function	analysis	src/Abandon_exception.cpp	302
+0x0040a4c0	std::__merge_without_buffer_string	std::__merge_without_buffer_string		function	analysis	src/Abandon_exception.cpp	961
+0x0040a884	std::stable_sort_wordlist	std::stable_sort_wordlist		function	analysis	src/Abandon_exception.cpp	545
 0x0040aae0	Abandon_exception::~Abandon_exception	Abandon_exception::_dtor	Abandon_exception	destructor	rtti:dtor	src/Abandon_exception.cpp	66
 0x0040ad10	Abandon_exception::vf1	Abandon_exception::vf1	Abandon_exception	virtual	rtti:vtable	src/Abandon_exception.cpp	35
 0x0040ad34	std::bad_alloc::vf1	std::bad_alloc::vf1	std::bad_alloc	virtual	rtti:vtable	src/Abandon_exception.cpp	10
 0x0040ad40	std::vector<std::string>::~vector	std::vector_std_string::_dtor	std::vector<std::string>	destructor	rtti:dtor	src/Abandon_exception.cpp	54
 0x0040ad78	std::basic_ostream<char>::sentry::~sentry	std::basic_ostream_char::sentry::_dtor	std::basic_ostream<char>::sentry	destructor	rtti:dtor	src/Abandon_exception.cpp	2338
 0x0040b7b0	std::locale::~locale	std::locale::_dtor	std::locale	destructor	rtti:dtor	src/Abandon_exception.cpp	110
-0x0040b8c4	FUN_0040b8c4	FUN_0040b8c4				src/Abandon_exception.cpp	1190
-0x0040bd6c	FUN_0040bd6c	FUN_0040bd6c				src/Abandon_exception.cpp	61
-0x0040bdac	FUN_0040bdac	FUN_0040bdac				src/Abandon_exception.cpp	163
-0x0040be50	FUN_0040be50	FUN_0040be50				src/Abandon_exception.cpp	182
+0x0040b8c4	ApplyConversion	ApplyConversion		function	analysis	src/Abandon_exception.cpp	1190
+0x0040bd6c	InitRegistryPaths	InitRegistryPaths		function	analysis	src/Abandon_exception.cpp	61
+0x0040bdac	DestroyRegistryPaths	DestroyRegistryPaths		function	analysis	src/Abandon_exception.cpp	163
+0x0040be50	TSMergeProfile::TSMergeProfile	TSMergeProfile::TSMergeProfile	TSMergeProfile	function	analysis	src/TSMergeProfile.cpp	182
 0x0040bf28	TSMergeProfile::~TSMergeProfile	TSMergeProfile::_dtor	TSMergeProfile	destructor	rtti:dtor	src/TSMergeProfile.cpp	555
-0x0040c154	FUN_0040c154	FUN_0040c154				src/TSMergeProfile.cpp	1183
-0x0040c638	FUN_0040c638	FUN_0040c638				src/TSMergeProfile.cpp	1110
-0x0040ca90	FUN_0040ca90	FUN_0040ca90				src/TSMergeProfile.cpp	3505
-0x0040d844	FUN_0040d844	FUN_0040d844				src/TSMergeProfile.cpp	638
-0x0040dac4	FUN_0040dac4	FUN_0040dac4				src/TSMergeProfile.cpp	899
-0x0040de48	FUN_0040de48	FUN_0040de48				src/TSMergeProfile.cpp	153
+0x0040c154	TSMergeProfile::Load	TSMergeProfile::Load	TSMergeProfile	function	analysis	src/TSMergeProfile.cpp	1183
+0x0040c638	TSMergeProfile::Save	TSMergeProfile::Save	TSMergeProfile	function	analysis	src/TSMergeProfile.cpp	1110
+0x0040ca90	ExpandLongPathName	ExpandLongPathName		function	analysis	src/TSMergeProfile.cpp	3505
+0x0040d844	std::operator_plus	std::operator_plus		function	analysis (matched TEACON.exe)	src/TSMergeProfile.cpp	638
+0x0040dac4	AppendChar	AppendChar		function	analysis (matched TEACON.exe)	src/TSMergeProfile.cpp	899
+0x0040de48	IsRelativePath	IsRelativePath		function	analysis	src/TSMergeProfile.cpp	153
 0x0040dee4	GetProgramDirectory	GetProgramDirectory		function	analysis (matched TEACON.exe)	src/TSMergeProfile.cpp	362
-0x0040e050	FUN_0040e050	FUN_0040e050				src/TSMergeProfile.cpp	791
-0x0040e368	FUN_0040e368	FUN_0040e368				src/TSMergeProfile.cpp	1103
-0x0040e7b8	FUN_0040e7b8	FUN_0040e7b8				src/TSMergeProfile.cpp	359
-0x0040e920	FUN_0040e920	FUN_0040e920				src/TSMergeProfile.cpp	201
+0x0040e050	GetMyDocumentsDirectory	GetMyDocumentsDirectory		function	analysis	src/TSMergeProfile.cpp	791
+0x0040e368	ResolveRelativePath	ResolveRelativePath		function	analysis	src/TSMergeProfile.cpp	1103
+0x0040e7b8	IsAnsiTextFile	IsAnsiTextFile		function	analysis	src/TSMergeProfile.cpp	359
+0x0040e920	Persist::Persist	Persist::Persist	Persist	function	analysis	src/Persist.cpp	201
 0x0040ea04	Persist::~Persist	Persist::_dtor	Persist	destructor	rtti:dtor	src/Persist.cpp	42
-0x0040ea30	Persist::QueryValueSized	Persist::QueryValueSized	Persist	function	analysis (matched TEACON.exe)	src/Persist.cpp	116
-0x0040eaa4	Persist::QueryValue	Persist::QueryValue	Persist	function	analysis (matched TEACON.exe)	src/Persist.cpp	83
-0x0040eaf8	FUN_0040eaf8	FUN_0040eaf8				src/Persist.cpp	46
-0x0040eb28	FUN_0040eb28	FUN_0040eb28				src/Persist.cpp	36
-0x0040eb4c	FUN_0040eb4c	FUN_0040eb4c				src/Persist.cpp	64
-0x0040eb8c	FUN_0040eb8c	FUN_0040eb8c				src/Persist.cpp	137
-0x0040ec5c	FUN_0040ec5c	FUN_0040ec5c				src/Persist.cpp	269
+0x0040ea30	Persist::QueryString	Persist::QueryString	Persist	function	analysis (matched TEACON.exe)	src/Persist.cpp	116
+0x0040eaa4	Persist::QueryDword	Persist::QueryDword	Persist	function	analysis (matched TEACON.exe)	src/Persist.cpp	83
+0x0040eaf8	Persist::SetString	Persist::SetString	Persist	function	analysis (matched TEA.exe)	src/Persist.cpp	46
+0x0040eb28	Persist::SetDword	Persist::SetDword	Persist	function	analysis (matched TEA.exe)	src/Persist.cpp	36
+0x0040eb4c	DestroyRichEditLoader	DestroyRichEditLoader		function	analysis (matched TEA.exe, duplicated code)	src/Persist.cpp	64
+0x0040eb8c	ShowHtmlHelp	ShowHtmlHelp		function	analysis	src/Persist.cpp	137
+0x0040ec5c	LoadHtmlHelp	LoadHtmlHelp		function	analysis	src/Persist.cpp	269
 0x0040ed80	Help::~Help	Help::_dtor	Help	destructor	rtti:dtor	src/Help.cpp	72
-0x0040edc8	FUN_0040edc8	FUN_0040edc8				src/Help.cpp	127
-0x0040ee47	FUN_0040ee47	FUN_0040ee47				src/Help.cpp	86
-0x0040ee9d	FUN_0040ee9d	FUN_0040ee9d				src/Help.cpp	82
-0x0040eef0	FUN_0040eef0	FUN_0040eef0				src/Help.cpp	8
-0x0040eef8	FUN_0040eef8	FUN_0040eef8				src/Help.cpp	6
+0x0040edc8	GetRichEditVersion	GetRichEditVersion		function	analysis	src/Help.cpp	127
+0x0040ee47	InitRichEditStreamer	InitRichEditStreamer		function	analysis	src/Help.cpp	86
+0x0040ee9d	DestroyRichEditStreamer	DestroyRichEditStreamer		function	analysis	src/Help.cpp	82
+0x0040eef0	OWL::TRichEdit::GetModule	OWL::TRichEdit::GetModule		function	analysis	src/Help.cpp	8
+0x0040eef8	OWL::TRichEdit::GetModuleInstance	OWL::TRichEdit::GetModuleInstance		function	analysis	src/Help.cpp	6
 0x0040ef00	OWL::TRichEdit::Find	OWL::TRichEdit::Find	OWL::TRichEdit	response-table-find	owl:response-table	lib/OWL_TRichEdit.cpp	69
 0x0040ef48	OWL::TRichEdit::Cmd24322	OWL::TRichEdit::Cmd24322	OWL::TRichEdit	message-handler	owl:response-table	lib/OWL_TRichEdit.cpp	27
 0x0040ef64	OWL::TRichEdit::Cmd24323	OWL::TRichEdit::Cmd24323	OWL::TRichEdit	message-handler	owl:response-table	lib/OWL_TRichEdit.cpp	27
@@ -123,15 +123,15 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0040efa0	OWL::TRichEdit::Cmd24326	OWL::TRichEdit::Cmd24326	OWL::TRichEdit	message-handler	owl:response-table	lib/OWL_TRichEdit.cpp	16
 0x0040efb0	OWL::TRichEdit::Cmd24321	OWL::TRichEdit::Cmd24321	OWL::TRichEdit	message-handler	owl:response-table	lib/OWL_TRichEdit.cpp	27
 0x0040f010	FUN_0040f010	FUN_0040f010				lib/code_0x0040c000.cpp	108
-0x0040f0a8	OWL::TRichEdit::vf13	OWL::TRichEdit::vf13	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	54
+0x0040f0a8	OWL::TRichEdit::GetSelection	OWL::TRichEdit::GetSelection	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	54
 0x0040f0e0	FUN_0040f0e0	FUN_0040f0e0				lib/code_0x0040c000.cpp	28
-0x0040f0fc	OWL::TRichEdit::vf15	OWL::TRichEdit::vf15	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	48
-0x0040f12c	FUN_0040f12c	FUN_0040f12c				lib/code_0x0040c000.cpp	28
-0x0040f148	FUN_0040f148	FUN_0040f148				lib/code_0x0040c000.cpp	28
-0x0040f164	OWL::TRichEdit::vf12	OWL::TRichEdit::vf12	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	46
+0x0040f0fc	OWL::TRichEdit::SetSelection	OWL::TRichEdit::SetSelection	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	48
+0x0040f12c	OWL::TRichEdit::SetSelection_46924c	OWL::TRichEdit::SetSelection_46924c		function	analysis (position-matched TEA.exe)	lib/code_0x0040c000.cpp	28
+0x0040f148	OWL::TRichEdit::GetTextRange	OWL::TRichEdit::GetTextRange		function	analysis (position-matched TEA.exe)	lib/code_0x0040c000.cpp	28
+0x0040f164	OWL::TRichEdit::GetSubText	OWL::TRichEdit::GetSubText	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	46
 0x0040f194	FUN_0040f194	FUN_0040f194				lib/code_0x0040c000.cpp	29
 0x0040f1b4	OWL::TRichEdit::vf16	OWL::TRichEdit::vf16	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	185
-0x0040f270	OWL::TRichEdit::vf17	OWL::TRichEdit::vf17	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	27
+0x0040f270	OWL::TRichEdit::Paste	OWL::TRichEdit::Paste	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	27
 0x0040f28c	FUN_0040f28c	FUN_0040f28c				lib/code_0x0040c000.cpp	31
 0x0040f2ac	FUN_0040f2ac	FUN_0040f2ac				lib/code_0x0040c000.cpp	31
 0x0040f2cc	OWL::TRichEdit::EvGetDlgCode	OWL::TRichEdit::EvGetDlgCode	OWL::TRichEdit	message-handler	owl:response-table	lib/OWL_TRichEdit.cpp	18
@@ -150,31 +150,31 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0040f6a8	OWL::TRichEdit::vf10	OWL::TRichEdit::vf10	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	7
 0x0040f6b0	FUN_0040f6b0	FUN_0040f6b0				lib/code_0x0040c000.cpp	57
 0x0040f6ec	FUN_0040f6ec	FUN_0040f6ec				lib/code_0x0040c000.cpp	57
-0x0040f728	OWL::TRichEdit::vf25	OWL::TRichEdit::vf25	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	285
-0x0040f848	OWL::TRichEdit::vf29	OWL::TRichEdit::vf29	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	277
-0x0040f9dc	FUN_0040f9dc	FUN_0040f9dc				lib/code_0x0040c000.cpp	102
-0x0040fa44	FUN_0040fa44	FUN_0040fa44				lib/code_0x0040c000.cpp	284
+0x0040f728	OWL::TRichEdit::ReadFromFile	OWL::TRichEdit::ReadFromFile	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	285
+0x0040f848	OWL::TRichEdit::WriteToFile	OWL::TRichEdit::WriteToFile	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	277
+0x0040f9dc	OWL::TRichEdit::Streamer::Streamer	OWL::TRichEdit::Streamer::Streamer	OWL::TRichEdit::Streamer	constructor	rtti:vtable-store	lib/OWL_TRichEdit.cpp	102
+0x0040fa44	OWL::TRichEdit::TRichEdit	OWL::TRichEdit::TRichEdit	OWL::TRichEdit	constructor	rtti:vtable-store	lib/OWL_TRichEdit.cpp	284
 0x0040fb60	OWL::TRichEdit::Streamer::vf1	OWL::TRichEdit::Streamer::vf1	OWL::TRichEdit::Streamer	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	27
 0x0040fb7c	FUN_0040fb7c	FUN_0040fb7c				lib/code_0x0040c000.cpp	87
 0x0040fbd4	OWL::TRichEdit::Streamer::vf2	OWL::TRichEdit::Streamer::vf2	OWL::TRichEdit::Streamer	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	22
 0x0040fbec	FUN_0040fbec	FUN_0040fbec				lib/code_0x0040c000.cpp	81
-0x0040fc8c	FUN_0040fc8c	FUN_0040fc8c				lib/code_0x0040c000.cpp	48
+0x0040fc8c	OWL::TRichEdit::UseRichEdit2	OWL::TRichEdit::UseRichEdit2		function	analysis (matched TEA.exe)	lib/code_0x0040c000.cpp	48
 0x0040fcbc	FUN_0040fcbc	FUN_0040fcbc				lib/code_0x0040c000.cpp	152
 0x0040fdf0	OWL::TErrorMode::~TErrorMode	OWL::TErrorMode::_dtor	OWL::TErrorMode	destructor	rtti:dtor	lib/OWL_TErrorMode.cpp	34
 0x0040fe14	OWL::TRichEdit::~TRichEdit	OWL::TRichEdit::_dtor	OWL::TRichEdit	destructor	rtti:dtor	lib/OWL_TRichEdit.cpp	162
 0x0040ffc4	OWL::TRichEditModule::~TRichEditModule	OWL::TRichEditModule::_dtor	OWL::TRichEditModule	destructor	rtti:dtor	lib/OWL_TRichEditModule.cpp	67
 0x00410058	OWL::TNewStreamer::vf0	OWL::TNewStreamer::vf0	OWL::TNewStreamer	virtual	rtti:vtable	lib/OWL_TNewStreamer.cpp	47
 0x00410088	OWL::TRichEdit::Streamer::vf3	OWL::TRichEdit::Streamer::vf3	OWL::TRichEdit::Streamer	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	10
-0x0041019c	OWL::TEdit::vf13	OWL::TEdit::vf13	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	29
+0x0041019c	OWL::TEdit::GetSelection	OWL::TEdit::GetSelection	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	29
 0x004101bc	OWL::TEdit::vf14	OWL::TEdit::vf14	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	36
-0x004101e0	OWL::TEdit::vf15	OWL::TEdit::vf15	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	39
-0x00410208	OWL::TEdit::vf17	OWL::TEdit::vf17	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	27
-0x00410224	OWL::TEdit::vf18	OWL::TEdit::vf18	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	41
-0x00410250	OWL::TEdit::vf19	OWL::TEdit::vf19	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	30
-0x00410390	OWL::TRichEdit::vf18	OWL::TRichEdit::vf18	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	50
-0x004103c4	OWL::TRichEdit::vf19	OWL::TRichEdit::vf19	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	93
+0x004101e0	OWL::TEdit::SetSelection	OWL::TEdit::SetSelection	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	39
+0x00410208	OWL::TEdit::Paste	OWL::TEdit::Paste	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	27
+0x00410224	OWL::TEdit::CharFromPos	OWL::TEdit::CharFromPos	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	41
+0x00410250	OWL::TEdit::PosFromChar	OWL::TEdit::PosFromChar	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	30
+0x00410390	OWL::TRichEdit::CharFromPos	OWL::TRichEdit::CharFromPos	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	50
+0x004103c4	OWL::TRichEdit::PosFromChar	OWL::TRichEdit::PosFromChar	OWL::TRichEdit	virtual	rtti:vtable	lib/OWL_TRichEdit.cpp	93
 0x00410510	FUN_00410510	FUN_00410510				lib/code_0x00410000.cpp	68
-0x00410554	FUN_00410554	FUN_00410554				lib/code_0x00410000.cpp	149
+0x00410554	OWL::TCommCtrlDll::TCommCtrlDll	OWL::TCommCtrlDll::TCommCtrlDll	OWL::TCommCtrlDll	constructor	rtti:vtable-store	lib/OWL_TCommCtrlDll.cpp	149
 0x0041060c	FUN_0041060c	FUN_0041060c				lib/code_0x00410000.cpp	48
 0x0041063c	FUN_0041063c	FUN_0041063c				lib/code_0x00410000.cpp	101
 0x004106a4	FUN_004106a4	FUN_004106a4				lib/code_0x00410000.cpp	75
@@ -200,7 +200,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00411394	__rwstd::facet_imp::vf1	__rwstd::facet_imp::vf1	__rwstd::facet_imp	virtual	rtti:vtable	lib/rwstd_facet_imp.cpp	5
 0x0041139c	__rwstd::facet_imp::~facet_imp	__rwstd::facet_imp::_dtor	__rwstd::facet_imp	destructor	rtti:dtor	lib/rwstd_facet_imp.cpp	66
 0x004113e0	FUN_004113e0	FUN_004113e0				lib/code_0x00410000.cpp	92
-0x0041143c	FUN_0041143c	FUN_0041143c				lib/code_0x00410000.cpp	64
+0x0041143c	DestroyRichEditLoader_41143c	DestroyRichEditLoader_41143c		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00410000.cpp	64
 0x0041147c	FUN_0041147c	FUN_0041147c				lib/code_0x00410000.cpp	73
 0x00411518	FUN_00411518	FUN_00411518				lib/code_0x00410000.cpp	173
 0x00411634	OWL::TAppDictionary::~TAppDictionary	OWL::TAppDictionary::_dtor	OWL::TAppDictionary	destructor	rtti:dtor	lib/OWL_TAppDictionary.cpp	102
@@ -208,7 +208,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004116f4	FUN_004116f4	FUN_004116f4				lib/code_0x00410000.cpp	37
 0x0041171c	FUN_0041171c	FUN_0041171c				lib/code_0x00410000.cpp	35
 0x00411768	FUN_00411768	FUN_00411768				lib/code_0x00410000.cpp	43
-0x00411794	FUN_00411794	FUN_00411794				lib/code_0x00410000.cpp	86
+0x00411794	OWL::TAppDictPidImp::TAppDictPidImp	OWL::TAppDictPidImp::TAppDictPidImp	OWL::TAppDictPidImp	constructor	rtti:vtable-store	lib/OWL_TAppDictPidImp.cpp	86
 0x004117ec	OWL::TAppDictPidImp::~TAppDictPidImp	OWL::TAppDictPidImp::_dtor	OWL::TAppDictPidImp	destructor	rtti:dtor	lib/OWL_TAppDictPidImp.cpp	89
 0x00411848	OWL::TAppDictPidImp::vf1	OWL::TAppDictPidImp::vf1	OWL::TAppDictPidImp	virtual	rtti:vtable	lib/OWL_TAppDictPidImp.cpp	86
 0x004118a0	OWL::TAppDictPidImp::vf2	OWL::TAppDictPidImp::vf2	OWL::TAppDictPidImp	virtual	rtti:vtable	lib/OWL_TAppDictPidImp.cpp	33
@@ -248,7 +248,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00412930	OWL::TButtonGadgetEnabler::vf0	OWL::TButtonGadgetEnabler::vf0	OWL::TButtonGadgetEnabler	virtual	rtti:vtable	lib/OWL_TButtonGadgetEnabler.cpp	38
 0x00412958	OWL::TButtonGadgetEnabler::vf1	OWL::TButtonGadgetEnabler::vf1	OWL::TButtonGadgetEnabler	virtual	rtti:vtable	lib/OWL_TButtonGadgetEnabler.cpp	5
 0x00412960	OWL::TButtonGadgetEnabler::vf2	OWL::TButtonGadgetEnabler::vf2	OWL::TButtonGadgetEnabler	virtual	rtti:vtable	lib/OWL_TButtonGadgetEnabler.cpp	22
-0x00412978	FUN_00412978	FUN_00412978				lib/code_0x00410000.cpp	330
+0x00412978	OWL::TButtonGadget::TButtonGadget	OWL::TButtonGadget::TButtonGadget	OWL::TButtonGadget	constructor	rtti:vtable-store	lib/OWL_TButtonGadget.cpp	330
 0x00412ae8	OWL::TButtonGadget::~TButtonGadget	OWL::TButtonGadget::_dtor	OWL::TButtonGadget	destructor	rtti:dtor	lib/OWL_TButtonGadget.cpp	176
 0x00412b98	FUN_00412b98	FUN_00412b98				lib/code_0x00410000.cpp	95
 0x00412bf8	OWL::TButtonGadget::vf5	OWL::TButtonGadget::vf5	OWL::TButtonGadget	virtual	rtti:vtable	lib/OWL_TButtonGadget.cpp	89
@@ -275,8 +275,8 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004138ac	OWL::TButtonGadget::vf16	OWL::TButtonGadget::vf16	OWL::TButtonGadget	virtual	rtti:vtable	lib/OWL_TButtonGadget.cpp	55
 0x004138e4	OWL::TButtonGadget::vf19	OWL::TButtonGadget::vf19	OWL::TButtonGadget	virtual	rtti:vtable	lib/OWL_TButtonGadget.cpp	66
 0x00413978	OWL::TStreamableBase::~TStreamableBase	OWL::TStreamableBase::_dtor	OWL::TStreamableBase	destructor	rtti:dtor	lib/OWL_TStreamableBase.cpp	32
-0x00413998	FUN_00413998	FUN_00413998				lib/code_0x00410000.cpp	377
-0x00413b14	FUN_00413b14	FUN_00413b14				lib/code_0x00410000.cpp	234
+0x00413998	OWL::TCelArray::TCelArray	OWL::TCelArray::TCelArray	OWL::TCelArray	constructor	rtti:vtable-store	lib/OWL_TCelArray.cpp	377
+0x00413b14	OWL::TCelArray::TCelArray_413b14	OWL::TCelArray::TCelArray_413b14	OWL::TCelArray	constructor	rtti:vtable-store	lib/OWL_TCelArray.cpp	234
 0x00413c00	OWL::TCelArray::~TCelArray	OWL::TCelArray::_dtor	OWL::TCelArray	destructor	rtti:dtor	lib/OWL_TCelArray.cpp	101
 0x00413c68	FUN_00413c68	FUN_00413c68				lib/code_0x00410000.cpp	57
 0x00413ca4	FUN_00413ca4	FUN_00413ca4				lib/code_0x00410000.cpp	124
@@ -292,9 +292,9 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004143f4	FUN_004143f4	FUN_004143f4				lib/code_0x00414000.cpp	423
 0x004145af	FUN_004145af	FUN_004145af				lib/code_0x00414000.cpp	62
 0x004145ed	FUN_004145ed	FUN_004145ed				lib/code_0x00414000.cpp	86
-0x00414644	FUN_00414644	FUN_00414644				lib/code_0x00414000.cpp	74
+0x00414644	OWL::TDiagGroupDef::TDiagGroupDef	OWL::TDiagGroupDef::TDiagGroupDef	OWL::TDiagGroupDef	constructor	rtti:vtable-store	lib/OWL_TDiagGroupDef.cpp	74
 0x004146b4	OWL::TDiagGroupDef::vf0	OWL::TDiagGroupDef::vf0	OWL::TDiagGroupDef	virtual	rtti:vtable	lib/OWL_TDiagGroupDef.cpp	10
-0x004146c0	FUN_004146c0	FUN_004146c0				lib/code_0x00414000.cpp	122
+0x004146c0	OWL::TDiagBase::TDiagBase	OWL::TDiagBase::TDiagBase	OWL::TDiagBase	constructor	rtti:vtable-store	lib/OWL_TDiagBase.cpp	122
 0x0041475c	OWL::TDiagBase::~TDiagBase	OWL::TDiagBase::_dtor	OWL::TDiagBase	destructor	rtti:dtor	lib/OWL_TDiagBase.cpp	41
 0x00414788	FUN_00414788	FUN_00414788				lib/code_0x00414000.cpp	44
 0x004147b4	FUN_004147b4	FUN_004147b4				lib/code_0x00414000.cpp	47
@@ -312,7 +312,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00414cb8	FUN_00414cb8	FUN_00414cb8				lib/code_0x00414000.cpp	130
 0x00414e0c	OWL::TClipboard::~TClipboard	OWL::TClipboard::_dtor	OWL::TClipboard	destructor	rtti:dtor	lib/OWL_TClipboard.cpp	37
 0x00414e34	FUN_00414e34	FUN_00414e34				lib/code_0x00414000.cpp	28
-0x00414e50	FUN_00414e50	FUN_00414e50				lib/code_0x00414000.cpp	72
+0x00414e50	OWL::TXClipboard::TXClipboard	OWL::TXClipboard::TXClipboard	OWL::TXClipboard	constructor	rtti:vtable-store	lib/OWL_TXClipboard.cpp	72
 0x00414eb8	OWL::TXClipboard::vf2	OWL::TXClipboard::vf2	OWL::TXClipboard	virtual	rtti:vtable	lib/OWL_TXClipboard.cpp	126
 0x00414f38	OWL::TXClipboard::vf3	OWL::TXClipboard::vf3	OWL::TXClipboard	virtual	rtti:vtable	lib/OWL_TXClipboard.cpp	116
 0x00414fac	OWL::TXClipboard::~TXClipboard	OWL::TXClipboard::_dtor	OWL::TXClipboard	destructor	rtti:dtor	lib/OWL_TXClipboard.cpp	67
@@ -335,11 +335,11 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004155a8	OWL::TCommonDialog::Find	OWL::TCommonDialog::Find	OWL::TCommonDialog	response-table-find	owl:response-table	lib/OWL_TCommonDialog.cpp	69
 0x004155f0	OWL::TCommonDialog::EvClose	OWL::TCommonDialog::EvClose	OWL::TCommonDialog	message-handler	owl:response-table	lib/OWL_TCommonDialog.cpp	16
 0x00415600	OWL::TCommonDialog::CmRange1to2	OWL::TCommonDialog::CmRange1to2	OWL::TCommonDialog	message-handler	owl:response-table	lib/OWL_TCommonDialog.cpp	16
-0x00415610	FUN_00415610	FUN_00415610				lib/code_0x00414000.cpp	303
+0x00415610	OWL::TCommonDialog::TCommonDialog	OWL::TCommonDialog::TCommonDialog	OWL::TCommonDialog	constructor	rtti:vtable-store	lib/OWL_TCommonDialog.cpp	303
 0x00415764	OWL::TCommonDialog::~TCommonDialog	OWL::TCommonDialog::_dtor	OWL::TCommonDialog	destructor	rtti:dtor	lib/OWL_TCommonDialog.cpp	249
-0x00415860	OWL::TCommonDialog::vf11	OWL::TCommonDialog::vf11	OWL::TCommonDialog	virtual	rtti:vtable	lib/OWL_TCommonDialog.cpp	35
-0x00415884	OWL::TCommonDialog::vf4	OWL::TCommonDialog::vf4	OWL::TCommonDialog	virtual	rtti:vtable	lib/OWL_TCommonDialog.cpp	5
-0x0041588c	OWL::TCommonDialog::vf6	OWL::TCommonDialog::vf6	OWL::TCommonDialog	virtual	rtti:vtable	lib/OWL_TCommonDialog.cpp	10
+0x00415860	OWL::TCommonDialog::SetupWindow	OWL::TCommonDialog::SetupWindow	OWL::TCommonDialog	virtual	rtti:vtable	lib/OWL_TCommonDialog.cpp	35
+0x00415884	OWL::TCommonDialog::PerformCreate	OWL::TCommonDialog::PerformCreate	OWL::TCommonDialog	virtual	rtti:vtable	lib/OWL_TCommonDialog.cpp	5
+0x0041588c	OWL::TCommonDialog::DoExecute	OWL::TCommonDialog::DoExecute	OWL::TCommonDialog	virtual	rtti:vtable	lib/OWL_TCommonDialog.cpp	10
 0x004159ac	FUN_004159ac	FUN_004159ac				lib/code_0x00414000.cpp	76
 0x004159f8	FUN_004159f8	FUN_004159f8				lib/code_0x00414000.cpp	73
 0x00415a44	FUN_00415a44	FUN_00415a44				lib/code_0x00414000.cpp	6
@@ -364,9 +364,9 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00415e34	OWL::TMMemBlocks<TStandardAllocator>::~TMMemBlocks	OWL::TMMemBlocks_TStandardAllocator::_dtor	OWL::TMMemBlocks<TStandardAllocator>	destructor	rtti:dtor	lib/OWL_TMMemBlocks.cpp	73
 0x00415ef4	OWL::TMMemStack<TStandardAllocator>::~TMMemStack	OWL::TMMemStack_TStandardAllocator::_dtor	OWL::TMMemStack<TStandardAllocator>	destructor	rtti:dtor	lib/OWL_TMMemStack.cpp	66
 0x00415f38	FUN_00415f38	FUN_00415f38				lib/code_0x00414000.cpp	40
-0x00415f60	FUN_00415f60	FUN_00415f60				lib/code_0x00414000.cpp	529
+0x00415f60	OWL::TControlBar::TControlBar	OWL::TControlBar::TControlBar	OWL::TControlBar	constructor	rtti:vtable-store	lib/OWL_TControlBar.cpp	529
 0x00416194	OWL::TControlBar::~TControlBar	OWL::TControlBar::_dtor	OWL::TControlBar	destructor	rtti:dtor	lib/OWL_TControlBar.cpp	222
-0x004162f4	OWL::TGadgetWindow::vf3	OWL::TGadgetWindow::vf3	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	11
+0x004162f4	OWL::TGadgetWindow::GetTooltip	OWL::TGadgetWindow::GetTooltip	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	11
 0x00416594	FUN_00416594	FUN_00416594				lib/code_0x00414000.cpp	67
 0x00416614	FUN_00416614	FUN_00416614				lib/code_0x00414000.cpp	61
 0x00416674	OWL::TCreatedDC::~TCreatedDC	OWL::TCreatedDC::_dtor	OWL::TCreatedDC	destructor	rtti:dtor	lib/OWL_TCreatedDC.cpp	126
@@ -452,8 +452,8 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004179c4	OWL::TEventHandler::vf0	OWL::TEventHandler::vf0	OWL::TEventHandler	virtual	rtti:vtable	lib/OWL_TEventHandler.cpp	7
 0x004179cc	FUN_004179cc	FUN_004179cc				lib/code_0x00414000.cpp	38
 0x004179f4	FUN_004179f4	FUN_004179f4				lib/code_0x00414000.cpp	87
-0x00417a4c	FUN_00417a4c	FUN_00417a4c				lib/code_0x00414000.cpp	288
-0x00417b88	FUN_00417b88	FUN_00417b88				lib/code_0x00414000.cpp	135
+0x00417a4c	OWL::TXBase::TXBase	OWL::TXBase::TXBase	OWL::TXBase	constructor	rtti:vtable-store	lib/OWL_TXBase.cpp	288
+0x00417b88	OWL::TXBase::TXBase_417b88	OWL::TXBase::TXBase_417b88	OWL::TXBase	constructor	rtti:vtable-store	lib/OWL_TXBase.cpp	135
 0x00417c10	OWL::TXBase::~TXBase	OWL::TXBase::_dtor	OWL::TXBase	destructor	rtti:dtor	lib/OWL_TXBase.cpp	233
 0x00417cfc	OWL::TXBase::vf2	OWL::TXBase::vf2	OWL::TXBase	virtual	rtti:vtable	lib/OWL_TXBase.cpp	82
 0x00417d50	OWL::TXBase::vf3	OWL::TXBase::vf3	OWL::TXBase	virtual	rtti:vtable	lib/OWL_TXBase.cpp	84
@@ -461,18 +461,18 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00417dd0	FUN_00417dd0	FUN_00417dd0				lib/code_0x00414000.cpp	81
 0x00417e24	FUN_00417e24	FUN_00417e24				lib/code_0x00414000.cpp	15
 0x00417e34	FUN_00417e34	FUN_00417e34				lib/code_0x00414000.cpp	221
-0x00417f14	FUN_00417f14	FUN_00417f14				lib/code_0x00414000.cpp	76
-0x00417f7c	FUN_00417f7c	FUN_00417f7c				lib/code_0x00414000.cpp	235
+0x00417f14	OWL::TXOwl::TXOwl	OWL::TXOwl::TXOwl	OWL::TXOwl	constructor	rtti:vtable-store	lib/OWL_TXOwl.cpp	76
+0x00417f7c	OWL::TXOwl::TXOwl_417f7c	OWL::TXOwl::TXOwl_417f7c	OWL::TXOwl	constructor	rtti:vtable-store	lib/OWL_TXOwl.cpp	235
 0x00418068	OWL::TXOwl::~TXOwl	OWL::TXOwl::_dtor	OWL::TXOwl	destructor	rtti:dtor	lib/OWL_TXOwl.cpp	93
 0x004180c8	OWL::TXOwl::vf4	OWL::TXOwl::vf4	OWL::TXOwl	virtual	rtti:vtable	lib/OWL_TXOwl.cpp	29
 0x004180e8	OWL::TXOwl::vf2	OWL::TXOwl::vf2	OWL::TXOwl	virtual	rtti:vtable	lib/OWL_TXOwl.cpp	113
 0x0041815c	OWL::TXOwl::vf3	OWL::TXOwl::vf3	OWL::TXOwl	virtual	rtti:vtable	lib/OWL_TXOwl.cpp	105
-0x004181c8	FUN_004181c8	FUN_004181c8				lib/code_0x00418000.cpp	69
+0x004181c8	OWL::TXOwl::TXOwl_4181c8	OWL::TXOwl::TXOwl_4181c8	OWL::TXOwl	constructor	rtti:vtable-store	lib/OWL_TXOwl.cpp	69
 0x00418210	FUN_00418210	FUN_00418210				lib/code_0x00418000.cpp	83
 0x00418264	FUN_00418264	FUN_00418264				lib/code_0x00418000.cpp	478
 0x00418444	FUN_00418444	FUN_00418444				lib/code_0x00418000.cpp	258
 0x00418548	FUN_00418548	FUN_00418548				lib/code_0x00418000.cpp	258
-0x0041864c	FUN_0041864c	FUN_0041864c				lib/code_0x00418000.cpp	74
+0x0041864c	OWL::TXOutOfMemory::TXOutOfMemory	OWL::TXOutOfMemory::TXOutOfMemory	OWL::TXOutOfMemory	constructor	rtti:vtable-store	lib/OWL_TXOutOfMemory.cpp	74
 0x004186bc	OWL::TXOutOfMemory::vf2	OWL::TXOutOfMemory::vf2	OWL::TXOutOfMemory	virtual	rtti:vtable	lib/OWL_TXOutOfMemory.cpp	126
 0x0041873c	OWL::TXOutOfMemory::vf3	OWL::TXOutOfMemory::vf3	OWL::TXOutOfMemory	virtual	rtti:vtable	lib/OWL_TXOutOfMemory.cpp	116
 0x00418860	FUN_00418860	FUN_00418860				lib/code_0x00418000.cpp	78
@@ -492,7 +492,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00418df8	FUN_00418df8	FUN_00418df8				lib/code_0x00418000.cpp	24
 0x00418e10	FUN_00418e10	FUN_00418e10				lib/code_0x00418000.cpp	37
 0x00418e38	FUN_00418e38	FUN_00418e38				lib/code_0x00418000.cpp	291
-0x00418f5c	FUN_00418f5c	FUN_00418f5c				lib/code_0x00418000.cpp	6
+0x00418f5c	OWL::TGadget::TGadget	OWL::TGadget::TGadget	OWL::TGadget	constructor	rtti:vtable-store	lib/OWL_TGadget.cpp	6
 0x00418f62	FUN_00418f62	FUN_00418f62				lib/code_0x00418000.cpp	282
 0x00419098	OWL::TGadget::~TGadget	OWL::TGadget::_dtor	OWL::TGadget	destructor	rtti:dtor	lib/OWL_TGadget.cpp	54
 0x004190d0	OWL::TGadget::vf4	OWL::TGadget::vf4	OWL::TGadget	virtual	rtti:vtable	lib/OWL_TGadget.cpp	23
@@ -522,11 +522,11 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00419a6c	OWL::TGadget::vf19	OWL::TGadget::vf19	OWL::TGadget	virtual	rtti:vtable	lib/OWL_TGadget.cpp	26
 0x00419a88	OWL::TGadget::vf18	OWL::TGadget::vf18	OWL::TGadget	virtual	rtti:vtable	lib/OWL_TGadget.cpp	5
 0x00419a90	OWL::TGadget::vf20	OWL::TGadget::vf20	OWL::TGadget	virtual	rtti:vtable	lib/OWL_TGadget.cpp	5
-0x00419a98	FUN_00419a98	FUN_00419a98				lib/code_0x00418000.cpp	151
+0x00419a98	OWL::TSeparatorGadget::TSeparatorGadget	OWL::TSeparatorGadget::TSeparatorGadget	OWL::TSeparatorGadget	constructor	rtti:vtable-store	lib/OWL_TSeparatorGadget.cpp	151
 0x00419b54	OWL::TSeparatorGadget::vf8	OWL::TSeparatorGadget::vf8	OWL::TSeparatorGadget	virtual	rtti:vtable	lib/OWL_TSeparatorGadget.cpp	13
 0x00419b64	OWL::TSeparatorGadget::vf12	OWL::TSeparatorGadget::vf12	OWL::TSeparatorGadget	virtual	rtti:vtable	lib/OWL_TSeparatorGadget.cpp	445
 0x00419d84	OWL::TSeparatorGadget::~TSeparatorGadget	OWL::TSeparatorGadget::_dtor	OWL::TSeparatorGadget	destructor	rtti:dtor	lib/OWL_TSeparatorGadget.cpp	66
-0x00419dc8	FUN_00419dc8	FUN_00419dc8				lib/code_0x00418000.cpp	65
+0x00419dc8	OWL::TGadgetList::TGadgetList	OWL::TGadgetList::TGadgetList	OWL::TGadgetList	constructor	rtti:vtable-store	lib/OWL_TGadgetList.cpp	65
 0x00419e2c	OWL::TGadgetList::~TGadgetList	OWL::TGadgetList::_dtor	OWL::TGadgetList	destructor	rtti:dtor	lib/OWL_TGadgetList.cpp	119
 0x00419ec8	FUN_00419ec8	FUN_00419ec8				lib/code_0x00418000.cpp	74
 0x00419f14	OWL::TGadgetList::vf1	OWL::TGadgetList::vf1	OWL::TGadgetList	virtual	rtti:vtable	lib/OWL_TGadgetList.cpp	84
@@ -536,10 +536,10 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041a060	OWL::TGadgetList::vf5	OWL::TGadgetList::vf5	OWL::TGadgetList	virtual	rtti:vtable	lib/OWL_TGadgetList.cpp	5
 0x0041a068	OWL::TGadgetWindow::Find	OWL::TGadgetWindow::Find	OWL::TGadgetWindow	response-table-find	owl:response-table	lib/OWL_TGadgetWindow.cpp	70
 0x0041a0b0	FUN_0041a0b0	FUN_0041a0b0				lib/code_0x00418000.cpp	421
-0x0041a280	FUN_0041a280	FUN_0041a280				lib/code_0x00418000.cpp	757
+0x0041a280	OWL::TGadgetWindow::TGadgetWindow	OWL::TGadgetWindow::TGadgetWindow	OWL::TGadgetWindow	constructor	rtti:vtable-store	lib/OWL_TGadgetWindow.cpp	757
 0x0041a59c	OWL::TGadgetWindow::~TGadgetWindow	OWL::TGadgetWindow::_dtor	OWL::TGadgetWindow	destructor	rtti:dtor	lib/OWL_TGadgetWindow.cpp	325
 0x0041a6e4	OWL::TGadgetWindow::EvSysColorChange	OWL::TGadgetWindow::EvSysColorChange	OWL::TGadgetWindow	message-handler	owl:response-table	lib/OWL_TGadgetWindow.cpp	31
-0x0041a704	OWL::TGadgetWindow::vf12	OWL::TGadgetWindow::vf12	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	145
+0x0041a704	OWL::TGadgetWindow::IdleAction	OWL::TGadgetWindow::IdleAction	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	145
 0x0041a798	FUN_0041a798	FUN_0041a798				lib/code_0x00418000.cpp	68
 0x0041a7dc	FUN_0041a7dc	FUN_0041a7dc				lib/code_0x00418000.cpp	36
 0x0041a800	FUN_0041a800	FUN_0041a800				lib/code_0x00418000.cpp	26
@@ -548,7 +548,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041a914	OWL::TGadgetWindow::vf14	OWL::TGadgetWindow::vf14	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	204
 0x0041a9e0	FUN_0041a9e0	FUN_0041a9e0				lib/code_0x00418000.cpp	56
 0x0041aa7c	FUN_0041aa7c	FUN_0041aa7c				lib/code_0x00418000.cpp	79
-0x0041aacc	OWL::TGadgetWindow::vf1	OWL::TGadgetWindow::vf1	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	25
+0x0041aacc	OWL::TGadgetWindow::Create	OWL::TGadgetWindow::Create	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	25
 0x0041aae8	OWL::TGadgetWindow::vf2	OWL::TGadgetWindow::vf2	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	131
 0x0041ab6c	OWL::TGadgetWindow::vf16	OWL::TGadgetWindow::vf16	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	182
 0x0041ac24	OWL::TGadgetWindow::vf20	OWL::TGadgetWindow::vf20	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	70
@@ -566,13 +566,13 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041b80c	OWL::TGadgetWindow::vf9	OWL::TGadgetWindow::vf9	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	127
 0x0041b88c	OWL::TGadgetWindow::vf10	OWL::TGadgetWindow::vf10	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	86
 0x0041b8e4	OWL::TGadgetWindow::vf11	OWL::TGadgetWindow::vf11	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	151
-0x0041b97c	OWL::TGadgetWindow::vf21	OWL::TGadgetWindow::vf21	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	193
-0x0041ba40	OWL::TGadgetWindow::vf22	OWL::TGadgetWindow::vf22	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	105
-0x0041baac	OWL::TGadgetWindow::vf23	OWL::TGadgetWindow::vf23	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	134
+0x0041b97c	OWL::TGadgetWindow::SetupWindow	OWL::TGadgetWindow::SetupWindow	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	193
+0x0041ba40	OWL::TGadgetWindow::CleanupWindow	OWL::TGadgetWindow::CleanupWindow	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	105
+0x0041baac	OWL::TGadgetWindow::PreProcessMsg	OWL::TGadgetWindow::PreProcessMsg	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	134
 0x0041bb34	OWL::TGadgetWindow::EvMsg_7ef2	OWL::TGadgetWindow::EvMsg_7ef2	OWL::TGadgetWindow	message-handler	owl:response-table	lib/OWL_TGadgetWindow.cpp	49
 0x0041bb68	OWL::TGadgetWindow::EvWindowPosChanging	OWL::TGadgetWindow::EvWindowPosChanging	OWL::TGadgetWindow	message-handler	owl:response-table	lib/OWL_TGadgetWindow.cpp	129
 0x0041bbec	OWL::TGadgetWindow::vf15	OWL::TGadgetWindow::vf15	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	313
-0x0041bd80	OWL::TGadgetWindow::vf19	OWL::TGadgetWindow::vf19	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	46
+0x0041bd80	OWL::TGadgetWindow::Paint	OWL::TGadgetWindow::Paint	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	46
 0x0041bdb0	OWL::TGadgetWindow::EvLButtonDown	OWL::TGadgetWindow::EvLButtonDown	OWL::TGadgetWindow	message-handler	owl:response-table	lib/OWL_TGadgetWindow.cpp	125
 0x0041be30	OWL::TGadgetWindow::EvLButtonUp	OWL::TGadgetWindow::EvLButtonUp	OWL::TGadgetWindow	message-handler	owl:response-table	lib/OWL_TGadgetWindow.cpp	109
 0x0041bea0	OWL::TGadgetWindow::EvLButtonDblClk	OWL::TGadgetWindow::EvLButtonDblClk	OWL::TGadgetWindow	message-handler	owl:response-table	lib/OWL_TGadgetWindow.cpp	42
@@ -582,10 +582,10 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041c0e0	OWL::TGadgetList::vf6	OWL::TGadgetList::vf6	OWL::TGadgetList	virtual	rtti:vtable	lib/OWL_TGadgetList.cpp	9
 0x0041c0ec	FUN_0041c0ec	FUN_0041c0ec				lib/code_0x0041c000.cpp	9
 0x0041c0f8	FUN_0041c0f8	FUN_0041c0f8				lib/code_0x0041c000.cpp	9
-0x0041c104	OWL::TGadgetWindow::vf4	OWL::TGadgetWindow::vf4	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	178
+0x0041c104	OWL::TGadgetWindow::EnableTooltip	OWL::TGadgetWindow::EnableTooltip	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	178
 0x0041c1d4	FUN_0041c1d4	FUN_0041c1d4				lib/code_0x0041c000.cpp	186
-0x0041c2b4	OWL::TGadgetWindow::vf24	OWL::TGadgetWindow::vf24	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	203
-0x0041c380	OWL::TGadgetWindow::vf25	OWL::TGadgetWindow::vf25	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	147
+0x0041c2b4	OWL::TGadgetWindow::EvCommand	OWL::TGadgetWindow::EvCommand	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	203
+0x0041c380	OWL::TGadgetWindow::EvCommandEnable	OWL::TGadgetWindow::EvCommandEnable	OWL::TGadgetWindow	virtual	rtti:vtable	lib/OWL_TGadgetWindow.cpp	147
 0x0041c490	OWL::TGadgetWindow::TLayoutInfo::~TLayoutInfo	OWL::TGadgetWindow::TLayoutInfo::_dtor	OWL::TGadgetWindow::TLayoutInfo	destructor	rtti:dtor	lib/OWL_TGadgetWindow.cpp	67
 0x0041c6d8	OWL::TGadgetWindowFont::~TGadgetWindowFont	OWL::TGadgetWindowFont::_dtor	OWL::TGadgetWindowFont	destructor	rtti:dtor	lib/OWL_TGadgetWindowFont.cpp	69
 0x0041c768	FUN_0041c768	FUN_0041c768				lib/code_0x0041c000.cpp	12
@@ -594,7 +594,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041c7c8	FUN_0041c7c8	FUN_0041c7c8				lib/code_0x0041c000.cpp	54
 0x0041c800	FUN_0041c800	FUN_0041c800				lib/code_0x0041c000.cpp	21
 0x0041c818	FUN_0041c818	FUN_0041c818				lib/code_0x0041c000.cpp	24
-0x0041c830	FUN_0041c830	FUN_0041c830				lib/code_0x0041c000.cpp	229
+0x0041c830	OWL::TXGdi::TXGdi	OWL::TXGdi::TXGdi	OWL::TXGdi	constructor	rtti:vtable-store	lib/OWL_TXGdi.cpp	229
 0x0041c934	OWL::TXGdi::vf2	OWL::TXGdi::vf2	OWL::TXGdi	virtual	rtti:vtable	lib/OWL_TXGdi.cpp	126
 0x0041c9b4	OWL::TXGdi::vf3	OWL::TXGdi::vf3	OWL::TXGdi	virtual	rtti:vtable	lib/OWL_TXGdi.cpp	116
 0x0041cad0	FUN_0041cad0	FUN_0041cad0				lib/code_0x0041c000.cpp	86
@@ -624,7 +624,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041d8bc	FUN_0041d8bc	FUN_0041d8bc				lib/code_0x0041c000.cpp	26
 0x0041d8d6	FUN_0041d8d6	FUN_0041d8d6				lib/code_0x0041c000.cpp	27
 0x0041d8f1	FUN_0041d8f1	FUN_0041d8f1				lib/code_0x0041c000.cpp	499
-0x0041dae4	FUN_0041dae4	FUN_0041dae4				lib/code_0x0041c000.cpp	86
+0x0041dae4	InitRichEditStreamer_41dae4	InitRichEditStreamer_41dae4		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x0041c000.cpp	86
 0x0041db3a	FUN_0041db3a	FUN_0041db3a				lib/code_0x0041c000.cpp	48
 0x0041db6a	FUN_0041db6a	FUN_0041db6a				lib/code_0x0041c000.cpp	41
 0x0041db94	FUN_0041db94	FUN_0041db94				lib/code_0x0041c000.cpp	63
@@ -639,7 +639,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041e0e8	FUN_0041e0e8	FUN_0041e0e8				lib/code_0x0041c000.cpp	49
 0x0041e11c	FUN_0041e11c	FUN_0041e11c				lib/code_0x0041c000.cpp	431
 0x0041e2cc	OWL::TLayoutWindow::EvSize	OWL::TLayoutWindow::EvSize	OWL::TLayoutWindow	message-handler	owl:response-table	lib/OWL_TLayoutWindow.cpp	86
-0x0041e324	OWL::TLayoutWindow::vf2	OWL::TLayoutWindow::vf2	OWL::TLayoutWindow	virtual	rtti:vtable	lib/OWL_TLayoutWindow.cpp	36
+0x0041e324	OWL::TLayoutWindow::RemoveChild	OWL::TLayoutWindow::RemoveChild	OWL::TLayoutWindow	virtual	rtti:vtable	lib/OWL_TLayoutWindow.cpp	36
 0x0041e348	FUN_0041e348	FUN_0041e348				lib/code_0x0041c000.cpp	32
 0x0041e368	FUN_0041e368	FUN_0041e368				lib/code_0x0041c000.cpp	36
 0x0041e38c	FUN_0041e38c	FUN_0041e38c				lib/code_0x0041c000.cpp	53
@@ -649,8 +649,8 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041e9c8	FUN_0041e9c8	FUN_0041e9c8				lib/code_0x0041c000.cpp	492
 0x0041ebb4	FUN_0041ebb4	FUN_0041ebb4				lib/code_0x0041c000.cpp	30
 0x0041ebd4	FUN_0041ebd4	FUN_0041ebd4				lib/code_0x0041c000.cpp	147
-0x0041ec68	FUN_0041ec68	FUN_0041ec68				lib/code_0x0041c000.cpp	102
-0x0041ecd0	FUN_0041ecd0	FUN_0041ecd0				lib/code_0x0041c000.cpp	265
+0x0041ec68	OWL::TLayoutWindow::Streamer::Streamer	OWL::TLayoutWindow::Streamer::Streamer	OWL::TLayoutWindow::Streamer	constructor	rtti:vtable-store	lib/OWL_TLayoutWindow.cpp	102
+0x0041ecd0	OWL::TLayoutWindow::TLayoutWindow	OWL::TLayoutWindow::TLayoutWindow	OWL::TLayoutWindow	constructor	rtti:vtable-store	lib/OWL_TLayoutWindow.cpp	265
 0x0041eddc	OWL::TLayoutWindow::Streamer::vf1	OWL::TLayoutWindow::Streamer::vf1	OWL::TLayoutWindow::Streamer	virtual	rtti:vtable	lib/OWL_TLayoutWindow.cpp	11
 0x0041ede8	OWL::TLayoutWindow::Streamer::vf2	OWL::TLayoutWindow::Streamer::vf2	OWL::TLayoutWindow::Streamer	virtual	rtti:vtable	lib/OWL_TLayoutWindow.cpp	5
 0x0041edf0	FUN_0041edf0	FUN_0041edf0				lib/code_0x0041c000.cpp	189
@@ -662,7 +662,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041f0d8	FUN_0041f0d8	FUN_0041f0d8				lib/code_0x0041c000.cpp	152
 0x0041f268	OWL::TLayoutWindow::Streamer::vf3	OWL::TLayoutWindow::Streamer::vf3	OWL::TLayoutWindow::Streamer	virtual	rtti:vtable	lib/OWL_TLayoutWindow.cpp	10
 0x0041f2cc	FUN_0041f2cc	FUN_0041f2cc				lib/code_0x0041c000.cpp	70
-0x0041f363	FUN_0041f363	FUN_0041f363				lib/code_0x0041c000.cpp	64
+0x0041f363	DestroyRichEditLoader_41f363	DestroyRichEditLoader_41f363		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x0041c000.cpp	64
 0x0041f3f8	FUN_0041f3f8	FUN_0041f3f8				lib/code_0x0041c000.cpp	68
 0x0041f43c	FUN_0041f43c	FUN_0041f43c				lib/code_0x0041c000.cpp	18
 0x0041f450	FUN_0041f450	FUN_0041f450				lib/code_0x0041c000.cpp	92
@@ -682,7 +682,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0042033c	OWL::TTmpBufferBase::~TTmpBufferBase	OWL::TTmpBufferBase::_dtor	OWL::TTmpBufferBase	destructor	rtti:dtor	lib/OWL_TTmpBufferBase.cpp	68
 0x00420380	OWL::__TFixedAlloc::~__TFixedAlloc	OWL::__TFixedAlloc::_dtor	OWL::__TFixedAlloc	destructor	rtti:dtor	lib/OWL_TFixedAlloc.cpp	429
 0x00420530	FUN_00420530	FUN_00420530				lib/code_0x00420000.cpp	73
-0x00420579	FUN_00420579	FUN_00420579				lib/code_0x00420000.cpp	64
+0x00420579	DestroyRichEditLoader_420579	DestroyRichEditLoader_420579		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00420000.cpp	64
 0x0042060c	FUN_0042060c	FUN_0042060c				lib/code_0x00420000.cpp	70
 0x00420674	OWL::TMemDCCache::~TMemDCCache	OWL::TMemDCCache::_dtor	OWL::TMemDCCache	destructor	rtti:dtor	lib/OWL_TMemDCCache.cpp	59
 0x004206b0	FUN_004206b0	FUN_004206b0				lib/code_0x00420000.cpp	88
@@ -694,19 +694,19 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004208a4	FUN_004208a4	FUN_004208a4				lib/code_0x00420000.cpp	67
 0x004208e8	FUN_004208e8	FUN_004208e8				lib/code_0x00420000.cpp	42
 0x00420914	OWL::TMemoryDC::~TMemoryDC	OWL::TMemoryDC::_dtor	OWL::TMemoryDC	destructor	rtti:dtor	lib/OWL_TMemoryDC.cpp	147
-0x004209a8	FUN_004209a8	FUN_004209a8				lib/code_0x00420000.cpp	91
+0x004209a8	OWL::TMenu::TMenu	OWL::TMenu::TMenu	OWL::TMenu	constructor	rtti:vtable-store	lib/OWL_TMenu.cpp	91
 0x00420a04	OWL::TMemoryDC::vf24	OWL::TMemoryDC::vf24	OWL::TMemoryDC	virtual	rtti:vtable	lib/OWL_TMemoryDC.cpp	28
-0x00420a20	FUN_00420a20	FUN_00420a20				lib/code_0x00420000.cpp	109
-0x00420a90	FUN_00420a90	FUN_00420a90				lib/code_0x00420000.cpp	74
-0x00420adc	FUN_00420adc	FUN_00420adc				lib/code_0x00420000.cpp	94
+0x00420a20	OWL::TMenu::TMenu_420a20	OWL::TMenu::TMenu_420a20	OWL::TMenu	constructor	rtti:vtable-store	lib/OWL_TMenu.cpp	109
+0x00420a90	OWL::TMenu::TMenu_420a90	OWL::TMenu::TMenu_420a90	OWL::TMenu	constructor	rtti:vtable-store	lib/OWL_TMenu.cpp	74
+0x00420adc	OWL::TMenu::TMenu_420adc	OWL::TMenu::TMenu_420adc	OWL::TMenu	constructor	rtti:vtable-store	lib/OWL_TMenu.cpp	94
 0x00420b3c	OWL::TMenu::~TMenu	OWL::TMenu::_dtor	OWL::TMenu	destructor	rtti:dtor	lib/OWL_TMenu.cpp	54
 0x00420b74	FUN_00420b74	FUN_00420b74				lib/code_0x00420000.cpp	169
 0x00420c24	FUN_00420c24	FUN_00420c24				lib/code_0x00420000.cpp	23
 0x00420c3c	OWL::TMenu::vf2	OWL::TMenu::vf2	OWL::TMenu	virtual	rtti:vtable	lib/OWL_TMenu.cpp	5
 0x00420c44	OWL::TMenu::vf3	OWL::TMenu::vf3	OWL::TMenu	virtual	rtti:vtable	lib/OWL_TMenu.cpp	5
 0x00420c4c	FUN_00420c4c	FUN_00420c4c				lib/code_0x00420000.cpp	409
-0x00420de8	FUN_00420de8	FUN_00420de8				lib/code_0x00420000.cpp	71
-0x00420e50	FUN_00420e50	FUN_00420e50				lib/code_0x00420000.cpp	72
+0x00420de8	OWL::TPopupMenu::TPopupMenu	OWL::TPopupMenu::TPopupMenu	OWL::TPopupMenu	constructor	rtti:vtable-store	lib/OWL_TPopupMenu.cpp	71
+0x00420e50	OWL::TXMenu::TXMenu	OWL::TXMenu::TXMenu	OWL::TXMenu	constructor	rtti:vtable-store	lib/OWL_TXMenu.cpp	72
 0x00420eb4	OWL::TXMenu::vf2	OWL::TXMenu::vf2	OWL::TXMenu	virtual	rtti:vtable	lib/OWL_TXMenu.cpp	126
 0x00420f34	OWL::TXMenu::vf3	OWL::TXMenu::vf3	OWL::TXMenu	virtual	rtti:vtable	lib/OWL_TXMenu.cpp	116
 0x00421050	FUN_00421050	FUN_00421050				lib/code_0x00420000.cpp	83
@@ -718,7 +718,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004213b4	OWL::TMessageBar::vf14	OWL::TMessageBar::vf14	OWL::TMessageBar	virtual	rtti:vtable	lib/OWL_TMessageBar.cpp	34
 0x004213d8	OWL::TMessageBar::vf27	OWL::TMessageBar::vf27	OWL::TMessageBar	virtual	rtti:vtable	lib/OWL_TMessageBar.cpp	70
 0x00421638	OWL::TSystemMessage::~TSystemMessage	OWL::TSystemMessage::_dtor	OWL::TSystemMessage	destructor	rtti:dtor	lib/OWL_TSystemMessage.cpp	178
-0x004216ec	FUN_004216ec	FUN_004216ec				lib/code_0x00420000.cpp	56
+0x004216ec	OWL::TMsgThread::TMsgThread	OWL::TMsgThread::TMsgThread	OWL::TMsgThread	constructor	rtti:vtable-store	lib/OWL_TMsgThread.cpp	56
 0x00421724	OWL::TMsgThread::vf0	OWL::TMsgThread::vf0	OWL::TMsgThread	virtual	rtti:vtable	lib/OWL_TMsgThread.cpp	124
 0x004217c8	OWL::TMsgThread::vf1	OWL::TMsgThread::vf1	OWL::TMsgThread	virtual	rtti:vtable	lib/OWL_TMsgThread.cpp	7
 0x004217d0	OWL::TMsgThread::vf2	OWL::TMsgThread::vf2	OWL::TMsgThread	virtual	rtti:vtable	lib/OWL_TMsgThread.cpp	24
@@ -803,10 +803,10 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00423bc8	FUN_00423bc8	FUN_00423bc8				lib/code_0x00420000.cpp	71
 0x00423c10	FUN_00423c10	FUN_00423c10				lib/code_0x00420000.cpp	197
 0x00423d54	OWL::TFileName::~TFileName	OWL::TFileName::_dtor	OWL::TFileName	destructor	rtti:dtor	lib/OWL_TFileName.cpp	1024
-0x00424178	FUN_00424178	FUN_00424178				lib/code_0x00424000.cpp	338
+0x00424178	OWL::TPickListPopup::TPickListPopup	OWL::TPickListPopup::TPickListPopup	OWL::TPickListPopup	constructor	rtti:vtable-store	lib/OWL_TPickListPopup.cpp	338
 0x004242cc	FUN_004242cc	FUN_004242cc				lib/code_0x00424000.cpp	58
-0x00424308	OWL::TPickListPopup::vf7	OWL::TPickListPopup::vf7	OWL::TPickListPopup	virtual	rtti:vtable	lib/OWL_TPickListPopup.cpp	127
-0x00424388	OWL::TPickListPopup::vf18	OWL::TPickListPopup::vf18	OWL::TPickListPopup	virtual	rtti:vtable	lib/OWL_TPickListPopup.cpp	19
+0x00424308	OWL::TPickListPopup::Execute	OWL::TPickListPopup::Execute	OWL::TPickListPopup	virtual	rtti:vtable	lib/OWL_TPickListPopup.cpp	127
+0x00424388	OWL::TPickListPopup::EvCommand	OWL::TPickListPopup::EvCommand	OWL::TPickListPopup	virtual	rtti:vtable	lib/OWL_TPickListPopup.cpp	19
 0x00424418	OWL::TPickListPopup::~TPickListPopup	OWL::TPickListPopup::_dtor	OWL::TPickListPopup	destructor	rtti:dtor	lib/OWL_TPickListPopup.cpp	138
 0x004244c8	OWL::TView::vf1	OWL::TView::vf1	OWL::TView	virtual	rtti:vtable	lib/OWL_TView.cpp	11
 0x004244d4	OWL::TView::vf2	OWL::TView::vf2	OWL::TView	virtual	rtti:vtable	lib/OWL_TView.cpp	11
@@ -825,10 +825,10 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00424804	FUN_00424804	FUN_00424804				lib/code_0x00424000.cpp	82
 0x00424874	OWL::TRegion::~TRegion	OWL::TRegion::_dtor	OWL::TRegion	destructor	rtti:dtor	lib/OWL_TRegion.cpp	59
 0x004248fc	OWL::TRegLink::~TRegLink	OWL::TRegLink::_dtor	OWL::TRegLink	destructor	rtti:dtor	lib/OWL_TRegLink.cpp	32
-0x00424938	FUN_00424938	FUN_00424938				lib/code_0x00424000.cpp	86
+0x00424938	InitRichEditStreamer_424938	InitRichEditStreamer_424938		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00424000.cpp	86
 0x0042498e	FUN_0042498e	FUN_0042498e				lib/code_0x00424000.cpp	48
-0x004249c0	FUN_004249c0	FUN_004249c0				lib/code_0x00424000.cpp	102
-0x00424a28	FUN_00424a28	FUN_00424a28				lib/code_0x00424000.cpp	192
+0x004249c0	OWL::TWindow::Streamer::Streamer	OWL::TWindow::Streamer::Streamer	OWL::TWindow::Streamer	constructor	rtti:vtable-store	lib/OWL_TWindow.cpp	102
+0x00424a28	OWL::TWindow::TWindow	OWL::TWindow::TWindow	OWL::TWindow	constructor	rtti:vtable-store	lib/OWL_TWindow.cpp	192
 0x00424ae8	FUN_00424ae8	FUN_00424ae8				lib/code_0x00424000.cpp	78
 0x00424b38	FUN_00424b38	FUN_00424b38				lib/code_0x00424000.cpp	38
 0x00424b60	OWL::TWindow::Streamer::vf1	OWL::TWindow::Streamer::vf1	OWL::TWindow::Streamer	virtual	rtti:vtable	lib/OWL_TWindow.cpp	823
@@ -846,12 +846,12 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004256b8	FUN_004256b8	FUN_004256b8				lib/code_0x00424000.cpp	24
 0x004256d0	FUN_004256d0	FUN_004256d0				lib/code_0x00424000.cpp	84
 0x00425724	FUN_00425724	FUN_00425724				lib/code_0x00424000.cpp	25
-0x00425740	FUN_00425740	FUN_00425740				lib/code_0x00424000.cpp	88
+0x00425740	OWL::TTooltipEnabler::TTooltipEnabler	OWL::TTooltipEnabler::TTooltipEnabler	OWL::TTooltipEnabler	constructor	rtti:vtable-store	lib/OWL_TTooltipEnabler.cpp	88
 0x00425798	OWL::TTooltipEnabler::vf1	OWL::TTooltipEnabler::vf1	OWL::TTooltipEnabler	virtual	rtti:vtable	lib/OWL_TTooltipEnabler.cpp	35
 0x004257bc	OWL::TTooltipEnabler::vf2	OWL::TTooltipEnabler::vf2	OWL::TTooltipEnabler	virtual	rtti:vtable	lib/OWL_TTooltipEnabler.cpp	5
-0x004257c4	FUN_004257c4	FUN_004257c4				lib/code_0x00424000.cpp	357
+0x004257c4	OWL::TTooltip::TTooltip	OWL::TTooltip::TTooltip	OWL::TTooltip	constructor	rtti:vtable-store	lib/OWL_TTooltip.cpp	357
 0x0042592c	OWL::TTooltip::~TTooltip	OWL::TTooltip::_dtor	OWL::TTooltip	destructor	rtti:dtor	lib/OWL_TTooltip.cpp	210
-0x00425a00	OWL::TTooltip::vf9	OWL::TTooltip::vf9	OWL::TTooltip	virtual	rtti:vtable	lib/OWL_TTooltip.cpp	10
+0x00425a00	OWL::TTooltip::GetClassName	OWL::TTooltip::GetClassName	OWL::TTooltip	virtual	rtti:vtable	lib/OWL_TTooltip.cpp	10
 0x00425ab0	OWL::TFrameWindow::vf4	OWL::TFrameWindow::vf4	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	7
 0x00425ab8	OWL::TFrameWindow::vf5	OWL::TFrameWindow::vf5	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	7
 0x00425b18	FUN_00425b18	FUN_00425b18				lib/code_0x00424000.cpp	93
@@ -878,18 +878,18 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0042756c	FUN_0042756c	FUN_0042756c				lib/code_0x00424000.cpp	12
 0x00427578	OWL::TPointer<OWL::TBitmap>::~TPointer	OWL::TPointer_OWL_TBitmap::_dtor	OWL::TPointer<OWL::TBitmap>	destructor	rtti:dtor	lib/OWL_TPointer.cpp	87
 0x004275d0	FUN_004275d0	FUN_004275d0				lib/code_0x00424000.cpp	2214
-0x00427e78	FUN_00427e78	FUN_00427e78				lib/code_0x00424000.cpp	86
+0x00427e78	InitRichEditStreamer_427e78	InitRichEditStreamer_427e78		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00424000.cpp	86
 0x00427ece	FUN_00427ece	FUN_00427ece				lib/code_0x00424000.cpp	48
 0x00427f00	OWL::TUrlLink::Find	OWL::TUrlLink::Find	OWL::TUrlLink	response-table-find	owl:response-table	lib/OWL_TUrlLink.cpp	69
 0x00427f64	OWL::TUrlLink::~TUrlLink	OWL::TUrlLink::_dtor	OWL::TUrlLink	destructor	rtti:dtor	lib/OWL_TUrlLink.cpp	479
-0x00428144	OWL::TUrlLink::vf11	OWL::TUrlLink::vf11	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	10
-0x00428150	OWL::TUrlLink::vf15	OWL::TUrlLink::vf15	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	743
-0x00428438	OWL::TUrlLink::vf13	OWL::TUrlLink::vf13	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	148
+0x00428144	OWL::TUrlLink::GetClassName	OWL::TUrlLink::GetClassName	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	10
+0x00428150	OWL::TUrlLink::SetupWindow	OWL::TUrlLink::SetupWindow	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	743
+0x00428438	OWL::TUrlLink::EnableTooltip	OWL::TUrlLink::EnableTooltip	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	148
 0x004284cc	FUN_004284cc	FUN_004284cc				lib/code_0x00428000.cpp	346
-0x00428628	OWL::TUrlLink::vf14	OWL::TUrlLink::vf14	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	134
+0x00428628	OWL::TUrlLink::PreProcessMsg	OWL::TUrlLink::PreProcessMsg	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	134
 0x004286b0	FUN_004286b0	FUN_004286b0				lib/code_0x00428000.cpp	42
-0x004286dc	OWL::TUrlLink::vf16	OWL::TUrlLink::vf16	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	116
-0x00428750	OWL::TUrlLink::vf17	OWL::TUrlLink::vf17	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	616
+0x004286dc	OWL::TUrlLink::GetWindowClass	OWL::TUrlLink::GetWindowClass	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	116
+0x00428750	OWL::TUrlLink::Paint	OWL::TUrlLink::Paint	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	616
 0x00428a1c	OWL::TUrlLink::EvPaint	OWL::TUrlLink::EvPaint	OWL::TUrlLink	message-handler	owl:response-table	lib/OWL_TUrlLink.cpp	121
 0x00428a98	OWL::TUrlLink::EvMsg_19	OWL::TUrlLink::EvMsg_19	OWL::TUrlLink	message-handler	owl:response-table	lib/OWL_TUrlLink.cpp	180
 0x00428b4c	OWL::TUrlLink::EvLButtonDown	OWL::TUrlLink::EvLButtonDown	OWL::TUrlLink	message-handler	owl:response-table	lib/OWL_TUrlLink.cpp	104
@@ -902,15 +902,15 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00428e6c	FUN_00428e6c	FUN_00428e6c				lib/code_0x00428000.cpp	352
 0x00428fcc	OWL::TUrlLink::vf19	OWL::TUrlLink::vf19	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	2799
 0x00429abc	OWL::TUrlLink::vf20	OWL::TUrlLink::vf20	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	581
-0x00429de0	FUN_00429de0	FUN_00429de0				lib/code_0x00428000.cpp	102
-0x00429e48	FUN_00429e48	FUN_00429e48				lib/code_0x00428000.cpp	358
+0x00429de0	OWL::TUrlLink::Streamer::Streamer	OWL::TUrlLink::Streamer::Streamer	OWL::TUrlLink::Streamer	constructor	rtti:vtable-store	lib/OWL_TUrlLink.cpp	102
+0x00429e48	OWL::TUrlLink::TUrlLink	OWL::TUrlLink::TUrlLink	OWL::TUrlLink	constructor	rtti:vtable-store	lib/OWL_TUrlLink.cpp	358
 0x00429fb0	OWL::TUrlLink::Streamer::vf1	OWL::TUrlLink::Streamer::vf1	OWL::TUrlLink::Streamer	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	201
 0x0042a07c	FUN_0042a07c	FUN_0042a07c				lib/code_0x00428000.cpp	87
 0x0042a0d4	OWL::TUrlLink::Streamer::vf2	OWL::TUrlLink::Streamer::vf2	OWL::TUrlLink::Streamer	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	187
 0x0042a190	FUN_0042a190	FUN_0042a190				lib/code_0x00428000.cpp	81
 0x0042a1e4	FUN_0042a1e4	FUN_0042a1e4				lib/code_0x00428000.cpp	152
 0x0042a338	OWL::TUrlLink::Streamer::vf3	OWL::TUrlLink::Streamer::vf3	OWL::TUrlLink::Streamer	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	10
-0x0042a344	OWL::TUrlLink::vf12	OWL::TUrlLink::vf12	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	11
+0x0042a344	OWL::TUrlLink::GetTooltip	OWL::TUrlLink::GetTooltip	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	11
 0x0042a42c	FUN_0042a42c	FUN_0042a42c				lib/code_0x00428000.cpp	12
 0x0042a438	OWL::TPointer<OWL::TFont>::~TPointer	OWL::TPointer_OWL_TFont::_dtor	OWL::TPointer<OWL::TFont>	destructor	rtti:dtor	lib/OWL_TPointer.cpp	99
 0x0042a49c	FUN_0042a49c	FUN_0042a49c				lib/code_0x00428000.cpp	90
@@ -926,39 +926,39 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0042a954	FUN_0042a954	FUN_0042a954				lib/code_0x00428000.cpp	115
 0x0042a9c7	FUN_0042a9c7	FUN_0042a9c7				lib/code_0x00428000.cpp	49
 0x0042a9f8	OWL::TWindow::Find	OWL::TWindow::Find	OWL::TWindow	response-table-find	owl:response-table	lib/OWL_TWindow.cpp	33
-0x0042aa1c	FUN_0042aa1c	FUN_0042aa1c				lib/code_0x00428000.cpp	61
+0x0042aa1c	OWL::TCommandEnabler::TCommandEnabler	OWL::TCommandEnabler::TCommandEnabler	OWL::TCommandEnabler	constructor	rtti:vtable-store	lib/OWL_TCommandEnabler.cpp	61
 0x0042aa5c	OWL::TCommandEnabler::vf0	OWL::TCommandEnabler::vf0	OWL::TCommandEnabler	virtual	rtti:vtable	lib/OWL_TCommandEnabler.cpp	12
 0x0042aa68	FUN_0042aa68	FUN_0042aa68				lib/code_0x00428000.cpp	42
-0x0042aa94	FUN_0042aa94	FUN_0042aa94				lib/code_0x00428000.cpp	237
-0x0042ab84	FUN_0042ab84	FUN_0042ab84				lib/code_0x00428000.cpp	218
+0x0042aa94	OWL::TWindow::TWindow_42aa94	OWL::TWindow::TWindow_42aa94	OWL::TWindow	constructor	rtti:vtable-store	lib/OWL_TWindow.cpp	237
+0x0042ab84	OWL::TWindow::TWindow_42ab84	OWL::TWindow::TWindow_42ab84	OWL::TWindow	constructor	rtti:vtable-store	lib/OWL_TWindow.cpp	218
 0x0042ac60	FUN_0042ac60	FUN_0042ac60				lib/code_0x00428000.cpp	82
 0x0042acb4	FUN_0042acb4	FUN_0042acb4				lib/code_0x00428000.cpp	300
 0x0042ade0	OWL::TWindow::~TWindow	OWL::TWindow::_dtor	OWL::TWindow	destructor	rtti:dtor	lib/OWL_TWindow.cpp	500
-0x0042afd4	OWL::TWindow::vf10	OWL::TWindow::vf10	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	158
-0x0042b074	OWL::TWindow::vf11	OWL::TWindow::vf11	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	122
+0x0042afd4	OWL::TWindow::PreProcessMsg	OWL::TWindow::PreProcessMsg	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	158
+0x0042b074	OWL::TWindow::IdleAction	OWL::TWindow::IdleAction	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	122
 0x0042b0f0	OWL::TWindow::EvSysColorChange	OWL::TWindow::EvSysColorChange	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	32
-0x0042b110	OWL::TWindow::vf32	OWL::TWindow::vf32	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	81
-0x0042b164	OWL::TWindow::vf13	OWL::TWindow::vf13	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	140
-0x0042b1f0	OWL::TWindow::vf14	OWL::TWindow::vf14	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	39
+0x0042b110	OWL::TWindow::RemoveChild	OWL::TWindow::RemoveChild	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	81
+0x0042b164	OWL::TWindow::SetParent	OWL::TWindow::SetParent	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	140
+0x0042b1f0	OWL::TWindow::SetDocTitle	OWL::TWindow::SetDocTitle	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	39
 0x0042b218	FUN_0042b218	FUN_0042b218				lib/code_0x00428000.cpp	86
 0x0042b294	FUN_0042b294	FUN_0042b294				lib/code_0x00428000.cpp	496
-0x0042b488	OWL::TWindow::vf18	OWL::TWindow::vf18	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	174
-0x0042b538	OWL::TWindow::vf19	OWL::TWindow::vf19	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	244
-0x0042b62c	OWL::TWindow::vf20	OWL::TWindow::vf20	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	78
+0x0042b488	OWL::TWindow::EvCommand	OWL::TWindow::EvCommand	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	174
+0x0042b538	OWL::TWindow::EvNotify	OWL::TWindow::EvNotify	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	244
+0x0042b62c	OWL::TWindow::EvCommandEnable	OWL::TWindow::EvCommandEnable	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	78
 0x0042b67c	FUN_0042b67c	FUN_0042b67c				lib/code_0x00428000.cpp	369
-0x0042b7f0	OWL::TWindow::vf17	OWL::TWindow::vf17	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	28
+0x0042b7f0	OWL::TWindow::DefWindowProc	OWL::TWindow::DefWindowProc	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	28
 0x0042b80c	FUN_0042b80c	FUN_0042b80c				lib/code_0x00428000.cpp	56
 0x0042b894	FUN_0042b894	FUN_0042b894				lib/code_0x00428000.cpp	44
 0x0042b8c0	FUN_0042b8c0	FUN_0042b8c0				lib/code_0x00428000.cpp	45
 0x0042b8f0	FUN_0042b8f0	FUN_0042b8f0				lib/code_0x00428000.cpp	64
 0x0042b930	FUN_0042b930	FUN_0042b930				lib/code_0x00428000.cpp	22
 0x0042b948	FUN_0042b948	FUN_0042b948				lib/code_0x00428000.cpp	16
-0x0042b958	OWL::TWindow::vf16	OWL::TWindow::vf16	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	596
+0x0042b958	OWL::TWindow::WindowProc	OWL::TWindow::WindowProc	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	596
 0x0042bbb4	FUN_0042bbb4	FUN_0042bbb4				lib/code_0x00428000.cpp	101
 0x0042bc1c	FUN_0042bc1c	FUN_0042bc1c				lib/code_0x00428000.cpp	78
 0x0042bc6c	FUN_0042bc6c	FUN_0042bc6c				lib/code_0x00428000.cpp	85
 0x0042bcc4	OWL::TWindow::EvCreate	OWL::TWindow::EvCreate	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	29
-0x0042bce4	OWL::TWindow::vf12	OWL::TWindow::vf12	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	7
+0x0042bce4	OWL::TWindow::HoldFocusHWnd	OWL::TWindow::HoldFocusHWnd	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	7
 0x0042bcec	OWL::TWindow::EvKillFocus	OWL::TWindow::EvKillFocus	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	70
 0x0042bd34	OWL::TWindow::EvSize	OWL::TWindow::EvSize	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	181
 0x0042bdec	OWL::TWindow::EvMove	OWL::TWindow::EvMove	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	143
@@ -975,26 +975,26 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0042c33c	OWL::TWindow::EvEraseBkgnd	OWL::TWindow::EvEraseBkgnd	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	352
 0x0042c49c	OWL::TWindow::EvMsg_19	OWL::TWindow::EvMsg_19	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	178
 0x0042c550	OWL::TWindow::EvPaint	OWL::TWindow::EvPaint	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	190
-0x0042c610	OWL::TWindow::vf21	OWL::TWindow::vf21	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	5
+0x0042c610	OWL::TWindow::Paint	OWL::TWindow::Paint	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	5
 0x0042c618	OWL::TWindow::EvSetCursor	OWL::TWindow::EvSetCursor	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	58
 0x0042c654	OWL::TWindow::EvLButtonDown	OWL::TWindow::EvLButtonDown	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	149
 0x0042c6ec	FUN_0042c6ec	FUN_0042c6ec				lib/code_0x0042c000.cpp	18
-0x0042c700	OWL::TWindow::vf6	OWL::TWindow::vf6	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	128
-0x0042c780	OWL::TWindow::vf28	OWL::TWindow::vf28	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	168
-0x0042c828	OWL::TWindow::vf29	OWL::TWindow::vf29	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	115
+0x0042c700	OWL::TWindow::Destroy	OWL::TWindow::Destroy	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	128
+0x0042c780	OWL::TWindow::GetWindowClass	OWL::TWindow::GetWindowClass	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	168
+0x0042c828	OWL::TWindow::GetClassName	OWL::TWindow::GetClassName	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	115
 0x0042c89c	FUN_0042c89c	FUN_0042c89c				lib/code_0x0042c000.cpp	43
-0x0042c8c8	OWL::TWindow::vf5	OWL::TWindow::vf5	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	77
-0x0042c918	OWL::TWindow::vf4	OWL::TWindow::vf4	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	368
-0x0042ca88	OWL::TWindow::vf7	OWL::TWindow::vf7	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	16
-0x0042ca98	OWL::TWindow::vf8	OWL::TWindow::vf8	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	58
-0x0042cad4	OWL::TWindow::vf30	OWL::TWindow::vf30	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	151
-0x0042cb6c	OWL::TWindow::vf31	OWL::TWindow::vf31	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	5
-0x0042cb74	OWL::TWindow::vf22	OWL::TWindow::vf22	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	76
-0x0042cbc0	OWL::TWindow::vf23	OWL::TWindow::vf23	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	30
+0x0042c8c8	OWL::TWindow::PerformCreate	OWL::TWindow::PerformCreate	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	77
+0x0042c918	OWL::TWindow::Create	OWL::TWindow::Create	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	368
+0x0042ca88	OWL::TWindow::Execute	OWL::TWindow::Execute	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	16
+0x0042ca98	OWL::TWindow::DoExecute	OWL::TWindow::DoExecute	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	58
+0x0042cad4	OWL::TWindow::SetupWindow	OWL::TWindow::SetupWindow	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	151
+0x0042cb6c	OWL::TWindow::CleanupWindow	OWL::TWindow::CleanupWindow	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	5
+0x0042cb74	OWL::TWindow::Transfer	OWL::TWindow::Transfer	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	76
+0x0042cbc0	OWL::TWindow::TransferData	OWL::TWindow::TransferData	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	30
 0x0042cbe0	FUN_0042cbe0	FUN_0042cbe0				lib/code_0x0042c000.cpp	96
-0x0042cc40	OWL::TWindow::vf3	OWL::TWindow::vf3	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	233
-0x0042cd2c	OWL::TWindow::vf15	OWL::TWindow::vf15	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	34
-0x0042cd50	OWL::TWindow::vf9	OWL::TWindow::vf9	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	64
+0x0042cc40	OWL::TWindow::Register	OWL::TWindow::Register	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	233
+0x0042cd2c	OWL::TWindow::CanClose	OWL::TWindow::CanClose	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	34
+0x0042cd50	OWL::TWindow::CloseWindow	OWL::TWindow::CloseWindow	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	64
 0x0042cd90	OWL::TWindow::EvClose	OWL::TWindow::EvClose	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	82
 0x0042cde4	OWL::TWindow::EvDestroy	OWL::TWindow::EvDestroy	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	77
 0x0042ce34	OWL::TWindow::EvNCDestroy	OWL::TWindow::EvNCDestroy	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	22
@@ -1027,7 +1027,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0042d52c	FUN_0042d52c	FUN_0042d52c				lib/code_0x0042c000.cpp	59
 0x0042d568	FUN_0042d568	FUN_0042d568				lib/code_0x0042c000.cpp	52
 0x0042d59c	FUN_0042d59c	FUN_0042d59c				lib/code_0x0042c000.cpp	129
-0x0042d620	OWL::TWindow::vf25	OWL::TWindow::vf25	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	173
+0x0042d620	OWL::TWindow::ShowWindow	OWL::TWindow::ShowWindow	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	173
 0x0042d6f8	FUN_0042d6f8	FUN_0042d6f8				lib/code_0x0042c000.cpp	286
 0x0042d818	OWL::TWindow::EvInitMenuPopup	OWL::TWindow::EvInitMenuPopup	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	324
 0x0042d95c	OWL::TWindow::EvContextMenu	OWL::TWindow::EvContextMenu	OWL::TWindow	message-handler	owl:response-table	lib/OWL_TWindow.cpp	134
@@ -1038,13 +1038,13 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0042db28	FUN_0042db28	FUN_0042db28				lib/code_0x0042c000.cpp	77
 0x0042db78	FUN_0042db78	FUN_0042db78				lib/code_0x0042c000.cpp	71
 0x0042dbc0	FUN_0042dbc0	FUN_0042dbc0				lib/code_0x0042c000.cpp	64
-0x0042dc00	OWL::TWindow::vf2	OWL::TWindow::vf2	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	151
+0x0042dc00	OWL::TWindow::EnableTooltip	OWL::TWindow::EnableTooltip	OWL::TWindow	virtual	rtti:vtable	lib/OWL_TWindow.cpp	151
 0x0042dc98	FUN_0042dc98	FUN_0042dc98				lib/code_0x0042c000.cpp	168
 0x0042dd40	FUN_0042dd40	FUN_0042dd40				lib/code_0x0042c000.cpp	28
 0x0042dd5c	FUN_0042dd5c	FUN_0042dd5c				lib/code_0x0042c000.cpp	22
 0x0042dd74	FUN_0042dd74	FUN_0042dd74				lib/code_0x0042c000.cpp	74
-0x0042ddc0	FUN_0042ddc0	FUN_0042ddc0				lib/code_0x0042c000.cpp	248
-0x0042ded4	FUN_0042ded4	FUN_0042ded4				lib/code_0x0042c000.cpp	105
+0x0042ddc0	OWL::TXWindow::TXWindow	OWL::TXWindow::TXWindow	OWL::TXWindow	constructor	rtti:vtable-store	lib/OWL_TXWindow.cpp	248
+0x0042ded4	OWL::TXWindow::TXWindow_42ded4	OWL::TXWindow::TXWindow_42ded4	OWL::TXWindow	constructor	rtti:vtable-store	lib/OWL_TXWindow.cpp	105
 0x0042df40	OWL::TXWindow::vf4	OWL::TXWindow::vf4	OWL::TXWindow	virtual	rtti:vtable	lib/OWL_TXWindow.cpp	28
 0x0042df5c	OWL::TXWindow::vf2	OWL::TXWindow::vf2	OWL::TXWindow	virtual	rtti:vtable	lib/OWL_TXWindow.cpp	82
 0x0042dfb0	OWL::TXWindow::vf3	OWL::TXWindow::vf3	OWL::TXWindow	virtual	rtti:vtable	lib/OWL_TXWindow.cpp	84
@@ -1095,7 +1095,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00430928	FUN_00430928	FUN_00430928				lib/code_0x00430000.cpp	62
 0x00430968	FUN_00430968	FUN_00430968				lib/code_0x00430000.cpp	65
 0x004309ac	FUN_004309ac	FUN_004309ac				lib/code_0x00430000.cpp	102
-0x00430a14	FUN_00430a14	FUN_00430a14				lib/code_0x00430000.cpp	74
+0x00430a14	OWL::TXInvalidMainWindow::TXInvalidMainWindow	OWL::TXInvalidMainWindow::TXInvalidMainWindow	OWL::TXInvalidMainWindow	constructor	rtti:vtable-store	lib/OWL_TXInvalidMainWindow.cpp	74
 0x00430a88	OWL::TXInvalidMainWindow::vf2	OWL::TXInvalidMainWindow::vf2	OWL::TXInvalidMainWindow	virtual	rtti:vtable	lib/OWL_TXInvalidMainWindow.cpp	126
 0x00430b08	OWL::TXInvalidMainWindow::vf3	OWL::TXInvalidMainWindow::vf3	OWL::TXInvalidMainWindow	virtual	rtti:vtable	lib/OWL_TXInvalidMainWindow.cpp	116
 0x00430c34	FUN_00430c34	FUN_00430c34				lib/code_0x00430000.cpp	78
@@ -1105,7 +1105,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00430d6c	FUN_00430d6c	FUN_00430d6c				lib/code_0x00430000.cpp	290
 0x00430ebc	FUN_00430ebc	FUN_00430ebc				lib/code_0x00430000.cpp	36
 0x00430ee0	FUN_00430ee0	FUN_00430ee0				lib/code_0x00430000.cpp	55
-0x00430f34	FUN_00430f34	FUN_00430f34				lib/code_0x00430000.cpp	64
+0x00430f34	DestroyRichEditLoader_430f34	DestroyRichEditLoader_430f34		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00430000.cpp	64
 0x00430f74	FUN_00430f74	FUN_00430f74				lib/code_0x00430000.cpp	73
 0x00431010	FUN_00431010	FUN_00431010				lib/code_0x00430000.cpp	70
 0x00431078	OWL::TBrushCache::~TBrushCache	OWL::TBrushCache::_dtor	OWL::TBrushCache	destructor	rtti:dtor	lib/OWL_TBrushCache.cpp	93
@@ -1121,33 +1121,33 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00431504	FUN_00431504	FUN_00431504				lib/code_0x00430000.cpp	58
 0x00431540	FUN_00431540	FUN_00431540				lib/code_0x00430000.cpp	199
 0x00431608	OWL::TButton::Find	OWL::TButton::Find	OWL::TButton	response-table-find	owl:response-table	lib/OWL_TButton.cpp	69
-0x004316d8	FUN_004316d8	FUN_004316d8				lib/code_0x00430000.cpp	312
+0x004316d8	OWL::TButton::TButton	OWL::TButton::TButton	OWL::TButton	constructor	rtti:vtable-store	lib/OWL_TButton.cpp	312
 0x00431810	OWL::TButton::~TButton	OWL::TButton::_dtor	OWL::TButton	destructor	rtti:dtor	lib/OWL_TButton.cpp	249
-0x0043190c	OWL::TButton::vf9	OWL::TButton::vf9	OWL::TButton	virtual	rtti:vtable	lib/OWL_TButton.cpp	31
-0x0043192c	OWL::TButton::vf10	OWL::TButton::vf10	OWL::TButton	virtual	rtti:vtable	lib/OWL_TButton.cpp	52
+0x0043190c	OWL::TButton::GetClassName	OWL::TButton::GetClassName	OWL::TButton	virtual	rtti:vtable	lib/OWL_TButton.cpp	31
+0x0043192c	OWL::TButton::SetupWindow	OWL::TButton::SetupWindow	OWL::TButton	virtual	rtti:vtable	lib/OWL_TButton.cpp	52
 0x00431960	OWL::TButton::EvGetDlgCode	OWL::TButton::EvGetDlgCode	OWL::TButton	message-handler	owl:response-table	lib/OWL_TButton.cpp	53
 0x00431998	OWL::TButton::EvMsg_f4	OWL::TButton::EvMsg_f4	OWL::TButton	message-handler	owl:response-table	lib/OWL_TButton.cpp	93
-0x004319f8	FUN_004319f8	FUN_004319f8				lib/code_0x00430000.cpp	86
+0x004319f8	InitRichEditStreamer_4319f8	InitRichEditStreamer_4319f8		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00430000.cpp	86
 0x00431a4e	FUN_00431a4e	FUN_00431a4e				lib/code_0x00430000.cpp	48
-0x00431a80	FUN_00431a80	FUN_00431a80				lib/code_0x00430000.cpp	102
-0x00431ae8	FUN_00431ae8	FUN_00431ae8				lib/code_0x00430000.cpp	283
+0x00431a80	OWL::TButton::Streamer::Streamer	OWL::TButton::Streamer::Streamer	OWL::TButton::Streamer	constructor	rtti:vtable-store	lib/OWL_TButton.cpp	102
+0x00431ae8	OWL::TButton::TButton_431ae8	OWL::TButton::TButton_431ae8	OWL::TButton	constructor	rtti:vtable-store	lib/OWL_TButton.cpp	283
 0x00431c04	EvRegisteredMsg_431c04_431c04	EvRegisteredMsg_431c04_431c04		message-handler	owl:response-table	lib/code_0x00430000.cpp	55
 0x00431c3c	FUN_00431c3c	FUN_00431c3c				lib/code_0x00430000.cpp	87
 0x00431c94	OWL::TButton::Streamer::vf2	OWL::TButton::Streamer::vf2	OWL::TButton::Streamer	virtual	rtti:vtable	lib/OWL_TButton.cpp	50
 0x00431cc8	FUN_00431cc8	FUN_00431cc8				lib/code_0x00430000.cpp	81
 0x00431d1c	FUN_00431d1c	FUN_00431d1c				lib/code_0x00430000.cpp	152
 0x00431e28	OWL::TButton::Streamer::vf3	OWL::TButton::Streamer::vf3	OWL::TButton::Streamer	virtual	rtti:vtable	lib/OWL_TButton.cpp	10
-0x00431e34	OWL::TCheckBox::vf8	OWL::TCheckBox::vf8	OWL::TCheckBox	virtual	rtti:vtable	lib/OWL_TCheckBox.cpp	69
+0x00431e34	OWL::TCheckBox::Find	OWL::TCheckBox::Find	OWL::TCheckBox	virtual	rtti:vtable	lib/OWL_TCheckBox.cpp	69
 0x00431e7c	EvGetDlgCode_431e7c	EvGetDlgCode_431e7c		message-handler	owl:response-table	lib/code_0x00430000.cpp	18
-0x00431f2c	FUN_00431f2c	FUN_00431f2c				lib/code_0x00430000.cpp	309
+0x00431f2c	OWL::TCheckBox::TCheckBox	OWL::TCheckBox::TCheckBox	OWL::TCheckBox	constructor	rtti:vtable-store	lib/OWL_TCheckBox.cpp	309
 0x00432064	OWL::TCheckBox::~TCheckBox	OWL::TCheckBox::_dtor	OWL::TCheckBox	destructor	rtti:dtor	lib/OWL_TCheckBox.cpp	249
-0x00432160	OWL::TCheckBox::vf9	OWL::TCheckBox::vf9	OWL::TCheckBox	virtual	rtti:vtable	lib/OWL_TCheckBox.cpp	31
-0x00432180	OWL::TCheckBox::vf11	OWL::TCheckBox::vf11	OWL::TCheckBox	virtual	rtti:vtable	lib/OWL_TCheckBox.cpp	67
+0x00432160	OWL::TCheckBox::GetClassName	OWL::TCheckBox::GetClassName	OWL::TCheckBox	virtual	rtti:vtable	lib/OWL_TCheckBox.cpp	31
+0x00432180	OWL::TCheckBox::Transfer	OWL::TCheckBox::Transfer	OWL::TCheckBox	virtual	rtti:vtable	lib/OWL_TCheckBox.cpp	67
 0x004321c4	FUN_004321c4	FUN_004321c4				lib/code_0x00430000.cpp	54
 0x004321fc	BNClicked_4321fc	BNClicked_4321fc		message-handler	owl:response-table	lib/code_0x00430000.cpp	42
 0x00432228	OWL::TControl::Find	OWL::TControl::Find	OWL::TControl	response-table-find	owl:response-table	lib/OWL_TControl.cpp	70
-0x00432270	FUN_00432270	FUN_00432270				lib/code_0x00430000.cpp	323
-0x00432414	FUN_00432414	FUN_00432414				lib/code_0x00430000.cpp	347
+0x00432270	OWL::TControl::TControl	OWL::TControl::TControl	OWL::TControl	constructor	rtti:vtable-store	lib/OWL_TControl.cpp	323
+0x00432414	OWL::TControl::TControl_432414	OWL::TControl::TControl_432414	OWL::TControl	constructor	rtti:vtable-store	lib/OWL_TControl.cpp	347
 0x00432570	OWL::TControl::~TControl	OWL::TControl::_dtor	OWL::TControl	destructor	rtti:dtor	lib/OWL_TControl.cpp	193
 0x00432634	OWL::TControl::EvPaint	OWL::TControl::EvPaint	OWL::TControl	message-handler	owl:response-table	lib/OWL_TControl.cpp	44
 0x00432660	OWL::TControl::EvCompareitem	OWL::TControl::EvCompareitem	OWL::TControl	message-handler	owl:response-table	lib/OWL_TControl.cpp	21
@@ -1161,10 +1161,10 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00432774	OWL::TControl::vf5	OWL::TControl::vf5	OWL::TControl	virtual	rtti:vtable	lib/OWL_TControl.cpp	48
 0x004327a4	OWL::TControl::vf6	OWL::TControl::vf6	OWL::TControl	virtual	rtti:vtable	lib/OWL_TControl.cpp	39
 0x004327cc	OWL::TControl::vf7	OWL::TControl::vf7	OWL::TControl	virtual	rtti:vtable	lib/OWL_TControl.cpp	39
-0x004327f4	FUN_004327f4	FUN_004327f4				lib/code_0x00430000.cpp	86
+0x004327f4	InitRichEditStreamer_4327f4	InitRichEditStreamer_4327f4		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00430000.cpp	86
 0x0043284a	FUN_0043284a	FUN_0043284a				lib/code_0x00430000.cpp	48
-0x0043287c	FUN_0043287c	FUN_0043287c				lib/code_0x00430000.cpp	102
-0x004328e4	FUN_004328e4	FUN_004328e4				lib/code_0x00430000.cpp	250
+0x0043287c	OWL::TControl::Streamer::Streamer	OWL::TControl::Streamer::Streamer	OWL::TControl::Streamer	constructor	rtti:vtable-store	lib/OWL_TControl.cpp	102
+0x004328e4	OWL::TControl::TControl_4328e4	OWL::TControl::TControl_4328e4	OWL::TControl	constructor	rtti:vtable-store	lib/OWL_TControl.cpp	250
 0x004329e0	OWL::TControl::Streamer::vf1	OWL::TControl::Streamer::vf1	OWL::TControl::Streamer	virtual	rtti:vtable	lib/OWL_TControl.cpp	56
 0x00432a18	FUN_00432a18	FUN_00432a18				lib/code_0x00430000.cpp	87
 0x00432a70	OWL::TControl::Streamer::vf2	OWL::TControl::Streamer::vf2	OWL::TControl::Streamer	virtual	rtti:vtable	lib/OWL_TControl.cpp	53
@@ -1177,17 +1177,17 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00432d20	FUN_00432d20	FUN_00432d20				lib/code_0x00430000.cpp	42
 0x00432d4c	OWL::TDecoratedFrame::Find	OWL::TDecoratedFrame::Find	OWL::TDecoratedFrame	response-table-find	owl:response-table	lib/OWL_TDecoratedFrame.cpp	88
 0x00432dc8	OWL::TDecoratedFrame::~TDecoratedFrame	OWL::TDecoratedFrame::_dtor	OWL::TDecoratedFrame	destructor	rtti:dtor	lib/OWL_TDecoratedFrame.cpp	384
-0x00432f48	OWL::TDecoratedFrame::vf9	OWL::TDecoratedFrame::vf9	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	133
-0x00432fd0	OWL::TDecoratedFrame::vf10	OWL::TDecoratedFrame::vf10	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	52
-0x00433004	OWL::TDecoratedFrame::vf4	OWL::TDecoratedFrame::vf4	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	419
-0x004331a8	OWL::TDecoratedFrame::vf11	OWL::TDecoratedFrame::vf11	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	64
-0x004331e8	OWL::TDecoratedFrame::vf3	OWL::TDecoratedFrame::vf3	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	110
+0x00432f48	OWL::TDecoratedFrame::TFrameWindow_vf16	OWL::TDecoratedFrame::TFrameWindow_vf16	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	133
+0x00432fd0	OWL::TDecoratedFrame::TFrameWindow_vf17	OWL::TDecoratedFrame::TFrameWindow_vf17	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	52
+0x00433004	OWL::TDecoratedFrame::TFrameWindow_vf7	OWL::TDecoratedFrame::TFrameWindow_vf7	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	419
+0x004331a8	OWL::TDecoratedFrame::TFrameWindow_vf8	OWL::TDecoratedFrame::TFrameWindow_vf8	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	64
+0x004331e8	OWL::TDecoratedFrame::TFrameWindow_vf10	OWL::TDecoratedFrame::TFrameWindow_vf10	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	110
 0x00433258	OWL::TDecoratedFrame::vf2	OWL::TDecoratedFrame::vf2	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	437
 0x00433410	OWL::TDecoratedFrame::EvMenuSelect	OWL::TDecoratedFrame::EvMenuSelect	OWL::TDecoratedFrame	message-handler	owl:response-table	lib/OWL_TDecoratedFrame.cpp	229
 0x004334f8	OWL::TDecoratedFrame::EvSize	OWL::TDecoratedFrame::EvSize	OWL::TDecoratedFrame	message-handler	owl:response-table	lib/OWL_TDecoratedFrame.cpp	46
 0x00433528	OWL::TDecoratedFrame::EvEnteridle	OWL::TDecoratedFrame::EvEnteridle	OWL::TDecoratedFrame	message-handler	owl:response-table	lib/OWL_TDecoratedFrame.cpp	179
-0x004335dc	OWL::TDecoratedFrame::vf12	OWL::TDecoratedFrame::vf12	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	352
-0x00433754	OWL::TDecoratedFrame::vf13	OWL::TDecoratedFrame::vf13	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	198
+0x004335dc	OWL::TDecoratedFrame::TFrameWindow_vf14	OWL::TDecoratedFrame::TFrameWindow_vf14	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	352
+0x00433754	OWL::TDecoratedFrame::TFrameWindow_vf15	OWL::TDecoratedFrame::TFrameWindow_vf15	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	198
 0x0043381c	FUN_0043381c	FUN_0043381c				lib/code_0x00430000.cpp	387
 0x004339a0	FUN_004339a0	FUN_004339a0				lib/code_0x00430000.cpp	451
 0x00433b64	FUN_00433b64	FUN_00433b64				lib/code_0x00430000.cpp	572
@@ -1195,21 +1195,21 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00434020	OWL::TDecoratedFrame::vf1	OWL::TDecoratedFrame::vf1	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	177
 0x004340e8	OWL::TDecoratedFrame::vf5	OWL::TDecoratedFrame::vf5	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	121
 0x00434164	OWL::TDecoratedFrame::vf8	OWL::TDecoratedFrame::vf8	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	105
-0x004341d0	OWL::TDecoratedFrame::vf6	OWL::TDecoratedFrame::vf6	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	64
-0x00434210	OWL::TDecoratedFrame::vf7	OWL::TDecoratedFrame::vf7	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	61
+0x004341d0	OWL::TDecoratedFrame::TFrameWindow_vf4	OWL::TDecoratedFrame::TFrameWindow_vf4	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	64
+0x00434210	OWL::TDecoratedFrame::TFrameWindow_vf5	OWL::TDecoratedFrame::TFrameWindow_vf5	OWL::TDecoratedFrame	virtual	rtti:vtable	lib/OWL_TDecoratedFrame.cpp	61
 0x00434265	Child4407951_Notify4407972_434265	Child4407951_Notify4407972_434265		message-handler	owl:response-table	lib/code_0x00434000.cpp	21
 0x0043427a	FUN_0043427a	FUN_0043427a				lib/code_0x00434000.cpp	21
 0x004342b9	FUN_004342b9	FUN_004342b9				lib/code_0x00434000.cpp	21
 0x004342f8	Child4469472_Notify4464720_4342f8	Child4469472_Notify4464720_4342f8		message-handler	owl:response-table	lib/code_0x00434000.cpp	21
 0x0043430d	FUN_0043430d	FUN_0043430d				lib/code_0x00434000.cpp	21
-0x0043444c	OWL::TDialog::vf14	OWL::TDialog::vf14	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	70
-0x00434494	FUN_00434494	FUN_00434494				lib/code_0x00434000.cpp	292
+0x0043444c	OWL::TDialog::Find	OWL::TDialog::Find	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	70
+0x00434494	OWL::TDialog::TDialog	OWL::TDialog::TDialog	OWL::TDialog	constructor	rtti:vtable-store	lib/OWL_TDialog.cpp	292
 0x004346e8	FUN_004346e8	FUN_004346e8				lib/code_0x00434000.cpp	28
 0x00434704	FUN_00434704	FUN_00434704				lib/code_0x00434000.cpp	92
 0x00434760	OWL::TDialog::~TDialog	OWL::TDialog::_dtor	OWL::TDialog	destructor	rtti:dtor	lib/OWL_TDialog.cpp	369
-0x004348d4	OWL::TDialog::vf7	OWL::TDialog::vf7	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	146
-0x00434968	OWL::TDialog::vf12	OWL::TDialog::vf12	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	31
-0x00434988	OWL::TDialog::vf13	OWL::TDialog::vf13	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	166
+0x004348d4	OWL::TDialog::PreProcessMsg	OWL::TDialog::PreProcessMsg	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	146
+0x00434968	OWL::TDialog::GetClassName	OWL::TDialog::GetClassName	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	31
+0x00434988	OWL::TDialog::GetWindowClass	OWL::TDialog::GetWindowClass	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	166
 0x00434a30	EvSetfont_434a30	EvSetfont_434a30		message-handler	owl:response-table	lib/code_0x00434000.cpp	34
 0x00434a54	EvPaint_434a54	EvPaint_434a54		message-handler	owl:response-table	lib/code_0x00434000.cpp	16
 0x00434a64	EvMsg_19_434a64	EvMsg_19_434a64		message-handler	owl:response-table	lib/code_0x00434000.cpp	93
@@ -1219,24 +1219,24 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00434b04	OWL::TDialog::vf1	OWL::TDialog::vf1	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	230
 0x00434bec	FUN_00434bec	FUN_00434bec				lib/code_0x00434000.cpp	188
 0x00434ca8	FUN_00434ca8	FUN_00434ca8				lib/code_0x00434000.cpp	46
-0x00434cd8	OWL::TDialog::vf3	OWL::TDialog::vf3	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	119
-0x00434d50	OWL::TDialog::vf4	OWL::TDialog::vf4	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	124
-0x00434dcc	OWL::TDialog::vf5	OWL::TDialog::vf5	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	95
-0x00434e2c	OWL::TDialog::vf6	OWL::TDialog::vf6	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	146
+0x00434cd8	OWL::TDialog::Create	OWL::TDialog::Create	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	119
+0x00434d50	OWL::TDialog::PerformCreate	OWL::TDialog::PerformCreate	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	124
+0x00434dcc	OWL::TDialog::Execute	OWL::TDialog::Execute	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	95
+0x00434e2c	OWL::TDialog::DoExecute	OWL::TDialog::DoExecute	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	146
 0x00434ec0	FUN_00434ec0	FUN_00434ec0				lib/code_0x00434000.cpp	306
 0x00434ff4	OWL::TDialog::vf2	OWL::TDialog::vf2	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	45
-0x00435024	OWL::TDialog::vf11	OWL::TDialog::vf11	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	65
-0x00435068	OWL::TDialog::vf8	OWL::TDialog::vf8	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	85
-0x004350c0	OWL::TDialog::vf9	OWL::TDialog::vf9	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	100
+0x00435024	OWL::TDialog::SetupWindow	OWL::TDialog::SetupWindow	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	65
+0x00435068	OWL::TDialog::CloseWindow	OWL::TDialog::CloseWindow	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	85
+0x004350c0	OWL::TDialog::Destroy	OWL::TDialog::Destroy	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	100
 0x00435124	FUN_00435124	FUN_00435124				lib/code_0x00434000.cpp	38
 0x0043514c	Cmd1_43514c	Cmd1_43514c		message-handler	owl:response-table	lib/code_0x00434000.cpp	81
 0x004351a0	Cmd2_4351a0	Cmd2_4351a0		message-handler	owl:response-table	lib/code_0x00434000.cpp	15
 0x004351b0	EvClose_4351b0	EvClose_4351b0		message-handler	owl:response-table	lib/code_0x00434000.cpp	81
-0x00435204	FUN_00435204	FUN_00435204				lib/code_0x00434000.cpp	59
+0x00435204	OWL::TControlEnabler::TControlEnabler	OWL::TControlEnabler::TControlEnabler	OWL::TControlEnabler	constructor	rtti:vtable-store	lib/OWL_TControlEnabler.cpp	59
 0x00435240	OWL::TControlEnabler::vf0	OWL::TControlEnabler::vf0	OWL::TControlEnabler	virtual	rtti:vtable	lib/OWL_TControlEnabler.cpp	62
 0x00435280	OWL::TControlEnabler::vf1	OWL::TControlEnabler::vf1	OWL::TControlEnabler	virtual	rtti:vtable	lib/OWL_TControlEnabler.cpp	135
 0x00435308	OWL::TControlEnabler::vf2	OWL::TControlEnabler::vf2	OWL::TControlEnabler	virtual	rtti:vtable	lib/OWL_TControlEnabler.cpp	52
-0x00435388	OWL::TDialog::vf10	OWL::TDialog::vf10	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	114
+0x00435388	OWL::TDialog::IdleAction	OWL::TDialog::IdleAction	OWL::TDialog	virtual	rtti:vtable	lib/OWL_TDialog.cpp	114
 0x004353fc	FUN_004353fc	FUN_004353fc				lib/code_0x00434000.cpp	103
 0x00435464	FUN_00435464	FUN_00435464				lib/code_0x00434000.cpp	182
 0x0043551c	FUN_0043551c	FUN_0043551c				lib/code_0x00434000.cpp	90
@@ -1255,9 +1255,9 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004360e6	FUN_004360e6	FUN_004360e6				lib/code_0x00434000.cpp	130
 0x00436168	FUN_00436168	FUN_00436168				lib/code_0x00434000.cpp	92
 0x004361e8	FUN_004361e8	FUN_004361e8				lib/code_0x00434000.cpp	42
-0x00436214	FUN_00436214	FUN_00436214				lib/code_0x00434000.cpp	348
+0x00436214	OWL::TDvFileOpenDialog::TDvFileOpenDialog	OWL::TDvFileOpenDialog::TDvFileOpenDialog	OWL::TDvFileOpenDialog	constructor	rtti:vtable-store	lib/OWL_TDvFileOpenDialog.cpp	348
 0x00436398	OWL::TDvFileOpenDialog::vf1	OWL::TDvFileOpenDialog::vf1	OWL::TDvFileOpenDialog	virtual	rtti:vtable	lib/OWL_TDvFileOpenDialog.cpp	82
-0x004363ec	FUN_004363ec	FUN_004363ec				lib/code_0x00434000.cpp	348
+0x004363ec	OWL::TDvFileSaveDialog::TDvFileSaveDialog	OWL::TDvFileSaveDialog::TDvFileSaveDialog	OWL::TDvFileSaveDialog	constructor	rtti:vtable-store	lib/OWL_TDvFileSaveDialog.cpp	348
 0x00436570	OWL::TDvFileSaveDialog::vf1	OWL::TDvFileSaveDialog::vf1	OWL::TDvFileSaveDialog	virtual	rtti:vtable	lib/OWL_TDvFileSaveDialog.cpp	82
 0x004365c4	OWL::TDocManager::Find	OWL::TDocManager::Find	OWL::TDocManager	response-table-find	owl:response-table	lib/OWL_TDocManager.cpp	33
 0x004365e8	OWL::TDocManager::Cmd24331	OWL::TDocManager::Cmd24331	OWL::TDocManager	message-handler	owl:response-table	lib/OWL_TDocManager.cpp	16
@@ -1365,7 +1365,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0043a494	OWL::TEdit::Cmd24325	OWL::TEdit::Cmd24325	OWL::TEdit	message-handler	owl:response-table	lib/OWL_TEdit.cpp	15
 0x0043a4a4	OWL::TEdit::Cmd24326	OWL::TEdit::Cmd24326	OWL::TEdit	message-handler	owl:response-table	lib/OWL_TEdit.cpp	16
 0x0043a4b4	OWL::TEdit::Cmd24321	OWL::TEdit::Cmd24321	OWL::TEdit	message-handler	owl:response-table	lib/OWL_TEdit.cpp	27
-0x0043a4ec	FUN_0043a4ec	FUN_0043a4ec				lib/code_0x00438000.cpp	311
+0x0043a4ec	OWL::TEdit::TEdit	OWL::TEdit::TEdit	OWL::TEdit	constructor	rtti:vtable-store	lib/OWL_TEdit.cpp	311
 0x0043a624	OWL::TEdit::~TEdit	OWL::TEdit::_dtor	OWL::TEdit	destructor	rtti:dtor	lib/OWL_TEdit.cpp	303
 0x0043a754	OWL::TEdit::NotifyAtChild_1280	OWL::TEdit::NotifyAtChild_1280	OWL::TEdit	message-handler	owl:response-table	lib/OWL_TEdit.cpp	25
 0x0043a770	OWL::TEdit::EvGetDlgCode	OWL::TEdit::EvGetDlgCode	OWL::TEdit	message-handler	owl:response-table	lib/OWL_TEdit.cpp	42
@@ -1377,7 +1377,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0043ac78	OWL::TEdit::EvChildinvalid	OWL::TEdit::EvChildinvalid	OWL::TEdit	message-handler	owl:response-table	lib/OWL_TEdit.cpp	15
 0x0043ac88	FUN_0043ac88	FUN_0043ac88				lib/code_0x00438000.cpp	50
 0x0043acbc	OWL::TEdit::vf9	OWL::TEdit::vf9	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	21
-0x0043acd4	OWL::TEdit::vf21	OWL::TEdit::vf21	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	85
+0x0043acd4	OWL::TEdit::CanClose	OWL::TEdit::CanClose	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	85
 0x0043ad2c	OWL::TEdit::CeShared_43ad2c	OWL::TEdit::CeShared_43ad2c	OWL::TEdit	message-handler	owl:response-table	lib/OWL_TEdit.cpp	55
 0x0043ad64	OWL::TEdit::CeCmd24324	OWL::TEdit::CeCmd24324	OWL::TEdit	message-handler	owl:response-table	lib/OWL_TEdit.cpp	113
 0x0043add8	OWL::TEdit::CeCmd24326	OWL::TEdit::CeCmd24326	OWL::TEdit	message-handler	owl:response-table	lib/OWL_TEdit.cpp	68
@@ -1389,25 +1389,25 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0043b070	OWL::TEdit::vf16	OWL::TEdit::vf16	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	326
 0x0043b1b8	FUN_0043b1b8	FUN_0043b1b8				lib/code_0x00438000.cpp	66
 0x0043b1fc	FUN_0043b1fc	FUN_0043b1fc				lib/code_0x00438000.cpp	42
-0x0043b228	OWL::TEdit::vf12	OWL::TEdit::vf12	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	356
-0x0043b38c	OWL::TEdit::vf11	OWL::TEdit::vf11	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	10
-0x0043b398	OWL::TEdit::vf20	OWL::TEdit::vf20	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	46
+0x0043b228	OWL::TEdit::GetSubText	OWL::TEdit::GetSubText	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	356
+0x0043b38c	OWL::TEdit::GetClassName	OWL::TEdit::GetClassName	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	10
+0x0043b398	OWL::TEdit::SetupWindow	OWL::TEdit::SetupWindow	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	46
 0x0043b3c8	FUN_0043b3c8	FUN_0043b3c8				lib/code_0x00438000.cpp	126
 0x0043b448	FUN_0043b448	FUN_0043b448				lib/code_0x00438000.cpp	86
-0x0043b4cc	OWL::TEdit::vf10	OWL::TEdit::vf10	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	181
-0x0043b638	FUN_0043b638	FUN_0043b638				lib/code_0x00438000.cpp	86
+0x0043b4cc	OWL::TEdit::Transfer	OWL::TEdit::Transfer	OWL::TEdit	virtual	rtti:vtable	lib/OWL_TEdit.cpp	181
+0x0043b638	InitRichEditStreamer_43b638	InitRichEditStreamer_43b638		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00438000.cpp	86
 0x0043b68e	FUN_0043b68e	FUN_0043b68e				lib/code_0x00438000.cpp	48
-0x0043b6c0	FUN_0043b6c0	FUN_0043b6c0				lib/code_0x00438000.cpp	102
-0x0043b728	FUN_0043b728	FUN_0043b728				lib/code_0x00438000.cpp	284
+0x0043b6c0	OWL::TEdit::Streamer::Streamer	OWL::TEdit::Streamer::Streamer	OWL::TEdit::Streamer	constructor	rtti:vtable-store	lib/OWL_TEdit.cpp	102
+0x0043b728	OWL::TEdit::TEdit_43b728	OWL::TEdit::TEdit_43b728	OWL::TEdit	constructor	rtti:vtable-store	lib/OWL_TEdit.cpp	284
 0x0043b844	EvRegisteredMsg_43b844_43b844	EvRegisteredMsg_43b844_43b844		message-handler	owl:response-table	lib/code_0x00438000.cpp	48
 0x0043b874	OWL::TEdit::Streamer::vf2	OWL::TEdit::Streamer::vf2	OWL::TEdit::Streamer	virtual	rtti:vtable	lib/OWL_TEdit.cpp	45
 0x0043b8a4	FUN_0043b8a4	FUN_0043b8a4				lib/code_0x00438000.cpp	152
 0x0043b9ac	OWL::TEdit::Streamer::vf3	OWL::TEdit::Streamer::vf3	OWL::TEdit::Streamer	virtual	rtti:vtable	lib/OWL_TEdit.cpp	10
-0x0043b9b8	OWL::TEditFile::vf8	OWL::TEditFile::vf8	OWL::TEditFile	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	69
+0x0043b9b8	OWL::TEditFile::Find	OWL::TEditFile::Find	OWL::TEditFile	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	69
 0x0043ba00	Cmd24333_43ba00	Cmd24333_43ba00		message-handler	owl:response-table	lib/code_0x00438000.cpp	16
 0x0043ba10	Cmd24334_43ba10	Cmd24334_43ba10		message-handler	owl:response-table	lib/code_0x00438000.cpp	16
 0x0043ba40	OWL::TEditFile::~TEditFile	OWL::TEditFile::_dtor	OWL::TEditFile	destructor	rtti:dtor	lib/OWL_TEditFile.cpp	281
-0x0043bb5c	OWL::TEditFile::vf20	OWL::TEditFile::vf20	OWL::TEditFile	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	818
+0x0043bb5c	OWL::TEditFile::SetupWindow	OWL::TEditFile::SetupWindow	OWL::TEditFile	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	818
 0x0043be90	FUN_0043be90	FUN_0043be90				lib/code_0x00438000.cpp	530
 0x0043c0a4	OWL::TEditFile::vf23	OWL::TEditFile::vf23	OWL::TEditFile	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	74
 0x0043c0f0	OWL::TEditFile::vf26	OWL::TEditFile::vf26	OWL::TEditFile	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	612
@@ -1418,11 +1418,11 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0043cc38	CeCmd24333_43cc38	CeCmd24333_43cc38		message-handler	owl:response-table	lib/code_0x0043c000.cpp	49
 0x0043cc6c	OWL::TEditFile::vf29	OWL::TEditFile::vf29	OWL::TEditFile	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	281
 0x0043cd88	OWL::TEditFile::vf22	OWL::TEditFile::vf22	OWL::TEditFile	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	1251
-0x0043d274	OWL::TEditFile::vf21	OWL::TEditFile::vf21	OWL::TEditFile	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	16
-0x0043d284	FUN_0043d284	FUN_0043d284				lib/code_0x0043c000.cpp	86
+0x0043d274	OWL::TEditFile::CanClose	OWL::TEditFile::CanClose	OWL::TEditFile	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	16
+0x0043d284	InitRichEditStreamer_43d284	InitRichEditStreamer_43d284		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x0043c000.cpp	86
 0x0043d2da	FUN_0043d2da	FUN_0043d2da				lib/code_0x0043c000.cpp	48
-0x0043d30c	FUN_0043d30c	FUN_0043d30c				lib/code_0x0043c000.cpp	102
-0x0043d374	FUN_0043d374	FUN_0043d374				lib/code_0x0043c000.cpp	316
+0x0043d30c	OWL::TEditFile::Streamer::Streamer	OWL::TEditFile::Streamer::Streamer	OWL::TEditFile::Streamer	constructor	rtti:vtable-store	lib/OWL_TEditFile.cpp	102
+0x0043d374	OWL::TEditFile::TEditFile	OWL::TEditFile::TEditFile	OWL::TEditFile	constructor	rtti:vtable-store	lib/OWL_TEditFile.cpp	316
 0x0043d4b0	OWL::TEditFile::Streamer::vf1	OWL::TEditFile::Streamer::vf1	OWL::TEditFile::Streamer	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	62
 0x0043d4f0	FUN_0043d4f0	FUN_0043d4f0				lib/code_0x0043c000.cpp	87
 0x0043d548	OWL::TEditFile::Streamer::vf2	OWL::TEditFile::Streamer::vf2	OWL::TEditFile::Streamer	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	54
@@ -1431,7 +1431,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0043d6e4	OWL::TEditFile::Streamer::vf3	OWL::TEditFile::Streamer::vf3	OWL::TEditFile::Streamer	virtual	rtti:vtable	lib/OWL_TEditFile.cpp	10
 0x0043d710	OWL::TEditSearch::Find	OWL::TEditSearch::Find	OWL::TEditSearch	response-table-find	owl:response-table	lib/OWL_TEditSearch.cpp	69
 0x0043d778	OWL::TEditSearch::~TEditSearch	OWL::TEditSearch::_dtor	OWL::TEditSearch	destructor	rtti:dtor	lib/OWL_TEditSearch.cpp	318
-0x0043d8e8	OWL::TEditSearch::vf20	OWL::TEditSearch::vf20	OWL::TEditSearch	virtual	rtti:vtable	lib/OWL_TEditSearch.cpp	54
+0x0043d8e8	OWL::TEditSearch::SetupWindow	OWL::TEditSearch::SetupWindow	OWL::TEditSearch	virtual	rtti:vtable	lib/OWL_TEditSearch.cpp	54
 0x0043d920	FUN_0043d920	FUN_0043d920				lib/code_0x0043c000.cpp	735
 0x0043dc00	OWL::TEditSearch::Cmd24351	OWL::TEditSearch::Cmd24351	OWL::TEditSearch	message-handler	owl:response-table	lib/OWL_TEditSearch.cpp	181
 0x0043dcd8	OWL::TEditSearch::Cmd24352	OWL::TEditSearch::Cmd24352	OWL::TEditSearch	message-handler	owl:response-table	lib/OWL_TEditSearch.cpp	181
@@ -1442,30 +1442,30 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0043e004	OWL::TFindDialog::~TFindDialog	OWL::TFindDialog::_dtor	OWL::TFindDialog	destructor	rtti:dtor	lib/OWL_TFindDialog.cpp	165
 0x0043e0ac	OWL::TReplaceDialog::~TReplaceDialog	OWL::TReplaceDialog::_dtor	OWL::TReplaceDialog	destructor	rtti:dtor	lib/OWL_TReplaceDialog.cpp	165
 0x0043e154	OWL::TFindReplaceDialog::~TFindReplaceDialog	OWL::TFindReplaceDialog::_dtor	OWL::TFindReplaceDialog	destructor	rtti:dtor	lib/OWL_TFindReplaceDialog.cpp	162
-0x0043e1f8	FUN_0043e1f8	FUN_0043e1f8				lib/code_0x0043c000.cpp	86
+0x0043e1f8	InitRichEditStreamer_43e1f8	InitRichEditStreamer_43e1f8		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x0043c000.cpp	86
 0x0043e24e	FUN_0043e24e	FUN_0043e24e				lib/code_0x0043c000.cpp	48
-0x0043e280	FUN_0043e280	FUN_0043e280				lib/code_0x0043c000.cpp	102
-0x0043e2e8	FUN_0043e2e8	FUN_0043e2e8				lib/code_0x0043c000.cpp	304
+0x0043e280	OWL::TEditSearch::Streamer::Streamer	OWL::TEditSearch::Streamer::Streamer	OWL::TEditSearch::Streamer	constructor	rtti:vtable-store	lib/OWL_TEditSearch.cpp	102
+0x0043e2e8	OWL::TEditSearch::TEditSearch	OWL::TEditSearch::TEditSearch	OWL::TEditSearch	constructor	rtti:vtable-store	lib/OWL_TEditSearch.cpp	304
 0x0043e418	OWL::TEditSearch::Streamer::vf1	OWL::TEditSearch::Streamer::vf1	OWL::TEditSearch::Streamer	virtual	rtti:vtable	lib/OWL_TEditSearch.cpp	71
 0x0043e460	FUN_0043e460	FUN_0043e460				lib/code_0x0043c000.cpp	87
 0x0043e4b8	OWL::TEditSearch::Streamer::vf2	OWL::TEditSearch::Streamer::vf2	OWL::TEditSearch::Streamer	virtual	rtti:vtable	lib/OWL_TEditSearch.cpp	61
 0x0043e4f8	FUN_0043e4f8	FUN_0043e4f8				lib/code_0x0043c000.cpp	81
 0x0043e54c	FUN_0043e54c	FUN_0043e54c				lib/code_0x0043c000.cpp	152
 0x0043e660	OWL::TEditSearch::Streamer::vf3	OWL::TEditSearch::Streamer::vf3	OWL::TEditSearch::Streamer	virtual	rtti:vtable	lib/OWL_TEditSearch.cpp	10
-0x0043e714	FUN_0043e714	FUN_0043e714				lib/code_0x0043c000.cpp	74
+0x0043e714	OWL::TXBadFormat::TXBadFormat	OWL::TXBadFormat::TXBadFormat	OWL::TXBadFormat	constructor	rtti:vtable-store	lib/OWL_TXBadFormat.cpp	74
 0x0043e780	FUN_0043e780	FUN_0043e780				lib/code_0x0043c000.cpp	78
 0x0043e82c	OWL::TXBadFormat::~TXBadFormat	OWL::TXBadFormat::_dtor	OWL::TXBadFormat	destructor	rtti:dtor	lib/OWL_TXBadFormat.cpp	67
 0x0043e870	OWL::TXBadFormat::vf2	OWL::TXBadFormat::vf2	OWL::TXBadFormat	virtual	rtti:vtable	lib/OWL_TXBadFormat.cpp	126
 0x0043e8f0	OWL::TXBadFormat::vf3	OWL::TXBadFormat::vf3	OWL::TXBadFormat	virtual	rtti:vtable	lib/OWL_TXBadFormat.cpp	116
-0x0043e964	FUN_0043e964	FUN_0043e964				lib/code_0x0043c000.cpp	83
+0x0043e964	OWL::TXBadFormat::TXBadFormat_43e964	OWL::TXBadFormat::TXBadFormat_43e964	OWL::TXBadFormat	constructor	rtti:vtable-store	lib/OWL_TXBadFormat.cpp	83
 0x0043e9b8	FUN_0043e9b8	FUN_0043e9b8				lib/code_0x0043c000.cpp	92
-0x0043ea14	FUN_0043ea14	FUN_0043ea14				lib/code_0x0043c000.cpp	217
+0x0043ea14	OWL::TDiskFileHandle::TDiskFileHandle	OWL::TDiskFileHandle::TDiskFileHandle	OWL::TDiskFileHandle	constructor	rtti:vtable-store	lib/OWL_TDiskFileHandle.cpp	217
 0x0043eb7c	OWL::TDiskFileHandle::~TDiskFileHandle	OWL::TDiskFileHandle::_dtor	OWL::TDiskFileHandle	destructor	rtti:dtor	lib/OWL_TDiskFileHandle.cpp	181
 0x0043ec34	OWL::TDiskFileHandle::vf1	OWL::TDiskFileHandle::vf1	OWL::TDiskFileHandle	virtual	rtti:vtable	lib/OWL_TDiskFileHandle.cpp	11
 0x0043ec40	OWL::TDiskFileHandle::vf2	OWL::TDiskFileHandle::vf2	OWL::TDiskFileHandle	virtual	rtti:vtable	lib/OWL_TDiskFileHandle.cpp	223
 0x0043ed20	OWL::TDiskFileHandle::vf4	OWL::TDiskFileHandle::vf4	OWL::TDiskFileHandle	virtual	rtti:vtable	lib/OWL_TDiskFileHandle.cpp	18
 0x0043ed84	OWL::TFileHandle::~TFileHandle	OWL::TFileHandle::_dtor	OWL::TFileHandle	destructor	rtti:dtor	lib/OWL_TFileHandle.cpp	32
-0x0043eda4	FUN_0043eda4	FUN_0043eda4				lib/code_0x0043c000.cpp	105
+0x0043eda4	OWL::TDiskFileHandle::TDiskFileHandle_43eda4	OWL::TDiskFileHandle::TDiskFileHandle_43eda4	OWL::TDiskFileHandle	constructor	rtti:vtable-store	lib/OWL_TDiskFileHandle.cpp	105
 0x0043ee10	OWL::TDiskFileHandle::vf5	OWL::TDiskFileHandle::vf5	OWL::TDiskFileHandle	virtual	rtti:vtable	lib/OWL_TDiskFileHandle.cpp	149
 0x0043eea8	OWL::TDiskFileHandle::vf3	OWL::TDiskFileHandle::vf3	OWL::TDiskFileHandle	virtual	rtti:vtable	lib/OWL_TDiskFileHandle.cpp	10
 0x0043eeb4	OWL::TDiskFileHandle::vf6	OWL::TDiskFileHandle::vf6	OWL::TDiskFileHandle	virtual	rtti:vtable	lib/OWL_TDiskFileHandle.cpp	26
@@ -1536,14 +1536,14 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00440e00	OWL::TFindReplaceDialog::TData::~TData	OWL::TFindReplaceDialog::TData::_dtor	OWL::TFindReplaceDialog::TData	destructor	rtti:dtor	lib/OWL_TFindReplaceDialog.cpp	45
 0x00440e30	OWL::TFindReplaceDialog::Find	OWL::TFindReplaceDialog::Find	OWL::TFindReplaceDialog	response-table-find	owl:response-table	lib/OWL_TFindReplaceDialog.cpp	69
 0x00440e78	FUN_00440e78	FUN_00440e78				lib/code_0x00440000.cpp	154
-0x00440f14	FUN_00440f14	FUN_00440f14				lib/code_0x00440000.cpp	318
+0x00440f14	OWL::TFindReplaceDialog::TFindReplaceDialog	OWL::TFindReplaceDialog::TFindReplaceDialog	OWL::TFindReplaceDialog	constructor	rtti:vtable-store	lib/OWL_TFindReplaceDialog.cpp	318
 0x00441054	OWL::TFindReplaceDialog::vf4	OWL::TFindReplaceDialog::vf4	OWL::TFindReplaceDialog	virtual	rtti:vtable	lib/OWL_TFindReplaceDialog.cpp	5
 0x0044105c	OWL::TFindReplaceDialog::vf1	OWL::TFindReplaceDialog::vf1	OWL::TFindReplaceDialog	virtual	rtti:vtable	lib/OWL_TFindReplaceDialog.cpp	26
 0x00441078	OWL::TFindReplaceDialog::EvNCDestroy	OWL::TFindReplaceDialog::EvNCDestroy	OWL::TFindReplaceDialog	message-handler	owl:response-table	lib/OWL_TFindReplaceDialog.cpp	24
 0x00441090	FUN_00441090	FUN_00441090				lib/code_0x00440000.cpp	33
-0x004410b4	FUN_004410b4	FUN_004410b4				lib/code_0x00440000.cpp	287
+0x004410b4	OWL::TFindDialog::TFindDialog	OWL::TFindDialog::TFindDialog	OWL::TFindDialog	constructor	rtti:vtable-store	lib/OWL_TFindDialog.cpp	287
 0x004411d4	OWL::TFindDialog::vf4	OWL::TFindDialog::vf4	OWL::TFindDialog	virtual	rtti:vtable	lib/OWL_TFindDialog.cpp	33
-0x004411f8	FUN_004411f8	FUN_004411f8				lib/code_0x00440000.cpp	287
+0x004411f8	OWL::TReplaceDialog::TReplaceDialog	OWL::TReplaceDialog::TReplaceDialog	OWL::TReplaceDialog	constructor	rtti:vtable-store	lib/OWL_TReplaceDialog.cpp	287
 0x00441318	OWL::TReplaceDialog::vf4	OWL::TReplaceDialog::vf4	OWL::TReplaceDialog	virtual	rtti:vtable	lib/OWL_TReplaceDialog.cpp	33
 0x00441678	FUN_00441678	FUN_00441678				lib/code_0x00440000.cpp	127
 0x004416f8	FUN_004416f8	FUN_004416f8				lib/code_0x00440000.cpp	86
@@ -1555,36 +1555,36 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0044191c	OWL::TMenuItemEnabler::vf0	OWL::TMenuItemEnabler::vf0	OWL::TMenuItemEnabler	virtual	rtti:vtable	lib/OWL_TMenuItemEnabler.cpp	55
 0x00441954	OWL::TMenuItemEnabler::vf1	OWL::TMenuItemEnabler::vf1	OWL::TMenuItemEnabler	virtual	rtti:vtable	lib/OWL_TMenuItemEnabler.cpp	30
 0x00441974	OWL::TMenuItemEnabler::vf2	OWL::TMenuItemEnabler::vf2	OWL::TMenuItemEnabler	virtual	rtti:vtable	lib/OWL_TMenuItemEnabler.cpp	41
-0x004419a0	FUN_004419a0	FUN_004419a0				lib/code_0x00440000.cpp	316
+0x004419a0	OWL::TFrameWindow::TFrameWindow	OWL::TFrameWindow::TFrameWindow	OWL::TFrameWindow	constructor	rtti:vtable-store	lib/OWL_TFrameWindow.cpp	316
 0x00441adc	FUN_00441adc	FUN_00441adc				lib/code_0x00440000.cpp	78
 0x00441b2c	FUN_00441b2c	FUN_00441b2c				lib/code_0x00440000.cpp	186
 0x00441be8	OWL::TFrameWindow::~TFrameWindow	OWL::TFrameWindow::_dtor	OWL::TFrameWindow	destructor	rtti:dtor	lib/OWL_TFrameWindow.cpp	382
 0x00441db4	OWL::TFrameWindow::EvInitMenuPopup	OWL::TFrameWindow::EvInitMenuPopup	OWL::TFrameWindow	message-handler	owl:response-table	lib/OWL_TFrameWindow.cpp	132
 0x00441e38	Child4464308_Notify4408014_441e38	Child4464308_Notify4408014_441e38		message-handler	owl:response-table	lib/code_0x00440000.cpp	122
 0x00441eb4	OWL::TFrameWindow::vf9	OWL::TFrameWindow::vf9	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	129
-0x00441f38	OWL::TFrameWindow::vf14	OWL::TFrameWindow::vf14	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	111
-0x00441fa8	OWL::TFrameWindow::vf15	OWL::TFrameWindow::vf15	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	32
-0x00441fc8	OWL::TFrameWindow::vf10	OWL::TFrameWindow::vf10	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	134
+0x00441f38	OWL::TFrameWindow::EvCommand	OWL::TFrameWindow::EvCommand	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	111
+0x00441fa8	OWL::TFrameWindow::EvCommandEnable	OWL::TFrameWindow::EvCommandEnable	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	32
+0x00441fc8	OWL::TFrameWindow::PreProcessMsg	OWL::TFrameWindow::PreProcessMsg	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	134
 0x00442050	OWL::TFrameWindow::vf2	OWL::TFrameWindow::vf2	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	72
 0x00442098	OWL::TFrameWindow::vf1	OWL::TFrameWindow::vf1	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	193
 0x0044215c	FUN_0044215c	FUN_0044215c				lib/code_0x00440000.cpp	137
 0x004421e8	FUN_004421e8	FUN_004421e8				lib/code_0x00440000.cpp	209
 0x004422bc	OWL::TFrameWindow::vf6	OWL::TFrameWindow::vf6	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	11
 0x004422c8	OWL::TFrameWindow::vf7	OWL::TFrameWindow::vf7	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	209
-0x0044239c	OWL::TFrameWindow::vf8	OWL::TFrameWindow::vf8	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	53
-0x004423d4	OWL::TFrameWindow::vf13	OWL::TFrameWindow::vf13	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	458
+0x0044239c	OWL::TFrameWindow::RemoveChild	OWL::TFrameWindow::RemoveChild	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	53
+0x004423d4	OWL::TFrameWindow::SetDocTitle	OWL::TFrameWindow::SetDocTitle	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	458
 0x004425a0	OWL::TFrameWindow::EvPaint	OWL::TFrameWindow::EvPaint	OWL::TFrameWindow	message-handler	owl:response-table	lib/OWL_TFrameWindow.cpp	238
 0x00442690	OWL::TFrameWindow::EvEraseBkgnd	OWL::TFrameWindow::EvEraseBkgnd	OWL::TFrameWindow	message-handler	owl:response-table	lib/OWL_TFrameWindow.cpp	105
 0x004426fc	OWL::TFrameWindow::EvQuerydragicon	OWL::TFrameWindow::EvQuerydragicon	OWL::TFrameWindow	message-handler	owl:response-table	lib/OWL_TFrameWindow.cpp	70
 0x00442748	FUN_00442748	FUN_00442748				lib/code_0x00440000.cpp	47
-0x00442778	OWL::TFrameWindow::vf12	OWL::TFrameWindow::vf12	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	92
+0x00442778	OWL::TFrameWindow::HoldFocusHWnd	OWL::TFrameWindow::HoldFocusHWnd	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	92
 0x004427d4	OWL::TFrameWindow::EvSetFocus	OWL::TFrameWindow::EvSetFocus	OWL::TFrameWindow	message-handler	owl:response-table	lib/OWL_TFrameWindow.cpp	103
 0x0044283c	OWL::TFrameWindow::EvParentNotify	OWL::TFrameWindow::EvParentNotify	OWL::TFrameWindow	message-handler	owl:response-table	lib/OWL_TFrameWindow.cpp	163
 0x004428e0	OWL::TFrameWindow::EvQuerynewpalette	OWL::TFrameWindow::EvQuerynewpalette	OWL::TFrameWindow	message-handler	owl:response-table	lib/OWL_TFrameWindow.cpp	68
 0x00442924	OWL::TFrameWindow::EvPalettechanged	OWL::TFrameWindow::EvPalettechanged	OWL::TFrameWindow	message-handler	owl:response-table	lib/OWL_TFrameWindow.cpp	52
 0x00442958	FUN_00442958	FUN_00442958				lib/code_0x00440000.cpp	1371
-0x00442eb4	OWL::TFrameWindow::vf16	OWL::TFrameWindow::vf16	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	423
-0x0044305c	OWL::TFrameWindow::vf17	OWL::TFrameWindow::vf17	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	56
+0x00442eb4	OWL::TFrameWindow::SetupWindow	OWL::TFrameWindow::SetupWindow	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	423
+0x0044305c	OWL::TFrameWindow::CleanupWindow	OWL::TFrameWindow::CleanupWindow	OWL::TFrameWindow	virtual	rtti:vtable	lib/OWL_TFrameWindow.cpp	56
 0x00443094	FUN_00443094	FUN_00443094				lib/code_0x00440000.cpp	44
 0x004430c0	OWL::TFrameWindow::EvSize	OWL::TFrameWindow::EvSize	OWL::TFrameWindow	message-handler	owl:response-table	lib/OWL_TFrameWindow.cpp	6
 0x004430c6	FUN_004430c6	FUN_004430c6				lib/code_0x00440000.cpp	187
@@ -1603,9 +1603,9 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004439d4	FUN_004439d4	FUN_004439d4				lib/code_0x00440000.cpp	34
 0x004439f8	FUN_004439f8	FUN_004439f8				lib/code_0x00440000.cpp	54
 0x00443a30	FUN_00443a30	FUN_00443a30				lib/code_0x00440000.cpp	248
-0x00443b28	FUN_00443b28	FUN_00443b28				lib/code_0x00440000.cpp	205
-0x00443bf8	FUN_00443bf8	FUN_00443bf8				lib/code_0x00440000.cpp	115
-0x00443c6c	FUN_00443c6c	FUN_00443c6c				lib/code_0x00440000.cpp	138
+0x00443b28	OWL::TModule::TModule	OWL::TModule::TModule	OWL::TModule	constructor	rtti:vtable-store	lib/OWL_TModule.cpp	205
+0x00443bf8	OWL::TModule::TModule_443bf8	OWL::TModule::TModule_443bf8	OWL::TModule	constructor	rtti:vtable-store	lib/OWL_TModule.cpp	115
+0x00443c6c	OWL::TModule::TModule_443c6c	OWL::TModule::TModule_443c6c	OWL::TModule	constructor	rtti:vtable-store	lib/OWL_TModule.cpp	138
 0x00443cf8	OWL::TModule::~TModule	OWL::TModule::_dtor	OWL::TModule	destructor	rtti:dtor	lib/OWL_TModule.cpp	140
 0x00443d84	FUN_00443d84	FUN_00443d84				lib/code_0x00440000.cpp	25
 0x00443da0	FUN_00443da0	FUN_00443da0				lib/code_0x00440000.cpp	155
@@ -1623,17 +1623,17 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0044511c	FUN_0044511c	FUN_0044511c				lib/code_0x00444000.cpp	56
 0x00445154	FUN_00445154	FUN_00445154				lib/code_0x00444000.cpp	68
 0x00445198	FUN_00445198	FUN_00445198				lib/code_0x00444000.cpp	91
-0x004451f4	FUN_004451f4	FUN_004451f4				lib/code_0x00444000.cpp	231
+0x004451f4	OWL::TXInvalidModule::TXInvalidModule	OWL::TXInvalidModule::TXInvalidModule	OWL::TXInvalidModule	constructor	rtti:vtable-store	lib/OWL_TXInvalidModule.cpp	231
 0x00445300	OWL::TXInvalidModule::vf2	OWL::TXInvalidModule::vf2	OWL::TXInvalidModule	virtual	rtti:vtable	lib/OWL_TXInvalidModule.cpp	126
 0x00445380	OWL::TXInvalidModule::vf3	OWL::TXInvalidModule::vf3	OWL::TXInvalidModule	virtual	rtti:vtable	lib/OWL_TXInvalidModule.cpp	116
 0x004454a8	FUN_004454a8	FUN_004454a8				lib/code_0x00444000.cpp	83
 0x004454fc	OWL::TXInvalidModule::~TXInvalidModule	OWL::TXInvalidModule::_dtor	OWL::TXInvalidModule	destructor	rtti:dtor	lib/OWL_TXInvalidModule.cpp	67
 0x00445640	FUN_00445640	FUN_00445640				lib/code_0x00444000.cpp	77
 0x00445690	FUN_00445690	FUN_00445690				lib/code_0x00444000.cpp	45
-0x004456c0	FUN_004456c0	FUN_004456c0				lib/code_0x00444000.cpp	86
+0x004456c0	InitRichEditStreamer_4456c0	InitRichEditStreamer_4456c0		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00444000.cpp	86
 0x00445716	FUN_00445716	FUN_00445716				lib/code_0x00444000.cpp	48
-0x00445748	FUN_00445748	FUN_00445748				lib/code_0x00444000.cpp	102
-0x004457b0	FUN_004457b0	FUN_004457b0				lib/code_0x00444000.cpp	62
+0x00445748	OWL::TModule::Streamer::Streamer	OWL::TModule::Streamer::Streamer	OWL::TModule::Streamer	constructor	rtti:vtable-store	lib/OWL_TModule.cpp	102
+0x004457b0	OWL::TModule::TModule_4457b0	OWL::TModule::TModule_4457b0	OWL::TModule	constructor	rtti:vtable-store	lib/OWL_TModule.cpp	62
 0x004457f0	FUN_004457f0	FUN_004457f0				lib/code_0x00444000.cpp	78
 0x00445840	FUN_00445840	FUN_00445840				lib/code_0x00444000.cpp	26
 0x0044585c	OWL::TModule::Streamer::vf1	OWL::TModule::Streamer::vf1	OWL::TModule::Streamer	virtual	rtti:vtable	lib/OWL_TModule.cpp	72
@@ -1645,15 +1645,15 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00445b04	FUN_00445b04	FUN_00445b04				lib/code_0x00444000.cpp	179
 0x00445bb8	OWL::TOpenSaveDialog::vf14	OWL::TOpenSaveDialog::vf14	OWL::TOpenSaveDialog	virtual	rtti:vtable	lib/OWL_TOpenSaveDialog.cpp	69
 0x00445c00	FUN_00445c00	FUN_00445c00				lib/code_0x00444000.cpp	217
-0x00445d00	FUN_00445d00	FUN_00445d00				lib/code_0x00444000.cpp	347
+0x00445d00	OWL::TOpenSaveDialog::TOpenSaveDialog	OWL::TOpenSaveDialog::TOpenSaveDialog	OWL::TOpenSaveDialog	constructor	rtti:vtable-store	lib/OWL_TOpenSaveDialog.cpp	347
 0x00445e5c	OWL::TOpenSaveDialog::vf1	OWL::TOpenSaveDialog::vf1	OWL::TOpenSaveDialog	virtual	rtti:vtable	lib/OWL_TOpenSaveDialog.cpp	67
 0x00445ea0	OWL::TOpenSaveDialog::vf15	OWL::TOpenSaveDialog::vf15	OWL::TOpenSaveDialog	virtual	rtti:vtable	lib/OWL_TOpenSaveDialog.cpp	7
-0x00445ea8	FUN_00445ea8	FUN_00445ea8				lib/code_0x00444000.cpp	309
+0x00445ea8	OWL::TFileOpenDialog::TFileOpenDialog	OWL::TFileOpenDialog::TFileOpenDialog	OWL::TFileOpenDialog	constructor	rtti:vtable-store	lib/OWL_TFileOpenDialog.cpp	309
 0x00446004	OWL::TFileOpenDialog::vf6	OWL::TFileOpenDialog::vf6	OWL::TFileOpenDialog	virtual	rtti:vtable	lib/OWL_TFileOpenDialog.cpp	90
-0x00446060	FUN_00446060	FUN_00446060				lib/code_0x00444000.cpp	309
+0x00446060	OWL::TFileSaveDialog::TFileSaveDialog	OWL::TFileSaveDialog::TFileSaveDialog	OWL::TFileSaveDialog	constructor	rtti:vtable-store	lib/OWL_TFileSaveDialog.cpp	309
 0x004461bc	OWL::TFileSaveDialog::vf6	OWL::TFileSaveDialog::vf6	OWL::TFileSaveDialog	virtual	rtti:vtable	lib/OWL_TFileSaveDialog.cpp	90
 0x00446594	OWL::TRadioButton::Find	OWL::TRadioButton::Find	OWL::TRadioButton	response-table-find	owl:response-table	lib/OWL_TRadioButton.cpp	69
-0x004465fc	FUN_004465fc	FUN_004465fc				lib/code_0x00444000.cpp	277
+0x004465fc	OWL::TRadioButton::TRadioButton	OWL::TRadioButton::TRadioButton	OWL::TRadioButton	constructor	rtti:vtable-store	lib/OWL_TRadioButton.cpp	277
 0x00446714	OWL::TRadioButton::vf9	OWL::TRadioButton::vf9	OWL::TRadioButton	virtual	rtti:vtable	lib/OWL_TRadioButton.cpp	31
 0x00446734	OWL::TRadioButton::BNClicked	OWL::TRadioButton::BNClicked	OWL::TRadioButton	message-handler	owl:response-table	lib/OWL_TRadioButton.cpp	51
 0x004467e4	OWL::TScroller::~TScroller	OWL::TScroller::_dtor	OWL::TScroller	destructor	rtti:dtor	lib/OWL_TScroller.cpp	110
@@ -1678,10 +1678,10 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004472b4	OWL::TScroller::vf19	OWL::TScroller::vf19	OWL::TScroller	virtual	rtti:vtable	lib/OWL_TScroller.cpp	32
 0x004472d4	OWL::TScroller::vf20	OWL::TScroller::vf20	OWL::TScroller	virtual	rtti:vtable	lib/OWL_TScroller.cpp	22
 0x004472ec	OWL::TScroller::vf21	OWL::TScroller::vf21	OWL::TScroller	virtual	rtti:vtable	lib/OWL_TScroller.cpp	29
-0x0044730c	FUN_0044730c	FUN_0044730c				lib/code_0x00444000.cpp	86
+0x0044730c	InitRichEditStreamer_44730c	InitRichEditStreamer_44730c		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00444000.cpp	86
 0x00447362	FUN_00447362	FUN_00447362				lib/code_0x00444000.cpp	48
-0x00447394	FUN_00447394	FUN_00447394				lib/code_0x00444000.cpp	102
-0x004473fc	FUN_004473fc	FUN_004473fc				lib/code_0x00444000.cpp	62
+0x00447394	OWL::TScroller::Streamer::Streamer	OWL::TScroller::Streamer::Streamer	OWL::TScroller::Streamer	constructor	rtti:vtable-store	lib/OWL_TScroller.cpp	102
+0x004473fc	OWL::TScroller::TScroller	OWL::TScroller::TScroller	OWL::TScroller	constructor	rtti:vtable-store	lib/OWL_TScroller.cpp	62
 0x0044743c	FUN_0044743c	FUN_0044743c				lib/code_0x00444000.cpp	78
 0x0044748c	FUN_0044748c	FUN_0044748c				lib/code_0x00444000.cpp	26
 0x004474a8	OWL::TScroller::Streamer::vf1	OWL::TScroller::Streamer::vf1	OWL::TScroller::Streamer	virtual	rtti:vtable	lib/OWL_TScroller.cpp	6
@@ -1690,20 +1690,20 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00447738	FUN_00447738	FUN_00447738				lib/code_0x00444000.cpp	134
 0x00447838	OWL::TScroller::Streamer::vf3	OWL::TScroller::Streamer::vf3	OWL::TScroller::Streamer	virtual	rtti:vtable	lib/OWL_TScroller.cpp	10
 0x00447844	OWL::TStatic::Find	OWL::TStatic::Find	OWL::TStatic	response-table-find	owl:response-table	lib/OWL_TStatic.cpp	69
-0x0044788c	FUN_0044788c	FUN_0044788c				lib/code_0x00444000.cpp	308
+0x0044788c	OWL::TStatic::TStatic	OWL::TStatic::TStatic	OWL::TStatic	constructor	rtti:vtable-store	lib/OWL_TStatic.cpp	308
 0x004479c0	OWL::TStatic::EvSize	OWL::TStatic::EvSize	OWL::TStatic	message-handler	owl:response-table	lib/OWL_TStatic.cpp	40
 0x004479e8	OWL::TStatic::vf11	OWL::TStatic::vf11	OWL::TStatic	virtual	rtti:vtable	lib/OWL_TStatic.cpp	31
-0x00447a08	OWL::TStatic::vf10	OWL::TStatic::vf10	OWL::TStatic	virtual	rtti:vtable	lib/OWL_TStatic.cpp	56
+0x00447a08	OWL::TUrlLink::Transfer	OWL::TUrlLink::Transfer	OWL::TUrlLink	virtual	rtti:vtable	lib/OWL_TUrlLink.cpp	56
 0x00447a40	OWL::TStatic::vf9	OWL::TStatic::vf9	OWL::TStatic	virtual	rtti:vtable	lib/OWL_TStatic.cpp	23
-0x00447ac4	FUN_00447ac4	FUN_00447ac4				lib/code_0x00444000.cpp	86
+0x00447ac4	InitRichEditStreamer_447ac4	InitRichEditStreamer_447ac4		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00444000.cpp	86
 0x00447b1a	FUN_00447b1a	FUN_00447b1a				lib/code_0x00444000.cpp	48
-0x00447b4c	FUN_00447b4c	FUN_00447b4c				lib/code_0x00444000.cpp	102
-0x00447bb4	FUN_00447bb4	FUN_00447bb4				lib/code_0x00444000.cpp	283
+0x00447b4c	OWL::TStatic::Streamer::Streamer	OWL::TStatic::Streamer::Streamer	OWL::TStatic::Streamer	constructor	rtti:vtable-store	lib/OWL_TStatic.cpp	102
+0x00447bb4	OWL::TStatic::TStatic_447bb4	OWL::TStatic::TStatic_447bb4	OWL::TStatic	constructor	rtti:vtable-store	lib/OWL_TStatic.cpp	283
 0x00447cd0	EvRegisteredMsg_447cd0_447cd0	EvRegisteredMsg_447cd0_447cd0		message-handler	owl:response-table	lib/code_0x00444000.cpp	47
 0x00447d00	OWL::TStatic::Streamer::vf2	OWL::TStatic::Streamer::vf2	OWL::TStatic::Streamer	virtual	rtti:vtable	lib/OWL_TStatic.cpp	45
 0x00447d30	FUN_00447d30	FUN_00447d30				lib/code_0x00444000.cpp	152
 0x00447e3c	OWL::TStatic::Streamer::vf3	OWL::TStatic::Streamer::vf3	OWL::TStatic::Streamer	virtual	rtti:vtable	lib/OWL_TStatic.cpp	10
-0x00447e48	OWL::TTinyCaption::vf2	OWL::TTinyCaption::vf2	OWL::TTinyCaption	virtual	rtti:vtable	lib/OWL_TTinyCaption.cpp	34
+0x00447e48	OWL::TTinyCaption::Find	OWL::TTinyCaption::Find	OWL::TTinyCaption	virtual	rtti:vtable	lib/OWL_TTinyCaption.cpp	34
 0x00447e8c	OWL::TTinyCaption::~TTinyCaption	OWL::TTinyCaption::_dtor	OWL::TTinyCaption	destructor	rtti:dtor	lib/OWL_TTinyCaption.cpp	246
 0x00447f84	EvNCHitTest_447f84	EvNCHitTest_447f84		message-handler	owl:response-table	lib/code_0x00444000.cpp	49
 0x00447fb8	FUN_00447fb8	FUN_00447fb8				lib/code_0x00444000.cpp	495
@@ -1719,7 +1719,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00448850	FUN_00448850	FUN_00448850				lib/code_0x00448000.cpp	269
 0x00448960	EvNcactivate_448960	EvNcactivate_448960		message-handler	owl:response-table	lib/code_0x00448000.cpp	55
 0x00448998	FUN_00448998	FUN_00448998				lib/code_0x00448000.cpp	67
-0x004489dc	OWL::TTinyCaption::vf1	OWL::TTinyCaption::vf1	OWL::TTinyCaption	virtual	rtti:vtable	lib/OWL_TTinyCaption.cpp	63
+0x004489dc	OWL::TTinyCaption::EvCommand	OWL::TTinyCaption::EvCommand	OWL::TTinyCaption	virtual	rtti:vtable	lib/OWL_TTinyCaption.cpp	63
 0x00448a1c	FUN_00448a1c	FUN_00448a1c				lib/code_0x00448000.cpp	76
 0x00448a68	EvSysCommand_448a68	EvSysCommand_448a68		message-handler	owl:response-table	lib/code_0x00448000.cpp	37
 0x00448a90	FUN_00448a90	FUN_00448a90				lib/code_0x00448000.cpp	74
@@ -1741,10 +1741,10 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00449c90	OWL::TValidator::vf3	OWL::TValidator::vf3	OWL::TValidator	virtual	rtti:vtable	lib/OWL_TValidator.cpp	7
 0x00449c98	OWL::TValidator::vf4	OWL::TValidator::vf4	OWL::TValidator	virtual	rtti:vtable	lib/OWL_TValidator.cpp	7
 0x00449ca0	OWL::TValidator::vf5	OWL::TValidator::vf5	OWL::TValidator	virtual	rtti:vtable	lib/OWL_TValidator.cpp	7
-0x00449ca8	FUN_00449ca8	FUN_00449ca8				lib/code_0x00448000.cpp	86
+0x00449ca8	InitRichEditStreamer_449ca8	InitRichEditStreamer_449ca8		function	analysis (matched TEA.exe, duplicated code)	lib/code_0x00448000.cpp	86
 0x00449cfe	FUN_00449cfe	FUN_00449cfe				lib/code_0x00448000.cpp	48
-0x00449d30	FUN_00449d30	FUN_00449d30				lib/code_0x00448000.cpp	102
-0x00449d98	FUN_00449d98	FUN_00449d98				lib/code_0x00448000.cpp	62
+0x00449d30	OWL::TValidator::Streamer::Streamer	OWL::TValidator::Streamer::Streamer	OWL::TValidator::Streamer	constructor	rtti:vtable-store	lib/OWL_TValidator.cpp	102
+0x00449d98	OWL::TValidator::TValidator	OWL::TValidator::TValidator	OWL::TValidator	constructor	rtti:vtable-store	lib/OWL_TValidator.cpp	62
 0x00449dd8	FUN_00449dd8	FUN_00449dd8				lib/code_0x00448000.cpp	78
 0x00449e28	FUN_00449e28	FUN_00449e28				lib/code_0x00448000.cpp	26
 0x00449e44	OWL::TValidator::Streamer::vf1	OWL::TValidator::Streamer::vf1	OWL::TValidator::Streamer	virtual	rtti:vtable	lib/OWL_TValidator.cpp	36
@@ -1775,7 +1775,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0044ad1c	FUN_0044ad1c	FUN_0044ad1c				lib/code_0x00448000.cpp	108
 0x0044ae6c	FUN_0044ae6c	FUN_0044ae6c				lib/code_0x00448000.cpp	77
 0x0044aebc	FUN_0044aebc	FUN_0044aebc				lib/code_0x00448000.cpp	45
-0x0044aeec	FUN_0044aeec	FUN_0044aeec				lib/code_0x00448000.cpp	6
+0x0044aeec	std::logic_error::logic_error	std::logic_error::logic_error	std::logic_error	constructor	rtti:vtable-store	lib/std_logic_error.cpp	6
 0x0044aef2	FUN_0044aef2	FUN_0044aef2				lib/code_0x00448000.cpp	225
 0x0044afd4	FUN_0044afd4	FUN_0044afd4				lib/code_0x00448000.cpp	65
 0x0044b018	FUN_0044b018	FUN_0044b018				lib/code_0x00448000.cpp	88
@@ -1832,39 +1832,39 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0044c960	FUN_0044c960	FUN_0044c960				lib/code_0x0044c000.cpp	55
 0x0044c998	FUN_0044c998	FUN_0044c998				lib/code_0x0044c000.cpp	55
 0x0044c9d0	FUN_0044c9d0	FUN_0044c9d0				lib/code_0x0044c000.cpp	152
-0x0044ca68	FUN_0044ca68	FUN_0044ca68				lib/code_0x0044c000.cpp	11
-0x0044ca74	FUN_0044ca74	FUN_0044ca74				lib/code_0x0044c000.cpp	20
+0x0044ca68	std::string::__data	std::string::__data		function	analysis (position-matched TEACON.exe)	lib/code_0x0044c000.cpp	11
+0x0044ca74	std::string::__getRepOf	std::string::__getRepOf		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0044c000.cpp	20
 0x0044ca88	FUN_0044ca88	FUN_0044ca88				lib/code_0x0044c000.cpp	11
 0x0044ca94	FUN_0044ca94	FUN_0044ca94				lib/code_0x0044c000.cpp	34
 0x0044cab8	FUN_0044cab8	FUN_0044cab8				lib/code_0x0044c000.cpp	6
 0x0044cac0	FUN_0044cac0	FUN_0044cac0				lib/code_0x0044c000.cpp	52
 0x0044caf4	FUN_0044caf4	FUN_0044caf4				lib/code_0x0044c000.cpp	52
 0x0044cb28	FUN_0044cb28	FUN_0044cb28				lib/code_0x0044c000.cpp	32
-0x0044cb48	FUN_0044cb48	FUN_0044cb48				lib/code_0x0044c000.cpp	37
+0x0044cb48	std::allocator::allocator	std::allocator::allocator		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0044c000.cpp	37
 0x0044cb70	FUN_0044cb70	FUN_0044cb70				lib/code_0x0044c000.cpp	15
 0x0044cb80	FUN_0044cb80	FUN_0044cb80				lib/code_0x0044c000.cpp	5
-0x0044cb88	FUN_0044cb88	FUN_0044cb88				lib/code_0x0044c000.cpp	37
-0x0044cbb0	FUN_0044cbb0	FUN_0044cbb0				lib/code_0x0044c000.cpp	20
+0x0044cb88	std::allocator::allocator_44cb88	std::allocator::allocator_44cb88		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0044c000.cpp	37
+0x0044cbb0	std::string::size	std::string::size		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0044c000.cpp	20
 0x0044cbc4	FUN_0044cbc4	FUN_0044cbc4				lib/code_0x0044c000.cpp	15
 0x0044cbd4	FUN_0044cbd4	FUN_0044cbd4				lib/code_0x0044c000.cpp	35
 0x0044cbf8	FUN_0044cbf8	FUN_0044cbf8				lib/code_0x0044c000.cpp	52
-0x0044cc2c	FUN_0044cc2c	FUN_0044cc2c				lib/code_0x0044c000.cpp	37
+0x0044cc2c	std::allocator::allocator_44cc2c	std::allocator::allocator_44cc2c		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0044c000.cpp	37
 0x0044cc54	FUN_0044cc54	FUN_0044cc54				lib/code_0x0044c000.cpp	58
 0x0044cc90	FUN_0044cc90	FUN_0044cc90				lib/code_0x0044c000.cpp	10
 0x0044cc9c	FUN_0044cc9c	FUN_0044cc9c				lib/code_0x0044c000.cpp	23
 0x0044ccb4	FUN_0044ccb4	FUN_0044ccb4				lib/code_0x0044c000.cpp	44
-0x0044cce0	FUN_0044cce0	FUN_0044cce0				lib/code_0x0044c000.cpp	72
+0x0044cce0	std::locale::facet::facet	std::locale::facet::facet	std::locale::facet	constructor	rtti:vtable-store	lib/std_locale.cpp	72
 0x0044cd28	FUN_0044cd28	FUN_0044cd28				lib/code_0x0044c000.cpp	66
 0x0044cda8	FUN_0044cda8	FUN_0044cda8				lib/code_0x0044c000.cpp	11
 0x0044cdb4	FUN_0044cdb4	FUN_0044cdb4				lib/code_0x0044c000.cpp	18
 0x0044cdc8	FUN_0044cdc8	FUN_0044cdc8				lib/code_0x0044c000.cpp	101
 0x0044ce30	__rwstd::locale_vector<__rwstd::facet_imp *>::~locale_vector	__rwstd::locale_vector_rwstd_facet_imp_ptr::_dtor	__rwstd::locale_vector<__rwstd::facet_imp *>	destructor	rtti:dtor	lib/rwstd_locale_vector.cpp	40
-0x0044ce78	FUN_0044ce78	FUN_0044ce78				lib/code_0x0044c000.cpp	111
+0x0044ce78	std::string::operator_assign	std::string::operator_assign		function	analysis (matched TEACON.exe)	lib/code_0x0044c000.cpp	111
 0x0044cee8	FUN_0044cee8	FUN_0044cee8				lib/code_0x0044c000.cpp	21
 0x0044cf00	FUN_0044cf00	FUN_0044cf00				lib/code_0x0044c000.cpp	15
-0x0044cf10	FUN_0044cf10	FUN_0044cf10				lib/code_0x0044c000.cpp	376
-0x0044d088	FUN_0044d088	FUN_0044d088				lib/code_0x0044c000.cpp	8
-0x0044d090	FUN_0044d090	FUN_0044d090				lib/code_0x0044c000.cpp	83
+0x0044cf10	std::string::assign_cstr	std::string::assign_cstr		function	analysis (matched TEACON.exe)	lib/code_0x0044c000.cpp	376
+0x0044d088	__rwstd::except_msg_string::msgstr	__rwstd::except_msg_string::msgstr		function	analysis (position-matched TEACON.exe)	lib/code_0x0044c000.cpp	8
+0x0044d090	std::logic_error::logic_error_416de8	std::logic_error::logic_error_416de8		function	analysis (matched TEACON.exe)	lib/code_0x0044c000.cpp	83
 0x0044d0e4	FUN_0044d0e4	FUN_0044d0e4				lib/code_0x0044c000.cpp	21
 0x0044d0fc	FUN_0044d0fc	FUN_0044d0fc				lib/code_0x0044c000.cpp	15
 0x0044d10c	FUN_0044d10c	FUN_0044d10c				lib/code_0x0044c000.cpp	15
@@ -1873,7 +1873,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0044d26c	FUN_0044d26c	FUN_0044d26c				lib/code_0x0044c000.cpp	55
 0x0044d2a4	std::string::__getRep	std::string::__getRep		function	analysis (usage pattern) (matched TEACON.exe)	lib/code_0x0044c000.cpp	191
 0x0044d364	FUN_0044d364	FUN_0044d364				lib/code_0x0044c000.cpp	106
-0x0044d3d0	FUN_0044d3d0	FUN_0044d3d0				lib/code_0x0044c000.cpp	62
+0x0044d3d0	std::bad_alloc::bad_alloc	std::bad_alloc::bad_alloc	std::bad_alloc	constructor	rtti:vtable-store	lib/std_bad_alloc.cpp	62
 0x0044d410	FUN_0044d410	FUN_0044d410				lib/code_0x0044c000.cpp	51
 0x0044d444	FUN_0044d444	FUN_0044d444				lib/code_0x0044c000.cpp	21
 0x0044d45c	FUN_0044d45c	FUN_0044d45c				lib/code_0x0044c000.cpp	78
@@ -1883,57 +1883,57 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0044d558	FUN_0044d558	FUN_0044d558				lib/code_0x0044c000.cpp	26
 0x0044d574	FUN_0044d574	FUN_0044d574				lib/code_0x0044c000.cpp	25
 0x0044d590	FUN_0044d590	FUN_0044d590				lib/code_0x0044c000.cpp	3
-0x0044d594	FUN_0044d594	FUN_0044d594				lib/code_0x0044c000.cpp	11
+0x0044d594	std::string::__rep_data	std::string::__rep_data		function	analysis (position-matched TEACON.exe)	lib/code_0x0044c000.cpp	11
 0x0044d5a0	FUN_0044d5a0	FUN_0044d5a0				lib/code_0x0044c000.cpp	40
-0x0044d5c8	FUN_0044d5c8	FUN_0044d5c8				lib/code_0x0044c000.cpp	1015
-0x0044d9c0	FUN_0044d9c0	FUN_0044d9c0				lib/code_0x0044c000.cpp	69
-0x0044da08	FUN_0044da08	FUN_0044da08				lib/code_0x0044c000.cpp	69
+0x0044d5c8	std::string::replace	std::string::replace		function	analysis (matched TEACON.exe)	lib/code_0x0044c000.cpp	1015
+0x0044d9c0	std::out_of_range::out_of_range	std::out_of_range::out_of_range	std::out_of_range	constructor	rtti:vtable-store	lib/std_out_of_range.cpp	69
+0x0044da08	std::length_error::length_error	std::length_error::length_error		function	analysis (position-matched TEACON.exe)	lib/code_0x0044c000.cpp	69
 0x0044da50	FUN_0044da50	FUN_0044da50				lib/code_0x0044c000.cpp	29
 0x0044da70	FUN_0044da70	FUN_0044da70				lib/code_0x0044c000.cpp	24
 0x0044da88	FUN_0044da88	FUN_0044da88				lib/code_0x0044c000.cpp	11
-0x0044da94	FUN_0044da94	FUN_0044da94				lib/code_0x0044c000.cpp	15
+0x0044da94	std::string::data	std::string::data		function	analysis (position-matched TEACON.exe)	lib/code_0x0044c000.cpp	15
 0x0044daa4	__rwstd::locale_vector<std::string>::~locale_vector	__rwstd::locale_vector_std_string::_dtor	__rwstd::locale_vector<std::string>	destructor	rtti:dtor	lib/rwstd_locale_vector.cpp	96
 0x0044db90	std::wstring::~basic_string	std::wstring::_dtor	std::wstring	destructor	rtti:dtor	lib/std_wstring.cpp	34
 0x0044dbb4	FUN_0044dbb4	FUN_0044dbb4				lib/code_0x0044c000.cpp	152
 0x0044dc4c	FUN_0044dc4c	FUN_0044dc4c				lib/code_0x0044c000.cpp	11
-0x0044dc58	FUN_0044dc58	FUN_0044dc58				lib/code_0x0044c000.cpp	20
+0x0044dc58	std::string::__getRepOf_44dc58	std::string::__getRepOf_44dc58		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0044c000.cpp	20
 0x0044dc6c	FUN_0044dc6c	FUN_0044dc6c				lib/code_0x0044c000.cpp	11
 0x0044dc78	FUN_0044dc78	FUN_0044dc78				lib/code_0x0044c000.cpp	34
 0x0044dc9c	FUN_0044dc9c	FUN_0044dc9c				lib/code_0x0044c000.cpp	6
 0x0044dca4	FUN_0044dca4	FUN_0044dca4				lib/code_0x0044c000.cpp	54
 0x0044dcdc	FUN_0044dcdc	FUN_0044dcdc				lib/code_0x0044c000.cpp	52
 0x0044dd10	FUN_0044dd10	FUN_0044dd10				lib/code_0x0044c000.cpp	32
-0x0044dd30	FUN_0044dd30	FUN_0044dd30				lib/code_0x0044c000.cpp	37
+0x0044dd30	std::allocator::allocator_44dd30	std::allocator::allocator_44dd30		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0044c000.cpp	37
 0x0044dd58	FUN_0044dd58	FUN_0044dd58				lib/code_0x0044c000.cpp	15
 0x0044dd68	FUN_0044dd68	FUN_0044dd68				lib/code_0x0044c000.cpp	5
-0x0044dd70	FUN_0044dd70	FUN_0044dd70				lib/code_0x0044c000.cpp	37
+0x0044dd70	std::allocator::allocator_44dd70	std::allocator::allocator_44dd70		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0044c000.cpp	37
 0x0044dd98	FUN_0044dd98	FUN_0044dd98				lib/code_0x0044c000.cpp	15
 0x0044dda8	FUN_0044dda8	FUN_0044dda8				lib/code_0x0044c000.cpp	35
 0x0044ddcc	FUN_0044ddcc	FUN_0044ddcc				lib/code_0x0044c000.cpp	52
-0x0044de00	FUN_0044de00	FUN_0044de00				lib/code_0x0044c000.cpp	37
-0x0044de28	FUN_0044de28	FUN_0044de28				lib/code_0x0044c000.cpp	20
+0x0044de00	std::allocator::allocator_44de00	std::allocator::allocator_44de00		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0044c000.cpp	37
+0x0044de28	std::string::size_44de28	std::string::size_44de28		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0044c000.cpp	20
 0x0044de3c	FUN_0044de3c	FUN_0044de3c				lib/code_0x0044c000.cpp	111
 0x0044deac	FUN_0044deac	FUN_0044deac				lib/code_0x0044c000.cpp	58
 0x0044dee8	FUN_0044dee8	FUN_0044dee8				lib/code_0x0044c000.cpp	111
 0x0044df74	FUN_0044df74	FUN_0044df74				lib/code_0x0044c000.cpp	58
 0x0044dfb0	FUN_0044dfb0	FUN_0044dfb0				lib/code_0x0044c000.cpp	11
 0x0044dfbc	FUN_0044dfbc	FUN_0044dfbc				lib/code_0x0044c000.cpp	21
-0x0044dfd4	FUN_0044dfd4	FUN_0044dfd4				lib/code_0x0044c000.cpp	237
+0x0044dfd4	std::basic_filebuf<char>::basic_filebuf	std::basic_filebuf_char::basic_filebuf	std::basic_filebuf<char>	constructor	rtti:vtable-store	lib/std_basic_filebuf.cpp	237
 0x0044e0c4	FUN_0044e0c4	FUN_0044e0c4				lib/code_0x0044c000.cpp	42
-0x0044e12c	FUN_0044e12c	FUN_0044e12c				lib/code_0x0044c000.cpp	79
+0x0044e12c	std::basic_streambuf<char>::basic_streambuf	std::basic_streambuf_char::basic_streambuf	std::basic_streambuf<char>	constructor	rtti:vtable-store	lib/std_basic_streambuf.cpp	79
 0x0044e17c	FUN_0044e17c	FUN_0044e17c				lib/code_0x0044c000.cpp	70
 0x0044e1e4	FUN_0044e1e4	FUN_0044e1e4				lib/code_0x0044c000.cpp	51
 0x0044e218	FUN_0044e218	FUN_0044e218				lib/code_0x0044c000.cpp	8
-0x0044e220	FUN_0044e220	FUN_0044e220				lib/code_0x0044c000.cpp	275
+0x0044e220	std::basic_filebuf<char>::basic_filebuf_44e220	std::basic_filebuf_char::basic_filebuf_44e220	std::basic_filebuf<char>	constructor	rtti:vtable-store	lib/std_basic_filebuf.cpp	275
 0x0044e334	std::basic_filebuf<char>::~basic_filebuf	std::basic_filebuf_char::_dtor	std::basic_filebuf<char>	destructor	rtti:dtor	lib/std_basic_filebuf.cpp	129
 0x0044e3b8	FUN_0044e3b8	FUN_0044e3b8				lib/code_0x0044c000.cpp	358
 0x0044e520	FUN_0044e520	FUN_0044e520				lib/code_0x0044c000.cpp	4
 0x0044e524	FUN_0044e524	FUN_0044e524				lib/code_0x0044c000.cpp	15
 0x0044e534	FUN_0044e534	FUN_0044e534				lib/code_0x0044c000.cpp	15
 0x0044e544	std::basic_streambuf<char>::~basic_streambuf	std::basic_streambuf_char::_dtor	std::basic_streambuf<char>	destructor	rtti:dtor	lib/std_basic_streambuf.cpp	95
-0x0044e5a4	FUN_0044e5a4	FUN_0044e5a4				lib/code_0x0044c000.cpp	104
-0x0044e60c	FUN_0044e60c	FUN_0044e60c				lib/code_0x0044c000.cpp	95
-0x0044e66c	FUN_0044e66c	FUN_0044e66c				lib/code_0x0044c000.cpp	77
+0x0044e5a4	std::basic_istream<char>::basic_istream	std::basic_istream_char::basic_istream	std::basic_istream<char>	constructor	rtti:vtable-store	lib/std_basic_istream.cpp	104
+0x0044e60c	std::basic_ostream<char>::basic_ostream	std::basic_ostream_char::basic_ostream	std::basic_ostream<char>	constructor	rtti:vtable-store	lib/std_basic_ostream.cpp	95
+0x0044e66c	std::basic_ios<char>::basic_ios	std::basic_ios_char::basic_ios	std::basic_ios<char>	constructor	rtti:vtable-store	lib/std_basic_ios.cpp	77
 0x0044e6d4	FUN_0044e6d4	FUN_0044e6d4				lib/code_0x0044c000.cpp	79
 0x0044e724	FUN_0044e724	FUN_0044e724				lib/code_0x0044c000.cpp	99
 0x0044e788	FUN_0044e788	FUN_0044e788				lib/code_0x0044c000.cpp	21
@@ -1947,12 +1947,12 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0044eb90	std::basic_ostream<char>::~basic_ostream	std::basic_ostream_char::_dtor	std::basic_ostream<char>	destructor	rtti:dtor	lib/std_basic_ostream.cpp	118
 0x0044ec08	std::basic_istream<char>::~basic_istream	std::basic_istream_char::_dtor	std::basic_istream<char>	destructor	rtti:dtor	lib/std_basic_istream.cpp	118
 0x0044ec80	std::basic_ios<char>::~basic_ios	std::basic_ios_char::_dtor	std::basic_ios<char>	destructor	rtti:dtor	lib/std_basic_ios.cpp	93
-0x0044ecfc	FUN_0044ecfc	FUN_0044ecfc				lib/code_0x0044c000.cpp	174
+0x0044ecfc	std::basic_ifstream<char>::basic_ifstream	std::basic_ifstream_char::basic_ifstream	std::basic_ifstream<char>	constructor	rtti:vtable-store	lib/std_basic_ifstream.cpp	174
 0x0044edac	FUN_0044edac	FUN_0044edac				lib/code_0x0044c000.cpp	69
 0x0044edf4	std::basic_ifstream<char>::~basic_ifstream	std::basic_ifstream_char::_dtor	std::basic_ifstream<char>	destructor	rtti:dtor	lib/std_basic_ifstream.cpp	157
-0x0044ee94	FUN_0044ee94	FUN_0044ee94				lib/code_0x0044c000.cpp	175
+0x0044ee94	std::basic_istream<char>::basic_istream_44ee94	std::basic_istream_char::basic_istream_44ee94	std::basic_istream<char>	constructor	rtti:vtable-store	lib/std_basic_istream.cpp	175
 0x0044ef44	FUN_0044ef44	FUN_0044ef44				lib/code_0x0044c000.cpp	11
-0x0044ef50	FUN_0044ef50	FUN_0044ef50				lib/code_0x0044c000.cpp	166
+0x0044ef50	std::basic_ostream<char>::basic_ostream_44ef50	std::basic_ostream_char::basic_ostream_44ef50	std::basic_ostream<char>	constructor	rtti:vtable-store	lib/std_basic_ostream.cpp	166
 0x0044eff8	FUN_0044eff8	FUN_0044eff8				lib/code_0x0044c000.cpp	385
 0x0044f17c	FUN_0044f17c	FUN_0044f17c				lib/code_0x0044c000.cpp	11
 0x0044f188	FUN_0044f188	FUN_0044f188				lib/code_0x0044c000.cpp	21
@@ -1973,7 +1973,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0044f370	FUN_0044f370	FUN_0044f370				lib/code_0x0044c000.cpp	26
 0x0044f38c	FUN_0044f38c	FUN_0044f38c				lib/code_0x0044c000.cpp	23
 0x0044f3a4	FUN_0044f3a4	FUN_0044f3a4				lib/code_0x0044c000.cpp	14
-0x0044f3d0	FUN_0044f3d0	FUN_0044f3d0				lib/code_0x0044c000.cpp	174
+0x0044f3d0	std::basic_ofstream<char>::basic_ofstream	std::basic_ofstream_char::basic_ofstream	std::basic_ofstream<char>	constructor	rtti:vtable-store	lib/std_basic_ofstream.cpp	174
 0x0044f480	FUN_0044f480	FUN_0044f480				lib/code_0x0044c000.cpp	69
 0x0044f4c8	std::basic_ofstream<char>::~basic_ofstream	std::basic_ofstream_char::_dtor	std::basic_ofstream<char>	destructor	rtti:dtor	lib/std_basic_ofstream.cpp	157
 0x0044f568	FUN_0044f568	FUN_0044f568				lib/code_0x0044c000.cpp	232
@@ -1981,7 +1981,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0044f65c	FUN_0044f65c	FUN_0044f65c				lib/code_0x0044c000.cpp	19
 0x0044f670	FUN_0044f670	FUN_0044f670				lib/code_0x0044c000.cpp	19
 0x0044f6a8	FUN_0044f6a8	FUN_0044f6a8				lib/code_0x0044c000.cpp	39
-0x0044f6d0	FUN_0044f6d0	FUN_0044f6d0				lib/code_0x0044c000.cpp	465
+0x0044f6d0	std::string::string_from_buf	std::string::string_from_buf		function	analysis (matched TEACON.exe)	lib/code_0x0044c000.cpp	465
 0x0044f8a4	FUN_0044f8a4	FUN_0044f8a4				lib/code_0x0044c000.cpp	373
 0x0044fa1c	FUN_0044fa1c	FUN_0044fa1c				lib/code_0x0044c000.cpp	71
 0x0044fa64	FUN_0044fa64	FUN_0044fa64				lib/code_0x0044c000.cpp	226
@@ -2036,7 +2036,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004512b0	std::basic_streambuf<char>::vf5	std::basic_streambuf_char::vf5	std::basic_streambuf<char>	virtual	rtti:vtable	lib/std_basic_streambuf.cpp	141
 0x00451340	std::basic_streambuf<char>::vf6	std::basic_streambuf_char::vf6	std::basic_streambuf<char>	virtual	rtti:vtable	lib/std_basic_streambuf.cpp	159
 0x004513e0	std::basic_streambuf<char>::vf11	std::basic_streambuf_char::vf11	std::basic_streambuf<char>	virtual	rtti:vtable	lib/std_basic_streambuf.cpp	92
-0x0045143c	FUN_0045143c	FUN_0045143c				lib/code_0x00450000.cpp	110
+0x0045143c	std::string::__unshare	std::string::__unshare		function	analysis (matched TEACON.exe)	lib/code_0x00450000.cpp	110
 0x004514ac	FUN_004514ac	FUN_004514ac				lib/code_0x00450000.cpp	413
 0x00451698	FUN_00451698	FUN_00451698				lib/code_0x00450000.cpp	18
 0x004516ac	FUN_004516ac	FUN_004516ac				lib/code_0x00450000.cpp	11
@@ -2048,12 +2048,12 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00451938	std::basic_filebuf<char>::vf2	std::basic_filebuf_char::vf2	std::basic_filebuf<char>	virtual	rtti:vtable	lib/std_basic_filebuf.cpp	242
 0x00451a2c	std::basic_streambuf<char>::vf2	std::basic_streambuf_char::vf2	std::basic_streambuf<char>	virtual	rtti:vtable	lib/std_basic_streambuf.cpp	8
 0x00451a34	std::string::append	std::string::append		function	analysis (usage pattern) (matched TEACON.exe)	lib/code_0x00450000.cpp	274
-0x00451b48	FUN_00451b48	FUN_00451b48				lib/code_0x00450000.cpp	60
-0x00451b84	FUN_00451b84	FUN_00451b84				lib/code_0x00450000.cpp	434
+0x00451b48	std::string::replace_str	std::string::replace_str		function	analysis (matched TEACON.exe)	lib/code_0x00450000.cpp	60
+0x00451b84	std::string::insert	std::string::insert		function	analysis (matched TEACON.exe)	lib/code_0x00450000.cpp	434
 0x00451d38	std::string::replace_fill	std::string::replace_fill		function	analysis (usage pattern) (matched TEACON.exe)	lib/code_0x00450000.cpp	899
 0x004520bc	FUN_004520bc	FUN_004520bc				lib/code_0x00450000.cpp	30
 0x004520dc	FUN_004520dc	FUN_004520dc				lib/code_0x00450000.cpp	305
-0x00452210	FUN_00452210	FUN_00452210				lib/code_0x00450000.cpp	281
+0x00452210	std::string::string_fill	std::string::string_fill		function	analysis (matched TEACON.exe)	lib/code_0x00450000.cpp	281
 0x0045232c	std::basic_filebuf<char>::vf3	std::basic_filebuf_char::vf3	std::basic_filebuf<char>	virtual	rtti:vtable	lib/std_basic_filebuf.cpp	1576
 0x00452954	FUN_00452954	FUN_00452954				lib/code_0x00450000.cpp	15
 0x00452964	FUN_00452964	FUN_00452964				lib/code_0x00450000.cpp	47
@@ -2070,21 +2070,21 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00452e24	std::basic_streambuf<char>::vf1	std::basic_streambuf_char::vf1	std::basic_streambuf<char>	virtual	rtti:vtable	lib/std_basic_streambuf.cpp	24
 0x00452e94	FUN_00452e94	FUN_00452e94				lib/code_0x00450000.cpp	48
 0x00452ec4	FUN_00452ec4	FUN_00452ec4				lib/code_0x00450000.cpp	41
-0x00452ef0	FUN_00452ef0	FUN_00452ef0				lib/code_0x00450000.cpp	84
-0x00452f44	FUN_00452f44	FUN_00452f44				lib/code_0x00450000.cpp	48
+0x00452ef0	__rwstd::facet_imp::facet_imp	__rwstd::facet_imp::facet_imp	__rwstd::facet_imp	constructor	rtti:vtable-store	lib/rwstd_facet_imp.cpp	84
+0x00452f44	std::exception::exception	std::exception::exception	std::exception	constructor	rtti:vtable-store	lib/std_exception.cpp	48
 0x00452fd4	FUN_00452fd4	FUN_00452fd4				lib/code_0x00450000.cpp	11
-0x00452fe0	FUN_00452fe0	FUN_00452fe0				lib/code_0x00450000.cpp	58
+0x00452fe0	__rwstd::ref_counted::ref_counted	__rwstd::ref_counted::ref_counted	__rwstd::ref_counted	constructor	rtti:vtable-store	lib/rwstd_ref_counted.cpp	58
 0x00453060	__rwstd::facet_imp::vf2	__rwstd::facet_imp::vf2	__rwstd::facet_imp	virtual	rtti:vtable	lib/rwstd_facet_imp.cpp	48
-0x0045336c	FUN_0045336c	FUN_0045336c				lib/code_0x00450000.cpp	232
+0x0045336c	std::ios_base::failure::failure	std::ios_base::failure::failure	std::ios_base::failure	constructor	rtti:vtable-store	lib/std_ios_base.cpp	232
 0x0045347c	std::ios_base::failure::~failure	std::ios_base::failure::_dtor	std::ios_base::failure	destructor	rtti:dtor	lib/std_ios_base.cpp	217
 0x00453558	std::ios_base::failure::vf1	std::ios_base::failure::vf1	std::ios_base::failure	virtual	rtti:vtable	lib/std_ios_base.cpp	11
 0x00453564	FUN_00453564	FUN_00453564				lib/code_0x00450000.cpp	140
 0x00453614	std::ios_base::Init::~Init	std::ios_base::Init::_dtor	std::ios_base::Init	destructor	rtti:dtor	lib/std_ios_base.cpp	68
-0x00453658	FUN_00453658	FUN_00453658				lib/code_0x00450000.cpp	115
+0x00453658	std::ios_base::ios_base	std::ios_base::ios_base	std::ios_base	constructor	rtti:vtable-store	lib/std_ios_base.cpp	115
 0x004536e8	std::ios_base::~ios_base	std::ios_base::_dtor	std::ios_base	destructor	rtti:dtor	lib/std_ios_base.cpp	225
 0x0045381c	FUN_0045381c	FUN_0045381c				lib/code_0x00450000.cpp	203
 0x004538e8	FUN_004538e8	FUN_004538e8				lib/code_0x00450000.cpp	181
-0x004539b8	FUN_004539b8	FUN_004539b8				lib/code_0x00450000.cpp	566
+0x004539b8	std::locale::facet::facet_4539b8	std::locale::facet::facet_4539b8	std::locale::facet	constructor	rtti:vtable-store	lib/std_locale.cpp	566
 0x00453bf0	FUN_00453bf0	FUN_00453bf0				lib/code_0x00450000.cpp	476
 0x00453dcc	FUN_00453dcc	FUN_00453dcc				lib/code_0x00450000.cpp	145
 0x00453e60	FUN_00453e60	FUN_00453e60				lib/code_0x00450000.cpp	51
@@ -2100,10 +2100,10 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004541b8	FUN_004541b8	FUN_004541b8				lib/code_0x00454000.cpp	93
 0x00454218	FUN_00454218	FUN_00454218				lib/code_0x00454000.cpp	332
 0x0045439c	FUN_0045439c	FUN_0045439c				lib/code_0x00454000.cpp	111
-0x0045440c	FUN_0045440c	FUN_0045440c				lib/code_0x00454000.cpp	87
+0x0045440c	std::string::string	std::string::string		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x00454000.cpp	87
 0x00454464	__rwstd::ref_counted::~ref_counted	__rwstd::ref_counted::_dtor	__rwstd::ref_counted	destructor	rtti:dtor	lib/rwstd_ref_counted.cpp	32
 0x00454484	FUN_00454484	FUN_00454484				lib/code_0x00454000.cpp	32
-0x004544a4	FUN_004544a4	FUN_004544a4				lib/code_0x00454000.cpp	252
+0x004544a4	__rwstd::locale_imp::locale_imp	__rwstd::locale_imp::locale_imp	__rwstd::locale_imp	constructor	rtti:vtable-store	lib/rwstd_locale_imp.cpp	252
 0x004545c4	__rwstd::locale_imp::~locale_imp	__rwstd::locale_imp::_dtor	__rwstd::locale_imp	destructor	rtti:dtor	lib/rwstd_locale_imp.cpp	390
 0x0045474c	FUN_0045474c	FUN_0045474c				lib/code_0x00454000.cpp	50
 0x00454780	FUN_00454780	FUN_00454780				lib/code_0x00454000.cpp	352
@@ -2123,7 +2123,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00455470	FUN_00455470	FUN_00455470				lib/code_0x00454000.cpp	10
 0x004554f0	std::runtime_error::vf1	std::runtime_error::vf1	std::runtime_error	virtual	rtti:vtable	lib/std_runtime_error.cpp	11
 0x004554fc	FUN_004554fc	FUN_004554fc				lib/code_0x00454000.cpp	324
-0x00455640	FUN_00455640	FUN_00455640				lib/code_0x00454000.cpp	54
+0x00455640	__rwstd::except_msg_string::format	__rwstd::except_msg_string::format		function	analysis (matched TEACON.exe)	lib/code_0x00454000.cpp	54
 0x00455678	std::exception::~exception	std::exception::_dtor	std::exception	destructor	rtti:dtor	lib/std_exception.cpp	32
 0x00455698	std::bad_alloc::~bad_alloc	std::bad_alloc::_dtor	std::bad_alloc	destructor	rtti:dtor	lib/std_bad_alloc.cpp	92
 0x004556f4	std::logic_error::~logic_error	std::logic_error::_dtor	std::logic_error	destructor	rtti:dtor	lib/std_logic_error.cpp	217
@@ -2137,20 +2137,20 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00455a40	memset	memset		function	analysis (usage pattern) (matched TEACON.exe)	lib/code_0x00454000.cpp	138
 0x00455acc	FUN_00455acc	FUN_00455acc				lib/code_0x00454000.cpp	24
 0x00455ae4	FUN_00455ae4	FUN_00455ae4				lib/code_0x00454000.cpp	60
-0x00455b20	FUN_00455b20	FUN_00455b20				lib/code_0x00454000.cpp	83
+0x00455b20	strchr	strchr		function	analysis (matched TEACON.exe)	lib/code_0x00454000.cpp	83
 0x00455b74	FUN_00455b74	FUN_00455b74				lib/code_0x00454000.cpp	75
 0x00455bc0	FUN_00455bc0	FUN_00455bc0				lib/code_0x00454000.cpp	47
 0x00455bf0	strlen	strlen		function	analysis (usage pattern) (matched TEACON.exe)	lib/code_0x00454000.cpp	90
 0x00455c4c	FUN_00455c4c	FUN_00455c4c				lib/code_0x00454000.cpp	110
 0x00455cbc	thunk → memchr	thunk_memchr				lib/code_0x00454000.cpp	5
-0x00455cd0	thunk → FUN_00455b20	thunk_FUN_00455b20				lib/code_0x00454000.cpp	5
-0x00455cd5	thunk → FUN_00455b20	thunk_FUN_00455b20_455cd5				lib/code_0x00454000.cpp	5
+0x00455cd0	thunk → strchr	thunk_strchr				lib/code_0x00454000.cpp	5
+0x00455cd5	thunk → strchr	thunk_strchr_455cd5				lib/code_0x00454000.cpp	5
 0x00455ce1	thunk → strrchr	thunk_strrchr				lib/code_0x00454000.cpp	5
 0x00455ced	thunk → FUN_00455e58	thunk_FUN_00455e58				lib/code_0x00454000.cpp	5
 0x00455cf4	FUN_00455cf4	FUN_00455cf4				lib/code_0x00454000.cpp	108
 0x00455d60	FUN_00455d60	FUN_00455d60				lib/code_0x00454000.cpp	50
-0x00455d94	FUN_00455d94	FUN_00455d94				lib/code_0x00454000.cpp	71
-0x00455ddc	FUN_00455ddc	FUN_00455ddc				lib/code_0x00454000.cpp	79
+0x00455d94	strcmp	strcmp		function	analysis (matched TEACON.exe)	lib/code_0x00454000.cpp	71
+0x00455ddc	strncpy	strncpy		function	analysis (matched TEACON.exe)	lib/code_0x00454000.cpp	79
 0x00455e2c	strrchr	strrchr		function	analysis (usage pattern) (matched TEACON.exe)	lib/code_0x00454000.cpp	41
 0x00455e58	FUN_00455e58	FUN_00455e58				lib/code_0x00454000.cpp	84
 0x00455eac	FUN_00455eac	FUN_00455eac				lib/code_0x00454000.cpp	24
@@ -2185,7 +2185,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00456d9d	FUN_00456d9d	FUN_00456d9d				lib/code_0x00454000.cpp	44
 0x00456dd6	FUN_00456dd6	FUN_00456dd6				lib/code_0x00454000.cpp	21
 0x00456deb	FUN_00456deb	FUN_00456deb				lib/code_0x00454000.cpp	7
-0x00456df4	FUN_00456df4	FUN_00456df4				lib/code_0x00454000.cpp	60
+0x00456df4	access	access		function	analysis (matched TEACON.exe)	lib/code_0x00454000.cpp	60
 0x00456e30	FUN_00456e30	FUN_00456e30				lib/code_0x00454000.cpp	96
 0x00456e90	FUN_00456e90	FUN_00456e90				lib/code_0x00454000.cpp	45
 0x00456ec0	FUN_00456ec0	FUN_00456ec0				lib/code_0x00454000.cpp	23
@@ -2203,7 +2203,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004576d0	FUN_004576d0	FUN_004576d0				lib/code_0x00454000.cpp	21
 0x004576e8	FUN_004576e8	FUN_004576e8				lib/code_0x00454000.cpp	70
 0x00457730	FUN_00457730	FUN_00457730				lib/code_0x00454000.cpp	25
-0x0045774c	thunk → FUN_00456df4	thunk_FUN_00456df4				lib/code_0x00454000.cpp	5
+0x0045774c	thunk → access	thunk_access				lib/code_0x00454000.cpp	5
 0x00457754	FUN_00457754	FUN_00457754				lib/code_0x00454000.cpp	125
 0x004577d4	thunk → FUN_00456e30	thunk_FUN_00456e30				lib/code_0x00454000.cpp	5
 0x004577dc	FUN_004577dc	FUN_004577dc				lib/code_0x00454000.cpp	127
@@ -2223,7 +2223,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00457cfc	thunk → FUN_004571b8	thunk_FUN_004571b8				lib/code_0x00454000.cpp	5
 0x00457d04	FUN_00457d04	FUN_00457d04				lib/code_0x00454000.cpp	449
 0x00457ecc	FUN_00457ecc	FUN_00457ecc				lib/code_0x00454000.cpp	40
-0x00457ef4	FUN_00457ef4	FUN_00457ef4				lib/code_0x00454000.cpp	40
+0x00457ef4	sprintf	sprintf		function	analysis (matched TEACON.exe)	lib/code_0x00454000.cpp	40
 0x00457f1c	FUN_00457f1c	FUN_00457f1c				lib/code_0x00454000.cpp	40
 0x0045805c	FUN_0045805c	FUN_0045805c				lib/code_0x00458000.cpp	69
 0x004580a4	FUN_004580a4	FUN_004580a4				lib/code_0x00458000.cpp	52
@@ -2232,9 +2232,9 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00458a48	thunk → FUN_004574e4	thunk_FUN_004574e4				lib/code_0x00458000.cpp	5
 0x00458a78	FUN_00458a78	FUN_00458a78				lib/code_0x00458000.cpp	707
 0x00458d3c	FUN_00458d3c	FUN_00458d3c				lib/code_0x00458000.cpp	81
-0x00458d90	FUN_00458d90	FUN_00458d90				lib/code_0x00458000.cpp	22
+0x00458d90	isalnum	isalnum		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x00458000.cpp	22
 0x00458da8	FUN_00458da8	FUN_00458da8				lib/code_0x00458000.cpp	18
-0x00458dbc	FUN_00458dbc	FUN_00458dbc				lib/code_0x00458000.cpp	22
+0x00458dbc	isalpha	isalpha		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x00458000.cpp	22
 0x00458dd4	FUN_00458dd4	FUN_00458dd4				lib/code_0x00458000.cpp	19
 0x00458de8	FUN_00458de8	FUN_00458de8				lib/code_0x00458000.cpp	19
 0x00458dfc	FUN_00458dfc	FUN_00458dfc				lib/code_0x00458000.cpp	22
@@ -2256,7 +2256,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00458f58	FUN_00458f58	FUN_00458f58				lib/code_0x00458000.cpp	20
 0x00458f6c	FUN_00458f6c	FUN_00458f6c				lib/code_0x00458000.cpp	20
 0x00458f80	FUN_00458f80	FUN_00458f80				lib/code_0x00458000.cpp	23
-0x00458f98	FUN_00458f98	FUN_00458f98				lib/code_0x00458000.cpp	67
+0x00458f98	_isctype	_isctype		function	analysis (matched TEACON.exe)	lib/code_0x00458000.cpp	67
 0x00458fdc	FUN_00458fdc	FUN_00458fdc				lib/code_0x00458000.cpp	85
 0x00459034	FUN_00459034	FUN_00459034				lib/code_0x00458000.cpp	173
 0x004590e4	FUN_004590e4	FUN_004590e4				lib/code_0x00458000.cpp	1223
@@ -2274,8 +2274,8 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0045a9b8	FUN_0045a9b8	FUN_0045a9b8				lib/code_0x00458000.cpp	10
 0x0045a9c4	FUN_0045a9c4	FUN_0045a9c4				lib/code_0x00458000.cpp	151
 0x0045aa5c	FUN_0045aa5c	FUN_0045aa5c				lib/code_0x00458000.cpp	36
-0x0045aa80	FUN_0045aa80	FUN_0045aa80				lib/code_0x00458000.cpp	84
-0x0045aad4	FUN_0045aad4	FUN_0045aad4				lib/code_0x00458000.cpp	84
+0x0045aa80	tolower	tolower		function	analysis (matched TEACON.exe)	lib/code_0x00458000.cpp	84
+0x0045aad4	toupper	toupper		function	analysis (matched TEACON.exe)	lib/code_0x00458000.cpp	84
 0x0045ab28	FUN_0045ab28	FUN_0045ab28				lib/code_0x00458000.cpp	122
 0x0045aba4	FUN_0045aba4	FUN_0045aba4				lib/code_0x00458000.cpp	209
 0x0045ac78	FUN_0045ac78	FUN_0045ac78				lib/code_0x00458000.cpp	113
@@ -2287,7 +2287,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0045b16e	FUN_0045b16e	FUN_0045b16e				lib/code_0x00458000.cpp	78
 0x0045b210	thunk → FUN_0045b7f8	thunk_FUN_0045b7f8				lib/code_0x00458000.cpp	5
 0x0045b218	FUN_0045b218	FUN_0045b218				lib/code_0x00458000.cpp	364
-0x0045b3a0	FUN_0045b3a0	FUN_0045b3a0				lib/code_0x00458000.cpp	103
+0x0045b3a0	atoi	atoi		function	analysis (matched TEACON.exe)	lib/code_0x00458000.cpp	103
 0x0045b408	FUN_0045b408	FUN_0045b408				lib/code_0x00458000.cpp	15
 0x0045b418	FUN_0045b418	FUN_0045b418				lib/code_0x00458000.cpp	19
 0x0045b42c	FUN_0045b42c	FUN_0045b42c				lib/code_0x00458000.cpp	47
@@ -2295,7 +2295,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0045b462	thunk → FUN_0045b474	thunk_FUN_0045b474_45b462				lib/code_0x00458000.cpp	6
 0x0045b474	FUN_0045b474	FUN_0045b474				lib/code_0x00458000.cpp	12
 0x0045b4a4	FUN_0045b4a4	FUN_0045b4a4				lib/code_0x00458000.cpp	22
-0x0045b4bc	FUN_0045b4bc	FUN_0045b4bc				lib/code_0x00458000.cpp	40
+0x0045b4bc	__ftol	__ftol		function	analysis (matched TEA.exe)	lib/code_0x00458000.cpp	40
 0x0045b4e4	FUN_0045b4e4	FUN_0045b4e4				lib/code_0x00458000.cpp	45
 0x0045b514	FUN_0045b514	FUN_0045b514				lib/code_0x00458000.cpp	33
 0x0045b538	FUN_0045b538	FUN_0045b538				lib/code_0x00458000.cpp	17
@@ -2387,8 +2387,8 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0045e9b9	FUN_0045e9b9	FUN_0045e9b9				lib/code_0x0045c000.cpp	29
 0x0045e9d6	FUN_0045e9d6	FUN_0045e9d6				lib/code_0x0045c000.cpp	208
 0x0045eaa6	FUN_0045eaa6	FUN_0045eaa6				lib/code_0x0045c000.cpp	126
-0x0045eb24	FUN_0045eb24	FUN_0045eb24				lib/code_0x0045c000.cpp	576
-0x0045ed74	FUN_0045ed74	FUN_0045ed74				lib/code_0x0045c000.cpp	53
+0x0045eb24	__raiseException	__raiseException		function	analysis (matched TEACON.exe)	lib/code_0x0045c000.cpp	576
+0x0045ed74	_ThrowExceptionLDTC	_ThrowExceptionLDTC		function	analysis (matched TEACON.exe)	lib/code_0x0045c000.cpp	53
 0x0045eda9	FUN_0045eda9	FUN_0045eda9				lib/code_0x0045c000.cpp	107
 0x0045ee14	FUN_0045ee14	FUN_0045ee14				lib/code_0x0045c000.cpp	63
 0x0045ee53	FUN_0045ee53	FUN_0045ee53				lib/code_0x0045c000.cpp	101

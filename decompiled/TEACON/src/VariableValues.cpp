@@ -9,44 +9,44 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0040d97c  VariableValues::Bind   (74 bytes)   [analysis]
 //   binds variable 0..9 to a letter if unbound (0xfe) and, when exclusive, not already used
-bool __cdecl VariableValues::Bind(int param_1,char param_2)
+bool __cdecl VariableValues::Bind(int var,char letter)
 
 {
-  int iVar1;
+  int taken;
   
-  if ((*(char *)&DAT_00434684) == '\0') {
+  if ((*(char *)&g_varsActive) == '\0') {
     VariableValues::Clear();
   }
-  if (((&DAT_00434688)[param_1] == -2) && (iVar1 = VariableValues::IsLetterBound(param_2), iVar1 == 0)) {
-    (&DAT_00434688)[param_1] = param_2;
+  if (((&g_varValues)[var] == -2) && (taken = VariableValues::IsLetterBound(letter), taken == 0)) {
+    (&g_varValues)[var] = letter;
     return true;
   }
-  return param_2 == (&DAT_00434688)[param_1];
+  return letter == (&g_varValues)[var];
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040d9c8  VariableValues::Get   (27 bytes)   [analysis]
 //   pointer to the binding slot for one variable
-undefined1 * __cdecl VariableValues::Get(int param_1)
+undefined1 * __cdecl VariableValues::Get(int var)
 
 {
-  if ((*(char *)&DAT_00434684) == '\0') {
+  if ((*(char *)&g_varsActive) == '\0') {
     VariableValues::Clear();
   }
-  return &DAT_00434688 + param_1;
+  return &g_varValues + var;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040d9e4  VariableValues::IsLetterBound   (45 bytes)   [analysis]
 //   true when the exclusive option is on and another variable already holds this letter
-undefined4 __cdecl VariableValues::IsLetterBound(char param_1)
+undefined4 __cdecl VariableValues::IsLetterBound(char letter)
 
 {
-  char *pcVar1;
+  char *i;
   
-  if (DAT_0042c930 != 0) {
-    for (pcVar1 = &DAT_00434688; pcVar1 < &DAT_00434692; pcVar1 = pcVar1 + 1) {
-      if (param_1 == *pcVar1) {
+  if (g_exclusiveVariables != 0) {
+    for (i = &g_varValues; i < &DAT_00434692; i = i + 1) {
+      if (letter == *i) {
         return 1;
       }
     }
@@ -60,75 +60,75 @@ undefined4 __cdecl VariableValues::IsLetterBound(char param_1)
 void __stdcall VariableValues::Clear(void)
 
 {
-  undefined1 *puVar1;
-  int iVar2;
+  undefined1 *value;
+  int i;
   
-  iVar2 = 0;
-  puVar1 = &DAT_00434688;
+  i = 0;
+  value = &g_varValues;
   do {
-    *puVar1 = 0xfe;
-    iVar2 = iVar2 + 1;
-    puVar1 = puVar1 + 1;
-  } while (iVar2 < 10);
-  DAT_00434684 = 1;
+    *value = 0xfe;
+    i = i + 1;
+    value = value + 1;
+  } while (i < 10);
+  g_varsActive = 1;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040da30  VariableValues::Save   (32 bytes)   [analysis]
 //   copies the ten bindings into a snapshot
-void __cdecl VariableValues::Save(undefined1 *param_1)
+void __cdecl VariableValues::Save(undefined1 *snapshot)
 
 {
-  undefined1 *puVar1;
-  int iVar2;
+  undefined1 *value;
+  int i;
   
-  iVar2 = 0;
-  puVar1 = &DAT_00434688;
+  i = 0;
+  value = &g_varValues;
   do {
-    param_1 = param_1 + 1;
-    *param_1 = *puVar1;
-    iVar2 = iVar2 + 1;
-    puVar1 = puVar1 + 1;
-  } while (iVar2 < 10);
+    snapshot = snapshot + 1;
+    *snapshot = *value;
+    i = i + 1;
+    value = value + 1;
+  } while (i < 10);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040da50  VariableValues::Restore   (37 bytes)   [analysis]
 //   restores the ten bindings from a snapshot
-void __cdecl VariableValues::Restore(undefined1 *param_1)
+void __cdecl VariableValues::Restore(undefined1 *snapshot)
 
 {
-  int iVar1;
-  undefined1 *puVar2;
+  int i;
+  undefined1 *value;
   
-  DAT_00434684 = 1;
-  iVar1 = 0;
-  puVar2 = &DAT_00434688;
+  g_varsActive = 1;
+  i = 0;
+  value = &g_varValues;
   do {
-    param_1 = param_1 + 1;
-    *puVar2 = *param_1;
-    iVar1 = iVar1 + 1;
-    puVar2 = puVar2 + 1;
-  } while (iVar1 < 10);
+    snapshot = snapshot + 1;
+    *value = *snapshot;
+    i = i + 1;
+    value = value + 1;
+  } while (i < 10);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040ed84  VariableValues::~VariableValues   (53 bytes)   [rtti:dtor destructor]
 //   written in code as VariableValues::_dtor
-void __cdecl VariableValues::_dtor(char *param_1,byte param_2)
+void __cdecl VariableValues::_dtor(char *self,byte dtorFlags)
 
 {
-  if (param_1 != (char *)0x0) {
-    if (*param_1 == '\0') {
-      DAT_00434684 = 0;
+  if (self != (char *)0x0) {
+    if (*self == '\0') {
+      g_varsActive = 0;
     }
-    else if (*param_1 == '\x01') {
-      VariableValues::Restore(param_1);
+    else if (*self == '\x01') {
+      VariableValues::Restore(self);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -136,127 +136,127 @@ void __cdecl VariableValues::_dtor(char *param_1,byte param_2)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0040edbc  FilterWordByCaseMode   (1200 bytes)   [analysis (inferred)]
-//   copies a word into a new string under mode 1..4 (all / letters only / letters upper-cased / letters lower-cased)
+// 0x0040edbc  FilterWordByCaseMode   (1200 bytes)   [analysis]
+//   copies a word under a mode: 0 unchanged, 1 every character, 2 letters only, 3 letters lower-cased, 4 letters upper-cased; characters >= 0x80 are replaced by their expansion from g_charExpansions
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x0040eee1) */
-int __cdecl FilterWordByCaseMode(int param_1,int param_2,char param_3)
+int __cdecl FilterWordByCaseMode(int result,int word_,char mode)
 
 {
-  uint uVar1;
-  char *pcVar2;
-  int iVar3;
-  int *piVar4;
-  uint *puVar5;
-  undefined4 *in_FS_OFFSET;
-  byte *local_64;
-  undefined4 local_38;
-  undefined1 local_14 [8];
-  undefined4 *local_c;
+  uint ch;
+  char *len;
+  int isLetter;
+  int *rep;
+  uint *expansion;
+  undefined4 *sehChainHead;
+  byte *p;
+  undefined4 sehPrevFrame;
+  undefined1 out [8];
+  undefined4 *outData;
   
   __InitExceptBlockLDTC(0x42d364);
-  if (param_3 == '\0') {
-    *(undefined4 *)(param_1 + 8) = 0;
-    iVar3 = *(int *)(*(int *)(param_2 + 8) + -0xc);
-    if (iVar3 == -1 || iVar3 + 1 < 0) {
-      uVar1 = *(uint *)(*(int *)(param_2 + 8) + -4);
-      piVar4 = std::string::__getRep(param_1,uVar1,uVar1);
-      *(int **)(param_1 + 8) = piVar4 + 3;
-      memcpy(*(undefined4 **)(param_1 + 8),*(undefined4 **)(param_2 + 8),uVar1);
+  if (mode == '\0') {
+    *(undefined4 *)(result + 8) = 0;
+    isLetter = *(int *)(*(int *)(word_ + 8) + -0xc);
+    if (isLetter == -1 || isLetter + 1 < 0) {
+      ch = *(uint *)(*(int *)(word_ + 8) + -4);
+      rep = std::string::__getRep(result,ch,ch);
+      *(int **)(result + 8) = rep + 3;
+      memcpy(*(undefined4 **)(result + 8),*(undefined4 **)(word_ + 8),ch);
     }
     else {
-      *(undefined4 *)(param_1 + 8) = *(undefined4 *)(param_2 + 8);
-      piVar4 = (int *)(*(int *)(param_1 + 8) + -0xc);
-      if (piVar4 != &DAT_0042fab4) {
-        *piVar4 = *piVar4 + 1;
+      *(undefined4 *)(result + 8) = *(undefined4 *)(word_ + 8);
+      rep = (int *)(*(int *)(result + 8) + -0xc);
+      if (rep != &g_nullStringRep) {
+        *rep = *rep + 1;
       }
     }
-    *in_FS_OFFSET = local_38;
-    return param_1;
+    *sehChainHead = sehPrevFrame;
+    return result;
   }
-  local_c = (undefined4 *)&DAT_0042fac0;
-  for (local_64 = *(byte **)(param_2 + 8);
-      (byte *)(*(int *)(param_2 + 8) + *(int *)(*(int *)(param_2 + 8) + -4)) != local_64;
-      local_64 = local_64 + 1) {
-    if (*local_64 < 0x80) {
-      if (param_3 == '\x01') {
-        std::string::replace_fill((int)local_14,local_c[-1],0,1,*local_64);
+  outData = (undefined4 *)&g_emptyStringData;
+  for (p = *(byte **)(word_ + 8);
+      (byte *)(*(int *)(word_ + 8) + *(int *)(*(int *)(word_ + 8) + -4)) != p;
+      p = p + 1) {
+    if (*p < 0x80) {
+      if (mode == '\x01') {
+        std::string::replace_fill((int)out,outData[-1],0,1,*p);
       }
-      else if (param_3 == '\x02') {
-        iVar3 = FUN_00422574((int)(char)*local_64);
-        if (iVar3 != 0) {
-          std::string::replace_fill((int)local_14,local_c[-1],0,1,*local_64);
+      else if (mode == '\x02') {
+        isLetter = isalpha((int)(char)*p);
+        if (isLetter != 0) {
+          std::string::replace_fill((int)out,outData[-1],0,1,*p);
         }
       }
-      else if (param_3 == '\x03') {
-        iVar3 = FUN_00422574((int)(char)*local_64);
-        if (iVar3 != 0) {
-          uVar1 = FUN_00424238((int)(char)*local_64);
-          std::string::replace_fill((int)local_14,local_c[-1],0,1,(char)uVar1);
+      else if (mode == '\x03') {
+        isLetter = isalpha((int)(char)*p);
+        if (isLetter != 0) {
+          ch = tolower((int)(char)*p);
+          std::string::replace_fill((int)out,outData[-1],0,1,(char)ch);
         }
       }
-      else if ((param_3 == '\x04') && (iVar3 = FUN_00422574((int)(char)*local_64), iVar3 != 0)) {
-        uVar1 = FUN_0042428c((int)(char)*local_64);
-        std::string::replace_fill((int)local_14,local_c[-1],0,1,(char)uVar1);
+      else if ((mode == '\x04') && (isLetter = isalpha((int)(char)*p), isLetter != 0)) {
+        ch = toupper((int)(char)*p);
+        std::string::replace_fill((int)out,outData[-1],0,1,(char)ch);
       }
     }
     else {
-      puVar5 = *(uint **)(&DAT_0042ce84 + (uint)*local_64 * 4);
-      if (puVar5 != (uint *)0x0) {
-        if ((param_3 == '\x01') || (param_3 == '\x02')) {
-          uVar1 = local_c[-1];
-          pcVar2 = strlen(puVar5);
-          FUN_00417320((int)local_14,uVar1,0,(uint)puVar5,(uint)pcVar2,0,(uint)pcVar2);
+      expansion = *(uint **)(&g_charExpansions + (uint)*p * 4);
+      if (expansion != (uint *)0x0) {
+        if ((mode == '\x01') || (mode == '\x02')) {
+          ch = outData[-1];
+          len = strlen(expansion);
+          std::string::replace((int)out,ch,0,(uint)expansion,(uint)len,0,(uint)len);
         }
         else {
-          for (; (char)*puVar5 != '\0'; puVar5 = (uint *)((int)puVar5 + 1)) {
-            if (param_3 == '\x03') {
-              uVar1 = FUN_00424238((int)(char)*puVar5);
-              std::string::replace_fill((int)local_14,local_c[-1],0,1,(char)uVar1);
+          for (; (char)*expansion != '\0'; expansion = (uint *)((int)expansion + 1)) {
+            if (mode == '\x03') {
+              ch = tolower((int)(char)*expansion);
+              std::string::replace_fill((int)out,outData[-1],0,1,(char)ch);
             }
             else {
-              uVar1 = FUN_0042428c((int)(char)*puVar5);
-              std::string::replace_fill((int)local_14,local_c[-1],0,1,(char)uVar1);
+              ch = toupper((int)(char)*expansion);
+              std::string::replace_fill((int)out,outData[-1],0,1,(char)ch);
             }
           }
         }
       }
     }
   }
-  *(undefined4 *)(param_1 + 8) = 0;
-  if (local_c[-3] == -1 || local_c[-3] + 1 < 0) {
-    uVar1 = local_c[-1];
-    piVar4 = std::string::__getRep(param_1,uVar1,uVar1);
-    *(int **)(param_1 + 8) = piVar4 + 3;
-    memcpy(*(undefined4 **)(param_1 + 8),local_c,uVar1);
+  *(undefined4 *)(result + 8) = 0;
+  if (outData[-3] == -1 || outData[-3] + 1 < 0) {
+    ch = outData[-1];
+    rep = std::string::__getRep(result,ch,ch);
+    *(int **)(result + 8) = rep + 3;
+    memcpy(*(undefined4 **)(result + 8),outData,ch);
   }
   else {
-    *(undefined4 **)(param_1 + 8) = local_c;
-    piVar4 = (int *)(*(int *)(param_1 + 8) + -0xc);
-    if (piVar4 != &DAT_0042fab4) {
-      *piVar4 = *piVar4 + 1;
+    *(undefined4 **)(result + 8) = outData;
+    rep = (int *)(*(int *)(result + 8) + -0xc);
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
-  if (local_c != (undefined4 *)0x0) {
-    if (local_c[-3] != -1) {
-      piVar4 = local_c + -3;
-      if (piVar4 == &DAT_0042fab4) {
-        iVar3 = 1;
+  if (outData != (undefined4 *)0x0) {
+    if (outData[-3] != -1) {
+      rep = outData + -3;
+      if (rep == &g_nullStringRep) {
+        isLetter = 1;
       }
-      else if (piVar4 == &DAT_0042fab4) {
-        iVar3 = 1;
+      else if (rep == &g_nullStringRep) {
+        isLetter = 1;
       }
       else {
-        *piVar4 = *piVar4 + -1;
-        iVar3 = *piVar4 + 1;
+        *rep = *rep + -1;
+        isLetter = *rep + 1;
       }
-      if (iVar3 != 0) goto LAB_0040f251;
+      if (isLetter != 0) goto LAB_0040f251;
     }
     operator_delete();
   }
 LAB_0040f251:
-  *in_FS_OFFSET = local_38;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 } // namespace tea

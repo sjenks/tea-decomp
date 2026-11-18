@@ -1,5 +1,5 @@
 // TSMerge.exe — runtime / library code "rwstd_facet_imp"
-// 3 functions, 0x00411394..0x00453060. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 4 functions, 0x00411394..0x00453060. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -17,21 +17,39 @@ void __stdcall __rwstd::facet_imp::vf1(void)
 // ----------------------------------------------------------------------------------------------------
 // 0x0041139c  __rwstd::facet_imp::~facet_imp   (66 bytes)   [rtti:dtor destructor]
 //   written in code as __rwstd::facet_imp::_dtor
-void __cdecl __rwstd::facet_imp::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl __rwstd::facet_imp::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x465048);
-  if (param_1 != (undefined4 *)0x0) {
-    __rwstd::ref_counted::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    __rwstd::ref_counted::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00452ef0  __rwstd::facet_imp::facet_imp   (84 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores __rwstd::facet_imp's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl __rwstd::facet_imp::facet_imp(undefined4 *self,undefined4 param_2,undefined4 param_3)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x472f64);
+  __rwstd::ref_counted::ref_counted(self,param_2);
+  *self = &__rwstd::facet_imp::vftable;
+  self[2] = 0;
+  self[3] = param_3;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -55,7 +73,7 @@ void __cdecl __rwstd::facet_imp::_dtor(undefined4 *param_1,byte param_2)
 /* WARNING: Removing unreachable block (ram,0x004533d8) */
 /* WARNING: Removing unreachable block (ram,0x00453364) */
 /* WARNING: Removing unreachable block (ram,0x004531ad) */
-undefined4 __rwstd::facet_imp::vf2(int *param_1,undefined **param_2,byte *param_3,byte *param_4,undefined4 param_5, char *param_6,undefined **param_7,byte *param_8,byte *param_9,byte *param_10, undefined4 *param_11,undefined4 *param_12,byte *param_13,undefined4 param_14, char *param_15,undefined **param_16,byte *param_17,byte *param_18,byte *param_19, byte *param_20,byte *param_21,undefined4 param_22,char *param_23,undefined **param_24, byte *param_25,uint *param_26,byte *param_27,byte *param_28,byte *param_29, undefined4 param_30,char *param_31,undefined **param_32,byte *param_33,byte *param_34)
+undefined4 __rwstd::facet_imp::vf2(int *self,undefined **param_2,byte *param_3,byte *param_4,undefined4 param_5, char *param_6,undefined **param_7,byte *param_8,byte *param_9,byte *param_10, undefined4 *param_11,undefined4 *param_12,byte *param_13,undefined4 param_14, char *param_15,undefined **param_16,byte *param_17,byte *param_18,byte *param_19, byte *param_20,byte *param_21,undefined4 param_22,char *param_23,undefined **param_24, byte *param_25,uint *param_26,byte *param_27,byte *param_28,byte *param_29, undefined4 param_30,char *param_31,undefined **param_32,byte *param_33,byte *param_34)
 
 {
   ushort *puVar1;
@@ -64,7 +82,7 @@ undefined4 __rwstd::facet_imp::vf2(int *param_1,undefined **param_2,byte *param_
   byte bVar4;
   int iVar5;
   int iVar6;
-  int iVar7;
+  int refs;
   short sVar8;
   uint uVar9;
   byte *pbVar10;
@@ -78,7 +96,7 @@ undefined4 __rwstd::facet_imp::vf2(int *param_1,undefined **param_2,byte *param_
   byte *pbVar19;
   int extraout_ECX;
   undefined2 uVar20;
-  undefined **ppuVar21;
+  undefined **exception_;
   char *unaff_EBX;
   int iVar22;
   byte *unaff_EBP;
@@ -88,7 +106,7 @@ undefined4 __rwstd::facet_imp::vf2(int *param_1,undefined **param_2,byte *param_
   undefined4 *unaff_EDI;
   byte *pbVar26;
   int *piVar27;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   int in_GS_OFFSET;
   char in_CF;
   bool bVar28;
@@ -97,9 +115,9 @@ undefined4 __rwstd::facet_imp::vf2(int *param_1,undefined **param_2,byte *param_
   uint *puVar16;
   byte *pbVar25;
   
-  *(char *)param_1 = ((char)*param_1 - (char)param_1) - in_CF;
-  *(char *)param_1 = (char)*param_1 + (char)param_1;
-  pbVar14 = (byte *)((int)param_1 + *param_1);
+  *(char *)self = ((char)*self - (char)self) - in_CF;
+  *(char *)self = (char)*self + (char)self;
+  pbVar14 = (byte *)((int)self + *self);
   bVar12 = (byte)pbVar14;
   *pbVar14 = *pbVar14 ^ bVar12;
   *pbVar14 = *pbVar14 + bVar12;
@@ -215,7 +233,7 @@ undefined4 __rwstd::facet_imp::vf2(int *param_1,undefined **param_2,byte *param_
       bVar12 = (byte)((uint)param_23 >> 8);
       cVar11 = (char)param_26;
       pbVar26 = (byte *)((int)unaff_EDI + 1);
-      if (bVar17 < *(byte *)((int)in_FS_OFFSET + (int)param_2)) {
+      if (bVar17 < *(byte *)((int)sehChainHead + (int)param_2)) {
         bVar17 = (byte)((uint)pbVar14 >> 8);
         bVar29 = bVar17 == unaff_EBX[0x68];
         if (bVar17 < (byte)unaff_EBX[0x68]) goto code_r0x0045327b;
@@ -225,7 +243,7 @@ undefined4 __rwstd::facet_imp::vf2(int *param_1,undefined **param_2,byte *param_
         param_3 = param_33;
         pbVar19 = param_25;
         param_2 = param_32;
-        ppuVar21 = param_24;
+        exception_ = param_24;
         unaff_EBX = param_31;
         pcVar15 = param_23;
         unaff_EBP = param_29;
@@ -244,7 +262,7 @@ code_r0x00453290:
           *(byte *)puVar16 = (char)*puVar16 + bVar12;
           param_26 = puVar16;
           param_25 = pbVar19;
-          param_24 = ppuVar21;
+          param_24 = exception_;
           param_23 = pcVar15;
           goto code_r0x004532fb;
         }
@@ -253,26 +271,26 @@ code_r0x00453290:
         *puVar1 = *puVar1 + (ushort)(0 < sVar8) * sVar8;
         bVar17 = (byte)((uint)pcVar15 >> 8);
         if (bVar12 < 0x5f) {
-          bVar12 = *(byte *)((int)in_FS_OFFSET + (int)ppuVar21);
+          bVar12 = *(byte *)((int)sehChainHead + (int)exception_);
 code_r0x00453315:
           if (bVar17 < bVar12) {
-            *(byte *)(ppuVar21 + 0x1187fa) = *(byte *)(ppuVar21 + 0x1187fa) + bVar17;
+            *(byte *)(exception_ + 0x1187fa) = *(byte *)(exception_ + 0x1187fa) + bVar17;
             goto code_r0x0045338a;
           }
         }
         else {
           if (bVar12 != 0x5f) {
-            bVar12 = *(byte *)ppuVar21;
+            bVar12 = *(byte *)exception_;
             goto code_r0x00453315;
           }
           __InitExceptBlockLDTC((int)puVar16);
           pbVar23[-0xffffffff00000014] = 8;
           pbVar23[-0xffffffff00000013] = 0;
-          ppuVar21 = &std::exception::vftable;
+          exception_ = &std::exception::vftable;
 code_r0x0045338a:
           pbVar19 = *(byte **)(pbVar23 + 8);
         }
-        *(undefined ***)pbVar19 = ppuVar21;
+        *(undefined ***)pbVar19 = exception_;
       }
       else {
 code_r0x0045321f:
@@ -282,7 +300,7 @@ code_r0x0045321f:
         puVar16 = (uint *)CONCAT31((int3)((uint)pbVar14 >> 8),cVar13);
         bVar29 = true;
         pbVar19 = param_3;
-        ppuVar21 = param_2;
+        exception_ = param_2;
         pcVar15 = unaff_EBX;
         pbVar23 = unaff_EBP;
         pbVar10 = pbVar26;
@@ -367,8 +385,8 @@ code_r0x00453392:
       *(undefined4 *)(iVar6 + 0x10) = 0;
       param_21[-0xffffffff00000014] = 0x14;
       param_21[-0xffffffff00000013] = 0;
-      iVar7 = *(int *)(*(int *)(iVar5 + 8) + -0xc);
-      if (iVar7 == -1 || iVar7 + 1 < 0) {
+      refs = *(int *)(*(int *)(iVar5 + 8) + -0xc);
+      if (refs == -1 || refs + 1 < 0) {
         uVar9 = *(uint *)(*(int *)(iVar5 + 8) + -4);
         piVar27 = std::string::__getRep(iVar22,uVar9,uVar9);
         *(int **)(param_21 + -0x34) = piVar27;
@@ -388,14 +406,14 @@ code_r0x00453392:
         *(int *)(param_21 + -0x2c) = iVar22;
         *(undefined4 *)(param_21 + -0x4c) = *(undefined4 *)(*(int *)(param_21 + -0x2c) + 8);
         piVar27 = (int *)(*(int *)(iVar6 + 0x10) + -0xc);
-        if (piVar27 != &DAT_00471d5c) {
+        if (piVar27 != &g_nullStringRep) {
           *piVar27 = *piVar27 + 1;
         }
       }
       *(int *)(param_21 + -8) = *(int *)(param_21 + -8) + 1;
       param_21[-0xffffffff00000014] = 8;
       param_21[-0xffffffff00000013] = 0;
-      *in_FS_OFFSET = *(undefined4 *)(param_21 + -0x24);
+      *sehChainHead = *(undefined4 *)(param_21 + -0x24);
       return *(undefined4 *)(param_21 + 8);
     }
   }

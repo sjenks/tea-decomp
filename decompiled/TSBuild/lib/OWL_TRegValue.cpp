@@ -9,13 +9,13 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0041bee4  OWL::TRegValue::~TRegValue   (45 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TRegValue::_dtor
-void __cdecl OWL::TRegValue::_dtor(int param_1,byte param_2)
+void __cdecl OWL::TRegValue::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
+  if (self != 0) {
     operator_delete_array();
     operator_delete_array();
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

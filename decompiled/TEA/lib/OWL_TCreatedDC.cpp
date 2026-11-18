@@ -9,25 +9,25 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0048d3a4  OWL::TCreatedDC::~TCreatedDC   (126 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TCreatedDC::_dtor
-void __cdecl OWL::TCreatedDC::_dtor(int *param_1,byte param_2)
+void __cdecl OWL::TCreatedDC::_dtor(int *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x505d40);
-  if (param_1 != (int *)0x0) {
-    *(undefined ***)((int)param_1 + 5) = &OWL::TCreatedDC::vftable;
-    FUN_0048db40(param_1);
-    if (((char)param_1[1] != '\0') && (*param_1 != 0)) {
-      DeleteDC((HDC)*param_1);
+  if (self != (int *)0x0) {
+    *(undefined ***)((int)self + 5) = &OWL::TCreatedDC::vftable;
+    FUN_0048db40(self);
+    if (((char)self[1] != '\0') && (*self != 0)) {
+      DeleteDC((HDC)*self);
     }
-    OWL::TDC::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+    OWL::TDC::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

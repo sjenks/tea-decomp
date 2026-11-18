@@ -9,10 +9,10 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0041d364  OWL::TObjInfo::~TObjInfo   (25 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TObjInfo::_dtor
-void __cdecl OWL::TObjInfo::_dtor(int param_1,byte param_2)
+void __cdecl OWL::TObjInfo::_dtor(int self,byte dtorFlags)
 
 {
-  if ((param_1 != 0) && ((param_2 & 1) != 0)) {
+  if ((self != 0) && ((dtorFlags & 1) != 0)) {
     operator_delete();
   }
   return;

@@ -1,0 +1,43 @@
+{
+ "0x00405044": {
+  "from": "TEA.exe 0x0044e49c (duplicated code)",
+  "vars": {
+   "param_1": "self",
+   "param_2": "dtorFlags"
+  }
+ },
+ "0x0040507c": {
+  "from": "TEA.exe 0x0044e49c (duplicated code)",
+  "vars": {
+   "param_1": "self",
+   "param_2": "dtorFlags"
+  }
+ },
+ "0x00407a8c": {
+  "from": "TEA.exe 0x0044e49c (duplicated code)",
+  "vars": {
+   "param_1": "self",
+   "param_2": "dtorFlags"
+  }
+ },
+ "0x00417718": {
+  "from": "TEACON.exe 0x00417760 (duplicated code)",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~what"
+  }
+ },
+ "0x00417b80": {
+  "from": "TEACON.exe 0x0041687c (duplicated code)",
+  "vars": {
+   "param_1": "self",
+   "iVar1": "rep"
+  }
+ },
+ "0x0041d818": {
+  "from": "TEACON.exe 0x0040da88 (duplicated code)",
+  "vars": {
+   "param_1": "self"
+  }
+ }
+}

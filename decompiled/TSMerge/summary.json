@@ -2,21 +2,28 @@
  "exe": "TSMerge.exe",
  "sha256": "1bb081e905800b5a000ca63af04de2d022c868b64d275fbb0922761f779fb35d",
  "functions": 2691,
- "named": 928,
+ "named": 1167,
  "nameSources": {
-  "unnamed": 1763,
+  "unnamed": 1524,
+  "analysis (matched TEACON.exe)": 32,
+  "analysis": 55,
+  "rtti:vtable-store": 113,
   "rtti:dtor": 167,
   "rtti:vtable": 557,
   "owl:response-table": 181,
-  "analysis (matched TEACON.exe)": 3,
+  "analysis (matched TEACON.exe, duplicated code)": 14,
+  "analysis (matched TEA.exe)": 4,
+  "analysis (matched TEA.exe, duplicated code)": 17,
+  "analysis (position-matched TEA.exe)": 2,
   "analysis (usage pattern) (matched TEACON.exe)": 13,
   "analysis (usage pattern) (position-matched TEACON.exe)": 5,
   "analysis (usage pattern, less certain) (position-matched TEACON.exe)": 1,
+  "analysis (position-matched TEACON.exe)": 5,
   "analysis (usage pattern, less certain) (matched TEACON.exe)": 1
  },
  "appFunctions": 116,
  "libFunctions": 2575,
- "appNamed": 44,
+ "appNamed": 114,
  "libStart": "0x0040ef00",
  "textBytes": 393216,
  "bytesInFunctions": 338663,
@@ -28,59 +35,73 @@
  "responseTablesOwned": 18,
  "globalsDeclared": 1040,
  "generatorProblems": [],
+ "variables": {
+  "declared": 14263,
+  "generic": 13316,
+  "hand": 280,
+  "rule": 6177,
+  "genericLeft": 6861,
+  "src": {
+   "declared": 1413,
+   "generic": 1400,
+   "hand": 157,
+   "rule": 997,
+   "genericLeft": 248
+  }
+ },
  "modules": [
   {
    "file": "src/DMProgressBar.cpp",
-   "functions": 10,
-   "named": 2,
+   "functions": 9,
+   "named": 7,
    "from": "0x00401000",
    "to": "0x004014b4",
-   "bytes": 1292
+   "bytes": 1259
   },
   {
    "file": "src/DMDialog.cpp",
-   "functions": 61,
-   "named": 22,
-   "from": "0x00401678",
-   "to": "0x0040a884",
-   "bytes": 29405
+   "functions": 47,
+   "named": 47,
+   "from": "0x00401490",
+   "to": "0x004096a0",
+   "bytes": 24727
   },
   {
    "file": "src/DMApplication.cpp",
    "functions": 9,
-   "named": 8,
+   "named": 9,
    "from": "0x00404128",
    "to": "0x00404a9c",
    "bytes": 864
   },
   {
    "file": "src/Abandon_exception.cpp",
-   "functions": 10,
-   "named": 6,
-   "from": "0x0040aae0",
-   "to": "0x0040be50",
-   "bytes": 4209
+   "functions": 24,
+   "named": 24,
+   "from": "0x00409794",
+   "to": "0x0040bdac",
+   "bytes": 8738
   },
   {
    "file": "src/TSMergeProfile.cpp",
    "functions": 12,
-   "named": 2,
-   "from": "0x0040bf28",
-   "to": "0x0040e920",
-   "bytes": 10859
+   "named": 12,
+   "from": "0x0040be50",
+   "to": "0x0040e7b8",
+   "bytes": 10840
   },
   {
    "file": "src/Persist.cpp",
-   "functions": 8,
-   "named": 3,
-   "from": "0x0040ea04",
+   "functions": 9,
+   "named": 9,
+   "from": "0x0040e920",
    "to": "0x0040ec5c",
-   "bytes": 793
+   "bytes": 994
   },
   {
    "file": "src/Help.cpp",
    "functions": 6,
-   "named": 1,
+   "named": 6,
    "from": "0x0040ed80",
    "to": "0x0040eef8",
    "bytes": 381

@@ -1,5 +1,5 @@
 // TEA.exe — application module "MatchListLabelWindows"
-// 4 functions, 0x00428eb4..0x0042909c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 5 functions, 0x00428ce4..0x0042909c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,141 +7,193 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00428eb4  MatchListLabelWindows::~MatchListLabelWindows   (424 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
-//   written in code as MatchListLabelWindows::_dtor
-void __cdecl MatchListLabelWindows::_dtor(int *param_1,uint param_2)
+// 0x00428ce4  MatchListLabelWindows::MatchListLabelWindows   (427 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores MatchListLabelWindows's vtable at its vptr offset (+0xc) in this
+/* WARNING: Removing unreachable block (ram,0x00428e54) */
+int * __cdecl MatchListLabelWindows::MatchListLabelWindows(int *self,int vbasesBuilt,undefined4 *param_3,undefined4 param_4,int *param_5)
 
 {
-  int iVar1;
-  int *piVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 uVar1;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x4f2090);
+  if (vbasesBuilt == 0) {
+    *self = (int)(self + 0x12);
+    self[0x12] = (int)(self + 0xf);
+    self[0x13] = (int)(self + 0x10);
+    self[1] = (int)(self + 0xf);
+    self[2] = (int)(self + 0x10);
+    self[0xe] = 0;
+    self[0x11] = 0;
+    self[0xf] = (int)&OWL::TEventHandler::vftable;
+    self[0x10] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::TWindow_4a4fbc(self + 0x12,1);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+  }
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x20;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -0x20;
+  if (param_3 == (undefined4 *)0x0) {
+    uVar1 = 0;
+  }
+  else {
+    uVar1 = *param_3;
+  }
+  OWL::TStatic::TStatic(self,1,uVar1,param_4,(uint *)&DAT_004f2070,*param_5,param_5[1],
+               param_5[2] - *param_5,param_5[3] - param_5[1],0,0);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x20;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 0x20;
+  self[3] = (int)&MatchListLabelWindows::vftable;
+  *(undefined ***)self[1] = &PTR_LAB_004f2170;
+  *(undefined ***)self[2] = &PTR_LAB_004f217c;
+  *(undefined ***)(*self + 8) = &MatchListLabelWindows::vftable_TWindow;
+  self[6] = (int)param_3;
+  self[7] = 0;
+  self[10] = 0;
+  self[10] = (int)&g_emptyStringData;
+  self[0xc] = -1;
+  FUN_004a7988(*self,0,0x100c,0);
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00428eb4  MatchListLabelWindows::~MatchListLabelWindows   (424 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
+//   written in code as MatchListLabelWindows::_dtor
+void __cdecl MatchListLabelWindows::_dtor(int *self,uint dtorFlags)
+
+{
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4f20c0);
-  if (param_1 == (int *)0x0) goto LAB_0042904b;
-  param_1[3] = (int)&MatchListLabelWindows::vftable;
-  *(undefined ***)param_1[1] = &PTR_LAB_004f2170;
-  *(undefined ***)param_1[2] = &PTR_LAB_004f217c;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_004f2188;
-  if (param_1[10] != 0) {
-    if (*(int *)(param_1[10] + -0xc) != -1) {
-      piVar2 = (int *)(param_1[10] + -0xc);
-      if (piVar2 == &DAT_00513d58) {
-        iVar1 = 1;
+  if (self == (int *)0x0) goto LAB_0042904b;
+  self[3] = (int)&MatchListLabelWindows::vftable;
+  *(undefined ***)self[1] = &PTR_LAB_004f2170;
+  *(undefined ***)self[2] = &PTR_LAB_004f217c;
+  *(undefined ***)(*self + 8) = &MatchListLabelWindows::vftable_TWindow;
+  if (self[10] != 0) {
+    if (*(int *)(self[10] + -0xc) != -1) {
+      strRep = (int *)(self[10] + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar2 == &DAT_00513d58) {
-        iVar1 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar1 = *piVar2 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar1 != 0) goto LAB_00428f8d;
+      if (prevRefs != 0) goto LAB_00428f8d;
     }
     operator_delete();
-    param_1[10] = 0;
+    self[10] = 0;
   }
 LAB_00428f8d:
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x20;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0x20;
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -4;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -4;
-  OWL::TControl::_dtor(param_1,0);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 4;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 4;
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x20;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0x20;
-  if ((param_2 & 2) != 0) {
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    OWL::TWindow::_dtor(param_1 + 0x12,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-    OWL::TStreamableBase::_dtor(param_1 + 0x10,0);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x20;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -0x20;
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -4;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -4;
+  OWL::TControl::_dtor(self,0);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 4;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 4;
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x20;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 0x20;
+  if ((dtorFlags & 2) != 0) {
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::_dtor(self + 0x12,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+    OWL::TStreamableBase::_dtor(self + 0x10,0);
   }
-  if ((param_2 & 1) != 0) {
+  if ((dtorFlags & 1) != 0) {
     operator_delete();
   }
 LAB_0042904b:
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0042905c  FUN_0042905c   (39 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_0042905c(int *param_1,int param_2,int param_3)
+// 0x0042905c  MatchListLabelWindows::SetLabel   (39 bytes)   [analysis]
+//   sets the pane label's base text and number
+void __cdecl MatchListLabelWindows::SetLabel(int *self,int number,int text)
 
 {
-  param_1[7] = param_2;
-  FUN_004cf384((int)(param_1 + 8),param_3);
-  FUN_0042909c(param_1);
+  self[7] = number;
+  std::string::operator_assign((int)(self + 8),text);
+  MatchListLabelWindows::UpdateText(self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00429084  FUN_00429084   (21 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_00429084(int *param_1,int param_2)
+// 0x00429084  MatchListLabelWindows::SetCount   (21 bytes)   [analysis]
+//   updates the result count shown in the label
+void __cdecl MatchListLabelWindows::SetCount(int *self,int count)
 
 {
-  param_1[0xc] = param_2;
-  FUN_0042909c(param_1);
+  self[0xc] = count;
+  MatchListLabelWindows::UpdateText(self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0042909c  FUN_0042909c   (300 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_0042909c(int *param_1)
+// 0x0042909c  MatchListLabelWindows::UpdateText   (300 bytes)   [analysis]
+//   label text: " &%d " number and " (%d)" count
+void __cdecl MatchListLabelWindows::UpdateText(int *self)
 
 {
-  uint uVar1;
-  char *pcVar2;
-  int iVar3;
-  uint *puVar4;
-  undefined4 *in_FS_OFFSET;
+  uint pos;
+  char *len;
+  int prevRefs;
+  uint *strRep;
+  undefined4 *sehChainHead;
   uint local_5c [6];
-  uint *local_44;
-  undefined4 local_38;
-  undefined2 local_28;
-  int local_1c;
-  undefined1 local_14 [8];
+  uint *unused;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [8];
   uint *local_c;
   
   __InitExceptBlockLDTC(0x4f2100);
-  FUN_004e0344((undefined1 *)local_5c,(byte *)" &%d ");
-  local_28 = 0x14;
-  std::string::string_from_cstr((int)local_14,local_5c);
-  local_1c = local_1c + 1;
-  local_28 = 8;
-  std::string::append((int)local_14,(int)(param_1 + 8));
-  if (-1 < param_1[0xc]) {
-    FUN_004e0344((undefined1 *)local_5c,(byte *)" (%d)");
-    uVar1 = local_c[-1];
-    pcVar2 = strlen(local_5c);
-    FUN_004cfad4((int)local_14,uVar1,0,(uint)local_5c,(uint)pcVar2,0,(uint)pcVar2);
+  sprintf((undefined1 *)local_5c,(byte *)" &%d ");
+  ehContext = 0x14;
+  std::string::string_from_cstr((int)str,local_5c);
+  ehDtorCount = ehDtorCount + 1;
+  ehContext = 8;
+  std::string::append((int)str,(int)(self + 8));
+  if (-1 < self[0xc]) {
+    sprintf((undefined1 *)local_5c,(byte *)" (%d)");
+    pos = local_c[-1];
+    len = strlen(local_5c);
+    std::string::replace((int)str,pos,0,(uint)local_5c,(uint)len,0,(uint)len);
   }
-  FUN_004a7780(*param_1,local_c);
-  local_1c = local_1c + -1;
+  FUN_004a7780(*self,local_c);
+  ehDtorCount = ehDtorCount + -1;
   if (local_c != (uint *)0x0) {
     if (local_c[-3] != 0xffffffff) {
-      puVar4 = local_c + -3;
-      if (puVar4 == &DAT_00513d58) {
-        iVar3 = 1;
+      strRep = local_c + -3;
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (puVar4 == &DAT_00513d58) {
-        iVar3 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *puVar4 = *puVar4 - 1;
-        iVar3 = *puVar4 + 1;
+        *strRep = *strRep - 1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar3 != 0) goto LAB_004291b7;
+      if (prevRefs != 0) goto LAB_004291b7;
     }
-    local_44 = local_c + -3;
+    unused = local_c + -3;
     operator_delete();
   }
 LAB_004291b7:
-  *in_FS_OFFSET = local_38;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

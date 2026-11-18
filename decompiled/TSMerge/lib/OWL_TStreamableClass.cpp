@@ -9,15 +9,15 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x00421d64  OWL::TStreamableClass::~TStreamableClass   (54 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TStreamableClass::_dtor
-void __cdecl OWL::TStreamableClass::_dtor(int param_1,byte param_2)
+void __cdecl OWL::TStreamableClass::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
-    if (*(int *)(param_1 + 0xc) != 0) {
-      FUN_00421944(*(undefined4 *)(param_1 + 0xc),param_1);
+  if (self != 0) {
+    if (*(int *)(self + 0xc) != 0) {
+      FUN_00421944(*(undefined4 *)(self + 0xc),self);
     }
     operator_delete_array();
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

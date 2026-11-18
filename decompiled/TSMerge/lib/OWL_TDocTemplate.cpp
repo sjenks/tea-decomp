@@ -9,27 +9,27 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0043969c  OWL::TDocTemplate::~TDocTemplate   (149 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TDocTemplate::_dtor
-void __cdecl OWL::TDocTemplate::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl OWL::TDocTemplate::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46cfcc);
-  if (param_1 != (undefined4 *)0x0) {
-    *param_1 = &OWL::TDocTemplate::vftable;
-    param_1[3] = &PTR_LAB_0046d010;
-    if ((*(byte *)((int)param_1 + 0x16) & 0x80) != 0) {
+  if (self != (undefined4 *)0x0) {
+    *self = &OWL::TDocTemplate::vftable;
+    self[3] = &PTR_LAB_0046d010;
+    if ((*(byte *)((int)self + 0x16) & 0x80) != 0) {
       operator_delete();
-      param_1[2] = 0;
+      self[2] = 0;
     }
     operator_delete_array();
-    OWL::TStreamableBase::_dtor(param_1 + 3,0);
-    if ((param_2 & 1) != 0) {
+    OWL::TStreamableBase::_dtor(self + 3,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

@@ -1,5 +1,5 @@
 // TSBuild.exe — application module "Persist"
-// 8 functions, 0x00419998..0x00419bf0. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 9 functions, 0x004198b4..0x00419bf0. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,16 +7,61 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419998  Persist::~Persist   (42 bytes)   [rtti:dtor destructor]
-//   written in code as Persist::_dtor
-void __cdecl Persist::_dtor(int param_1,byte param_2)
+// 0x004198b4  Persist::Persist   (201 bytes)   [analysis]
+//   opens or creates the registry key (machine-wide first when asked)
+int * __cdecl Persist::Persist(int *self,int param_2,int create,int tryLocalMachine)
 
 {
-  if (param_1 != 0) {
-    if (*(HKEY *)(param_1 + 4) != (HKEY)0x0) {
-      RegCloseKey(*(HKEY *)(param_1 + 4));
+  HKEY hKey;
+  int regStatus;
+  undefined4 *sehChainHead;
+  DWORD lpdwDisposition;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  
+  __InitExceptBlockLDTC(0x477d3c);
+  *self = create;
+  self[1] = 0;
+  while( true ) {
+    if (tryLocalMachine == 0) {
+      hKey = (HKEY)0x80000001;
     }
-    if ((param_2 & 1) != 0) {
+    else {
+      hKey = (HKEY)0x80000002;
+    }
+    ehContext = 8;
+    if (*self == 1) {
+      regStatus = RegCreateKeyExA(hKey,*(LPCSTR *)(param_2 + 8),0,"Position" + 8,0,0x2001f,
+                              (LPSECURITY_ATTRIBUTES)0x0,(PHKEY)(self + 1),&lpdwDisposition);
+    }
+    else {
+      regStatus = RegOpenKeyExA(hKey,*(LPCSTR *)(param_2 + 8),0,0x20019,(PHKEY)(self + 1));
+    }
+    if (regStatus == 0) break;
+    if (tryLocalMachine == 0) {
+      self[1] = 0;
+      *sehChainHead = sehPrevFrame;
+LAB_0041996b:
+      *sehChainHead = sehPrevFrame;
+      return self;
+    }
+    tryLocalMachine = 0;
+  }
+  *sehChainHead = sehPrevFrame;
+  goto LAB_0041996b;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00419998  Persist::~Persist   (42 bytes)   [rtti:dtor destructor]
+//   written in code as Persist::_dtor
+void __cdecl Persist::_dtor(int self,byte dtorFlags)
+
+{
+  if (self != 0) {
+    if (*(HKEY *)(self + 4) != (HKEY)0x0) {
+      RegCloseKey(*(HKEY *)(self + 4));
+    }
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -24,171 +69,174 @@ void __cdecl Persist::_dtor(int param_1,byte param_2)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004199c4  Persist::QueryValueSized   (116 bytes)   [analysis (matched TEACON.exe)]
-//   identical body to TEACON.exe 0x00411a4c. RegQueryValueExA wrapper
-undefined4 __cdecl Persist::QueryValueSized(int param_1,int param_2,int param_3)
+// 0x004199c4  Persist::QueryString   (116 bytes)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x00411a4c. reads a REG_SZ value (up to 64 KB) into a std::string; true if present
+undefined4 __cdecl Persist::QueryString(int self,int valueName,int out)
 
 {
-  int iVar1;
-  LSTATUS LVar2;
-  uint auStackY_1000c [15352];
-  undefined4 uStackY_102c;
-  DWORD local_c [2];
+  int probe;
+  LSTATUS regStatus;
+  uint buf [15352];
+  undefined4 retAddr;
+  DWORD typeAndSize [2];
   
-  iVar1 = 0x10;
+  probe = 0x10;
   do {
-    iVar1 = iVar1 + -1;
-  } while (iVar1 != 0);
-  if (*(int *)(param_1 + 4) != 0) {
-    local_c[1] = 0x10000;
-    local_c[0] = 1;
-    uStackY_102c = 0x419a16;
-    LVar2 = RegQueryValueExA(*(HKEY *)(param_1 + 4),*(LPCSTR *)(param_2 + 8),(LPDWORD)0x0,local_c,
-                             (LPBYTE)auStackY_1000c,local_c + 1);
-    if (LVar2 == 0) {
-      iVar1 = FUN_00459b6c(param_3,auStackY_1000c);
-      return CONCAT31((int3)((uint)iVar1 >> 8),1);
+    probe = probe + -1;
+  } while (probe != 0);
+  if (*(int *)(self + 4) != 0) {
+    typeAndSize[1] = 0x10000;
+    typeAndSize[0] = 1;
+    retAddr = 0x419a16;
+    regStatus = RegQueryValueExA(*(HKEY *)(self + 4),*(LPCSTR *)(valueName + 8),(LPDWORD)0x0,typeAndSize,
+                             (LPBYTE)buf,typeAndSize + 1);
+    if (regStatus == 0) {
+      probe = std::string::assign_cstr(out,buf);
+      return CONCAT31((int3)((uint)probe >> 8),1);
     }
   }
   return 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419a38  Persist::QueryValue   (83 bytes)   [analysis (matched TEACON.exe)]
-//   identical body to TEACON.exe 0x00411ac0. RegQueryValueExA wrapper
-undefined4 __cdecl Persist::QueryValue(int param_1,int param_2,undefined4 *param_3)
+// 0x00419a38  Persist::QueryDword   (83 bytes)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x00411ac0. reads a REG_DWORD value; true if present
+undefined4 __cdecl Persist::QueryDword(int self,int valueName,undefined4 *out)
 
 {
-  LSTATUS LVar1;
-  DWORD local_10 [2];
-  undefined4 local_8;
+  LSTATUS regStatus;
+  DWORD typeAndSize [2];
+  undefined4 value;
   
-  if (*(int *)(param_1 + 4) != 0) {
-    local_10[1] = 4;
-    local_10[0] = 4;
-    LVar1 = RegQueryValueExA(*(HKEY *)(param_1 + 4),*(LPCSTR *)(param_2 + 8),(LPDWORD)0x0,local_10,
-                             (LPBYTE)&local_8,local_10 + 1);
-    if (LVar1 == 0) {
-      *param_3 = local_8;
-      return CONCAT31((int3)((uint)param_3 >> 8),1);
+  if (*(int *)(self + 4) != 0) {
+    typeAndSize[1] = 4;
+    typeAndSize[0] = 4;
+    regStatus = RegQueryValueExA(*(HKEY *)(self + 4),*(LPCSTR *)(valueName + 8),(LPDWORD)0x0,typeAndSize,
+                             (LPBYTE)&value,typeAndSize + 1);
+    if (regStatus == 0) {
+      *out = value;
+      return CONCAT31((int3)((uint)out >> 8),1);
     }
   }
   return 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419a8c  FUN_00419a8c   (46 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_00419a8c(int param_1,int param_2,int param_3)
+// 0x00419a8c  Persist::SetString   (46 bytes)   [analysis (matched TEA.exe)]
+//   identical body to TEA.exe 0x0044ec78. writes a REG_SZ value
+void __cdecl Persist::SetString(int self,int valueName,int value)
 
 {
-  RegSetValueExA(*(HKEY *)(param_1 + 4),*(LPCSTR *)(param_2 + 8),0,1,*(BYTE **)(param_3 + 8),
-                 *(int *)(*(BYTE **)(param_3 + 8) + -4) + 1);
+  RegSetValueExA(*(HKEY *)(self + 4),*(LPCSTR *)(valueName + 8),0,1,*(BYTE **)(value + 8),
+                 *(int *)(*(BYTE **)(value + 8) + -4) + 1);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419abc  FUN_00419abc   (36 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_00419abc(int param_1,int param_2)
+// 0x00419abc  Persist::SetDword   (36 bytes)   [analysis (matched TEA.exe)]
+//   identical body to TEA.exe 0x0044eca8. writes a REG_DWORD value (the value is the third argument on the stack)
+void __cdecl Persist::SetDword(int self,int valueName)
 
 {
-  RegSetValueExA(*(HKEY *)(param_1 + 4),*(LPCSTR *)(param_2 + 8),0,4,&GHIDRA_STACK(0x0000000c),4);
+  RegSetValueExA(*(HKEY *)(self + 4),*(LPCSTR *)(valueName + 8),0,4,&GHIDRA_STACK(0x0000000c),4);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419ae0  FUN_00419ae0   (64 bytes)   [unnamed]
+// 0x00419ae0  DestroyRichEditLoader   (64 bytes)   [analysis (matched TEA.exe, duplicated code)]
+//   same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader
 //   file placement: inferred (address adjacency)
-void __stdcall FUN_00419ae0(void)
+void __stdcall DestroyRichEditLoader(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x477d90);
   if (DAT_00477d50 != '\0') {
     Help::_dtor((int *)&DAT_0048c364,2);
     DAT_00477d50 = '\0';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419b20  FUN_00419b20   (137 bytes)   [unnamed]
+// 0x00419b20  ShowHtmlHelp   (137 bytes)   [analysis]
+//   opens the help file with HtmlHelpA; reports "Help library not found" / "Can't open help"
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_00419b20(HWND param_1)
+undefined4 __cdecl ShowHtmlHelp(HWND hWnd)
 
 {
   undefined4 uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x477ddc);
   if (DAT_00477d50 == '\0') {
-    FUN_00419bf0((undefined4 *)&DAT_0048c364);
+    LoadHtmlHelp((undefined4 *)&DAT_0048c364);
     DAT_00477d50 = DAT_00477d50 + '\x01';
   }
   if (DAT_0048c368 == (code *)0x0) {
-    MessageBoxExA(param_1,"Help library not found","Can't open help",0x30,0);
+    MessageBoxExA(hWnd,"Help library not found","Can't open help",0x30,0);
     uVar1 = 0;
-    *in_FS_OFFSET = local_28;
+    *sehChainHead = sehPrevFrame;
   }
   else {
     uVar1 = ((code *)DAT_0048c368)();
-    *in_FS_OFFSET = local_28;
+    *sehChainHead = sehPrevFrame;
   }
   return uVar1;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419bf0  FUN_00419bf0   (269 bytes)   [unnamed]
+// 0x00419bf0  LoadHtmlHelp   (269 bytes)   [analysis]
+//   finds hhctrl.ocx through its CLSID in the registry and gets HtmlHelpA
 //   file placement: inferred (address adjacency)
-undefined4 * __cdecl FUN_00419bf0(undefined4 *param_1)
+undefined4 * __cdecl LoadHtmlHelp(undefined4 *result)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   HMODULE hModule;
-  FARPROC pFVar2;
-  undefined4 *in_FS_OFFSET;
+  FARPROC procAddress;
+  undefined4 *sehChainHead;
   CHAR local_240 [264];
   BYTE local_138 [264];
-  DWORD local_30;
-  HKEY local_2c;
-  undefined4 local_28;
-  undefined2 local_18;
+  DWORD data;
+  HKEY hKey;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
   
   __InitExceptBlockLDTC(0x477e00);
-  local_18 = 8;
-  *param_1 = 0;
-  param_1[1] = 0;
-  param_1[2] = 0;
-  local_30 = 0x106;
-  LVar1 = RegOpenKeyExA((HKEY)0x80000000,"CLSID\\{adb880a6-d8ff-11cf-9377-00aa003b7a11}\\InprocServer32",0,1,&local_2c);
-  if (LVar1 == 0) {
-    LVar1 = RegQueryValueExA(local_2c,"Help library not found" + 0x16,(LPDWORD)0x0,
-                             (LPDWORD)0x0,local_138,&local_30);
-    if (LVar1 == 0) {
+  ehContext = 8;
+  *result = 0;
+  result[1] = 0;
+  result[2] = 0;
+  data = 0x106;
+  regStatus = RegOpenKeyExA((HKEY)0x80000000,"CLSID\\{adb880a6-d8ff-11cf-9377-00aa003b7a11}\\InprocServer32",0,1,&hKey);
+  if (regStatus == 0) {
+    regStatus = RegQueryValueExA(hKey,"Help library not found" + 0x16,(LPDWORD)0x0,
+                             (LPDWORD)0x0,local_138,&data);
+    if (regStatus == 0) {
       ExpandEnvironmentStringsA((LPCSTR)local_138,local_240,0x106);
       hModule = LoadLibraryA(local_240);
-      *param_1 = hModule;
+      *result = hModule;
       if (hModule != (HMODULE)0x0) {
-        pFVar2 = GetProcAddress(hModule,"HtmlHelpA");
-        param_1[1] = pFVar2;
-        if (pFVar2 == (FARPROC)0x0) {
-          FreeLibrary((HMODULE)*param_1);
-          *param_1 = 0;
+        procAddress = GetProcAddress(hModule,"HtmlHelpA");
+        result[1] = procAddress;
+        if (procAddress == (FARPROC)0x0) {
+          FreeLibrary((HMODULE)*result);
+          *result = 0;
         }
       }
     }
-    RegCloseKey(local_2c);
+    RegCloseKey(hKey);
   }
-  if (param_1[1] != 0) {
-    (*(code *)param_1[1])();
+  if (result[1] != 0) {
+    (*(code *)result[1])();
   }
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 } // namespace tea

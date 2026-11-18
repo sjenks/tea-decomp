@@ -1,5 +1,5 @@
 // TSMerge.exe — runtime / library code "OWL_TXInvalidModule"
-// 3 functions, 0x00445300..0x004454fc. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 4 functions, 0x004451f4..0x004454fc. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,71 +7,112 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00445300  OWL::TXInvalidModule::vf2   (126 bytes)   [rtti:vtable virtual slot 2]
-undefined4 * __cdecl OWL::TXInvalidModule::vf2(int *param_1)
+// 0x004451f4  OWL::TXInvalidModule::TXInvalidModule   (231 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TXInvalidModule's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl OWL::TXInvalidModule::TXInvalidModule(undefined4 *self,undefined4 param_2)
 
 {
-  undefined4 *puVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 uVar3;
+  undefined4 sehPrevFrame;
+  undefined1 str [8];
+  int str2;
+  
+  __InitExceptBlockLDTC(0x46f4f0);
+  uVar3 = 0;
+  FUN_00418444((int)str,0x7ff8,param_2,DAT_00470a60);
+  OWL::TXOwl::TXOwl(self,(int)str,uVar3);
+  if (str2 != 0) {
+    if (*(int *)(str2 + -0xc) != -1) {
+      strRep = (int *)(str2 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
+      }
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
+      }
+      else {
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
+      }
+      if (prevRefs != 0) goto LAB_004452b2;
+    }
+    operator_delete();
+  }
+LAB_004452b2:
+  *self = &OWL::TXInvalidModule::vftable;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00445300  OWL::TXInvalidModule::vf2   (126 bytes)   [rtti:vtable virtual slot 2]
+undefined4 * __cdecl OWL::TXInvalidModule::vf2(int *self)
+
+{
+  undefined4 *txInvalidModule;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46f538);
-  puVar1 = (undefined4 *)operator_new();
-  if (puVar1 != (undefined4 *)0x0) {
-    FUN_00417b88(puVar1,param_1);
-    puVar1[2] = param_1[2];
-    *puVar1 = &OWL::TXOwl::vftable;
-    *puVar1 = &OWL::TXInvalidModule::vftable;
+  txInvalidModule = (undefined4 *)operator_new();
+  if (txInvalidModule != (undefined4 *)0x0) {
+    OWL::TXBase::TXBase_417b88(txInvalidModule,self);
+    txInvalidModule[2] = self[2];
+    *txInvalidModule = &OWL::TXOwl::vftable;
+    *txInvalidModule = &OWL::TXInvalidModule::vftable;
   }
-  *in_FS_OFFSET = local_2c;
-  return puVar1;
+  *sehChainHead = sehPrevFrame;
+  return txInvalidModule;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00445380  OWL::TXInvalidModule::vf3   (116 bytes)   [rtti:vtable virtual slot 3]
-void __cdecl OWL::TXInvalidModule::vf3(int *param_1)
+void __cdecl OWL::TXInvalidModule::vf3(int *self)
 
 {
-  undefined4 uVar1;
-  undefined *puVar2;
-  uint uVar3;
-  undefined4 uVar4;
-  undefined4 uVar5;
-  undefined4 uVar6;
-  undefined **local_10 [2];
-  int local_8;
+  undefined4 objectDtor;
+  undefined *copyCtor;
+  uint copyCtorMask;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined **txInvalidModule [2];
+  int unused;
   
   __InitExceptBlockLDTC(0x46f568);
-  uVar6 = 0;
-  uVar5 = 0;
-  uVar4 = 0;
-  uVar3 = 1;
-  puVar2 = &LAB_00445454;
-  uVar1 = 0;
-  FUN_00417b88((undefined4*)local_10,param_1);
-  local_8 = param_1[2];
-  local_10[0] = &OWL::TXInvalidModule::vftable;
-  FUN_0045ed74((uint *)&DAT_004453f4,(undefined4*)local_10,uVar1,puVar2,uVar3,uVar4,uVar5,uVar6);
+  throwLine = 0;
+  throwFile = 0;
+  throwFlags = 0;
+  copyCtorMask = 1;
+  copyCtor = &LAB_00445454;
+  objectDtor = 0;
+  OWL::TXBase::TXBase_417b88((undefined4*)txInvalidModule,self);
+  unused = self[2];
+  txInvalidModule[0] = &OWL::TXInvalidModule::vftable;
+  _ThrowExceptionLDTC((uint *)&DAT_004453f4,(undefined4*)txInvalidModule,objectDtor,copyCtor,copyCtorMask,throwFlags,throwFile,throwLine);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004454fc  OWL::TXInvalidModule::~TXInvalidModule   (67 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TXInvalidModule::_dtor
-void __cdecl OWL::TXInvalidModule::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl OWL::TXInvalidModule::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46f5ac);
-  if (param_1 != (undefined4 *)0x0) {
-    OWL::TXOwl::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    OWL::TXOwl::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

@@ -5,11 +5,12 @@ SHA-256 `1bb081e905800b5a000ca63af04de2d022c868b64d275fbb0922761f779fb35d`
 | | |
 |---|---|
 | Functions decompiled | 2691 (+5 that Ghidra could not decompile, listed below) |
-| Application functions (`src/`) | 116, of which 44 have a recovered name (37.9%) |
+| Application functions (`src/`) | 116, of which 114 have a recovered name (98.3%) |
 | Runtime / library functions (`lib/`) | 2575 |
 | **Compiles** | **181 files, 0 errors** — 181 object files produced |
 | Mechanical repairs needed for C++ | 179 in 42 files |
 | Links into a program | no — 1087 symbols undefined (e.g. `DAT_00471d5c`, `DAT_00408678`, `DMDialog::__entries`) |
+| Variables (parameters and locals) | 14263; 280 named by hand, 6177 by rule, 6861 still with Ghidra's storage name. In `src/`: 1413, of which 248 keep a storage name (82.4% named) |
 | Globals declared in `decomp.h` | 1040 |
 | Classes recovered from RTTI | 211 (8 application classes) |
 | OWL response tables (message maps) | 22, 18 tied to their class |
@@ -35,27 +36,36 @@ Each was applied at a location the compiler reported, in a fixed way; see ../REA
 
 | source tag | functions |
 |---|---|
-| unnamed | 1763 |
+| unnamed | 1524 |
 | rtti:vtable | 557 |
 | owl:response-table | 181 |
 | rtti:dtor | 167 |
+| rtti:vtable-store | 113 |
+| analysis | 55 |
+| analysis (matched TEACON.exe) | 32 |
+| analysis (matched TEA.exe, duplicated code) | 17 |
+| analysis (matched TEACON.exe, duplicated code) | 14 |
 | analysis (usage pattern) (matched TEACON.exe) | 13 |
 | analysis (usage pattern) (position-matched TEACON.exe) | 5 |
-| analysis (matched TEACON.exe) | 3 |
+| analysis (position-matched TEACON.exe) | 5 |
+| analysis (matched TEA.exe) | 4 |
+| analysis (position-matched TEA.exe) | 2 |
 | analysis (usage pattern, less certain) (position-matched TEACON.exe) | 1 |
 | analysis (usage pattern, less certain) (matched TEACON.exe) | 1 |
+
+Every renamed variable, with the rule or hand assignment behind it, is listed in [varnames.tsv](varnames.tsv).
 
 ## Application modules (`src/`)
 
 | file | functions | named | address range |
 |---|---|---|---|
-| [src/DMProgressBar.cpp](src/DMProgressBar.cpp) | 10 | 2 | 0x00401000 – 0x004014b4 |
-| [src/DMDialog.cpp](src/DMDialog.cpp) | 61 | 22 | 0x00401678 – 0x0040a884 |
-| [src/DMApplication.cpp](src/DMApplication.cpp) | 9 | 8 | 0x00404128 – 0x00404a9c |
-| [src/Abandon_exception.cpp](src/Abandon_exception.cpp) | 10 | 6 | 0x0040aae0 – 0x0040be50 |
-| [src/TSMergeProfile.cpp](src/TSMergeProfile.cpp) | 12 | 2 | 0x0040bf28 – 0x0040e920 |
-| [src/Persist.cpp](src/Persist.cpp) | 8 | 3 | 0x0040ea04 – 0x0040ec5c |
-| [src/Help.cpp](src/Help.cpp) | 6 | 1 | 0x0040ed80 – 0x0040eef8 |
+| [src/DMProgressBar.cpp](src/DMProgressBar.cpp) | 9 | 7 | 0x00401000 – 0x004014b4 |
+| [src/DMDialog.cpp](src/DMDialog.cpp) | 47 | 47 | 0x00401490 – 0x004096a0 |
+| [src/DMApplication.cpp](src/DMApplication.cpp) | 9 | 9 | 0x00404128 – 0x00404a9c |
+| [src/Abandon_exception.cpp](src/Abandon_exception.cpp) | 24 | 24 | 0x00409794 – 0x0040bdac |
+| [src/TSMergeProfile.cpp](src/TSMergeProfile.cpp) | 12 | 12 | 0x0040be50 – 0x0040e7b8 |
+| [src/Persist.cpp](src/Persist.cpp) | 9 | 9 | 0x0040e920 – 0x0040ec5c |
+| [src/Help.cpp](src/Help.cpp) | 6 | 6 | 0x0040ed80 – 0x0040eef8 |
 
 ## Application classes (8)
 

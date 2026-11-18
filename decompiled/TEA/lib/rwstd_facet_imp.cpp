@@ -1,10 +1,28 @@
 // TEA.exe — runtime / library code "rwstd_facet_imp"
-// 1 functions, 0x004d8410..0x004d8410. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 2 functions, 0x004d805c..0x004d8410. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
 
 namespace tea {
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004d805c  __rwstd::facet_imp::facet_imp   (84 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores __rwstd::facet_imp's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl __rwstd::facet_imp::facet_imp(undefined4 *self,undefined4 param_2,undefined4 param_3)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x5157f0);
+  __rwstd::ref_counted::ref_counted(self,param_2);
+  *self = &__rwstd::facet_imp::vftable;
+  self[2] = 0;
+  self[3] = param_3;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004d8410  __rwstd::facet_imp::vf2   (48 bytes)   [rtti:vtable virtual slot 2; function defined from vtable-slot]
@@ -46,14 +64,14 @@ namespace tea {
 /* WARNING: Removing unreachable block (ram,0x004d84fc) */
 /* WARNING: Removing unreachable block (ram,0x004d856f) */
 /* WARNING: Removing unreachable block (ram,0x004d85f1) */
-void __rwstd::facet_imp::vf2(int *param_1,undefined4 param_2,byte *param_3,byte *param_4,int param_5, undefined4 param_6,byte *param_7,byte *param_8,byte *param_9,byte *param_10, byte *param_11,int param_12,undefined4 param_13,byte *param_14,byte *param_15, byte *param_16,byte *param_17,byte *param_18,byte *param_19,byte *param_20, byte *param_21,byte *param_22,byte *param_23,byte *param_24,byte *param_25, byte *param_26)
+void __rwstd::facet_imp::vf2(int *self,undefined4 param_2,byte *param_3,byte *param_4,int param_5, undefined4 param_6,byte *param_7,byte *param_8,byte *param_9,byte *param_10, byte *param_11,int param_12,undefined4 param_13,byte *param_14,byte *param_15, byte *param_16,byte *param_17,byte *param_18,byte *param_19,byte *param_20, byte *param_21,byte *param_22,byte *param_23,byte *param_24,byte *param_25, byte *param_26)
 
 {
   ushort *puVar1;
   char *pcVar2;
   int iVar3;
   undefined4 uVar4;
-  undefined4 *puVar5;
+  undefined4 *in2;
   short sVar6;
   uint uVar7;
   byte *pbVar8;
@@ -83,19 +101,19 @@ void __rwstd::facet_imp::vf2(int *param_1,undefined4 param_2,byte *param_3,byte 
   undefined2 in_ES;
   undefined2 in_SS;
   undefined2 in_DS;
-  int in_FS_OFFSET;
+  int sehChainHead;
   int in_GS_OFFSET;
   char in_CF;
   bool bVar29;
   bool bVar30;
   byte *in_stack_00000000;
-  undefined4 in_stack_00000060;
+  undefined4 unused;
   char *pcVar15;
   
   pbVar27 = param_10;
-  *(char *)param_1 = ((char)*param_1 - (char)param_1) - in_CF;
-  *(char *)param_1 = (char)*param_1 + (char)param_1;
-  pbVar14 = (byte *)((int)param_1 + *param_1);
+  *(char *)self = ((char)*self - (char)self) - in_CF;
+  *(char *)self = (char)*self + (char)self;
+  pbVar14 = (byte *)((int)self + *self);
   bVar12 = (byte)pbVar14;
   *pbVar14 = *pbVar14 ^ bVar12;
   *pbVar14 = *pbVar14 + bVar12;
@@ -124,8 +142,8 @@ void __rwstd::facet_imp::vf2(int *param_1,undefined4 param_2,byte *param_3,byte 
     in_stack_00000000 = (byte *)0x732c7261;
     cVar13 = (char)((uint)unaff_EBX >> 8);
     if ((char)param_4 == 'c') {
-      bVar30 = SBORROW1(cVar13,*(char *)(in_FS_OFFSET + 0x1004d));
-      bVar29 = cVar13 == *(char *)(in_FS_OFFSET + 0x1004d);
+      bVar30 = SBORROW1(cVar13,*(char *)(sehChainHead + 0x1004d));
+      bVar29 = cVar13 == *(char *)(sehChainHead + 0x1004d);
       param_8 = (byte *)0x1004d;
       param_7 = unaff_EBX;
       param_5 = unaff_EBP;
@@ -192,8 +210,8 @@ code_r0x004d853d:
     }
     param_10 = (byte *)0x732c7261;
     bVar12 = (byte)((uint)param_7 >> 8);
-    bVar29 = bVar12 < param_8[in_FS_OFFSET];
-    bVar30 = bVar12 == param_8[in_FS_OFFSET];
+    bVar29 = bVar12 < param_8[sehChainHead];
+    bVar30 = bVar12 == param_8[sehChainHead];
     out(uRam632c7261,(short)param_8);
     param_4 = pbVar27;
     pbVar14 = (byte *)0x632c7265;
@@ -221,8 +239,8 @@ code_r0x004d853d:
       *param_17 = *param_17 + (char)param_17;
       *param_17 = *param_17 + (char)param_17;
       *param_17 = *param_17 + (char)param_17;
-      puVar5 = (undefined4 *)segment(in_SS,(short)&param_18);
-      param_7 = (byte *)*puVar5;
+      in2 = (undefined4 *)segment(in_SS,(short)&param_18);
+      param_7 = (byte *)*in2;
       param_8 = param_15;
       goto code_r0x004d85f5;
     }
@@ -289,8 +307,8 @@ code_r0x004d8508:
   if (CARRY1(bVar9,bVar12)) {
 code_r0x004d8542:
     bVar12 = (byte)((uint)param_7 >> 8);
-    bVar29 = bVar12 < param_8[in_FS_OFFSET];
-    bVar30 = bVar12 == param_8[in_FS_OFFSET];
+    bVar29 = bVar12 < param_8[sehChainHead];
+    bVar30 = bVar12 == param_8[sehChainHead];
     uVar4 = in((short)param_8);
     *(undefined4 *)unaff_EDI = uVar4;
     param_4 = param_17;
@@ -362,7 +380,7 @@ code_r0x004d85f5:
     pbVar25 = (byte *)(param_5 + -1);
     pbVar28 = pbVar14;
     pbVar8 = unaff_EDI;
-    if (bVar9 < param_8[in_FS_OFFSET]) {
+    if (bVar9 < param_8[sehChainHead]) {
       bVar9 = param_7[0x68];
       bVar18 = (byte)((uint)param_4 >> 8);
       bVar30 = bVar18 < bVar9;
@@ -464,7 +482,7 @@ code_r0x004d86d4:
       *pbVar27 = *pbVar27 + GH_PIECE(param_25, 3, undefined1);
       *pbVar27 = *pbVar27 + GH_PIECE(param_25, 3, undefined1);
       *pbVar27 = *pbVar27 + GH_PIECE(param_25, 3, undefined1);
-      in_stack_00000060 = 0x3000000;
+      unused = 0x3000000;
       *pbVar27 = *pbVar27 + (byte)param_24;
       *pbVar27 = *pbVar27 + GH_PIECE(param_25, 3, undefined1);
       *pbVar27 = *pbVar27 + GH_PIECE(param_25, 3, undefined1);
@@ -512,7 +530,7 @@ code_r0x004d86d4:
     GH_PIECE(param_19, 1, undefined1) = (undefined1)((uint)pbVar20 >> 0x10);
     GH_PIECE(param_19, 2, undefined1) = (undefined1)((uint)pbVar20 >> 0x18);
     param_7[0x74] = param_7[0x74] + (byte)param_24;
-    bVar9 = param_8[in_FS_OFFSET];
+    bVar9 = param_8[sehChainHead];
     bVar12 = (byte)param_23 - bVar9;
     out(*pbVar14,(short)param_8);
     if ((byte)param_23 == bVar9) {
@@ -562,14 +580,14 @@ code_r0x004d887b:
     *puVar1 = *puVar1 + (ushort)(0 < sVar6) * sVar6;
     if (bVar30) {
 LAB_004d88f8:
-      puVar5 = (undefined4 *)
+      in2 = (undefined4 *)
                (CONCAT13(GH_PIECE(param_20, 2, undefined1),
                          CONCAT12(GH_PIECE(param_20, 1, undefined1),CONCAT11(GH_PIECE(param_20, 0, undefined1),GH_PIECE(param_19, 3, undefined1)))) + -0xc);
-      GH_PIECE(param_19, 3, undefined1) = SUB41(puVar5,0);
-      GH_PIECE(param_20, 0, undefined1) = (undefined1)((uint)puVar5 >> 8);
-      GH_PIECE(param_20, 1, undefined1) = (undefined1)((uint)puVar5 >> 0x10);
-      GH_PIECE(param_20, 2, undefined1) = (undefined1)((uint)puVar5 >> 0x18);
-      std::basic_istream_char::_dtor(puVar5,CONCAT13(GH_PIECE(param_21, 2, undefined1),
+      GH_PIECE(param_19, 3, undefined1) = SUB41(in2,0);
+      GH_PIECE(param_20, 0, undefined1) = (undefined1)((uint)in2 >> 8);
+      GH_PIECE(param_20, 1, undefined1) = (undefined1)((uint)in2 >> 0x10);
+      GH_PIECE(param_20, 2, undefined1) = (undefined1)((uint)in2 >> 0x18);
+      std::basic_istream_char::_dtor(in2,CONCAT13(GH_PIECE(param_21, 2, undefined1),
                                    CONCAT12(GH_PIECE(param_21, 1, undefined1),CONCAT11(GH_PIECE(param_21, 0, undefined1),GH_PIECE(param_20, 3, undefined1))))
                   );
       return;
@@ -606,7 +624,7 @@ code_r0x004d873e:
     if (bVar30 || bVar29) {
 code_r0x004d87a7:
       if (-1 < (char)bVar12) goto code_r0x004d8817;
-      puVar5 = (undefined4 *)
+      in2 = (undefined4 *)
                CONCAT13(GH_PIECE(param_19, 2, undefined1),
                         CONCAT12(GH_PIECE(param_19, 1, undefined1),CONCAT11(GH_PIECE(param_19, 0, undefined1),GH_PIECE(param_18, 3, undefined1))));
       pbVar14 = (byte *)CONCAT13(GH_PIECE(param_20, 2, undefined1),
@@ -615,9 +633,9 @@ code_r0x004d87a7:
                                  CONCAT12(GH_PIECE(param_21, 1, undefined1),CONCAT11(GH_PIECE(param_21, 0, undefined1),GH_PIECE(param_20, 3, undefined1))));
       param_7 = (byte *)CONCAT22(GH_PIECE(param_23, 1, undefined2),CONCAT11((byte)param_23,GH_PIECE(param_22, 3, undefined1)));
       param_8 = (byte *)CONCAT22(GH_PIECE(param_24, 1, undefined2),CONCAT11((byte)param_24,GH_PIECE(param_23, 3, undefined1)));
-      pcVar15 = (char *)(puVar5 + 1);
+      pcVar15 = (char *)(in2 + 1);
       uVar4 = in(CONCAT11((byte)param_24,GH_PIECE(param_23, 3, undefined1)));
-      *puVar5 = uVar4;
+      *in2 = uVar4;
       piVar17 = (int *)CONCAT22(GH_PIECE(param_26, 1, undefined2),
                                 CONCAT11((char)param_26 + GH_PIECE(param_24, 3, undefined1),GH_PIECE(param_25, 3, undefined1)));
       LOCK();
@@ -714,8 +732,8 @@ code_r0x004d8817:
     bVar9 = (byte)((uint)param_7 >> 8);
     if (*pcVar2 == '\0') {
       param_7[0x74] = param_7[0x74] + (char)((uint)param_8 >> 8);
-      bVar29 = bVar9 == param_8[in_FS_OFFSET];
-      if (SBORROW1(bVar9,param_8[in_FS_OFFSET])) {
+      bVar29 = bVar9 == param_8[sehChainHead];
+      if (SBORROW1(bVar9,param_8[sehChainHead])) {
         *pbVar27 = *pbVar27 | bVar12;
         *pbVar27 = *pbVar27 + bVar12;
         *pbVar27 = *pbVar27 + bVar12;
@@ -760,7 +778,7 @@ code_r0x004d8817:
   }
   bVar12 = *param_8;
   uVar7 = (uint)param_7 >> 8;
-  puVar5 = (undefined4 *)CONCAT31((undefined3)param_12,GH_PIECE(param_11, 3, undefined1));
+  in2 = (undefined4 *)CONCAT31((undefined3)param_12,GH_PIECE(param_11, 3, undefined1));
   param_7 = (byte *)CONCAT22(GH_PIECE(param_15, 1, undefined2),CONCAT11(GH_PIECE(param_15, 0, undefined1),GH_PIECE(param_14, 3, undefined1)));
   uVar21 = CONCAT11(GH_PIECE(param_16, 0, undefined1),GH_PIECE(param_15, 3, undefined1));
   param_9 = (byte *)CONCAT22(GH_PIECE(param_17, 1, undefined2),CONCAT11((char)param_17,GH_PIECE(param_16, 3, undefined1)));
@@ -770,12 +788,12 @@ code_r0x004d8817:
   *(undefined1 *)CONCAT31(GH_PIECE(param_11, 0, undefined3),GH_PIECE(param_10, 3, undefined1)) = uVar10;
   uVar10 = in(uVar21);
   ((undefined1 *)CONCAT31(GH_PIECE(param_11, 0, undefined3),GH_PIECE(param_10, 3, undefined1)))[1] = uVar10;
-  out(*puVar5,uVar21);
+  out(*in2,uVar21);
   puVar1 = (ushort *)(param_9 + 0x74);
   sVar6 = ((short)&param_18 + 3U & 3) - (*puVar1 & 3);
   *puVar1 = *puVar1 + (ushort)(0 < sVar6) * sVar6;
-  pbVar14 = (byte *)(puVar5 + 2);
-  out(puVar5[1],uVar21);
+  pbVar14 = (byte *)(in2 + 2);
+  out(in2[1],uVar21);
   if ((byte)uVar7 < bVar12) {
 code_r0x004d88f1:
     std::basic_ostream_char::_dtor((undefined4 *)

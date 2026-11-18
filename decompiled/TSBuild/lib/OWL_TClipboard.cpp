@@ -9,14 +9,14 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0041fe30  OWL::TClipboard::~TClipboard   (37 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TClipboard::_dtor
-void __cdecl OWL::TClipboard::_dtor(char *param_1,byte param_2)
+void __cdecl OWL::TClipboard::_dtor(char *self,byte dtorFlags)
 
 {
-  if (param_1 != (char *)0x0) {
-    if (*param_1 != '\0') {
+  if (self != (char *)0x0) {
+    if (*self != '\0') {
       CloseClipboard();
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

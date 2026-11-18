@@ -93,9 +93,9 @@ class TSDictionaryList::Dictionary {
     //   [ 1] 0x00406a2c  TSDictionaryList::Dictionary::Load
     //   [ 2] 0x0040711c  TSDictionaryList::Dictionary::Unload
     //   [ 3] 0x004071a0  TSDictionaryList::Dictionary::EnsureCurrent
-    //   [ 4] 0x00407200  TSDictionaryList::Dictionary::vf4
+    //   [ 4] 0x00407200  TSDictionaryList::Dictionary::GetPathData
     //   [ 5] 0x00407210  TSDictionaryList::Dictionary::GetFileTitle
-    //   [ 6] 0x00407254  TSDictionaryList::Dictionary::vf6
+    //   [ 6] 0x00407254  TSDictionaryList::Dictionary::GetFileName
     //   [ 7] 0x004072cc  TSDictionaryList::Dictionary::GetSummaryText
     //   [ 8] 0x00407528  TSDictionaryList::Dictionary::GetFileDateText
     //   [ 9] 0x00407768  TSDictionaryList::Dictionary::GetDescription

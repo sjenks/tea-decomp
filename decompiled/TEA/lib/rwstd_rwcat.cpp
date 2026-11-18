@@ -9,42 +9,42 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x004da158  __rwstd::__rwcat::~__rwcat   (172 bytes)   [rtti:dtor destructor]
 //   written in code as __rwstd::__rwcat::_dtor
-void __cdecl __rwstd::__rwcat::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl __rwstd::__rwcat::_dtor(undefined4 *self,byte dtorFlags)
 
 {
   int iVar1;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   undefined4 local_40 [4];
-  int local_30;
-  undefined4 local_2c;
-  undefined4 local_28;
-  undefined2 local_18;
+  int unused;
+  undefined4 unused2;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
   int local_c;
   
   __InitExceptBlockLDTC(0x51646c);
   local_c = 2;
-  if (param_1 != (undefined4 *)0x0) {
-    local_18 = 8;
-    if ((HMODULE)*param_1 != (HMODULE)0x0) {
-      FreeLibrary((HMODULE)*param_1);
+  if (self != (undefined4 *)0x0) {
+    ehContext = 8;
+    if ((HMODULE)*self != (HMODULE)0x0) {
+      FreeLibrary((HMODULE)*self);
     }
-    *param_1 = 0;
+    *self = 0;
     local_c = local_c + -2;
-    iVar1 = param_1[0xb];
+    iVar1 = self[0xb];
     if (iVar1 != 0) {
-      local_2c = *(undefined4 *)(iVar1 + 8);
-      local_30 = iVar1;
-      FUN_004cd8bc(local_40,(int)(param_1 + 2));
-      iVar1 = param_1[0xb];
-      *(undefined4 *)(iVar1 + 0xc) = param_1[8];
-      param_1[8] = iVar1;
-      FUN_004ceb10((int)(param_1 + 2));
+      unused2 = *(undefined4 *)(iVar1 + 8);
+      unused = iVar1;
+      FUN_004cd8bc(local_40,(int)(self + 2));
+      iVar1 = self[0xb];
+      *(undefined4 *)(iVar1 + 0xc) = self[8];
+      self[8] = iVar1;
+      FUN_004ceb10((int)(self + 2));
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

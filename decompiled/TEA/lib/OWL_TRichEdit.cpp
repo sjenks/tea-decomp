@@ -8,19 +8,19 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00486aa8  OWL::TRichEdit::Streamer::vf1   (27 bytes)   [rtti:vtable virtual slot 1]
-undefined4 __cdecl OWL::TRichEdit::Streamer::vf1(int param_1,int *param_2)
+undefined4 __cdecl OWL::TRichEdit::Streamer::vf1(int self,int *param_2)
 
 {
-  FUN_00486ac4(*(int *)(param_1 + 8),param_2);
-  return *(undefined4 *)(param_1 + 8);
+  FUN_00486ac4(*(int *)(self + 8),param_2);
+  return *(undefined4 *)(self + 8);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00486b1c  OWL::TRichEdit::Streamer::vf2   (22 bytes)   [rtti:vtable virtual slot 2]
-void __cdecl OWL::TRichEdit::Streamer::vf2(int param_1,int *param_2)
+void __cdecl OWL::TRichEdit::Streamer::vf2(int self,int *param_2)
 
 {
-  FUN_00486b34(*(int *)(param_1 + 8),param_2);
+  FUN_00486b34(*(int *)(self + 8),param_2);
   return;
 }
 

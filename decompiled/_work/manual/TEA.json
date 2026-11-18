@@ -116,9 +116,9 @@
  {
   "addr": "0x4118a0",
   "name": "InputEngine::NextWord",
-  "cls": "InputEngine",
-  "source": "analysis (inferred)",
-  "note": "second Huffman decode loop that exists only in TEA.exe; same structure as NextMatch. Its exact role was not determined"
+  "source": "analysis",
+  "note": "decodes the next word of the current length with no pattern test (the same Huffman walk as NextMatch); returns the word buffer, 0xff-terminated at the end of the length",
+  "cls": "InputEngine"
  },
  {
   "addr": "0x411bdc",
@@ -203,5 +203,4613 @@
   "cls": "MatchEngineSet",
   "source": "notes+analysis (matched TEACON.exe by position and size)",
   "note": "corresponds to TEACON.exe by position and size (bodies differ only where the larger GUI structures shift offsets). Splits the query on & | ! ( ) and compiles one MatchEngine per leaf"
+ },
+ {
+  "addr": "0x513d58",
+  "name": "g_nullStringRep",
+  "data": true,
+  "source": "analysis",
+  "note": "the shared rep of every empty std::string (refs, capacity, length); never freed"
+ },
+ {
+  "addr": "0x513d64",
+  "name": "g_emptyStringData",
+  "data": true,
+  "source": "analysis",
+  "note": "character data of the shared empty rep (g_nullStringRep + 12)"
+ },
+ {
+  "addr": "0x5140ac",
+  "name": "g_stringNpos",
+  "data": true,
+  "source": "analysis",
+  "note": "std::string::npos"
+ },
+ {
+  "addr": "0x4115a0",
+  "name": "MsgHookProc",
+  "source": "analysis",
+  "note": "exported keyboard hook (@MsgHookProc$qqsiuil): F1, or Ctrl+Tab, in a child of a popup posts the registered help message to that popup; F1 in a menu posts it to the main window"
+ },
+ {
+  "addr": "0x51ac78",
+  "name": "g_helpMessageId",
+  "data": true,
+  "source": "analysis",
+  "note": "registered window message posted by MsgHookProc for F1 / Ctrl+Tab"
+ },
+ {
+  "addr": "0x51ac8c",
+  "name": "g_hWndMain",
+  "data": true,
+  "source": "analysis",
+  "note": "main window handle (MsgHookProc posts F1-in-menu there)"
+ },
+ {
+  "addr": "0x434ad8",
+  "name": "std::string::string",
+  "source": "analysis",
+  "note": "default constructor: data = the shared empty rep"
+ },
+ {
+  "addr": "0x412334",
+  "name": "std::string::string",
+  "source": "analysis",
+  "note": "default constructor: data = the shared empty rep"
+ },
+ {
+  "addr": "0x4122e4",
+  "name": "DestroyFileHistory",
+  "source": "analysis",
+  "note": "static destructor of the file history (10 strings)"
+ },
+ {
+  "addr": "0x41238c",
+  "name": "GetFileHistory",
+  "source": "analysis",
+  "note": "the file history singleton, loaded from the registry on first use"
+ },
+ {
+  "addr": "0x519858",
+  "name": "g_fileHistory",
+  "data": true,
+  "source": "analysis",
+  "note": "FileHistory singleton: the last 10 dictionary (or crossword) files, newest first"
+ },
+ {
+  "addr": "0x4ecb08",
+  "name": "g_fileHistoryInitialised",
+  "data": true,
+  "source": "analysis",
+  "note": "guard flag for g_fileHistory"
+ },
+ {
+  "addr": "0x412434",
+  "name": "FileHistory::Get",
+  "cls": "FileHistory",
+  "source": "analysis",
+  "note": "copy of entry `index` of the history"
+ },
+ {
+  "addr": "0x41251c",
+  "name": "FileHistory::Add",
+  "cls": "FileHistory",
+  "source": "analysis",
+  "note": "moves `path` to the front of the history, shifting the others down (dropping its old position or the oldest)"
+ },
+ {
+  "addr": "0x412830",
+  "name": "FileHistory::Save",
+  "cls": "FileHistory",
+  "source": "analysis",
+  "note": "writes the history to the registry: FileDictionary (or FileCrossword) and FileDictionary1..9"
+ },
+ {
+  "addr": "0x412cf0",
+  "name": "FileHistory::FileHistory",
+  "cls": "FileHistory",
+  "source": "analysis",
+  "note": "constructor: reads the 10 entries from the registry (FileDictionary or FileCrossword, then %s%d for 1..9)"
+ },
+ {
+  "addr": "0x4649b0",
+  "name": "GetProfileKeyPath",
+  "source": "analysis",
+  "note": "the registry key path of the current profile, as a std::string"
+ },
+ {
+  "addr": "0x434cac",
+  "name": "Pattern::Clear",
+  "cls": "Pattern",
+  "source": "analysis",
+  "note": "empties the pool"
+ },
+ {
+  "addr": "0x434cb8",
+  "name": "Pattern::At",
+  "cls": "Pattern",
+  "source": "analysis",
+  "note": "the pooled string at `index`"
+ },
+ {
+  "addr": "0x468bc8",
+  "name": "GetRichEditVersion",
+  "source": "analysis",
+  "note": "2 when RICHED20.DLL can be loaded, else 1"
+ },
+ {
+  "addr": "0x468c4c",
+  "name": "DestroyRichEditLoader",
+  "source": "analysis",
+  "note": "static destructor of the TRichEdit DLL loader"
+ },
+ {
+  "addr": "0x44ec78",
+  "name": "Persist::SetString",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "writes a REG_SZ value"
+ },
+ {
+  "addr": "0x44eca8",
+  "name": "Persist::SetDword",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "writes a REG_DWORD value (the value is the third argument on the stack)"
+ },
+ {
+  "addr": "0x44eccc",
+  "name": "Persist::SetFont",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "writes a LOGFONT as its comma-separated text form"
+ },
+ {
+  "addr": "0x44eda8",
+  "name": "Persist::SetColour",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "writes a COLORREF as \"r,g,b\""
+ },
+ {
+  "addr": "0x44ee84",
+  "name": "ParseWindowPlacement",
+  "source": "analysis",
+  "note": "five comma-separated integers (show state and window rectangle)"
+ },
+ {
+  "addr": "0x44eee4",
+  "name": "FormatWindowPlacement",
+  "source": "analysis",
+  "note": "\"%d,%d,%d,%d,%d\""
+ },
+ {
+  "addr": "0x44ef70",
+  "name": "FormatColour",
+  "source": "analysis",
+  "note": "\"%d,%d,%d\" (r, g, b)"
+ },
+ {
+  "addr": "0x44f060",
+  "name": "FormatLogFont",
+  "source": "analysis",
+  "note": "the LOGFONT fields and face name as comma-separated text"
+ },
+ {
+  "addr": "0x44f0dc",
+  "name": "DdeNullCallback",
+  "source": "analysis",
+  "note": "DDE callback that ignores every transaction"
+ },
+ {
+  "addr": "0x44f0f0",
+  "name": "SendDdeExecute",
+  "source": "analysis",
+  "note": "DDE execute of `command` on service/topic (external lookup): 0 sent, 1 DdeInitialize failed, 2 no conversation, 3 transaction failed"
+ },
+ {
+  "addr": "0x4f74f8",
+  "name": "g_ddeInstance",
+  "data": true,
+  "source": "analysis",
+  "note": "DDE instance id used by SendDdeExecute"
+ },
+ {
+  "addr": "0x44f1d8",
+  "name": "FloatComputationToInt",
+  "source": "analysis",
+  "note": "floating-point computation (not visible in the decompile) returned through __ftol"
+ },
+ {
+  "addr": "0x44f21c",
+  "name": "FloatComputationToInt2",
+  "source": "analysis",
+  "note": "floating-point computation (not visible in the decompile) converted through __ftol"
+ },
+ {
+  "addr": "0x4e3c04",
+  "name": "__ftol",
+  "source": "analysis",
+  "note": "converts the FPU top-of-stack to a 32-bit integer (rounded); the floating-point operands of its callers are not visible in the decompiled code"
+ },
+ {
+  "addr": "0x51ac64",
+  "name": "g_varsActive",
+  "data": true,
+  "source": "analysis",
+  "note": "0 until a letter variable is first touched while testing the current word (VariableValues)"
+ },
+ {
+  "addr": "0x51ac68",
+  "name": "g_varValues",
+  "data": true,
+  "source": "analysis",
+  "note": "letter class bound to each of the 10 letter variables; 0xfe = unbound"
+ },
+ {
+  "addr": "0x51ac72",
+  "name": "g_varValuesEnd",
+  "data": true,
+  "source": "analysis",
+  "note": "end of g_varValues"
+ },
+ {
+  "addr": "0x4fcb84",
+  "name": "g_exclusiveVariables",
+  "data": true,
+  "source": "analysis",
+  "note": "option VariablesExclusive: different variables must stand for different letters"
+ },
+ {
+  "addr": "0x51ac60",
+  "name": "g_balanceCount",
+  "data": true,
+  "source": "analysis",
+  "note": "how many anagram stages succeeded for the current word (balance shown only when exactly 1)"
+ },
+ {
+  "addr": "0x51a860",
+  "name": "g_balance",
+  "data": true,
+  "source": "analysis",
+  "note": "per letter class: word letters minus the anagram's named letters"
+ },
+ {
+  "addr": "0x4fa308",
+  "name": "g_anagramStageOps",
+  "data": true,
+  "source": "analysis",
+  "note": "anagram stage handlers indexed by opcode (0xf0..)"
+ },
+ {
+  "addr": "0x429928",
+  "name": "MatchListWindows::SelectionTree::AddNodeBuffer",
+  "source": "analysis",
+  "note": "rb-tree node pool: allocates another buffer of 20-byte nodes and links it into the buffer list"
+ },
+ {
+  "addr": "0x429a74",
+  "name": "MatchListWindows::EntryTree::AddNodeBuffer",
+  "source": "analysis",
+  "note": "rb-tree node pool: allocates another buffer of 24-byte nodes and links it into the buffer list"
+ },
+ {
+  "addr": "0x429bc0",
+  "name": "std::vector_EntryHead::reserve",
+  "source": "analysis",
+  "note": "reserve(n) for the vector of 12-byte length-group heads (throws length_error past max_size)"
+ },
+ {
+  "addr": "0x429f04",
+  "name": "std::uninitialized_copy_EntryHead",
+  "source": "analysis",
+  "note": "copy-constructs 12-byte EntryHead objects into raw storage"
+ },
+ {
+  "addr": "0x429fa0",
+  "name": "std::_Destroy_range_12",
+  "source": "analysis",
+  "note": "destroys a range of 12-byte objects with trivial destructors (nothing to do)"
+ },
+ {
+  "addr": "0x429fb8",
+  "name": "std::_Destroy_range_EntryHead",
+  "source": "analysis",
+  "note": "destroys the EntryHead objects in [first, last)"
+ },
+ {
+  "addr": "0x429ffc",
+  "name": "std::vector_EntryHead::insert_aux",
+  "source": "analysis",
+  "note": "std::vector<EntryHead> insert at a position, growing the storage (doubling, at least 85) when full"
+ },
+ {
+  "addr": "0x42a220",
+  "name": "std::copy_backward_EntryHead",
+  "source": "analysis",
+  "note": "copy_backward over EntryHead objects"
+ },
+ {
+  "addr": "0x42a474",
+  "name": "MatchListWindows::EntryTree::erase_range",
+  "source": "analysis",
+  "note": "__rb_tree::erase(first, last): clears the whole tree at once when the range is everything"
+ },
+ {
+  "addr": "0x42a578",
+  "name": "MatchListWindows::EntryTree::__erase",
+  "source": "analysis",
+  "note": "returns a subtree's nodes to the free list (recursive on the right child)"
+ },
+ {
+  "addr": "0x42a5d0",
+  "name": "MatchListWindows::EntryTree::erase",
+  "source": "analysis",
+  "note": "__rb_tree::erase(iterator): unlinks the node and rebalances (red-black delete)"
+ },
+ {
+  "addr": "0x42ae70",
+  "name": "__rwstd::__rb_tree::__set_node",
+  "source": "analysis",
+  "note": "stores a node pointer"
+ },
+ {
+  "addr": "0x42ae80",
+  "name": "__rwstd::__rb_tree::__minimum",
+  "source": "analysis",
+  "note": "leftmost node of a subtree"
+ },
+ {
+  "addr": "0x42aea0",
+  "name": "__rwstd::__rb_tree::__maximum",
+  "source": "analysis",
+  "note": "rightmost node of a subtree"
+ },
+ {
+  "addr": "0x42aec0",
+  "name": "__rwstd::__rb_tree::iterator::increment",
+  "source": "analysis",
+  "note": "++iterator (in-order successor)"
+ },
+ {
+  "addr": "0x42af24",
+  "name": "__rwstd::__rb_tree::__deallocate_buffers",
+  "source": "analysis",
+  "note": "frees every node buffer of a tree"
+ },
+ {
+  "addr": "0x42af64",
+  "name": "MatchListWindows::SelectionTree::erase_range",
+  "source": "analysis",
+  "note": "__rb_tree::erase(first, last) for the selection set"
+ },
+ {
+  "addr": "0x42b068",
+  "name": "MatchListWindows::SelectionTree::__erase",
+  "source": "analysis",
+  "note": "returns a subtree's nodes to the free list"
+ },
+ {
+  "addr": "0x42b0a4",
+  "name": "MatchListWindows::SelectionTree::erase",
+  "source": "analysis",
+  "note": "__rb_tree::erase(iterator) for the selection set (red-black delete)"
+ },
+ {
+  "addr": "0x42b8f8",
+  "name": "__rwstd::__rb_tree::__set_node_42b8f8",
+  "source": "analysis",
+  "note": "stores a node pointer"
+ },
+ {
+  "addr": "0x42b908",
+  "name": "__rwstd::__rb_tree::__minimum_42b908",
+  "source": "analysis",
+  "note": "leftmost node of a subtree"
+ },
+ {
+  "addr": "0x42b928",
+  "name": "__rwstd::__rb_tree::__maximum_42b928",
+  "source": "analysis",
+  "note": "rightmost node of a subtree"
+ },
+ {
+  "addr": "0x42b948",
+  "name": "__rwstd::__rb_tree::iterator::increment_42b948",
+  "source": "analysis",
+  "note": "++iterator (in-order successor)"
+ },
+ {
+  "addr": "0x42b9ac",
+  "name": "__rwstd::__rb_tree::__deallocate_buffers_42b9ac",
+  "source": "analysis",
+  "note": "frees every node buffer of a tree"
+ },
+ {
+  "addr": "0x42b9ec",
+  "name": "MatchListWindows::SetColumnWidths",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "stores the two widths at +0xe4/+0xe8 (word column and annotation column)"
+ },
+ {
+  "addr": "0x42ba08",
+  "name": "MatchListWindows::GetLineCount",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "number of display lines (+0x70)"
+ },
+ {
+  "addr": "0x42ba14",
+  "name": "MatchListWindows::GetEntryCount",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "total entries: sums the counts of every length group in the tree"
+ },
+ {
+  "addr": "0x42ba94",
+  "name": "__rwstd::__rb_tree::iterator::increment_42ba94",
+  "source": "analysis",
+  "note": "++iterator (in-order successor)"
+ },
+ {
+  "addr": "0x42baf8",
+  "name": "MatchListWindows::GetEntryText",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "text of entry `index` (the word, 9 bytes into the entry)"
+ },
+ {
+  "addr": "0x42bb18",
+  "name": "MatchListWindows::Clear",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "removes every entry and group, resets the scroller, the selection and the caret, and invalidates"
+ },
+ {
+  "addr": "0x42bce8",
+  "name": "std::copy_EntryHead",
+  "source": "analysis",
+  "note": "copy over EntryHead objects (vector erase)"
+ },
+ {
+  "addr": "0x42bd3c",
+  "name": "MatchListWindows::SetBounds",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "moves/resizes the control (SetWindowPos), redrawing unless `noRedraw`, and updates the scroll range"
+ },
+ {
+  "addr": "0x42bdf0",
+  "name": "MatchListWindows::UpdateScrollState",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "when `changed`: updates the scroller if the lines no longer fit, and repaints the pending dirty rectangle"
+ },
+ {
+  "addr": "0x42cbc0",
+  "name": "MatchListWindows::Selection::Selection",
+  "cls": "MatchListWindows::Selection",
+  "source": "analysis",
+  "note": "empty selection range (first = count = 0)"
+ },
+ {
+  "addr": "0x42cc14",
+  "name": "std::vector_ptr::insert_aux_42cc14",
+  "source": "analysis",
+  "note": "std::vector<T *> insert at a position, growing the storage when full"
+ },
+ {
+  "addr": "0x42d5fe",
+  "name": "MatchListWindows::EvRButtonDown_body",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "body of EvRButtonDown (Ghidra split the handler after its first instruction): takes the focus, moves the caret to the clicked line unless Shift/Ctrl are held, then shows the context menu"
+ },
+ {
+  "addr": "0x42d792",
+  "name": "MatchListWindows::EvMouseMove_body",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "body of EvMouseMove (split by Ghidra): while dragging with the left button, extends the selection to the line under the mouse and auto-scrolls"
+ },
+ {
+  "addr": "0x42dbdc",
+  "name": "MatchListWindows::SetFonts",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "creates the word and annotation fonts from two LOGFONTs and stores two colours"
+ },
+ {
+  "addr": "0x41ea74",
+  "name": "CreateFontFromLogFont",
+  "source": "analysis",
+  "note": "CreateFontIndirect wrapper"
+ },
+ {
+  "addr": "0x42dc18",
+  "name": "MatchListWindows::AddEntry",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "appends a result: the word, its annotation and the balance text become one Entry in the length group of the word"
+ },
+ {
+  "addr": "0x42e408",
+  "name": "MatchListWindows::SelectionTree::insert_unique",
+  "source": "analysis",
+  "note": "set<Selection>::insert: finds the position with CompareEntries and inserts unless an equal key exists"
+ },
+ {
+  "addr": "0x42e60c",
+  "name": "MatchListWindows::SelectionTree::__insert",
+  "source": "analysis",
+  "note": "links a new node under the parent and rebalances (red-black insert)"
+ },
+ {
+  "addr": "0x42e908",
+  "name": "MatchListWindows::SelectionTree::__get_node",
+  "source": "analysis",
+  "note": "takes a node from the free list (or a new buffer) and stores the value"
+ },
+ {
+  "addr": "0x42e9d8",
+  "name": "__rwstd::__rb_tree::iterator::decrement",
+  "source": "analysis",
+  "note": "--iterator (in-order predecessor)"
+ },
+ {
+  "addr": "0x42ea44",
+  "name": "MatchListWindows::Contains",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "whether the list already holds the word (looked up in the entry tree, or by scanning the groups when sorted by a column)"
+ },
+ {
+  "addr": "0x42eb4c",
+  "name": "MatchListWindows::SelectionTree::find",
+  "source": "analysis",
+  "note": "set<Selection>::find"
+ },
+ {
+  "addr": "0x42ec10",
+  "name": "MatchListWindows::MoveCaret",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "arrow/Home/End: moves the caret line and selects (extending when asked)"
+ },
+ {
+  "addr": "0x42eca0",
+  "name": "MatchListWindows::GetEntry",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "text, group and flag of the first selected entry (or of the caret entry)"
+ },
+ {
+  "addr": "0x42ecfc",
+  "name": "MatchListWindows::SelectFirst",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "selects the first line and repaints"
+ },
+ {
+  "addr": "0x42ed34",
+  "name": "MatchListWindows::SelectAll",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "selects every line and repaints"
+ },
+ {
+  "addr": "0x42ed6c",
+  "name": "MatchListWindows::GetEntryFlag",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "flag byte of entry `index`"
+ },
+ {
+  "addr": "0x42ed8c",
+  "name": "MatchListWindows::Select",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "changes the selection: a single range, or toggling/extending ranges across groups; returns the set of ranges that changed"
+ },
+ {
+  "addr": "0x42faf4",
+  "name": "MatchListWindows::EntryTree::insert_unique",
+  "source": "analysis",
+  "note": "set<range>::insert keyed by first line"
+ },
+ {
+  "addr": "0x42fcfc",
+  "name": "MatchListWindows::EntryTree::__insert",
+  "source": "analysis",
+  "note": "links a new node under the parent and rebalances (red-black insert)"
+ },
+ {
+  "addr": "0x42fff8",
+  "name": "MatchListWindows::EntryTree::__get_node",
+  "source": "analysis",
+  "note": "takes a node from the free list (or a new buffer) and stores the 8-byte value"
+ },
+ {
+  "addr": "0x430114",
+  "name": "__rwstd::__rb_tree::iterator::decrement_430114",
+  "source": "analysis",
+  "note": "--iterator (in-order predecessor)"
+ },
+ {
+  "addr": "0x430180",
+  "name": "MatchListWindows::EntryTree::operator_assign",
+  "source": "analysis",
+  "note": "copies another tree (clears, then copies the nodes)"
+ },
+ {
+  "addr": "0x430224",
+  "name": "MatchListWindows::EntryTree::__copy",
+  "source": "analysis",
+  "note": "copies a subtree under a parent node"
+ },
+ {
+  "addr": "0x430290",
+  "name": "MatchListWindows::GetLinesRect",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "client rectangle of the visible part of lines first..first+count-1; false when none is visible"
+ },
+ {
+  "addr": "0x43043e",
+  "name": "MatchListWindows::InvalidateSelection",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "invalidates every selected range that is visible (body of a function Ghidra split after its first instruction)"
+ },
+ {
+  "addr": "0x430548",
+  "name": "MatchListWindows::SelectionLess",
+  "source": "analysis",
+  "note": "less<Selection>: CompareEntries in mode 3"
+ },
+ {
+  "addr": "0x430560",
+  "name": "MatchListWindows::EntryHead::EntryHead_move",
+  "cls": "MatchListWindows::EntryHead",
+  "source": "analysis",
+  "note": "move-constructs a 12-byte group head (the source is emptied)"
+ },
+ {
+  "addr": "0x4305b4",
+  "name": "MatchListWindows::EntryHead::operator_assign",
+  "cls": "MatchListWindows::EntryHead",
+  "source": "analysis",
+  "note": "move-assigns a group head"
+ },
+ {
+  "addr": "0x4305f4",
+  "name": "MatchListWindows::EntryHead::Clear",
+  "cls": "MatchListWindows::EntryHead",
+  "source": "analysis",
+  "note": "frees the group's entries"
+ },
+ {
+  "addr": "0x43061c",
+  "name": "MatchListWindows::SelectionIterator::SelectionIterator",
+  "cls": "MatchListWindows::SelectionIterator",
+  "source": "analysis",
+  "note": "iterator over the selected lines of a list, positioned at the first"
+ },
+ {
+  "addr": "0x430678",
+  "name": "MatchListWindows::SelectionIterator::Next",
+  "cls": "MatchListWindows::SelectionIterator",
+  "source": "analysis",
+  "note": "the next selected line, or -1"
+ },
+ {
+  "addr": "0x430730",
+  "name": "MatchListWindows::SelectionIterator::Seek",
+  "cls": "MatchListWindows::SelectionIterator",
+  "source": "analysis",
+  "note": "positions the iterator at the n-th selected line"
+ },
+ {
+  "addr": "0x4307e4",
+  "name": "MatchListWindows::IsSelected",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "whether a line is selected (the anchor range being dragged, or a stored range)"
+ },
+ {
+  "addr": "0x4308e4",
+  "name": "MatchListWindows::GetEntryAt",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "the Entry shown on a line (walks the length groups; caches the last lookup)"
+ },
+ {
+  "addr": "0x430a68",
+  "name": "MatchListWindows::CompareWithEntry",
+  "source": "analysis",
+  "note": "compares an entry with a word under a sort mode: by length first for modes 3..4, then by the collation order; descending for even modes"
+ },
+ {
+  "addr": "0x430aec",
+  "name": "MatchListWindows::ShowContextMenu",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "pops up the list's context menu at a point (menu chosen by whether the list is empty)"
+ },
+ {
+  "addr": "0x43c6a4",
+  "name": "CollationLength",
+  "source": "analysis",
+  "note": "number of letters of a word under the collation table (punctuation not counted)"
+ },
+ {
+  "addr": "0x43c624",
+  "name": "CollationCompare",
+  "source": "analysis",
+  "note": "compares two words letter by letter with the Windows-1252 collation table"
+ },
+ {
+  "addr": "0x51ac84",
+  "name": "g_contextMenuId",
+  "data": true,
+  "source": "analysis",
+  "note": "resource id of the context menu the list pops up next"
+ },
+ {
+  "addr": "0x43ff6c",
+  "name": "__rwstd::__rb_tree::iterator::increment_43ff6c",
+  "source": "analysis",
+  "note": "++iterator (in-order successor)"
+ },
+ {
+  "addr": "0x43ffd0",
+  "name": "std::_Destroy_range_WordMap",
+  "source": "analysis",
+  "note": "destroys the 56-byte word maps in [first, last) (one per word length)"
+ },
+ {
+  "addr": "0x4400a0",
+  "name": "WordMap::erase_range",
+  "source": "analysis",
+  "note": "__rb_tree::erase(first, last) (whole tree at once when the range is everything)"
+ },
+ {
+  "addr": "0x4401a4",
+  "name": "WordMap::__erase",
+  "source": "analysis",
+  "note": "returns a subtree's nodes to the free list, releasing each key string"
+ },
+ {
+  "addr": "0x4402dc",
+  "name": "WordMap::erase",
+  "source": "analysis",
+  "note": "__rb_tree::erase(iterator) (red-black delete)"
+ },
+ {
+  "addr": "0x440c78",
+  "name": "__rwstd::__rb_tree::__set_node_440c78",
+  "source": "analysis",
+  "note": "stores a node pointer"
+ },
+ {
+  "addr": "0x440c88",
+  "name": "__rwstd::__rb_tree::__minimum_440c88",
+  "source": "analysis",
+  "note": "leftmost node of a subtree"
+ },
+ {
+  "addr": "0x440ca8",
+  "name": "__rwstd::__rb_tree::__maximum_440ca8",
+  "source": "analysis",
+  "note": "rightmost node of a subtree"
+ },
+ {
+  "addr": "0x440cc8",
+  "name": "__rwstd::__rb_tree::__deallocate_buffers_440cc8",
+  "source": "analysis",
+  "note": "frees every node buffer of a tree"
+ },
+ {
+  "addr": "0x440d08",
+  "name": "WriteTsdDictionary",
+  "source": "analysis",
+  "note": "writes a .tsd dictionary file: collects the words per length in word maps, counts letters, builds the Huffman code and the per-length word streams, and writes the header (27 KB; read only at the top level)"
+ },
+ {
+  "addr": "0x4486a0",
+  "name": "std::vector_WordMap::vector",
+  "source": "analysis",
+  "note": "vector of n copies of a word map (one per word length)"
+ },
+ {
+  "addr": "0x4487c0",
+  "name": "std::uninitialized_fill_n_WordMap",
+  "source": "analysis",
+  "note": "copy-constructs n word maps"
+ },
+ {
+  "addr": "0x4489b8",
+  "name": "WordMap::__copy",
+  "source": "analysis",
+  "note": "copies a subtree under a parent node"
+ },
+ {
+  "addr": "0x448a24",
+  "name": "WordMap::__get_node",
+  "source": "analysis",
+  "note": "takes a node from the free list (or a new buffer) and copy-constructs the key string and value"
+ },
+ {
+  "addr": "0x448bf4",
+  "name": "__rwstd::__rb_tree::__minimum_448bf4",
+  "source": "analysis",
+  "note": "leftmost node of a subtree"
+ },
+ {
+  "addr": "0x448c14",
+  "name": "__rwstd::__rb_tree::__maximum_448c14",
+  "source": "analysis",
+  "note": "rightmost node of a subtree"
+ },
+ {
+  "addr": "0x448c34",
+  "name": "std::_Destroy_range_448c34",
+  "source": "analysis",
+  "note": "destroys a range of trivially destructible objects (nothing to do)"
+ },
+ {
+  "addr": "0x448d98",
+  "name": "WordMap2::erase_range",
+  "source": "analysis",
+  "note": "__rb_tree::erase(first, last)"
+ },
+ {
+  "addr": "0x448e9c",
+  "name": "WordMap2::__erase",
+  "source": "analysis",
+  "note": "returns a subtree's nodes to the free list, releasing each key string"
+ },
+ {
+  "addr": "0x448fa4",
+  "name": "WordMap2::erase",
+  "source": "analysis",
+  "note": "__rb_tree::erase(iterator) (red-black delete)"
+ },
+ {
+  "addr": "0x449940",
+  "name": "__rwstd::__rb_tree::__set_node_449940",
+  "source": "analysis",
+  "note": "stores a node pointer"
+ },
+ {
+  "addr": "0x449950",
+  "name": "__rwstd::__rb_tree::iterator::increment_449950",
+  "source": "analysis",
+  "note": "++iterator"
+ },
+ {
+  "addr": "0x4499b4",
+  "name": "__rwstd::__rb_tree::__deallocate_buffers_4499b4",
+  "source": "analysis",
+  "note": "frees every node buffer of a tree"
+ },
+ {
+  "addr": "0x4499f4",
+  "name": "std::vector_WordMap2::vector",
+  "source": "analysis",
+  "note": "vector of n copies of a word map"
+ },
+ {
+  "addr": "0x449b14",
+  "name": "std::uninitialized_fill_n_WordMap2",
+  "source": "analysis",
+  "note": "copy-constructs n word maps"
+ },
+ {
+  "addr": "0x449d04",
+  "name": "WordMap2::__copy",
+  "source": "analysis",
+  "note": "copies a subtree under a parent node"
+ },
+ {
+  "addr": "0x449d70",
+  "name": "WordMap2::__get_node",
+  "source": "analysis",
+  "note": "takes a node from the free list (or a new buffer) and copy-constructs the value"
+ },
+ {
+  "addr": "0x449f18",
+  "name": "std::_Destroy_range_449f18",
+  "source": "analysis",
+  "note": "destroys a range of trivially destructible objects (nothing to do)"
+ },
+ {
+  "addr": "0x44a07c",
+  "name": "std::vector_int::vector",
+  "source": "analysis",
+  "note": "vector of n copies of a value"
+ },
+ {
+  "addr": "0x44a18c",
+  "name": "std::_Destroy_range_WordMap2",
+  "source": "analysis",
+  "note": "destroys the word maps in [first, last)"
+ },
+ {
+  "addr": "0x44a23c",
+  "name": "WordMap::insert_hint",
+  "source": "analysis",
+  "note": "insert with a position hint (collation order, then exact string order)"
+ },
+ {
+  "addr": "0x44a638",
+  "name": "WordMap::__insert",
+  "source": "analysis",
+  "note": "links a new node under the parent and rebalances (red-black insert)"
+ },
+ {
+  "addr": "0x44a980",
+  "name": "WordMap::insert_unique",
+  "source": "analysis",
+  "note": "insert unless an equal key exists (collation order, then exact string order)"
+ },
+ {
+  "addr": "0x44ac68",
+  "name": "__rwstd::__rb_tree::iterator::decrement_44ac68",
+  "source": "analysis",
+  "note": "--iterator"
+ },
+ {
+  "addr": "0x44acd4",
+  "name": "WordMap2::lower_bound",
+  "source": "analysis",
+  "note": "first node whose key is not less than the string"
+ },
+ {
+  "addr": "0x44add0",
+  "name": "WordMap2::insert_unique",
+  "source": "analysis",
+  "note": "insert unless an equal key exists (exact string order)"
+ },
+ {
+  "addr": "0x44b040",
+  "name": "WordMap2::__insert",
+  "source": "analysis",
+  "note": "links a new node under the parent and rebalances"
+ },
+ {
+  "addr": "0x44b358",
+  "name": "__rwstd::__rb_tree::iterator::decrement_44b358",
+  "source": "analysis",
+  "note": "--iterator"
+ },
+ {
+  "addr": "0x44b3c4",
+  "name": "__rwstd::__rb_tree::iterator::increment_44b3c4",
+  "source": "analysis",
+  "note": "++iterator"
+ },
+ {
+  "addr": "0x44b574",
+  "name": "WordMap3::erase_range",
+  "source": "analysis",
+  "note": "__rb_tree::erase(first, last)"
+ },
+ {
+  "addr": "0x44b678",
+  "name": "WordMap3::__erase",
+  "source": "analysis",
+  "note": "returns a subtree's nodes to the free list, releasing each key string"
+ },
+ {
+  "addr": "0x44b780",
+  "name": "__rwstd::__rb_tree::__deallocate_buffers_44b780",
+  "source": "analysis",
+  "note": "frees every node buffer of a tree"
+ },
+ {
+  "addr": "0x44b7c0",
+  "name": "WordMap3::lower_bound",
+  "source": "analysis",
+  "note": "first node whose key is not less than the string"
+ },
+ {
+  "addr": "0x44b8bc",
+  "name": "__rwstd::__rb_tree::iterator::increment_44b8bc",
+  "source": "analysis",
+  "note": "++iterator"
+ },
+ {
+  "addr": "0x44b920",
+  "name": "WordMap3::erase",
+  "source": "analysis",
+  "note": "__rb_tree::erase(iterator) (red-black delete)"
+ },
+ {
+  "addr": "0x44c2bc",
+  "name": "__rwstd::__rb_tree::__set_node_44c2bc",
+  "source": "analysis",
+  "note": "stores a node pointer"
+ },
+ {
+  "addr": "0x44c2cc",
+  "name": "__rwstd::__rb_tree::__minimum_44c2cc",
+  "source": "analysis",
+  "note": "leftmost node of a subtree"
+ },
+ {
+  "addr": "0x44c2ec",
+  "name": "__rwstd::__rb_tree::__maximum_44c2ec",
+  "source": "analysis",
+  "note": "rightmost node of a subtree"
+ },
+ {
+  "addr": "0x44c30c",
+  "name": "WordMap3::insert_unique",
+  "source": "analysis",
+  "note": "insert unless an equal key exists"
+ },
+ {
+  "addr": "0x44c57c",
+  "name": "WordMap3::__insert",
+  "source": "analysis",
+  "note": "links a new node under the parent and rebalances"
+ },
+ {
+  "addr": "0x44c894",
+  "name": "WordMap3::__get_node",
+  "source": "analysis",
+  "note": "takes a node from the free list (or a new buffer) and copy-constructs the value"
+ },
+ {
+  "addr": "0x44ca3c",
+  "name": "__rwstd::__rb_tree::iterator::decrement_44ca3c",
+  "source": "analysis",
+  "note": "--iterator"
+ },
+ {
+  "addr": "0x44caa8",
+  "name": "std::vector_16::reserve",
+  "source": "analysis",
+  "note": "reserve(n) for a vector of 16-byte elements (throws length_error past max_size)"
+ },
+ {
+  "addr": "0x44cde0",
+  "name": "std::uninitialized_copy_16",
+  "source": "analysis",
+  "note": "copies 16-byte elements into raw storage"
+ },
+ {
+  "addr": "0x44cea0",
+  "name": "std::vector_16::insert_aux",
+  "source": "analysis",
+  "note": "insert at a position into a vector of 16-byte elements, growing the storage (doubling, at least 64)"
+ },
+ {
+  "addr": "0x44d0c8",
+  "name": "std::copy_backward_16",
+  "source": "analysis",
+  "note": "copy_backward over 16-byte elements"
+ },
+ {
+  "addr": "0x44d0f8",
+  "name": "std::__final_insertion_sort",
+  "source": "analysis",
+  "note": "last step of std::sort: insertion sort of the first 16, unguarded for the rest"
+ },
+ {
+  "addr": "0x44d154",
+  "name": "std::__insertion_sort",
+  "source": "analysis",
+  "note": "insertion sort of [first, last)"
+ },
+ {
+  "addr": "0x44d1f0",
+  "name": "std::__unguarded_linear_insert",
+  "source": "analysis",
+  "note": "moves one element left until in order"
+ },
+ {
+  "addr": "0x44d238",
+  "name": "std::__unguarded_insertion_sort",
+  "source": "analysis",
+  "note": "unguarded insertion sort of [first, last)"
+ },
+ {
+  "addr": "0x44d278",
+  "name": "std::__introsort_loop",
+  "source": "analysis",
+  "note": "quicksort with median-of-three pivots until ranges are 16 elements or fewer"
+ },
+ {
+  "addr": "0x44d3b8",
+  "name": "std::__unguarded_partition",
+  "source": "analysis",
+  "note": "partitions [first, last) around the pivot"
+ },
+ {
+  "addr": "0x44d44c",
+  "name": "std::_Destroy_range_16_44d44c",
+  "source": "analysis",
+  "note": "destroys a range of 16-byte objects with trivial destructors (nothing to do)"
+ },
+ {
+  "addr": "0x4d40d0",
+  "name": "std::string::compare",
+  "source": "analysis",
+  "note": "compare(pos, n, const char *s, n2): <0, 0 or >0"
+ },
+ {
+  "addr": "0x451784",
+  "name": "TEAViewWindows::CreatePanes",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "(re)creates the result panes (one output group per pane: label + match list) laid out from the \"Panes\" profile value"
+ },
+ {
+  "addr": "0x452360",
+  "name": "std::vector_ptr::insert_aux_452360",
+  "source": "analysis",
+  "note": "std::vector<T *> insert at a position, growing the storage when full"
+ },
+ {
+  "addr": "0x4525f4",
+  "name": "TEAViewWindows::ShowDictionaryProperties",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "runs the dictionary properties dialog for the current dictionary list"
+ },
+ {
+  "addr": "0x45269c",
+  "name": "TEAViewWindows::RestartSearch",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "checks the dictionaries are still valid, then starts the search again"
+ },
+ {
+  "addr": "0x4526b4",
+  "name": "TEAViewWindows::CmOpenDictionary",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "File Open dialog for .tsd files (seeded from the file history); adds the choice to the history and restarts the search"
+ },
+ {
+  "addr": "0x452b50",
+  "name": "TEAViewWindows::SetCurrentPane",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "makes pane `pane` current (moving the focus to its list when the current list has it)"
+ },
+ {
+  "addr": "0x452bcc",
+  "name": "TEAViewWindows::GetCurrentPane",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "index of the current pane"
+ },
+ {
+  "addr": "0x452bdc",
+  "name": "TEAViewWindows::GetLengthRange",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "word-length range to scan for pane `pane`: intersection of the query's range with the shortest/longest settings; step is -1 when listing longest first"
+ },
+ {
+  "addr": "0x452cf4",
+  "name": "TEAViewWindows::PrepareToClose",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "stops a running search before the window closes; true when it may close"
+ },
+ {
+  "addr": "0x452d1c",
+  "name": "TEAViewWindows::GetFocusedListEntryCount",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "number of entries in the list that has the focus (or the current pane's list)"
+ },
+ {
+  "addr": "0x452d7c",
+  "name": "TEAViewWindows::GetCurrentListLineCount",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "number of lines in the current pane's list"
+ },
+ {
+  "addr": "0x452dc8",
+  "name": "TEAViewWindows::CmOptions",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "opens the Options dialog (TEAPropertiesViewWindows), or brings it to the front"
+ },
+ {
+  "addr": "0x452ef8",
+  "name": "std::vector_ptr::insert_aux_452ef8",
+  "source": "analysis",
+  "note": "std::vector<T *> insert at a position, growing the storage when full"
+ },
+ {
+  "addr": "0x45318c",
+  "name": "TEAViewWindows::CmPrintPreview",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "print preview of the results (\"TEAPrintPreview\" frame)"
+ },
+ {
+  "addr": "0x4534b8",
+  "name": "TEAViewWindows::CmPrint",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "prints the results with the margins from the settings"
+ },
+ {
+  "addr": "0x4536c4",
+  "name": "TEAViewWindows::CmPageSetup",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "page setup (margins)"
+ },
+ {
+  "addr": "0x453724",
+  "name": "TEAViewWindows::CmSaveResults",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "File Save dialog, then writes the selected (or all) results to a .txt file"
+ },
+ {
+  "addr": "0x45424c",
+  "name": "TEAViewWindows::CmCopy",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "copies the selected results to the clipboard (CR LF after each when several)"
+ },
+ {
+  "addr": "0x454434",
+  "name": "TEAViewWindows::CmSelectAll",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "selects every entry of the current list"
+ },
+ {
+  "addr": "0x454458",
+  "name": "TEAViewWindows::GetPopupOwner",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "window that owns popup menus: the frame when docked (+0x60 == 0), else this window"
+ },
+ {
+  "addr": "0x454524",
+  "name": "TEAViewWindows::IsCommandEnabled",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "whether a menu/toolbar command applies now (depends on which control has the focus and on the lists' contents)"
+ },
+ {
+  "addr": "0x456480",
+  "name": "TEAViewWindows::BeginNextLength",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "moves the search on to the next word length or dictionary: creates the InputEngine (and definition searches for full text) and sets the word length"
+ },
+ {
+  "addr": "0x456728",
+  "name": "TEAViewWindows::OnSearchStep",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "after a slice of searching: updates the lists and the progress, stops at the end"
+ },
+ {
+  "addr": "0x456950",
+  "name": "TEAViewWindows::StartSearch",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "reads the query, expands @/#, compiles it for every dictionary and starts the incremental search"
+ },
+ {
+  "addr": "0x45734c",
+  "name": "TEAViewWindows::Nothing",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "empty"
+ },
+ {
+  "addr": "0x457354",
+  "name": "TEAViewWindows::ShowDefinitions",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "looks up the definitions of the selected word in every dictionary and shows them in a definition window"
+ },
+ {
+  "addr": "0x458090",
+  "name": "std::vector_DefinitionSearch::vector",
+  "source": "analysis",
+  "note": "vector of n 128-byte definition-search records"
+ },
+ {
+  "addr": "0x4581a0",
+  "name": "TEAViewWindows::CheckDictionaries",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "reloads changed dictionaries; reports (\"...is no longer a valid TEA&Sympathy Dictionary File\") and stops when one is invalid"
+ },
+ {
+  "addr": "0x458310",
+  "name": "TEAViewWindows::GetSelectedWord",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "the word (and its dictionary) selected in the focused list, for lookups"
+ },
+ {
+  "addr": "0x459150",
+  "name": "GetWindowRectInParent",
+  "source": "analysis",
+  "note": "a child window's rectangle in its parent's client coordinates"
+ },
+ {
+  "addr": "0x4591fc",
+  "name": "ParsePaneLayout",
+  "source": "analysis",
+  "note": "reads one pane's position from the \"Panes\" value (floating-point fractions of the window)"
+ },
+ {
+  "addr": "0x45a7f0",
+  "name": "TEAViewWindows::LoadPrintMargins",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "reads PrintingMarginUnits and the four margins (defaults from the locale's measurement system)"
+ },
+ {
+  "addr": "0x45adf0",
+  "name": "TEAViewWindows::SaveSettings",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "writes the window settings (QuickReference, StartupTips, WindowTopMost, PaneOrientation, printing margins) and the file history"
+ },
+ {
+  "addr": "0x45b89c",
+  "name": "TEAViewWindows::SavePanes",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "writes the \"Panes\" value: the layout of every pane"
+ },
+ {
+  "addr": "0x45bc3c",
+  "name": "TEAViewWindows::SaveQueryHistory",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "writes RangeShortest/RangeLongest and the recent queries (%s%d)"
+ },
+ {
+  "addr": "0x45c448",
+  "name": "TEAViewWindows::OnListFocus",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "a match list gained or lost the focus: makes its pane current and updates the commands"
+ },
+ {
+  "addr": "0x45c520",
+  "name": "TEAViewWindows::OnListDoubleClick",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "double-click on a result: shows its definitions (Ctrl: in a new window)"
+ },
+ {
+  "addr": "0x45c57c",
+  "name": "TEAViewWindows::FocusPaneList",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "moves the focus to the list of pane `pane`"
+ },
+ {
+  "addr": "0x45c5f0",
+  "name": "TEAViewWindows::TrackContextMenu",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "shows the results context menu"
+ },
+ {
+  "addr": "0x45c6d4",
+  "name": "TEAViewWindows::SetSearching",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "starts or stops searching: updates the Stop/Resume and Word Search / Full Text Search captions, deletes the engines when stopping, saves the settings"
+ },
+ {
+  "addr": "0x45cbd0",
+  "name": "TEAViewWindows::ShowQuickReference",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "opens the Quick Reference window (or brings it to the front)"
+ },
+ {
+  "addr": "0x45cd28",
+  "name": "TEAViewWindows::ShowStartupTips",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "opens the Startup Tips window"
+ },
+ {
+  "addr": "0x45ce74",
+  "name": "TEAViewWindows::RestoreAuxiliaryWindows",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "reopens Quick Reference, Definition1 and Startup Tips where they were (Position values)"
+ },
+ {
+  "addr": "0x45d86c",
+  "name": "TEAViewWindows::LayoutQueryControls",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "positions the query edit, the search-mode button and the panes after a size or option change"
+ },
+ {
+  "addr": "0x45d938",
+  "name": "TEAViewWindows::ApplyListFonts",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "gives every pane's list the output fonts and colours from the profile"
+ },
+ {
+  "addr": "0x45d9e8",
+  "name": "TEAViewWindows::ApplyDefinitionSettings",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "passes the definition fonts/colours to open definition windows"
+ },
+ {
+  "addr": "0x45daf8",
+  "name": "TEAViewWindows::DeletePanes",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "deletes every output group"
+ },
+ {
+  "addr": "0x45db98",
+  "name": "TEAViewWindows::RefreshCurrentList",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "updates the scroll range of the current pane's list after entries were added"
+ },
+ {
+  "addr": "0x45dbd8",
+  "name": "TEAViewWindows::BroadcastToOthers",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "calls slot 24 (EnableWindow) on every other auxiliary window and on the frame except `except`"
+ },
+ {
+  "addr": "0x45dc48",
+  "name": "TEAViewWindows::PaneAt",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "index of the pane whose splitter is at a point (x or y depending on the orientation), or 0"
+ },
+ {
+  "addr": "0x45dcb8",
+  "name": "ClientRectToScreen",
+  "source": "analysis",
+  "note": "a window's client rectangle in screen coordinates"
+ },
+ {
+  "addr": "0x45dd8c",
+  "name": "TEAViewWindows::FirstFreePaneId",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "the lowest pane control id not in use"
+ },
+ {
+  "addr": "0x45de08",
+  "name": "TEAViewWindows::ActivateWindow",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "cycles to the next (or previous) visible top-level TEA window"
+ },
+ {
+  "addr": "0x45dfbc",
+  "name": "TEAViewWindows::SetQuery",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "puts text into the query box and searches"
+ },
+ {
+  "addr": "0x45e060",
+  "name": "TEAViewWindows::ShowTooltip",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "shows a tooltip with `text` at a point over a control (TTM_* messages to the tooltip window)"
+ },
+ {
+  "addr": "0x45e25c",
+  "name": "TEAViewWindows::GetDefinitionWindow",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "reuses the topmost visible definition window or creates a new one"
+ },
+ {
+  "addr": "0x45e4dc",
+  "name": "TEAViewWindows::MoveCaretAndShowDefinition",
+  "cls": "TEAViewWindows",
+  "source": "analysis",
+  "note": "arrow keys in a definition window: moves the list caret and shows that word's definitions"
+ },
+ {
+  "addr": "0x45e59c",
+  "name": "TEAViewWindows::OutputGroup::OutputGroup",
+  "cls": "TEAViewWindows::OutputGroup",
+  "source": "analysis",
+  "note": "constructor: the pane's label and list, empty length range"
+ },
+ {
+  "addr": "0x45e7c8",
+  "name": "TEAViewWindows::OutputGroup::StartLengths",
+  "cls": "TEAViewWindows::OutputGroup",
+  "source": "analysis",
+  "note": "takes the length range and step for its query and starts at the first length"
+ },
+ {
+  "addr": "0x45e800",
+  "name": "TEAViewWindows::OutputGroup::NextLength",
+  "cls": "TEAViewWindows::OutputGroup",
+  "source": "analysis",
+  "note": "steps to the next length"
+ },
+ {
+  "addr": "0x45e810",
+  "name": "TEAViewWindows::OutputGroup::HasLength",
+  "cls": "TEAViewWindows::OutputGroup",
+  "source": "analysis",
+  "note": "whether the current length is still inside the range"
+ },
+ {
+  "addr": "0x45e830",
+  "name": "TEAViewWindows::OutputGroup::GetLengthRange",
+  "cls": "TEAViewWindows::OutputGroup",
+  "source": "analysis",
+  "note": "shortest and longest length of its range"
+ },
+ {
+  "addr": "0x46b0fc",
+  "name": "DefinitionViewWindows::NavigateResults",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "previous/next-result commands in a definition window: moves the result list's caret and reports whether the command applies"
+ },
+ {
+  "addr": "0x46b2ec",
+  "name": "DefinitionViewWindows::BuildContextMenu",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "fills the rich edit's context menu: one \"%d \" item per definition and the lookup entries"
+ },
+ {
+  "addr": "0x46c024",
+  "name": "GetChildRectOnScreen",
+  "source": "analysis",
+  "note": "a child window's rectangle in screen coordinates; false when it has none"
+ },
+ {
+  "addr": "0x46c198",
+  "name": "DefinitionViewWindows::SaveSplitterPosition",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "stores the splitter position (\"SplitterPosition\") from the current layout"
+ },
+ {
+  "addr": "0x46c244",
+  "name": "DefinitionViewWindows::FindDictionary",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "index of the open dictionary whose path is `path` and the number of open dictionaries"
+ },
+ {
+  "addr": "0x46c760",
+  "name": "DefinitionViewWindows::ScrollTextToTop",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "moves the rich edit's selection and scroll position back to the start"
+ },
+ {
+  "addr": "0x46c7e4",
+  "name": "DefinitionViewWindows::ShowDescription",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "shows \"Description of <dictionary>\" (the header description) for the selected dictionary tab"
+ },
+ {
+  "addr": "0x46caa4",
+  "name": "DefinitionViewWindows::ShowDefinitionNumber",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "shows definition n of the list and the \"Definition %d of %d\" caption"
+ },
+ {
+  "addr": "0x46ccac",
+  "name": "DefinitionViewWindows::HighlightWord",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "marks every occurrence of the looked-up word in the rich text (collation-insensitive compare)"
+ },
+ {
+  "addr": "0x46d004",
+  "name": "DefinitionViewWindows::FollowLinkAt",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "clicking or pressing Enter on a word in the definition text: looks that word up"
+ },
+ {
+  "addr": "0x46d2c8",
+  "name": "DefinitionViewWindows::GetWordAt",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "the word of the definition text at a character position"
+ },
+ {
+  "addr": "0x46d86c",
+  "name": "DefinitionViewWindows::ShowDefinitions",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "fills the window with the definitions found for a word: groups them by dictionary, sorts them, renders the rich text and highlights the word"
+ },
+ {
+  "addr": "0x46ddd0",
+  "name": "DefinitionViewWindows::SortDefinitions",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "orders the collected definitions (headword, then dictionary order)"
+ },
+ {
+  "addr": "0x46e020",
+  "name": "std::__introsort_loop_string",
+  "source": "analysis",
+  "note": "quicksort part of std::sort over std::string objects (exact role inferred from structure)"
+ },
+ {
+  "addr": "0x46e698",
+  "name": "DefinitionViewWindows::CompareDefinitions",
+  "source": "analysis",
+  "note": "order of two definition records (by headword text, then by offset)"
+ },
+ {
+  "addr": "0x46e740",
+  "name": "DefinitionViewWindows::RenderDefinitions",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "builds the RTF text of the definitions (headwords bold, qualifiers, links) and loads it into the rich edit (5 KB; read at the top level only)"
+ },
+ {
+  "addr": "0x46faf0",
+  "name": "std::stable_sort_string",
+  "source": "analysis",
+  "note": "std::stable_sort over std::string objects (merge sort with a temporary buffer; roles inferred from structure)"
+ },
+ {
+  "addr": "0x46fb4c",
+  "name": "std::__stable_sort_adaptive_string",
+  "source": "analysis",
+  "note": "merge-sort step of std::stable_sort (inferred)"
+ },
+ {
+  "addr": "0x47094c",
+  "name": "std::__merge_adaptive_string",
+  "source": "analysis",
+  "note": "merges two sorted runs using the buffer (inferred)"
+ },
+ {
+  "addr": "0x470bec",
+  "name": "std::__inplace_stable_sort_string",
+  "source": "analysis",
+  "note": "stable sort without a buffer (inferred)"
+ },
+ {
+  "addr": "0x471128",
+  "name": "std::sort_string",
+  "source": "analysis",
+  "note": "std::sort over std::string objects (inferred)"
+ },
+ {
+  "addr": "0x4717cc",
+  "name": "std::__introsort_loop_string_4717cc",
+  "source": "analysis",
+  "note": "quicksort loop of std::sort (inferred)"
+ },
+ {
+  "addr": "0x4722fc",
+  "name": "DefinitionViewWindows::ScrollTextToTop2",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "moves the rich edit's selection and scroll position back to the start"
+ },
+ {
+  "addr": "0x472370",
+  "name": "DefinitionViewWindows::GetDefinitionCount",
+  "cls": "DefinitionViewWindows",
+  "source": "analysis",
+  "note": "number of definitions shown (for the current dictionary tab)"
+ },
+ {
+  "addr": "0x4723b0",
+  "name": "DefinitionViewFrame::DefinitionViewFrame",
+  "cls": "DefinitionViewFrame",
+  "source": "analysis",
+  "note": "constructor: the \"DefinitionFrame\" window with its DefinitionViewWindows client, toolbar gadgets and grip bar; title \" - %s [%d]\""
+ },
+ {
+  "addr": "0x473df0",
+  "name": "DefinitionRecord::DefinitionRecord",
+  "source": "analysis",
+  "note": "constructor: empty headword/qualifier/text strings and offsets"
+ },
+ {
+  "addr": "0x47c140",
+  "name": "RtfFilter::HashControlWord",
+  "source": "analysis",
+  "note": "hash of a control word name (shift-xor, modulo 521) for the keyword table"
+ },
+ {
+  "addr": "0x47c168",
+  "name": "RtfFilter::LookupSymbol",
+  "source": "analysis",
+  "note": "the character a symbol control word stands for (table at g_rtfSymbols)"
+ },
+ {
+  "addr": "0x50171c",
+  "name": "g_rtfSymbols",
+  "data": true,
+  "source": "analysis",
+  "note": "RTF symbol control words: id -> character"
+ },
+ {
+  "addr": "0x47c18c",
+  "name": "RtfFilter::ReadControlWord",
+  "source": "analysis",
+  "note": "parses a control word at the cursor (letters, optional negative number, delimiter), handling \\fcharset in the font table and {\\colortbl; dispatches it"
+ },
+ {
+  "addr": "0x47c438",
+  "name": "RtfFilter::AppendFlag",
+  "source": "analysis",
+  "note": "appends a control word to the output when its value changes (\"0\" form to switch it off)"
+ },
+ {
+  "addr": "0x47c494",
+  "name": "RtfFilter::AppendEscaped",
+  "source": "analysis",
+  "note": "appends text with RTF escaping"
+ },
+ {
+  "addr": "0x47c558",
+  "name": "RtfFilter::AppendNumberWord",
+  "source": "analysis",
+  "note": "appends a control word with a numeric argument"
+ },
+ {
+  "addr": "0x47c7c8",
+  "name": "RtfFilter::AppendWordAndStore",
+  "source": "analysis",
+  "note": "appends a control word and stores its value"
+ },
+ {
+  "addr": "0x47c804",
+  "name": "RtfFilter::AppendToggle",
+  "source": "analysis",
+  "note": "appends a toggle control word (\"0\" form when off)"
+ },
+ {
+  "addr": "0x47c864",
+  "name": "RtfFilter::InitKeywordTable",
+  "source": "analysis",
+  "note": "fills the keyword hash table"
+ },
+ {
+  "addr": "0x47c9bc",
+  "name": "std::_Destroy_range_1",
+  "source": "analysis",
+  "note": "destroys a range of bytes (nothing to do)"
+ },
+ {
+  "addr": "0x47c9d0",
+  "name": "RtfFilter::HandleControlWord",
+  "source": "analysis",
+  "note": "applies one control word by its table index: character attributes (bold, italic, underline...), font size, colours, paragraph and section words, \"<br>\""
+ },
+ {
+  "addr": "0x47ce48",
+  "name": "RtfFilter::HandleDestination",
+  "source": "analysis",
+  "note": "starts a destination group (font table, colour table, fields) or plain text"
+ },
+ {
+  "addr": "0x47d0e8",
+  "name": "std::operator_shl_string_47d0e8",
+  "source": "analysis",
+  "note": "writes a std::string to an output stream (inlined stream sentry and padding)"
+ },
+ {
+  "addr": "0x47ede4",
+  "name": "RtfFilter::AddFontName",
+  "source": "analysis",
+  "note": "records a font table entry (vector of names)"
+ },
+ {
+  "addr": "0x47efa0",
+  "name": "RtfFilter::AddText",
+  "source": "analysis",
+  "note": "appends plain text to the current run, converting characters for the active code page"
+ },
+ {
+  "addr": "0x47f2d8",
+  "name": "RtfFilter::FlushTextBuffer",
+  "source": "analysis",
+  "note": "passes the buffered characters on"
+ },
+ {
+  "addr": "0x47f348",
+  "name": "RtfFilter::ConvertTextBuffer",
+  "source": "analysis",
+  "note": "converts the buffered bytes (copying through a temporary range)"
+ },
+ {
+  "addr": "0x47f57c",
+  "name": "std::copy_bytes",
+  "source": "analysis",
+  "note": "copy over a byte range"
+ },
+ {
+  "addr": "0x47f5fc",
+  "name": "std::_Destroy_range_1_47f5fc",
+  "source": "analysis",
+  "note": "destroys a range of bytes (nothing to do)"
+ },
+ {
+  "addr": "0x47f610",
+  "name": "std::copy_backward_bytes",
+  "source": "analysis",
+  "note": "copy_backward over a byte range"
+ },
+ {
+  "addr": "0x47f630",
+  "name": "std::copy_bytes_47f630",
+  "source": "analysis",
+  "note": "copy over a byte range"
+ },
+ {
+  "addr": "0x47f650",
+  "name": "std::fill_n_bytes",
+  "source": "analysis",
+  "note": "fills n bytes with a value"
+ },
+ {
+  "addr": "0x47f6cc",
+  "name": "std::copy_bytes_47f6cc",
+  "source": "analysis",
+  "note": "copy over a byte range"
+ },
+ {
+  "addr": "0x47f6ec",
+  "name": "RtfFilter::SetCharAt",
+  "source": "analysis",
+  "note": "stores a character at the current output position (bounds checked)"
+ },
+ {
+  "addr": "0x47f720",
+  "name": "RtfFilter::BeginRun",
+  "source": "analysis",
+  "note": "starts a new text run with the current character and paragraph formats"
+ },
+ {
+  "addr": "0x47f820",
+  "name": "std::vector_ptr::insert_aux_47f820",
+  "source": "analysis",
+  "note": "std::vector<T *> insert at a position, growing the storage when full"
+ },
+ {
+  "addr": "0x47f9f8",
+  "name": "RtfFilter::FlushPendingWord",
+  "source": "analysis",
+  "note": "writes a pending control word to the output RTF"
+ },
+ {
+  "addr": "0x47fa24",
+  "name": "RtfFilter::Break",
+  "source": "analysis",
+  "note": "\\page or \\column break"
+ },
+ {
+  "addr": "0x47faa8",
+  "name": "RtfFilter::SectionBreak",
+  "source": "analysis",
+  "note": "\\sect\\sectd"
+ },
+ {
+  "addr": "0x47fb1c",
+  "name": "RtfFilter::SetSectionBreakType",
+  "source": "analysis",
+  "note": "\\sbknone/\\sbkcol/... for the current section"
+ },
+ {
+  "addr": "0x47fb8c",
+  "name": "RtfFilter::SetColumns",
+  "source": "analysis",
+  "note": "\\cols n for the current section"
+ },
+ {
+  "addr": "0x47fc9c",
+  "name": "RtfFilter::SetColumnSpacing",
+  "source": "analysis",
+  "note": "\\colsx n for the current section"
+ },
+ {
+  "addr": "0x47fdac",
+  "name": "RtfFilter::SetCharFormat",
+  "source": "analysis",
+  "note": "changes one character attribute (bold, italic, underline, strike, size, colour...) of the current run"
+ },
+ {
+  "addr": "0x480144",
+  "name": "std::vector_ptr::insert_aux_480144",
+  "source": "analysis",
+  "note": "std::vector<T *> insert at a position, growing the storage when full"
+ },
+ {
+  "addr": "0x4803f0",
+  "name": "RtfFilter::SetAlignmentOrIndent",
+  "source": "analysis",
+  "note": "\\qX alignment or \\Xi n indents"
+ },
+ {
+  "addr": "0x4804b0",
+  "name": "RtfFilter::AddTabStop",
+  "source": "analysis",
+  "note": "\\tx n"
+ },
+ {
+  "addr": "0x480578",
+  "name": "RtfFilter::ResetParagraph",
+  "source": "analysis",
+  "note": "\\pard: default paragraph format"
+ },
+ {
+  "addr": "0x480608",
+  "name": "RtfFilter::CurrentParagraph",
+  "source": "analysis",
+  "note": "the paragraph being built (starting one when needed)"
+ },
+ {
+  "addr": "0x48070c",
+  "name": "RtfFilter::CurrentRunCount",
+  "source": "analysis",
+  "note": "number of runs in the current paragraph"
+ },
+ {
+  "addr": "0x480754",
+  "name": "RtfFilter::MakeCharFormat",
+  "source": "analysis",
+  "note": "the rich-edit CHARFORMAT for the current character state (font, size, colour from \\red\\green\\blue table, effects)"
+ },
+ {
+  "addr": "0x481b70",
+  "name": "RtfFilter::MakeParaFormat",
+  "source": "analysis",
+  "note": "the rich-edit PARAFORMAT for the current paragraph state (alignment, indents, tabs)"
+ },
+ {
+  "addr": "0x481c1c",
+  "name": "RtfFilter::CopyRunFormat",
+  "source": "analysis",
+  "note": "copies a run's character format"
+ },
+ {
+  "addr": "0x414278",
+  "name": "ListFilesInDirectory",
+  "source": "analysis",
+  "note": "the file names matching a pattern in a folder (FindFirstFile/FindNextFile), sorted in collation order"
+ },
+ {
+  "addr": "0x4146a0",
+  "name": "std::sort_collation",
+  "source": "analysis",
+  "note": "sorts a range of strings in collation order (std::sort; inferred)"
+ },
+ {
+  "addr": "0x414708",
+  "name": "std::__introsort_loop_collation",
+  "source": "analysis",
+  "note": "quicksort loop of std::sort in collation order (inferred)"
+ },
+ {
+  "addr": "0x4149d4",
+  "name": "std::__unguarded_linear_insert_collation",
+  "source": "analysis",
+  "note": "insertion step of std::sort in collation order (inferred)"
+ },
+ {
+  "addr": "0x414acc",
+  "name": "std::__final_insertion_sort_collation",
+  "source": "analysis",
+  "note": "insertion sort finish of std::sort (inferred)"
+ },
+ {
+  "addr": "0x414bd8",
+  "name": "std::unique_collation",
+  "source": "analysis",
+  "note": "removes adjacent strings equal in collation order (inferred)"
+ },
+ {
+  "addr": "0x414e84",
+  "name": "std::__median_collation",
+  "source": "analysis",
+  "note": "median of three strings in collation order (inferred)"
+ },
+ {
+  "addr": "0x415118",
+  "name": "PropertiesViewWindows::UpdateControlCallback",
+  "source": "analysis",
+  "note": "ForEach callback over the dialog's children (by control id)"
+ },
+ {
+  "addr": "0x415388",
+  "name": "ShowContextHelp",
+  "source": "analysis",
+  "note": "opens the help topic of the current window"
+ },
+ {
+  "addr": "0x4153ec",
+  "name": "FitRectToMonitor",
+  "source": "analysis",
+  "note": "moves a rectangle onto the monitor it is mostly on (MonitorFromRect, GetMonitorInfoA)"
+ },
+ {
+  "addr": "0x415920",
+  "name": "PropertiesViewWindows::SetHelpTopic",
+  "cls": "PropertiesViewWindows",
+  "source": "analysis",
+  "note": "records the help context of the window"
+ },
+ {
+  "addr": "0x415944",
+  "name": "PropertiesViewWindows::ShowControlMenu",
+  "cls": "PropertiesViewWindows",
+  "source": "analysis",
+  "note": "the context menu of a control (Shift+F10 / menu key), placed at the control"
+ },
+ {
+  "addr": "0x416a78",
+  "name": "PropertiesViewWindows::LoadDword",
+  "cls": "PropertiesViewWindows",
+  "source": "analysis",
+  "note": "reads a DWORD setting of this window from the profile (value name under the window's section)"
+ },
+ {
+  "addr": "0x416c2c",
+  "name": "PropertiesViewWindows::SaveDword",
+  "cls": "PropertiesViewWindows",
+  "source": "analysis",
+  "note": "writes a DWORD setting of this window to the profile"
+ },
+ {
+  "addr": "0x416dd4",
+  "name": "PropertiesViewWindows::LoadString",
+  "cls": "PropertiesViewWindows",
+  "source": "analysis",
+  "note": "reads a string setting of this window from the profile"
+ },
+ {
+  "addr": "0x41717c",
+  "name": "PropertiesViewWindows::SaveString",
+  "cls": "PropertiesViewWindows",
+  "source": "analysis",
+  "note": "writes a string setting of this window to the profile"
+ },
+ {
+  "addr": "0x4173c0",
+  "name": "PropertiesViewWindows::MoveableControl::MoveableControl",
+  "cls": "PropertiesViewWindows::MoveableControl",
+  "source": "analysis",
+  "note": "a control that moves/stretches with the dialog when it is resized (anchors as fractions)"
+ },
+ {
+  "addr": "0x417498",
+  "name": "PropertiesViewWindows::AddMoveableControl",
+  "cls": "PropertiesViewWindows",
+  "source": "analysis",
+  "note": "registers a control to be repositioned on resize"
+ },
+ {
+  "addr": "0x4174cc",
+  "name": "std::vector_ptr::insert_aux_4174cc",
+  "source": "analysis",
+  "note": "std::vector<T *> insert at a position, growing the storage when full"
+ },
+ {
+  "addr": "0x417760",
+  "name": "SetTooltipMaxWidth",
+  "source": "analysis",
+  "note": "TTM_SETMAXTIPWIDTH from the screen width"
+ },
+ {
+  "addr": "0x417780",
+  "name": "PropertiesViewWindows::RepositionControls",
+  "cls": "PropertiesViewWindows",
+  "source": "analysis",
+  "note": "moves every moveable control for the new client size"
+ },
+ {
+  "addr": "0x4178ac",
+  "name": "MakeLogBrush",
+  "source": "analysis",
+  "note": "a solid LOGBRUSH of a colour"
+ },
+ {
+  "addr": "0x42056c",
+  "name": "PVWPathList::EditDictionary",
+  "cls": "PVWPathList",
+  "source": "analysis",
+  "note": "runs the dictionary properties dialog for the selected path and updates the list"
+ },
+ {
+  "addr": "0x420bb4",
+  "name": "PVWPathList::Refresh",
+  "cls": "PVWPathList",
+  "source": "analysis",
+  "note": "refills both list boxes and updates the buttons"
+ },
+ {
+  "addr": "0x420cbc",
+  "name": "PVWPathList::UpdateButtons",
+  "cls": "PVWPathList",
+  "source": "analysis",
+  "note": "enables Add/Remove/Up/Down/Properties according to the selections"
+ },
+ {
+  "addr": "0x420e2c",
+  "name": "PVWPathList::OnDoubleClick",
+  "cls": "PVWPathList",
+  "source": "analysis",
+  "note": "double-click on a dictionary: opens its properties"
+ },
+ {
+  "addr": "0x420ec0",
+  "name": "PVWPathList::GetControlTip",
+  "cls": "PVWPathList",
+  "source": "analysis",
+  "note": "tooltip text for an entry of the lists (the dictionary's description)"
+ },
+ {
+  "addr": "0x42116c",
+  "name": "PVWPathList::FillAvailable",
+  "cls": "PVWPathList",
+  "source": "analysis",
+  "note": "lists the .tsd files of the dictionary folder that are not already selected (and are valid dictionaries)"
+ },
+ {
+  "addr": "0x4215f0",
+  "name": "PVWPathList::FillSelected",
+  "cls": "PVWPathList",
+  "source": "analysis",
+  "note": "lists the selected dictionaries"
+ },
+ {
+  "addr": "0x4216a0",
+  "name": "PVWPathList::GetPaths",
+  "cls": "PVWPathList",
+  "source": "analysis",
+  "note": "the selected dictionaries as a ';'-separated list"
+ },
+ {
+  "addr": "0x4216dc",
+  "name": "IsValidDictionaryFile",
+  "source": "analysis",
+  "note": "opens a .tsd file through TSDictionaryList and reports whether it loads"
+ },
+ {
+  "addr": "0x421b48",
+  "name": "PVWPathList::Entry::_dtor",
+  "source": "analysis",
+  "note": "destructor"
+ },
+ {
+  "addr": "0x422de4",
+  "name": "LookupConfiguration::LookupEntry::Clear",
+  "cls": "LookupConfiguration::LookupEntry",
+  "source": "analysis",
+  "note": "empties the entry"
+ },
+ {
+  "addr": "0x422e14",
+  "name": "LookupConfiguration::LookupStyleEntries::Clear",
+  "cls": "LookupConfiguration::LookupStyleEntries",
+  "source": "analysis",
+  "note": "empties the entries"
+ },
+ {
+  "addr": "0x422f80",
+  "name": "DestroyLookupConfiguration",
+  "source": "analysis",
+  "note": "static destructor of the lookup configuration singleton"
+ },
+ {
+  "addr": "0x422fc4",
+  "name": "GetLookupConfiguration",
+  "source": "analysis",
+  "note": "the external-lookup configuration singleton, loaded from the profile on first use"
+ },
+ {
+  "addr": "0x423078",
+  "name": "LookupConfiguration::Run",
+  "cls": "LookupConfiguration",
+  "source": "analysis",
+  "note": "runs an external lookup for a word: URL with %XX escaping and {entry} substitution (ShellExecute \"open\"), DDE execute, program, or window message"
+ },
+ {
+  "addr": "0x423c2c",
+  "name": "LookupConfiguration::GetCount",
+  "cls": "LookupConfiguration",
+  "source": "analysis",
+  "note": "number of configured lookups"
+ },
+ {
+  "addr": "0x423c6c",
+  "name": "LookupConfiguration::UpdateMenuLabels",
+  "cls": "LookupConfiguration",
+  "source": "analysis",
+  "note": "refreshes the menu captions of the lookups"
+ },
+ {
+  "addr": "0x423e14",
+  "name": "LookupConfiguration::FillMenu",
+  "cls": "LookupConfiguration",
+  "source": "analysis",
+  "note": "adds the lookup commands to a menu (\"\\tCtrl+Alt+Enter\" on the default one)"
+ },
+ {
+  "addr": "0x424168",
+  "name": "LookupConfiguration::Save",
+  "cls": "LookupConfiguration",
+  "source": "analysis",
+  "note": "writes every lookup's settings, LookupTestWord and LookupDefaultLabel"
+ },
+ {
+  "addr": "0x424c28",
+  "name": "LookupConfiguration::LookupConfiguration",
+  "cls": "LookupConfiguration",
+  "source": "analysis",
+  "note": "constructor: reads the web-search, DDE, program and message lookups from the profile"
+ },
+ {
+  "addr": "0x4258e8",
+  "name": "LookupConfiguration::LookupEntry::LookupEntry",
+  "cls": "LookupConfiguration::LookupEntry",
+  "source": "analysis",
+  "note": "constructor: empty label, script and flags"
+ },
+ {
+  "addr": "0x43db94",
+  "name": "TSDictionarySaveDialog::SaveDictionary",
+  "cls": "TSDictionarySaveDialog",
+  "source": "analysis",
+  "note": "writes the edited word list as a .tsd file (WriteTsdDictionary) next to the chosen name and reopens it (\"DictionaryOpen\")"
+ },
+ {
+  "addr": "0x43dfb0",
+  "name": "TSDictionarySaveDialog::UpdateOkButton",
+  "cls": "TSDictionarySaveDialog",
+  "source": "analysis",
+  "note": "enables OK when a file name is entered"
+ },
+ {
+  "addr": "0x43e02c",
+  "name": "TSDictionarySaveDialog::FocusControl",
+  "cls": "TSDictionarySaveDialog",
+  "source": "analysis",
+  "note": "moves the focus to the name edit (or to the list)"
+ },
+ {
+  "addr": "0x43ef48",
+  "name": "BitWriter::FlushWord",
+  "source": "analysis",
+  "note": "writes the pending 16-bit word of the bit stream to the file"
+ },
+ {
+  "addr": "0x43ef70",
+  "name": "BitWriter::BitWriter",
+  "source": "analysis",
+  "note": "bit stream on a FILE"
+ },
+ {
+  "addr": "0x43ef88",
+  "name": "BitWriter::WriteBits",
+  "source": "analysis",
+  "note": "appends an nbits-long code to the 16-bit-word bit stream, flushing full words"
+ },
+ {
+  "addr": "0x43f014",
+  "name": "BitWriter::WriteBytes",
+  "source": "analysis",
+  "note": "writes bytes through the Huffman code table"
+ },
+ {
+  "addr": "0x43f058",
+  "name": "BitWriter::AlignToWord",
+  "source": "analysis",
+  "note": "pads the stream to a word boundary"
+ },
+ {
+  "addr": "0x43f078",
+  "name": "BitWriter::Flush",
+  "source": "analysis",
+  "note": "writes out any pending bits"
+ },
+ {
+  "addr": "0x43f098",
+  "name": "ScaleFrequency",
+  "source": "analysis",
+  "note": "frequency scaled to the Huffman weight range (floating-point arithmetic not visible; ends in __ftol)"
+ },
+ {
+  "addr": "0x43f138",
+  "name": "ReverseHuffmanCodes",
+  "source": "analysis",
+  "note": "reverses the bits of every byte code so the stream can be written low bit first"
+ },
+ {
+  "addr": "0x43f198",
+  "name": "HuffmanNodeLess",
+  "source": "analysis",
+  "note": "order of two Huffman nodes by weight"
+ },
+ {
+  "addr": "0x43f1c8",
+  "name": "AddBitToSubtree",
+  "source": "analysis",
+  "note": "appends one bit to the code of every leaf under a Huffman tree node"
+ },
+ {
+  "addr": "0x43f204",
+  "name": "StoreCodesAndFree",
+  "source": "analysis",
+  "note": "walks a Huffman (sub)tree storing each leaf byte code and length in the tables, freeing the nodes"
+ },
+ {
+  "addr": "0x43f244",
+  "name": "BuildHuffmanCodes",
+  "source": "analysis",
+  "note": "builds the Huffman tree from the byte frequencies and assigns each byte its code and length"
+ },
+ {
+  "addr": "0x43f398",
+  "name": "ParseDefinitionLine",
+  "source": "analysis",
+  "note": "splits one definition line into headwords, qualifiers and text (RTF braces escaped)"
+ },
+ {
+  "addr": "0x43f910",
+  "name": "ParseMappingLine",
+  "source": "analysis",
+  "note": "parses one line of the letter mapping (byte, letter class, display byte)"
+ },
+ {
+  "addr": "0x43fb9c",
+  "name": "WriteDefinitionRecord",
+  "source": "analysis",
+  "note": "writes one definition record (headwords, qualifiers and text, XOR 0xBD) and returns its offset"
+ },
+ {
+  "addr": "0x43fd78",
+  "name": "DefinitionRecordLess",
+  "source": "analysis",
+  "note": "order of two definition entries by their stored offset"
+ },
+ {
+  "addr": "0x482150",
+  "name": "RtfParseColorTable",
+  "source": "analysis",
+  "note": "reads a {\\colortbl ...} group (\\red \\green \\blue entries)"
+ },
+ {
+  "addr": "0x4825dc",
+  "name": "RtfParseFontTable",
+  "source": "analysis",
+  "note": "reads a {\\fonttbl ...} group (\\fcharset, names; \"System;\")"
+ },
+ {
+  "addr": "0x4828bc",
+  "name": "FindStringIndex",
+  "source": "analysis",
+  "note": "index of a string in a vector of strings, or -1"
+ },
+ {
+  "addr": "0x482908",
+  "name": "RtfFilter::FontIndexOf",
+  "source": "analysis",
+  "note": "index of a font in the output font table, adding it when new"
+ },
+ {
+  "addr": "0x482a60",
+  "name": "RtfFilter::ColourIndexOf",
+  "source": "analysis",
+  "note": "index of a colour in the output colour table, adding it when new"
+ },
+ {
+  "addr": "0x482bb8",
+  "name": "IsRtfText",
+  "source": "analysis",
+  "note": "whether a string starts with \"{\\rtf1\""
+ },
+ {
+  "addr": "0x482bdc",
+  "name": "ConvertMarkupToRtf",
+  "source": "analysis",
+  "note": "converts definition markup to RTF: escapes \\ { }, turns <br> into \\line and &...; entities into characters"
+ },
+ {
+  "addr": "0x4837d0",
+  "name": "DecodeEntity",
+  "source": "analysis",
+  "note": "the character of an &...; entity"
+ },
+ {
+  "addr": "0x483a88",
+  "name": "SetRichText",
+  "source": "analysis",
+  "note": "loads text into a rich edit as RTF, building the font table, sizes and styles from the window's font ({\\fonttbl, \\f%d, \\fs%d, \\ul, \\strike)"
+ },
+ {
+  "addr": "0x485614",
+  "name": "OWL::TCharFormat::TCharFormat",
+  "source": "analysis",
+  "note": "CHARFORMAT read from a rich edit (selection or default)"
+ },
+ {
+  "addr": "0x485664",
+  "name": "OWL::TCharFormat::SetBold",
+  "source": "analysis",
+  "note": "CFM_BOLD / CFE_BOLD"
+ },
+ {
+  "addr": "0x485680",
+  "name": "OWL::TCharFormat::SetItalic",
+  "source": "analysis",
+  "note": "CFM_ITALIC / CFE_ITALIC"
+ },
+ {
+  "addr": "0x48569c",
+  "name": "OWL::TCharFormat::SetUnderline",
+  "source": "analysis",
+  "note": "CFM_UNDERLINE / CFE_UNDERLINE"
+ },
+ {
+  "addr": "0x4856b8",
+  "name": "OWL::TCharFormat::SetStrikeOut",
+  "source": "analysis",
+  "note": "CFM_STRIKEOUT / CFE_STRIKEOUT"
+ },
+ {
+  "addr": "0x4856d4",
+  "name": "OWL::TCharFormat::SetTextColor",
+  "source": "analysis",
+  "note": "CFM_COLOR and crTextColor"
+ },
+ {
+  "addr": "0x485700",
+  "name": "OWL::TCharFormat::SetFaceName",
+  "source": "analysis",
+  "note": "CFM_FACE and szFaceName"
+ },
+ {
+  "addr": "0x485738",
+  "name": "OWL::TCharFormat::SetCharSet",
+  "source": "analysis",
+  "note": "CFM_CHARSET and bCharSet"
+ },
+ {
+  "addr": "0x485748",
+  "name": "OWL::TCharFormat::SetPitchAndFamily",
+  "source": "analysis",
+  "note": "bPitchAndFamily"
+ },
+ {
+  "addr": "0x485758",
+  "name": "OWL::TCharFormat::SetHeight",
+  "source": "analysis",
+  "note": "CFM_SIZE and yHeight"
+ },
+ {
+  "addr": "0x485770",
+  "name": "OWL::TCharFormat::GetFontInfo",
+  "source": "analysis",
+  "note": "the format as a LOGFONT"
+ },
+ {
+  "addr": "0x4857f4",
+  "name": "OWL::TCharFormat::SetDefaults",
+  "source": "analysis",
+  "note": "MS Sans Serif, black, no effects"
+ },
+ {
+  "addr": "0x485870",
+  "name": "OWL::TParaFormat::TParaFormat",
+  "source": "analysis",
+  "note": "empty PARAFORMAT with a mask"
+ },
+ {
+  "addr": "0x4858a4",
+  "name": "OWL::TParaFormat::SetStartIndent",
+  "source": "analysis",
+  "note": "PFM_STARTINDENT (absolute or relative)"
+ },
+ {
+  "addr": "0x4858cc",
+  "name": "OWL::TParaFormat::SetRightIndent",
+  "source": "analysis",
+  "note": "PFM_RIGHTINDENT"
+ },
+ {
+  "addr": "0x4858e0",
+  "name": "OWL::TParaFormat::SetOffset",
+  "source": "analysis",
+  "note": "PFM_OFFSET"
+ },
+ {
+  "addr": "0x4858f4",
+  "name": "OWL::TParaFormat::SetAlignment",
+  "source": "analysis",
+  "note": "PFM_ALIGNMENT"
+ },
+ {
+  "addr": "0x485908",
+  "name": "OWL::TParaFormat::SetTabs",
+  "source": "analysis",
+  "note": "PFM_TABSTOPS"
+ },
+ {
+  "addr": "0x48597c",
+  "name": "ShowHtmlHelp",
+  "source": "analysis",
+  "note": "opens the help file with HtmlHelpA; reports \"Help library not found\" / \"Can't open help\""
+ },
+ {
+  "addr": "0x485a4c",
+  "name": "LoadHtmlHelp",
+  "source": "analysis",
+  "note": "finds hhctrl.ocx through its CLSID in the registry and gets HtmlHelpA"
+ },
+ {
+  "addr": "0x408c8c",
+  "name": "TSDictionaryList::GetPathList",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "the ';'-separated path list the list was opened from"
+ },
+ {
+  "addr": "0x408cbc",
+  "name": "TSDictionaryList::GetFileTitle",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "file title of dictionary `index` (Dictionary vtable slot 5)"
+ },
+ {
+  "addr": "0x408d0c",
+  "name": "TSDictionaryList::GetFileDateText",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "file date text of dictionary `index` (slot 8)"
+ },
+ {
+  "addr": "0x408d5c",
+  "name": "TSDictionaryList::GetDescription",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "header description of dictionary `index` (slot 9)"
+ },
+ {
+  "addr": "0x408dac",
+  "name": "TSDictionaryList::GetSummaryText",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "summary text (title, headwords, definitions, description) of dictionary `index` (slot 7)"
+ },
+ {
+  "addr": "0x408dfc",
+  "name": "TSDictionaryList::HasDefinitions",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "whether dictionary `index` has a definition section (TSD1)"
+ },
+ {
+  "addr": "0x408e24",
+  "name": "TSDictionaryList::GetCounts",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "word and definition totals of dictionary `index` (slot 10)"
+ },
+ {
+  "addr": "0x408e54",
+  "name": "TSDictionaryList::GetWordCount",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "number of words of a length in dictionary `index`"
+ },
+ {
+  "addr": "0x408edc",
+  "name": "TSDictionaryList::GetSymbolBytes",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "the byte value of each Huffman symbol of dictionary `index`"
+ },
+ {
+  "addr": "0x4089c8",
+  "name": "std::vector_ptr::operator_assign",
+  "source": "analysis",
+  "note": "copy-assigns a vector of pointers"
+ },
+ {
+  "addr": "0x409594",
+  "name": "TSDictionaryList::FindDefinitions",
+  "cls": "TSDictionaryList",
+  "source": "analysis",
+  "note": "looks a word up in every open dictionary: compiles it as a pattern, scans its length and collects the definition offsets of every match (and of linked words)"
+ },
+ {
+  "addr": "0x409d44",
+  "name": "DefinitionSearch::AddRecord",
+  "source": "analysis",
+  "note": "reads one definition record and adds it to the results unless already present"
+ },
+ {
+  "addr": "0x40a04c",
+  "name": "DefinitionSearch::Merge",
+  "source": "analysis",
+  "note": "merges a set of definition records into the results, keeping them ordered"
+ },
+ {
+  "addr": "0x40aaec",
+  "name": "std::_Destroy_range_128",
+  "source": "analysis",
+  "note": "destroys a range of 128-byte records with trivial destructors (nothing to do)"
+ },
+ {
+  "addr": "0x40ab04",
+  "name": "DefinitionRecord::operator_assign",
+  "source": "analysis",
+  "note": "copies a definition record (strings and offsets)"
+ },
+ {
+  "addr": "0x40ab88",
+  "name": "std::vector_string::operator_assign",
+  "source": "analysis",
+  "note": "copy-assigns a vector of strings"
+ },
+ {
+  "addr": "0x40add8",
+  "name": "std::copy_string_40add8",
+  "source": "analysis",
+  "note": "assigns strings over a range"
+ },
+ {
+  "addr": "0x40ae0c",
+  "name": "DefinitionRecord::Swap",
+  "source": "analysis",
+  "note": "exchanges two definition records"
+ },
+ {
+  "addr": "0x40ae88",
+  "name": "std::uninitialized_copy_DefinitionRecord",
+  "source": "analysis",
+  "note": "copy-constructs 128-byte definition records into raw storage"
+ },
+ {
+  "addr": "0x40b62c",
+  "name": "std::_Destroy_range_DefinitionRecord",
+  "source": "analysis",
+  "note": "destroys the definition records in [first, last)"
+ },
+ {
+  "addr": "0x463310",
+  "name": "TEAAppWindows::LoadMainWindowSettings",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "checks the data folder (\"Folder Missing\"), then reads the main window position (ViewWindowX/Y/W/H/Z) and loads the icons"
+ },
+ {
+  "addr": "0x463bfc",
+  "name": "TEAAppWindows::SaveMainWindowSettings",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "writes the main window position and the open dictionaries (%s%d)"
+ },
+ {
+  "addr": "0x46449c",
+  "name": "TEAAppWindows::OpenStartupDictionaries",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "reopens the dictionaries listed in the profile (falling back to the bundled ones in Dictionaries\\) and records them in the file history"
+ },
+ {
+  "addr": "0x46495c",
+  "name": "TEAAppWindows::ShowHelpFor",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "opens the help for the main window"
+ },
+ {
+  "addr": "0x464980",
+  "name": "ShowHelpContents",
+  "source": "analysis",
+  "note": "opens the help file"
+ },
+ {
+  "addr": "0x464a94",
+  "name": "TEAAppWindows::LoadResourceString",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "a string resource of the application module"
+ },
+ {
+  "addr": "0x464ae0",
+  "name": "TEAAppWindows::GetMainWindowHandle",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "HWND of the main window"
+ },
+ {
+  "addr": "0x464af0",
+  "name": "TEAAppWindows::GetPrinter",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "the shared TPrinter (created on first use)"
+ },
+ {
+  "addr": "0x464ba4",
+  "name": "TEAAppWindows::Nothing_464ba4",
+  "source": "analysis",
+  "note": "empty"
+ },
+ {
+  "addr": "0x464bac",
+  "name": "TEAAppWindows::Nothing_464bac",
+  "source": "analysis",
+  "note": "empty"
+ },
+ {
+  "addr": "0x464bb4",
+  "name": "TEAAppWindows::OpenDictionaries",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "replaces the open dictionary list with `paths` (unless already open); reports files that are not valid dictionaries; recreates the panes and the title"
+ },
+ {
+  "addr": "0x464f24",
+  "name": "TEAAppWindows::CloseDictionary",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "closes the dictionary of the current pane"
+ },
+ {
+  "addr": "0x4650a8",
+  "name": "TEAAppWindows::MoveDictionary",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "promotes or demotes the current dictionary in the list"
+ },
+ {
+  "addr": "0x465244",
+  "name": "TEAAppWindows::Nothing_465244",
+  "source": "analysis",
+  "note": "empty"
+ },
+ {
+  "addr": "0x46524c",
+  "name": "TEAAppWindows::Lookup",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "looks a word up: definitions (index 0) in a definition window, or external lookup `index` (dialog or LookupConfiguration::Run)"
+ },
+ {
+  "addr": "0x46583c",
+  "name": "TEAAppWindows::LaunchTool",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "starts a companion program from the program folder (Dictionary Builder, Word List Merge)"
+ },
+ {
+  "addr": "0x46597c",
+  "name": "TEAAppWindows::CopyTextToClipboard",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "puts text on the clipboard (two formats)"
+ },
+ {
+  "addr": "0x465a64",
+  "name": "TEAAppWindows::SetStatusText",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "text in the status bar"
+ },
+ {
+  "addr": "0x465a80",
+  "name": "TEAAppWindows::RunStartupSequence",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "licence and introduction dialogs at start-up, then the panes"
+ },
+ {
+  "addr": "0x466370",
+  "name": "TEAAppWindows::ActivateWindow",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "cycles to the next/previous TEA window"
+ },
+ {
+  "addr": "0x4663a0",
+  "name": "TEAAppWindows::UpdateFileMenu",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "the File menu's dictionary list and recent files"
+ },
+ {
+  "addr": "0x466a90",
+  "name": "TEAAppWindows::GetLicenseInfo",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "licence state (+0x150)"
+ },
+ {
+  "addr": "0x466aa0",
+  "name": "TEAAppWindows::CheckLicense",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "reads the licence from common.ini and checks it"
+ },
+ {
+  "addr": "0x466b10",
+  "name": "TEAAppWindows::Nothing_466b10",
+  "source": "analysis",
+  "note": "empty"
+ },
+ {
+  "addr": "0x466b18",
+  "name": "TEAAppWindows::GetDictionaryList",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "the open TSDictionaryList"
+ },
+ {
+  "addr": "0x466b28",
+  "name": "TEAAppWindows::GetProfile",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "the settings (TEAViewProfileWindows)"
+ },
+ {
+  "addr": "0x466b38",
+  "name": "TEAAppWindows::UpdateTitle",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "main window caption from the open dictionaries"
+ },
+ {
+  "addr": "0x466e78",
+  "name": "TEAAppWindows::Nothing_466e78",
+  "source": "analysis",
+  "note": "empty"
+ },
+ {
+  "addr": "0x466e80",
+  "name": "TEAAppWindows::GetDefinitionWindow",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "the definition window to show results in"
+ },
+ {
+  "addr": "0x466e98",
+  "name": "TEAAppWindows::FindDefinitions",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "looks a word up in the open dictionaries (or the given list)"
+ },
+ {
+  "addr": "0x467044",
+  "name": "TEAAppWindows::MoveCaretAndShowDefinition",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "forwards to the main view"
+ },
+ {
+  "addr": "0x46715c",
+  "name": "SetFontOnControlsProc",
+  "source": "analysis",
+  "note": "EnumChildWindows callback: WM_SETFONT on the controls with ids 0x2e72..0x2e85"
+ },
+ {
+  "addr": "0x46719c",
+  "name": "SetFontOnControlsProc2",
+  "source": "analysis",
+  "note": "EnumChildWindows callback: WM_SETFONT on a second range of controls"
+ },
+ {
+  "addr": "0x4264ec",
+  "name": "PrintPreviewWindow::PrintPreviewWindow",
+  "cls": "PrintPreviewWindow",
+  "source": "analysis",
+  "note": "constructor: the preview frame (\"Print Page ()\") with its scroller, placed from the saved Position (fitted to a monitor)"
+ },
+ {
+  "addr": "0x428340",
+  "name": "PrintPreviewWindow::GetPageCount",
+  "cls": "PrintPreviewWindow",
+  "source": "analysis",
+  "note": "number of pages (+0x94)"
+ },
+ {
+  "addr": "0x42835c",
+  "name": "PrintPreviewWindow::NextPage",
+  "cls": "PrintPreviewWindow",
+  "source": "analysis",
+  "note": "shows the next page(s) if any"
+ },
+ {
+  "addr": "0x4283a8",
+  "name": "PrintPreviewWindow::PreviousPage",
+  "cls": "PrintPreviewWindow",
+  "source": "analysis",
+  "note": "shows the previous page(s) if any"
+ },
+ {
+  "addr": "0x40fc0c",
+  "name": "std::vector_uint::reserve",
+  "source": "analysis",
+  "note": "reserve(n) for a vector of 32-bit values"
+ },
+ {
+  "addr": "0x410328",
+  "name": "sort_uint32_impl",
+  "source": "analysis",
+  "note": "sorts definition offsets (insertion sort for short runs; inferred)"
+ },
+ {
+  "addr": "0x410378",
+  "name": "std::__insertion_sort_uint",
+  "source": "analysis",
+  "note": "insertion sort of 32-bit values (inferred)"
+ },
+ {
+  "addr": "0x4103d4",
+  "name": "std::__unguarded_linear_insert_uint",
+  "source": "analysis",
+  "note": "insertion step (inferred)"
+ },
+ {
+  "addr": "0x4103f8",
+  "name": "std::__unguarded_insertion_sort_uint",
+  "source": "analysis",
+  "note": "unguarded insertion sort (inferred)"
+ },
+ {
+  "addr": "0x4104e8",
+  "name": "std::__unguarded_partition_uint",
+  "source": "analysis",
+  "note": "partitions 32-bit values around a pivot (inferred)"
+ },
+ {
+  "addr": "0x410538",
+  "name": "std::unique_uint",
+  "source": "analysis",
+  "note": "removes adjacent duplicate offsets"
+ },
+ {
+  "addr": "0x410750",
+  "name": "TSDictionaryDefinitionSearchIndexed::GetRange",
+  "cls": "TSDictionaryDefinitionSearchIndexed",
+  "source": "analysis",
+  "note": "the definition offsets found (begin and end)"
+ },
+ {
+  "addr": "0x419f9c",
+  "name": "PVWRichEdit::GetWordAt",
+  "cls": "PVWRichEdit",
+  "source": "analysis",
+  "note": "the word around a character position of the rich text (selection scanned without moving the caret)"
+ },
+ {
+  "addr": "0x41aa8c",
+  "name": "PVWRichEdit::SetPlainText",
+  "cls": "PVWRichEdit",
+  "source": "analysis",
+  "note": "sets the window text and scrolls to the top"
+ },
+ {
+  "addr": "0x41aacc",
+  "name": "PVWRichEdit::GetText",
+  "cls": "PVWRichEdit",
+  "source": "analysis",
+  "note": "the whole window text as a std::string"
+ },
+ {
+  "addr": "0x41ac90",
+  "name": "PVWRichEdit::SetText",
+  "cls": "PVWRichEdit",
+  "source": "analysis",
+  "note": "sets RTF when the text is RTF, plain text otherwise"
+ },
+ {
+  "addr": "0x41ad00",
+  "name": "PVWRichEdit::SetRtf",
+  "cls": "PVWRichEdit",
+  "source": "analysis",
+  "note": "loads RTF (SetRichText) and scrolls to the top"
+ },
+ {
+  "addr": "0x41ae3c",
+  "name": "PVWRichEdit::ApplyFont",
+  "cls": "PVWRichEdit",
+  "source": "analysis",
+  "note": "sets a character format from a LOGFONT scaled to the screen DPI and a colour"
+ },
+ {
+  "addr": "0x469604",
+  "name": "OWL::TRichEdit::GetModuleName",
+  "source": "analysis",
+  "note": "the rich-edit class library name"
+ },
+ {
+  "addr": "0x4696dc",
+  "name": "OWL::TRichEdit::StreamInCallback",
+  "source": "analysis",
+  "note": "EDITSTREAM callback reading from a buffer"
+ },
+ {
+  "addr": "0x469724",
+  "name": "OWL::TRichEdit::StreamOutCallback",
+  "source": "analysis",
+  "note": "EDITSTREAM callback appending to a buffer"
+ },
+ {
+  "addr": "0x4697bc",
+  "name": "OWL::TRichEdit::ReadFromStream",
+  "source": "analysis",
+  "note": "streams text in through the buffer callback"
+ },
+ {
+  "addr": "0x4697f8",
+  "name": "OWL::TRichEdit::WriteToStream",
+  "source": "analysis",
+  "note": "streams text out through the buffer callback"
+ },
+ {
+  "addr": "0x469b1c",
+  "name": "OWL::TRichEdit::UseRichEdit2",
+  "source": "analysis",
+  "note": "whether the RichEdit 2.0 control is available"
+ },
+ {
+  "addr": "0x469e1c",
+  "name": "ParseLinkTarget",
+  "source": "analysis",
+  "note": "parses a link of the definition text into word and number"
+ },
+ {
+  "addr": "0x469f48",
+  "name": "DefinitionLinkLess",
+  "source": "analysis",
+  "note": "order of two definition links"
+ },
+ {
+  "addr": "0x40317c",
+  "name": "std::_Destroy_range_PageInfo",
+  "source": "analysis",
+  "note": "destroys TEAPrintout::PageInfo records (nothing to do)"
+ },
+ {
+  "addr": "0x4034c0",
+  "name": "TEAPrintout::Paginate",
+  "cls": "TEAPrintout",
+  "source": "analysis",
+  "note": "measures the results with the printer font and splits them into pages and columns"
+ },
+ {
+  "addr": "0x403e94",
+  "name": "TEAPrintout::PageInfo::Copy",
+  "source": "analysis",
+  "note": "copies a page record"
+ },
+ {
+  "addr": "0x403ec0",
+  "name": "std::vector_PageInfo::insert_aux",
+  "source": "analysis",
+  "note": "insert into the vector of page records, growing the storage when full"
+ },
+ {
+  "addr": "0x404174",
+  "name": "std::copy_backward_PageInfo",
+  "source": "analysis",
+  "note": "copy_backward over page records"
+ },
+ {
+  "addr": "0x4041a0",
+  "name": "std::uninitialized_copy_PageInfo",
+  "source": "analysis",
+  "note": "copies page records into raw storage"
+ },
+ {
+  "addr": "0x404240",
+  "name": "std::_Destroy_range_PageInfo_404240",
+  "source": "analysis",
+  "note": "destroys page records (nothing to do)"
+ },
+ {
+  "addr": "0x4753f4",
+  "name": "TEAAppWindows::OpenFile",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "opens a dictionary given on the command line or dropped: full path, long name, file history, OpenDictionaries"
+ },
+ {
+  "addr": "0x4755ac",
+  "name": "OwlMain",
+  "source": "analysis",
+  "note": "creates and runs the TEA application object"
+ },
+ {
+  "addr": "0x4354bc",
+  "name": "FindHeaderControlProc",
+  "source": "analysis",
+  "note": "EnumChildWindows callback that finds the \"SysHeader32\" child"
+ },
+ {
+  "addr": "0x43550c",
+  "name": "BrowseFolderCallback",
+  "source": "analysis",
+  "note": "SHBrowseForFolder callback: selects the initial folder"
+ },
+ {
+  "addr": "0x435534",
+  "name": "SplitCommandLine",
+  "source": "analysis",
+  "note": "separates a program path from its arguments"
+ },
+ {
+  "addr": "0x43568c",
+  "name": "BrowseForFolder",
+  "source": "analysis",
+  "note": "SHBrowseForFolder dialog starting at a folder"
+ },
+ {
+  "addr": "0x435880",
+  "name": "ExpandProgramPath",
+  "source": "analysis",
+  "note": "resolves a program name against the program folder and PATH"
+ },
+ {
+  "addr": "0x435a1c",
+  "name": "LaunchProgram",
+  "source": "analysis",
+  "note": "CreateProcessA of a program with arguments"
+ },
+ {
+  "addr": "0x435de0",
+  "name": "ExpandLongPathName",
+  "source": "analysis",
+  "note": "rebuilds a path component by component from the end, replacing each with the name FindFirstFileA reports (long name, on-disk case)"
+ },
+ {
+  "addr": "0x436e14",
+  "name": "GetFileTitleString",
+  "source": "analysis",
+  "note": "GetFileTitleA wrapper returning a std::string"
+ },
+ {
+  "addr": "0x436f50",
+  "name": "IsRelativePath",
+  "source": "analysis",
+  "note": "true unless the path starts with '\\' or has a drive colon followed by '\\'"
+ },
+ {
+  "addr": "0x437158",
+  "name": "GetMyDocumentsDirectory",
+  "source": "analysis",
+  "note": "the user's documents folder (SHGetSpecialFolderLocation), or the program directory"
+ },
+ {
+  "addr": "0x437470",
+  "name": "ResolveRelativePaths",
+  "source": "analysis",
+  "note": "prefixes the program directory to each relative entry of a ';'-separated path list"
+ },
+ {
+  "addr": "0x4378c0",
+  "name": "ReadFileTime",
+  "source": "analysis",
+  "note": "opens the file read-only and calls GetFileTime"
+ },
+ {
+  "addr": "0x437928",
+  "name": "BackupFile",
+  "source": "analysis",
+  "note": "renames an existing file to \"Backup of <name>\" before it is overwritten, keeping its time"
+ },
+ {
+  "addr": "0x437bd4",
+  "name": "FormatInt",
+  "source": "analysis",
+  "note": "a number as a std::string"
+ },
+ {
+  "addr": "0x437fc4",
+  "name": "TEAViewProfileWindows::TEAViewProfileWindows",
+  "cls": "TEAViewProfileWindows",
+  "source": "analysis",
+  "note": "constructor: defaults, then the pattern options, fonts, colours, view settings and dictionary list from the registry profile (TEA.exe version)"
+ },
+ {
+  "addr": "0x4263ec",
+  "name": "MyScroller::UpdateRange",
+  "cls": "MyScroller",
+  "source": "analysis",
+  "note": "recomputes the scroll range (floating-point arithmetic not visible; ends in __ftol)"
+ },
+ {
+  "addr": "0x4092e8",
+  "name": "std::vector_ptr::insert_aux_4092e8",
+  "source": "analysis",
+  "note": "std::vector<T *> insert at a position, growing the storage when full"
+ },
+ {
+  "addr": "0x46136c",
+  "name": "LookupPropertiesViewWindows::FillList",
+  "cls": "LookupPropertiesViewWindows",
+  "source": "analysis",
+  "note": "fills the list of configured lookups"
+ },
+ {
+  "addr": "0x461484",
+  "name": "LookupPropertiesViewWindows::GetControlTip",
+  "cls": "LookupPropertiesViewWindows",
+  "source": "analysis",
+  "note": "tooltip text for a lookup entry"
+ },
+ {
+  "addr": "0x462d9c",
+  "name": "TEAAppWindows::TEAAppWindows",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "application constructor: profile, dictionary list, window settings"
+ },
+ {
+  "addr": "0x468ee0",
+  "name": "OWL::TRichEdit::LoadModule",
+  "source": "analysis",
+  "note": "loads the rich-edit DLL through the shared TDllLoader; true when available"
+ },
+ {
+  "addr": "0x468f98",
+  "name": "OWL::TRichEdit::CreateModule",
+  "source": "analysis",
+  "note": "creates the TRichEditModule for the loader"
+ },
+ {
+  "addr": "0x4690e8",
+  "name": "OWL::TRichEdit::GetDllLoader",
+  "source": "analysis",
+  "note": "the static TDllLoader<TRichEditModule>"
+ },
+ {
+  "addr": "0x4690f0",
+  "name": "OWL::TRichEdit::GetCharFormat",
+  "source": "analysis",
+  "note": "EM_GETCHARFORMAT (selection or default)"
+ },
+ {
+  "addr": "0x469120",
+  "name": "OWL::TRichEdit::SetCharFormat",
+  "source": "analysis",
+  "note": "EM_SETCHARFORMAT"
+ },
+ {
+  "addr": "0x46914c",
+  "name": "OWL::TRichEdit::SetBkgndColor",
+  "source": "analysis",
+  "note": "EM_SETBKGNDCOLOR"
+ },
+ {
+  "addr": "0x4691fc",
+  "name": "OWL::TRichEdit::GetSelection",
+  "source": "analysis",
+  "note": "EM_EXGETSEL"
+ },
+ {
+  "addr": "0x46924c",
+  "name": "OWL::TRichEdit::SetSelection",
+  "source": "analysis",
+  "note": "EM_EXSETSEL"
+ },
+ {
+  "addr": "0x46926c",
+  "name": "OWL::TRichEdit::GetTextRange",
+  "source": "analysis",
+  "note": "EM_GETTEXTRANGE"
+ },
+ {
+  "addr": "0x4692bc",
+  "name": "OWL::TRichEdit::FindText",
+  "source": "analysis",
+  "note": "EM_FINDTEXT"
+ },
+ {
+  "addr": "0x4693a0",
+  "name": "OWL::TRichEdit::StreamIn",
+  "source": "analysis",
+  "note": "EM_STREAMIN"
+ },
+ {
+  "addr": "0x4693c4",
+  "name": "OWL::TRichEdit::StreamOut",
+  "source": "analysis",
+  "note": "EM_STREAMOUT"
+ },
+ {
+  "addr": "0x4693e8",
+  "name": "OWL::TRichEdit::GetEventMask",
+  "source": "analysis",
+  "note": "EM_GETEVENTMASK"
+ },
+ {
+  "addr": "0x469408",
+  "name": "OWL::TRichEdit::SetEventMask",
+  "source": "analysis",
+  "note": "EM_SETEVENTMASK"
+ },
+ {
+  "addr": "0x41c4b0",
+  "name": "PVWCombo::ClearItems",
+  "cls": "PVWCombo",
+  "source": "analysis",
+  "note": "empties the combo box's item list"
+ },
+ {
+  "addr": "0x41c4f8",
+  "name": "PVWCombo::FillDictionaries",
+  "cls": "PVWCombo",
+  "source": "analysis",
+  "note": "fills the combo with the dictionaries of a path list (file titles), selecting `selected`"
+ },
+ {
+  "addr": "0x41c740",
+  "name": "PVWCombo::GetSelectionIndex",
+  "cls": "PVWCombo",
+  "source": "analysis",
+  "note": "index of the selected item"
+ },
+ {
+  "addr": "0x41c758",
+  "name": "PVWCombo::GetSelectedValue",
+  "cls": "PVWCombo",
+  "source": "analysis",
+  "note": "value attached to the selected item"
+ },
+ {
+  "addr": "0x41c780",
+  "name": "PVWCombo::AddToHistory",
+  "cls": "PVWCombo",
+  "source": "analysis",
+  "note": "puts a text at the top of the combo's history (removing duplicates, keeping the limit)"
+ },
+ {
+  "addr": "0x41ca1c",
+  "name": "PVWCombo::AddPathItems",
+  "cls": "PVWCombo",
+  "source": "analysis",
+  "note": "adds one item per path of a ';'-separated list (shown by file title)"
+ },
+ {
+  "addr": "0x40625c",
+  "name": "TEAPropertiesViewWindows::InitControls",
+  "cls": "TEAPropertiesViewWindows",
+  "source": "analysis",
+  "note": "fills the options controls from the profile"
+ },
+ {
+  "addr": "0x4068e8",
+  "name": "TEAPropertiesViewWindows::UpdateEnabled",
+  "cls": "TEAPropertiesViewWindows",
+  "source": "analysis",
+  "note": "enables the options that depend on others"
+ },
+ {
+  "addr": "0x406984",
+  "name": "TEAPropertiesViewWindows::FillDefinitionDictionaries",
+  "cls": "TEAPropertiesViewWindows",
+  "source": "analysis",
+  "note": "lists the dictionaries of a path list in the definition-dictionary combo"
+ },
+ {
+  "addr": "0x40db1c",
+  "name": "std::vector_string::resize",
+  "source": "analysis",
+  "note": "resize(n) of a vector of strings"
+ },
+ {
+  "addr": "0x40dc7c",
+  "name": "std::vector_string::insert_fill",
+  "source": "analysis",
+  "note": "inserts n copies of a string at a position"
+ },
+ {
+  "addr": "0x40e0a0",
+  "name": "std::fill_string",
+  "source": "analysis",
+  "note": "assigns a string to every element of a range"
+ },
+ {
+  "addr": "0x40e0cc",
+  "name": "std::uninitialized_fill_n_string",
+  "source": "analysis",
+  "note": "copy-constructs n strings"
+ },
+ {
+  "addr": "0x40e20c",
+  "name": "std::copy_string_40e20c",
+  "source": "analysis",
+  "note": "assigns strings over a range"
+ },
+ {
+  "addr": "0x44f8cc",
+  "name": "MyScroller::SetAutoScroll",
+  "cls": "MyScroller",
+  "source": "analysis",
+  "note": "flag at +0x3e"
+ },
+ {
+  "addr": "0x44f9f0",
+  "name": "MyScroller::ScrollToChild",
+  "cls": "MyScroller",
+  "source": "analysis",
+  "note": "scrolls so that a child control is visible"
+ },
+ {
+  "addr": "0x44faac",
+  "name": "MyScroller::ActivateOwner",
+  "cls": "MyScroller",
+  "source": "analysis",
+  "note": "activates the window that owns the scroller"
+ },
+ {
+  "addr": "0x41f1c8",
+  "name": "PVWPathListBox::Fill",
+  "cls": "PVWPathListBox",
+  "source": "analysis",
+  "note": "fills the list box with the dictionaries of a path list (valid ones only, sorted by title when asked)"
+ },
+ {
+  "addr": "0x41f8c8",
+  "name": "PVWPathListBox::GetPathAt",
+  "cls": "PVWPathListBox",
+  "source": "analysis",
+  "note": "the dictionary path of an entry"
+ },
+ {
+  "addr": "0x41fbe4",
+  "name": "PVWPathListBox::UpdateEntry",
+  "cls": "PVWPathListBox",
+  "source": "analysis",
+  "note": "refreshes an entry's text after its dictionary changed"
+ },
+ {
+  "addr": "0x41fea4",
+  "name": "PVWPathListBox::IsFull",
+  "cls": "PVWPathListBox",
+  "source": "analysis",
+  "note": "whether the list has reached the maximum number of dictionaries"
+ },
+ {
+  "addr": "0x41fedc",
+  "name": "PVWPathList::PVWPathList",
+  "cls": "PVWPathList",
+  "source": "analysis",
+  "note": "constructor: the available/selected list boxes, folder edit, buttons and up/down controls of the dictionary list page"
+ },
+ {
+  "addr": "0x419418",
+  "name": "PVWFontButton::SetSampleFont",
+  "cls": "PVWFontButton",
+  "source": "analysis",
+  "note": "sets the font shown on the button and updates the scroller range"
+ },
+ {
+  "addr": "0x44fd7c",
+  "name": "TEAProgressBar::SetRange",
+  "cls": "TEAProgressBar",
+  "source": "analysis",
+  "note": "sets the range of the progress bar"
+ },
+ {
+  "addr": "0x44fdb8",
+  "name": "TEAProgressBar::StartDictionary",
+  "cls": "TEAProgressBar",
+  "source": "analysis",
+  "note": "sets the bar's range from the number of words to scan in the dictionary's length range"
+ },
+ {
+  "addr": "0x44ffb8",
+  "name": "TEAProgressBar::SetPosition",
+  "cls": "TEAProgressBar",
+  "source": "analysis",
+  "note": "moves the bar (floating-point scaling not visible)"
+ },
+ {
+  "addr": "0x468478",
+  "name": "TabbyPropertiesViewWindows::ShowPage",
+  "cls": "TabbyPropertiesViewWindows",
+  "source": "analysis",
+  "note": "shows/enables the controls of one tab page"
+ },
+ {
+  "addr": "0x4684d4",
+  "name": "TabbyPropertiesViewWindows::EnablePage",
+  "cls": "TabbyPropertiesViewWindows",
+  "source": "analysis",
+  "note": "enables or disables the current page's controls"
+ },
+ {
+  "addr": "0x41e888",
+  "name": "PVWURL::Link::Link",
+  "source": "analysis",
+  "note": "empty link record"
+ },
+ {
+  "addr": "0x4047bc",
+  "name": "TEAPrintoutFeeder::GetLine",
+  "cls": "TEAPrintoutFeeder",
+  "source": "analysis",
+  "note": "text of a result line to print"
+ },
+ {
+  "addr": "0x47784c",
+  "name": "DictionaryListViewWindows::GetSelectedPaths",
+  "cls": "DictionaryListViewWindows",
+  "source": "analysis",
+  "note": "the chosen dictionaries as a path list"
+ },
+ {
+  "addr": "0x477ca0",
+  "name": "MatchListLabelWindows::Info::Info",
+  "source": "analysis",
+  "note": "default label info for a pane"
+ },
+ {
+  "addr": "0x47af2c",
+  "name": "TEAStartupTipsViewWindows::IsShowAtStartup",
+  "cls": "TEAStartupTipsViewWindows",
+  "source": "analysis",
+  "note": "state of the \"show at start-up\" check box"
+ },
+ {
+  "addr": "0x47b728",
+  "name": "std::basic_istringstream::basic_istringstream",
+  "source": "analysis",
+  "note": "string input stream on a text"
+ },
+ {
+  "addr": "0x47b87c",
+  "name": "TEAStartupTipsViewWindows::ShowTip",
+  "cls": "TEAStartupTipsViewWindows",
+  "source": "analysis",
+  "note": "shows tip n (numbered sections of the tips text)"
+ },
+ {
+  "addr": "0x4677b8",
+  "name": "TEAQuickReferenceViewWindows::IsShown",
+  "cls": "TEAQuickReferenceViewWindows",
+  "source": "analysis",
+  "note": "whether the window is visible (for saving the QuickReference setting)"
+ },
+ {
+  "addr": "0x467844",
+  "name": "TEAQuickReferenceViewWindows::DeleteBrush",
+  "cls": "TEAQuickReferenceViewWindows",
+  "source": "analysis",
+  "note": "frees the background brush"
+ },
+ {
+  "addr": "0x410da0",
+  "name": "TSDictionaryDefinitionSearchSequential::GetRange",
+  "cls": "TSDictionaryDefinitionSearchSequential",
+  "source": "analysis",
+  "note": "the definition offsets found (begin and end)"
+ },
+ {
+  "addr": "0x41b1ec",
+  "name": "PVWEdit::SetText",
+  "cls": "PVWEdit",
+  "source": "analysis",
+  "note": "SetWindowText"
+ },
+ {
+  "addr": "0x41b218",
+  "name": "PVWEdit::SetInt",
+  "cls": "PVWEdit",
+  "source": "analysis",
+  "note": "shows a number"
+ },
+ {
+  "addr": "0x41b24c",
+  "name": "PVWEdit::SetLong",
+  "cls": "PVWEdit",
+  "source": "analysis",
+  "note": "shows a number (\"%ld\")"
+ },
+ {
+  "addr": "0x41b280",
+  "name": "PVWEdit::GetInt",
+  "cls": "PVWEdit",
+  "source": "analysis",
+  "note": "the text as a number (atoi)"
+ },
+ {
+  "addr": "0x41b2b0",
+  "name": "PVWEdit::GetText",
+  "cls": "PVWEdit",
+  "source": "analysis",
+  "note": "the text as a std::string"
+ },
+ {
+  "addr": "0x41b474",
+  "name": "PVWEdit::SetIntValue",
+  "cls": "PVWEdit",
+  "source": "analysis",
+  "note": "shows a number"
+ },
+ {
+  "addr": "0x41b48c",
+  "name": "PVWEdit::SetPathText",
+  "cls": "PVWEdit",
+  "source": "analysis",
+  "note": "shows a path shortened with an ellipsis to fit the control (DrawText measuring)"
+ },
+ {
+  "addr": "0x473f78",
+  "name": "TEAFrameWindow::TEAFrameWindow",
+  "cls": "TEAFrameWindow",
+  "source": "analysis",
+  "note": "constructor: the \"TEA\" main frame around the client view"
+ },
+ {
+  "addr": "0x474e1c",
+  "name": "TEAAppWindows::TEAAppWindows_base",
+  "cls": "TEAAppWindows",
+  "source": "analysis",
+  "note": "application base constructor (\"TEA for Windows\")"
+ },
+ {
+  "addr": "0x4733d8",
+  "name": "DefinitionViewFrame::ShowDefinitions",
+  "cls": "DefinitionViewFrame",
+  "source": "analysis",
+  "note": "forwards to the client DefinitionViewWindows and brings the frame forward"
+ },
+ {
+  "addr": "0x473470",
+  "name": "DefinitionViewFrame::SetStatusText",
+  "cls": "DefinitionViewFrame",
+  "source": "analysis",
+  "note": "text in the frame's status bar"
+ },
+ {
+  "addr": "0x473488",
+  "name": "DefinitionViewFrame::RefreshDefinition",
+  "cls": "DefinitionViewFrame",
+  "source": "analysis",
+  "note": "re-renders the current definition (after a settings change)"
+ },
+ {
+  "addr": "0x4734c4",
+  "name": "DefinitionViewFrame::SetTitle",
+  "cls": "DefinitionViewFrame",
+  "source": "analysis",
+  "note": "caption: base title plus the looked-up word"
+ },
+ {
+  "addr": "0x418a48",
+  "name": "PVWColourButton::SetColour",
+  "cls": "PVWColourButton",
+  "source": "analysis",
+  "note": "the colour shown by the button"
+ },
+ {
+  "addr": "0x43c6d4",
+  "name": "CollationCode",
+  "source": "analysis",
+  "note": "collation code of a byte (0 for non-letters)"
+ },
+ {
+  "addr": "0x401140",
+  "name": "__getTlsBlock",
+  "source": "analysis",
+  "note": "this thread's TLS block (FS:[0x2c][tls index])"
+ },
+ {
+  "addr": "0x401d10",
+  "name": "FindWordInString",
+  "source": "analysis",
+  "note": "position of a word in a string (whole-word search), or npos"
+ },
+ {
+  "addr": "0x43a064",
+  "name": "TEAViewProfileWindows::Save",
+  "cls": "TEAViewProfileWindows",
+  "source": "analysis",
+  "note": "writes every setting (view options, dictionary list, fonts, colours) to the registry profile"
+ },
+ {
+  "addr": "0x4867cc",
+  "name": "CheckLicenseKey",
+  "source": "analysis",
+  "note": "CheckLicenseKeyImpl"
+ },
+ {
+  "addr": "0x4867e4",
+  "name": "CheckLicenseKey2",
+  "source": "analysis",
+  "note": "CheckLicenseKeyImpl (second entry point)"
+ },
+ {
+  "addr": "0x48609c",
+  "name": "CheckLicenseKey3",
+  "source": "analysis",
+  "note": "CheckLicenseKeyImpl (third entry point)"
+ },
+ {
+  "addr": "0x4867fc",
+  "name": "GetRichEditVersion2",
+  "source": "analysis",
+  "note": "2 when RICHED20.DLL can be loaded, else 1"
+ },
+ {
+  "addr": "0x48687b",
+  "name": "InitRichEditStreamer",
+  "source": "analysis",
+  "note": "static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x4868d1",
+  "name": "DestroyRichEditStreamer",
+  "source": "analysis",
+  "note": "static destructor of the TRichEdit streamable class and DLL loader"
+ },
+ {
+  "addr": "0x41e940",
+  "name": "CreateFontFromLogFont2",
+  "source": "analysis",
+  "note": "creates a TFont from a LOGFONT and selects it"
+ },
+ {
+  "addr": "0x41e9dc",
+  "name": "MeasureControlText",
+  "source": "analysis",
+  "note": "size of a control's text in its font"
+ },
+ {
+  "addr": "0x44e49c",
+  "name": "std::vector_16::_dtor",
+  "source": "analysis",
+  "note": "destructor of a vector of 16-byte elements"
+ },
+ {
+  "addr": "0x44e4d4",
+  "name": "std::vector_WordMap2::_dtor",
+  "source": "analysis",
+  "note": "destructor of a vector of word maps"
+ },
+ {
+  "addr": "0x44e67c",
+  "name": "std::vector_WordMap::_dtor",
+  "source": "analysis",
+  "note": "destructor of a vector of word maps"
+ },
+ {
+  "addr": "0x44e6b4",
+  "name": "WordMap2::_dtor",
+  "source": "analysis",
+  "note": "destructor of a word map"
+ },
+ {
+  "addr": "0x44e728",
+  "name": "WordMap::_dtor",
+  "source": "analysis",
+  "note": "destructor of a word map"
+ },
+ {
+  "addr": "0x44e79c",
+  "name": "WordMap3::_dtor",
+  "source": "analysis",
+  "note": "destructor of a word map"
+ },
+ {
+  "addr": "0x42905c",
+  "name": "MatchListLabelWindows::SetLabel",
+  "cls": "MatchListLabelWindows",
+  "source": "analysis",
+  "note": "sets the pane label's base text and number"
+ },
+ {
+  "addr": "0x429084",
+  "name": "MatchListLabelWindows::SetCount",
+  "cls": "MatchListLabelWindows",
+  "source": "analysis",
+  "note": "updates the result count shown in the label"
+ },
+ {
+  "addr": "0x42909c",
+  "name": "MatchListLabelWindows::UpdateText",
+  "cls": "MatchListLabelWindows",
+  "source": "analysis",
+  "note": "label text: \" &%d \" number and \" (%d)\" count"
+ },
+ {
+  "addr": "0x4791f0",
+  "name": "std::vector_MatchEngine_ptr::insert_aux_4791f0",
+  "source": "analysis",
+  "note": "std::vector<MatchEngine *> insert at a position, growing the storage when full"
+ },
+ {
+  "addr": "0x479ab8",
+  "name": "MatchEngineSet::SetLengthLimits",
+  "cls": "MatchEngineSet",
+  "source": "analysis",
+  "note": "passes the shortest/longest settings to every leaf"
+ },
+ {
+  "addr": "0x479b7c",
+  "name": "MatchEngineSet::GetLengthKindSum",
+  "cls": "MatchEngineSet",
+  "source": "analysis",
+  "note": "sum of the leaves' length kinds (negative: list longest first)"
+ },
+ {
+  "addr": "0x479bd4",
+  "name": "MatchEngineSet::CopyEngines",
+  "cls": "MatchEngineSet",
+  "source": "analysis",
+  "note": "copies the leaf engine pointers into a vector"
+ },
+ {
+  "addr": "0x41b8f8",
+  "name": "PVWStatic::IsTransparent",
+  "cls": "PVWStatic",
+  "source": "analysis",
+  "note": "whether the static draws on the parent's background"
+ },
+ {
+  "addr": "0x41b914",
+  "name": "PVWStatic::GetText",
+  "cls": "PVWStatic",
+  "source": "analysis",
+  "note": "the text as a std::string"
+ },
+ {
+  "addr": "0x4760d8",
+  "name": "ExternalLookupViewWindows::FillLookups",
+  "cls": "ExternalLookupViewWindows",
+  "source": "analysis",
+  "note": "one button per configured lookup, labelled from the configuration"
+ },
+ {
+  "addr": "0x41c1cc",
+  "name": "PVWEnumeration::Reset",
+  "cls": "PVWEnumeration",
+  "source": "analysis",
+  "note": "clears the selection"
+ },
+ {
+  "addr": "0x43bbfc",
+  "name": "PrintPreviewWindowTEA::PrintPreviewWindowTEA",
+  "cls": "PrintPreviewWindowTEA",
+  "source": "analysis",
+  "note": "constructor"
+ },
+ {
+  "addr": "0x485fac",
+  "name": "Common::ReadLicense",
+  "cls": "Common",
+  "source": "analysis",
+  "note": "reads LicenseOwner and LicenseKey from the [License] section of common.ini: 0 no file named, 1 not found, 2 both read"
+ },
+ {
+  "addr": "0x486058",
+  "name": "Common::WriteLicense",
+  "cls": "Common",
+  "source": "analysis",
+  "note": "writes LicenseOwner and LicenseKey to the [License] section of common.ini"
+ },
+ {
+  "addr": "0x413990",
+  "name": "IntroductionViewWindows::GetEditText",
+  "cls": "IntroductionViewWindows",
+  "source": "analysis",
+  "note": "an edit control's text as a std::string"
+ },
+ {
+  "addr": "0x481f7c",
+  "name": "FormattedTextSegment::FormattedTextSegment",
+  "cls": "FormattedTextSegment",
+  "source": "analysis",
+  "note": "a run of text with its character format"
+ },
+ {
+  "addr": "0x485bb8",
+  "name": "GetCommonIniPath",
+  "source": "analysis",
+  "note": "SHGetFolderPathA folder + subdirectory + \"\\common.ini\" when that folder exists; empty otherwise"
+ },
+ {
+  "addr": "0x430438",
+  "name": "MatchListWindows::InvalidateSelection_stub",
+  "cls": "MatchListWindows",
+  "source": "analysis",
+  "note": "first instruction of InvalidateSelection (Ghidra split the function here)"
+ },
+ {
+  "addr": "0x408dd8",
+  "name": "ReturnZero",
+  "source": "analysis",
+  "note": "returns 0 (used as \"no maximum\" by PVWPathListBox::IsFull)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 15,
+  "name": "SetupTooltips",
+  "source": "analysis",
+  "note": "creates the tooltip control for the window's controls (overrides add their own start-up work)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 16,
+  "name": "DestroyTooltips",
+  "source": "analysis",
+  "note": "destroys the tooltip control"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 17,
+  "name": "IsTooltipActive",
+  "source": "analysis",
+  "note": "whether the tooltips are on (+0x40 == 1)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 18,
+  "name": "EnableControls",
+  "source": "analysis",
+  "note": "enables or disables the window's controls"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 19,
+  "name": "OnButton",
+  "source": "analysis",
+  "note": "a push button, check box or radio button was clicked (PVW*::BNClicked call it with the control id)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 20,
+  "name": "OnStaticClicked",
+  "source": "analysis",
+  "note": "a PVWStatic was clicked (PVWStatic::BNClicked)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 21,
+  "name": "OnEditKillFocus",
+  "source": "analysis",
+  "note": "an edit or rich edit lost the focus (EN_KILLFOCUS from PVWEdit/PVWRichEdit)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 22,
+  "name": "OnEditChange",
+  "source": "analysis",
+  "note": "an edit or rich edit's text changed (EN_CHANGE from PVWEdit/PVWRichEdit)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 23,
+  "name": "OnDoubleClick",
+  "source": "analysis",
+  "note": "a rich edit was double-clicked (PVWRichEdit::EvLButtonDblClk)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 24,
+  "name": "OnUpDown",
+  "source": "analysis",
+  "note": "an up-down control changed (control id); the main view treats it like leaving the buddy edit"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 25,
+  "name": "OnNotify25",
+  "source": "analysis",
+  "note": "control notification slot 25 (no override examined; meaning not established)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 26,
+  "name": "OnNotify26",
+  "source": "analysis",
+  "note": "control notification slot 26 (no override; meaning not established)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 27,
+  "name": "OnColourChanged",
+  "source": "analysis",
+  "note": "a colour button chose a new colour"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 28,
+  "name": "OnFontChanged",
+  "source": "analysis",
+  "note": "a font button chose a new font"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 29,
+  "name": "OnComboChange",
+  "source": "analysis",
+  "note": "a combo box selection changed"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 30,
+  "name": "OnNotify30",
+  "source": "analysis",
+  "note": "control notification slot 30 (no override examined; meaning not established)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 31,
+  "name": "OnMouseOverControl",
+  "source": "analysis",
+  "note": "the mouse moved over a control (PVWPathListBox::EvMouseMove); used to show its tip"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 32,
+  "name": "OnTextClicked",
+  "source": "analysis",
+  "note": "text of a control was clicked (Quick Reference: puts the clicked example into the query)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 33,
+  "name": "IsResizable",
+  "source": "analysis",
+  "note": "whether the window may be resized (false by default)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 34,
+  "name": "GetSectionName",
+  "source": "analysis",
+  "note": "name of the window's settings section (\"wrong\" by default)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 35,
+  "name": "OnNotify35",
+  "source": "analysis",
+  "note": "notification slot 35 (empty, no override; meaning not established)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 36,
+  "name": "OnSelectionCommitted",
+  "source": "analysis",
+  "note": "a selection was confirmed (saves the choice)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 37,
+  "name": "OnPathListChanged",
+  "source": "analysis",
+  "note": "the dictionary path list changed (PVWPathList::Refresh)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 39,
+  "name": "EvCtlColor",
+  "source": "analysis",
+  "note": "colours for a child control (WM_CTLCOLOR*: static, edit, button)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 40,
+  "name": "EvSize",
+  "source": "analysis",
+  "note": "the window was resized (repositions the moveable controls)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 41,
+  "name": "OnPropertyChanged",
+  "source": "analysis",
+  "note": "a colour or font chooser closed with a new value (PVWColourButton/PVWFontButton::BNClicked)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 42,
+  "name": "LoadResourceString",
+  "source": "analysis",
+  "note": "a string resource of the window's module"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 43,
+  "name": "ShowControlTip",
+  "source": "analysis",
+  "note": "relays a mouse message to the tooltip, or shows the tip text for a control"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 44,
+  "name": "GetLookupWord",
+  "source": "analysis",
+  "note": "the word to look up from the window (selected entry, word under the caret)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 45,
+  "name": "ShowHelp",
+  "source": "analysis",
+  "note": "opens the window's help topic"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 46,
+  "name": "GetControlTipText",
+  "source": "analysis",
+  "note": "tooltip text for a control (first line of its string resource)"
+ },
+ {
+  "slotClass": "PropertiesViewWindows",
+  "slot": 47,
+  "name": "SetupMoveableControls",
+  "source": "analysis",
+  "note": "registers the controls that move or stretch when the window is resized"
+ },
+ {
+  "slotClass": "TEAViewWindows",
+  "slot": 48,
+  "name": "OnSplitterButtonDown",
+  "source": "analysis",
+  "note": "mouse down on a pane splitter: focuses that pane and captures the mouse"
+ },
+ {
+  "slotClass": "TEAViewWindows",
+  "slot": 49,
+  "name": "OnSplitterDrag",
+  "source": "analysis",
+  "note": "dragging a pane splitter: resizes the panes (and shows the dictionary tip)"
+ },
+ {
+  "slotClass": "TEAViewWindows",
+  "slot": 50,
+  "name": "OnSplitterButtonUp",
+  "source": "analysis",
+  "note": "end of a splitter drag: saves the pane layout"
+ },
+ {
+  "slotClass": "TEAViewWindows",
+  "slot": 51,
+  "name": "OnPaneLabelDoubleClick",
+  "source": "analysis",
+  "note": "double-click on a pane label: dictionary properties"
+ },
+ {
+  "slotClass": "TEAViewWindows",
+  "slot": 52,
+  "name": "OnPaneLabelClick",
+  "source": "analysis",
+  "note": "click on a pane label: focuses its list"
+ },
+ {
+  "slotClass": "TEAViewWindows",
+  "slot": 53,
+  "name": "OnPaneLabelContextMenu",
+  "source": "analysis",
+  "note": "right-click on a pane label: the pane's context menu"
+ },
+ {
+  "slotClass": "TEAViewWindows",
+  "slot": 54,
+  "name": "OnDropFiles",
+  "source": "analysis",
+  "note": "dictionaries dropped on the window: opens them"
+ },
+ {
+  "slotClass": "TEAViewWindows",
+  "slot": 55,
+  "name": "OnSysColorChange",
+  "source": "analysis",
+  "note": "system colours changed: recreates the brushes"
+ },
+ {
+  "slotClass": "DefinitionViewWindows",
+  "slot": 48,
+  "name": "OnSplitterButtonDown",
+  "source": "analysis",
+  "note": "mouse down on the splitter between the tabs and the text: captures the mouse"
+ },
+ {
+  "slotClass": "DefinitionViewWindows",
+  "slot": 49,
+  "name": "OnSplitterDrag",
+  "source": "analysis",
+  "note": "dragging the splitter: resizes the two parts"
+ },
+ {
+  "slotClass": "DefinitionViewWindows",
+  "slot": 50,
+  "name": "OnSplitterButtonUp",
+  "source": "analysis",
+  "note": "end of a splitter drag: saves the splitter position"
+ },
+ {
+  "slotClass": "TabbyPropertiesViewWindows",
+  "slot": 48,
+  "name": "OnPageChanged",
+  "source": "analysis",
+  "note": "a tab page was selected: shows its controls"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 9,
+  "name": "GetCount",
+  "source": "analysis",
+  "note": "LB_GETCOUNT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 10,
+  "name": "FindString",
+  "source": "analysis",
+  "note": "LB_FINDSTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 11,
+  "name": "FindExactString",
+  "source": "analysis",
+  "note": "the slot that holds CB_FINDSTRINGEXACT in TComboBox (no message of its own here)"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 12,
+  "name": "GetTopIndex",
+  "source": "analysis",
+  "note": "LB_GETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 13,
+  "name": "SetTopIndex",
+  "source": "analysis",
+  "note": "LB_SETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 14,
+  "name": "GetHorizontalExtent",
+  "source": "analysis",
+  "note": "LB_GETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 15,
+  "name": "SetHorizontalExtent",
+  "source": "analysis",
+  "note": "LB_SETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 16,
+  "name": "GetStringLen",
+  "source": "analysis",
+  "note": "LB_GETTEXTLEN"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 17,
+  "name": "GetString",
+  "source": "analysis",
+  "note": "LB_GETTEXT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 18,
+  "name": "GetItemData",
+  "source": "analysis",
+  "note": "LB_GETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 19,
+  "name": "SetItemData",
+  "source": "analysis",
+  "note": "LB_SETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 20,
+  "name": "GetItemHeight",
+  "source": "analysis",
+  "note": "LB_GETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 21,
+  "name": "SetItemHeight",
+  "source": "analysis",
+  "note": "LB_SETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 22,
+  "name": "ClearList",
+  "source": "analysis",
+  "note": "LB_RESETCONTENT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 23,
+  "name": "DirectoryList",
+  "source": "analysis",
+  "note": "LB_DIR"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 24,
+  "name": "AddString",
+  "source": "analysis",
+  "note": "LB_ADDSTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 25,
+  "name": "InsertString",
+  "source": "analysis",
+  "note": "LB_INSERTSTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 26,
+  "name": "DeleteString",
+  "source": "analysis",
+  "note": "LB_DELETESTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 27,
+  "name": "GetSelIndex",
+  "source": "analysis",
+  "note": "LB_GETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 28,
+  "name": "SetSelIndex",
+  "source": "analysis",
+  "note": "LB_SETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 9,
+  "name": "GetCount",
+  "source": "analysis",
+  "note": "CB_GETCOUNT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 10,
+  "name": "FindString",
+  "source": "analysis",
+  "note": "CB_FINDSTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 11,
+  "name": "FindExactString",
+  "source": "analysis",
+  "note": "CB_FINDSTRINGEXACT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 12,
+  "name": "GetTopIndex",
+  "source": "analysis",
+  "note": "CB_GETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 13,
+  "name": "SetTopIndex",
+  "source": "analysis",
+  "note": "CB_SETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 14,
+  "name": "GetHorizontalExtent",
+  "source": "analysis",
+  "note": "CB_GETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 15,
+  "name": "SetHorizontalExtent",
+  "source": "analysis",
+  "note": "CB_SETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 16,
+  "name": "GetStringLen",
+  "source": "analysis",
+  "note": "CB_GETLBTEXTLEN"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 17,
+  "name": "GetString",
+  "source": "analysis",
+  "note": "CB_GETLBTEXT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 18,
+  "name": "GetItemData",
+  "source": "analysis",
+  "note": "CB_GETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 19,
+  "name": "SetItemData",
+  "source": "analysis",
+  "note": "CB_SETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 20,
+  "name": "GetItemHeight",
+  "source": "analysis",
+  "note": "CB_GETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 21,
+  "name": "SetItemHeight",
+  "source": "analysis",
+  "note": "CB_SETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 22,
+  "name": "ClearList",
+  "source": "analysis",
+  "note": "CB_RESETCONTENT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 23,
+  "name": "DirectoryList",
+  "source": "analysis",
+  "note": "CB_DIR"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 24,
+  "name": "AddString",
+  "source": "analysis",
+  "note": "CB_ADDSTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 25,
+  "name": "InsertString",
+  "source": "analysis",
+  "note": "CB_INSERTSTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 26,
+  "name": "DeleteString",
+  "source": "analysis",
+  "note": "CB_DELETESTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 27,
+  "name": "GetSelIndex",
+  "source": "analysis",
+  "note": "CB_GETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 28,
+  "name": "SetSelIndex",
+  "source": "analysis",
+  "note": "CB_SETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 31,
+  "name": "GetSelStringIndex",
+  "source": "analysis",
+  "note": "CB_FINDSTRINGEXACT of the given text"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 32,
+  "name": "SetSelString",
+  "source": "analysis",
+  "note": "CB_SELECTSTRING"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 13,
+  "name": "GetSelection",
+  "source": "analysis",
+  "note": "EM_GETSEL"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 15,
+  "name": "SetSelection",
+  "source": "analysis",
+  "note": "EM_SETSEL"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 17,
+  "name": "Paste",
+  "source": "analysis",
+  "note": "WM_PASTE"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 18,
+  "name": "CharFromPos",
+  "source": "analysis",
+  "note": "EM_CHARFROMPOS"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 19,
+  "name": "PosFromChar",
+  "source": "analysis",
+  "note": "EM_POSFROMCHAR"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 12,
+  "name": "GetSubText",
+  "source": "analysis",
+  "note": "text between two positions (EM_LINEINDEX / EM_LINEFROMCHAR per line)"
+ },
+ {
+  "slotClass": "OWL::TRichEdit",
+  "slot": 25,
+  "name": "ReadFromFile",
+  "source": "analysis",
+  "note": "loads a file into the control (stream in, EM_SETMODIFY)"
+ },
+ {
+  "slotClass": "OWL::TRichEdit",
+  "slot": 29,
+  "name": "WriteToFile",
+  "source": "analysis",
+  "note": "saves the control to a file (stream out, EM_SETMODIFY)"
  }
 ]

@@ -2,23 +2,30 @@
  "exe": "TSBuild.exe",
  "sha256": "17654f120447e967b41e97b801f862ad0a780dde475b66b75003117c8639883a",
  "functions": 3029,
- "named": 1001,
+ "named": 1332,
  "nameSources": {
-  "unnamed": 2028,
+  "unnamed": 1697,
+  "analysis (matched TEACON.exe)": 38,
+  "analysis": 85,
   "owl:response-table": 187,
+  "rtti:vtable-store": 117,
   "rtti:vtable": 602,
   "rtti:dtor": 185,
-  "notes (position-matched TEA.exe)": 1,
-  "analysis (matched TEACON.exe)": 3,
+  "analysis (matched TEA.exe, duplicated code)": 36,
+  "analysis (matched TEACON.exe, duplicated code)": 24,
+  "analysis (matched TEA.exe)": 22,
+  "notes (matched TEA.exe, duplicated code)": 3,
+  "analysis (position-matched TEA.exe)": 6,
   "analysis (usage pattern) (matched TEACON.exe)": 13,
   "analysis (usage pattern) (position-matched TEACON.exe)": 5,
   "analysis (usage pattern, less certain) (position-matched TEACON.exe)": 1,
+  "analysis (position-matched TEACON.exe)": 4,
   "analysis (usage pattern, less certain) (matched TEACON.exe)": 1,
   "analysis (usage pattern) (matched TEA.exe)": 3
  },
  "appFunctions": 215,
  "libFunctions": 2814,
- "appNamed": 61,
+ "appNamed": 213,
  "libStart": "0x00419e94",
  "textBytes": 471040,
  "bytesInFunctions": 405916,
@@ -30,19 +37,33 @@
  "responseTablesOwned": 18,
  "globalsDeclared": 1107,
  "generatorProblems": [],
+ "variables": {
+  "declared": 16752,
+  "generic": 15631,
+  "hand": 579,
+  "rule": 6964,
+  "genericLeft": 8090,
+  "src": {
+   "declared": 2583,
+   "generic": 2410,
+   "hand": 450,
+   "rule": 1410,
+   "genericLeft": 552
+  }
+ },
  "modules": [
   {
    "file": "src/DMDialog.cpp",
    "functions": 63,
-   "named": 31,
+   "named": 61,
    "from": "0x00401000",
-   "to": "0x00405f68",
-   "bytes": 13825
+   "to": "0x0041740c",
+   "bytes": 13810
   },
   {
    "file": "src/DMApplication.cpp",
    "functions": 9,
-   "named": 8,
+   "named": 9,
    "from": "0x00403778",
    "to": "0x00404158",
    "bytes": 835
@@ -50,15 +71,15 @@
   {
    "file": "src/DictionaryMaintainer.cpp",
    "functions": 21,
-   "named": 12,
-   "from": "0x00405fbc",
-   "to": "0x00415fb8",
-   "bytes": 1983
+   "named": 21,
+   "from": "0x00405f68",
+   "to": "0x00415f14",
+   "bytes": 1809
   },
   {
    "file": "src/OccurrenceListCache.cpp",
    "functions": 88,
-   "named": 2,
+   "named": 88,
    "from": "0x00405ff4",
    "to": "0x00414a7c",
    "bytes": 54891
@@ -66,31 +87,31 @@
   {
    "file": "src/TSBuildProfile.cpp",
    "functions": 5,
-   "named": 1,
-   "from": "0x004160b8",
-   "to": "0x004171b4",
-   "bytes": 4573
+   "named": 5,
+   "from": "0x00415fb8",
+   "to": "0x00416c8c",
+   "bytes": 4495
   },
   {
    "file": "src/TSDictionaryBuilderProgressBar.cpp",
-   "functions": 15,
-   "named": 3,
-   "from": "0x00417310",
-   "to": "0x004198b4",
-   "bytes": 9173
+   "functions": 14,
+   "named": 14,
+   "from": "0x004171b4",
+   "to": "0x00419664",
+   "bytes": 9239
   },
   {
    "file": "src/Persist.cpp",
-   "functions": 8,
-   "named": 3,
-   "from": "0x00419998",
+   "functions": 9,
+   "named": 9,
+   "from": "0x004198b4",
    "to": "0x00419bf0",
-   "bytes": 793
+   "bytes": 994
   },
   {
    "file": "src/Help.cpp",
    "functions": 6,
-   "named": 1,
+   "named": 6,
    "from": "0x00419d14",
    "to": "0x00419e8c",
    "bytes": 381

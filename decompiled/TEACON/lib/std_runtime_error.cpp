@@ -8,51 +8,51 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041e8fc  std::runtime_error::vf1   (11 bytes)   [rtti:vtable virtual slot 1; function defined from vtable-slot]
-undefined4 __cdecl std::runtime_error::vf1(int param_1)
+undefined4 __cdecl std::runtime_error::vf1(int self)
 
 {
-  return *(undefined4 *)(param_1 + 0x10);
+  return *(undefined4 *)(self + 0x10);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041ec9c  std::runtime_error::~runtime_error   (217 bytes)   [rtti:dtor destructor]
 //   written in code as std::runtime_error::_dtor
-void __cdecl std::runtime_error::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl std::runtime_error::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  int iVar1;
-  int *piVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x431a58);
-  if (param_1 == (undefined4 *)0x0) goto LAB_0041ed65;
-  *param_1 = &std::runtime_error::vftable;
-  if (param_1[4] != 0) {
-    if (*(int *)(param_1[4] + -0xc) != -1) {
-      piVar2 = (int *)(param_1[4] + -0xc);
-      if (piVar2 == &DAT_0042fab4) {
-        iVar1 = 1;
+  if (self == (undefined4 *)0x0) goto LAB_0041ed65;
+  *self = &std::runtime_error::vftable;
+  if (self[4] != 0) {
+    if (*(int *)(self[4] + -0xc) != -1) {
+      strRep = (int *)(self[4] + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar2 == &DAT_0042fab4) {
-        iVar1 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar1 = *piVar2 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar1 != 0) goto LAB_0041ed44;
+      if (prevRefs != 0) goto LAB_0041ed44;
     }
     operator_delete();
-    param_1[4] = 0;
+    self[4] = 0;
   }
 LAB_0041ed44:
-  std::exception::_dtor(param_1,0);
-  if ((param_2 & 1) != 0) {
+  std::exception::_dtor(self,0);
+  if ((dtorFlags & 1) != 0) {
     operator_delete();
   }
 LAB_0041ed65:
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

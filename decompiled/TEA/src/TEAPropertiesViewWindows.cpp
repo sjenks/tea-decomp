@@ -1,5 +1,5 @@
 // TEA.exe — application module "TEAPropertiesViewWindows"
-// 17 functions, 0x00404f80..0x004075e4. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 17 functions, 0x00404870..0x0040758c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,683 +7,779 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00404f80  TEAPropertiesViewWindows::~TEAPropertiesViewWindows   (1709 bytes)   [rtti:dtor destructor]
-//   written in code as TEAPropertiesViewWindows::_dtor
-void __cdecl TEAPropertiesViewWindows::_dtor(int *param_1,byte param_2)
+// 0x00404870  TEAPropertiesViewWindows::TEAPropertiesViewWindows   (1768 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores TEAPropertiesViewWindows's vtable at its vptr offset (+0xc) in this
+int * __cdecl TEAPropertiesViewWindows::TEAPropertiesViewWindows(int *self,int vbasesBuilt,undefined4 *param_3,int param_4,int param_5)
 
 {
-  int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 uVar1;
+  DWORD sysColor;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x4eaea4);
+  if (vbasesBuilt == 0) {
+    *self = (int)(self + 0x81c);
+    self[0x81c] = (int)(self + 0x819);
+    self[0x81d] = (int)(self + 0x81a);
+    self[1] = (int)(self + 0x819);
+    self[2] = (int)(self + 0x81a);
+    self[0x818] = 0;
+    self[0x81b] = 0;
+    self[0x819] = (int)&OWL::TEventHandler::vftable;
+    self[0x81a] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::TWindow_4a4fbc(self + 0x81c,1);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+  }
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -8000;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -8000;
+  if (param_3 == (undefined4 *)0x0) {
+    uVar1 = 0;
+  }
+  else {
+    uVar1 = *param_3;
+  }
+  TabbyPropertiesViewWindows::TabbyPropertiesViewWindows(self,1,0x4eadec,5,5,0x4eae54,uVar1,param_4,(uint *)0x10d6,1);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 8000;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 8000;
+  self[3] = (int)&TEAPropertiesViewWindows::vftable;
+  *(undefined ***)self[1] = &PTR_LAB_004eb2c8;
+  *(undefined ***)self[2] = &PTR_LAB_004eb2d4;
+  *(undefined ***)(*self + 8) = &TEAPropertiesViewWindows::vftable_TWindow;
+  PVWEdit::PVWEdit(self + 0x48,0,self,0x10e0,0);
+  PVWEdit::PVWEdit(self + 0x77,0,self,0x10ea,0);
+  PVWCheckBox::PVWCheckBox(self + 0xa6,0,self,0x2a4e);
+  PVWCheckBox::PVWCheckBox(self + 0xd8,0,self,0x3a20);
+  PVWRadioButton::PVWRadioButton(self + 0x10a,0,self,0x1a36,0);
+  PVWRadioButton::PVWRadioButton(self + 0x13e,0,self,0x1a2c,0);
+  PVWRadioButton::PVWRadioButton(self + 0x172,0,self,0x1a40,0);
+  PVWPushButton::PVWPushButton(self + 0x1a6,0,self,0x8d4);
+  PVWCombo::PVWCombo(self + 0x1d8,0,self,0x8de,0);
+  OWL::TStatic::TStatic_4c7a28(self + 0x206,0,*self,0x314c,0,0);
+  PVWColourButton::PVWColourButton(self + 0x232,0,self,0x312e,self[0x206]);
+  OWL::TStatic::TStatic_4c7a28(self + 0x263,0,*self,0x12ca,0,0);
+  PVWFontButton::PVWFontButton(self + 0x290,0,self,0x12b6,self[0x263],DAT_004ead2c,0x4eae5c);
+  OWL::TStatic::TStatic_4c7a28(self + 0x2d8,0,*self,0x12c0,0,0);
+  PVWFontButton::PVWFontButton(self + 0x304,0,self,0x12ac,self[0x2d8],DAT_004ead2c,0x4eae64);
+  OWL::TStatic::TStatic_4c7a28(self + 0x34c,0,*self,0x323c,0,0);
+  PVWFontButton::PVWFontButton(self + 0x378,0,self,0x3232,self[0x34c],DAT_004ead2c,0x4eae6c);
+  OWL::TStatic::TStatic_4c7a28(self + 0x3c0,0,*self,0x164e,0,0);
+  PVWFontButton::PVWFontButton(self + 0x3ec,0,self,0x1644,self[0x3c0],DAT_004ead2c,0x4eae64);
+  OWL::TStatic::TStatic_4c7a28(self + 0x434,0,*self,0x3142,0,0);
+  PVWFontButton::PVWFontButton(self + 0x460,0,self,0x3124,self[0x434],DAT_004ead2c,0x4eae71);
+  OWL::TStatic::TStatic_4c7a28(self + 0x4a8,0,*self,0x3156,0,0);
+  PVWFontButton::PVWFontButton(self + 0x4d4,0,self,0x3138,self[0x4a8],DAT_004ead2c,0x4eae71);
+  PVWCheckBox::PVWCheckBox(self + 0x51c,0,self,0x361a);
+  PVWCheckBox::PVWCheckBox(self + 0x54e,0,self,0x1694);
+  PVWRadioButton::PVWRadioButton(self + 0x580,0,self,0x3426,0);
+  PVWRadioButton::PVWRadioButton(self + 0x5b4,0,self,0x3430,0);
+  PVWCheckBox::PVWCheckBox(self + 0x5e8,0,self,0x369c);
+  PVWRadioButton::PVWRadioButton(self + 0x61a,0,self,0x36a6,0);
+  PVWRadioButton::PVWRadioButton(self + 0x64e,0,self,0x36a7,0);
+  PVWRadioButton::PVWRadioButton(self + 0x682,0,self,0x36a8,0);
+  PVWCheckBox::PVWCheckBox(self + 0x6b6,0,self,0x36ba);
+  PVWCheckBox::PVWCheckBox(self + 0x6e8,0,self,0x36c4);
+  PVWCheckBox::PVWCheckBox(self + 0x71a,0,self,0x2f26);
+  PVWCheckBox::PVWCheckBox(self + 0x74c,0,self,0x2f27);
+  PVWCheckBox::PVWCheckBox(self + 0x77e,0,self,0x2f28);
+  PVWCheckBox::PVWCheckBox(self + 0x7b0,0,self,0x2f29);
+  sysColor = GetSysColor(5);
+  self[0x7e2] = sysColor;
+  self[0x7e3] = (int)param_3;
+  self[0x7e4] = param_5;
+  PVWPushButton::PVWPushButton(self + 0x7e6,0,self,0x10f4);
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00404f80  TEAPropertiesViewWindows::~TEAPropertiesViewWindows   (1709 bytes)   [rtti:dtor destructor]
+//   written in code as TEAPropertiesViewWindows::_dtor
+void __cdecl TEAPropertiesViewWindows::_dtor(int *self,byte dtorFlags)
+
+{
+  int *control;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4eb09c);
-  if (param_1 != (int *)0x0) {
-    param_1[3] = (int)&TEAPropertiesViewWindows::vftable;
-    *(undefined ***)param_1[1] = &PTR_LAB_004eb2c8;
-    *(undefined ***)param_1[2] = &PTR_LAB_004eb2d4;
-    *(undefined ***)(*param_1 + 8) = &PTR_LAB_004eb2e0;
-    PVWPushButton::_dtor(param_1 + 0x7e6,2);
-    PVWCheckBox::_dtor(param_1 + 0x7b0,2);
-    PVWCheckBox::_dtor(param_1 + 0x77e,2);
-    PVWCheckBox::_dtor(param_1 + 0x74c,2);
-    PVWCheckBox::_dtor(param_1 + 0x71a,2);
-    PVWCheckBox::_dtor(param_1 + 0x6e8,2);
-    PVWCheckBox::_dtor(param_1 + 0x6b6,2);
-    PVWRadioButton::_dtor(param_1 + 0x682,2);
-    PVWRadioButton::_dtor(param_1 + 0x64e,2);
-    PVWRadioButton::_dtor(param_1 + 0x61a,2);
-    PVWCheckBox::_dtor(param_1 + 0x5e8,2);
-    PVWRadioButton::_dtor(param_1 + 0x5b4,2);
-    PVWRadioButton::_dtor(param_1 + 0x580,2);
-    PVWCheckBox::_dtor(param_1 + 0x54e,2);
-    PVWCheckBox::_dtor(param_1 + 0x51c,2);
-    PVWFontButton::_dtor(param_1 + 0x4d4,2);
-    piVar1 = param_1 + 0x4a8;
-    *(int *)(param_1[0x4a9] + -4) = *(int *)(param_1[0x4a9] + -4) + -4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + -4;
-    OWL::TControl::_dtor(piVar1,0);
-    *(int *)(param_1[0x4a9] + -4) = *(int *)(param_1[0x4a9] + -4) + 4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + 4;
-    *(int *)(param_1[0x4a9] + -4) = *(int *)(param_1[0x4a9] + -4) + 0x96;
-    OWL::TWindow::_dtor(param_1 + 0x4b2,0);
-    *(int *)(param_1[0x4a9] + -4) = *(int *)(param_1[0x4a9] + -4) + -0x96;
-    OWL::TStreamableBase::_dtor(param_1 + 0x4b0,0);
-    PVWFontButton::_dtor(param_1 + 0x460,2);
-    piVar1 = param_1 + 0x434;
-    *(int *)(param_1[0x435] + -4) = *(int *)(param_1[0x435] + -4) + -4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + -4;
-    OWL::TControl::_dtor(piVar1,0);
-    *(int *)(param_1[0x435] + -4) = *(int *)(param_1[0x435] + -4) + 4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + 4;
-    *(int *)(param_1[0x435] + -4) = *(int *)(param_1[0x435] + -4) + 0x96;
-    OWL::TWindow::_dtor(param_1 + 0x43e,0);
-    *(int *)(param_1[0x435] + -4) = *(int *)(param_1[0x435] + -4) + -0x96;
-    OWL::TStreamableBase::_dtor(param_1 + 0x43c,0);
-    PVWFontButton::_dtor(param_1 + 0x3ec,2);
-    piVar1 = param_1 + 0x3c0;
-    *(int *)(param_1[0x3c1] + -4) = *(int *)(param_1[0x3c1] + -4) + -4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + -4;
-    OWL::TControl::_dtor(piVar1,0);
-    *(int *)(param_1[0x3c1] + -4) = *(int *)(param_1[0x3c1] + -4) + 4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + 4;
-    *(int *)(param_1[0x3c1] + -4) = *(int *)(param_1[0x3c1] + -4) + 0x96;
-    OWL::TWindow::_dtor(param_1 + 0x3ca,0);
-    *(int *)(param_1[0x3c1] + -4) = *(int *)(param_1[0x3c1] + -4) + -0x96;
-    OWL::TStreamableBase::_dtor(param_1 + 0x3c8,0);
-    PVWFontButton::_dtor(param_1 + 0x378,2);
-    piVar1 = param_1 + 0x34c;
-    *(int *)(param_1[0x34d] + -4) = *(int *)(param_1[0x34d] + -4) + -4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + -4;
-    OWL::TControl::_dtor(piVar1,0);
-    *(int *)(param_1[0x34d] + -4) = *(int *)(param_1[0x34d] + -4) + 4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + 4;
-    *(int *)(param_1[0x34d] + -4) = *(int *)(param_1[0x34d] + -4) + 0x96;
-    OWL::TWindow::_dtor(param_1 + 0x356,0);
-    *(int *)(param_1[0x34d] + -4) = *(int *)(param_1[0x34d] + -4) + -0x96;
-    OWL::TStreamableBase::_dtor(param_1 + 0x354,0);
-    PVWFontButton::_dtor(param_1 + 0x304,2);
-    piVar1 = param_1 + 0x2d8;
-    *(int *)(param_1[0x2d9] + -4) = *(int *)(param_1[0x2d9] + -4) + -4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + -4;
-    OWL::TControl::_dtor(piVar1,0);
-    *(int *)(param_1[0x2d9] + -4) = *(int *)(param_1[0x2d9] + -4) + 4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + 4;
-    *(int *)(param_1[0x2d9] + -4) = *(int *)(param_1[0x2d9] + -4) + 0x96;
-    OWL::TWindow::_dtor(param_1 + 0x2e2,0);
-    *(int *)(param_1[0x2d9] + -4) = *(int *)(param_1[0x2d9] + -4) + -0x96;
-    OWL::TStreamableBase::_dtor(param_1 + 0x2e0,0);
-    PVWFontButton::_dtor(param_1 + 0x290,2);
-    piVar1 = param_1 + 0x263;
-    *(int *)(param_1[0x264] + -4) = *(int *)(param_1[0x264] + -4) + -4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + -4;
-    OWL::TControl::_dtor(piVar1,0);
-    *(int *)(param_1[0x264] + -4) = *(int *)(param_1[0x264] + -4) + 4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + 4;
-    *(int *)(param_1[0x264] + -4) = *(int *)(param_1[0x264] + -4) + 0x96;
-    OWL::TWindow::_dtor(param_1 + 0x26d,0);
-    *(int *)(param_1[0x264] + -4) = *(int *)(param_1[0x264] + -4) + -0x96;
-    OWL::TStreamableBase::_dtor(param_1 + 0x26b,0);
-    PVWColourButton::_dtor(param_1 + 0x232,2);
-    piVar1 = param_1 + 0x206;
-    *(int *)(param_1[0x207] + -4) = *(int *)(param_1[0x207] + -4) + -4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + -4;
-    OWL::TControl::_dtor(piVar1,0);
-    *(int *)(param_1[0x207] + -4) = *(int *)(param_1[0x207] + -4) + 4;
-    *(int *)(*piVar1 + -4) = *(int *)(*piVar1 + -4) + 4;
-    *(int *)(param_1[0x207] + -4) = *(int *)(param_1[0x207] + -4) + 0x96;
-    OWL::TWindow::_dtor(param_1 + 0x210,0);
-    *(int *)(param_1[0x207] + -4) = *(int *)(param_1[0x207] + -4) + -0x96;
-    OWL::TStreamableBase::_dtor(param_1 + 0x20e,0);
-    PVWCombo::_dtor(param_1 + 0x1d8,2);
-    PVWPushButton::_dtor(param_1 + 0x1a6,2);
-    PVWRadioButton::_dtor(param_1 + 0x172,2);
-    PVWRadioButton::_dtor(param_1 + 0x13e,2);
-    PVWRadioButton::_dtor(param_1 + 0x10a,2);
-    PVWCheckBox::_dtor(param_1 + 0xd8,2);
-    PVWCheckBox::_dtor(param_1 + 0xa6,2);
-    PVWEdit::_dtor(param_1 + 0x77,2);
-    PVWEdit::_dtor(param_1 + 0x48,2);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -8000;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -8000;
-    TabbyPropertiesViewWindows::_dtor(param_1,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 8000;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 8000;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0x81c,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 0x81a,0);
+  if (self != (int *)0x0) {
+    self[3] = (int)&TEAPropertiesViewWindows::vftable;
+    *(undefined ***)self[1] = &PTR_LAB_004eb2c8;
+    *(undefined ***)self[2] = &PTR_LAB_004eb2d4;
+    *(undefined ***)(*self + 8) = &TEAPropertiesViewWindows::vftable_TWindow;
+    PVWPushButton::_dtor(self + 0x7e6,2);
+    PVWCheckBox::_dtor(self + 0x7b0,2);
+    PVWCheckBox::_dtor(self + 0x77e,2);
+    PVWCheckBox::_dtor(self + 0x74c,2);
+    PVWCheckBox::_dtor(self + 0x71a,2);
+    PVWCheckBox::_dtor(self + 0x6e8,2);
+    PVWCheckBox::_dtor(self + 0x6b6,2);
+    PVWRadioButton::_dtor(self + 0x682,2);
+    PVWRadioButton::_dtor(self + 0x64e,2);
+    PVWRadioButton::_dtor(self + 0x61a,2);
+    PVWCheckBox::_dtor(self + 0x5e8,2);
+    PVWRadioButton::_dtor(self + 0x5b4,2);
+    PVWRadioButton::_dtor(self + 0x580,2);
+    PVWCheckBox::_dtor(self + 0x54e,2);
+    PVWCheckBox::_dtor(self + 0x51c,2);
+    PVWFontButton::_dtor(self + 0x4d4,2);
+    control = self + 0x4a8;
+    *(int *)(self[0x4a9] + -4) = *(int *)(self[0x4a9] + -4) + -4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + -4;
+    OWL::TControl::_dtor(control,0);
+    *(int *)(self[0x4a9] + -4) = *(int *)(self[0x4a9] + -4) + 4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + 4;
+    *(int *)(self[0x4a9] + -4) = *(int *)(self[0x4a9] + -4) + 0x96;
+    OWL::TWindow::_dtor(self + 0x4b2,0);
+    *(int *)(self[0x4a9] + -4) = *(int *)(self[0x4a9] + -4) + -0x96;
+    OWL::TStreamableBase::_dtor(self + 0x4b0,0);
+    PVWFontButton::_dtor(self + 0x460,2);
+    control = self + 0x434;
+    *(int *)(self[0x435] + -4) = *(int *)(self[0x435] + -4) + -4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + -4;
+    OWL::TControl::_dtor(control,0);
+    *(int *)(self[0x435] + -4) = *(int *)(self[0x435] + -4) + 4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + 4;
+    *(int *)(self[0x435] + -4) = *(int *)(self[0x435] + -4) + 0x96;
+    OWL::TWindow::_dtor(self + 0x43e,0);
+    *(int *)(self[0x435] + -4) = *(int *)(self[0x435] + -4) + -0x96;
+    OWL::TStreamableBase::_dtor(self + 0x43c,0);
+    PVWFontButton::_dtor(self + 0x3ec,2);
+    control = self + 0x3c0;
+    *(int *)(self[0x3c1] + -4) = *(int *)(self[0x3c1] + -4) + -4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + -4;
+    OWL::TControl::_dtor(control,0);
+    *(int *)(self[0x3c1] + -4) = *(int *)(self[0x3c1] + -4) + 4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + 4;
+    *(int *)(self[0x3c1] + -4) = *(int *)(self[0x3c1] + -4) + 0x96;
+    OWL::TWindow::_dtor(self + 0x3ca,0);
+    *(int *)(self[0x3c1] + -4) = *(int *)(self[0x3c1] + -4) + -0x96;
+    OWL::TStreamableBase::_dtor(self + 0x3c8,0);
+    PVWFontButton::_dtor(self + 0x378,2);
+    control = self + 0x34c;
+    *(int *)(self[0x34d] + -4) = *(int *)(self[0x34d] + -4) + -4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + -4;
+    OWL::TControl::_dtor(control,0);
+    *(int *)(self[0x34d] + -4) = *(int *)(self[0x34d] + -4) + 4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + 4;
+    *(int *)(self[0x34d] + -4) = *(int *)(self[0x34d] + -4) + 0x96;
+    OWL::TWindow::_dtor(self + 0x356,0);
+    *(int *)(self[0x34d] + -4) = *(int *)(self[0x34d] + -4) + -0x96;
+    OWL::TStreamableBase::_dtor(self + 0x354,0);
+    PVWFontButton::_dtor(self + 0x304,2);
+    control = self + 0x2d8;
+    *(int *)(self[0x2d9] + -4) = *(int *)(self[0x2d9] + -4) + -4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + -4;
+    OWL::TControl::_dtor(control,0);
+    *(int *)(self[0x2d9] + -4) = *(int *)(self[0x2d9] + -4) + 4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + 4;
+    *(int *)(self[0x2d9] + -4) = *(int *)(self[0x2d9] + -4) + 0x96;
+    OWL::TWindow::_dtor(self + 0x2e2,0);
+    *(int *)(self[0x2d9] + -4) = *(int *)(self[0x2d9] + -4) + -0x96;
+    OWL::TStreamableBase::_dtor(self + 0x2e0,0);
+    PVWFontButton::_dtor(self + 0x290,2);
+    control = self + 0x263;
+    *(int *)(self[0x264] + -4) = *(int *)(self[0x264] + -4) + -4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + -4;
+    OWL::TControl::_dtor(control,0);
+    *(int *)(self[0x264] + -4) = *(int *)(self[0x264] + -4) + 4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + 4;
+    *(int *)(self[0x264] + -4) = *(int *)(self[0x264] + -4) + 0x96;
+    OWL::TWindow::_dtor(self + 0x26d,0);
+    *(int *)(self[0x264] + -4) = *(int *)(self[0x264] + -4) + -0x96;
+    OWL::TStreamableBase::_dtor(self + 0x26b,0);
+    PVWColourButton::_dtor(self + 0x232,2);
+    control = self + 0x206;
+    *(int *)(self[0x207] + -4) = *(int *)(self[0x207] + -4) + -4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + -4;
+    OWL::TControl::_dtor(control,0);
+    *(int *)(self[0x207] + -4) = *(int *)(self[0x207] + -4) + 4;
+    *(int *)(*control + -4) = *(int *)(*control + -4) + 4;
+    *(int *)(self[0x207] + -4) = *(int *)(self[0x207] + -4) + 0x96;
+    OWL::TWindow::_dtor(self + 0x210,0);
+    *(int *)(self[0x207] + -4) = *(int *)(self[0x207] + -4) + -0x96;
+    OWL::TStreamableBase::_dtor(self + 0x20e,0);
+    PVWCombo::_dtor(self + 0x1d8,2);
+    PVWPushButton::_dtor(self + 0x1a6,2);
+    PVWRadioButton::_dtor(self + 0x172,2);
+    PVWRadioButton::_dtor(self + 0x13e,2);
+    PVWRadioButton::_dtor(self + 0x10a,2);
+    PVWCheckBox::_dtor(self + 0xd8,2);
+    PVWCheckBox::_dtor(self + 0xa6,2);
+    PVWEdit::_dtor(self + 0x77,2);
+    PVWEdit::_dtor(self + 0x48,2);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -8000;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -8000;
+    TabbyPropertiesViewWindows::_dtor(self,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 8000;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 8000;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0x81c,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 0x81a,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00405630  TEAPropertiesViewWindows::vf19   (1506 bytes)   [rtti:vtable virtual slot 19]
-void __cdecl TEAPropertiesViewWindows::vf19(undefined4 *param_1,int param_2,int param_3)
+// 0x00405630  TEAPropertiesViewWindows::OnButton   (1506 bytes)   [rtti:vtable virtual slot 19]
+//   vtable slot 19 (introduced by PropertiesViewWindows); a push button, check box or radio button was clicked (PVW*::BNClicked call it with the control id)
+void __cdecl TEAPropertiesViewWindows::OnButton(undefined4 *self,int param_2,int param_3)
 
 {
-  undefined4 uVar1;
+  undefined4 keyPath;
   uint *puVar2;
   int iVar3;
   int *piVar4;
-  undefined4 *in_FS_OFFSET;
-  int iVar5;
-  undefined4 local_8a8;
-  undefined1 local_884 [8];
-  uint *local_87c;
-  undefined1 local_874 [8];
-  int local_86c;
-  int local_864 [3];
+  undefined4 *sehChainHead;
+  int module;
+  undefined4 sehPrevFrame;
+  undefined1 result [8];
+  uint *paths;
+  undefined1 str [8];
+  int str2;
+  int dictionaryListViewWindows [3];
   int local_858;
   
   __InitExceptBlockLDTC(0x4eb0fc);
   if (param_3 == 0x10f4) {
-    (**(code **)(param_1[3] + 0x54))();
-    (**(code **)(param_1[3] + 0x54))();
-    uVar1 = FUN_004a76a8(param_1[0x18],0x130b,0,0);
-    FUN_0043a064(param_1[0x7e4],uVar1);
+    (**(code **)(self[3] + 0x54))();
+    (**(code **)(self[3] + 0x54))();
+    keyPath = FUN_004a76a8(self[0x18],0x130b,0,0);
+    TEAViewProfileWindows::Save(self[0x7e4],keyPath);
     goto LAB_00405bfe;
   }
   if (param_3 != 0x8d4) {
     if (param_3 < 0x3431) {
       if (param_3 == 0x3430) {
 LAB_00405b86:
-        *(uint *)(param_1[0x7e4] + 0x1c8) = (uint)(param_3 == 0x3430);
+        *(uint *)(self[0x7e4] + 0x1c8) = (uint)(param_3 == 0x3430);
       }
       else if (param_3 < 0x1a41) {
         if (param_3 == 0x1a40) {
-          *(undefined4 *)(param_1[0x7e4] + 0x24) = 2;
+          *(undefined4 *)(self[0x7e4] + 0x24) = 2;
         }
         else if (param_3 == 0x1694) {
-          iVar5 = FUN_004a76a8(param_1[0x54e],0xf0,0,0);
-          *(uint *)(param_1[0x7e4] + 0x1c4) = (uint)(iVar5 != 0);
+          module = FUN_004a76a8(self[0x54e],0xf0,0,0);
+          *(uint *)(self[0x7e4] + 0x1c4) = (uint)(module != 0);
         }
         else if (param_3 == 0x1a2c) {
-          *(undefined4 *)(param_1[0x7e4] + 0x24) = 0;
+          *(undefined4 *)(self[0x7e4] + 0x24) = 0;
         }
         else if (param_3 == 0x1a36) {
-          *(undefined4 *)(param_1[0x7e4] + 0x24) = 1;
+          *(undefined4 *)(self[0x7e4] + 0x24) = 1;
         }
       }
       else if (param_3 == 0x2a4e) {
-        FUN_00465244();
-        iVar5 = FUN_004a76a8(param_1[0xa6],0xf0,0,0);
-        (*(uint *)&DAT_004fcb84) = (uint)(iVar5 != 0);
+        TEAAppWindows::Nothing_465244();
+        module = FUN_004a76a8(self[0xa6],0xf0,0,0);
+        (*(uint *)&g_exclusiveVariables) = (uint)(module != 0);
       }
       else if (param_3 - 0x2f26U < 4) {
         piVar4 = FUN_004dd744(param_2,*(int *)(param_2 + 0xc),(int *)&DAT_00402b6c,
                               (int *)&DAT_00405c14,1);
-        iVar5 = FUN_004a76a8(*piVar4,0xf0,0,0);
-        *(uint *)(param_1[0x7e4] + -0xbacc + param_3 * 4) = (uint)(iVar5 != 0);
+        module = FUN_004a76a8(*piVar4,0xf0,0,0);
+        *(uint *)(self[0x7e4] + -0xbacc + param_3 * 4) = (uint)(module != 0);
       }
       else if (param_3 - 0x2f26U == 0x500) goto LAB_00405b86;
     }
     else if (param_3 < 0x36bb) {
       if (param_3 == 0x36ba) {
-        iVar3 = FUN_004a76a8(param_1[0x6b6],0xf0,0,0);
-        iVar5 = param_1[0x7e4];
-        *(uint *)(iVar5 + 0x1b0) = (uint)(iVar3 != 0);
+        iVar3 = FUN_004a76a8(self[0x6b6],0xf0,0,0);
+        module = self[0x7e4];
+        *(uint *)(module + 0x1b0) = (uint)(iVar3 != 0);
         if ((iVar3 != 0) == 0) {
-          *(undefined4 *)(iVar5 + 0x1b8) = 1;
-          FUN_004ac750(param_1 + 0x5e8,1);
+          *(undefined4 *)(module + 0x1b8) = 1;
+          FUN_004ac750(self + 0x5e8,1);
         }
       }
       else if (param_3 == 0x361a) {
-        iVar5 = FUN_004a76a8(param_1[0x51c],0xf0,0,0);
-        *(uint *)(param_1[0x7e4] + 0x1c0) = (uint)(iVar5 != 0);
+        module = FUN_004a76a8(self[0x51c],0xf0,0,0);
+        *(uint *)(self[0x7e4] + 0x1c0) = (uint)(module != 0);
       }
       else if (param_3 == 0x369c) {
-        iVar3 = FUN_004a76a8(param_1[0x5e8],0xf0,0,0);
-        iVar5 = param_1[0x7e4];
-        *(uint *)(iVar5 + 0x1b8) = (uint)(iVar3 != 0);
+        iVar3 = FUN_004a76a8(self[0x5e8],0xf0,0,0);
+        module = self[0x7e4];
+        *(uint *)(module + 0x1b8) = (uint)(iVar3 != 0);
         if ((iVar3 != 0) == 0) {
-          *(undefined4 *)(iVar5 + 0x1b0) = 1;
-          FUN_004ac750(param_1 + 0x6b6,1);
+          *(undefined4 *)(module + 0x1b0) = 1;
+          FUN_004ac750(self + 0x6b6,1);
         }
       }
       else if (param_3 - 0x36a6U < 3) {
-        *(int *)(param_1[0x7e4] + 0x1bc) = param_3 + -0x36a7;
+        *(int *)(self[0x7e4] + 0x1bc) = param_3 + -0x36a7;
       }
     }
     else if (param_3 == 0x36c4) {
-      iVar5 = FUN_004a76a8(param_1[0x6e8],0xf0,0,0);
-      *(uint *)(param_1[0x7e4] + 0x1b4) = (uint)(iVar5 != 0);
+      module = FUN_004a76a8(self[0x6e8],0xf0,0,0);
+      *(uint *)(self[0x7e4] + 0x1b4) = (uint)(module != 0);
     }
     else if (param_3 == 0x3a20) {
-      iVar5 = FUN_004a76a8(param_1[0xd8],0xf0,0,0);
-      *(uint *)(param_1[0x7e4] + 0x20) = (uint)(iVar5 != 0);
+      module = FUN_004a76a8(self[0xd8],0xf0,0,0);
+      *(uint *)(self[0x7e4] + 0x20) = (uint)(module != 0);
     }
-    FUN_004068e8((int)param_1);
-    FUN_0045269c((int *)param_1[0x7e3]);
+    TEAPropertiesViewWindows::UpdateEnabled((int)self);
+    TEAViewWindows::RestartSearch((int *)self[0x7e3]);
     goto LAB_00405bfe;
   }
-  iVar5 = 4;
-  puVar2 = (uint *)FUN_00408c8c(*(undefined4 **)(param_1[0x7e4] + 0x28));
-  std::string::string_from_cstr((int)local_874,puVar2);
-  FUN_004765e8(local_864,0,*param_1,param_1[0xe],(int)local_874,iVar5);
-  if (local_86c != 0) {
-    if (*(int *)(local_86c + -0xc) != -1) {
-      piVar4 = (int *)(local_86c + -0xc);
-      if (piVar4 == &DAT_00513d58) {
-        iVar5 = 1;
+  module = 4;
+  puVar2 = (uint *)TSDictionaryList::GetPathList(*(undefined4 **)(self[0x7e4] + 0x28));
+  std::string::string_from_cstr((int)str,puVar2);
+  DictionaryListViewWindows::DictionaryListViewWindows(dictionaryListViewWindows,0,*self,self[0xe],(int)str,module);
+  if (str2 != 0) {
+    if (*(int *)(str2 + -0xc) != -1) {
+      piVar4 = (int *)(str2 + -0xc);
+      if (piVar4 == &g_nullStringRep) {
+        module = 1;
       }
-      else if (piVar4 == &DAT_00513d58) {
-        iVar5 = 1;
+      else if (piVar4 == &g_nullStringRep) {
+        module = 1;
       }
       else {
         *piVar4 = *piVar4 + -1;
-        iVar5 = *piVar4 + 1;
+        module = *piVar4 + 1;
       }
-      if (iVar5 != 0) goto LAB_004057b3;
+      if (module != 0) goto LAB_004057b3;
     }
     operator_delete();
-    local_86c = 0;
+    str2 = 0;
   }
 LAB_004057b3:
-  iVar5 = (**(code **)(local_858 + 0x14))();
-  if (iVar5 == 1) {
-    FUN_0047784c((int)local_884,(int)local_864);
-    FUN_00406984((int)param_1,local_87c);
-    if (local_87c != (uint *)0x0) {
-      if (local_87c[-3] != 0xffffffff) {
-        puVar2 = local_87c + -3;
-        if (puVar2 == &DAT_00513d58) {
-          iVar5 = 1;
+  module = (**(code **)(local_858 + 0x14))();
+  if (module == 1) {
+    DictionaryListViewWindows::GetSelectedPaths((int)result,(int)dictionaryListViewWindows);
+    TEAPropertiesViewWindows::FillDefinitionDictionaries((int)self,paths);
+    if (paths != (uint *)0x0) {
+      if (paths[-3] != 0xffffffff) {
+        puVar2 = paths + -3;
+        if (puVar2 == &g_nullStringRep) {
+          module = 1;
         }
-        else if (puVar2 == &DAT_00513d58) {
-          iVar5 = 1;
+        else if (puVar2 == &g_nullStringRep) {
+          module = 1;
         }
         else {
           *puVar2 = *puVar2 - 1;
-          iVar5 = *puVar2 + 1;
+          module = *puVar2 + 1;
         }
-        if (iVar5 != 0) goto LAB_004058b0;
+        if (module != 0) goto LAB_004058b0;
       }
       operator_delete();
-      local_87c = (uint *)0x0;
+      paths = (uint *)0x0;
     }
   }
 LAB_004058b0:
-  DictionaryListViewWindows::_dtor(local_864,2);
+  DictionaryListViewWindows::_dtor(dictionaryListViewWindows,2);
 LAB_00405bfe:
-  *in_FS_OFFSET = local_8a8;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00405d40  TEAPropertiesViewWindows::vf29   (33 bytes)   [rtti:vtable virtual slot 29; function defined from vtable-slot]
-void __cdecl TEAPropertiesViewWindows::vf29(int param_1)
+// 0x00405d40  TEAPropertiesViewWindows::OnComboChange   (33 bytes)   [rtti:vtable virtual slot 29; function defined from vtable-slot]
+//   vtable slot 29 (introduced by PropertiesViewWindows); a combo box selection changed
+void __cdecl TEAPropertiesViewWindows::OnComboChange(int self)
 
 {
-  uint *puVar1;
+  uint *paths;
   
-  puVar1 = (uint *)FUN_0041c758(param_1 + 0x760);
-  FUN_00406984(param_1,puVar1);
+  paths = (uint *)PVWCombo::GetSelectedValue(self + 0x760);
+  TEAPropertiesViewWindows::FillDefinitionDictionaries(self,paths);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00405d64  TEAPropertiesViewWindows::vf27   (140 bytes)   [rtti:vtable virtual slot 27]
-void __cdecl TEAPropertiesViewWindows::vf27(int param_1,int *param_2)
+// 0x00405d64  TEAPropertiesViewWindows::OnColourChanged   (140 bytes)   [rtti:vtable virtual slot 27]
+//   vtable slot 27 (introduced by PropertiesViewWindows); a colour button chose a new colour
+void __cdecl TEAPropertiesViewWindows::OnColourChanged(int self,int *colour)
 
 {
-  *(int *)(*(int *)(param_1 + 0x1f90) + 0x2c) = *param_2;
-  FUN_00418a48((int *)(param_1 + 0x8c8),param_2);
-  FUN_00419418((int *)(param_1 + 0x1180),(int *)(*(int *)(param_1 + 0x1f90) + 0x130),param_2,0,
+  *(int *)(*(int *)(self + 0x1f90) + 0x2c) = *colour;
+  PVWColourButton::SetColour((int *)(self + 0x8c8),colour);
+  PVWFontButton::SetSampleFont((int *)(self + 0x1180),(int *)(*(int *)(self + 0x1f90) + 0x130),colour,0,
                0x3ff00000,0,0x3ff00000);
-  FUN_00419418((int *)(param_1 + 0x1350),(int *)(*(int *)(param_1 + 0x1f90) + 0x170),param_2,0,
+  PVWFontButton::SetSampleFont((int *)(self + 0x1350),(int *)(*(int *)(self + 0x1f90) + 0x170),colour,0,
                0x3ff00000,0,0x3ff00000);
-  FUN_0045d9e8(*(int *)(param_1 + 0x1f8c));
+  TEAViewWindows::ApplyDefinitionSettings(*(int *)(self + 0x1f8c));
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00405df0  TEAPropertiesViewWindows::vf28   (673 bytes)   [rtti:vtable virtual slot 28]
-void __cdecl TEAPropertiesViewWindows::vf28(int param_1,undefined4 *param_2,int param_3)
+// 0x00405df0  TEAPropertiesViewWindows::OnFontChanged   (673 bytes)   [rtti:vtable virtual slot 28]
+//   vtable slot 28 (introduced by PropertiesViewWindows); a font button chose a new font
+void __cdecl TEAPropertiesViewWindows::OnFontChanged(int self,undefined4 *column,int param_3)
 
 {
   int iVar1;
-  int iVar2;
+  int x;
   undefined4 *puVar3;
-  int iVar4;
-  int iVar5;
-  int iVar6;
-  uint local_8;
+  int y;
+  int w;
+  int h;
+  uint colour;
   
   if (param_3 == 0x12b6) {
-    iVar1 = *(int *)(param_1 + 0x1f90);
+    iVar1 = *(int *)(self + 0x1f90);
     puVar3 = (undefined4 *)(iVar1 + 0x30);
-    for (iVar2 = 0x10; iVar2 != 0; iVar2 = iVar2 + -1) {
-      *puVar3 = *param_2;
-      param_2 = param_2 + 1;
+    for (x = 0x10; x != 0; x = x + -1) {
+      *puVar3 = *column;
+      column = column + 1;
       puVar3 = puVar3 + 1;
     }
-    FUN_00419418((int *)(param_1 + 0xa40),(int *)(iVar1 + 0x30),(int *)(param_1 + 0x1f88),0,
+    PVWFontButton::SetSampleFont((int *)(self + 0xa40),(int *)(iVar1 + 0x30),(int *)(self + 0x1f88),0,
                  0x3ff00000,0,0x3ff00000);
-    FUN_0045d86c(*(int *)(param_1 + 0x1f8c));
+    TEAViewWindows::LayoutQueryControls(*(int *)(self + 0x1f8c));
   }
   else if (param_3 == 0x12ac) {
-    FUN_004047bc(*(int *)(param_1 + 0x1f90) + 0xb0,*(int *)(param_1 + 0x1f90) + 0x70,(int)param_2);
-    iVar1 = *(int *)(param_1 + 0x1f90);
+    TEAPrintoutFeeder::GetLine(*(int *)(self + 0x1f90) + 0xb0,*(int *)(self + 0x1f90) + 0x70,(int)column);
+    iVar1 = *(int *)(self + 0x1f90);
     puVar3 = (undefined4 *)(iVar1 + 0x70);
-    for (iVar2 = 0x10; iVar2 != 0; iVar2 = iVar2 + -1) {
-      *puVar3 = *param_2;
-      param_2 = param_2 + 1;
+    for (x = 0x10; x != 0; x = x + -1) {
+      *puVar3 = *column;
+      column = column + 1;
       puVar3 = puVar3 + 1;
     }
-    FUN_00419418((int *)(param_1 + 0xc10),(int *)(iVar1 + 0x70),(int *)(param_1 + 0x1f88),0,
+    PVWFontButton::SetSampleFont((int *)(self + 0xc10),(int *)(iVar1 + 0x70),(int *)(self + 0x1f88),0,
                  0x3ff00000,0,0x3ff00000);
-    FUN_00419418((int *)(param_1 + 0xde0),(int *)(*(int *)(param_1 + 0x1f90) + 0xb0),
-                 (int *)(param_1 + 0x1f88),0,0x3ff00000,0,0x3ff00000);
-    FUN_0045d938(*(int *)(param_1 + 0x1f8c));
+    PVWFontButton::SetSampleFont((int *)(self + 0xde0),(int *)(*(int *)(self + 0x1f90) + 0xb0),
+                 (int *)(self + 0x1f88),0,0x3ff00000,0,0x3ff00000);
+    TEAViewWindows::ApplyListFonts(*(int *)(self + 0x1f8c));
   }
   else if (param_3 == 0x3232) {
-    iVar1 = *(int *)(param_1 + 0x1f90);
+    iVar1 = *(int *)(self + 0x1f90);
     puVar3 = (undefined4 *)(iVar1 + 0xb0);
-    for (iVar2 = 0x10; iVar2 != 0; iVar2 = iVar2 + -1) {
-      *puVar3 = *param_2;
-      param_2 = param_2 + 1;
+    for (x = 0x10; x != 0; x = x + -1) {
+      *puVar3 = *column;
+      column = column + 1;
       puVar3 = puVar3 + 1;
     }
-    FUN_00419418((int *)(param_1 + 0xde0),(int *)(iVar1 + 0xb0),(int *)(param_1 + 0x1f88),0,
+    PVWFontButton::SetSampleFont((int *)(self + 0xde0),(int *)(iVar1 + 0xb0),(int *)(self + 0x1f88),0,
                  0x3ff00000,0,0x3ff00000);
-    FUN_0045d938(*(int *)(param_1 + 0x1f8c));
+    TEAViewWindows::ApplyListFonts(*(int *)(self + 0x1f8c));
   }
   else if (param_3 == 0x1644) {
-    iVar1 = *(int *)(param_1 + 0x1f90);
+    iVar1 = *(int *)(self + 0x1f90);
     puVar3 = (undefined4 *)(iVar1 + 0xf0);
-    for (iVar2 = 0x10; iVar2 != 0; iVar2 = iVar2 + -1) {
-      *puVar3 = *param_2;
-      param_2 = param_2 + 1;
+    for (x = 0x10; x != 0; x = x + -1) {
+      *puVar3 = *column;
+      column = column + 1;
       puVar3 = puVar3 + 1;
     }
-    iVar6 = 0x3ff00000;
-    iVar5 = 0;
-    iVar4 = 0x3ff00000;
-    iVar2 = 0;
-    local_8 = FUN_0048c12c(&DAT_0051b198);
-    FUN_00419418((int *)(param_1 + 0xfb0),(int *)(iVar1 + 0xf0),(int *)&local_8,iVar2,iVar4,iVar5,
-                 iVar6);
+    h = 0x3ff00000;
+    w = 0;
+    y = 0x3ff00000;
+    x = 0;
+    colour = FUN_0048c12c(&DAT_0051b198);
+    PVWFontButton::SetSampleFont((int *)(self + 0xfb0),(int *)(iVar1 + 0xf0),(int *)&colour,x,y,w,
+                 h);
   }
   else if (param_3 == 0x3124) {
-    FUN_004047bc(*(int *)(param_1 + 0x1f90) + 0x170,*(int *)(param_1 + 0x1f90) + 0x130,(int)param_2)
+    TEAPrintoutFeeder::GetLine(*(int *)(self + 0x1f90) + 0x170,*(int *)(self + 0x1f90) + 0x130,(int)column)
     ;
-    iVar1 = *(int *)(param_1 + 0x1f90);
+    iVar1 = *(int *)(self + 0x1f90);
     puVar3 = (undefined4 *)(iVar1 + 0x130);
-    for (iVar2 = 0x10; iVar2 != 0; iVar2 = iVar2 + -1) {
-      *puVar3 = *param_2;
-      param_2 = param_2 + 1;
+    for (x = 0x10; x != 0; x = x + -1) {
+      *puVar3 = *column;
+      column = column + 1;
       puVar3 = puVar3 + 1;
     }
-    FUN_00419418((int *)(param_1 + 0x1180),(int *)(iVar1 + 0x130),(int *)(iVar1 + 0x2c),0,0x3ff00000
+    PVWFontButton::SetSampleFont((int *)(self + 0x1180),(int *)(iVar1 + 0x130),(int *)(iVar1 + 0x2c),0,0x3ff00000
                  ,0,0x3ff00000);
-    FUN_00419418((int *)(param_1 + 0x1350),(int *)(*(int *)(param_1 + 0x1f90) + 0x170),
-                 (int *)(*(int *)(param_1 + 0x1f90) + 0x2c),0,0x3ff00000,0,0x3ff00000);
-    FUN_0045d9e8(*(int *)(param_1 + 0x1f8c));
+    PVWFontButton::SetSampleFont((int *)(self + 0x1350),(int *)(*(int *)(self + 0x1f90) + 0x170),
+                 (int *)(*(int *)(self + 0x1f90) + 0x2c),0,0x3ff00000,0,0x3ff00000);
+    TEAViewWindows::ApplyDefinitionSettings(*(int *)(self + 0x1f8c));
   }
   else if (param_3 == 0x3138) {
-    iVar1 = *(int *)(param_1 + 0x1f90);
+    iVar1 = *(int *)(self + 0x1f90);
     puVar3 = (undefined4 *)(iVar1 + 0x170);
-    for (iVar2 = 0x10; iVar2 != 0; iVar2 = iVar2 + -1) {
-      *puVar3 = *param_2;
-      param_2 = param_2 + 1;
+    for (x = 0x10; x != 0; x = x + -1) {
+      *puVar3 = *column;
+      column = column + 1;
       puVar3 = puVar3 + 1;
     }
-    FUN_00419418((int *)(param_1 + 0x1350),(int *)(iVar1 + 0x170),(int *)(iVar1 + 0x2c),0,0x3ff00000
+    PVWFontButton::SetSampleFont((int *)(self + 0x1350),(int *)(iVar1 + 0x170),(int *)(iVar1 + 0x2c),0,0x3ff00000
                  ,0,0x3ff00000);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00406094  TEAPropertiesViewWindows::vf21   (314 bytes)   [rtti:vtable virtual slot 21]
-void __cdecl TEAPropertiesViewWindows::vf21(int param_1,undefined4 param_2,int param_3)
+// 0x00406094  TEAPropertiesViewWindows::OnEditKillFocus   (314 bytes)   [rtti:vtable virtual slot 21]
+//   vtable slot 21 (introduced by PropertiesViewWindows); an edit or rich edit lost the focus (EN_KILLFOCUS from PVWEdit/PVWRichEdit)
+void __cdecl TEAPropertiesViewWindows::OnEditKillFocus(int self,undefined4 param_2,int param_3)
 
 {
-  int *piVar1;
+  int *out;
   uint uVar2;
-  int iVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  undefined1 local_14 [8];
-  byte *local_c;
+  int str;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 pvwEdit [8];
+  byte *strRep;
   
   __InitExceptBlockLDTC(0x4eb16c);
   if (param_3 == 0x10e0) {
-    iVar3 = *(int *)(param_1 + 0x1f90);
-    piVar1 = (int *)(param_1 + 0x120);
+    str = *(int *)(self + 0x1f90);
+    out = (int *)(self + 0x120);
   }
   else {
-    iVar3 = *(int *)(param_1 + 0x1f90) + 0x10;
-    piVar1 = (int *)(param_1 + 0x1dc);
+    str = *(int *)(self + 0x1f90) + 0x10;
+    out = (int *)(self + 0x1dc);
   }
-  FUN_0041b2b0((int)local_14,piVar1);
-  uVar2 = FUN_004d40d0(iVar3,0,*(uint *)(*(int *)(iVar3 + 8) + -4),local_c,*(uint *)(local_c + -4));
+  PVWEdit::GetText((int)pvwEdit,out);
+  uVar2 = std::string::compare(str,0,*(uint *)(*(int *)(str + 8) + -4),strRep,*(uint *)(strRep + -4));
   if (uVar2 != 0) {
-    FUN_00465244();
-    FUN_004cf384(iVar3,(int)local_14);
-    FUN_0045269c(*(int **)(param_1 + 0x1f8c));
+    TEAAppWindows::Nothing_465244();
+    std::string::operator_assign(str,(int)pvwEdit);
+    TEAViewWindows::RestartSearch(*(int **)(self + 0x1f8c));
   }
-  if (local_c != (byte *)0x0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      local_c = local_c + -0xc;
-      if (local_c == (byte *)&DAT_00513d58) {
-        iVar3 = 1;
+  if (strRep != (byte *)0x0) {
+    if (*(int *)(strRep + -0xc) != -1) {
+      strRep = strRep + -0xc;
+      if (strRep == (byte *)&g_nullStringRep) {
+        str = 1;
       }
-      else if (local_c == (byte *)&DAT_00513d58) {
-        iVar3 = 1;
+      else if (strRep == (byte *)&g_nullStringRep) {
+        str = 1;
       }
       else {
-        *(int *)local_c = *(int *)local_c + -1;
-        iVar3 = *(int *)local_c + 1;
+        *(int *)strRep = *(int *)strRep + -1;
+        str = *(int *)strRep + 1;
       }
-      if (iVar3 != 0) goto LAB_004061bd;
+      if (str != 0) goto LAB_004061bd;
     }
     operator_delete();
   }
 LAB_004061bd:
-  *in_FS_OFFSET = local_38;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004061d0  TEAPropertiesViewWindows::vf36   (137 bytes)   [rtti:vtable virtual slot 36]
-void __cdecl TEAPropertiesViewWindows::vf36(int param_1,int param_2)
+// 0x004061d0  TEAPropertiesViewWindows::OnSelectionCommitted   (137 bytes)   [rtti:vtable virtual slot 36]
+//   vtable slot 36 (introduced by PropertiesViewWindows); a selection was confirmed (saves the choice)
+void __cdecl TEAPropertiesViewWindows::OnSelectionCommitted(int self,int param_2)
 
 {
   int iVar1;
-  uint *puVar2;
+  uint *value;
   int iVar3;
-  uint local_3c [13];
+  uint valueName [13];
   int local_8;
   
   local_8 = 1;
   iVar3 = 0;
   while( true ) {
-    puVar2 = (uint *)("Pattern Property Change" + 0x17);
-    iVar1 = (**(code **)(*(int *)(param_1 + 0x76c) + 0x24))();
+    value = (uint *)("Pattern Property Change" + 0x17);
+    iVar1 = (**(code **)(*(int *)(self + 0x76c) + 0x24))();
     if (iVar3 < iVar1) {
-      puVar2 = (uint *)FUN_0041c740(param_1 + 0x760);
+      value = (uint *)PVWCombo::GetSelectionIndex(self + 0x760);
     }
     local_8 = local_8 + 1;
-    FUN_004e0344((undefined1 *)local_3c,(byte *)"Dictionary%d");
-    FUN_0041717c(param_1,local_3c,puVar2);
-    if ((char)*puVar2 == '\0') break;
+    sprintf((undefined1 *)valueName,(byte *)"Dictionary%d");
+    PropertiesViewWindows::SaveString(self,valueName,value);
+    if ((char)*value == '\0') break;
     iVar3 = iVar3 + 1;
   }
   if (param_2 != 0) {
-    FUN_0041c4b0(param_1 + 0x760);
+    PVWCombo::ClearItems(self + 0x760);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0040625c  FUN_0040625c   (128 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_0040625c(int param_1)
+// 0x0040625c  TEAPropertiesViewWindows::InitControls   (128 bytes)   [analysis]
+//   fills the options controls from the profile
+void __cdecl TEAPropertiesViewWindows::InitControls(int self)
 
 {
-  FUN_0041b474((int *)(param_1 + 0x120),*(int *)(param_1 + 0x1f90));
-  FUN_0041b474((int *)(param_1 + 0x1dc),*(int *)(param_1 + 0x1f90) + 0x10);
-  FUN_004ac750((int *)(param_1 + 0x298),(uint)(DAT_004fcb84 != 0));
-  FUN_004ac750((int *)(param_1 + 0x360),(uint)(*(int *)(*(int *)(param_1 + 0x1f90) + 0x20) != 0));
+  PVWEdit::SetIntValue((int *)(self + 0x120),*(int *)(self + 0x1f90));
+  PVWEdit::SetIntValue((int *)(self + 0x1dc),*(int *)(self + 0x1f90) + 0x10);
+  FUN_004ac750((int *)(self + 0x298),(uint)(g_exclusiveVariables != 0));
+  FUN_004ac750((int *)(self + 0x360),(uint)(*(int *)(*(int *)(self + 0x1f90) + 0x20) != 0));
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004062dc  TEAPropertiesViewWindows::vf11   (1513 bytes)   [rtti:vtable virtual slot 11]
+// 0x004062dc  TEAPropertiesViewWindows::SetupWindow   (1513 bytes)   [rtti:vtable virtual slot 30]
+//   override of OWL::TWindow vtable slot 30, from TEAPropertiesViewWindows's OWL::TWindow subobject vtable at 0x004eb2e0 (through the this-adjusting thunk at 0x00406cbd); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: TEAPropertiesViewWindows::vf11 [rtti:vtable]
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-void __cdecl TEAPropertiesViewWindows::vf11(int *param_1)
+void __cdecl TEAPropertiesViewWindows::SetupWindow(int *self)
 
 {
-  int *piVar1;
-  uint *puVar2;
-  undefined4 *in_FS_OFFSET;
+  int *colour;
+  uint *paths;
+  undefined4 *sehChainHead;
   int iVar3;
-  int iVar4;
-  int iVar5;
-  int iVar6;
-  uint local_88 [13];
-  undefined1 *local_54;
-  undefined4 local_50;
-  uint *local_4c;
-  uint *local_48;
-  uint *local_40;
-  uint local_3c;
-  undefined4 local_38;
-  undefined2 local_28;
-  int local_1c;
-  undefined1 local_14 [8];
-  uint *local_c;
+  int y;
+  int w;
+  int h;
+  uint valueName [13];
+  undefined1 *unused;
+  undefined4 unused2;
+  uint *unused3;
+  uint *unused4;
+  uint *unused5;
+  uint colour2;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 result [8];
+  uint *paths2;
   
   __InitExceptBlockLDTC(0x4eb1b8);
-  TabbyPropertiesViewWindows::vf11(param_1);
-  (**(code **)(param_1[3] + 0xb8))();
-  (**(code **)(param_1[3] + 0xb8))();
-  (**(code **)(param_1[3] + 0xb8))();
-  (**(code **)(param_1[3] + 0xb8))();
-  (**(code **)(param_1[3] + 0xb8))();
-  (**(code **)(param_1[3] + 0xb8))();
-  (**(code **)(param_1[3] + 0xb8))();
-  FUN_0040625c((int)param_1);
-  FUN_004ac750(param_1 + 0x10a,(uint)(*(int *)(param_1[0x7e4] + 0x24) == 1));
-  FUN_004ac750(param_1 + 0x13e,(uint)(*(int *)(param_1[0x7e4] + 0x24) == 0));
-  FUN_004ac750(param_1 + 0x172,(uint)(*(int *)(param_1[0x7e4] + 0x24) == 2));
-  piVar1 = param_1 + 0x7e2;
-  FUN_00419418(param_1 + 0x290,(int *)(param_1[0x7e4] + 0x30),piVar1,0,0x3ff00000,0,0x3ff00000);
-  FUN_00419418(param_1 + 0x304,(int *)(param_1[0x7e4] + 0x70),piVar1,0,0x3ff00000,0,0x3ff00000);
-  FUN_00419418(param_1 + 0x378,(int *)(param_1[0x7e4] + 0xb0),piVar1,0,0x3ff00000,0,0x3ff00000);
-  iVar6 = 0x3ff00000;
-  iVar5 = 0;
-  iVar4 = 0x3ff00000;
+  TabbyPropertiesViewWindows::SetupWindow(self);
+  (**(code **)(self[3] + 0xb8))();
+  (**(code **)(self[3] + 0xb8))();
+  (**(code **)(self[3] + 0xb8))();
+  (**(code **)(self[3] + 0xb8))();
+  (**(code **)(self[3] + 0xb8))();
+  (**(code **)(self[3] + 0xb8))();
+  (**(code **)(self[3] + 0xb8))();
+  TEAPropertiesViewWindows::InitControls((int)self);
+  FUN_004ac750(self + 0x10a,(uint)(*(int *)(self[0x7e4] + 0x24) == 1));
+  FUN_004ac750(self + 0x13e,(uint)(*(int *)(self[0x7e4] + 0x24) == 0));
+  FUN_004ac750(self + 0x172,(uint)(*(int *)(self[0x7e4] + 0x24) == 2));
+  colour = self + 0x7e2;
+  PVWFontButton::SetSampleFont(self + 0x290,(int *)(self[0x7e4] + 0x30),colour,0,0x3ff00000,0,0x3ff00000);
+  PVWFontButton::SetSampleFont(self + 0x304,(int *)(self[0x7e4] + 0x70),colour,0,0x3ff00000,0,0x3ff00000);
+  PVWFontButton::SetSampleFont(self + 0x378,(int *)(self[0x7e4] + 0xb0),colour,0,0x3ff00000,0,0x3ff00000);
+  h = 0x3ff00000;
+  w = 0;
+  y = 0x3ff00000;
   iVar3 = 0;
-  local_3c = FUN_0048c12c(&DAT_0051b198);
-  FUN_00419418(param_1 + 0x3ec,(int *)(param_1[0x7e4] + 0xf0),(int *)&local_3c,iVar3,iVar4,iVar5,
-               iVar6);
-  FUN_00419418(param_1 + 0x460,(int *)(param_1[0x7e4] + 0x130),(int *)(param_1[0x7e4] + 0x2c),0,
+  colour2 = FUN_0048c12c(&DAT_0051b198);
+  PVWFontButton::SetSampleFont(self + 0x3ec,(int *)(self[0x7e4] + 0xf0),(int *)&colour2,iVar3,y,w,
+               h);
+  PVWFontButton::SetSampleFont(self + 0x460,(int *)(self[0x7e4] + 0x130),(int *)(self[0x7e4] + 0x2c),0,
                0x3ff00000,0,0x3ff00000);
-  FUN_00419418(param_1 + 0x4d4,(int *)(param_1[0x7e4] + 0x170),(int *)(param_1[0x7e4] + 0x2c),0,
+  PVWFontButton::SetSampleFont(self + 0x4d4,(int *)(self[0x7e4] + 0x170),(int *)(self[0x7e4] + 0x2c),0,
                0x3ff00000,0,0x3ff00000);
-  FUN_00418a48(param_1 + 0x232,(int *)(param_1[0x7e4] + 0x2c));
-  FUN_004ac750(param_1 + 0x51c,(uint)(*(int *)(param_1[0x7e4] + 0x1c0) != 0));
-  FUN_004ac750(param_1 + 0x54e,(uint)(*(int *)(param_1[0x7e4] + 0x1c4) != 0));
-  FUN_004ac750(param_1 + 0x6b6,(uint)(*(int *)(param_1[0x7e4] + 0x1b0) != 0));
-  FUN_004ac750(param_1 + 0x6e8,(uint)(*(int *)(param_1[0x7e4] + 0x1b4) != 0));
-  FUN_004ac750(param_1 + 0x5e8,(uint)(*(int *)(param_1[0x7e4] + 0x1b8) != 0));
-  FUN_004ac750(param_1 + 0x682,(uint)(*(int *)(param_1[0x7e4] + 0x1bc) == 1));
-  FUN_004ac750(param_1 + 0x64e,(uint)(*(int *)(param_1[0x7e4] + 0x1bc) == 0));
-  FUN_004ac750(param_1 + 0x61a,(uint)(*(int *)(param_1[0x7e4] + 0x1bc) == -1));
-  FUN_004ac750(param_1 + 0x580,(uint)(*(int *)(param_1[0x7e4] + 0x1c8) == 0));
-  FUN_004ac750(param_1 + 0x5b4,(uint)(*(int *)(param_1[0x7e4] + 0x1c8) != 0));
-  FUN_004ac750(param_1 + 0x71a,(uint)(*(int *)(param_1[0x7e4] + 0x1cc) != 0));
-  FUN_004ac750(param_1 + 0x74c,(uint)(*(int *)(param_1[0x7e4] + 0x1d0) != 0));
-  FUN_004ac750(param_1 + 0x77e,(uint)(*(int *)(param_1[0x7e4] + 0x1d4) != 0));
-  FUN_004ac750(param_1 + 0x7b0,(uint)(*(int *)(param_1[0x7e4] + 0x1d8) != 0));
+  PVWColourButton::SetColour(self + 0x232,(int *)(self[0x7e4] + 0x2c));
+  FUN_004ac750(self + 0x51c,(uint)(*(int *)(self[0x7e4] + 0x1c0) != 0));
+  FUN_004ac750(self + 0x54e,(uint)(*(int *)(self[0x7e4] + 0x1c4) != 0));
+  FUN_004ac750(self + 0x6b6,(uint)(*(int *)(self[0x7e4] + 0x1b0) != 0));
+  FUN_004ac750(self + 0x6e8,(uint)(*(int *)(self[0x7e4] + 0x1b4) != 0));
+  FUN_004ac750(self + 0x5e8,(uint)(*(int *)(self[0x7e4] + 0x1b8) != 0));
+  FUN_004ac750(self + 0x682,(uint)(*(int *)(self[0x7e4] + 0x1bc) == 1));
+  FUN_004ac750(self + 0x64e,(uint)(*(int *)(self[0x7e4] + 0x1bc) == 0));
+  FUN_004ac750(self + 0x61a,(uint)(*(int *)(self[0x7e4] + 0x1bc) == -1));
+  FUN_004ac750(self + 0x580,(uint)(*(int *)(self[0x7e4] + 0x1c8) == 0));
+  FUN_004ac750(self + 0x5b4,(uint)(*(int *)(self[0x7e4] + 0x1c8) != 0));
+  FUN_004ac750(self + 0x71a,(uint)(*(int *)(self[0x7e4] + 0x1cc) != 0));
+  FUN_004ac750(self + 0x74c,(uint)(*(int *)(self[0x7e4] + 0x1d0) != 0));
+  FUN_004ac750(self + 0x77e,(uint)(*(int *)(self[0x7e4] + 0x1d4) != 0));
+  FUN_004ac750(self + 0x7b0,(uint)(*(int *)(self[0x7e4] + 0x1d8) != 0));
   iVar3 = 1;
-  puVar2 = (uint *)FUN_00408c8c(*(undefined4 **)(param_1[0x7e4] + 0x28));
-  FUN_0041c4f8((int)(param_1 + 0x1d8),puVar2,iVar3);
+  paths = (uint *)TSDictionaryList::GetPathList(*(undefined4 **)(self[0x7e4] + 0x28));
+  PVWCombo::FillDictionaries((int)(self + 0x1d8),paths,iVar3);
   while( true ) {
-    FUN_004e0344((undefined1 *)local_88,(byte *)"Dictionary%d");
-    local_28 = 0x14;
-    FUN_00416dd4((int)local_14,(int)param_1,local_88,
+    sprintf((undefined1 *)valueName,(byte *)"Dictionary%d");
+    ehContext = 0x14;
+    PropertiesViewWindows::LoadString((int)result,(int)self,valueName,
                  (uint *)("Pattern Property Change" + 0x17));
-    local_28 = 8;
-    if (local_c[-1] == 0) break;
-    local_1c = local_1c + 1;
-    FUN_0041c4f8((int)(param_1 + 0x1d8),local_c,0);
-    local_1c = local_1c + -1;
-    if (local_c != (uint *)0x0) {
-      if (local_c[-3] != 0xffffffff) {
-        puVar2 = local_c + -3;
-        if (puVar2 == &DAT_00513d58) {
+    ehContext = 8;
+    if (paths2[-1] == 0) break;
+    ehDtorCount = ehDtorCount + 1;
+    PVWCombo::FillDictionaries((int)(self + 0x1d8),paths2,0);
+    ehDtorCount = ehDtorCount + -1;
+    if (paths2 != (uint *)0x0) {
+      if (paths2[-3] != 0xffffffff) {
+        paths = paths2 + -3;
+        if (paths == &g_nullStringRep) {
           iVar3 = 1;
         }
-        else if (puVar2 == &DAT_00513d58) {
+        else if (paths == &g_nullStringRep) {
           iVar3 = 1;
         }
         else {
-          *puVar2 = *puVar2 - 1;
-          iVar3 = *puVar2 + 1;
+          *paths = *paths - 1;
+          iVar3 = *paths + 1;
         }
         if (iVar3 != 0) goto LAB_004068a9;
       }
-      local_48 = local_c + -3;
-      local_4c = local_c + -3;
+      unused4 = paths2 + -3;
+      unused3 = paths2 + -3;
       operator_delete();
-      local_50 = 0;
-      local_54 = local_14;
-      local_c = (uint *)0x0;
+      unused2 = 0;
+      unused = result;
+      paths2 = (uint *)0x0;
     }
 LAB_004068a9:
-    local_28 = 0;
+    ehContext = 0;
   }
-  if (local_c != (uint *)0x0) {
-    if (local_c[-3] != 0xffffffff) {
-      puVar2 = local_c + -3;
-      if (puVar2 == &DAT_00513d58) {
+  if (paths2 != (uint *)0x0) {
+    if (paths2[-3] != 0xffffffff) {
+      paths = paths2 + -3;
+      if (paths == &g_nullStringRep) {
         iVar3 = 1;
       }
-      else if (puVar2 == &DAT_00513d58) {
+      else if (paths == &g_nullStringRep) {
         iVar3 = 1;
       }
       else {
-        *puVar2 = *puVar2 - 1;
-        iVar3 = *puVar2 + 1;
+        *paths = *paths - 1;
+        iVar3 = *paths + 1;
       }
       if (iVar3 != 0) goto LAB_004068b5;
     }
-    local_40 = local_c + -3;
+    unused5 = paths2 + -3;
     operator_delete();
   }
 LAB_004068b5:
-  *in_FS_OFFSET = local_38;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004068c8  TEAPropertiesViewWindows::vf48   (30 bytes)   [rtti:vtable virtual slot 48]
-void __cdecl TEAPropertiesViewWindows::vf48(int *param_1)
+// 0x004068c8  TEAPropertiesViewWindows::OnPageChanged   (30 bytes)   [rtti:vtable virtual slot 48]
+//   vtable slot 48 (introduced by TabbyPropertiesViewWindows); a tab page was selected: shows its controls
+void __cdecl TEAPropertiesViewWindows::OnPageChanged(int *self)
 
 {
-  TabbyPropertiesViewWindows::vf48(param_1);
-  FUN_004068e8((int)param_1);
+  TabbyPropertiesViewWindows::OnPageChanged(self);
+  TEAPropertiesViewWindows::UpdateEnabled((int)self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004068e8  FUN_004068e8   (154 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_004068e8(int param_1)
+// 0x004068e8  TEAPropertiesViewWindows::UpdateEnabled   (154 bytes)   [analysis]
+//   enables the options that depend on others
+void __cdecl TEAPropertiesViewWindows::UpdateEnabled(int self)
 
 {
-  (**(code **)(*(int *)(*(int *)(param_1 + 0x1ba0) + 8) + 0x60))();
-  (**(code **)(*(int *)(*(int *)(param_1 + 0x1a08) + 8) + 0x60))();
-  (**(code **)(*(int *)(*(int *)(param_1 + 0x1938) + 8) + 0x60))();
-  (**(code **)(*(int *)(*(int *)(param_1 + 0x1868) + 8) + 0x60))();
+  (**(code **)(*(int *)(*(int *)(self + 0x1ba0) + 8) + 0x60))();
+  (**(code **)(*(int *)(*(int *)(self + 0x1a08) + 8) + 0x60))();
+  (**(code **)(*(int *)(*(int *)(self + 0x1938) + 8) + 0x60))();
+  (**(code **)(*(int *)(*(int *)(self + 0x1868) + 8) + 0x60))();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00406984  FUN_00406984   (78 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_00406984(int param_1,uint *param_2)
+// 0x00406984  TEAPropertiesViewWindows::FillDefinitionDictionaries   (78 bytes)   [analysis]
+//   lists the dictionaries of a path list in the definition-dictionary combo
+void __cdecl TEAPropertiesViewWindows::FillDefinitionDictionaries(int self,uint *paths)
 
 {
-  undefined4 *puVar1;
-  uint *puVar2;
-  int iVar3;
+  undefined4 *tsDictionaryList;
+  uint *paths2;
+  int selected;
   
-  puVar1 = FUN_00407734(param_2);
-  TSDictionaryList::ReleaseDictionaries(*(int *)(*(int *)(param_1 + 0x1f90) + 0x28));
-  *(undefined4 **)(*(int *)(param_1 + 0x1f90) + 0x28) = puVar1;
-  iVar3 = 1;
-  puVar2 = (uint *)FUN_00408c8c(puVar1);
-  FUN_0041c4f8(param_1 + 0x760,puVar2,iVar3);
+  tsDictionaryList = TSDictionaryList::Open(paths);
+  TSDictionaryList::ReleaseDictionaries(*(int *)(*(int *)(self + 0x1f90) + 0x28));
+  *(undefined4 **)(*(int *)(self + 0x1f90) + 0x28) = tsDictionaryList;
+  selected = 1;
+  paths2 = (uint *)TSDictionaryList::GetPathList(tsDictionaryList);
+  PVWCombo::FillDictionaries(self + 0x760,paths2,selected);
   return;
 }
 
@@ -691,26 +787,26 @@ void __cdecl FUN_00406984(int param_1,uint *param_2)
 // 0x004073dc  OWL::TRadioButton::~TRadioButton   (137 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as OWL::TRadioButton::_dtor
 //   file placement: inferred (address adjacency)
-void __cdecl OWL::TRadioButton::_dtor(int *param_1,uint param_2)
+void __cdecl OWL::TRadioButton::_dtor(int *self,uint dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4eb368);
-  if (param_1 != (int *)0x0) {
-    OWL::TCheckBox::_dtor(param_1,0);
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor((undefined4 *)((int)param_1 + 0x2a),0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor((undefined4 *)((int)param_1 + 0x22),0);
+  if (self != (int *)0x0) {
+    OWL::TCheckBox::_dtor(self,0);
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor((undefined4 *)((int)self + 0x2a),0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor((undefined4 *)((int)self + 0x22),0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -718,41 +814,42 @@ void __cdecl OWL::TRadioButton::_dtor(int *param_1,uint param_2)
 // 0x00407468  OWL::TListBox::~TListBox   (137 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TListBox::_dtor
 //   file placement: inferred (address adjacency)
-void __cdecl OWL::TListBox::_dtor(int *param_1,uint param_2)
+void __cdecl OWL::TListBox::_dtor(int *self,uint dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4eb370);
-  if (param_1 != (int *)0x0) {
-    OWL::TControl::_dtor(param_1,0);
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 9,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 7,0);
+  if (self != (int *)0x0) {
+    OWL::TControl::_dtor(self,0);
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 9,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 7,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004074f4  FUN_004074f4   (151 bytes)   [unnamed]
+// 0x004074f4  InitDictionaryCache   (151 bytes)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x004050cc. static initialiser: empty g_dictionaryCache (256 reserved) and two length limits of 0x7fffffff
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x00407540) */
 /* WARNING: Heritage AFTER dead removal. Example location: s0xffffffd4 : 0x00407548 */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-void __stdcall FUN_004074f4(void)
+void __stdcall InitDictionaryCache(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4eb388);
   if (DAT_004eb4c0 == '\0') {
@@ -767,79 +864,28 @@ void __stdcall FUN_004074f4(void)
     (*(undefined4 *)&DAT_004eb4c8) = 0x7fffffff;
     DAT_004eb4cc = '\x01';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0040758c  FUN_0040758c   (88 bytes)   [unnamed]
+// 0x0040758c  DestroyDictionaryCache   (88 bytes)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x00405164. static destructor of g_dictionaryCache
 //   file placement: inferred (address adjacency)
-void __stdcall FUN_0040758c(void)
+void __stdcall DestroyDictionaryCache(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4eb3a8);
   if (DAT_004eb4c0 != '\0') {
-    FUN_0040771c(&DAT_004eb4a0,DAT_004eb4a4,(*(int *)&DAT_004eb4a8));
+    std::_Destroy_range_ptr_40771c(&DAT_004eb4a0,DAT_004eb4a4,(*(int *)&DAT_004eb4a8));
     operator_delete();
     DAT_004eb4c0 = '\0';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x004075e4  FUN_004075e4   (163 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-/* WARNING: Removing unreachable block (ram,0x0040762e) */
-/* WARNING: Heritage AFTER dead removal. Example location: s0xffffffd4 : 0x00407636 */
-/* WARNING: Restarted to delay deadcode elimination for space: stack */
-undefined4 * __cdecl FUN_004075e4(undefined4 *param_1,uint *param_2)
-
-{
-  undefined4 *puVar1;
-  uint uVar2;
-  uint uVar3;
-  undefined4 *puVar4;
-  uint *puVar5;
-  undefined4 *in_FS_OFFSET;
-  byte bVar6;
-  undefined4 local_28;
-  
-  bVar6 = 0;
-  __InitExceptBlockLDTC(0x4eb4e0);
-  param_1[3] = 0;
-  param_1[4] = 0;
-  param_1[8] = 0;
-  param_1[2] = 0x100;
-  strlen(param_2);
-  puVar1 = (undefined4 *)operator_new_array();
-  *param_1 = puVar1;
-  uVar2 = 0xffffffff;
-  do {
-    puVar5 = param_2;
-    if (uVar2 == 0) break;
-    uVar2 = uVar2 - 1;
-    puVar5 = (uint *)((int)param_2 + (uint)bVar6 * -2 + 1);
-    uVar3 = *param_2;
-    param_2 = puVar5;
-  } while ((char)uVar3 != '\0');
-  uVar2 = ~uVar2;
-  puVar4 = (undefined4 *)((int)puVar5 - uVar2);
-  for (uVar3 = uVar2 >> 2; uVar3 != 0; uVar3 = uVar3 - 1) {
-    *puVar1 = *puVar4;
-    puVar4 = puVar4 + (uint)bVar6 * -2 + 1;
-    puVar1 = puVar1 + (uint)bVar6 * -2 + 1;
-  }
-  for (uVar2 = uVar2 & 3; uVar2 != 0; uVar2 = uVar2 - 1) {
-    *(undefined1 *)puVar1 = *(undefined1 *)puVar4;
-    puVar4 = (undefined4 *)((int)puVar4 + (uint)bVar6 * -2 + 1);
-    puVar1 = (undefined4 *)((int)puVar1 + (uint)bVar6 * -2 + 1);
-  }
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 } // namespace tea

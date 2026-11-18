@@ -1,5 +1,5 @@
 // TEA.exe — application module "TEAPrintoutFeeder"
-// 10 functions, 0x0043c3a8..0x0043c6fc. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 11 functions, 0x004047bc..0x0043c6d4. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,116 +7,213 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
+// 0x004047bc  TEAPrintoutFeeder::GetLine   (179 bytes)   [analysis]
+//   text of a result line to print
+char * __cdecl TEAPrintoutFeeder::GetLine(int self,int line,int column)
+
+{
+  char cVar1;
+  char *pcVar2;
+  uint uVar3;
+  uint i;
+  char *pcVar5;
+  char *pcVar6;
+  bool bVar7;
+  
+  if (*(int *)(self + 4) == *(int *)(line + 4)) {
+    *(undefined4 *)(self + 4) = *(undefined4 *)(column + 4);
+  }
+  if (*(int *)(self + 0x14) == *(int *)(line + 0x14)) {
+    *(undefined4 *)(self + 0x14) = *(undefined4 *)(column + 0x14);
+  }
+  if (*(char *)(self + 0x18) == *(char *)(line + 0x18)) {
+    *(undefined1 *)(self + 0x18) = *(undefined1 *)(column + 0x18);
+  }
+  if (*(char *)(self + 0x19) == *(char *)(line + 0x19)) {
+    *(undefined1 *)(self + 0x19) = *(undefined1 *)(column + 0x19);
+  }
+  if (*(char *)(self + 0x1a) == *(char *)(line + 0x1a)) {
+    *(undefined1 *)(self + 0x1a) = *(undefined1 *)(column + 0x1a);
+  }
+  if (*(char *)(self + 0x1b) == *(char *)(line + 0x1b)) {
+    *(undefined1 *)(self + 0x1b) = *(undefined1 *)(column + 0x1b);
+  }
+  pcVar2 = (char *)(self + 0x20);
+  pcVar5 = (char *)(line + 0x20);
+  do {
+    if (*pcVar2 != *pcVar5) {
+      return pcVar2;
+    }
+    bVar7 = true;
+    if (*pcVar2 == '\0') break;
+    pcVar6 = pcVar2 + 1;
+    if (*pcVar6 != pcVar5[1]) {
+      return pcVar2;
+    }
+    pcVar2 = pcVar2 + 2;
+    pcVar5 = pcVar5 + 2;
+    bVar7 = *pcVar6 == '\0';
+  } while (!bVar7);
+  if (bVar7) {
+    pcVar2 = (char *)(self + 0x20);
+    uVar3 = 0xffffffff;
+    pcVar5 = (char *)(column + 0x20);
+    do {
+      pcVar6 = pcVar5;
+      if (uVar3 == 0) break;
+      uVar3 = uVar3 - 1;
+      pcVar6 = pcVar5 + 1;
+      cVar1 = *pcVar5;
+      pcVar5 = pcVar6;
+    } while (cVar1 != '\0');
+    uVar3 = ~uVar3;
+    pcVar5 = pcVar6 + -uVar3;
+    pcVar6 = pcVar2;
+    for (i = uVar3 >> 2; i != 0; i = i - 1) {
+      *(undefined4 *)pcVar6 = *(undefined4 *)pcVar5;
+      pcVar5 = pcVar5 + 4;
+      pcVar6 = pcVar6 + 4;
+    }
+    for (uVar3 = uVar3 & 3; uVar3 != 0; uVar3 = uVar3 - 1) {
+      *pcVar6 = *pcVar5;
+      pcVar5 = pcVar5 + 1;
+      pcVar6 = pcVar6 + 1;
+    }
+  }
+  return pcVar2;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x0043c330  TEAPrintoutFeeder::TEAPrintoutFeeder   (87 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores TEAPrintoutFeeder's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl TEAPrintoutFeeder::TEAPrintoutFeeder(undefined4 *self,undefined4 param_2)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x4f4e28);
+  *self = &PrintoutFeeder::vftable;
+  *self = &TEAPrintoutFeeder::vftable;
+  self[1] = param_2;
+  self[2] = 0;
+  self[3] = 0;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
 // 0x0043c3a8  TEAPrintoutFeeder::~TEAPrintoutFeeder   (105 bytes)   [rtti:dtor destructor]
 //   written in code as TEAPrintoutFeeder::_dtor
-undefined4 __cdecl TEAPrintoutFeeder::_dtor(undefined4 *param_1,byte param_2)
+undefined4 __cdecl TEAPrintoutFeeder::_dtor(undefined4 *self,byte dtorFlags)
 
 {
   undefined4 uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   uVar1 = __InitExceptBlockLDTC(0x4f4e4c);
-  if (param_1 != (undefined4 *)0x0) {
-    *param_1 = &TEAPrintoutFeeder::vftable;
+  if (self != (undefined4 *)0x0) {
+    *self = &TEAPrintoutFeeder::vftable;
     uVar1 = operator_delete();
-    PrintoutFeeder::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+    PrintoutFeeder::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       uVar1 = operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return uVar1;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043c414  TEAPrintoutFeeder::vf1   (18 bytes)   [rtti:vtable virtual slot 1]
-void __cdecl TEAPrintoutFeeder::vf1(int param_1)
+void __cdecl TEAPrintoutFeeder::vf1(int self)
 
 {
-  FUN_0042ba08(*(int *)(param_1 + 4));
+  MatchListWindows::GetLineCount(*(int *)(self + 4));
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043c428  TEAPrintoutFeeder::vf2   (18 bytes)   [rtti:vtable virtual slot 2]
-int __cdecl TEAPrintoutFeeder::vf2(int param_1)
+int __cdecl TEAPrintoutFeeder::vf2(int self)
 
 {
-  int iVar1;
+  int entryCount;
   
-  iVar1 = FUN_0042ba14(*(int *)(param_1 + 4));
-  return iVar1;
+  entryCount = MatchListWindows::GetEntryCount(*(int *)(self + 4));
+  return entryCount;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043c43c  TEAPrintoutFeeder::vf3   (122 bytes)   [rtti:vtable virtual slot 3]
-void __cdecl TEAPrintoutFeeder::vf3(int param_1,int param_2)
+void __cdecl TEAPrintoutFeeder::vf3(int self,int param_2)
 
 {
-  int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  int *selectionIterator;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4f4e70);
   operator_delete();
   if (param_2 == 0) {
-    *(undefined4 *)(param_1 + 8) = 0;
-    *(undefined4 *)(param_1 + 0xc) = 0;
+    *(undefined4 *)(self + 8) = 0;
+    *(undefined4 *)(self + 0xc) = 0;
   }
   else {
-    piVar1 = (int *)operator_new();
-    if (piVar1 != (int *)0x0) {
-      FUN_0043061c(piVar1,*(int *)(param_1 + 4));
+    selectionIterator = (int *)operator_new();
+    if (selectionIterator != (int *)0x0) {
+      MatchListWindows::SelectionIterator::SelectionIterator(selectionIterator,*(int *)(self + 4));
     }
-    *(int **)(param_1 + 8) = piVar1;
-    *(undefined4 *)(param_1 + 0xc) = 0;
+    *(int **)(self + 8) = selectionIterator;
+    *(undefined4 *)(self + 0xc) = 0;
   }
-  *in_FS_OFFSET = local_2c;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043c4ec  TEAPrintoutFeeder::vf4   (33 bytes)   [rtti:vtable virtual slot 4]
-void __cdecl TEAPrintoutFeeder::vf4(int param_1,int param_2)
+void __cdecl TEAPrintoutFeeder::vf4(int self,int n)
 
 {
-  if (*(int **)(param_1 + 8) != (int *)0x0) {
-    FUN_00430730(*(int **)(param_1 + 8),param_2);
+  if (*(int **)(self + 8) != (int *)0x0) {
+    MatchListWindows::SelectionIterator::Seek(*(int **)(self + 8),n);
     return;
   }
-  *(int *)(param_1 + 0xc) = param_2;
+  *(int *)(self + 0xc) = n;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043c510  TEAPrintoutFeeder::vf5   (106 bytes)   [rtti:vtable virtual slot 5]
-int __cdecl TEAPrintoutFeeder::vf5(int param_1,int param_2)
+int __cdecl TEAPrintoutFeeder::vf5(int self,int param_2)
 
 {
-  int iVar1;
-  uint *puVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  int index;
+  uint *entryText;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4f4ea0);
   if (*(int **)(param_2 + 8) == (int *)0x0) {
-    iVar1 = *(int *)(param_2 + 0xc);
+    index = *(int *)(param_2 + 0xc);
     *(int *)(param_2 + 0xc) = *(int *)(param_2 + 0xc) + 1;
   }
   else {
-    iVar1 = FUN_00430678(*(int **)(param_2 + 8));
+    index = MatchListWindows::SelectionIterator::Next(*(int **)(param_2 + 8));
   }
-  puVar2 = (uint *)FUN_0042baf8(*(int *)(param_2 + 4),iVar1);
-  std::string::string_from_cstr(param_1,puVar2);
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  entryText = (uint *)MatchListWindows::GetEntryText(*(int *)(param_2 + 4),index);
+  std::string::string_from_cstr(self,entryText);
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043c624  FUN_0043c624   (126 bytes)   [unnamed]
+// 0x0043c624  CollationCompare   (126 bytes)   [analysis]
+//   compares two words letter by letter with the Windows-1252 collation table
 //   file placement: inferred (address adjacency)
-int __cdecl FUN_0043c624(byte *param_1,int param_2,byte *param_3,int param_4)
+int __cdecl CollationCompare(byte *param_1,int param_2,byte *param_3,int param_4)
 
 {
   uint in_ECX;
@@ -154,9 +251,10 @@ int __cdecl FUN_0043c624(byte *param_1,int param_2,byte *param_3,int param_4)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043c6a4  FUN_0043c6a4   (46 bytes)   [unnamed]
+// 0x0043c6a4  CollationLength   (46 bytes)   [analysis]
+//   number of letters of a word under the collation table (punctuation not counted)
 //   file placement: inferred (address adjacency)
-int __cdecl FUN_0043c6a4(byte *param_1,int param_2)
+int __cdecl CollationLength(byte *param_1,int param_2)
 
 {
   byte bVar1;
@@ -176,61 +274,21 @@ int __cdecl FUN_0043c6a4(byte *param_1,int param_2)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0043c6d4  FUN_0043c6d4   (38 bytes)   [unnamed]
+// 0x0043c6d4  CollationCode   (38 bytes)   [analysis]
+//   collation code of a byte (0 for non-letters)
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_0043c6d4(byte param_1)
+undefined4 __cdecl CollationCode(byte ch)
 
 {
   undefined4 uVar1;
   
-  if (((&DAT_004f50d8)[param_1] == '\0') && ((param_1 < 0x30 || (0x39 < param_1)))) {
+  if (((&DAT_004f50d8)[ch] == '\0') && ((ch < 0x30 || (0x39 < ch)))) {
     uVar1 = 0;
   }
   else {
     uVar1 = 1;
   }
   return uVar1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0043c6fc  FUN_0043c6fc   (383 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-int * __cdecl FUN_0043c6fc(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5,int param_6, int param_7,int param_8,int param_9,int param_10,int param_11)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x4f523c);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 0x1da);
-    param_1[0x1da] = (int)(param_1 + 0x1d7);
-    param_1[0x1db] = (int)(param_1 + 0x1d8);
-    param_1[1] = (int)(param_1 + 0x1d7);
-    param_1[2] = (int)(param_1 + 0x1d8);
-    param_1[0x1d6] = 0;
-    param_1[0x1d9] = 0;
-    param_1[0x1d7] = (int)&OWL::TEventHandler::vftable;
-    param_1[0x1d8] = (int)&OWL::TStreamableBase::vftable;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    FUN_004a4fbc(param_1 + 0x1da,1);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-  }
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -8;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -8;
-  FUN_0043ce14(param_1,1,param_3,param_4,(uint *)"Save TEA&Sympathy Dictionary",param_6,
-               param_7,param_8,param_9,param_10,param_11);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 8;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 8;
-  param_1[3] = (int)&TSDictionarySaveTEADialog::vftable;
-  param_1[0x18] = (int)&PTR_LAB_004f5358;
-  *(undefined ***)param_1[1] = &PTR_LAB_004f5374;
-  *(undefined ***)param_1[2] = &PTR_LAB_004f5380;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_004f538c;
-  param_1[0x1d4] = param_5;
-  param_1[0x1d5] = 0;
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 } // namespace tea

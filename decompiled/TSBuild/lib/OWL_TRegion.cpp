@@ -9,19 +9,19 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0042fa08  OWL::TRegion::~TRegion   (59 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TRegion::_dtor
-void __cdecl OWL::TRegion::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl OWL::TRegion::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
-  if (param_1 != (undefined4 *)0x0) {
-    if (*(char *)(param_1 + 1) != '\0') {
-      BVar1 = DeleteObject((HGDIOBJ)*param_1);
-      if (BVar1 == 0) {
-        FUN_00427c44(0x7fde,*param_1);
+  if (self != (undefined4 *)0x0) {
+    if (*(char *)(self + 1) != '\0') {
+      ok = DeleteObject((HGDIOBJ)*self);
+      if (ok == 0) {
+        FUN_00427c44(0x7fde,*self);
       }
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

@@ -9,17 +9,17 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x00489320  OWL::TDib::vf3   (19 bytes)   [rtti:vtable virtual slot 3; function defined from vtable-slot]
 /* WARNING: Unable to track spacebase fully for stack */
-void OWL::TDib::vf3(char *param_1,int param_2,char param_3)
+void OWL::TDib::vf3(char *self,int param_2,char param_3)
 
 {
   int iVar1;
   code *pcVar2;
   int iVar3;
   int unaff_EBP;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   
-  *param_1 = *param_1 + (char)param_1;
-  *(char *)((int)param_1 * 2) = *(char *)((int)param_1 * 2) + param_3;
+  *self = *self + (char)self;
+  *(char *)((int)self * 2) = *(char *)((int)self * 2) + param_3;
   iVar3 = *(int *)(param_2 + 0x20) * -0x74aaffd6;
   in((short)param_2);
   *(undefined4 *)(iVar3 + -0x30) = 0x489348;
@@ -36,25 +36,25 @@ void OWL::TDib::vf3(char *param_1,int param_2,char param_3)
     (*pcVar2)();
     *(undefined2 *)(unaff_EBP + -0x1c) = 8;
   }
-  *in_FS_OFFSET = *(undefined4 *)(unaff_EBP + -0x2c);
+  *sehChainHead = *(undefined4 *)(unaff_EBP + -0x2c);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004b1098  OWL::TDib::~TDib   (66 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TDib::_dtor
-void __cdecl OWL::TDib::_dtor(int *param_1,byte param_2)
+void __cdecl OWL::TDib::_dtor(int *self,byte dtorFlags)
 
 {
-  if (param_1 != (int *)0x0) {
-    *(undefined ***)((int)param_1 + 5) = &OWL::TDib::vftable;
-    if ((*param_1 != 0) && (*(char *)((int)param_1 + 0x1f) == '\0')) {
-      GlobalUnlock((HGLOBAL)*param_1);
-      if ((char)param_1[1] != '\0') {
-        GlobalFree((HGLOBAL)*param_1);
+  if (self != (int *)0x0) {
+    *(undefined ***)((int)self + 5) = &OWL::TDib::vftable;
+    if ((*self != 0) && (*(char *)((int)self + 0x1f) == '\0')) {
+      GlobalUnlock((HGLOBAL)*self);
+      if ((char)self[1] != '\0') {
+        GlobalFree((HGLOBAL)*self);
       }
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -63,7 +63,7 @@ void __cdecl OWL::TDib::_dtor(int *param_1,byte param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004b1288  OWL::TDib::vf1   (633 bytes)   [rtti:vtable virtual slot 1]
-undefined4 __cdecl OWL::TDib::vf1(int *param_1,int *param_2,char param_3)
+undefined4 __cdecl OWL::TDib::vf1(int *self,int *param_2,char param_3)
 
 {
   int iVar1;
@@ -80,11 +80,11 @@ undefined4 __cdecl OWL::TDib::vf1(int *param_1,int *param_2,char param_3)
   short local_48;
   ushort local_46;
   int local_44;
-  int local_40;
-  undefined4 local_3c;
-  undefined4 local_38;
+  int unused;
+  undefined4 unused2;
+  undefined4 unused3;
   int local_34;
-  undefined4 local_30;
+  undefined4 unused4;
   short local_2c;
   int local_22;
   int local_1c;
@@ -121,11 +121,11 @@ undefined4 __cdecl OWL::TDib::vf1(int *param_1,int *param_2,char param_3)
       local_48 = local_58;
       local_46 = local_56;
       local_44 = 0;
-      local_40 = 0;
-      local_3c = 0;
-      local_38 = 0;
+      unused = 0;
+      unused2 = 0;
+      unused3 = 0;
       local_34 = 0;
-      local_30 = 0;
+      unused4 = 0;
     }
     else {
       local_14 = local_8 + -4;
@@ -144,39 +144,39 @@ undefined4 __cdecl OWL::TDib::vf1(int *param_1,int *param_2,char param_3)
         if ((int)uVar3 < 0) {
           uVar3 = uVar3 + 7;
         }
-        local_40 = ((int)uVar3 >> 3) * local_4c;
+        unused = ((int)uVar3 >> 3) * local_4c;
       }
-      FUN_004b0f1c(param_1,&local_54);
-      if (*(int *)((int)param_1 + 0xd) != 0) {
+      FUN_004b0f1c(self,&local_54);
+      if (*(int *)((int)self + 0xd) != 0) {
         local_18 = 0xc;
         iVar1 = (**(code **)*param_2)();
         if (iVar1 != local_18) {
-          GlobalUnlock((HGLOBAL)*param_1);
+          GlobalUnlock((HGLOBAL)*self);
           return 0;
         }
       }
       if (local_9 == '\0') {
-        local_1c = *(int *)((int)param_1 + 0x19) << 2;
+        local_1c = *(int *)((int)self + 0x19) << 2;
       }
       else {
-        local_1c = *(int *)((int)param_1 + 0x19) * 3;
+        local_1c = *(int *)((int)self + 0x19) * 3;
       }
-      if (*(int *)((int)param_1 + 0x11) != 0) {
+      if (*(int *)((int)self + 0x11) != 0) {
         iVar1 = (**(code **)*param_2)();
         if (iVar1 != local_1c) {
-          GlobalUnlock((HGLOBAL)*param_1);
+          GlobalUnlock((HGLOBAL)*self);
           return 0;
         }
         if (local_9 != '\0') {
-          iVar1 = *(int *)((int)param_1 + 0x19);
+          iVar1 = *(int *)((int)self + 0x19);
           while (iVar1 = iVar1 + -1, -1 < iVar1) {
-            *(undefined1 *)(*(int *)((int)param_1 + 0x11) + 2 + iVar1 * 4) =
-                 *(undefined1 *)(*(int *)((int)param_1 + 0x11) + 2 + iVar1 * 3);
-            *(undefined1 *)(*(int *)((int)param_1 + 0x11) + 1 + iVar1 * 4) =
-                 *(undefined1 *)(*(int *)((int)param_1 + 0x11) + 1 + iVar1 * 3);
-            *(undefined1 *)(*(int *)((int)param_1 + 0x11) + iVar1 * 4) =
-                 *(undefined1 *)(*(int *)((int)param_1 + 0x11) + iVar1 * 3);
-            *(undefined1 *)(*(int *)((int)param_1 + 0x11) + 3 + iVar1 * 4) = 0;
+            *(undefined1 *)(*(int *)((int)self + 0x11) + 2 + iVar1 * 4) =
+                 *(undefined1 *)(*(int *)((int)self + 0x11) + 2 + iVar1 * 3);
+            *(undefined1 *)(*(int *)((int)self + 0x11) + 1 + iVar1 * 4) =
+                 *(undefined1 *)(*(int *)((int)self + 0x11) + 1 + iVar1 * 3);
+            *(undefined1 *)(*(int *)((int)self + 0x11) + iVar1 * 4) =
+                 *(undefined1 *)(*(int *)((int)self + 0x11) + iVar1 * 3);
+            *(undefined1 *)(*(int *)((int)self + 0x11) + 3 + iVar1 * 4) = 0;
           }
         }
       }
@@ -205,12 +205,12 @@ undefined4 __cdecl OWL::TDib::vf1(int *param_1,int *param_2,char param_3)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004b15e4  OWL::TDib::vf2   (119 bytes)   [rtti:vtable virtual slot 2]
-bool __cdecl OWL::TDib::vf2(undefined4 *param_1,undefined4 *param_2,char param_3)
+bool __cdecl OWL::TDib::vf2(undefined4 *self,undefined4 *param_2,char param_3)
 
 {
   char cVar1;
   
-  GlobalSize((HGLOBAL)*param_1);
+  GlobalSize((HGLOBAL)*self);
   if ((param_3 != '\0') && (cVar1 = (**(code **)*param_2)(), cVar1 == '\0')) {
     return false;
   }

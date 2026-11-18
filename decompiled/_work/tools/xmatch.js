@@ -6,13 +6,27 @@ const fs = require("fs");
 const path = require("path");
 const [seedsDir, ...names] = process.argv.slice(2);
 const MIN = 24; // ignore tiny bodies: too many coincidental duplicates
-const H = {}, S = {};
+const H = {}, S = {}, V = {};
 for (const n of names) {
   H[n] = JSON.parse(fs.readFileSync(path.join(seedsDir, n + ".hashes.json"), "utf8"));
   S[n] = JSON.parse(fs.readFileSync(path.join(seedsDir, n + ".symbols.json"), "utf8"));
+  // hand-assigned variable names (manual/<n>.vars.json), keyed by function address
+  const vf = path.join(seedsDir, "..", "manual", n + ".vars.json");
+  V[n] = new Map();
+  if (fs.existsSync(vf)) for (const [a, m] of Object.entries(JSON.parse(fs.readFileSync(vf, "utf8")))) if (!a.startsWith("_")) V[n].set(parseInt(a, 16), m);
 }
+// the variables a function declares (parameters and locals), from the raw export
+const { parse } = require("./varnames");
+const declSig = (prog, addr) => {
+  const f = path.join(seedsDir, "..", "..", "raw", prog, "functions", "0x" + addr.toString(16) + ".c");
+  if (!fs.existsSync(f)) return null;
+  const t = fs.readFileSync(f, "utf8").split(String.fromCharCode(13)).join("");
+  const i = t.indexOf("// pseudocode:");
+  const P = parse(t.slice(i < 0 ? 0 : t.indexOf("\n", i) + 1).replace(/^\s*\n+/, ""));
+  return P ? [...P.params, ...P.locals].map((v) => v.type + " " + v.name).join(";") : null;
+};
 const index = {};
-for (const n of names) { index[n] = new Map(); for (const [a, v] of Object.entries(H[n])) { if (v.n < MIN) continue; if (!index[n].has(v.h)) index[n].set(v.h, []); index[n].get(v.h).push(+a); } }
+for (const n of names) { index[n] = new Map(); for (const [a, v] of Object.entries(H[n])) { if (v.n < 20) continue; if (!index[n].has(v.h)) index[n].set(v.h, []); index[n].get(v.h).push(+a); } }
 
 const hx = (a) => "0x" + (+a).toString(16).padStart(8, "0");
 for (const n of names) {
@@ -54,11 +68,33 @@ for (const n of names) {
     }
     if (best) out.push({ addr: hx(a), name: best.s.name, cls: best.s.cls, module: best.s.module, kind: best.s.kind, source: `${best.s.source} (matched ${best.o}.exe)`, note: `identical body to ${best.o}.exe ${hx(best.a)}.${best.s.note ? " " + best.s.note : ""}` });
   }
+  // template instances and other code duplicated byte for byte (fingerprint not unique): every copy takes
+  // the hand-assigned name when all hand-named copies, in any program, agree on it (names.js adds a suffix)
+  {
+    const have = new Set(out.map((x) => parseInt(x.addr, 16)));
+    const baseName = (nm) => nm.replace(/_[0-9a-f]{6,8}$/, "");
+    for (const a of addrs) {
+      const v = H[n][a];
+      if (v.n < 20 || have.has(a) || S[n].functions[a]) continue;
+      const named = [];
+      for (const o of names) {
+        for (const b of (o === n ? index[n].get(v.h) : (index[o].get(v.h) || [])) || []) {
+          const s = S[o].functions[b];
+          if (s && /^(analysis|notes)/.test(s.source) && !s.source.includes("matched ")) named.push({ o, b, s });
+        }
+      }
+      if (!named.length || new Set(named.map((x) => baseName(x.s.name))).size !== 1) continue;
+      const src = named[0];
+      out.push({ addr: hx(a), name: baseName(src.s.name), cls: src.s.cls, module: src.s.module, kind: src.s.kind, source: `${src.s.source} (matched ${src.o}.exe, duplicated code)`,
+        note: `same masked bytes as ${src.o}.exe ${hx(src.b)} (${v.n} bytes; the code occurs several times, e.g. one template instance per type).${src.s.note ? " " + src.s.note : ""}` });
+    }
+  }
   // second pass: positional alignment. A hand-named function in another program whose body differs here
   // is paired by order when it sits between two identical-body neighbours and the number of functions
   // between those neighbours is the same in both programs (and sizes are comparable).
   const have = new Set(out.map((x) => parseInt(x.addr, 16)));
   let positional = 0;
+  const posPairs = [];
   for (const o of names) {
     if (o === n) continue;
     const srcAddrs = Object.keys(H[o]).map(Number).sort((a, b) => a - b);
@@ -81,6 +117,7 @@ for (const n of names) {
       if (have.has(target) || (S[n].functions[target] && S[n].functions[target].priority >= 10)) continue;
       have.add(target);
       positional++;
+      posPairs.push({ target, o, src: srcAddrs[i] });
       out.push({ addr: hx(target), name: s.name, cls: s.cls, module: s.module, kind: s.kind, source: `${s.source} (position-matched ${o}.exe)`,
         note: (H[o][srcAddrs[i]].h === H[n][target].h
           ? `same masked bytes as ${o}.exe ${hx(srcAddrs[i])} (${a1} bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours.`
@@ -88,6 +125,36 @@ for (const n of names) {
     }
   }
   fs.writeFileSync(path.join(seedsDir, n + ".propagated.json"), JSON.stringify(out, null, 1));
-  console.log(`   propagated hand-assigned names into ${n}: ${out.length} (${positional} by position)`);
+  // variable names travel only between identical bodies (1:1 fingerprint match): Ghidra then numbers the
+  // variables the same way. organize.js still drops any name whose variable is not declared in the target.
+  const pv = {};
+  for (const a of addrs) {
+    const v = H[n][a];
+    if (v.n < MIN || index[n].get(v.h).length !== 1 || V[n].has(a)) continue;
+    for (const o of names) {
+      if (o === n) continue;
+      const m = index[o].get(v.h);
+      if (!m || m.length !== 1 || !V[o].has(m[0])) continue;
+      pv[hx(a)] = { from: `${o}.exe ${hx(m[0])}`, vars: V[o].get(m[0]) };
+      break;
+    }
+  }
+  // duplicated code (same masked bytes, several copies): any hand variable map of a copy applies to all
+  for (const a of addrs) {
+    const v = H[n][a];
+    if (v.n < 20 || V[n].has(a) || pv[hx(a)]) continue;
+    let found = null;
+    for (const o of names) for (const b of index[o].get(v.h) || []) if (!found && !(o === n && b === a) && V[o].has(b)) found = { o, b };
+    if (found) pv[hx(a)] = { from: `${found.o}.exe ${hx(found.b)} (duplicated code)`, vars: V[found.o].get(found.b) };
+  }
+  // functions paired by position whose bodies differ: variable names travel only when both functions
+  // declare exactly the same variables (same Ghidra names, same types, same order)
+  for (const { target, o, src } of posPairs) {
+    if (V[n].has(target) || pv[hx(target)] || !V[o].has(src)) continue;
+    const dt = declSig(n, target), ds = declSig(o, src);
+    if (dt && dt === ds) pv[hx(target)] = { from: `${o}.exe ${hx(src)} (same declared variables)`, vars: V[o].get(src) };
+  }
+  fs.writeFileSync(path.join(seedsDir, n + ".propagated-vars.json"), JSON.stringify(pv, null, 1));
+  console.log(`   propagated hand-assigned names into ${n}: ${out.length} (${positional} by position); variable maps: ${Object.keys(pv).length}`);
 }
 fs.writeFileSync(path.join(seedsDir, "shared-start.json"), JSON.stringify(Object.fromEntries(names.map((n) => [n, S[n]._sharedStart ? hx(S[n]._sharedStart) : null])), null, 1));

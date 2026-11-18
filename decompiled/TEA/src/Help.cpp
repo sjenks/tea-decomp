@@ -9,18 +9,18 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x00485b70  Help::~Help   (72 bytes)   [rtti:dtor destructor]
 //   written in code as Help::_dtor
-void __cdecl Help::_dtor(int *param_1,byte param_2)
+void __cdecl Help::_dtor(int *self,byte dtorFlags)
 
 {
-  if (param_1 != (int *)0x0) {
-    if (param_1[1] != 0) {
-      (*(code *)param_1[1])();
-      if (*param_1 != 0) {
-        (*(code *)param_1[1])();
-        FreeLibrary((HMODULE)*param_1);
+  if (self != (int *)0x0) {
+    if (self[1] != 0) {
+      (*(code *)self[1])();
+      if (*self != 0) {
+        (*(code *)self[1])();
+        FreeLibrary((HMODULE)*self);
       }
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -28,7 +28,8 @@ void __cdecl Help::_dtor(int *param_1,byte param_2)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00485bb8  FUN_00485bb8   (784 bytes)   [unnamed]
+// 0x00485bb8  GetCommonIniPath   (784 bytes)   [analysis]
+//   SHGetFolderPathA folder + subdirectory + "\common.ini" when that folder exists; empty otherwise
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x00485bff) */
 /* WARNING: Removing unreachable block (ram,0x00485ca3) */
@@ -45,49 +46,49 @@ void __cdecl Help::_dtor(int *param_1,byte param_2)
 /* WARNING: Removing unreachable block (ram,0x00485e17) */
 /* WARNING: Removing unreachable block (ram,0x00485e1b) */
 /* WARNING: Removing unreachable block (ram,0x00485e69) */
-int __cdecl FUN_00485bb8(int param_1,int param_2)
+int __cdecl GetCommonIniPath(int result,int subdir)
 
 {
-  uint uVar1;
+  uint len2;
   int iVar2;
-  char *pcVar3;
+  char *len;
   uint uVar4;
-  undefined4 *in_FS_OFFSET;
-  uint local_1f4 [67];
-  undefined4 local_e8;
+  undefined4 *sehChainHead;
+  uint s [67];
+  undefined4 unused;
   undefined1 local_df [143];
-  undefined4 local_50;
-  undefined2 local_40;
-  int local_34;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
   
   __InitExceptBlockLDTC(0x5039fc);
-  local_40 = 8;
-  *(undefined4 *)(param_1 + 8) = 0;
-  *(undefined **)(param_1 + 8) = &DAT_00513d64;
-  local_e8 = *(undefined4 *)(param_1 + 8);
-  local_34 = local_34 + 1;
+  ehContext = 8;
+  *(undefined4 *)(result + 8) = 0;
+  *(undefined **)(result + 8) = &g_emptyStringData;
+  unused = *(undefined4 *)(result + 8);
+  ehDtorCount = ehDtorCount + 1;
   iVar2 = import_SHGetFolderPathA();
   if (iVar2 == 0) {
-    FUN_004cf41c(param_1,local_1f4);
-    std::string::append(param_1,param_2);
-    iVar2 = thunk_FUN_004ddd54(*(LPCSTR *)(param_1 + 8),0);
+    std::string::assign_cstr(result,s);
+    std::string::append(result,subdir);
+    iVar2 = thunk_access(*(LPCSTR *)(result + 8),0);
     if (iVar2 == 0) {
-      uVar1 = *(uint *)(*(int *)(param_1 + 8) + -4);
-      pcVar3 = strlen((uint *)"\\common.ini");
-      FUN_004cfad4(param_1,uVar1,0,0x503990,(uint)pcVar3,0,(uint)pcVar3);
+      len2 = *(uint *)(*(int *)(result + 8) + -4);
+      len = strlen((uint *)"\\common.ini");
+      std::string::replace(result,len2,0,0x503990,(uint)len,0,(uint)len);
     }
     else {
-      uVar1 = *(uint *)(*(int *)(param_1 + 8) + -4);
+      len2 = *(uint *)(*(int *)(result + 8) + -4);
       local_df[0] = 0;
-      uVar4 = DAT_005140ac;
-      if (uVar1 <= DAT_005140ac) {
-        uVar4 = uVar1;
+      uVar4 = g_stringNpos;
+      if (len2 <= g_stringNpos) {
+        uVar4 = len2;
       }
-      FUN_004cfad4(param_1,0,uVar4,(uint)local_df,0,0,0);
+      std::string::replace(result,0,uVar4,(uint)local_df,0,0,0);
     }
   }
-  *in_FS_OFFSET = local_50;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 } // namespace tea

@@ -9,14 +9,14 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x00494064  OWL::TGdiObject::~TGdiObject   (45 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TGdiObject::_dtor
-void __cdecl OWL::TGdiObject::_dtor(uint *param_1,byte param_2)
+void __cdecl OWL::TGdiObject::_dtor(uint *self,byte dtorFlags)
 
 {
-  if (param_1 != (uint *)0x0) {
-    if ((char)param_1[1] != '\0') {
-      FUN_00493eb4(*param_1);
+  if (self != (uint *)0x0) {
+    if ((char)self[1] != '\0') {
+      FUN_00493eb4(*self);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

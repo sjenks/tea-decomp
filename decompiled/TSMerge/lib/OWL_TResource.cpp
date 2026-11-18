@@ -9,13 +9,13 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x00424644  OWL::TResource<OWL::TOOLBARTEMPLATE,241>::~TResource   (34 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TResource_OWL_TOOLBARTEMPLATE_241::_dtor
-void __cdecl OWL::TResource_OWL_TOOLBARTEMPLATE_241::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl OWL::TResource_OWL_TOOLBARTEMPLATE_241::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  if (param_1 != (undefined4 *)0x0) {
-    *param_1 = 0;
-    param_1[1] = 0;
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    *self = 0;
+    self[1] = 0;
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

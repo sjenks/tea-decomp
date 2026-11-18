@@ -9,20 +9,20 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x004443b0  OWL::TDvOpenSaveData::~TDvOpenSaveData   (66 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TDvOpenSaveData::_dtor
-void __cdecl OWL::TDvOpenSaveData::_dtor(int param_1,byte param_2)
+void __cdecl OWL::TDvOpenSaveData::_dtor(int self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x480a68);
-  if (param_1 != 0) {
-    OWL::TOpenSaveDialog::TData::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != 0) {
+    OWL::TOpenSaveDialog::TData::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

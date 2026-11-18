@@ -1,0 +1,117 @@
+// TEA.exe — runtime / library code "std_locale"
+// 2 functions, 0x004cef38..0x004d9614. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
+
+#include "../decomp.h"
+
+namespace tea {
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004cef38  std::locale::facet::facet   (72 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores std::locale::facet's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl std::locale::facet::facet(undefined4 *self,undefined4 param_2,undefined4 param_3)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x515664);
+  __rwstd::facet_imp::facet_imp(self,param_2,param_3);
+  *self = &std::locale::facet::vftable;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004d9614  std::locale::facet::facet_4d9614   (566 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores std::locale::facet's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl std::locale::facet::facet_4d9614(undefined4 *self,undefined4 param_2,undefined1 param_3,undefined4 param_4)
+
+{
+  undefined4 uVar1;
+  undefined1 *puVar2;
+  uint uVar3;
+  uint uVar4;
+  uint uVar5;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x516214);
+  *self = &__rwstd::ref_counted::vftable;
+  self[1] = param_4;
+  *self = &__rwstd::facet_imp::vftable;
+  self[2] = 0;
+  self[3] = 0x20;
+  *self = &std::locale::facet::vftable;
+  *self = &PTR_FUN_005162c0;
+  self[8] = param_2;
+  *(undefined1 *)(self + 9) = param_3;
+  if (self[8] == 0) {
+    self[8] = &DAT_00515e04;
+    *(undefined1 *)(self + 9) = 0;
+  }
+  uVar4 = 0;
+  uVar5 = 0xff;
+  do {
+    if ((*(byte *)(self[8] + (uVar4 & 0xff) * 4) & 0x10) != 0) {
+      if (uVar4 < 0xff) goto LAB_004d96cc;
+      break;
+    }
+    uVar4 = uVar4 + 1;
+  } while (uVar4 < 0xff);
+  goto LAB_004d96f2;
+  while (uVar5 = uVar5 - 1, uVar4 < uVar5) {
+LAB_004d9795:
+    if ((*(byte *)(self[8] + (uVar5 & 0xff) * 4) & 8) != 0) break;
+  }
+  goto LAB_004d97bb;
+  while (uVar5 = uVar5 - 1, uVar4 < uVar5) {
+LAB_004d96cc:
+    if ((*(byte *)(self[8] + (uVar5 & 0xff) * 4) & 0x10) != 0) break;
+  }
+LAB_004d96f2:
+  self[10] = uVar4;
+  self[0xb] = uVar5;
+  uVar1 = operator_new_array();
+  self[0xe] = uVar1;
+  puVar2 = (undefined1 *)self[0xe];
+  for (; uVar4 <= uVar5; uVar4 = uVar4 + 1) {
+    uVar3 = uVar4;
+    if ((((0x60 < uVar4) && (uVar4 < 0x7b)) &&
+        ((*(byte *)(self[8] + (uVar4 & 0xff) * 4) & 0x10) != 0)) &&
+       ((*(byte *)(self[8] + (uVar4 - 0x20 & 0xff) * 4) & 8) != 0)) {
+      uVar3 = uVar4 - 0x20;
+    }
+    *puVar2 = (char)uVar3;
+    puVar2 = puVar2 + 1;
+  }
+  uVar4 = 0;
+  uVar5 = 0xff;
+  do {
+    if ((*(byte *)(self[8] + (uVar4 & 0xff) * 4) & 8) != 0) {
+      if (uVar4 < 0xff) goto LAB_004d9795;
+      break;
+    }
+    uVar4 = uVar4 + 1;
+  } while (uVar4 < 0xff);
+LAB_004d97bb:
+  self[0xc] = uVar4;
+  self[0xd] = uVar5;
+  uVar1 = operator_new_array();
+  self[0xf] = uVar1;
+  puVar2 = (undefined1 *)self[0xf];
+  for (; uVar4 <= uVar5; uVar4 = uVar4 + 1) {
+    uVar3 = uVar4;
+    if (((0x40 < uVar4) && (uVar4 < 0x5b)) &&
+       (((*(byte *)(self[8] + (uVar4 & 0xff) * 4) & 8) != 0 &&
+        ((*(byte *)(self[8] + (uVar4 + 0x20 & 0xff) * 4) & 0x10) != 0)))) {
+      uVar3 = uVar4 + 0x20;
+    }
+    *puVar2 = (char)uVar3;
+    puVar2 = puVar2 + 1;
+  }
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+} // namespace tea

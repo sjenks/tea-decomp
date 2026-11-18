@@ -9,12 +9,12 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0040fdf0  OWL::TErrorMode::~TErrorMode   (34 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as OWL::TErrorMode::_dtor
-void __cdecl OWL::TErrorMode::_dtor(UINT *param_1,byte param_2)
+void __cdecl OWL::TErrorMode::_dtor(UINT *self,byte dtorFlags)
 
 {
-  if (param_1 != (UINT *)0x0) {
-    SetErrorMode(*param_1);
-    if ((param_2 & 1) != 0) {
+  if (self != (UINT *)0x0) {
+    SetErrorMode(*self);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

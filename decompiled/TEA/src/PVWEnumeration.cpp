@@ -8,15 +8,15 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041be30  PVWEnumeration::Find   (70 bytes)   [owl:response-table response-table-find]
-//   also: PVWEnumeration::vf8 [rtti:vtable]
-undefined4 __cdecl PVWEnumeration::Find(undefined4 *param_1,int *param_2,undefined *param_3)
+//   also: PVWEnumeration::Find [rtti:vtable]; PVWEnumeration::vf8 [rtti:vtable]
+undefined4 __cdecl PVWEnumeration::Find(undefined4 *self,int *eventInfo,undefined *equal)
 
 {
-  undefined4 uVar1;
+  undefined4 found;
   
-  param_2[2] = (int)param_1;
-  uVar1 = FUN_0048e808(param_1[1],(int *)&PVWEnumeration::__entries,param_2,param_3);
-  if (((char)uVar1 == '\0') && (uVar1 = OWL::TControl::vf8(param_1,param_2,param_3), (char)uVar1 == '\0'))
+  eventInfo[2] = (int)self;
+  found = FUN_0048e808(self[1],(int *)&PVWEnumeration::__entries,eventInfo,equal);
+  if (((char)found == '\0') && (found = OWL::TControl::Find(self,eventInfo,equal), (char)found == '\0'))
   {
     return 0;
   }
@@ -24,125 +24,127 @@ undefined4 __cdecl PVWEnumeration::Find(undefined4 *param_1,int *param_2,undefin
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041be78  FUN_0041be78   (328 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-int * __cdecl FUN_0041be78(int *param_1,int param_2,undefined4 *param_3,undefined4 param_4,int param_5,int param_6 )
+// 0x0041be78  PVWEnumeration::PVWEnumeration   (328 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores PVWEnumeration's vtable at its vptr offset (+0xc) in this
+int * __cdecl PVWEnumeration::PVWEnumeration(int *self,int vbasesBuilt,undefined4 *param_3,undefined4 param_4,int param_5,int param_6 )
 
 {
   undefined4 uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4eed4c);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 0xd);
-    param_1[0xd] = (int)(param_1 + 10);
-    param_1[0xe] = (int)(param_1 + 0xb);
-    param_1[1] = (int)(param_1 + 10);
-    param_1[2] = (int)(param_1 + 0xb);
-    param_1[9] = 0;
-    param_1[0xc] = 0;
-    param_1[10] = (int)&OWL::TEventHandler::vftable;
-    param_1[0xb] = (int)&OWL::TStreamableBase::vftable;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    FUN_004a4fbc(param_1 + 0xd,1);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
+  if (vbasesBuilt == 0) {
+    *self = (int)(self + 0xd);
+    self[0xd] = (int)(self + 10);
+    self[0xe] = (int)(self + 0xb);
+    self[1] = (int)(self + 10);
+    self[2] = (int)(self + 0xb);
+    self[9] = 0;
+    self[0xc] = 0;
+    self[10] = (int)&OWL::TEventHandler::vftable;
+    self[0xb] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::TWindow_4a4fbc(self + 0xd,1);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
   }
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0xc;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0xc;
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0xc;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -0xc;
   if (param_3 == (undefined4 *)0x0) {
     uVar1 = 0;
   }
   else {
     uVar1 = *param_3;
   }
-  FUN_004acc48(param_1,1,uVar1,param_4,0,0);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0xc;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0xc;
-  param_1[3] = (int)&PVWEnumeration::vftable;
-  *(undefined ***)param_1[1] = &PTR_LAB_004f02e8;
-  *(undefined ***)param_1[2] = &PTR_LAB_004f02f4;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_004f0300;
-  param_1[6] = param_5;
-  param_1[7] = param_6;
-  param_1[8] = (int)param_3;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  OWL::TComboBox::TComboBox(self,1,uVar1,param_4,0,0);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0xc;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 0xc;
+  self[3] = (int)&PVWEnumeration::vftable;
+  *(undefined ***)self[1] = &PTR_LAB_004f02e8;
+  *(undefined ***)self[2] = &PTR_LAB_004f02f4;
+  *(undefined ***)(*self + 8) = &PVWEnumeration::vftable_TWindow;
+  self[6] = param_5;
+  self[7] = param_6;
+  self[8] = (int)param_3;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041bfe0  PVWEnumeration::~PVWEnumeration   (251 bytes)   [rtti:dtor destructor]
 //   written in code as PVWEnumeration::_dtor
-void __cdecl PVWEnumeration::_dtor(int *param_1,uint param_2)
+void __cdecl PVWEnumeration::_dtor(int *self,uint dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4eed70);
-  if (param_1 != (int *)0x0) {
-    param_1[3] = (int)&PVWEnumeration::vftable;
-    *(undefined ***)param_1[1] = &PTR_LAB_004f02e8;
-    *(undefined ***)param_1[2] = &PTR_LAB_004f02f4;
-    *(undefined ***)(*param_1 + 8) = &PTR_LAB_004f0300;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0xc;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0xc;
-    OWL::TComboBox::_dtor(param_1,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0xc;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0xc;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0xd,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 0xb,0);
+  if (self != (int *)0x0) {
+    self[3] = (int)&PVWEnumeration::vftable;
+    *(undefined ***)self[1] = &PTR_LAB_004f02e8;
+    *(undefined ***)self[2] = &PTR_LAB_004f02f4;
+    *(undefined ***)(*self + 8) = &PVWEnumeration::vftable_TWindow;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0xc;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -0xc;
+    OWL::TComboBox::_dtor(self,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0xc;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 0xc;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0xd,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 0xb,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041c0dc  PVWEnumeration::vf33   (237 bytes)   [rtti:vtable virtual slot 33]
+// 0x0041c0dc  PVWEnumeration::SetupWindow   (237 bytes)   [rtti:vtable virtual slot 30]
+//   override of OWL::TWindow vtable slot 30, from PVWEnumeration's OWL::TWindow subobject vtable at 0x004f0300 (through the this-adjusting thunk at 0x004224f6); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: PVWEnumeration::vf33 [rtti:vtable]
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-void __cdecl PVWEnumeration::vf33(int param_1)
+void __cdecl PVWEnumeration::SetupWindow(int self)
 
 {
-  int iVar1;
+  int prevRefs;
   int iVar2;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  int local_c;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  int str;
   
   __InitExceptBlockLDTC(0x4eeda4);
   iVar2 = 0;
   do {
-    if (*(int *)(param_1 + 0x18) <= iVar2) {
-      *in_FS_OFFSET = local_38;
+    if (*(int *)(self + 0x18) <= iVar2) {
+      *sehChainHead = sehPrevFrame;
       return;
     }
-    (**(code **)(*(int *)(*(int *)(param_1 + 0x20) + 0xc) + 0xa8))();
-    (**(code **)(*(int *)(param_1 + 0xc) + 100))();
-    if (local_c != 0) {
-      if (*(int *)(local_c + -0xc) != -1) {
-        piVar3 = (int *)(local_c + -0xc);
-        if (piVar3 == &DAT_00513d58) {
-          iVar1 = 1;
+    (**(code **)(*(int *)(*(int *)(self + 0x20) + 0xc) + 0xa8))();
+    (**(code **)(*(int *)(self + 0xc) + 100))();
+    if (str != 0) {
+      if (*(int *)(str + -0xc) != -1) {
+        strRep = (int *)(str + -0xc);
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (piVar3 == &DAT_00513d58) {
-          iVar1 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *piVar3 = *piVar3 + -1;
-          iVar1 = *piVar3 + 1;
+          *strRep = *strRep + -1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar1 != 0) goto LAB_0041c1a9;
+        if (prevRefs != 0) goto LAB_0041c1a9;
       }
       operator_delete();
-      local_c = 0;
+      str = 0;
     }
 LAB_0041c1a9:
     iVar2 = iVar2 + 1;
@@ -150,31 +152,31 @@ LAB_0041c1a9:
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041c1cc  FUN_0041c1cc   (22 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_0041c1cc(int param_1)
+// 0x0041c1cc  PVWEnumeration::Reset   (22 bytes)   [analysis]
+//   clears the selection
+void __cdecl PVWEnumeration::Reset(int self)
 
 {
-  (**(code **)(*(int *)(param_1 + 0xc) + 0x70))();
+  (**(code **)(*(int *)(self + 0xc) + 0x70))();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041c1e4  PVWEnumeration::NotifyAtChild_9   (44 bytes)   [owl:response-table message-handler]
 //   EV_NOTIFY_AT_CHILD(code 9)
-void __cdecl PVWEnumeration::NotifyAtChild_9(int *param_1)
+void __cdecl PVWEnumeration::NotifyAtChild_9(int *self)
 
 {
   int iVar1;
-  int iVar2;
+  int ctrlId;
   undefined4 uVar3;
-  int *piVar4;
+  int *self2;
   
-  iVar2 = GetDlgCtrlID(*(HWND *)(*param_1 + 0xc));
-  piVar4 = param_1;
-  uVar3 = (**(code **)(param_1[3] + 0x6c))();
-  iVar1 = param_1[8];
-  (**(code **)(*(int *)(iVar1 + 0xc) + 0x74))(iVar1,*(int *)(iVar1 + 0xc),piVar4,iVar1,uVar3,iVar2);
+  ctrlId = GetDlgCtrlID(*(HWND *)(*self + 0xc));
+  self2 = self;
+  uVar3 = (**(code **)(self[3] + 0x6c))();
+  iVar1 = self[8];
+  (**(code **)(*(int *)(iVar1 + 0xc) + 0x74))(iVar1,*(int *)(iVar1 + 0xc),self2,iVar1,uVar3,ctrlId);
   return;
 }
 

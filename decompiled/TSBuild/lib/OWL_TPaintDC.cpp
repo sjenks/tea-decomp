@@ -9,35 +9,35 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0042ec14  OWL::TPaintDC::~TPaintDC   (126 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TPaintDC::_dtor
-void __cdecl OWL::TPaintDC::_dtor(int *param_1,byte param_2)
+void __cdecl OWL::TPaintDC::_dtor(int *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x47ca74);
-  if (param_1 != (int *)0x0) {
-    *(undefined ***)((int)param_1 + 5) = &OWL::TPaintDC::vftable;
-    FUN_00421ef4(param_1);
-    if ((char)param_1[1] != '\0') {
-      EndPaint(*(HWND *)((int)param_1 + 0x61),(PAINTSTRUCT *)((int)param_1 + 0x21));
+  if (self != (int *)0x0) {
+    *(undefined ***)((int)self + 5) = &OWL::TPaintDC::vftable;
+    FUN_00421ef4(self);
+    if ((char)self[1] != '\0') {
+      EndPaint(*(HWND *)((int)self + 0x61),(PAINTSTRUCT *)((int)self + 0x21));
     }
-    OWL::TDC::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+    OWL::TDC::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042ed40  OWL::TPaintDC::vf24   (10 bytes)   [rtti:vtable virtual slot 24; function defined from vtable-slot]
-void OWL::TPaintDC::vf24(char *param_1,undefined4 param_2,char param_3)
+void OWL::TPaintDC::vf24(char *self,undefined4 param_2,char param_3)
 
 {
-  *param_1 = *param_1 + (char)param_1;
-  *(char *)((int)param_1 * 2) = *(char *)((int)param_1 * 2) + param_3;
+  *self = *self + (char)self;
+  *(char *)((int)self * 2) = *(char *)((int)self * 2) + param_3;
   return;
 }
 

@@ -1,52 +1,52 @@
 address	name	name_in_code	class	kind	name_source	file	bytes
 0x00401000	entry	entry				src/main.cpp	2
-0x00401012	FUN_00401012	FUN_00401012				src/main.cpp	71
+0x00401012	__startup	__startup		function	analysis	src/main.cpp	71
 0x00401059	__GetExceptDLLinfo	__GetExceptDLLinfo				src/main.cpp	5
-0x00401140	FUN_00401140	FUN_00401140				src/main.cpp	15
-0x00401150	FUN_00401150	FUN_00401150				src/main.cpp	85
-0x004011a8	FUN_004011a8	FUN_004011a8				src/main.cpp	290
+0x00401140	__getTlsBlock	__getTlsBlock		function	analysis	src/main.cpp	15
+0x00401150	InitRegistryPaths	InitRegistryPaths		function	analysis	src/main.cpp	85
+0x004011a8	DestroyRegistryPaths	DestroyRegistryPaths		function	analysis	src/main.cpp	290
 0x004012cc	main	main_		function	analysis	src/main.cpp	12873
-0x0040483c	FUN_0040483c	FUN_0040483c				src/main.cpp	182
-0x004048f4	FUN_004048f4	FUN_004048f4				src/main.cpp	893
-0x00404d2c	FUN_00404d2c	FUN_00404d2c				src/main.cpp	46
-0x00404d5c	FUN_00404d5c	FUN_00404d5c				src/main.cpp	293
-0x00404ea8	FUN_00404ea8	FUN_00404ea8				src/main.cpp	22
+0x0040483c	std::_Destroy_range_string	std::_Destroy_range_string		function	analysis	src/main.cpp	182
+0x004048f4	std::vector_string::insert_aux	std::vector_string::insert_aux		function	analysis	src/main.cpp	893
+0x00404d2c	std::copy_backward_string	std::copy_backward_string		function	analysis	src/main.cpp	46
+0x00404d5c	std::uninitialized_copy_string	std::uninitialized_copy_string		function	analysis	src/main.cpp	293
+0x00404ea8	std::_Destroy_range_16	std::_Destroy_range_16		function	analysis	src/main.cpp	22
 0x00404f9c	std::exception::vf1	std::exception::vf1	std::exception	virtual	rtti:vtable	src/main.cpp	10
 0x00404fa8	std::bad_alloc::vf1	std::bad_alloc::vf1	std::bad_alloc	virtual	rtti:vtable	src/main.cpp	10
 0x00404fb4	std::string::~basic_string	std::string::_dtor	std::string	destructor	rtti:dtor	src/main.cpp	143
 0x00405044	std::vector<std::string>::~vector	std::vector_std_string::_dtor	std::vector<std::string>	destructor	rtti:dtor	src/main.cpp	54
 0x0040507c	std::vector<MatchEngine *>::~vector	std::vector_MatchEngine_ptr::_dtor	std::vector<MatchEngine *>	destructor	rtti:dtor	src/main.cpp	54
-0x004050b4	FUN_004050b4	FUN_004050b4				src/main.cpp	22
-0x004050cc	FUN_004050cc	FUN_004050cc				src/main.cpp	151
-0x00405164	FUN_00405164	FUN_00405164				src/main.cpp	88
-0x004051bc	FUN_004051bc	FUN_004051bc				src/main.cpp	163
+0x004050b4	std::_Destroy_range_ptr	std::_Destroy_range_ptr		function	analysis	src/main.cpp	22
+0x004050cc	InitDictionaryCache	InitDictionaryCache		function	analysis	src/main.cpp	151
+0x00405164	DestroyDictionaryCache	DestroyDictionaryCache		function	analysis	src/main.cpp	88
+0x004051bc	TSDictionaryList::TSDictionaryList	TSDictionaryList::TSDictionaryList	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	163
 0x00405280	TSDictionaryList::~TSDictionaryList	TSDictionaryList::_dtor	TSDictionaryList	destructor	rtti:dtor	src/TSDictionaryList.cpp	115
-0x004052f4	FUN_004052f4	FUN_004052f4				src/TSDictionaryList.cpp	22
-0x0040530c	FUN_0040530c	FUN_0040530c				src/TSDictionaryList.cpp	3045
-0x004061d0	FUN_004061d0	FUN_004061d0				src/TSDictionaryList.cpp	437
-0x004063a8	FUN_004063a8	FUN_004063a8				src/TSDictionaryList.cpp	36
-0x004063cc	FUN_004063cc	FUN_004063cc				src/TSDictionaryList.cpp	89
-0x0040644c	FUN_0040644c	FUN_0040644c				src/TSDictionaryList.cpp	22
+0x004052f4	std::_Destroy_range_ptr_4052f4	std::_Destroy_range_ptr_4052f4		function	analysis	src/TSDictionaryList.cpp	22
+0x0040530c	TSDictionaryList::Open	TSDictionaryList::Open	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	3045
+0x004061d0	std::vector_ptr::insert_aux	std::vector_ptr::insert_aux		function	analysis	src/TSDictionaryList.cpp	437
+0x004063a8	std::copy_backward_ptr	std::copy_backward_ptr		function	analysis	src/TSDictionaryList.cpp	36
+0x004063cc	std::copy_ptr	std::copy_ptr		function	analysis	src/TSDictionaryList.cpp	89
+0x0040644c	std::_Destroy_range_ptr_40644c	std::_Destroy_range_ptr_40644c		function	analysis	src/TSDictionaryList.cpp	22
 0x00406464	TSDictionaryList::ReleaseDictionaries	TSDictionaryList::ReleaseDictionaries	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	201
-0x00406564	FUN_00406564	FUN_00406564				src/TSDictionaryList.cpp	31
-0x00406584	FUN_00406584	FUN_00406584				src/TSDictionaryList.cpp	36
+0x00406564	std::find_ptr	std::find_ptr		function	analysis	src/TSDictionaryList.cpp	31
+0x00406584	std::copy_ptr_406584	std::copy_ptr_406584		function	analysis	src/TSDictionaryList.cpp	36
 0x004065a8	TSDictionaryList::GetCount	TSDictionaryList::GetCount	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	29
-0x004065c8	FUN_004065c8	FUN_004065c8				src/TSDictionaryList.cpp	56
-0x00406600	FUN_00406600	FUN_00406600				src/TSDictionaryList.cpp	252
-0x004066fc	FUN_004066fc	FUN_004066fc				src/TSDictionaryList.cpp	34
-0x00406720	FUN_00406720	FUN_00406720				src/TSDictionaryList.cpp	34
+0x004065c8	TSDictionaryList::GetFirstMissingPath	TSDictionaryList::GetFirstMissingPath	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	56
+0x00406600	TSDictionaryList::IsLoaded	TSDictionaryList::IsLoaded	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	252
+0x004066fc	TSDictionaryList::EnsureCurrent	TSDictionaryList::EnsureCurrent	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	34
+0x00406720	TSDictionaryList::GetPath	TSDictionaryList::GetPath	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	34
 0x00406744	TSDictionaryList::GetNumLengths	TSDictionaryList::GetNumLengths	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	26
 0x00406760	TSDictionaryList::GetWordStreamOffset	TSDictionaryList::GetWordStreamOffset	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	29
-0x00406780	FUN_00406780	FUN_00406780				src/TSDictionaryList.cpp	29
-0x004067a0	FUN_004067a0	FUN_004067a0				src/TSDictionaryList.cpp	26
+0x00406780	TSDictionaryList::GetLetterChar	TSDictionaryList::GetLetterChar	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	29
+0x004067a0	TSDictionaryList::GetNumUsedLetters	TSDictionaryList::GetNumUsedLetters	TSDictionaryList	function	analysis	src/TSDictionaryList.cpp	26
 0x00406814	TSDictionaryList::Dictionary::Dictionary	TSDictionaryList::Dictionary::Dictionary	TSDictionaryList::Dictionary	function	analysis	src/TSDictionaryList.cpp	315
 0x00406950	TSDictionaryList::Dictionary::~Dictionary	TSDictionaryList::Dictionary::_dtor	TSDictionaryList::Dictionary	destructor	rtti:dtor	src/TSDictionaryList.cpp	218
 0x00406a2c	TSDictionaryList::Dictionary::Load	TSDictionaryList::Dictionary::Load	TSDictionaryList::Dictionary	function	notes+analysis	src/TSDictionaryList.cpp	1774
 0x0040711c	TSDictionaryList::Dictionary::Unload	TSDictionaryList::Dictionary::Unload	TSDictionaryList::Dictionary	function	analysis	src/TSDictionaryList.cpp	132
 0x004071a0	TSDictionaryList::Dictionary::EnsureCurrent	TSDictionaryList::Dictionary::EnsureCurrent	TSDictionaryList::Dictionary	function	analysis	src/TSDictionaryList.cpp	94
-0x00407200	TSDictionaryList::Dictionary::vf4	TSDictionaryList::Dictionary::vf4	TSDictionaryList::Dictionary	virtual	rtti:vtable	src/TSDictionaryList.cpp	14
+0x00407200	TSDictionaryList::Dictionary::GetPathData	TSDictionaryList::Dictionary::GetPathData	TSDictionaryList::Dictionary	virtual	analysis	src/TSDictionaryList.cpp	14
 0x00407210	TSDictionaryList::Dictionary::GetFileTitle	TSDictionaryList::Dictionary::GetFileTitle	TSDictionaryList::Dictionary	function	analysis	src/TSDictionaryList.cpp	66
-0x00407254	TSDictionaryList::Dictionary::vf6	TSDictionaryList::Dictionary::vf6	TSDictionaryList::Dictionary	virtual	rtti:vtable	src/TSDictionaryList.cpp	14
+0x00407254	TSDictionaryList::Dictionary::GetFileName	TSDictionaryList::Dictionary::GetFileName	TSDictionaryList::Dictionary	virtual	analysis	src/TSDictionaryList.cpp	14
 0x00407264	TSDictionaryList::Dictionary::GetCounts	TSDictionaryList::Dictionary::GetCounts	TSDictionaryList::Dictionary	function	analysis	src/TSDictionaryList.cpp	102
 0x004072cc	TSDictionaryList::Dictionary::GetSummaryText	TSDictionaryList::Dictionary::GetSummaryText	TSDictionaryList::Dictionary	function	analysis	src/TSDictionaryList.cpp	603
 0x00407528	TSDictionaryList::Dictionary::GetFileDateText	TSDictionaryList::Dictionary::GetFileDateText	TSDictionaryList::Dictionary	function	analysis	src/TSDictionaryList.cpp	575
@@ -54,14 +54,14 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0040784c	MatchEngine::~MatchEngine	MatchEngine::_dtor	MatchEngine	destructor	rtti:dtor	src/MatchEngine.cpp	200
 0x00407a80	std::logic_error::vf1	std::logic_error::vf1	std::logic_error	virtual	rtti:vtable	src/MatchEngine.cpp	11
 0x00407a8c	std::vector<TSDictionaryList::Dictionary *>::~vector	std::vector_TSDictionaryList_Dictionary_ptr::_dtor	std::vector<TSDictionaryList::Dictionary *>	destructor	rtti:dtor	src/MatchEngine.cpp	54
-0x00407ae0	FUN_00407ae0	FUN_00407ae0				src/MatchEngine.cpp	3508
-0x00408894	FUN_00408894	FUN_00408894				src/MatchEngine.cpp	41
-0x004088c0	FUN_004088c0	FUN_004088c0				src/MatchEngine.cpp	638
-0x00408b40	FUN_00408b40	FUN_00408b40				src/MatchEngine.cpp	899
+0x00407ae0	ExpandLongPathName	ExpandLongPathName		function	analysis	src/MatchEngine.cpp	3508
+0x00408894	memrchr	memrchr		function	analysis	src/MatchEngine.cpp	41
+0x004088c0	std::operator_plus	std::operator_plus		function	analysis	src/MatchEngine.cpp	638
+0x00408b40	AppendChar	AppendChar		function	analysis	src/MatchEngine.cpp	899
 0x00408ec4	GetFileTitleString	GetFileTitleString		function	analysis	src/MatchEngine.cpp	315
-0x00409000	FUN_00409000	FUN_00409000				src/MatchEngine.cpp	156
+0x00409000	IsRelativePath	IsRelativePath		function	analysis	src/MatchEngine.cpp	156
 0x0040909c	GetProgramDirectory	GetProgramDirectory		function	analysis	src/MatchEngine.cpp	362
-0x00409208	FUN_00409208	FUN_00409208				src/MatchEngine.cpp	1106
+0x00409208	ResolveRelativePaths	ResolveRelativePaths		function	analysis	src/MatchEngine.cpp	1106
 0x0040965c	ReadFileTime	ReadFileTime		function	analysis	src/MatchEngine.cpp	102
 0x00409948	std::locale::~locale	std::locale::_dtor	std::locale	destructor	rtti:dtor	src/MatchEngine.cpp	110
 0x00409a5c	InputEngine::InputEngine	InputEngine::InputEngine	InputEngine	function	analysis	src/InputEngine.cpp	169
@@ -71,10 +71,10 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0040a09c	MatchEngineSet::EvalLogic	MatchEngineSet::EvalLogic		function	notes+analysis	src/InputEngine.cpp	372
 0x0040a218	InputEngine::OpenFile	InputEngine::OpenFile	InputEngine	function	notes+analysis	src/InputEngine.cpp	288
 0x0040a338	InputEngine::GetAnnotation	InputEngine::GetAnnotation	InputEngine	function	notes+analysis	src/InputEngine.cpp	37
-0x0040a360	FUN_0040a360	FUN_0040a360				src/InputEngine.cpp	25
-0x0040a37c	MatchEngine::CompilePattern	MatchEngine::CompilePattern	MatchEngine	function	notes (structure checked)	src/MatchEngine.cpp	2748
-0x0040ae38	MatchEngine::CompileTemplate	MatchEngine::CompileTemplate	MatchEngine	function	notes (inferred)	src/MatchEngine.cpp	2202
-0x0040b6d8	MatchEngine::CompileAnagram	MatchEngine::CompileAnagram	MatchEngine	function	notes (inferred)	src/MatchEngine.cpp	3470
+0x0040a360	MatchEngine::Emit	MatchEngine::Emit	MatchEngine	function	analysis	src/MatchEngine.cpp	25
+0x0040a37c	MatchEngine::CompilePattern	MatchEngine::CompilePattern	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	2748
+0x0040ae38	MatchEngine::CompileTemplate	MatchEngine::CompileTemplate	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	2202
+0x0040b6d8	MatchEngine::CompileAnagram	MatchEngine::CompileAnagram	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	3470
 0x0040c468	MatchEngine::Compile	MatchEngine::Compile	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	4431
 0x0040d5b8	MatchEngine::IsValid	MatchEngine::IsValid	MatchEngine	function	analysis	src/MatchEngine.cpp	14
 0x0040d5c8	MatchEngine::GetStatus	MatchEngine::GetStatus	MatchEngine	function	analysis	src/MatchEngine.cpp	14
@@ -93,7 +93,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0040da30	VariableValues::Save	VariableValues::Save	VariableValues	function	analysis	src/VariableValues.cpp	32
 0x0040da50	VariableValues::Restore	VariableValues::Restore	VariableValues	function	analysis	src/VariableValues.cpp	37
 0x0040da78	MatchEngine::ResetMatchState	MatchEngine::ResetMatchState	MatchEngine	function	analysis	src/MatchEngine.cpp	15
-0x0040da88	FUN_0040da88	FUN_0040da88				src/MatchEngine.cpp	87
+0x0040da88	std::string::string	std::string::string		function	analysis	src/MatchEngine.cpp	87
 0x0040dae0	Pattern::Pattern	Pattern::Pattern	Pattern	function	analysis	src/Pattern.cpp	89
 0x0040db54	Pattern::~Pattern	Pattern::_dtor	Pattern	destructor	rtti:dtor	src/Pattern.cpp	100
 0x0040dbb8	Pattern::Add	Pattern::Add	Pattern	function	analysis	src/Pattern.cpp	161
@@ -102,58 +102,58 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0040dc80	MatchEngine::MatchFixedTemplate	MatchEngine::MatchFixedTemplate	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	32
 0x0040dca0	MatchEngine::MatchDistinctAnagram	MatchEngine::MatchDistinctAnagram	MatchEngine	function	notes	src/MatchEngine.cpp	114
 0x0040dd14	MatchEngine::MatchMultiAnagram	MatchEngine::MatchMultiAnagram	MatchEngine	function	notes	src/MatchEngine.cpp	99
-0x0040dd78	MatchEngine::RunTemplateVM	MatchEngine::RunTemplateVM	MatchEngine	function	notes	src/MatchEngine.cpp	1659
+0x0040dd78	MatchEngine::RunTemplateVM	MatchEngine::RunTemplateVM	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	1659
 0x0040e3f8	MatchEngine::AnagramSingleLetters	MatchEngine::AnagramSingleLetters	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	54
 0x0040e430	MatchEngine::AnagramMultiLetters	MatchEngine::AnagramMultiLetters	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	67
-0x0040e474	FUN_0040e474	FUN_0040e474				src/MatchEngine.cpp	10
+0x0040e474	MatchEngine::AnagramEnd	MatchEngine::AnagramEnd	MatchEngine	function	analysis	src/MatchEngine.cpp	10
 0x0040e480	MatchEngine::AnagramChoiceLists	MatchEngine::AnagramChoiceLists	MatchEngine	function	notes	src/MatchEngine.cpp	239
 0x0040e570	MatchEngine::AnagramChoiceListsOp	MatchEngine::AnagramChoiceListsOp	MatchEngine	function	analysis	src/MatchEngine.cpp	67
-0x0040e5b4	MatchEngine::AnagramVariables	MatchEngine::AnagramVariables	MatchEngine	function	notes	src/MatchEngine.cpp	332
-0x0040e700	FUN_0040e700	FUN_0040e700				src/MatchEngine.cpp	155
-0x0040e79c	MatchEngine::AnagramSubPattern	MatchEngine::AnagramSubPattern	MatchEngine	function	notes	src/MatchEngine.cpp	698
+0x0040e5b4	MatchEngine::AnagramVariables	MatchEngine::AnagramVariables	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	332
+0x0040e700	MatchEngine::AnagramBoundVariables	MatchEngine::AnagramBoundVariables	MatchEngine	function	analysis	src/MatchEngine.cpp	155
+0x0040e79c	MatchEngine::AnagramSubPattern	MatchEngine::AnagramSubPattern	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	698
 0x0040ea58	MatchEngine::RunAnagramVM	MatchEngine::RunAnagramVM	MatchEngine	function	notes	src/MatchEngine.cpp	200
 0x0040eb20	MatchEngine::ComputeBalance	MatchEngine::ComputeBalance	MatchEngine	function	notes+analysis	src/MatchEngine.cpp	124
 0x0040ebec	MatchEngine::MatchGeneral	MatchEngine::MatchGeneral	MatchEngine	function	analysis	src/MatchEngine.cpp	401
 0x0040ed84	VariableValues::~VariableValues	VariableValues::_dtor	VariableValues	destructor	rtti:dtor	src/VariableValues.cpp	53
-0x0040edbc	FilterWordByCaseMode	FilterWordByCaseMode		function	analysis (inferred)	src/VariableValues.cpp	1200
-0x0040f26c	TEAViewProfileWindows::Load	TEAViewProfileWindows::Load	TEAViewProfileWindows	function	analysis (inferred)	src/TEAViewProfileWindows.cpp	7863
+0x0040edbc	FilterWordByCaseMode	FilterWordByCaseMode		function	analysis	src/VariableValues.cpp	1200
+0x0040f26c	TEAViewProfileWindows::TEAViewProfileWindows	TEAViewProfileWindows::TEAViewProfileWindows	TEAViewProfileWindows	function	analysis	src/TEAViewProfileWindows.cpp	7863
 0x00411148	TEAViewProfileWindows::~TEAViewProfileWindows	TEAViewProfileWindows::_dtor	TEAViewProfileWindows	destructor	rtti:dtor	src/TEAViewProfileWindows.cpp	449
 0x0041130c	ExpandQueryMacros	ExpandQueryMacros		function	notes+analysis	src/main.cpp	612
 0x00411570	LoadPatternOptions	LoadPatternOptions		function	analysis	src/main.cpp	926
-0x00411910	FUN_00411910	FUN_00411910				src/main.cpp	41
+0x00411910	NextTokenInt	NextTokenInt		function	analysis	src/main.cpp	41
 0x0041193c	Persist::Persist	Persist::Persist	Persist	function	analysis	src/Persist.cpp	201
 0x00411a20	Persist::~Persist	Persist::_dtor	Persist	destructor	rtti:dtor	src/Persist.cpp	42
-0x00411a4c	Persist::QueryValueSized	Persist::QueryValueSized	Persist	function	analysis	src/Persist.cpp	116
-0x00411ac0	Persist::QueryValue	Persist::QueryValue	Persist	function	analysis	src/Persist.cpp	83
-0x00411b14	FUN_00411b14	FUN_00411b14				src/Persist.cpp	364
-0x00411c80	FUN_00411c80	FUN_00411c80				src/Persist.cpp	248
-0x00411d78	FUN_00411d78	FUN_00411d78				src/Persist.cpp	95
-0x00411dd8	FUN_00411dd8	FUN_00411dd8				src/Persist.cpp	186
-0x00411e94	FUN_00411e94	FUN_00411e94				src/Persist.cpp	162
+0x00411a4c	Persist::QueryString	Persist::QueryString	Persist	function	analysis	src/Persist.cpp	116
+0x00411ac0	Persist::QueryDword	Persist::QueryDword	Persist	function	analysis	src/Persist.cpp	83
+0x00411b14	Persist::QueryFont	Persist::QueryFont	Persist	function	analysis	src/Persist.cpp	364
+0x00411c80	Persist::QueryColour	Persist::QueryColour	Persist	function	analysis	src/Persist.cpp	248
+0x00411d78	ParseColour	ParseColour		function	analysis	src/Persist.cpp	95
+0x00411dd8	ParseLogFont	ParseLogFont		function	analysis	src/Persist.cpp	186
+0x00411e94	MatchEngineSet::MatchEngineSet	MatchEngineSet::MatchEngineSet	MatchEngineSet	function	analysis	src/MatchEngineSet.cpp	162
 0x00411f58	MatchEngineSet::~MatchEngineSet	MatchEngineSet::_dtor	MatchEngineSet	destructor	rtti:dtor	src/MatchEngineSet.cpp	243
 0x0041204c	MatchEngineSet::Compile	MatchEngineSet::Compile	MatchEngineSet	function	notes+analysis	src/MatchEngineSet.cpp	5025
-0x004133f0	FUN_004133f0	FUN_004133f0				src/MatchEngineSet.cpp	236
-0x004134dc	FUN_004134dc	FUN_004134dc				src/MatchEngineSet.cpp	437
-0x004136b4	FUN_004136b4	FUN_004136b4				src/MatchEngineSet.cpp	36
-0x004136d8	FUN_004136d8	FUN_004136d8				src/MatchEngineSet.cpp	89
-0x00413758	FUN_00413758	FUN_00413758				src/MatchEngineSet.cpp	22
-0x00413770	FUN_00413770	FUN_00413770				src/MatchEngineSet.cpp	146
-0x00413804	FUN_00413804	FUN_00413804				src/MatchEngineSet.cpp	1439
-0x00413da4	FUN_00413da4	FUN_00413da4				src/MatchEngineSet.cpp	115
-0x00413e18	FUN_00413e18	FUN_00413e18				src/MatchEngineSet.cpp	1613
-0x00414468	FUN_00414468	FUN_00414468				src/MatchEngineSet.cpp	157
-0x00414508	FUN_00414508	FUN_00414508				src/MatchEngineSet.cpp	646
-0x004147b0	FUN_004147b0	FUN_004147b0				src/MatchEngineSet.cpp	31
-0x004147d0	FUN_004147d0	FUN_004147d0				src/MatchEngineSet.cpp	85
-0x0041484c	FUN_0041484c	FUN_0041484c				src/MatchEngineSet.cpp	36
-0x00414870	FUN_00414870	FUN_00414870				src/MatchEngineSet.cpp	21
-0x00414888	FUN_00414888	FUN_00414888				src/MatchEngineSet.cpp	374
-0x00414a00	FUN_00414a00	FUN_00414a00				src/MatchEngineSet.cpp	129
-0x00414a84	FUN_00414a84	FUN_00414a84				src/MatchEngineSet.cpp	21
-0x00414a9c	FUN_00414a9c	FUN_00414a9c				src/MatchEngineSet.cpp	21
-0x00414ab4	FUN_00414ab4	FUN_00414ab4				src/MatchEngineSet.cpp	784
+0x004133f0	std::logic_error::logic_error_copy	std::logic_error::logic_error_copy		function	analysis	src/MatchEngineSet.cpp	236
+0x004134dc	std::vector_MatchEngine_ptr::insert_aux	std::vector_MatchEngine_ptr::insert_aux		function	analysis	src/MatchEngineSet.cpp	437
+0x004136b4	std::copy_backward_ptr_4136b4	std::copy_backward_ptr_4136b4		function	analysis	src/MatchEngineSet.cpp	36
+0x004136d8	std::copy_ptr_4136d8	std::copy_ptr_4136d8		function	analysis	src/MatchEngineSet.cpp	89
+0x00413758	std::_Destroy_range_ptr_413758	std::_Destroy_range_ptr_413758		function	analysis	src/MatchEngineSet.cpp	22
+0x00413770	MatchEngineSet::SetWordLength	MatchEngineSet::SetWordLength	MatchEngineSet	function	analysis	src/MatchEngineSet.cpp	146
+0x00413804	MatchEngineSet::GetBalanceText	MatchEngineSet::GetBalanceText	MatchEngineSet	function	analysis	src/MatchEngineSet.cpp	1439
+0x00413da4	MatchEngineSet::GetLengthRange	MatchEngineSet::GetLengthRange	MatchEngineSet	function	analysis	src/MatchEngineSet.cpp	115
+0x00413e18	MatchEngineSet::Clear	MatchEngineSet::Clear	MatchEngineSet	function	analysis	src/MatchEngineSet.cpp	1613
+0x00414468	std::vector_MatchEngine_ptr::resize	std::vector_MatchEngine_ptr::resize		function	analysis	src/MatchEngineSet.cpp	157
+0x00414508	std::vector_MatchEngine_ptr::insert_fill	std::vector_MatchEngine_ptr::insert_fill		function	analysis	src/MatchEngineSet.cpp	646
+0x004147b0	std::fill_ptr	std::fill_ptr		function	analysis	src/MatchEngineSet.cpp	31
+0x004147d0	std::fill_n_ptr	std::fill_n_ptr		function	analysis	src/MatchEngineSet.cpp	85
+0x0041484c	std::copy_ptr_41484c	std::copy_ptr_41484c		function	analysis	src/MatchEngineSet.cpp	36
+0x00414870	CheckLicenseKey	CheckLicenseKey		function	analysis	src/MatchEngineSet.cpp	21
+0x00414888	CheckLicenseKeyImpl	CheckLicenseKeyImpl		function	analysis	src/MatchEngineSet.cpp	374
+0x00414a00	LicenseHashByte	LicenseHashByte		function	analysis	src/MatchEngineSet.cpp	129
+0x00414a84	CheckLicenseKey2	CheckLicenseKey2		function	analysis	src/MatchEngineSet.cpp	21
+0x00414a9c	CheckLicenseKey3	CheckLicenseKey3		function	analysis	src/MatchEngineSet.cpp	21
+0x00414ab4	GetCommonIniPath	GetCommonIniPath		function	analysis	src/MatchEngineSet.cpp	784
 0x00414ddc	Common::~Common	Common::_dtor	Common	destructor	rtti:dtor	src/Common.cpp	201
-0x00414ea8	FUN_00414ea8	FUN_00414ea8				src/Common.cpp	163
+0x00414ea8	Common::ReadLicense	Common::ReadLicense	Common	function	analysis	src/Common.cpp	163
 0x00414f4c	calloc	calloc		function	analysis (usage pattern)	lib/code_0x00414000.cpp	43
 0x00414f78	operator_delete	operator_delete		function	analysis (usage pattern)	lib/code_0x00414000.cpp	15
 0x00414f88	operator_delete_array	operator_delete_array		function	analysis (usage pattern)	lib/code_0x00414000.cpp	15
@@ -202,41 +202,41 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041662c	FUN_0041662c	FUN_0041662c				lib/code_0x00414000.cpp	55
 0x00416664	FUN_00416664	FUN_00416664				lib/code_0x00414000.cpp	55
 0x0041669c	FUN_0041669c	FUN_0041669c				lib/code_0x00414000.cpp	152
-0x00416734	FUN_00416734	FUN_00416734				lib/code_0x00414000.cpp	11
-0x00416740	FUN_00416740	FUN_00416740				lib/code_0x00414000.cpp	20
+0x00416734	std::string::__data	std::string::__data		function	analysis	lib/code_0x00414000.cpp	11
+0x00416740	std::string::__getRepOf	std::string::__getRepOf		function	analysis	lib/code_0x00414000.cpp	20
 0x00416754	FUN_00416754	FUN_00416754				lib/code_0x00414000.cpp	11
 0x00416760	FUN_00416760	FUN_00416760				lib/code_0x00414000.cpp	34
-0x00416784	FUN_00416784	FUN_00416784				lib/code_0x00414000.cpp	6
+0x00416784	std::string::__nullref	std::string::__nullref		function	analysis	lib/code_0x00414000.cpp	6
 0x0041678c	FUN_0041678c	FUN_0041678c				lib/code_0x00414000.cpp	52
 0x004167c0	FUN_004167c0	FUN_004167c0				lib/code_0x00414000.cpp	52
 0x004167f4	FUN_004167f4	FUN_004167f4				lib/code_0x00414000.cpp	32
-0x00416814	FUN_00416814	FUN_00416814				lib/code_0x00414000.cpp	37
+0x00416814	std::allocator::allocator_416814	std::allocator::allocator_416814		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x00414000.cpp	37
 0x0041683c	FUN_0041683c	FUN_0041683c				lib/code_0x00414000.cpp	15
 0x0041684c	FUN_0041684c	FUN_0041684c				lib/code_0x00414000.cpp	5
-0x00416854	FUN_00416854	FUN_00416854				lib/code_0x00414000.cpp	37
-0x0041687c	FUN_0041687c	FUN_0041687c				lib/code_0x00414000.cpp	20
+0x00416854	std::allocator::allocator_416854	std::allocator::allocator_416854		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x00414000.cpp	37
+0x0041687c	std::string::size	std::string::size		function	analysis	lib/code_0x00414000.cpp	20
 0x00416890	FUN_00416890	FUN_00416890				lib/code_0x00414000.cpp	15
 0x004168a0	FUN_004168a0	FUN_004168a0				lib/code_0x00414000.cpp	35
 0x004168c4	FUN_004168c4	FUN_004168c4				lib/code_0x00414000.cpp	52
-0x004168f8	FUN_004168f8	FUN_004168f8				lib/code_0x00414000.cpp	37
+0x004168f8	std::allocator::allocator	std::allocator::allocator		function	analysis	lib/code_0x00414000.cpp	37
 0x00416920	FUN_00416920	FUN_00416920				lib/code_0x00414000.cpp	58
 0x0041695c	FUN_0041695c	FUN_0041695c				lib/code_0x00414000.cpp	10
 0x00416968	FUN_00416968	FUN_00416968				lib/code_0x00414000.cpp	23
 0x00416980	FUN_00416980	FUN_00416980				lib/code_0x00414000.cpp	53
 0x004169b8	FUN_004169b8	FUN_004169b8				lib/code_0x00414000.cpp	83
 0x00416a0c	FUN_00416a0c	FUN_00416a0c				lib/code_0x00414000.cpp	44
-0x00416a38	FUN_00416a38	FUN_00416a38				lib/code_0x00414000.cpp	72
+0x00416a38	std::locale::facet::facet	std::locale::facet::facet	std::locale::facet	constructor	rtti:vtable-store	lib/std_locale.cpp	72
 0x00416a80	FUN_00416a80	FUN_00416a80				lib/code_0x00414000.cpp	66
 0x00416b00	FUN_00416b00	FUN_00416b00				lib/code_0x00414000.cpp	11
 0x00416b0c	FUN_00416b0c	FUN_00416b0c				lib/code_0x00414000.cpp	18
 0x00416b20	FUN_00416b20	FUN_00416b20				lib/code_0x00414000.cpp	101
 0x00416b88	__rwstd::locale_vector<__rwstd::facet_imp *>::~locale_vector	__rwstd::locale_vector_rwstd_facet_imp_ptr::_dtor	__rwstd::locale_vector<__rwstd::facet_imp *>	destructor	rtti:dtor	lib/rwstd_locale_vector.cpp	40
-0x00416bd0	FUN_00416bd0	FUN_00416bd0				lib/code_0x00414000.cpp	111
+0x00416bd0	std::string::operator_assign	std::string::operator_assign		function	analysis	lib/code_0x00414000.cpp	111
 0x00416c40	FUN_00416c40	FUN_00416c40				lib/code_0x00414000.cpp	21
 0x00416c58	FUN_00416c58	FUN_00416c58				lib/code_0x00414000.cpp	15
-0x00416c68	FUN_00416c68	FUN_00416c68				lib/code_0x00414000.cpp	376
-0x00416de0	FUN_00416de0	FUN_00416de0				lib/code_0x00414000.cpp	8
-0x00416de8	FUN_00416de8	FUN_00416de8				lib/code_0x00414000.cpp	83
+0x00416c68	std::string::assign_cstr	std::string::assign_cstr		function	analysis	lib/code_0x00414000.cpp	376
+0x00416de0	__rwstd::except_msg_string::msgstr	__rwstd::except_msg_string::msgstr		function	analysis	lib/code_0x00414000.cpp	8
+0x00416de8	std::logic_error::logic_error_416de8	std::logic_error::logic_error_416de8		function	analysis	lib/code_0x00414000.cpp	83
 0x00416e3c	FUN_00416e3c	FUN_00416e3c				lib/code_0x00414000.cpp	21
 0x00416e54	FUN_00416e54	FUN_00416e54				lib/code_0x00414000.cpp	15
 0x00416e64	FUN_00416e64	FUN_00416e64				lib/code_0x00414000.cpp	15
@@ -245,7 +245,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00416fc4	FUN_00416fc4	FUN_00416fc4				lib/code_0x00414000.cpp	55
 0x00416ffc	std::string::__getRep	std::string::__getRep		function	analysis (usage pattern)	lib/code_0x00414000.cpp	191
 0x004170bc	FUN_004170bc	FUN_004170bc				lib/code_0x00414000.cpp	106
-0x00417128	FUN_00417128	FUN_00417128				lib/code_0x00414000.cpp	62
+0x00417128	std::bad_alloc::bad_alloc	std::bad_alloc::bad_alloc	std::bad_alloc	constructor	rtti:vtable-store	lib/std_bad_alloc.cpp	62
 0x00417168	FUN_00417168	FUN_00417168				lib/code_0x00414000.cpp	51
 0x0041719c	FUN_0041719c	FUN_0041719c				lib/code_0x00414000.cpp	21
 0x004171b4	FUN_004171b4	FUN_004171b4				lib/code_0x00414000.cpp	78
@@ -255,35 +255,35 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004172b0	FUN_004172b0	FUN_004172b0				lib/code_0x00414000.cpp	26
 0x004172cc	FUN_004172cc	FUN_004172cc				lib/code_0x00414000.cpp	25
 0x004172e8	FUN_004172e8	FUN_004172e8				lib/code_0x00414000.cpp	3
-0x004172ec	FUN_004172ec	FUN_004172ec				lib/code_0x00414000.cpp	11
+0x004172ec	std::string::__rep_data	std::string::__rep_data		function	analysis	lib/code_0x00414000.cpp	11
 0x004172f8	FUN_004172f8	FUN_004172f8				lib/code_0x00414000.cpp	40
-0x00417320	FUN_00417320	FUN_00417320				lib/code_0x00414000.cpp	1015
-0x00417718	FUN_00417718	FUN_00417718				lib/code_0x00414000.cpp	69
-0x00417760	FUN_00417760	FUN_00417760				lib/code_0x00414000.cpp	69
+0x00417320	std::string::replace	std::string::replace		function	analysis	lib/code_0x00414000.cpp	1015
+0x00417718	std::out_of_range::out_of_range	std::out_of_range::out_of_range	std::out_of_range	constructor	rtti:vtable-store	lib/std_out_of_range.cpp	69
+0x00417760	std::length_error::length_error	std::length_error::length_error		function	analysis	lib/code_0x00414000.cpp	69
 0x004177a8	FUN_004177a8	FUN_004177a8				lib/code_0x00414000.cpp	29
 0x004177c8	FUN_004177c8	FUN_004177c8				lib/code_0x00414000.cpp	24
 0x004177e0	FUN_004177e0	FUN_004177e0				lib/code_0x00414000.cpp	11
-0x004177ec	FUN_004177ec	FUN_004177ec				lib/code_0x00414000.cpp	15
+0x004177ec	std::string::data	std::string::data		function	analysis	lib/code_0x00414000.cpp	15
 0x004177fc	__rwstd::locale_vector<std::string>::~locale_vector	__rwstd::locale_vector_std_string::_dtor	__rwstd::locale_vector<std::string>	destructor	rtti:dtor	lib/rwstd_locale_vector.cpp	96
 0x004178e8	std::wstring::~basic_string	std::wstring::_dtor	std::wstring	destructor	rtti:dtor	lib/std_wstring.cpp	34
 0x0041790c	FUN_0041790c	FUN_0041790c				lib/code_0x00414000.cpp	152
 0x004179a4	FUN_004179a4	FUN_004179a4				lib/code_0x00414000.cpp	11
-0x004179b0	FUN_004179b0	FUN_004179b0				lib/code_0x00414000.cpp	20
+0x004179b0	std::string::__getRepOf_4179b0	std::string::__getRepOf_4179b0		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x00414000.cpp	20
 0x004179c4	FUN_004179c4	FUN_004179c4				lib/code_0x00414000.cpp	11
 0x004179d0	FUN_004179d0	FUN_004179d0				lib/code_0x00414000.cpp	34
 0x004179f4	FUN_004179f4	FUN_004179f4				lib/code_0x00414000.cpp	6
 0x004179fc	FUN_004179fc	FUN_004179fc				lib/code_0x00414000.cpp	54
 0x00417a34	FUN_00417a34	FUN_00417a34				lib/code_0x00414000.cpp	52
 0x00417a68	FUN_00417a68	FUN_00417a68				lib/code_0x00414000.cpp	32
-0x00417a88	FUN_00417a88	FUN_00417a88				lib/code_0x00414000.cpp	37
+0x00417a88	std::allocator::allocator_417a88	std::allocator::allocator_417a88		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x00414000.cpp	37
 0x00417ab0	FUN_00417ab0	FUN_00417ab0				lib/code_0x00414000.cpp	15
 0x00417ac0	FUN_00417ac0	FUN_00417ac0				lib/code_0x00414000.cpp	5
-0x00417ac8	FUN_00417ac8	FUN_00417ac8				lib/code_0x00414000.cpp	37
+0x00417ac8	std::allocator::allocator_417ac8	std::allocator::allocator_417ac8		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x00414000.cpp	37
 0x00417af0	FUN_00417af0	FUN_00417af0				lib/code_0x00414000.cpp	15
 0x00417b00	FUN_00417b00	FUN_00417b00				lib/code_0x00414000.cpp	35
 0x00417b24	FUN_00417b24	FUN_00417b24				lib/code_0x00414000.cpp	52
-0x00417b58	FUN_00417b58	FUN_00417b58				lib/code_0x00414000.cpp	37
-0x00417b80	FUN_00417b80	FUN_00417b80				lib/code_0x00414000.cpp	20
+0x00417b58	std::allocator::allocator_417b58	std::allocator::allocator_417b58		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x00414000.cpp	37
+0x00417b80	std::string::size_417b80	std::string::size_417b80		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x00414000.cpp	20
 0x00417b94	FUN_00417b94	FUN_00417b94				lib/code_0x00414000.cpp	111
 0x00417c04	FUN_00417c04	FUN_00417c04				lib/code_0x00414000.cpp	58
 0x00417c40	FUN_00417c40	FUN_00417c40				lib/code_0x00414000.cpp	111
@@ -292,18 +292,18 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00417d14	FUN_00417d14	FUN_00417d14				lib/code_0x00414000.cpp	21
 0x00417d2c	std::locale::facet::~facet	std::locale::facet::_dtor	std::locale::facet	destructor	rtti:dtor	lib/std_locale.cpp	95
 0x00417d8c	FUN_00417d8c	FUN_00417d8c				lib/code_0x00414000.cpp	42
-0x00417df4	FUN_00417df4	FUN_00417df4				lib/code_0x00414000.cpp	79
+0x00417df4	std::basic_streambuf<char>::basic_streambuf	std::basic_streambuf_char::basic_streambuf	std::basic_streambuf<char>	constructor	rtti:vtable-store	lib/std_basic_streambuf.cpp	79
 0x00417e44	FUN_00417e44	FUN_00417e44				lib/code_0x00414000.cpp	70
 0x00417eac	FUN_00417eac	FUN_00417eac				lib/code_0x00414000.cpp	51
 0x00417ee0	FUN_00417ee0	FUN_00417ee0				lib/code_0x00414000.cpp	8
-0x00417ee8	FUN_00417ee8	FUN_00417ee8				lib/code_0x00414000.cpp	275
+0x00417ee8	std::basic_filebuf<char>::basic_filebuf	std::basic_filebuf_char::basic_filebuf	std::basic_filebuf<char>	constructor	rtti:vtable-store	lib/std_basic_filebuf.cpp	275
 0x00417ffc	std::basic_filebuf<char>::~basic_filebuf	std::basic_filebuf_char::_dtor	std::basic_filebuf<char>	destructor	rtti:dtor	lib/std_basic_filebuf.cpp	129
 0x00418080	FUN_00418080	FUN_00418080				lib/code_0x00418000.cpp	358
 0x004181e8	FUN_004181e8	FUN_004181e8				lib/code_0x00418000.cpp	4
 0x004181ec	FUN_004181ec	FUN_004181ec				lib/code_0x00418000.cpp	15
 0x004181fc	FUN_004181fc	FUN_004181fc				lib/code_0x00418000.cpp	15
 0x0041820c	std::basic_streambuf<char>::~basic_streambuf	std::basic_streambuf_char::_dtor	std::basic_streambuf<char>	destructor	rtti:dtor	lib/std_basic_streambuf.cpp	95
-0x004182a4	FUN_004182a4	FUN_004182a4				lib/code_0x00418000.cpp	77
+0x004182a4	std::basic_ios<char>::basic_ios	std::basic_ios_char::basic_ios	std::basic_ios<char>	constructor	rtti:vtable-store	lib/std_basic_ios.cpp	77
 0x0041830c	FUN_0041830c	FUN_0041830c				lib/code_0x00418000.cpp	79
 0x0041835c	FUN_0041835c	FUN_0041835c				lib/code_0x00418000.cpp	99
 0x004183c0	FUN_004183c0	FUN_004183c0				lib/code_0x00418000.cpp	21
@@ -316,9 +316,9 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041877c	std::basic_ostream<char>::~basic_ostream	std::basic_ostream_char::_dtor	std::basic_ostream<char>	destructor	rtti:dtor	lib/std_basic_ostream.cpp	118
 0x004187f4	std::basic_istream<char>::~basic_istream	std::basic_istream_char::_dtor	std::basic_istream<char>	destructor	rtti:dtor	lib/std_basic_istream.cpp	118
 0x0041886c	std::basic_ios<char>::~basic_ios	std::basic_ios_char::_dtor	std::basic_ios<char>	destructor	rtti:dtor	lib/std_basic_ios.cpp	93
-0x004188cc	FUN_004188cc	FUN_004188cc				lib/code_0x00418000.cpp	175
+0x004188cc	std::basic_istream<char>::basic_istream	std::basic_istream_char::basic_istream	std::basic_istream<char>	constructor	rtti:vtable-store	lib/std_basic_istream.cpp	175
 0x0041897c	FUN_0041897c	FUN_0041897c				lib/code_0x00418000.cpp	11
-0x00418988	FUN_00418988	FUN_00418988				lib/code_0x00418000.cpp	166
+0x00418988	std::basic_ostream<char>::basic_ostream	std::basic_ostream_char::basic_ostream	std::basic_ostream<char>	constructor	rtti:vtable-store	lib/std_basic_ostream.cpp	166
 0x00418a30	FUN_00418a30	FUN_00418a30				lib/code_0x00418000.cpp	385
 0x00418bb4	FUN_00418bb4	FUN_00418bb4				lib/code_0x00418000.cpp	11
 0x00418bc0	FUN_00418bc0	FUN_00418bc0				lib/code_0x00418000.cpp	21
@@ -339,7 +339,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00418da8	FUN_00418da8	FUN_00418da8				lib/code_0x00418000.cpp	26
 0x00418dc4	FUN_00418dc4	FUN_00418dc4				lib/code_0x00418000.cpp	23
 0x00418ddc	FUN_00418ddc	FUN_00418ddc				lib/code_0x00418000.cpp	14
-0x00418dec	FUN_00418dec	FUN_00418dec				lib/code_0x00418000.cpp	465
+0x00418dec	std::string::string_from_buf	std::string::string_from_buf		function	analysis	lib/code_0x00418000.cpp	465
 0x00418fc0	FUN_00418fc0	FUN_00418fc0				lib/code_0x00418000.cpp	71
 0x00419008	FUN_00419008	FUN_00419008				lib/code_0x00418000.cpp	226
 0x004190ec	FUN_004190ec	FUN_004190ec				lib/code_0x00418000.cpp	129
@@ -388,20 +388,20 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041a670	std::basic_streambuf<char>::vf5	std::basic_streambuf_char::vf5	std::basic_streambuf<char>	virtual	rtti:vtable	lib/std_basic_streambuf.cpp	141
 0x0041a700	std::basic_streambuf<char>::vf6	std::basic_streambuf_char::vf6	std::basic_streambuf<char>	virtual	rtti:vtable	lib/std_basic_streambuf.cpp	159
 0x0041a7a0	std::basic_streambuf<char>::vf11	std::basic_streambuf_char::vf11	std::basic_streambuf<char>	virtual	rtti:vtable	lib/std_basic_streambuf.cpp	92
-0x0041a7fc	FUN_0041a7fc	FUN_0041a7fc				lib/code_0x00418000.cpp	110
+0x0041a7fc	std::string::__unshare	std::string::__unshare		function	analysis	lib/code_0x00418000.cpp	110
 0x0041a86c	FUN_0041a86c	FUN_0041a86c				lib/code_0x00418000.cpp	413
 0x0041aa58	FUN_0041aa58	FUN_0041aa58				lib/code_0x00418000.cpp	19
 0x0041aa6c	std::basic_filebuf<char>::vf2	std::basic_filebuf_char::vf2	std::basic_filebuf<char>	virtual	rtti:vtable	lib/std_basic_filebuf.cpp	242
 0x0041ab60	std::basic_streambuf<char>::vf2	std::basic_streambuf_char::vf2	std::basic_streambuf<char>	virtual	rtti:vtable	lib/std_basic_streambuf.cpp	8
 0x0041ab68	std::string::append	std::string::append		function	analysis (usage pattern)	lib/code_0x00418000.cpp	274
 0x0041ac7c	std::string::assign	std::string::assign		function	analysis (usage pattern, less certain)	lib/code_0x00418000.cpp	33
-0x0041aca0	FUN_0041aca0	FUN_0041aca0				lib/code_0x00418000.cpp	60
-0x0041acdc	FUN_0041acdc	FUN_0041acdc				lib/code_0x00418000.cpp	434
+0x0041aca0	std::string::replace_str	std::string::replace_str		function	analysis	lib/code_0x00418000.cpp	60
+0x0041acdc	std::string::insert	std::string::insert		function	analysis	lib/code_0x00418000.cpp	434
 0x0041ae90	std::string::replace_fill	std::string::replace_fill		function	analysis (usage pattern)	lib/code_0x00418000.cpp	899
 0x0041b214	FUN_0041b214	FUN_0041b214				lib/code_0x00418000.cpp	30
 0x0041b234	FUN_0041b234	FUN_0041b234				lib/code_0x00418000.cpp	305
-0x0041b368	FUN_0041b368	FUN_0041b368				lib/code_0x00418000.cpp	281
-0x0041b484	FUN_0041b484	FUN_0041b484				lib/code_0x00418000.cpp	281
+0x0041b368	std::string::substr	std::string::substr		function	analysis	lib/code_0x00418000.cpp	281
+0x0041b484	std::string::string_fill	std::string::string_fill		function	analysis	lib/code_0x00418000.cpp	281
 0x0041b5a0	std::basic_filebuf<char>::vf3	std::basic_filebuf_char::vf3	std::basic_filebuf<char>	virtual	rtti:vtable	lib/std_basic_filebuf.cpp	1576
 0x0041bbc8	FUN_0041bbc8	FUN_0041bbc8				lib/code_0x00418000.cpp	15
 0x0041bbd8	FUN_0041bbd8	FUN_0041bbd8				lib/code_0x00418000.cpp	47
@@ -416,24 +416,24 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041bf00	FUN_0041bf00	FUN_0041bf00				lib/code_0x00418000.cpp	83
 0x0041bf74	FUN_0041bf74	FUN_0041bf74				lib/code_0x00418000.cpp	85
 0x0041bff4	FUN_0041bff4	FUN_0041bff4				lib/code_0x00418000.cpp	41
-0x0041c020	FUN_0041c020	FUN_0041c020				lib/code_0x0041c000.cpp	84
-0x0041c098	FUN_0041c098	FUN_0041c098				lib/code_0x0041c000.cpp	48
-0x0041c0e8	FUN_0041c0e8	FUN_0041c0e8				lib/code_0x0041c000.cpp	48
+0x0041c020	__rwstd::facet_imp::facet_imp	__rwstd::facet_imp::facet_imp	__rwstd::facet_imp	constructor	rtti:vtable-store	lib/rwstd_facet_imp.cpp	84
+0x0041c098	std::exception::exception	std::exception::exception	std::exception	constructor	rtti:vtable-store	lib/std_exception.cpp	48
+0x0041c0e8	std::exception::exception_41c0e8	std::exception::exception_41c0e8	std::exception	constructor	rtti:vtable-store	lib/std_exception.cpp	48
 0x0041c158	FUN_0041c158	FUN_0041c158				lib/code_0x0041c000.cpp	11
-0x0041c164	FUN_0041c164	FUN_0041c164				lib/code_0x0041c000.cpp	58
+0x0041c164	__rwstd::ref_counted::ref_counted	__rwstd::ref_counted::ref_counted	__rwstd::ref_counted	constructor	rtti:vtable-store	lib/rwstd_ref_counted.cpp	58
 0x0041c3ec	__rwstd::facet_imp::vf2	__rwstd::facet_imp::vf2	__rwstd::facet_imp	virtual	rtti:vtable	lib/rwstd_facet_imp.cpp	48
 0x0041c648	__rwstd::facet_imp::~facet_imp	__rwstd::facet_imp::_dtor	__rwstd::facet_imp	destructor	rtti:dtor	lib/rwstd_facet_imp.cpp	66
 0x0041c68c	__rwstd::facet_imp::vf1	__rwstd::facet_imp::vf1	__rwstd::facet_imp	virtual	rtti:vtable	lib/rwstd_facet_imp.cpp	5
-0x0041c778	FUN_0041c778	FUN_0041c778				lib/code_0x0041c000.cpp	232
+0x0041c778	std::ios_base::failure::failure	std::ios_base::failure::failure	std::ios_base::failure	constructor	rtti:vtable-store	lib/std_ios_base.cpp	232
 0x0041c888	std::ios_base::failure::~failure	std::ios_base::failure::_dtor	std::ios_base::failure	destructor	rtti:dtor	lib/std_ios_base.cpp	217
 0x0041c964	std::ios_base::failure::vf1	std::ios_base::failure::vf1	std::ios_base::failure	virtual	rtti:vtable	lib/std_ios_base.cpp	11
 0x0041c970	FUN_0041c970	FUN_0041c970				lib/code_0x0041c000.cpp	140
 0x0041ca20	std::ios_base::Init::~Init	std::ios_base::Init::_dtor	std::ios_base::Init	destructor	rtti:dtor	lib/std_ios_base.cpp	68
-0x0041ca64	FUN_0041ca64	FUN_0041ca64				lib/code_0x0041c000.cpp	115
+0x0041ca64	std::ios_base::ios_base	std::ios_base::ios_base	std::ios_base	constructor	rtti:vtable-store	lib/std_ios_base.cpp	115
 0x0041caf4	std::ios_base::~ios_base	std::ios_base::_dtor	std::ios_base	destructor	rtti:dtor	lib/std_ios_base.cpp	225
 0x0041cc28	FUN_0041cc28	FUN_0041cc28				lib/code_0x0041c000.cpp	203
 0x0041ccf4	FUN_0041ccf4	FUN_0041ccf4				lib/code_0x0041c000.cpp	181
-0x0041cdc4	FUN_0041cdc4	FUN_0041cdc4				lib/code_0x0041c000.cpp	566
+0x0041cdc4	std::locale::facet::facet_41cdc4	std::locale::facet::facet_41cdc4	std::locale::facet	constructor	rtti:vtable-store	lib/std_locale.cpp	566
 0x0041cffc	FUN_0041cffc	FUN_0041cffc				lib/code_0x0041c000.cpp	476
 0x0041d1d8	FUN_0041d1d8	FUN_0041d1d8				lib/code_0x0041c000.cpp	145
 0x0041d26c	FUN_0041d26c	FUN_0041d26c				lib/code_0x0041c000.cpp	51
@@ -449,10 +449,10 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041d5c4	FUN_0041d5c4	FUN_0041d5c4				lib/code_0x0041c000.cpp	93
 0x0041d624	FUN_0041d624	FUN_0041d624				lib/code_0x0041c000.cpp	332
 0x0041d7a8	FUN_0041d7a8	FUN_0041d7a8				lib/code_0x0041c000.cpp	111
-0x0041d818	FUN_0041d818	FUN_0041d818				lib/code_0x0041c000.cpp	87
+0x0041d818	std::string::string_41d818	std::string::string_41d818		function	analysis (matched TEACON.exe, duplicated code)	lib/code_0x0041c000.cpp	87
 0x0041d870	__rwstd::ref_counted::~ref_counted	__rwstd::ref_counted::_dtor	__rwstd::ref_counted	destructor	rtti:dtor	lib/rwstd_ref_counted.cpp	32
 0x0041d890	FUN_0041d890	FUN_0041d890				lib/code_0x0041c000.cpp	32
-0x0041d8b0	FUN_0041d8b0	FUN_0041d8b0				lib/code_0x0041c000.cpp	252
+0x0041d8b0	__rwstd::locale_imp::locale_imp	__rwstd::locale_imp::locale_imp	__rwstd::locale_imp	constructor	rtti:vtable-store	lib/rwstd_locale_imp.cpp	252
 0x0041d9d0	__rwstd::locale_imp::~locale_imp	__rwstd::locale_imp::_dtor	__rwstd::locale_imp	destructor	rtti:dtor	lib/rwstd_locale_imp.cpp	390
 0x0041db58	FUN_0041db58	FUN_0041db58				lib/code_0x0041c000.cpp	50
 0x0041db8c	FUN_0041db8c	FUN_0041db8c				lib/code_0x0041c000.cpp	352
@@ -472,7 +472,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041e87c	FUN_0041e87c	FUN_0041e87c				lib/code_0x0041c000.cpp	10
 0x0041e8fc	std::runtime_error::vf1	std::runtime_error::vf1	std::runtime_error	virtual	rtti:vtable	lib/std_runtime_error.cpp	11
 0x0041e908	FUN_0041e908	FUN_0041e908				lib/code_0x0041c000.cpp	324
-0x0041ea4c	FUN_0041ea4c	FUN_0041ea4c				lib/code_0x0041c000.cpp	54
+0x0041ea4c	__rwstd::except_msg_string::format	__rwstd::except_msg_string::format		function	analysis	lib/code_0x0041c000.cpp	54
 0x0041ea84	std::exception::~exception	std::exception::_dtor	std::exception	destructor	rtti:dtor	lib/std_exception.cpp	32
 0x0041eaa4	std::bad_alloc::~bad_alloc	std::bad_alloc::_dtor	std::bad_alloc	destructor	rtti:dtor	lib/std_bad_alloc.cpp	92
 0x0041eb00	std::logic_error::~logic_error	std::logic_error::_dtor	std::logic_error	destructor	rtti:dtor	lib/std_logic_error.cpp	217
@@ -486,25 +486,25 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041ee4c	memset	memset		function	analysis (usage pattern)	lib/code_0x0041c000.cpp	138
 0x0041eed8	FUN_0041eed8	FUN_0041eed8				lib/code_0x0041c000.cpp	24
 0x0041eef0	FUN_0041eef0	FUN_0041eef0				lib/code_0x0041c000.cpp	60
-0x0041ef2c	FUN_0041ef2c	FUN_0041ef2c				lib/code_0x0041c000.cpp	83
+0x0041ef2c	strchr	strchr		function	analysis	lib/code_0x0041c000.cpp	83
 0x0041ef80	strlen	strlen		function	analysis (usage pattern)	lib/code_0x0041c000.cpp	90
 0x0041efdc	FUN_0041efdc	FUN_0041efdc				lib/code_0x0041c000.cpp	110
 0x0041f04c	FUN_0041f04c	FUN_0041f04c				lib/code_0x0041c000.cpp	39
 0x0041f074	thunk → memchr	thunk_memchr				lib/code_0x0041c000.cpp	5
 0x0041f079	thunk → memchr	thunk_memchr_41f079				lib/code_0x0041c000.cpp	5
-0x0041f088	thunk → FUN_0041ef2c	thunk_FUN_0041ef2c				lib/code_0x0041c000.cpp	5
-0x0041f08d	thunk → FUN_0041ef2c	thunk_FUN_0041ef2c_41f08d				lib/code_0x0041c000.cpp	5
+0x0041f088	thunk → strchr	thunk_strchr				lib/code_0x0041c000.cpp	5
+0x0041f08d	thunk → strchr	thunk_strchr_41f08d				lib/code_0x0041c000.cpp	5
 0x0041f099	thunk → strrchr	thunk_strrchr				lib/code_0x0041c000.cpp	5
 0x0041f0a5	thunk → FUN_0041f2b0	thunk_FUN_0041f2b0				lib/code_0x0041c000.cpp	5
 0x0041f0ac	FUN_0041f0ac	FUN_0041f0ac				lib/code_0x0041c000.cpp	108
-0x0041f118	FUN_0041f118	FUN_0041f118				lib/code_0x0041c000.cpp	43
+0x0041f118	strcspn	strcspn		function	analysis	lib/code_0x0041c000.cpp	43
 0x0041f144	FUN_0041f144	FUN_0041f144				lib/code_0x0041c000.cpp	50
-0x0041f178	FUN_0041f178	FUN_0041f178				lib/code_0x0041c000.cpp	71
-0x0041f1c0	FUN_0041f1c0	FUN_0041f1c0				lib/code_0x0041c000.cpp	79
-0x0041f210	FUN_0041f210	FUN_0041f210				lib/code_0x0041c000.cpp	116
+0x0041f178	strcmp	strcmp		function	analysis	lib/code_0x0041c000.cpp	71
+0x0041f1c0	strncpy	strncpy		function	analysis	lib/code_0x0041c000.cpp	79
+0x0041f210	strncmp	strncmp		function	analysis	lib/code_0x0041c000.cpp	116
 0x0041f284	strrchr	strrchr		function	analysis (usage pattern)	lib/code_0x0041c000.cpp	41
 0x0041f2b0	FUN_0041f2b0	FUN_0041f2b0				lib/code_0x0041c000.cpp	84
-0x0041f304	FUN_0041f304	FUN_0041f304				lib/code_0x0041c000.cpp	103
+0x0041f304	strtok	strtok		function	analysis	lib/code_0x0041c000.cpp	103
 0x0041f36c	FUN_0041f36c	FUN_0041f36c				lib/code_0x0041c000.cpp	55
 0x0041f3a4	FUN_0041f3a4	FUN_0041f3a4				lib/code_0x0041c000.cpp	24
 0x0041f3bc	FUN_0041f3bc	FUN_0041f3bc				lib/code_0x0041c000.cpp	63
@@ -533,7 +533,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0041ff49	FUN_0041ff49	FUN_0041ff49				lib/code_0x0041c000.cpp	44
 0x0041ff82	FUN_0041ff82	FUN_0041ff82				lib/code_0x0041c000.cpp	21
 0x0041ff97	FUN_0041ff97	FUN_0041ff97				lib/code_0x0041c000.cpp	7
-0x0041ffa0	FUN_0041ffa0	FUN_0041ffa0				lib/code_0x0041c000.cpp	60
+0x0041ffa0	access	access		function	analysis	lib/code_0x0041c000.cpp	60
 0x0041ffdc	FUN_0041ffdc	FUN_0041ffdc				lib/code_0x0041c000.cpp	96
 0x0042003c	FUN_0042003c	FUN_0042003c				lib/code_0x00420000.cpp	134
 0x004200c4	FUN_004200c4	FUN_004200c4				lib/code_0x00420000.cpp	45
@@ -545,12 +545,12 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x0042051c	FUN_0042051c	FUN_0042051c				lib/code_0x00420000.cpp	284
 0x00420638	FUN_00420638	FUN_00420638				lib/code_0x00420000.cpp	17
 0x0042064c	FUN_0042064c	FUN_0042064c				lib/code_0x00420000.cpp	56
-0x00420684	FUN_00420684	FUN_00420684				lib/code_0x00420000.cpp	29
+0x00420684	_flsbuf	_flsbuf		function	analysis	lib/code_0x00420000.cpp	29
 0x004206a4	FUN_004206a4	FUN_004206a4				lib/code_0x00420000.cpp	70
 0x004206ec	FUN_004206ec	FUN_004206ec				lib/code_0x00420000.cpp	25
 0x00420708	FUN_00420708	FUN_00420708				lib/code_0x00420000.cpp	70
 0x00420750	FUN_00420750	FUN_00420750				lib/code_0x00420000.cpp	25
-0x0042076c	thunk → FUN_0041ffa0	thunk_FUN_0041ffa0				lib/code_0x00420000.cpp	5
+0x0042076c	thunk → access	thunk_access				lib/code_0x00420000.cpp	5
 0x00420774	FUN_00420774	FUN_00420774				lib/code_0x00420000.cpp	125
 0x004207f4	thunk → FUN_0041ffdc	thunk_FUN_0041ffdc				lib/code_0x00420000.cpp	5
 0x004207fc	FUN_004207fc	FUN_004207fc				lib/code_0x00420000.cpp	142
@@ -562,7 +562,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00420a68	FUN_00420a68	FUN_00420a68				lib/code_0x00420000.cpp	169
 0x00420b14	FUN_00420b14	FUN_00420b14				lib/code_0x00420000.cpp	42
 0x00420b40	fopen	fopen		function	analysis (usage pattern) (matched TEA.exe)	lib/code_0x00420000.cpp	41
-0x00420b6c	FUN_00420b6c	FUN_00420b6c				lib/code_0x00420000.cpp	34
+0x00420b6c	fprintf	fprintf		function	analysis	lib/code_0x00420000.cpp	34
 0x00420b90	FUN_00420b90	FUN_00420b90				lib/code_0x00420000.cpp	212
 0x00420c6c	FUN_00420c6c	FUN_00420c6c				lib/code_0x00420000.cpp	303
 0x00420d9c	FUN_00420d9c	FUN_00420d9c				lib/code_0x00420000.cpp	51
@@ -584,11 +584,11 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004214f4	thunk → FUN_0042010c	thunk_FUN_0042010c				lib/code_0x00420000.cpp	5
 0x004214fc	FUN_004214fc	FUN_004214fc				lib/code_0x00420000.cpp	79
 0x0042154c	FUN_0042154c	FUN_0042154c				lib/code_0x00420000.cpp	65
-0x00421590	FUN_00421590	FUN_00421590				lib/code_0x00420000.cpp	78
+0x00421590	puts	puts		function	analysis	lib/code_0x00420000.cpp	78
 0x004215e0	thunk → FUN_004203ec	thunk_FUN_004203ec				lib/code_0x00420000.cpp	5
 0x004215e8	setvbuf	setvbuf		function	analysis (usage pattern) (matched TEA.exe)	lib/code_0x00420000.cpp	77
 0x00421638	FUN_00421638	FUN_00421638				lib/code_0x00420000.cpp	40
-0x00421660	FUN_00421660	FUN_00421660				lib/code_0x00420000.cpp	40
+0x00421660	sprintf	sprintf		function	analysis	lib/code_0x00420000.cpp	40
 0x00421688	FUN_00421688	FUN_00421688				lib/code_0x00420000.cpp	40
 0x004217c8	FUN_004217c8	FUN_004217c8				lib/code_0x00420000.cpp	26
 0x004217e4	FUN_004217e4	FUN_004217e4				lib/code_0x00420000.cpp	69
@@ -598,13 +598,13 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x004221d0	thunk → FUN_0042051c	thunk_FUN_0042051c				lib/code_0x00420000.cpp	5
 0x00422230	FUN_00422230	FUN_00422230				lib/code_0x00420000.cpp	707
 0x004224f4	FUN_004224f4	FUN_004224f4				lib/code_0x00420000.cpp	81
-0x00422548	FUN_00422548	FUN_00422548				lib/code_0x00420000.cpp	22
+0x00422548	isalnum	isalnum		function	analysis	lib/code_0x00420000.cpp	22
 0x00422560	FUN_00422560	FUN_00422560				lib/code_0x00420000.cpp	18
-0x00422574	FUN_00422574	FUN_00422574				lib/code_0x00420000.cpp	22
+0x00422574	isalpha	isalpha		function	analysis	lib/code_0x00420000.cpp	22
 0x0042258c	FUN_0042258c	FUN_0042258c				lib/code_0x00420000.cpp	19
-0x004225a0	FUN_004225a0	FUN_004225a0				lib/code_0x00420000.cpp	19
+0x004225a0	isdigit	isdigit		function	analysis	lib/code_0x00420000.cpp	19
 0x004225b4	FUN_004225b4	FUN_004225b4				lib/code_0x00420000.cpp	22
-0x004225cc	FUN_004225cc	FUN_004225cc				lib/code_0x00420000.cpp	19
+0x004225cc	islower	islower		function	analysis	lib/code_0x00420000.cpp	19
 0x004225e0	FUN_004225e0	FUN_004225e0				lib/code_0x00420000.cpp	22
 0x004225f8	FUN_004225f8	FUN_004225f8				lib/code_0x00420000.cpp	19
 0x0042260c	FUN_0042260c	FUN_0042260c				lib/code_0x00420000.cpp	19
@@ -622,7 +622,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00422710	FUN_00422710	FUN_00422710				lib/code_0x00420000.cpp	20
 0x00422724	FUN_00422724	FUN_00422724				lib/code_0x00420000.cpp	20
 0x00422738	FUN_00422738	FUN_00422738				lib/code_0x00420000.cpp	23
-0x00422750	FUN_00422750	FUN_00422750				lib/code_0x00420000.cpp	67
+0x00422750	_isctype	_isctype		function	analysis	lib/code_0x00420000.cpp	67
 0x00422794	FUN_00422794	FUN_00422794				lib/code_0x00420000.cpp	85
 0x004227ec	FUN_004227ec	FUN_004227ec				lib/code_0x00420000.cpp	173
 0x0042289c	FUN_0042289c	FUN_0042289c				lib/code_0x00420000.cpp	1223
@@ -640,8 +640,8 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00424170	FUN_00424170	FUN_00424170				lib/code_0x00424000.cpp	10
 0x0042417c	FUN_0042417c	FUN_0042417c				lib/code_0x00424000.cpp	151
 0x00424214	FUN_00424214	FUN_00424214				lib/code_0x00424000.cpp	36
-0x00424238	FUN_00424238	FUN_00424238				lib/code_0x00424000.cpp	84
-0x0042428c	FUN_0042428c	FUN_0042428c				lib/code_0x00424000.cpp	84
+0x00424238	tolower	tolower		function	analysis	lib/code_0x00424000.cpp	84
+0x0042428c	toupper	toupper		function	analysis	lib/code_0x00424000.cpp	84
 0x004242e0	FUN_004242e0	FUN_004242e0				lib/code_0x00424000.cpp	122
 0x0042435c	FUN_0042435c	FUN_0042435c				lib/code_0x00424000.cpp	209
 0x00424430	FUN_00424430	FUN_00424430				lib/code_0x00424000.cpp	113
@@ -653,7 +653,7 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00424926	FUN_00424926	FUN_00424926				lib/code_0x00424000.cpp	78
 0x004249c8	thunk → FUN_00424f88	thunk_FUN_00424f88				lib/code_0x00424000.cpp	5
 0x004249d0	FUN_004249d0	FUN_004249d0				lib/code_0x00424000.cpp	364
-0x00424b58	FUN_00424b58	FUN_00424b58				lib/code_0x00424000.cpp	103
+0x00424b58	atoi	atoi		function	analysis	lib/code_0x00424000.cpp	103
 0x00424bc0	FUN_00424bc0	FUN_00424bc0				lib/code_0x00424000.cpp	15
 0x00424bd0	FUN_00424bd0	FUN_00424bd0				lib/code_0x00424000.cpp	19
 0x00424be4	FUN_00424be4	FUN_00424be4				lib/code_0x00424000.cpp	47
@@ -742,8 +742,8 @@ address	name	name_in_code	class	kind	name_source	file	bytes
 0x00427ce5	FUN_00427ce5	FUN_00427ce5				lib/code_0x00424000.cpp	29
 0x00427d02	FUN_00427d02	FUN_00427d02				lib/code_0x00424000.cpp	208
 0x00427dd2	FUN_00427dd2	FUN_00427dd2				lib/code_0x00424000.cpp	126
-0x00427e50	FUN_00427e50	FUN_00427e50				lib/code_0x00424000.cpp	576
-0x004280a0	FUN_004280a0	FUN_004280a0				lib/code_0x00428000.cpp	53
+0x00427e50	__raiseException	__raiseException		function	analysis	lib/code_0x00424000.cpp	576
+0x004280a0	_ThrowExceptionLDTC	_ThrowExceptionLDTC		function	analysis	lib/code_0x00428000.cpp	53
 0x004280d5	FUN_004280d5	FUN_004280d5				lib/code_0x00428000.cpp	107
 0x00428140	FUN_00428140	FUN_00428140				lib/code_0x00428000.cpp	63
 0x0042817f	FUN_0042817f	FUN_0042817f				lib/code_0x00428000.cpp	101

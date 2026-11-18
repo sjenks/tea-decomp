@@ -8,15 +8,15 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00467d40  TabbyPropertiesViewWindows::Find   (70 bytes)   [owl:response-table response-table-find]
-//   also: TabbyPropertiesViewWindows::vf14 [rtti:vtable]
-undefined4 __cdecl TabbyPropertiesViewWindows::Find(undefined4 *param_1,int *param_2,undefined *param_3)
+//   also: TabbyPropertiesViewWindows::Find [rtti:vtable]; TabbyPropertiesViewWindows::vf14 [rtti:vtable]
+undefined4 __cdecl TabbyPropertiesViewWindows::Find(undefined4 *self,int *eventInfo,undefined *equal)
 
 {
-  undefined4 uVar1;
+  undefined4 found;
   
-  param_2[2] = (int)param_1;
-  uVar1 = FUN_0048e808(param_1[1],(int *)&TabbyPropertiesViewWindows::__entries,param_2,param_3);
-  if (((char)uVar1 == '\0') && (uVar1 = PropertiesViewWindows::Find(param_1,param_2,param_3), (char)uVar1 == '\0'))
+  eventInfo[2] = (int)self;
+  found = FUN_0048e808(self[1],(int *)&TabbyPropertiesViewWindows::__entries,eventInfo,equal);
+  if (((char)found == '\0') && (found = PropertiesViewWindows::Find(self,eventInfo,equal), (char)found == '\0'))
   {
     return 0;
   }
@@ -24,320 +24,333 @@ undefined4 __cdecl TabbyPropertiesViewWindows::Find(undefined4 *param_1,int *par
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00467d88  FUN_00467d88   (410 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-int * __cdecl FUN_00467d88(int *param_1,int param_2,int param_3,int param_4,int param_5,int param_6, undefined4 param_7,int param_8,uint *param_9,int param_10)
+// 0x00467d88  TabbyPropertiesViewWindows::TabbyPropertiesViewWindows   (410 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores TabbyPropertiesViewWindows's vtable at its vptr offset (+0xc) in this
+int * __cdecl TabbyPropertiesViewWindows::TabbyPropertiesViewWindows(int *self,int vbasesBuilt,int param_3,int param_4,int param_5,int param_6, undefined4 param_7,int param_8,uint *param_9,int param_10)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4fc8c8);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 0x4c);
-    param_1[0x4c] = (int)(param_1 + 0x49);
-    param_1[0x4d] = (int)(param_1 + 0x4a);
-    param_1[1] = (int)(param_1 + 0x49);
-    param_1[2] = (int)(param_1 + 0x4a);
-    param_1[0x48] = 0;
-    param_1[0x4b] = 0;
-    param_1[0x49] = (int)&OWL::TEventHandler::vftable;
-    param_1[0x4a] = (int)&OWL::TStreamableBase::vftable;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    FUN_004a4fbc(param_1 + 0x4c,1);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
+  if (vbasesBuilt == 0) {
+    *self = (int)(self + 0x4c);
+    self[0x4c] = (int)(self + 0x49);
+    self[0x4d] = (int)(self + 0x4a);
+    self[1] = (int)(self + 0x49);
+    self[2] = (int)(self + 0x4a);
+    self[0x48] = 0;
+    self[0x4b] = 0;
+    self[0x49] = (int)&OWL::TEventHandler::vftable;
+    self[0x4a] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::TWindow_4a4fbc(self + 0x4c,1);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
   }
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0xc0;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0xc0;
-  FUN_00413cf4(param_1,1,param_6,param_7,param_8,param_9,param_10,0);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0xc0;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0xc0;
-  param_1[3] = (int)&TabbyPropertiesViewWindows::vftable;
-  *(undefined ***)param_1[1] = &PTR_LAB_004fcae4;
-  *(undefined ***)param_1[2] = &PTR_LAB_004fcaf0;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_004fcafc;
-  FUN_0041eac8(param_1 + 0x18,0,param_1,0x1f5e);
-  param_1[0x44] = param_3;
-  param_1[0x45] = param_4;
-  param_1[0x46] = param_5;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0xc0;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -0xc0;
+  PropertiesViewWindows::PropertiesViewWindows(self,1,param_6,param_7,param_8,param_9,param_10,0);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0xc0;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 0xc0;
+  self[3] = (int)&TabbyPropertiesViewWindows::vftable;
+  *(undefined ***)self[1] = &PTR_LAB_004fcae4;
+  *(undefined ***)self[2] = &PTR_LAB_004fcaf0;
+  *(undefined ***)(*self + 8) = &TabbyPropertiesViewWindows::vftable_TWindow;
+  PVWTabs::PVWTabs(self + 0x18,0,self,0x1f5e);
+  self[0x44] = param_3;
+  self[0x45] = param_4;
+  self[0x46] = param_5;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00467f50  TabbyPropertiesViewWindows::~TabbyPropertiesViewWindows   (288 bytes)   [rtti:dtor destructor]
 //   written in code as TabbyPropertiesViewWindows::_dtor
-void __cdecl TabbyPropertiesViewWindows::_dtor(int *param_1,uint param_2)
+void __cdecl TabbyPropertiesViewWindows::_dtor(int *self,uint dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4fc8f8);
-  if (param_1 != (int *)0x0) {
-    param_1[3] = (int)&TabbyPropertiesViewWindows::vftable;
-    *(undefined ***)param_1[1] = &PTR_LAB_004fcae4;
-    *(undefined ***)param_1[2] = &PTR_LAB_004fcaf0;
-    *(undefined ***)(*param_1 + 8) = &PTR_LAB_004fcafc;
-    PVWTabs::_dtor(param_1 + 0x18,2);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0xc0;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0xc0;
-    PropertiesViewWindows::_dtor(param_1,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0xc0;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0xc0;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0x4c,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 0x4a,0);
+  if (self != (int *)0x0) {
+    self[3] = (int)&TabbyPropertiesViewWindows::vftable;
+    *(undefined ***)self[1] = &PTR_LAB_004fcae4;
+    *(undefined ***)self[2] = &PTR_LAB_004fcaf0;
+    *(undefined ***)(*self + 8) = &TabbyPropertiesViewWindows::vftable_TWindow;
+    PVWTabs::_dtor(self + 0x18,2);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0xc0;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -0xc0;
+    PropertiesViewWindows::_dtor(self,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0xc0;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 0xc0;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0x4c,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 0x4a,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00468070  TabbyPropertiesViewWindows::vf15   (54 bytes)   [rtti:vtable virtual slot 15]
-void __cdecl TabbyPropertiesViewWindows::vf15(int *param_1)
+// 0x00468070  TabbyPropertiesViewWindows::SetupTooltips   (54 bytes)   [rtti:vtable virtual slot 15]
+//   vtable slot 15 (introduced by PropertiesViewWindows); creates the tooltip control for the window's controls (overrides add their own start-up work)
+void __cdecl TabbyPropertiesViewWindows::SetupTooltips(int *self)
 
 {
-  PropertiesViewWindows::vf15(param_1);
-  (**(code **)(param_1[3] + 0xc0))();
+  PropertiesViewWindows::SetupTooltips(self);
+  (**(code **)(self[3] + 0xc0))();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004680a8  TabbyPropertiesViewWindows::vf31   (176 bytes)   [rtti:vtable virtual slot 31]
-undefined4 __cdecl TabbyPropertiesViewWindows::vf31(int param_1,int param_2)
+// 0x004680a8  TabbyPropertiesViewWindows::OnMouseOverControl   (176 bytes)   [rtti:vtable virtual slot 31]
+//   vtable slot 31 (introduced by PropertiesViewWindows); the mouse moved over a control (PVWPathListBox::EvMouseMove); used to show its tip
+undefined4 __cdecl TabbyPropertiesViewWindows::OnMouseOverControl(int self,int param_2)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  WPARAM WVar5;
+  WPARAM wParam;
   
-  BVar1 = IsWindowEnabled(*(HWND *)(*(int *)(param_1 + 0x60) + 0xc));
-  if (BVar1 == 0) {
+  ok = IsWindowEnabled(*(HWND *)(*(int *)(self + 0x60) + 0xc));
+  if (ok == 0) {
     uVar2 = 0;
   }
   else {
-    iVar3 = FUN_004a76a8(*(int *)(param_1 + 0x60),0x1304,0,0);
-    iVar4 = FUN_004a76a8(*(int *)(param_1 + 0x60),0x130b,0,0);
-    WVar5 = iVar4 + param_2;
-    if ((int)WVar5 < 0) {
-      WVar5 = iVar3 - 1;
+    iVar3 = FUN_004a76a8(*(int *)(self + 0x60),0x1304,0,0);
+    iVar4 = FUN_004a76a8(*(int *)(self + 0x60),0x130b,0,0);
+    wParam = iVar4 + param_2;
+    if ((int)wParam < 0) {
+      wParam = iVar3 - 1;
     }
-    else if (iVar3 <= (int)WVar5) {
-      WVar5 = 0;
+    else if (iVar3 <= (int)wParam) {
+      wParam = 0;
     }
-    FUN_004a76a8(*(int *)(param_1 + 0x60),0x130c,WVar5,0);
-    GetDlgCtrlID(*(HWND *)(*(int *)(param_1 + 0x60) + 0xc));
-    uVar2 = (**(code **)(*(int *)(param_1 + 0xc) + 0xc0))();
+    FUN_004a76a8(*(int *)(self + 0x60),0x130c,wParam,0);
+    GetDlgCtrlID(*(HWND *)(*(int *)(self + 0x60) + 0xc));
+    uVar2 = (**(code **)(*(int *)(self + 0xc) + 0xc0))();
     uVar2 = CONCAT31((int3)((uint)uVar2 >> 8),1);
   }
   return uVar2;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00468158  TabbyPropertiesViewWindows::vf38   (68 bytes)   [rtti:vtable virtual slot 38]
-void __cdecl TabbyPropertiesViewWindows::vf38(int *param_1,int param_2,undefined4 *param_3)
+// 0x00468158  TabbyPropertiesViewWindows::EvNotify   (68 bytes)   [rtti:vtable virtual slot 19]
+//   override of OWL::TWindow vtable slot 19, from TabbyPropertiesViewWindows's OWL::TWindow subobject vtable at 0x004fcafc (through the this-adjusting thunk at 0x004689c4); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: TabbyPropertiesViewWindows::vf38 [rtti:vtable]
+void __cdecl TabbyPropertiesViewWindows::EvNotify(int *self,int param_2,undefined4 *param_3)
 
 {
-  if ((param_3[2] == -0x208) && ((uint)param_3[1] < (uint)param_1[0x45])) {
-    param_3[3] = (uint)*(ushort *)(param_1[0x44] + 4 + param_3[1] * 0x10);
+  if ((param_3[2] == -0x208) && ((uint)param_3[1] < (uint)self[0x45])) {
+    param_3[3] = (uint)*(ushort *)(self[0x44] + 4 + param_3[1] * 0x10);
   }
-  PropertiesViewWindows::vf38(param_1,param_2,param_3);
+  PropertiesViewWindows::EvNotify(self,param_2,param_3);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0046819c  TabbyPropertiesViewWindows::vf7   (96 bytes)   [rtti:vtable virtual slot 7]
-void __cdecl TabbyPropertiesViewWindows::vf7(int *param_1,LPMSG param_2)
+// 0x0046819c  TabbyPropertiesViewWindows::PreProcessMsg   (96 bytes)   [rtti:vtable virtual slot 10]
+//   override of OWL::TWindow vtable slot 10, from TabbyPropertiesViewWindows's OWL::TWindow subobject vtable at 0x004fcafc (through the this-adjusting thunk at 0x004689ee); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: TabbyPropertiesViewWindows::vf7 [rtti:vtable]
+void __cdecl TabbyPropertiesViewWindows::PreProcessMsg(int *self,LPMSG lParam)
 
 {
   UINT UVar1;
   HWND hWnd;
   
-  hWnd = (HWND)FUN_004a76a8(param_1[0x18],0x132d,0,0);
+  hWnd = (HWND)FUN_004a76a8(self[0x18],0x132d,0,0);
   if ((hWnd != (HWND)0x0) &&
-     (((UVar1 = param_2->message, UVar1 - 0x200 < 3 || (UVar1 - 0x204 < 2)) || (UVar1 - 0x207 < 2)))
+     (((UVar1 = lParam->message, UVar1 - 0x200 < 3 || (UVar1 - 0x204 < 2)) || (UVar1 - 0x207 < 2)))
      ) {
-    SendMessageA(hWnd,0x407,0,(LPARAM)param_2);
+    SendMessageA(hWnd,0x407,0,(LPARAM)lParam);
   }
-  PropertiesViewWindows::vf7(param_1,param_2);
+  PropertiesViewWindows::PreProcessMsg(self,lParam);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004681fc  TabbyPropertiesViewWindows::vf43   (62 bytes)   [rtti:vtable virtual slot 43]
-void __cdecl TabbyPropertiesViewWindows::vf43(int param_1,undefined4 param_2,LPARAM param_3)
+// 0x004681fc  TabbyPropertiesViewWindows::ShowControlTip   (62 bytes)   [rtti:vtable virtual slot 43]
+//   vtable slot 43 (introduced by PropertiesViewWindows); relays a mouse message to the tooltip, or shows the tip text for a control
+void __cdecl TabbyPropertiesViewWindows::ShowControlTip(int self,undefined4 param_2,LPARAM lParam)
 
 {
   HWND hWnd;
   
-  if (*(int *)(param_1 + 0x4c) == 0) {
-    hWnd = (HWND)FUN_004a76a8(*(int *)(param_1 + 0x60),0x132d,0,0);
+  if (*(int *)(self + 0x4c) == 0) {
+    hWnd = (HWND)FUN_004a76a8(*(int *)(self + 0x60),0x132d,0,0);
     if (hWnd != (HWND)0x0) {
-      SendMessageA(hWnd,0x407,0,param_3);
+      SendMessageA(hWnd,0x407,0,lParam);
     }
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0046823c  TabbyPropertiesViewWindows::vf11   (388 bytes)   [rtti:vtable virtual slot 11]
+// 0x0046823c  TabbyPropertiesViewWindows::SetupWindow   (388 bytes)   [rtti:vtable virtual slot 30]
+//   override of OWL::TWindow vtable slot 30, from TabbyPropertiesViewWindows's OWL::TWindow subobject vtable at 0x004fcafc (through the this-adjusting thunk at 0x00468985); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: TabbyPropertiesViewWindows::vf11 [rtti:vtable]
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-void __cdecl TabbyPropertiesViewWindows::vf11(int *param_1)
+void __cdecl TabbyPropertiesViewWindows::SetupWindow(int *self)
 
 {
-  HWND pHVar1;
-  WPARAM WVar2;
-  int iVar3;
+  HWND hWnd;
+  WPARAM wParam;
+  int prevRefs;
   uint uVar4;
-  uint *puVar5;
-  undefined4 *in_FS_OFFSET;
+  uint *strRep;
+  undefined4 *sehChainHead;
   uint local_78 [11];
-  undefined1 *local_4c;
-  undefined4 local_48;
-  uint *local_44;
-  uint *local_40;
-  uint *local_3c;
-  undefined4 local_38;
-  undefined2 local_28;
-  int local_1c;
-  undefined1 local_14 [8];
+  undefined1 *unused;
+  undefined4 unused2;
+  uint *unused3;
+  uint *unused4;
+  uint *lParam;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 result [8];
   uint *local_c;
   
   __InitExceptBlockLDTC(0x4fc92c);
-  PropertiesViewWindows::vf11(param_1);
-  pHVar1 = (HWND)FUN_004a76a8(param_1[0x18],0x132d,0,0);
-  FUN_00417760(param_1,pHVar1);
+  PropertiesViewWindows::SetupWindow(self);
+  hWnd = (HWND)FUN_004a76a8(self[0x18],0x132d,0,0);
+  SetTooltipMaxWidth(self,hWnd);
   uVar4 = 0;
   do {
-    if ((uint)param_1[0x45] <= uVar4) {
-      if (param_1[0x13] == 0) {
-        (**(code **)(param_1[3] + 0xc0))();
+    if ((uint)self[0x45] <= uVar4) {
+      if (self[0x13] == 0) {
+        (**(code **)(self[3] + 0xc0))();
       }
-      *in_FS_OFFSET = local_38;
+      *sehChainHead = sehPrevFrame;
       return;
     }
-    local_28 = 0x14;
-    FUN_00464a94((int)local_14,param_1[0xe],*(uint *)(param_1[0x44] + uVar4 * 0x10));
-    local_1c = local_1c + 1;
-    local_28 = 8;
-    local_3c = FUN_0049e814(local_78,local_c,(char *)0x0,0);
-    WVar2 = FUN_004a76a8(param_1[0x18],0x1304,0,0);
-    FUN_004a76a8(param_1[0x18],0x1307,WVar2,(LPARAM)local_3c);
-    local_1c = local_1c + -1;
+    ehContext = 0x14;
+    TEAAppWindows::LoadResourceString((int)result,self[0xe],*(uint *)(self[0x44] + uVar4 * 0x10));
+    ehDtorCount = ehDtorCount + 1;
+    ehContext = 8;
+    lParam = FUN_0049e814(local_78,local_c,(char *)0x0,0);
+    wParam = FUN_004a76a8(self[0x18],0x1304,0,0);
+    FUN_004a76a8(self[0x18],0x1307,wParam,(LPARAM)lParam);
+    ehDtorCount = ehDtorCount + -1;
     if (local_c != (uint *)0x0) {
       if (local_c[-3] != 0xffffffff) {
-        puVar5 = local_c + -3;
-        if (puVar5 == &DAT_00513d58) {
-          iVar3 = 1;
+        strRep = local_c + -3;
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (puVar5 == &DAT_00513d58) {
-          iVar3 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *puVar5 = *puVar5 - 1;
-          iVar3 = *puVar5 + 1;
+          *strRep = *strRep - 1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar3 != 0) goto LAB_0046836a;
+        if (prevRefs != 0) goto LAB_0046836a;
       }
-      local_40 = local_c + -3;
-      local_44 = local_c + -3;
+      unused4 = local_c + -3;
+      unused3 = local_c + -3;
       operator_delete();
-      local_48 = 0;
-      local_4c = local_14;
+      unused2 = 0;
+      unused = result;
       local_c = (uint *)0x0;
     }
 LAB_0046836a:
-    local_28 = 0;
+    ehContext = 0;
     uVar4 = uVar4 + 1;
   } while( true );
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004683c0  TabbyPropertiesViewWindows::vf45   (64 bytes)   [rtti:vtable virtual slot 45]
-void __cdecl TabbyPropertiesViewWindows::vf45(int param_1)
+// 0x004683c0  TabbyPropertiesViewWindows::ShowHelp   (64 bytes)   [rtti:vtable virtual slot 45]
+//   vtable slot 45 (introduced by PropertiesViewWindows); opens the window's help topic
+void __cdecl TabbyPropertiesViewWindows::ShowHelp(int self)
 
 {
-  FUN_004a76a8(*(int *)(param_1 + 0x60),0x130b,0,0);
-  FUN_00464980();
+  FUN_004a76a8(*(int *)(self + 0x60),0x130b,0,0);
+  ShowHelpContents();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00468400  TabbyPropertiesViewWindows::vf18   (39 bytes)   [rtti:vtable virtual slot 18]
-void __cdecl TabbyPropertiesViewWindows::vf18(int *param_1,byte param_2)
+// 0x00468400  TabbyPropertiesViewWindows::EnableControls   (39 bytes)   [rtti:vtable virtual slot 18]
+//   vtable slot 18 (introduced by PropertiesViewWindows); enables or disables the window's controls
+void __cdecl TabbyPropertiesViewWindows::EnableControls(int *self,byte enable)
 
 {
-  FUN_004684d4(param_1,param_2);
-  (**(code **)(*(int *)(param_1[0x18] + 8) + 0x60))();
+  TabbyPropertiesViewWindows::EnablePage(self,enable);
+  (**(code **)(*(int *)(self[0x18] + 8) + 0x60))();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00468428  TabbyPropertiesViewWindows::vf48   (78 bytes)   [rtti:vtable virtual slot 48]
-void __cdecl TabbyPropertiesViewWindows::vf48(int *param_1)
+// 0x00468428  TabbyPropertiesViewWindows::OnPageChanged   (78 bytes)   [rtti:vtable virtual slot 48]
+//   vtable slot 48; a tab page was selected: shows its controls
+void __cdecl TabbyPropertiesViewWindows::OnPageChanged(int *self)
 
 {
-  uint uVar1;
-  uint uVar2;
+  uint firstId;
+  uint firstId2;
   
-  uVar1 = FUN_004a76a8(param_1[0x18],0x130b,0,0);
-  for (uVar2 = 0; uVar2 < (uint)param_1[0x46]; uVar2 = uVar2 + 1) {
-    if (uVar1 != uVar2) {
-      FUN_00468478(param_1,uVar2,0);
+  firstId = FUN_004a76a8(self[0x18],0x130b,0,0);
+  for (firstId2 = 0; firstId2 < (uint)self[0x46]; firstId2 = firstId2 + 1) {
+    if (firstId != firstId2) {
+      TabbyPropertiesViewWindows::ShowPage(self,firstId2,0);
     }
   }
-  FUN_00468478(param_1,uVar1,5);
+  TabbyPropertiesViewWindows::ShowPage(self,firstId,5);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00468478  FUN_00468478   (92 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_00468478(int *param_1,int param_2,int param_3)
+// 0x00468478  TabbyPropertiesViewWindows::ShowPage   (92 bytes)   [analysis]
+//   shows/enables the controls of one tab page
+void __cdecl TabbyPropertiesViewWindows::ShowPage(int *self,int firstId,int show)
 
 {
   HWND hWnd;
-  int iVar1;
+  int i;
   
-  for (iVar1 = 0; iVar1 < *(int *)(param_1[0x44] + 8 + param_2 * 0x10); iVar1 = iVar1 + 1) {
-    hWnd = GetDlgItem(*(HWND *)(*param_1 + 0xc),
-                      *(int *)(*(int *)(param_1[0x44] + 0xc + param_2 * 0x10) + iVar1 * 4));
-    ShowWindow(hWnd,param_3);
-    EnableWindow(hWnd,param_3);
+  for (i = 0; i < *(int *)(self[0x44] + 8 + firstId * 0x10); i = i + 1) {
+    hWnd = GetDlgItem(*(HWND *)(*self + 0xc),
+                      *(int *)(*(int *)(self[0x44] + 0xc + firstId * 0x10) + i * 4));
+    ShowWindow(hWnd,show);
+    EnableWindow(hWnd,show);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004684d4  FUN_004684d4   (113 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_004684d4(int *param_1,byte param_2)
+// 0x004684d4  TabbyPropertiesViewWindows::EnablePage   (113 bytes)   [analysis]
+//   enables or disables the current page's controls
+void __cdecl TabbyPropertiesViewWindows::EnablePage(int *self,byte enable)
 
 {
   int iVar1;
   HWND hWnd;
-  int iVar2;
+  int i;
   
-  iVar1 = FUN_004a76a8(param_1[0x18],0x130b,0,0);
-  for (iVar2 = 0; iVar2 < *(int *)(param_1[0x44] + 8 + iVar1 * 0x10); iVar2 = iVar2 + 1) {
-    hWnd = GetDlgItem(*(HWND *)(*param_1 + 0xc),
-                      *(int *)(*(int *)(param_1[0x44] + 0xc + iVar1 * 0x10) + iVar2 * 4));
-    EnableWindow(hWnd,(uint)param_2);
+  iVar1 = FUN_004a76a8(self[0x18],0x130b,0,0);
+  for (i = 0; i < *(int *)(self[0x44] + 8 + iVar1 * 0x10); i = i + 1) {
+    hWnd = GetDlgItem(*(HWND *)(*self + 0xc),
+                      *(int *)(*(int *)(self[0x44] + 0xc + iVar1 * 0x10) + i * 4));
+    EnableWindow(hWnd,(uint)enable);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00468548  TabbyPropertiesViewWindows::vf46   (1061 bytes)   [rtti:vtable virtual slot 46]
+// 0x00468548  TabbyPropertiesViewWindows::GetControlTipText   (1061 bytes)   [rtti:vtable virtual slot 46]
+//   vtable slot 46 (introduced by PropertiesViewWindows); tooltip text for a control (first line of its string resource)
 /* WARNING: Removing unreachable block (ram,0x004685da) */
 /* WARNING: Removing unreachable block (ram,0x00468636) */
 /* WARNING: Removing unreachable block (ram,0x0046870a) */
@@ -353,85 +366,85 @@ void __cdecl FUN_004684d4(int *param_1,byte param_2)
 /* WARNING: Removing unreachable block (ram,0x00468815) */
 /* WARNING: Removing unreachable block (ram,0x00468819) */
 /* WARNING: Removing unreachable block (ram,0x00468867) */
-void __cdecl TabbyPropertiesViewWindows::vf46(int *param_1,int *param_2)
+void __cdecl TabbyPropertiesViewWindows::GetControlTipText(int *self,int *param_2)
 
 {
   HWND hWnd;
-  uint uVar1;
+  uint id;
   char *pcVar2;
-  int iVar3;
-  int *piVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_134;
-  undefined4 local_130;
-  undefined4 local_12c;
-  undefined4 local_128;
-  char *local_110;
-  char *local_104;
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 lParam;
+  undefined4 unused;
+  undefined4 unused2;
+  undefined4 unused3;
+  char *unused4;
+  char *unused5;
   undefined1 local_100 [144];
-  char *local_70;
+  char *unused6;
   int local_6c;
-  undefined1 local_65;
+  undefined1 unused7;
   int local_64;
-  undefined4 local_60;
-  undefined2 local_50;
-  int local_44;
-  undefined1 local_14 [8];
-  char *local_c;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 result [8];
+  char *str;
   
   __InitExceptBlockLDTC(0x4fc9a4);
-  hWnd = (HWND)FUN_004a76a8(param_1[0x18],0x132d,0,0);
+  hWnd = (HWND)FUN_004a76a8(self[0x18],0x132d,0,0);
   if (hWnd != (HWND)0x0) {
-    local_134 = 0x2c;
-    local_130 = 1;
-    local_12c = *(undefined4 *)(*param_1 + 0xc);
-    local_50 = 0x14;
-    uVar1 = GetDlgCtrlID(*(HWND *)(*param_2 + 0xc));
-    FUN_00464a94((int)local_14,param_1[0xe],uVar1);
-    local_44 = local_44 + 1;
-    local_50 = 8;
-    local_65 = 10;
-    local_6c = *(int *)(local_c + -4);
-    local_70 = local_c;
-    pcVar2 = thunk_memchr(local_c,'\n',local_6c);
-    local_64 = (*(int *)&DAT_005140ac);
+    lParam = 0x2c;
+    unused = 1;
+    unused2 = *(undefined4 *)(*self + 0xc);
+    ehContext = 0x14;
+    id = GetDlgCtrlID(*(HWND *)(*param_2 + 0xc));
+    TEAAppWindows::LoadResourceString((int)result,self[0xe],id);
+    ehDtorCount = ehDtorCount + 1;
+    ehContext = 8;
+    unused7 = 10;
+    local_6c = *(int *)(str + -4);
+    unused6 = str;
+    pcVar2 = thunk_memchr(str,'\n',local_6c);
+    local_64 = (*(int *)&g_stringNpos);
     if (pcVar2 != (char *)0x0) {
-      local_64 = (int)pcVar2 - (int)local_c;
+      local_64 = (int)pcVar2 - (int)str;
     }
     if (local_64 != -1) {
       local_100[0] = 0;
-      uVar1 = local_64 + 1U;
-      if (*(uint *)(local_c + -4) <= local_64 + 1U) {
-        uVar1 = *(uint *)(local_c + -4);
+      id = local_64 + 1U;
+      if (*(uint *)(str + -4) <= local_64 + 1U) {
+        id = *(uint *)(str + -4);
       }
-      FUN_004cfad4((int)local_14,0,uVar1,(uint)local_100,0,0,0);
+      std::string::replace((int)result,0,id,(uint)local_100,0,0,0);
     }
-    local_110 = local_c;
-    local_128 = *(undefined4 *)(*param_2 + 0xc);
-    SendMessageA(hWnd,0x404,0,(LPARAM)&local_134);
-    local_50 = 8;
-    local_44 = local_44 + -1;
-    if (local_c != (char *)0x0) {
-      if (*(int *)(local_c + -0xc) != -1) {
-        piVar4 = (int *)(local_c + -0xc);
-        if (piVar4 == &DAT_00513d58) {
-          iVar3 = 1;
+    unused4 = str;
+    unused3 = *(undefined4 *)(*param_2 + 0xc);
+    SendMessageA(hWnd,0x404,0,(LPARAM)&lParam);
+    ehContext = 8;
+    ehDtorCount = ehDtorCount + -1;
+    if (str != (char *)0x0) {
+      if (*(int *)(str + -0xc) != -1) {
+        strRep = (int *)(str + -0xc);
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (piVar4 == &DAT_00513d58) {
-          iVar3 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *piVar4 = *piVar4 + -1;
-          iVar3 = *piVar4 + 1;
+          *strRep = *strRep + -1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar3 != 0) goto LAB_0046895c;
+        if (prevRefs != 0) goto LAB_0046895c;
       }
-      local_104 = local_c + -0xc;
+      unused5 = str + -0xc;
       operator_delete();
     }
   }
 LAB_0046895c:
-  *in_FS_OFFSET = local_60;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

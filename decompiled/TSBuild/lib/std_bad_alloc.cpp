@@ -1,5 +1,5 @@
 // TSBuild.exe — runtime / library code "std_bad_alloc"
-// 1 functions, 0x004671c8..0x004671c8. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 2 functions, 0x0045a02c..0x004671c8. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,23 +7,39 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004671c8  std::bad_alloc::~bad_alloc   (92 bytes)   [rtti:dtor destructor]
-//   written in code as std::bad_alloc::_dtor
-void __cdecl std::bad_alloc::_dtor(undefined4 *param_1,byte param_2)
+// 0x0045a02c  std::bad_alloc::bad_alloc   (62 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores std::bad_alloc's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl std::bad_alloc::bad_alloc(undefined4 *self)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x4873d8);
+  std::exception::exception(self);
+  *self = &std::bad_alloc::vftable;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004671c8  std::bad_alloc::~bad_alloc   (92 bytes)   [rtti:dtor destructor]
+//   written in code as std::bad_alloc::_dtor
+void __cdecl std::bad_alloc::_dtor(undefined4 *self,byte dtorFlags)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x488974);
-  if (param_1 != (undefined4 *)0x0) {
-    *param_1 = &std::bad_alloc::vftable;
-    std::exception::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    *self = &std::bad_alloc::vftable;
+    std::exception::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

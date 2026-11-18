@@ -9,27 +9,27 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x004ab9b4  OWL::TBrush::~TBrush   (107 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TBrush::_dtor
-undefined4 __cdecl OWL::TBrush::_dtor(uint *param_1,byte param_2)
+undefined4 __cdecl OWL::TBrush::_dtor(uint *self,byte dtorFlags)
 
 {
   undefined *puVar1;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   uint uVar2;
   undefined4 local_28;
   
   __InitExceptBlockLDTC(0x50bf44);
-  if (param_1 != (uint *)0x0) {
-    if ((char)param_1[1] == '\0') {
-      uVar2 = *param_1;
+  if (self != (uint *)0x0) {
+    if ((char)self[1] == '\0') {
+      uVar2 = *self;
       puVar1 = FUN_004ab4bc();
       FUN_004ab72c((int)puVar1,uVar2);
     }
-    OWL::TGdiObject::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+    OWL::TGdiObject::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = local_28;
   return local_28;
 }
 

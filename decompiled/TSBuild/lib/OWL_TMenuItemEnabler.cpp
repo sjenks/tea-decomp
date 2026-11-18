@@ -8,27 +8,27 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0044cab0  OWL::TMenuItemEnabler::vf0   (55 bytes)   [rtti:vtable virtual slot 0]
-void __cdecl OWL::TMenuItemEnabler::vf0(int param_1,char param_2)
+void __cdecl OWL::TMenuItemEnabler::vf0(int self,char param_2)
 
 {
-  OWL::TCommandEnabler::vf0(param_1);
-  EnableMenuItem(*(HMENU *)(param_1 + 0x10),*(UINT *)(param_1 + 0x14),param_2 == '\0' | 0x400);
+  OWL::TCommandEnabler::vf0(self);
+  EnableMenuItem(*(HMENU *)(self + 0x10),*(UINT *)(self + 0x14),param_2 == '\0' | 0x400);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0044cae8  OWL::TMenuItemEnabler::vf1   (30 bytes)   [rtti:vtable virtual slot 1]
-void __cdecl OWL::TMenuItemEnabler::vf1(int param_1,LPCSTR param_2)
+void __cdecl OWL::TMenuItemEnabler::vf1(int self,LPCSTR newItem)
 
 {
-  ModifyMenuA(*(HMENU *)(param_1 + 0x10),*(UINT *)(param_1 + 0x14),0x400,*(UINT_PTR *)(param_1 + 4),
-              param_2);
+  ModifyMenuA(*(HMENU *)(self + 0x10),*(UINT *)(self + 0x14),0x400,*(UINT_PTR *)(self + 4),
+              newItem);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0044cb08  OWL::TMenuItemEnabler::vf2   (41 bytes)   [rtti:vtable virtual slot 2]
-void __cdecl OWL::TMenuItemEnabler::vf2(int param_1,int param_2)
+void __cdecl OWL::TMenuItemEnabler::vf2(int self,int param_2)
 
 {
   uint uVar1;
@@ -39,7 +39,7 @@ void __cdecl OWL::TMenuItemEnabler::vf2(int param_1,int param_2)
   else {
     uVar1 = 0;
   }
-  CheckMenuItem(*(HMENU *)(param_1 + 0x10),*(UINT *)(param_1 + 0x14),uVar1 | 0x400);
+  CheckMenuItem(*(HMENU *)(self + 0x10),*(UINT *)(self + 0x14),uVar1 | 0x400);
   return;
 }
 

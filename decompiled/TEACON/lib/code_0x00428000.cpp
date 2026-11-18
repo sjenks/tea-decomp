@@ -7,58 +7,59 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004280a0  FUN_004280a0   (53 bytes)   [unnamed]
-void __cdecl FUN_004280a0(uint *param_1,undefined4 *param_2,undefined4 param_3,undefined *param_4,uint param_5, undefined4 param_6,undefined4 param_7,undefined4 param_8)
+// 0x004280a0  _ThrowExceptionLDTC   (53 bytes)   [analysis]
+//   Borland throw: records the exception type descriptor and object in the thread's exception state and raises it
+void __cdecl _ThrowExceptionLDTC(uint *typeDesc,undefined4 *object,undefined4 objectDtor,undefined *copyCtor,uint copyCtorMask, undefined4 throwFlags,undefined4 throwFile,undefined4 throwLine)
 
 {
-  undefined4 in_stack_00000000;
+  undefined4 throwReturn;
   
-  FUN_00427e50(param_1,param_2,param_3,param_4,param_5,param_6,param_7,param_8,in_stack_00000000);
+  __raiseException(typeDesc,object,objectDtor,copyCtor,copyCtorMask,throwFlags,throwFile,throwLine,throwReturn);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004280d5  FUN_004280d5   (107 bytes)   [unnamed]
-void __cdecl FUN_004280d5(undefined4 param_1,undefined4 param_2)
+void __cdecl FUN_004280d5(undefined4 throwFile,undefined4 throwLine)
 
 {
   int iVar1;
   int *piVar2;
-  undefined4 *puVar3;
-  undefined4 in_stack_00000000;
+  undefined4 *object;
+  undefined4 throwReturn;
   
-  piVar2 = (int *)FUN_00401140();
+  piVar2 = (int *)__getTlsBlock();
   iVar1 = *piVar2;
   if (iVar1 == 0) {
     FUN_0041fc8c();
   }
   if (*(char *)(iVar1 + 0x44) == '\0') {
-    puVar3 = *(undefined4 **)(iVar1 + 0x40);
+    object = *(undefined4 **)(iVar1 + 0x40);
   }
   else {
-    puVar3 = (undefined4 *)(iVar1 + 0x52);
+    object = (undefined4 *)(iVar1 + 0x52);
   }
-  FUN_00427e50(*(uint **)(iVar1 + 4),puVar3,*(undefined4 *)(iVar1 + 8),*(undefined **)(iVar1 + 0x20)
-               ,*(uint *)(iVar1 + 0x24),*(undefined4 *)(iVar1 + 0xc),param_1,param_2,
-               in_stack_00000000);
+  __raiseException(*(uint **)(iVar1 + 4),object,*(undefined4 *)(iVar1 + 8),*(undefined **)(iVar1 + 0x20)
+               ,*(uint *)(iVar1 + 0x24),*(undefined4 *)(iVar1 + 0xc),throwFile,throwLine,
+               throwReturn);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00428140  FUN_00428140   (63 bytes)   [unnamed]
-void __cdecl FUN_00428140(PVOID param_1,PEXCEPTION_RECORD param_2)
+void __cdecl FUN_00428140(PVOID targetFrame,PEXCEPTION_RECORD exceptionRecord)
 
 {
   EXCEPTION_RECORD local_54;
   
-  if (param_2 == (PEXCEPTION_RECORD)0x0) {
+  if (exceptionRecord == (PEXCEPTION_RECORD)0x0) {
     local_54.ExceptionCode = 0x26;
     local_54.ExceptionFlags = 2;
-    param_2 = &local_54;
+    exceptionRecord = &local_54;
     local_54.NumberParameters = 0;
   }
-  param_2->ExceptionFlags = param_2->ExceptionFlags | 2;
-  FUN_0041ff82(param_1,param_2);
+  exceptionRecord->ExceptionFlags = exceptionRecord->ExceptionFlags | 2;
+  FUN_0041ff82(targetFrame,exceptionRecord);
   return;
 }
 
@@ -127,13 +128,13 @@ void __stdcall FUN_0042827c(void)
   undefined2 in_FS;
   undefined4 in_stack_00000000;
   
-  piVar4 = (int *)FUN_00401140();
+  piVar4 = (int *)__getTlsBlock();
   if (*piVar4 == 0) {
     FUN_00426830("__CPPexceptionList","xx.cpp",0x629);
   }
-  piVar4 = (int *)FUN_00401140();
+  piVar4 = (int *)__getTlsBlock();
   puVar1 = (undefined4 *)*piVar4;
-  puVar5 = (undefined4 *)FUN_00401140();
+  puVar5 = (undefined4 *)__getTlsBlock();
   *puVar5 = *puVar1;
   iVar2 = puVar1[10];
   piVar4 = (int *)segment(in_FS,0);
@@ -298,7 +299,7 @@ void __cdecl FUN_00428641(int param_1)
     }
     else if (2 < uVar3 - 1) {
       if (uVar3 == 4) {
-        uVar2 = FUN_00401140();
+        uVar2 = __getTlsBlock();
         *(undefined4 *)(puVar5 + -0x10) = uVar2;
         while ((puVar1 = (undefined4 *)**(int **)(puVar5 + -0x10), puVar1 != (undefined4 *)0x0 &&
                ((puVar1[10] != *(int *)(puVar5 + 8) || (uVar4 != puVar1[0xc]))))) {
@@ -436,7 +437,7 @@ LAB_004289de:
                 FUN_0042836d(*(int *)(puVar8 + -0x18),*(int *)(puVar8 + 0xc),*(int *)(puVar8 + -4),
                              *(int **)(puVar8 + -0x1c),*(int *)(puVar8 + -0xc));
               }
-              iVar9 = FUN_00401140();
+              iVar9 = __getTlsBlock();
               *(uint *)(iVar9 + 4) = *(uint *)(iVar9 + 4) & 0xfffffffd;
               if ((*DAT_00435108 == 2) && (*(int *)(puVar8 + -0x14) == 3)) {
                 pcVar5 = FUN_0041f920(*(int *)(*(int *)(puVar8 + -4) + 4));
@@ -464,9 +465,9 @@ LAB_004289de:
                  ((**(uint **)(puVar8 + 8) < 0xeedface || (0xeefface < **(uint **)(puVar8 + 8))))) {
                 FUN_00427ce5(2,3);
               }
-              puVar4 = (undefined4 *)FUN_00401140();
+              puVar4 = (undefined4 *)__getTlsBlock();
               **(undefined4 **)(puVar8 + -4) = *puVar4;
-              puVar4 = (undefined4 *)FUN_00401140();
+              puVar4 = (undefined4 *)__getTlsBlock();
               *puVar4 = *(undefined4 *)(puVar8 + -4);
               *(undefined4 *)(*(int *)(puVar8 + -4) + 0x28) = *(undefined4 *)(puVar8 + 0xc);
               *(undefined4 *)(*(int *)(puVar8 + -4) + 0x2c) = *(undefined4 *)(puVar8 + -0x18);
@@ -984,12 +985,12 @@ uint __cdecl FUN_0042959e(int param_1)
 LSTATUS __stdcall import_RegCloseKey(HKEY hKey)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   
                     /* WARNING: Could not recover jumptable at 0x004295f4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = RegCloseKey(hKey);
-  return LVar1;
+  regStatus = RegCloseKey(hKey);
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -998,13 +999,13 @@ LSTATUS __stdcall import_RegCloseKey(HKEY hKey)
 LSTATUS __stdcall import_RegCreateKeyExA(HKEY hKey,LPCSTR lpSubKey,DWORD Reserved,LPSTR lpClass,DWORD dwOptions, REGSAM samDesired,LPSECURITY_ATTRIBUTES lpSecurityAttributes,PHKEY phkResult, LPDWORD lpdwDisposition)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   
                     /* WARNING: Could not recover jumptable at 0x004295fa. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = RegCreateKeyExA(hKey,lpSubKey,Reserved,lpClass,dwOptions,samDesired,lpSecurityAttributes,
+  regStatus = RegCreateKeyExA(hKey,lpSubKey,Reserved,lpClass,dwOptions,samDesired,lpSecurityAttributes,
                           phkResult,lpdwDisposition);
-  return LVar1;
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1013,12 +1014,12 @@ LSTATUS __stdcall import_RegCreateKeyExA(HKEY hKey,LPCSTR lpSubKey,DWORD Reserve
 LSTATUS __stdcall import_RegOpenKeyExA(HKEY hKey,LPCSTR lpSubKey,DWORD ulOptions,REGSAM samDesired,PHKEY phkResult)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   
                     /* WARNING: Could not recover jumptable at 0x00429600. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = RegOpenKeyExA(hKey,lpSubKey,ulOptions,samDesired,phkResult);
-  return LVar1;
+  regStatus = RegOpenKeyExA(hKey,lpSubKey,ulOptions,samDesired,phkResult);
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1027,12 +1028,12 @@ LSTATUS __stdcall import_RegOpenKeyExA(HKEY hKey,LPCSTR lpSubKey,DWORD ulOptions
 LSTATUS __stdcall import_RegQueryValueExA(HKEY hKey,LPCSTR lpValueName,LPDWORD lpReserved,LPDWORD lpType,LPBYTE lpData, LPDWORD lpcbData)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   
                     /* WARNING: Could not recover jumptable at 0x00429606. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = RegQueryValueExA(hKey,lpValueName,lpReserved,lpType,lpData,lpcbData);
-  return LVar1;
+  regStatus = RegQueryValueExA(hKey,lpValueName,lpReserved,lpType,lpData,lpcbData);
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1041,12 +1042,12 @@ LSTATUS __stdcall import_RegQueryValueExA(HKEY hKey,LPCSTR lpValueName,LPDWORD l
 BOOL __stdcall import_CloseHandle(HANDLE hObject)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0042960c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = CloseHandle(hObject);
-  return BVar1;
+  ok = CloseHandle(hObject);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1055,13 +1056,13 @@ BOOL __stdcall import_CloseHandle(HANDLE hObject)
 HANDLE __stdcall import_CreateFileA(LPCSTR lpFileName,DWORD dwDesiredAccess,DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes,DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes,HANDLE hTemplateFile)
 
 {
-  HANDLE pvVar1;
+  HANDLE hFile;
   
                     /* WARNING: Could not recover jumptable at 0x00429612. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = CreateFileA(lpFileName,dwDesiredAccess,dwShareMode,lpSecurityAttributes,
+  hFile = CreateFileA(lpFileName,dwDesiredAccess,dwShareMode,lpSecurityAttributes,
                        dwCreationDisposition,dwFlagsAndAttributes,hTemplateFile);
-  return pvVar1;
+  return hFile;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1070,12 +1071,12 @@ HANDLE __stdcall import_CreateFileA(LPCSTR lpFileName,DWORD dwDesiredAccess,DWOR
 BOOL __stdcall import_DeleteFileA(LPCSTR lpFileName)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00429618. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DeleteFileA(lpFileName);
-  return BVar1;
+  ok = DeleteFileA(lpFileName);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1097,12 +1098,12 @@ void __stdcall import_ExitProcess(UINT uExitCode)
 BOOL __stdcall import_FileTimeToLocalFileTime(FILETIME *lpFileTime,LPFILETIME lpLocalFileTime)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0042962a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = FileTimeToLocalFileTime(lpFileTime,lpLocalFileTime);
-  return BVar1;
+  ok = FileTimeToLocalFileTime(lpFileTime,lpLocalFileTime);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1111,12 +1112,12 @@ BOOL __stdcall import_FileTimeToLocalFileTime(FILETIME *lpFileTime,LPFILETIME lp
 BOOL __stdcall import_FileTimeToSystemTime(FILETIME *lpFileTime,LPSYSTEMTIME lpSystemTime)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00429630. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = FileTimeToSystemTime(lpFileTime,lpSystemTime);
-  return BVar1;
+  ok = FileTimeToSystemTime(lpFileTime,lpSystemTime);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1125,12 +1126,12 @@ BOOL __stdcall import_FileTimeToSystemTime(FILETIME *lpFileTime,LPSYSTEMTIME lpS
 BOOL __stdcall import_FindClose(HANDLE hFindFile)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00429636. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = FindClose(hFindFile);
-  return BVar1;
+  ok = FindClose(hFindFile);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1139,12 +1140,12 @@ BOOL __stdcall import_FindClose(HANDLE hFindFile)
 HANDLE __stdcall import_FindFirstFileA(LPCSTR lpFileName,LPWIN32_FIND_DATAA lpFindFileData)
 
 {
-  HANDLE pvVar1;
+  HANDLE hFind;
   
                     /* WARNING: Could not recover jumptable at 0x0042963c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = FindFirstFileA(lpFileName,lpFindFileData);
-  return pvVar1;
+  hFind = FindFirstFileA(lpFileName,lpFindFileData);
+  return hFind;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1167,12 +1168,12 @@ UINT __stdcall import_GetACP(void)
 BOOL __stdcall import_GetCPInfo(UINT CodePage,LPCPINFO lpCPInfo)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00429648. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetCPInfo(CodePage,lpCPInfo);
-  return BVar1;
+  ok = GetCPInfo(CodePage,lpCPInfo);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1195,12 +1196,12 @@ LPSTR __stdcall import_GetCommandLineA(void)
 DWORD __stdcall import_GetCurrentThreadId(void)
 
 {
-  DWORD DVar1;
+  DWORD threadId;
   
                     /* WARNING: Could not recover jumptable at 0x00429654. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetCurrentThreadId();
-  return DVar1;
+  threadId = GetCurrentThreadId();
+  return threadId;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1237,12 +1238,12 @@ LPCH __stdcall import_GetEnvironmentStrings(void)
 DWORD __stdcall import_GetFileAttributesA(LPCSTR lpFileName)
 
 {
-  DWORD DVar1;
+  DWORD attributes;
   
                     /* WARNING: Could not recover jumptable at 0x00429666. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetFileAttributesA(lpFileName);
-  return DVar1;
+  attributes = GetFileAttributesA(lpFileName);
+  return attributes;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1251,12 +1252,12 @@ DWORD __stdcall import_GetFileAttributesA(LPCSTR lpFileName)
 BOOL __stdcall import_GetFileTime(HANDLE hFile,LPFILETIME lpCreationTime,LPFILETIME lpLastAccessTime, LPFILETIME lpLastWriteTime)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0042966c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetFileTime(hFile,lpCreationTime,lpLastAccessTime,lpLastWriteTime);
-  return BVar1;
+  ok = GetFileTime(hFile,lpCreationTime,lpLastAccessTime,lpLastWriteTime);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1265,12 +1266,12 @@ BOOL __stdcall import_GetFileTime(HANDLE hFile,LPFILETIME lpCreationTime,LPFILET
 DWORD __stdcall import_GetFileType(HANDLE hFile)
 
 {
-  DWORD DVar1;
+  DWORD fileType;
   
                     /* WARNING: Could not recover jumptable at 0x00429672. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetFileType(hFile);
-  return DVar1;
+  fileType = GetFileType(hFile);
+  return fileType;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1279,12 +1280,12 @@ DWORD __stdcall import_GetFileType(HANDLE hFile)
 DWORD __stdcall import_GetLastError(void)
 
 {
-  DWORD DVar1;
+  DWORD lastError;
   
                     /* WARNING: Could not recover jumptable at 0x00429678. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetLastError();
-  return DVar1;
+  lastError = GetLastError();
+  return lastError;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1333,12 +1334,12 @@ DWORD __stdcall import_GetModuleFileNameA(HMODULE hModule,LPSTR lpFilename,DWORD
 HMODULE __stdcall import_GetModuleHandleA(LPCSTR lpModuleName)
 
 {
-  HMODULE pHVar1;
+  HMODULE hModule;
   
                     /* WARNING: Could not recover jumptable at 0x00429690. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetModuleHandleA(lpModuleName);
-  return pHVar1;
+  hModule = GetModuleHandleA(lpModuleName);
+  return hModule;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1375,12 +1376,12 @@ DWORD __stdcall import_GetPrivateProfileStringA(LPCSTR lpAppName,LPCSTR lpKeyNam
 FARPROC __stdcall import_GetProcAddress(HMODULE hModule,LPCSTR lpProcName)
 
 {
-  FARPROC pFVar1;
+  FARPROC procAddress;
   
                     /* WARNING: Could not recover jumptable at 0x004296a2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pFVar1 = GetProcAddress(hModule,lpProcName);
-  return pFVar1;
+  procAddress = GetProcAddress(hModule,lpProcName);
+  return procAddress;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1415,12 +1416,12 @@ HANDLE __stdcall import_GetStdHandle(DWORD nStdHandle)
 BOOL __stdcall import_GetStringTypeA(LCID Locale,DWORD dwInfoType,LPCSTR lpSrcStr,int cchSrc,LPWORD lpCharType)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004296ba. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetStringTypeA(Locale,dwInfoType,lpSrcStr,cchSrc,lpCharType);
-  return BVar1;
+  ok = GetStringTypeA(Locale,dwInfoType,lpSrcStr,cchSrc,lpCharType);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1429,12 +1430,12 @@ BOOL __stdcall import_GetStringTypeA(LCID Locale,DWORD dwInfoType,LPCSTR lpSrcSt
 BOOL __stdcall import_GetStringTypeW(DWORD dwInfoType,LPCWSTR lpSrcStr,int cchSrc,LPWORD lpCharType)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004296c0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetStringTypeW(dwInfoType,lpSrcStr,cchSrc,lpCharType);
-  return BVar1;
+  ok = GetStringTypeW(dwInfoType,lpSrcStr,cchSrc,lpCharType);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1485,12 +1486,12 @@ LCID __stdcall import_GetUserDefaultLCID(void)
 DWORD __stdcall import_GetVersion(void)
 
 {
-  DWORD DVar1;
+  DWORD version;
   
                     /* WARNING: Could not recover jumptable at 0x004296d8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetVersion();
-  return DVar1;
+  version = GetVersion();
+  return version;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1511,12 +1512,12 @@ void __stdcall import_GlobalMemoryStatus(LPMEMORYSTATUS lpBuffer)
 BOOL __stdcall import_IsValidLocale(LCID Locale,DWORD dwFlags)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004296f6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsValidLocale(Locale,dwFlags);
-  return BVar1;
+  ok = IsValidLocale(Locale,dwFlags);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1566,12 +1567,12 @@ void __stdcall import_RaiseException(DWORD dwExceptionCode,DWORD dwExceptionFlag
 BOOL __stdcall import_ReadFile(HANDLE hFile,LPVOID lpBuffer,DWORD nNumberOfBytesToRead,LPDWORD lpNumberOfBytesRead, LPOVERLAPPED lpOverlapped)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0042971a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ReadFile(hFile,lpBuffer,nNumberOfBytesToRead,lpNumberOfBytesRead,lpOverlapped);
-  return BVar1;
+  ok = ReadFile(hFile,lpBuffer,nNumberOfBytesToRead,lpNumberOfBytesRead,lpOverlapped);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1592,12 +1593,12 @@ void __stdcall import_RtlUnwind(PVOID TargetFrame,PVOID TargetIp,PEXCEPTION_RECO
 BOOL __stdcall import_SetConsoleCtrlHandler(PHANDLER_ROUTINE HandlerRoutine,BOOL Add)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00429726. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetConsoleCtrlHandler(HandlerRoutine,Add);
-  return BVar1;
+  ok = SetConsoleCtrlHandler(HandlerRoutine,Add);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1606,12 +1607,12 @@ BOOL __stdcall import_SetConsoleCtrlHandler(PHANDLER_ROUTINE HandlerRoutine,BOOL
 DWORD __stdcall import_SetFilePointer(HANDLE hFile,LONG lDistanceToMove,PLONG lpDistanceToMoveHigh,DWORD dwMoveMethod)
 
 {
-  DWORD DVar1;
+  DWORD filePos;
   
                     /* WARNING: Could not recover jumptable at 0x0042972c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = SetFilePointer(hFile,lDistanceToMove,lpDistanceToMoveHigh,dwMoveMethod);
-  return DVar1;
+  filePos = SetFilePointer(hFile,lDistanceToMove,lpDistanceToMoveHigh,dwMoveMethod);
+  return filePos;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1646,12 +1647,12 @@ void __stdcall import_SetLastError(DWORD dwErrCode)
 BOOL __stdcall import_SetThreadLocale(LCID Locale)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0042973e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetThreadLocale(Locale);
-  return BVar1;
+  ok = SetThreadLocale(Locale);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1660,12 +1661,12 @@ BOOL __stdcall import_SetThreadLocale(LCID Locale)
 BOOL __stdcall import_TlsFree(DWORD dwTlsIndex)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0042974a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = TlsFree(dwTlsIndex);
-  return BVar1;
+  ok = TlsFree(dwTlsIndex);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1674,12 +1675,12 @@ BOOL __stdcall import_TlsFree(DWORD dwTlsIndex)
 LPVOID __stdcall import_TlsGetValue(DWORD dwTlsIndex)
 
 {
-  LPVOID pvVar1;
+  LPVOID tlsValue;
   
                     /* WARNING: Could not recover jumptable at 0x00429750. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = TlsGetValue(dwTlsIndex);
-  return pvVar1;
+  tlsValue = TlsGetValue(dwTlsIndex);
+  return tlsValue;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1688,12 +1689,12 @@ LPVOID __stdcall import_TlsGetValue(DWORD dwTlsIndex)
 BOOL __stdcall import_TlsSetValue(DWORD dwTlsIndex,LPVOID lpTlsValue)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00429756. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = TlsSetValue(dwTlsIndex,lpTlsValue);
-  return BVar1;
+  ok = TlsSetValue(dwTlsIndex,lpTlsValue);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1716,12 +1717,12 @@ LONG __stdcall import_UnhandledExceptionFilter(_EXCEPTION_POINTERS *ExceptionInf
 LPVOID __stdcall import_VirtualAlloc(LPVOID lpAddress,SIZE_T dwSize,DWORD flAllocationType,DWORD flProtect)
 
 {
-  LPVOID pvVar1;
+  LPVOID mem;
   
                     /* WARNING: Could not recover jumptable at 0x00429762. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = VirtualAlloc(lpAddress,dwSize,flAllocationType,flProtect);
-  return pvVar1;
+  mem = VirtualAlloc(lpAddress,dwSize,flAllocationType,flProtect);
+  return mem;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1730,12 +1731,12 @@ LPVOID __stdcall import_VirtualAlloc(LPVOID lpAddress,SIZE_T dwSize,DWORD flAllo
 BOOL __stdcall import_VirtualFree(LPVOID lpAddress,SIZE_T dwSize,DWORD dwFreeType)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00429768. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = VirtualFree(lpAddress,dwSize,dwFreeType);
-  return BVar1;
+  ok = VirtualFree(lpAddress,dwSize,dwFreeType);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1759,12 +1760,12 @@ int __stdcall import_WideCharToMultiByte(UINT CodePage,DWORD dwFlags,LPCWSTR lpW
 BOOL __stdcall import_WriteFile(HANDLE hFile,LPCVOID lpBuffer,DWORD nNumberOfBytesToWrite,LPDWORD lpNumberOfBytesWritten, LPOVERLAPPED lpOverlapped)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00429774. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = WriteFile(hFile,lpBuffer,nNumberOfBytesToWrite,lpNumberOfBytesWritten,lpOverlapped);
-  return BVar1;
+  ok = WriteFile(hFile,lpBuffer,nNumberOfBytesToWrite,lpNumberOfBytesWritten,lpOverlapped);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1798,12 +1799,12 @@ int __stdcall import_SHGetFolderPathA(...)
 BOOL __stdcall import_EnumThreadWindows(DWORD dwThreadId,WNDENUMPROC lpfn,LPARAM lParam)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0042978c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = EnumThreadWindows(dwThreadId,lpfn,lParam);
-  return BVar1;
+  ok = EnumThreadWindows(dwThreadId,lpfn,lParam);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1812,12 +1813,12 @@ BOOL __stdcall import_EnumThreadWindows(DWORD dwThreadId,WNDENUMPROC lpfn,LPARAM
 int __stdcall import_MessageBoxA(HWND hWnd,LPCSTR lpText,LPCSTR lpCaption,UINT uType)
 
 {
-  int iVar1;
+  int choice;
   
                     /* WARNING: Could not recover jumptable at 0x00429792. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = MessageBoxA(hWnd,lpText,lpCaption,uType);
-  return iVar1;
+  choice = MessageBoxA(hWnd,lpText,lpCaption,uType);
+  return choice;
 }
 
 // ----------------------------------------------------------------------------------------------------

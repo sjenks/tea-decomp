@@ -1,5 +1,5 @@
 // TSMerge.exe — runtime / library code "code_0x00434000"
-// 41 functions, 0x00434265..0x004374fc. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 37 functions, 0x00434265..0x004374fc. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -12,7 +12,7 @@ namespace tea {
 void __cdecl Child4407951_Notify4407972_434265(int param_1)
 
 {
-  OWL::TDecoratedFrame::vf10((int *)(param_1 + *(int *)(param_1 + -4) + -0xe1));
+  OWL::TDecoratedFrame::TFrameWindow_vf17((int *)(param_1 + *(int *)(param_1 + -4) + -0xe1));
   return;
 }
 
@@ -21,16 +21,16 @@ void __cdecl Child4407951_Notify4407972_434265(int param_1)
 void __cdecl FUN_0043427a(int param_1)
 
 {
-  OWL::TDecoratedFrame::vf9((int *)(param_1 + *(int *)(param_1 + -4) + -0xe1));
+  OWL::TDecoratedFrame::TFrameWindow_vf16((int *)(param_1 + *(int *)(param_1 + -4) + -0xe1));
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004342b9  FUN_004342b9   (21 bytes)   [unnamed; function defined from response-dispatcher]
-void __cdecl FUN_004342b9(int param_1,LPMSG param_2)
+void __cdecl FUN_004342b9(int param_1,LPMSG lParam)
 
 {
-  OWL::TDecoratedFrame::vf3((int *)(param_1 + *(int *)(param_1 + -4) + -0xe1),param_2);
+  OWL::TDecoratedFrame::TFrameWindow_vf10((int *)(param_1 + *(int *)(param_1 + -4) + -0xe1),lParam);
   return;
 }
 
@@ -40,7 +40,7 @@ void __cdecl FUN_004342b9(int param_1,LPMSG param_2)
 void __cdecl Child4469472_Notify4464720_4342f8(int param_1)
 
 {
-  OWL::TDecoratedFrame::vf7((int *)(param_1 + *(int *)(param_1 + -4) + -0xe1));
+  OWL::TDecoratedFrame::TFrameWindow_vf5((int *)(param_1 + *(int *)(param_1 + -4) + -0xe1));
   return;
 }
 
@@ -49,44 +49,8 @@ void __cdecl Child4469472_Notify4464720_4342f8(int param_1)
 void __cdecl FUN_0043430d(int param_1)
 
 {
-  OWL::TDecoratedFrame::vf6((int *)(param_1 + *(int *)(param_1 + -4) + -0xe1));
+  OWL::TDecoratedFrame::TFrameWindow_vf4((int *)(param_1 + *(int *)(param_1 + -4) + -0xe1));
   return;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00434494  FUN_00434494   (292 bytes)   [unnamed]
-int * __cdecl FUN_00434494(int *param_1,int param_2,undefined4 param_3,uint *param_4,int param_5)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x46c164);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 10);
-    param_1[10] = (int)(param_1 + 7);
-    param_1[0xb] = (int)(param_1 + 8);
-    param_1[1] = (int)(param_1 + 7);
-    param_1[2] = (int)(param_1 + 8);
-    param_1[6] = 0;
-    param_1[9] = 0;
-    param_1[7] = (int)&OWL::TEventHandler::vftable;
-    param_1[8] = (int)&OWL::TStreamableBase::vftable;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    FUN_0042ab84(param_1 + 10,1);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-  }
-  param_1[3] = (int)&OWL::TDialog::vftable;
-  *(undefined ***)param_1[1] = &PTR_LAB_0046c1c8;
-  *(undefined ***)param_1[2] = &PTR_LAB_0046c1d4;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_0046c1e0;
-  FUN_00434704(param_1,param_3,0,param_5);
-  if ((short)((uint)param_4 >> 0x10) != 0) {
-    param_4 = (uint *)FUN_0041fd2c(param_4);
-  }
-  param_1[4] = (int)param_4;
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -143,7 +107,7 @@ void __cdecl EvPaint_434a54(int *param_1)
 // ----------------------------------------------------------------------------------------------------
 // 0x00434a64  EvMsg_19_434a64   (93 bytes)   [owl:response-table message-handler]
 //   message 0x0019
-void __cdecl EvMsg_19_434a64(int *param_1,HDC param_2,undefined4 param_3,int param_4)
+void __cdecl EvMsg_19_434a64(int *param_1,HDC hdc,undefined4 param_3,int param_4)
 
 {
   int iVar1;
@@ -152,7 +116,7 @@ void __cdecl EvMsg_19_434a64(int *param_1,HDC param_2,undefined4 param_3,int par
      (iVar1 = (**(code **)(*(int *)(*(int *)(*param_1 + 0x6c) + 0x53) + 0x19))(), iVar1 != 0)) {
     return;
   }
-  OWL::TWindow::EvMsg_19(*param_1,param_2,param_3,param_4);
+  OWL::TWindow::EvMsg_19(*param_1,hdc,param_3,param_4);
   return;
 }
 
@@ -190,12 +154,12 @@ void __cdecl EvMsg_402_434af4(int *param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00434bec  FUN_00434bec   (188 bytes)   [unnamed]
-undefined1 __stdcall FUN_00434bec(HWND param_1,int param_2)
+undefined1 __stdcall FUN_00434bec(HWND hWnd,int param_2)
 
 {
   char cVar1;
   undefined1 uVar2;
-  LRESULT LVar3;
+  LRESULT lResult;
   int *piVar4;
   int iVar5;
   
@@ -203,17 +167,17 @@ undefined1 __stdcall FUN_00434bec(HWND param_1,int param_2)
     uVar2 = 0;
   }
   else {
-    LVar3 = FUN_0042bc6c(param_1,0);
-    if (LVar3 == 0) {
+    lResult = FUN_0042bc6c(hWnd,0);
+    if (lResult == 0) {
       iVar5 = 0;
     }
     else {
-      iVar5 = *(int *)(LVar3 + 8);
+      iVar5 = *(int *)(lResult + 8);
     }
-    piVar4 = FUN_004567e4(LVar3,iVar5,(int *)&DAT_0040467c,(int *)&DAT_00403714,0);
+    piVar4 = FUN_004567e4(lResult,iVar5,(int *)&DAT_0040467c,(int *)&DAT_00403714,0);
     if ((((DAT_0046c060 != (int *)0x0) && (piVar4 == (int *)0x0)) && (param_2 != 0x1f)) &&
        (param_2 != 10)) {
-      *(HWND *)(*DAT_0046c060 + 0xc) = param_1;
+      *(HWND *)(*DAT_0046c060 + 0xc) = hWnd;
       FUN_0042cbe0(*DAT_0046c060);
       piVar4 = DAT_0046c060;
       DAT_0046c060 = (int *)0x0;
@@ -257,7 +221,7 @@ char __cdecl FUN_00434ec0(int *param_1)
   bool bVar2;
   HGLOBAL hResData;
   ushort *puVar3;
-  LRESULT LVar4;
+  LRESULT lResult;
   HRSRC hResInfo;
   
   bVar2 = true;
@@ -284,9 +248,9 @@ char __cdecl FUN_00434ec0(int *param_1)
           for (; (bVar2 && ((char)*puVar3 != '\0')); puVar3 = (ushort *)((int)(puVar3 + 4) + iVar1))
           {
             iVar1 = *(int *)(puVar3 + 2);
-            LVar4 = SendDlgItemMessageA(*(HWND *)(*param_1 + 0xc),(uint)*puVar3,(uint)puVar3[1],0,
+            lResult = SendDlgItemMessageA(*(HWND *)(*param_1 + 0xc),(uint)*puVar3,(uint)puVar3[1],0,
                                         (LPARAM)(puVar3 + 4));
-            if (LVar4 == -1) {
+            if (lResult == -1) {
               bVar2 = false;
             }
           }
@@ -347,29 +311,14 @@ void __cdecl EvClose_4351b0(int *param_1)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00435204  FUN_00435204   (59 bytes)   [unnamed]
-undefined4 * __cdecl FUN_00435204(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x46c294);
-  FUN_0042aa1c(param_1,param_2,param_3);
-  *param_1 = &OWL::TControlEnabler::vftable;
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
 // 0x004353fc  FUN_004353fc   (103 bytes)   [unnamed]
 void __cdecl FUN_004353fc(int *param_1,undefined4 *param_2)
 
 {
   int iVar1;
   int iVar2;
-  HGLOBAL pvVar3;
-  LPVOID pvVar4;
+  HGLOBAL hGlobal;
+  LPVOID lockedMem;
   undefined4 *puVar5;
   
   if (param_2[4] == 3) {
@@ -380,13 +329,13 @@ void __cdecl FUN_004353fc(int *param_1,undefined4 *param_2)
   }
   iVar1 = param_2[8];
   *(undefined1 *)((int)param_1 + 0x1f) = 0;
-  pvVar3 = GlobalAlloc(2,iVar2 + iVar1 * 4 + param_2[5] + 0x28);
-  *param_1 = (int)pvVar3;
+  hGlobal = GlobalAlloc(2,iVar2 + iVar1 * 4 + param_2[5] + 0x28);
+  *param_1 = (int)hGlobal;
   if (*param_1 == 0) {
     FUN_00418860();
   }
-  pvVar4 = GlobalLock((HGLOBAL)*param_1);
-  *(LPVOID *)((int)param_1 + 9) = pvVar4;
+  lockedMem = GlobalLock((HGLOBAL)*param_1);
+  *(LPVOID *)((int)param_1 + 9) = lockedMem;
   puVar5 = *(undefined4 **)((int)param_1 + 9);
   for (iVar2 = 10; iVar2 != 0; iVar2 = iVar2 + -1) {
     *puVar5 = *param_2;
@@ -448,7 +397,7 @@ void __cdecl FUN_0043551c(undefined4 *param_1)
 
 {
   HGLOBAL hMem;
-  undefined4 *puVar1;
+  undefined4 *lockedMem;
   SIZE_T dwBytes;
   
   dwBytes = (*(int *)(*(int *)((int)param_1 + 9) + 0x14) + *(int *)((int)param_1 + 0x15)) -
@@ -457,10 +406,10 @@ void __cdecl FUN_0043551c(undefined4 *param_1)
   if (hMem == (HGLOBAL)0x0) {
     FUN_00418860();
   }
-  puVar1 = GlobalLock(hMem);
-  memcpy(puVar1,*(undefined4 **)((int)param_1 + 9),dwBytes);
+  lockedMem = GlobalLock(hMem);
+  memcpy(lockedMem,*(undefined4 **)((int)param_1 + 9),dwBytes);
   *param_1 = hMem;
-  *(undefined4 **)((int)param_1 + 9) = puVar1;
+  *(undefined4 **)((int)param_1 + 9) = lockedMem;
   *(undefined1 *)((int)param_1 + 0x1f) = 0;
   FUN_00435464(param_1);
   return;
@@ -550,12 +499,12 @@ void __cdecl FUN_004356bc(int param_1,uint param_2,uint *param_3)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004359e4  FUN_004359e4   (147 bytes)   [unnamed]
-int * __cdecl FUN_004359e4(int *param_1,HMODULE param_2,LPCSTR param_3)
+int * __cdecl FUN_004359e4(int *param_1,HMODULE hModule,LPCSTR name)
 
 {
   bool bVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46c31c);
   FUN_0041c798(param_1);
@@ -566,31 +515,31 @@ int * __cdecl FUN_004359e4(int *param_1,HMODULE param_2,LPCSTR param_3)
   *(undefined4 *)((int)param_1 + 0x15) = 0;
   *(undefined4 *)((int)param_1 + 0x19) = 0;
   *(undefined1 *)((int)param_1 + 0x1f) = 0;
-  bVar1 = FUN_00435a78(param_1,param_2,param_3);
+  bVar1 = FUN_00435a78(param_1,hModule,name);
   if (!bVar1) {
     FUN_0041cad0(0x7fe0,0);
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00435a78  FUN_00435a78   (76 bytes)   [unnamed]
-bool __cdecl FUN_00435a78(int *param_1,HMODULE param_2,LPCSTR param_3)
+bool __cdecl FUN_00435a78(int *param_1,HMODULE hModule,LPCSTR name)
 
 {
   int iVar1;
   HRSRC hResInfo;
-  HGLOBAL pvVar2;
+  HGLOBAL hGlobal;
   
-  hResInfo = FindResourceA(param_2,param_3,(LPCSTR)0x2);
+  hResInfo = FindResourceA(hModule,name,(LPCSTR)0x2);
   if (hResInfo == (HRSRC)0x0) {
-    pvVar2 = (HGLOBAL)0x0;
+    hGlobal = (HGLOBAL)0x0;
   }
   else {
-    pvVar2 = LoadResource(param_2,hResInfo);
+    hGlobal = LoadResource(hModule,hResInfo);
   }
-  *param_1 = (int)pvVar2;
+  *param_1 = (int)hGlobal;
   iVar1 = *param_1;
   if (iVar1 != 0) {
     *(undefined1 *)((int)param_1 + 0x1f) = 1;
@@ -602,73 +551,73 @@ bool __cdecl FUN_00435a78(int *param_1,HMODULE param_2,LPCSTR param_3)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00435b3c  FUN_00435b3c   (396 bytes)   [unnamed]
-int * __cdecl FUN_00435b3c(int *param_1,int param_2,int param_3,uint param_4,undefined2 param_5)
+int * __cdecl FUN_00435b3c(int *param_1,int param_2,int param_3,uint cEntries,undefined2 param_5)
 
 {
   uint uVar1;
   UINT UVar2;
   byte *pbVar3;
   byte *pbVar4;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   undefined4 local_78;
-  int local_74;
-  int local_70;
-  undefined2 local_6c;
+  int unused;
+  int unused2;
+  undefined2 ehContext;
   ushort local_6a;
-  undefined4 local_68;
-  int local_64;
-  undefined4 local_60;
-  undefined4 local_5c;
-  uint local_58;
-  undefined4 local_54;
-  undefined4 local_50;
-  undefined2 local_40;
-  int local_34;
-  HDC local_2c;
+  undefined4 unused3;
+  int unused4;
+  undefined4 unused5;
+  undefined4 unused6;
+  uint unused7;
+  undefined4 unused8;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext2;
+  int ehDtorCount;
+  HDC hdc;
   int local_27;
   
   __InitExceptBlockLDTC(0x46c360);
-  local_40 = 8;
+  ehContext2 = 8;
   FUN_0041c798(param_1);
   *(undefined ***)((int)param_1 + 5) = &OWL::TDib::vftable;
   local_78 = 0x28;
-  local_74 = param_2;
-  local_70 = param_3;
-  local_6c = 1;
-  uVar1 = FUN_004152f4(param_4);
+  unused = param_2;
+  unused2 = param_3;
+  ehContext = 1;
+  uVar1 = FUN_004152f4(cEntries);
   local_6a = (ushort)uVar1;
-  local_68 = 0;
+  unused3 = 0;
   uVar1 = (uVar1 & 0xffff) * param_2 + 0x1f & 0xffffffe0;
   if ((int)uVar1 < 0) {
     uVar1 = uVar1 + 7;
   }
-  local_64 = ((int)uVar1 >> 3) * param_3;
-  local_60 = 0;
-  local_5c = 0;
-  local_58 = param_4;
+  unused4 = ((int)uVar1 >> 3) * param_3;
+  unused5 = 0;
+  unused6 = 0;
+  unused7 = cEntries;
   if (8 < local_6a) {
-    local_58 = 0;
+    unused7 = 0;
   }
-  local_54 = 0;
+  unused8 = 0;
   FUN_004353fc(param_1,&local_78);
   *(undefined2 *)((int)param_1 + 0x1d) = param_5;
   if (*(short *)((int)param_1 + 0x1d) == 1) {
     uVar1 = 0;
-    if (param_4 != 0) {
+    if (cEntries != 0) {
       do {
         *(short *)(*(int *)((int)param_1 + 0x11) + uVar1 * 2) = (short)uVar1;
         uVar1 = uVar1 + 1;
-      } while (uVar1 < param_4);
+      } while (uVar1 < cEntries);
     }
   }
-  else if (param_4 != 0) {
-    local_40 = 0x14;
-    FUN_0042e298((int *)&local_2c);
-    local_34 = local_34 + 3;
-    local_40 = 0x20;
+  else if (cEntries != 0) {
+    ehContext2 = 0x14;
+    FUN_0042e298((int *)&hdc);
+    ehDtorCount = ehDtorCount + 3;
+    ehContext2 = 0x20;
     uVar1 = (**(code **)(local_27 + 0xc))();
     if ((uVar1 & 0x100) != 0) {
-      UVar2 = GetSystemPaletteEntries(local_2c,0,param_4,*(LPPALETTEENTRY *)((int)param_1 + 0x11));
+      UVar2 = GetSystemPaletteEntries(hdc,0,cEntries,*(LPPALETTEENTRY *)((int)param_1 + 0x11));
       uVar1 = 0;
       if (UVar2 != 0) {
         do {
@@ -682,10 +631,10 @@ int * __cdecl FUN_00435b3c(int *param_1,int param_2,int param_3,uint param_4,und
         } while (uVar1 < UVar2);
       }
     }
-    local_34 = local_34 + -3;
-    OWL::TWindowDC::_dtor((int *)&local_2c,0);
+    ehDtorCount = ehDtorCount + -3;
+    OWL::TWindowDC::_dtor((int *)&hdc,0);
   }
-  *in_FS_OFFSET = local_50;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -694,12 +643,12 @@ int * __cdecl FUN_00435b3c(int *param_1,int param_2,int param_3,uint param_4,und
 void __cdecl FUN_004360a8(int *param_1,int *param_2,int param_3)
 
 {
-  LRESULT LVar1;
+  LRESULT lResult;
   undefined4 uVar2;
   
-  LVar1 = SendDlgItemMessageA(*(HWND *)(*param_1 + 0xc),0x470,0x147,0,0);
-  if (-1 < LVar1) {
-    uVar2 = FUN_00439774(*(int *)(*(int *)(*param_2 + 0x30) + LVar1 * 4));
+  lResult = SendDlgItemMessageA(*(HWND *)(*param_1 + 0xc),0x470,0x147,0,0);
+  if (-1 < lResult) {
+    uVar2 = FUN_00439774(*(int *)(*(int *)(*param_2 + 0x30) + lResult * 4));
     *(undefined4 *)(param_3 + 0x3c) = uVar2;
   }
   return;
@@ -710,8 +659,8 @@ void __cdecl FUN_004360a8(int *param_1,int *param_2,int param_3)
 undefined4 __cdecl FUN_004360e6(uint *param_1,uint *param_2)
 
 {
-  char *pcVar1;
-  char *pcVar2;
+  char *len;
+  char *len2;
   uint uVar3;
   uint uVar4;
   
@@ -720,15 +669,15 @@ undefined4 __cdecl FUN_004360e6(uint *param_1,uint *param_2)
       param_1 = (uint *)((int)param_1 + 1)) {
     if ((char)*param_2 == '*') {
       param_2 = (uint *)((int)param_2 + 1);
-      pcVar1 = strlen(param_1);
-      pcVar2 = strlen(param_2);
-      if (pcVar2 < pcVar1) {
-        param_1 = (uint *)((int)param_1 + ((int)pcVar1 - (int)pcVar2));
+      len = strlen(param_1);
+      len2 = strlen(param_2);
+      if (len2 < len) {
+        param_1 = (uint *)((int)param_1 + ((int)len - (int)len2));
       }
     }
     if (((char)*param_2 != '?') || ((char)*param_1 == '\0')) {
-      uVar3 = FUN_0045aad4((int)(char)*param_1);
-      uVar4 = FUN_0045aad4((int)(char)*param_2);
+      uVar3 = toupper((int)(char)*param_1);
+      uVar4 = toupper((int)(char)*param_2);
       if (uVar3 != uVar4) {
         return 0;
       }
@@ -743,14 +692,14 @@ undefined4 __cdecl FUN_004360e6(uint *param_1,uint *param_2)
 uint * __cdecl FUN_00436168(uint *param_1,uint param_2,uint *param_3,uint param_4,uint param_5,uint param_6, uint param_7,uint param_8)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46c3dc);
   FUN_004459e8(param_1,param_2,param_3,0,param_4,param_5,0,param_6,0);
   param_1[10] = param_8;
   param_1[0xc] = param_7;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -759,86 +708,12 @@ uint * __cdecl FUN_00436168(uint *param_1,uint param_2,uint *param_3,uint param_
 undefined4 * __cdecl FUN_004361e8(undefined4 *param_1,undefined4 param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46c3f0);
   *param_1 = param_2;
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00436214  FUN_00436214   (348 bytes)   [unnamed]
-int * __cdecl FUN_00436214(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x46c408);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 0x23);
-    param_1[0x23] = (int)(param_1 + 0x20);
-    param_1[0x24] = (int)(param_1 + 0x21);
-    param_1[1] = (int)(param_1 + 0x20);
-    param_1[2] = (int)(param_1 + 0x21);
-    param_1[0x1f] = 0;
-    param_1[0x22] = 0;
-    param_1[0x20] = (int)&OWL::TEventHandler::vftable;
-    param_1[0x21] = (int)&OWL::TStreamableBase::vftable;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    FUN_0042ab84(param_1 + 0x23,1);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-  }
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -4;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -4;
-  FUN_00445ea8(param_1,1,param_3,param_4,0,param_5,0);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 4;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 4;
-  FUN_004361e8(param_1 + 0x1e,param_4);
-  param_1[3] = (int)&OWL::TDvFileOpenDialog::vftable;
-  *(undefined ***)param_1[1] = &PTR_LAB_0046cee0;
-  *(undefined ***)param_1[2] = &PTR_LAB_0046ceec;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_0046cef8;
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x004363ec  FUN_004363ec   (348 bytes)   [unnamed]
-int * __cdecl FUN_004363ec(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x46c42c);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 0x23);
-    param_1[0x23] = (int)(param_1 + 0x20);
-    param_1[0x24] = (int)(param_1 + 0x21);
-    param_1[1] = (int)(param_1 + 0x20);
-    param_1[2] = (int)(param_1 + 0x21);
-    param_1[0x1f] = 0;
-    param_1[0x22] = 0;
-    param_1[0x20] = (int)&OWL::TEventHandler::vftable;
-    param_1[0x21] = (int)&OWL::TStreamableBase::vftable;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    FUN_0042ab84(param_1 + 0x23,1);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-  }
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -4;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -4;
-  FUN_00446060(param_1,1,param_3,param_4,0,param_5,0);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 4;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 4;
-  FUN_004361e8(param_1 + 0x1e,param_4);
-  param_1[3] = (int)&OWL::TDvFileSaveDialog::vftable;
-  *(undefined ***)param_1[1] = &PTR_LAB_0046cdec;
-  *(undefined ***)param_1[2] = &PTR_LAB_0046cdf8;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_0046ce04;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -874,13 +749,13 @@ int * __cdecl FUN_00436e60(int param_1,int *param_2,int param_3,uint param_4)
   char cVar1;
   int iVar2;
   uint uVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_50;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46c764);
   iVar2 = *(int *)((int)param_2 + 0x22);
   if (iVar2 == 0) {
-    *in_FS_OFFSET = local_50;
+    *sehChainHead = sehPrevFrame;
     return (int *)0x0;
   }
   uVar3 = param_4 ^ *(uint *)(iVar2 + 0x14);
@@ -888,7 +763,7 @@ int * __cdecl FUN_00436e60(int param_1,int *param_2,int param_3,uint param_4)
     if (param_3 == 0) {
       iVar2 = FUN_00439734(iVar2);
       if (iVar2 == 0) {
-        *in_FS_OFFSET = local_50;
+        *sehChainHead = sehPrevFrame;
         return (int *)0x0;
       }
       iVar2 = (**(code **)(*(int *)(param_1 + 8) + 0x60))();
@@ -896,7 +771,7 @@ int * __cdecl FUN_00436e60(int param_1,int *param_2,int param_3,uint param_4)
         if (param_2 != (int *)0x0) {
           (**(code **)*param_2)();
         }
-        *in_FS_OFFSET = local_50;
+        *sehChainHead = sehPrevFrame;
         return (int *)0x0;
       }
     }
@@ -908,7 +783,7 @@ int * __cdecl FUN_00436e60(int param_1,int *param_2,int param_3,uint param_4)
       if (param_2 != (int *)0x0) {
         (**(code **)*param_2)();
       }
-      *in_FS_OFFSET = local_50;
+      *sehChainHead = sehPrevFrame;
       return (int *)0x0;
     }
     if (((uVar3 & 0x8000000) != 0) && (cVar1 = (**(code **)(*param_2 + 0xc))(), cVar1 == '\0')) {
@@ -917,7 +792,7 @@ int * __cdecl FUN_00436e60(int param_1,int *param_2,int param_3,uint param_4)
       if (param_2 != (int *)0x0) {
         (**(code **)*param_2)();
       }
-      *in_FS_OFFSET = local_50;
+      *sehChainHead = sehPrevFrame;
       return (int *)0x0;
     }
   }
@@ -929,7 +804,7 @@ int * __cdecl FUN_00436e60(int param_1,int *param_2,int param_3,uint param_4)
       if (param_2 != (int *)0x0) {
         (**(code **)*param_2)();
       }
-      *in_FS_OFFSET = local_50;
+      *sehChainHead = sehPrevFrame;
       return (int *)0x0;
     }
   }
@@ -945,11 +820,11 @@ int * __cdecl FUN_00436e60(int param_1,int *param_2,int param_3,uint param_4)
       }
     }
     param_2 = (int *)0x0;
-    *in_FS_OFFSET = local_50;
+    *sehChainHead = sehPrevFrame;
   }
   else {
     (**(code **)(*(int *)(param_1 + 8) + 0x50))();
-    *in_FS_OFFSET = local_50;
+    *sehChainHead = sehPrevFrame;
   }
   return param_2;
 }
@@ -975,154 +850,154 @@ undefined4 __cdecl FUN_004374fc(uint *param_1,uint *param_2)
 
 {
   bool bVar1;
-  int iVar2;
+  int prevRefs;
   uint *puVar3;
   uint *puVar4;
   uint *puVar5;
-  int *piVar6;
-  undefined4 *in_FS_OFFSET;
+  int *strRep;
+  undefined4 *sehChainHead;
   undefined4 uVar7;
   uint *local_240;
-  undefined4 local_1b4;
-  undefined1 local_18c [8];
+  undefined4 sehPrevFrame;
+  undefined1 str2 [8];
   uint *local_184;
-  undefined1 local_17c [8];
+  undefined1 str3 [8];
   uint *local_174;
-  undefined1 local_16c [8];
-  int local_164;
-  int local_154;
-  int local_144;
-  int local_134;
-  int local_124;
-  int local_114;
+  undefined1 str [8];
+  int str4;
+  int str5;
+  int str6;
+  int str7;
+  int str8;
+  int str9;
   
   __InitExceptBlockLDTC(0x46c96c);
-  FUN_004409f4((int)local_16c,param_1,'\0');
-  bVar1 = FUN_00440ce8((int)local_16c,8);
+  FUN_004409f4((int)str,param_1,'\0');
+  bVar1 = FUN_00440ce8((int)str,8);
   if (!bVar1) {
     uVar7 = 0;
-    if (local_114 != 0) {
-      if (*(int *)(local_114 + -0xc) != -1) {
-        piVar6 = (int *)(local_114 + -0xc);
-        if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+    if (str9 != 0) {
+      if (*(int *)(str9 + -0xc) != -1) {
+        strRep = (int *)(str9 + -0xc);
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *piVar6 = *piVar6 + -1;
-          iVar2 = *piVar6 + 1;
+          *strRep = *strRep + -1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar2 != 0) goto LAB_004375e9;
+        if (prevRefs != 0) goto LAB_004375e9;
       }
       operator_delete();
-      local_114 = 0;
+      str9 = 0;
     }
 LAB_004375e9:
-    if (local_124 != 0) {
-      if (*(int *)(local_124 + -0xc) != -1) {
-        piVar6 = (int *)(local_124 + -0xc);
-        if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+    if (str8 != 0) {
+      if (*(int *)(str8 + -0xc) != -1) {
+        strRep = (int *)(str8 + -0xc);
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *piVar6 = *piVar6 + -1;
-          iVar2 = *piVar6 + 1;
+          *strRep = *strRep + -1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar2 != 0) goto LAB_00437690;
+        if (prevRefs != 0) goto LAB_00437690;
       }
       operator_delete();
-      local_124 = 0;
+      str8 = 0;
     }
 LAB_00437690:
-    if (local_134 != 0) {
-      if (*(int *)(local_134 + -0xc) != -1) {
-        piVar6 = (int *)(local_134 + -0xc);
-        if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+    if (str7 != 0) {
+      if (*(int *)(str7 + -0xc) != -1) {
+        strRep = (int *)(str7 + -0xc);
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *piVar6 = *piVar6 + -1;
-          iVar2 = *piVar6 + 1;
+          *strRep = *strRep + -1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar2 != 0) goto LAB_00437737;
+        if (prevRefs != 0) goto LAB_00437737;
       }
       operator_delete();
-      local_134 = 0;
+      str7 = 0;
     }
 LAB_00437737:
-    if (local_144 != 0) {
-      if (*(int *)(local_144 + -0xc) != -1) {
-        piVar6 = (int *)(local_144 + -0xc);
-        if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+    if (str6 != 0) {
+      if (*(int *)(str6 + -0xc) != -1) {
+        strRep = (int *)(str6 + -0xc);
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *piVar6 = *piVar6 + -1;
-          iVar2 = *piVar6 + 1;
+          *strRep = *strRep + -1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar2 != 0) goto LAB_004377de;
+        if (prevRefs != 0) goto LAB_004377de;
       }
       operator_delete();
-      local_144 = 0;
+      str6 = 0;
     }
 LAB_004377de:
-    if (local_154 != 0) {
-      if (*(int *)(local_154 + -0xc) != -1) {
-        piVar6 = (int *)(local_154 + -0xc);
-        if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+    if (str5 != 0) {
+      if (*(int *)(str5 + -0xc) != -1) {
+        strRep = (int *)(str5 + -0xc);
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *piVar6 = *piVar6 + -1;
-          iVar2 = *piVar6 + 1;
+          *strRep = *strRep + -1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar2 != 0) goto LAB_00437885;
+        if (prevRefs != 0) goto LAB_00437885;
       }
       operator_delete();
-      local_154 = 0;
+      str5 = 0;
     }
 LAB_00437885:
-    if (local_164 != 0) {
-      if (*(int *)(local_164 + -0xc) != -1) {
-        piVar6 = (int *)(local_164 + -0xc);
-        if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+    if (str4 != 0) {
+      if (*(int *)(str4 + -0xc) != -1) {
+        strRep = (int *)(str4 + -0xc);
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (piVar6 == &DAT_00471d5c) {
-          iVar2 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *piVar6 = *piVar6 + -1;
-          iVar2 = *piVar6 + 1;
+          *strRep = *strRep + -1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar2 != 0) goto LAB_00437929;
+        if (prevRefs != 0) goto LAB_00437929;
       }
       operator_delete();
     }
 LAB_00437929:
-    *in_FS_OFFSET = local_1b4;
+    *sehChainHead = sehPrevFrame;
     return uVar7;
   }
-  puVar3 = (uint *)FUN_00440b74((int)local_16c,8);
-  std::string::string_from_cstr((int)local_17c,puVar3);
-  puVar3 = (uint *)FUN_00440b74((int)local_16c,0x10);
-  std::string::string_from_cstr((int)local_18c,puVar3);
+  puVar3 = (uint *)FUN_00440b74((int)str,8);
+  std::string::string_from_cstr((int)str3,puVar3);
+  puVar3 = (uint *)FUN_00440b74((int)str,0x10);
+  std::string::string_from_cstr((int)str2,puVar3);
   puVar3 = local_174;
-  bVar1 = FUN_00440ce8((int)local_16c,0x10);
+  bVar1 = FUN_00440ce8((int)str,0x10);
   local_240 = local_184;
   if (!bVar1) {
     local_240 = (uint *)&DAT_0046c39e;
@@ -1150,17 +1025,17 @@ LAB_00437929:
   if (local_184 != (uint *)0x0) {
     if (local_184[-3] != 0xffffffff) {
       puVar3 = local_184 + -3;
-      if (puVar3 == &DAT_00471d5c) {
-        iVar2 = 1;
+      if (puVar3 == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (puVar3 == &DAT_00471d5c) {
-        iVar2 = 1;
+      else if (puVar3 == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
         *puVar3 = *puVar3 - 1;
-        iVar2 = *puVar3 + 1;
+        prevRefs = *puVar3 + 1;
       }
-      if (iVar2 != 0) goto LAB_00437b4d;
+      if (prevRefs != 0) goto LAB_00437b4d;
     }
     operator_delete();
     local_184 = (uint *)0x0;
@@ -1169,136 +1044,136 @@ LAB_00437b4d:
   if (local_174 != (uint *)0x0) {
     if (local_174[-3] != 0xffffffff) {
       puVar3 = local_174 + -3;
-      if (puVar3 == &DAT_00471d5c) {
-        iVar2 = 1;
+      if (puVar3 == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (puVar3 == &DAT_00471d5c) {
-        iVar2 = 1;
+      else if (puVar3 == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
         *puVar3 = *puVar3 - 1;
-        iVar2 = *puVar3 + 1;
+        prevRefs = *puVar3 + 1;
       }
-      if (iVar2 != 0) goto LAB_00437c09;
+      if (prevRefs != 0) goto LAB_00437c09;
     }
     operator_delete();
     local_174 = (uint *)0x0;
   }
 LAB_00437c09:
-  if (local_114 != 0) {
-    if (*(int *)(local_114 + -0xc) != -1) {
-      piVar6 = (int *)(local_114 + -0xc);
-      if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+  if (str9 != 0) {
+    if (*(int *)(str9 + -0xc) != -1) {
+      strRep = (int *)(str9 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar6 = *piVar6 + -1;
-        iVar2 = *piVar6 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_00437cb6;
+      if (prevRefs != 0) goto LAB_00437cb6;
     }
     operator_delete();
-    local_114 = 0;
+    str9 = 0;
   }
 LAB_00437cb6:
-  if (local_124 != 0) {
-    if (*(int *)(local_124 + -0xc) != -1) {
-      piVar6 = (int *)(local_124 + -0xc);
-      if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+  if (str8 != 0) {
+    if (*(int *)(str8 + -0xc) != -1) {
+      strRep = (int *)(str8 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar6 = *piVar6 + -1;
-        iVar2 = *piVar6 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_00437d5d;
+      if (prevRefs != 0) goto LAB_00437d5d;
     }
     operator_delete();
-    local_124 = 0;
+    str8 = 0;
   }
 LAB_00437d5d:
-  if (local_134 != 0) {
-    if (*(int *)(local_134 + -0xc) != -1) {
-      piVar6 = (int *)(local_134 + -0xc);
-      if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+  if (str7 != 0) {
+    if (*(int *)(str7 + -0xc) != -1) {
+      strRep = (int *)(str7 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar6 = *piVar6 + -1;
-        iVar2 = *piVar6 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_00437e04;
+      if (prevRefs != 0) goto LAB_00437e04;
     }
     operator_delete();
-    local_134 = 0;
+    str7 = 0;
   }
 LAB_00437e04:
-  if (local_144 != 0) {
-    if (*(int *)(local_144 + -0xc) != -1) {
-      piVar6 = (int *)(local_144 + -0xc);
-      if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+  if (str6 != 0) {
+    if (*(int *)(str6 + -0xc) != -1) {
+      strRep = (int *)(str6 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar6 = *piVar6 + -1;
-        iVar2 = *piVar6 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_00437eab;
+      if (prevRefs != 0) goto LAB_00437eab;
     }
     operator_delete();
-    local_144 = 0;
+    str6 = 0;
   }
 LAB_00437eab:
-  if (local_154 != 0) {
-    if (*(int *)(local_154 + -0xc) != -1) {
-      piVar6 = (int *)(local_154 + -0xc);
-      if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+  if (str5 != 0) {
+    if (*(int *)(str5 + -0xc) != -1) {
+      strRep = (int *)(str5 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar6 = *piVar6 + -1;
-        iVar2 = *piVar6 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_00437f52;
+      if (prevRefs != 0) goto LAB_00437f52;
     }
     operator_delete();
-    local_154 = 0;
+    str5 = 0;
   }
 LAB_00437f52:
-  if (local_164 != 0) {
-    if (*(int *)(local_164 + -0xc) != -1) {
-      piVar6 = (int *)(local_164 + -0xc);
-      if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+  if (str4 != 0) {
+    if (*(int *)(str4 + -0xc) != -1) {
+      strRep = (int *)(str4 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar6 == &DAT_00471d5c) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar6 = *piVar6 + -1;
-        iVar2 = *piVar6 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_00437ff6;
+      if (prevRefs != 0) goto LAB_00437ff6;
     }
     operator_delete();
   }
 LAB_00437ff6:
-  *in_FS_OFFSET = local_1b4;
+  *sehChainHead = sehPrevFrame;
   return uVar7;
 }
 

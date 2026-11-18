@@ -8,88 +8,89 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00403778  DMApplication::vf17   (218 bytes)   [rtti:vtable virtual slot 17]
-void __cdecl DMApplication::vf17(int param_1)
+void __cdecl DMApplication::vf17(int self)
 
 {
-  int *piVar1;
-  int *piVar2;
+  int *frameWindow;
+  int *dmDialog;
   int iVar3;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   char cVar4;
   int iVar5;
-  undefined4 local_30;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x474cd4);
-  piVar1 = (int *)operator_new();
-  if (piVar1 != (int *)0x0) {
+  frameWindow = (int *)operator_new();
+  if (frameWindow != (int *)0x0) {
     iVar5 = 0;
     cVar4 = '\x01';
-    piVar2 = (int *)operator_new();
-    if (piVar2 == (int *)0x0) {
+    dmDialog = (int *)operator_new();
+    if (dmDialog == (int *)0x0) {
       iVar3 = 0;
     }
     else {
-      FUN_00401294(piVar2,0,0,(uint *)0x66);
-      iVar3 = *piVar2;
+      DMDialog::DMDialog(dmDialog,0,0,(uint *)0x66);
+      iVar3 = *dmDialog;
     }
-    FUN_0044cb34(piVar1,0,0,(uint *)"TEA&Sympathy Dictionary Builder",iVar3,cVar4,iVar5);
+    OWL::TFrameWindow::TFrameWindow(frameWindow,0,0,(uint *)"TEA&Sympathy Dictionary Builder",iVar3,cVar4,iVar5);
   }
-  *(uint *)(*piVar1 + 0x18) = *(uint *)(*piVar1 + 0x18) & 0xfffaffff;
-  FUN_0044d2f0(piVar1,param_1 + 4,0x6c);
-  FUN_0043a224(param_1,piVar1);
-  *in_FS_OFFSET = local_30;
+  *(uint *)(*frameWindow + 0x18) = *(uint *)(*frameWindow + 0x18) & 0xfffaffff;
+  FUN_0044d2f0(frameWindow,self + 4,0x6c);
+  FUN_0043a224(self,frameWindow);
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00403870  FUN_00403870   (163 bytes)   [unnamed]
+// 0x00403870  OwlMain   (163 bytes)   [analysis]
+//   creates and runs the "TEA&Sympathy Dictionary Builder" application
 //   file placement: inferred (address adjacency)
-undefined4 __stdcall FUN_00403870(void)
+undefined4 __stdcall OwlMain(void)
 
 {
   undefined4 uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_a0;
-  undefined ***local_7c;
-  undefined **local_78;
-  undefined **local_6b;
-  undefined **local_61;
-  undefined4 local_d;
-  undefined **local_9;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined ***application;
+  undefined **unused;
+  undefined **unused2;
+  undefined **dmApplication;
+  undefined4 unused3;
+  undefined **eventHandler;
   
   __InitExceptBlockLDTC(0x474d10);
-  local_7c = &local_9;
-  local_d = 0;
-  local_9 = &OWL::TEventHandler::vftable;
-  FUN_004398dc((int *)&local_7c,1,(uint *)"TEA&Sympathy Dictionary Builder",&DAT_00484890,
+  application = &eventHandler;
+  unused3 = 0;
+  eventHandler = &OWL::TEventHandler::vftable;
+  FUN_004398dc((int *)&application,1,(uint *)"TEA&Sympathy Dictionary Builder",&DAT_00484890,
                (undefined *)0x0);
-  local_61 = &DMApplication::vftable;
-  local_78 = &PTR_LAB_00474dc4;
-  local_6b = &PTR_LAB_00474dd4;
-  *local_7c = &PTR_LAB_00474df4;
-  uVar1 = (*(code *)local_61[2])();
-  OWL::TApplication::_dtor((undefined4*)&local_7c,0);
-  *in_FS_OFFSET = local_a0;
+  dmApplication = &DMApplication::vftable;
+  unused = &PTR_LAB_00474dc4;
+  unused2 = &PTR_LAB_00474dd4;
+  *application = &PTR_LAB_00474df4;
+  uVar1 = (*(code *)dmApplication[2])();
+  OWL::TApplication::_dtor((undefined4*)&application,0);
+  *sehChainHead = sehPrevFrame;
   return uVar1;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00403978  DMApplication::~DMApplication   (67 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as DMApplication::_dtor
-void __cdecl DMApplication::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl DMApplication::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x474d4c);
-  if (param_1 != (undefined4 *)0x0) {
-    OWL::TApplication::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    OWL::TApplication::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -97,30 +98,30 @@ void __cdecl DMApplication::_dtor(undefined4 *param_1,byte param_2)
 // 0x00403ae8  OWL::TFileSaveDialog::~TFileSaveDialog   (175 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TFileSaveDialog::_dtor
 //   file placement: inferred (address adjacency)
-void __cdecl OWL::TFileSaveDialog::_dtor(int *param_1,uint param_2)
+void __cdecl OWL::TFileSaveDialog::_dtor(int *self,uint dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x474d54);
-  if (param_1 != (int *)0x0) {
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x5c;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0x5c;
-    OWL::TCommonDialog::_dtor(param_1,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x5c;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0x5c;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0x22,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 0x20,0);
+  if (self != (int *)0x0) {
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x5c;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -0x5c;
+    OWL::TCommonDialog::_dtor(self,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x5c;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 0x5c;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0x22,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 0x20,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -128,30 +129,30 @@ void __cdecl OWL::TFileSaveDialog::_dtor(int *param_1,uint param_2)
 // 0x00403e58  OWL::TFileOpenDialog::~TFileOpenDialog   (175 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TFileOpenDialog::_dtor
 //   file placement: inferred (address adjacency)
-void __cdecl OWL::TFileOpenDialog::_dtor(int *param_1,uint param_2)
+void __cdecl OWL::TFileOpenDialog::_dtor(int *self,uint dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x474d5c);
-  if (param_1 != (int *)0x0) {
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x5c;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0x5c;
-    OWL::TCommonDialog::_dtor(param_1,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x5c;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0x5c;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0x22,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 0x20,0);
+  if (self != (int *)0x0) {
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x5c;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -0x5c;
+    OWL::TCommonDialog::_dtor(self,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x5c;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 0x5c;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0x22,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 0x20,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -167,19 +168,19 @@ void __stdcall OWL::TApplication::vf9(void)
 // ----------------------------------------------------------------------------------------------------
 // 0x00404098  OWL::TApplication::vf13   (11 bytes)   [rtti:vtable virtual slot 13]
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl OWL::TApplication::vf13(int param_1)
+undefined4 __cdecl OWL::TApplication::vf13(int self)
 
 {
-  return *(undefined4 *)(param_1 + 0x31);
+  return *(undefined4 *)(self + 0x31);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00404100  std::logic_error::vf1   (11 bytes)   [rtti:vtable virtual slot 1]
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl std::logic_error::vf1(int param_1)
+undefined4 __cdecl std::logic_error::vf1(int self)
 
 {
-  return *(undefined4 *)(param_1 + 0x10);
+  return *(undefined4 *)(self + 0x10);
 }
 
 // ----------------------------------------------------------------------------------------------------

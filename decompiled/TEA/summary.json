@@ -2,26 +2,27 @@
  "exe": "TEA.exe",
  "sha256": "d83da2a8dc455b244bf6914112374c0ebdfddfb0d64371dd33a3238dde9c8136",
  "functions": 4489,
- "named": 1612,
+ "named": 2569,
  "nameSources": {
-  "unnamed": 2877,
+  "unnamed": 1920,
+  "analysis (matched TEACON.exe)": 82,
+  "analysis": 602,
+  "rtti:vtable-store": 191,
   "rtti:dtor": 302,
-  "rtti:vtable": 882,
-  "analysis (matched TEACON.exe)": 26,
+  "rtti:vtable": 880,
+  "analysis (matched TEACON.exe, duplicated code)": 83,
+  "analysis (position-matched TEACON.exe)": 13,
   "notes": 6,
-  "notes+analysis (matched TEACON.exe)": 8,
+  "analysis (matched TEA.exe, duplicated code)": 22,
+  "notes+analysis (matched TEACON.exe)": 9,
   "notes+analysis": 9,
   "analysis (matched TEACON.exe by position and size)": 4,
-  "analysis (inferred)": 1,
   "notes+analysis (matched TEACON.exe by position and size)": 3,
   "owl:response-table": 325,
-  "notes (structure checked) (position-matched TEACON.exe)": 1,
-  "notes (inferred) (position-matched TEACON.exe)": 2,
-  "notes+analysis (position-matched TEACON.exe)": 1,
-  "analysis (position-matched TEACON.exe)": 5,
-  "analysis": 5,
-  "notes (matched TEACON.exe)": 6,
-  "notes (position-matched TEACON.exe)": 2,
+  "notes+analysis (position-matched TEACON.exe)": 6,
+  "notes (matched TEACON.exe)": 5,
+  "notes (matched TEA.exe, duplicated code)": 2,
+  "analysis (matched TSBuild.exe)": 1,
   "analysis (usage pattern) (matched TEACON.exe)": 13,
   "analysis (usage pattern) (position-matched TEACON.exe)": 5,
   "analysis (usage pattern, less certain) (position-matched TEACON.exe)": 1,
@@ -30,7 +31,7 @@
  },
  "appFunctions": 1385,
  "libFunctions": 3104,
- "appNamed": 639,
+ "appNamed": 1383,
  "libStart": "0x00486aa8",
  "textBytes": 954368,
  "bytesInFunctions": 851246,
@@ -42,30 +43,44 @@
  "responseTablesOwned": 48,
  "globalsDeclared": 1569,
  "generatorProblems": [],
+ "variables": {
+  "declared": 29864,
+  "generic": 28463,
+  "hand": 2723,
+  "rule": 14440,
+  "genericLeft": 11303,
+  "src": {
+   "declared": 14054,
+   "generic": 13794,
+   "hand": 2594,
+   "rule": 8271,
+   "genericLeft": 2932
+  }
+ },
  "modules": [
   {
    "file": "src/TEADictionaryPropertiesWindows.cpp",
    "functions": 18,
-   "named": 11,
+   "named": 16,
    "from": "0x00401000",
    "to": "0x00402f68",
    "bytes": 5488
   },
   {
    "file": "src/PrintoutFeeder.cpp",
-   "functions": 6,
+   "functions": 3,
    "named": 3,
    "from": "0x00402f80",
-   "to": "0x00404870",
-   "bytes": 2353
+   "to": "0x00404784",
+   "bytes": 94
   },
   {
    "file": "src/TEAPrintout.cpp",
-   "functions": 16,
-   "named": 9,
-   "from": "0x004030f4",
+   "functions": 17,
+   "named": 17,
+   "from": "0x00402fa0",
    "to": "0x004044dc",
-   "bytes": 4218
+   "bytes": 4530
   },
   {
    "file": "src/PrintPreviewPrintout.cpp",
@@ -76,25 +91,33 @@
    "bytes": 93
   },
   {
+   "file": "src/TEAPrintoutFeeder.cpp",
+   "functions": 11,
+   "named": 11,
+   "from": "0x004047bc",
+   "to": "0x0043c6d4",
+   "bytes": 878
+  },
+  {
    "file": "src/TEAPropertiesViewWindows.cpp",
    "functions": 17,
-   "named": 11,
-   "from": "0x00404f80",
-   "to": "0x004075e4",
-   "bytes": 7091
+   "named": 17,
+   "from": "0x00404870",
+   "to": "0x0040758c",
+   "bytes": 8696
   },
   {
    "file": "src/TSDictionaryList.cpp",
-   "functions": 63,
-   "named": 18,
-   "from": "0x004076a8",
+   "functions": 64,
+   "named": 64,
+   "from": "0x004075e4",
    "to": "0x0040c800",
-   "bytes": 19204
+   "bytes": 19367
   },
   {
    "file": "src/TSDictionaryDefinitionRetriever.cpp",
    "functions": 11,
-   "named": 3,
+   "named": 11,
    "from": "0x0040c84c",
    "to": "0x0040e240",
    "bytes": 7364
@@ -102,7 +125,7 @@
   {
    "file": "src/TSDictionaryDefinitionSearchIndexed.cpp",
    "functions": 20,
-   "named": 7,
+   "named": 20,
    "from": "0x0040e5e0",
    "to": "0x00410750",
    "bytes": 8380
@@ -110,7 +133,7 @@
   {
    "file": "src/TSDictionaryDefinitionSearchSequential.cpp",
    "functions": 5,
-   "named": 3,
+   "named": 5,
    "from": "0x00410788",
    "to": "0x00410da0",
    "bytes": 1424
@@ -125,32 +148,32 @@
   },
   {
    "file": "src/MatchEngine.cpp",
-   "functions": 38,
-   "named": 34,
+   "functions": 39,
+   "named": 39,
    "from": "0x00411264",
    "to": "0x00460050",
-   "bytes": 18873
+   "bytes": 18898
   },
   {
    "file": "src/InputEngine.cpp",
-   "functions": 16,
-   "named": 9,
+   "functions": 12,
+   "named": 12,
    "from": "0x00411680",
-   "to": "0x00412cf0",
-   "bytes": 6793
+   "to": "0x0041238c",
+   "bytes": 3369
   },
   {
    "file": "src/FileHistory.cpp",
-   "functions": 1,
-   "named": 1,
-   "from": "0x004131f8",
+   "functions": 5,
+   "named": 5,
+   "from": "0x00412434",
    "to": "0x004131f8",
-   "bytes": 76
+   "bytes": 3500
   },
   {
    "file": "src/IntroductionViewWindows.cpp",
    "functions": 8,
-   "named": 6,
+   "named": 8,
    "from": "0x00413260",
    "to": "0x00413990",
    "bytes": 1535
@@ -158,7 +181,7 @@
   {
    "file": "src/PropertiesViewWindows.cpp",
    "functions": 75,
-   "named": 49,
+   "named": 75,
    "from": "0x00413c7c",
    "to": "0x004178ac",
    "bytes": 14322
@@ -174,7 +197,7 @@
   {
    "file": "src/PVWPushButton.cpp",
    "functions": 6,
-   "named": 5,
+   "named": 6,
    "from": "0x004179a8",
    "to": "0x00417d50",
    "bytes": 1054
@@ -182,7 +205,7 @@
   {
    "file": "src/PVWRadioButton.cpp",
    "functions": 9,
-   "named": 8,
+   "named": 9,
    "from": "0x00417dec",
    "to": "0x004182b4",
    "bytes": 1333
@@ -190,7 +213,7 @@
   {
    "file": "src/PVWCheckBox.cpp",
    "functions": 5,
-   "named": 4,
+   "named": 5,
    "from": "0x00418350",
    "to": "0x004186c0",
    "bytes": 1002
@@ -198,7 +221,7 @@
   {
    "file": "src/PVWColourButton.cpp",
    "functions": 10,
-   "named": 8,
+   "named": 10,
    "from": "0x0041875c",
    "to": "0x00418e14",
    "bytes": 1932
@@ -206,23 +229,23 @@
   {
    "file": "src/PVWFontButton.cpp",
    "functions": 10,
-   "named": 8,
+   "named": 10,
    "from": "0x004190f0",
    "to": "0x00419874",
    "bytes": 2573
   },
   {
    "file": "src/PVWRichEdit.cpp",
-   "functions": 18,
-   "named": 11,
+   "functions": 34,
+   "named": 34,
    "from": "0x00419bb8",
-   "to": "0x0041ae3c",
-   "bytes": 4856
+   "to": "0x00469f48",
+   "bytes": 6753
   },
   {
    "file": "src/PVWEdit.cpp",
    "functions": 14,
-   "named": 6,
+   "named": 14,
    "from": "0x0041aef0",
    "to": "0x0041b600",
    "bytes": 1816
@@ -230,7 +253,7 @@
   {
    "file": "src/PVWStatic.cpp",
    "functions": 6,
-   "named": 3,
+   "named": 6,
    "from": "0x0041b638",
    "to": "0x0041bad8",
    "bytes": 1188
@@ -238,7 +261,7 @@
   {
    "file": "src/PVWUpDown.cpp",
    "functions": 5,
-   "named": 4,
+   "named": 5,
    "from": "0x0041bafc",
    "to": "0x0041bdf0",
    "bytes": 789
@@ -246,7 +269,7 @@
   {
    "file": "src/PVWEnumeration.cpp",
    "functions": 6,
-   "named": 4,
+   "named": 6,
    "from": "0x0041be30",
    "to": "0x0041c1e4",
    "bytes": 952
@@ -254,7 +277,7 @@
   {
    "file": "src/PVWCombo.cpp",
    "functions": 11,
-   "named": 4,
+   "named": 11,
    "from": "0x0041c210",
    "to": "0x0041ca1c",
    "bytes": 4819
@@ -262,7 +285,7 @@
   {
    "file": "src/PVWURL.cpp",
    "functions": 14,
-   "named": 11,
+   "named": 14,
    "from": "0x0041d510",
    "to": "0x0041e888",
    "bytes": 4979
@@ -270,7 +293,7 @@
   {
    "file": "src/PVWFontMaintainer.cpp",
    "functions": 4,
-   "named": 1,
+   "named": 4,
    "from": "0x0041e8d8",
    "to": "0x0041ea74",
    "bytes": 420
@@ -278,90 +301,90 @@
   {
    "file": "src/PVWTabs.cpp",
    "functions": 5,
-   "named": 4,
+   "named": 5,
    "from": "0x0041ea80",
    "to": "0x0041ee00",
    "bytes": 882
   },
   {
    "file": "src/PVWPathListBox.cpp",
-   "functions": 10,
-   "named": 4,
+   "functions": 9,
+   "named": 9,
    "from": "0x0041ee74",
-   "to": "0x0041fedc",
-   "bytes": 5022
+   "to": "0x0041fea4",
+   "bytes": 4154
   },
   {
    "file": "src/PVWPathList.cpp",
-   "functions": 78,
-   "named": 55,
-   "from": "0x00420274",
-   "to": "0x004258e8",
-   "bytes": 18114
+   "functions": 65,
+   "named": 65,
+   "from": "0x0041fedc",
+   "to": "0x00422cf8",
+   "bytes": 8262
   },
   {
    "file": "src/LookupConfiguration.cpp",
-   "functions": 4,
-   "named": 3,
-   "from": "0x00425984",
-   "to": "0x004263ec",
-   "bytes": 2374
+   "functions": 17,
+   "named": 17,
+   "from": "0x00422de4",
+   "to": "0x0042612c",
+   "bytes": 12931
+  },
+  {
+   "file": "src/MyScroller.cpp",
+   "functions": 26,
+   "named": 26,
+   "from": "0x004263ec",
+   "to": "0x0044faac",
+   "bytes": 2734
   },
   {
    "file": "src/PrintPreviewWindow.cpp",
    "functions": 25,
-   "named": 21,
+   "named": 25,
    "from": "0x00426498",
    "to": "0x004283a8",
    "bytes": 7162
   },
   {
-   "file": "src/MyScroller.cpp",
-   "functions": 26,
-   "named": 21,
-   "from": "0x004283f4",
-   "to": "0x0044fb08",
-   "bytes": 3241
-  },
-  {
    "file": "src/MatchListLabelWindows.cpp",
-   "functions": 4,
-   "named": 1,
-   "from": "0x00428eb4",
+   "functions": 5,
+   "named": 5,
+   "from": "0x00428ce4",
    "to": "0x0042909c",
-   "bytes": 784
+   "bytes": 1211
   },
   {
    "file": "src/MatchListWindows.cpp",
-   "functions": 109,
-   "named": 30,
+   "functions": 108,
+   "named": 108,
    "from": "0x004292c0",
-   "to": "0x00431458",
-   "bytes": 30804
+   "to": "0x004313f8",
+   "bytes": 30779
   },
   {
    "file": "src/Pattern.cpp",
-   "functions": 6,
-   "named": 3,
+   "functions": 5,
+   "named": 5,
    "from": "0x00434b30",
-   "to": "0x00434cd0",
-   "bytes": 1371
+   "to": "0x00434cb8",
+   "bytes": 383
   },
   {
    "file": "src/GridAboutBoxViewWindows.cpp",
    "functions": 20,
-   "named": 4,
-   "from": "0x004350d4",
-   "to": "0x00437fc4",
-   "bytes": 18355
+   "named": 20,
+   "from": "0x00434cd0",
+   "to": "0x00437eb0",
+   "bytes": 11479
   },
   {
    "file": "src/TEAViewProfileWindows.cpp",
-   "functions": 2,
-   "named": 1,
-   "from": "0x00439ea0",
+   "functions": 3,
+   "named": 3,
+   "from": "0x00437fc4",
    "to": "0x0043a064",
-   "bytes": 5772
+   "bytes": 13636
   },
   {
    "file": "src/main.cpp",
@@ -373,120 +396,120 @@
   },
   {
    "file": "src/PrintPreviewWindowTEA.cpp",
-   "functions": 6,
-   "named": 4,
+   "functions": 5,
+   "named": 5,
    "from": "0x0043bbb4",
-   "to": "0x0043c330",
-   "bytes": 1248
-  },
-  {
-   "file": "src/TEAPrintoutFeeder.cpp",
-   "functions": 10,
-   "named": 6,
-   "from": "0x0043c3a8",
-   "to": "0x0043c6fc",
-   "bytes": 995
+   "to": "0x0043c04c",
+   "bytes": 1161
   },
   {
    "file": "src/TSDictionarySaveTEADialog.cpp",
-   "functions": 3,
-   "named": 3,
-   "from": "0x0043c8a4",
+   "functions": 4,
+   "named": 4,
+   "from": "0x0043c6fc",
    "to": "0x0043ca6c",
-   "bytes": 470
+   "bytes": 853
   },
   {
    "file": "src/TSDictionarySaveDialog.cpp",
-   "functions": 31,
-   "named": 10,
+   "functions": 30,
+   "named": 30,
    "from": "0x0043cdcc",
-   "to": "0x0043fd98",
-   "bytes": 11563
+   "to": "0x0043fd78",
+   "bytes": 11515
   },
   {
    "file": "src/DictionaryMaintainer.cpp",
-   "functions": 16,
-   "named": 9,
-   "from": "0x0043fdec",
+   "functions": 17,
+   "named": 17,
+   "from": "0x0043fd98",
    "to": "0x0044e810",
-   "bytes": 1460
+   "bytes": 1508
   },
   {
    "file": "src/OccurrenceListCache.cpp",
    "functions": 68,
-   "named": 2,
+   "named": 68,
    "from": "0x0043fe0c",
    "to": "0x0044d44c",
    "bytes": 50524
   },
   {
    "file": "src/Persist.cpp",
-   "functions": 21,
-   "named": 4,
+   "functions": 20,
+   "named": 20,
    "from": "0x0044e83c",
-   "to": "0x0044f260",
-   "bytes": 2632
+   "to": "0x0044f21c",
+   "bytes": 2533
   },
   {
    "file": "src/TEAProgressBar.cpp",
    "functions": 7,
-   "named": 3,
-   "from": "0x0044fc80",
-   "to": "0x00450940",
-   "bytes": 3281
+   "named": 7,
+   "from": "0x0044fb08",
+   "to": "0x004508e0",
+   "bytes": 3345
   },
   {
    "file": "src/SearchModeButton.cpp",
-   "functions": 8,
-   "named": 7,
-   "from": "0x00450a78",
+   "functions": 9,
+   "named": 9,
+   "from": "0x00450940",
    "to": "0x0045f0c4",
-   "bytes": 522
+   "bytes": 800
   },
   {
    "file": "src/TEAViewWindows.cpp",
    "functions": 110,
-   "named": 38,
+   "named": 110,
    "from": "0x00450af4",
    "to": "0x0045e8c4",
    "bytes": 54939
   },
   {
    "file": "src/VariableValues.cpp",
-   "functions": 64,
-   "named": 37,
+   "functions": 47,
+   "named": 47,
    "from": "0x004601e8",
-   "to": "0x00469f48",
-   "bytes": 7343
+   "to": "0x004695a8",
+   "bytes": 2608
   },
   {
    "file": "src/LookupPropertiesViewWindows.cpp",
    "functions": 16,
-   "named": 10,
-   "from": "0x00460e4c",
-   "to": "0x00462d9c",
-   "bytes": 7779
+   "named": 16,
+   "from": "0x00460220",
+   "to": "0x00462d44",
+   "bytes": 9952
+  },
+  {
+   "file": "src/TEAAppWindows.cpp",
+   "functions": 43,
+   "named": 43,
+   "from": "0x00462d9c",
+   "to": "0x004757b4",
+   "bytes": 18070
   },
   {
    "file": "src/GridViewWindows.cpp",
-   "functions": 36,
+   "functions": 1,
    "named": 1,
    "from": "0x00463058",
-   "to": "0x004671dc",
-   "bytes": 16956
+   "to": "0x00463058",
+   "bytes": 662
   },
   {
    "file": "src/TEAQuickReferenceViewWindows.cpp",
-   "functions": 6,
-   "named": 4,
-   "from": "0x00467594",
+   "functions": 7,
+   "named": 7,
+   "from": "0x004671dc",
    "to": "0x00467ae8",
-   "bytes": 1605
+   "bytes": 2557
   },
   {
    "file": "src/TabbyPropertiesViewWindows.cpp",
    "functions": 15,
-   "named": 12,
+   "named": 15,
    "from": "0x00467d40",
    "to": "0x00468548",
    "bytes": 3059
@@ -494,87 +517,79 @@
   {
    "file": "src/DefinitionRichEdit.cpp",
    "functions": 5,
-   "named": 4,
+   "named": 5,
    "from": "0x0046a010",
    "to": "0x0046a360",
    "bytes": 739
   },
   {
    "file": "src/DefinitionViewWindows.cpp",
-   "functions": 42,
-   "named": 16,
+   "functions": 41,
+   "named": 41,
    "from": "0x0046a3c4",
-   "to": "0x004723b0",
-   "bytes": 35261
+   "to": "0x00472370",
+   "bytes": 32425
   },
   {
    "file": "src/DefinitionViewFrame.cpp",
-   "functions": 8,
-   "named": 4,
-   "from": "0x00472edc",
+   "functions": 9,
+   "named": 9,
+   "from": "0x004723b0",
    "to": "0x00473650",
-   "bytes": 1777
+   "bytes": 4613
   },
   {
    "file": "src/GripBar.cpp",
-   "functions": 3,
-   "named": 2,
+   "functions": 55,
+   "named": 55,
    "from": "0x00473ba8",
-   "to": "0x00473df0",
-   "bytes": 615
+   "to": "0x00481c1c",
+   "bytes": 22583
   },
   {
    "file": "src/TEAFrameWindow.cpp",
-   "functions": 31,
-   "named": 29,
+   "functions": 30,
+   "named": 30,
    "from": "0x00473f30",
-   "to": "0x00474e1c",
-   "bytes": 3929
-  },
-  {
-   "file": "src/TEAAppWindows.cpp",
-   "functions": 8,
-   "named": 5,
-   "from": "0x00474ef0",
-   "to": "0x00475a74",
-   "bytes": 2523
+   "to": "0x00474d04",
+   "bytes": 3747
   },
   {
    "file": "src/ExternalLookupViewWindows.cpp",
-   "functions": 5,
-   "named": 4,
-   "from": "0x00475d20",
+   "functions": 6,
+   "named": 6,
+   "from": "0x00475a74",
    "to": "0x004760d8",
-   "bytes": 1840
+   "bytes": 2482
   },
   {
    "file": "src/DictionaryListViewWindows.cpp",
    "functions": 16,
-   "named": 13,
+   "named": 16,
    "from": "0x004765a0",
    "to": "0x00477ca0",
    "bytes": 5661
   },
   {
    "file": "src/MatchEngineSet.cpp",
-   "functions": 28,
-   "named": 2,
+   "functions": 27,
+   "named": 27,
    "from": "0x00477d64",
-   "to": "0x0047ab54",
-   "bytes": 12025
+   "to": "0x0047ab30",
+   "bytes": 11477
   },
   {
    "file": "src/TEAStartupTipsViewWindows.cpp",
-   "functions": 63,
-   "named": 9,
-   "from": "0x0047ad78",
-   "to": "0x00481c1c",
-   "bytes": 25295
+   "functions": 12,
+   "named": 12,
+   "from": "0x0047ab54",
+   "to": "0x0047bdc0",
+   "bytes": 3875
   },
   {
    "file": "src/FormattedTextSegment.cpp",
    "functions": 2,
-   "named": 1,
+   "named": 2,
    "from": "0x00481ebc",
    "to": "0x00481f7c",
    "bytes": 478
@@ -582,7 +597,7 @@
   {
    "file": "src/FormattedTextParagraph.cpp",
    "functions": 33,
-   "named": 3,
+   "named": 33,
    "from": "0x0048209c",
    "to": "0x00485a4c",
    "bytes": 14593
@@ -590,27 +605,27 @@
   {
    "file": "src/Help.cpp",
    "functions": 2,
-   "named": 1,
+   "named": 2,
    "from": "0x00485b70",
    "to": "0x00485bb8",
    "bytes": 856
   },
   {
    "file": "src/Common.cpp",
-   "functions": 7,
-   "named": 1,
+   "functions": 6,
+   "named": 6,
    "from": "0x00485ee0",
-   "to": "0x004862b0",
-   "bytes": 1400
+   "to": "0x0048622c",
+   "bytes": 965
   },
   {
    "file": "src/LicenseViewWindows.cpp",
-   "functions": 9,
-   "named": 2,
-   "from": "0x00486488",
+   "functions": 10,
+   "named": 10,
+   "from": "0x004862b0",
    "to": "0x0048698c",
-   "bytes": 1229
+   "bytes": 1664
   }
  ],
- "libFiles": 204
+ "libFiles": 210
 }

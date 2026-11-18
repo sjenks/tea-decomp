@@ -1,5 +1,5 @@
 // TEA.exe — runtime / library code "std_exception"
-// 1 functions, 0x004dc3fc..0x004dc3fc. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 2 functions, 0x004d80e4..0x004dc3fc. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,12 +7,27 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004dc3fc  std::exception::~exception   (32 bytes)   [rtti:dtor destructor]
-//   written in code as std::exception::_dtor
-void __cdecl std::exception::_dtor(undefined4 *param_1,byte param_2)
+// 0x004d80e4  std::exception::exception   (48 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores std::exception's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl std::exception::exception(undefined4 *self)
 
 {
-  if ((param_1 != (undefined4 *)0x0) && (*param_1 = &std::exception::vftable, (param_2 & 1) != 0)) {
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x515814);
+  *self = &std::exception::vftable;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004dc3fc  std::exception::~exception   (32 bytes)   [rtti:dtor destructor]
+//   written in code as std::exception::_dtor
+void __cdecl std::exception::_dtor(undefined4 *self,byte dtorFlags)
+
+{
+  if ((self != (undefined4 *)0x0) && (*self = &std::exception::vftable, (dtorFlags & 1) != 0)) {
     operator_delete();
   }
   return;

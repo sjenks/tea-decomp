@@ -89,6 +89,46 @@ function extract(file) {
     t.vtables.push({ va: p.off2va(o + 12), prefix: [dw(o + 4), dw(o + 8)], slots });
   }
 
+  // ---- 2b. vtables of virtual-base subobjects --------------------------------
+  // A class with a virtual base (OWL::TWindow in every OWL window class) gets a second vtable for that
+  // subobject. It has no RTTI prefix, so it is found by shape: as many slots as the base's own vtable,
+  // all code pointers, and at least a third of them identical to the base's. Slots the class overrides
+  // point to `this`-adjusting thunks:  mov eax,[esp+4]; add eax,[eax-4]; add eax,imm; mov [esp+4],eax; jmp F
+  const secondary = [];
+  {
+    const vbaseNames = new Set();
+    for (const t of byVa.values()) for (const b of t.vbases) vbaseNames.add(b.tpid !== undefined ? nameOf(b.tpid) : b.name);
+    const thunkTarget = (va) => {
+      const o = p.va2off(va);
+      if (o < 0 || p.b[o] !== 0x8b || p.b[o + 1] !== 0x44 || p.b[o + 2] !== 0x24 || p.b[o + 3] !== 0x04 || p.b[o + 4] !== 0x03 || p.b[o + 5] !== 0x40 || p.b[o + 6] !== 0xfc) return null;
+      let q = o + 7;
+      if (p.b[q] === 0x83 && p.b[q + 1] === 0xc0) q += 3; else if (p.b[q] === 0x05) q += 5; else return null;
+      if (p.b[q] !== 0x89 || p.b[q + 1] !== 0x44 || p.b[q + 2] !== 0x24 || p.b[q + 3] !== 0x04 || p.b[q + 4] !== 0xe9) return null;
+      return (p.off2va(q + 9) + p.b.readInt32LE(q + 5)) >>> 0;
+    };
+    for (const t of byVa.values()) {
+      if (!vbaseNames.has(t.name) || !t.vtables.length) continue;
+      const S = t.vtables[0].slots, N = S.length;
+      if (N < 4) continue;
+      for (let o = data.raw; o + 4 * N <= data.raw + data.rawSize; o += 4) {
+        const va = p.off2va(o);
+        if (va === t.vtables[0].va) continue;
+        let same = 0, code = 0;
+        for (let i = 0; i < N; i++) { const v = dw(o + 4 * i); if (v === S[i]) same++; if (p.inText(v)) code++; }
+        if (code < N || same * 3 < N) continue;
+        const slots = [];
+        for (let i = 0; i < N; i++) {
+          const v = dw(o + 4 * i);
+          if (v === S[i]) { slots.push({ i, inherited: true, target: v }); continue; }
+          const tt = thunkTarget(v);
+          slots.push({ i, thunk: tt !== null ? v : null, target: tt !== null ? tt : v });
+        }
+        secondary.push({ va, base: t.name, slots });
+        o += 4 * N - 4;
+      }
+    }
+  }
+
   // ---- 3. OWL response tables ---------------------------------------------
   // entry: { u32 msgOrNotify; u32 id; dispatcher*; pmf{ fn, delta, vb } }  (24 bytes), zero-terminated
   const tables = [];
@@ -119,7 +159,7 @@ function extract(file) {
     tables.push({ va: p.off2va(r.o), entries });
   }
 
-  return { file, imageBase: p.imageBase, classes: [...byVa.values()].sort((a, c) => a.va - c.va), responseTables: tables, p };
+  return { file, imageBase: p.imageBase, classes: [...byVa.values()].sort((a, c) => a.va - c.va), responseTables: tables, secondaryVtables: secondary, p };
 }
 
 function memberTypeName(p, va) {

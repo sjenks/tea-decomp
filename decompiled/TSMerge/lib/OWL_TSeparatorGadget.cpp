@@ -1,5 +1,5 @@
 // TSMerge.exe — runtime / library code "OWL_TSeparatorGadget"
-// 3 functions, 0x00419b54..0x00419d84. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 4 functions, 0x00419a98..0x00419d84. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,107 +7,137 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419b54  OWL::TSeparatorGadget::vf8   (13 bytes)   [rtti:vtable virtual slot 8; function defined from vtable-slot]
-void __cdecl OWL::TSeparatorGadget::vf8(int param_1)
+// 0x00419a98  OWL::TSeparatorGadget::TSeparatorGadget   (151 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TSeparatorGadget's vtable at its vptr offset (+0x0) in this
+int * __cdecl OWL::TSeparatorGadget::TSeparatorGadget(int *self,int vbasesBuilt,undefined4 param_3,undefined1 param_4)
 
 {
-  *(undefined4 *)(param_1 + 0x1a) = 0;
+  int metric;
+  int *sehChainHead;
+  int iVar2;
+  
+  __InitExceptBlockLDTC(0x466fd8);
+  OWL::TGadget::TGadget(self,param_3);
+  *self = (int)&OWL::TSeparatorGadget::vftable;
+  *(undefined1 *)(self + 0x11) = param_4;
+  *(undefined1 *)((int)self + 0x37) = 0;
+  *(undefined1 *)((int)self + 0x36) = 0;
+  iVar2 = 0;
+  (**(code **)(*self + 4))();
+  *(ushort *)((int)self + 0x42) = *(ushort *)((int)self + 0x42) & 0xfffd;
+  if (vbasesBuilt == 0) {
+    iVar2 = DAT_00469814;
+    metric = GetSystemMetrics(DAT_00469814);
+    vbasesBuilt = metric * 2;
+  }
+  *(int *)((int)self + 0x12) = vbasesBuilt;
+  *(int *)((int)self + 0x16) = vbasesBuilt;
+  *sehChainHead = iVar2;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00419b54  OWL::TSeparatorGadget::vf8   (13 bytes)   [rtti:vtable virtual slot 8; function defined from vtable-slot]
+void __cdecl OWL::TSeparatorGadget::vf8(int self)
+
+{
+  *(undefined4 *)(self + 0x1a) = 0;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00419b64  OWL::TSeparatorGadget::vf12   (445 bytes)   [rtti:vtable virtual slot 12]
-void __cdecl OWL::TSeparatorGadget::vf12(int *param_1,undefined4 *param_2)
+void __cdecl OWL::TSeparatorGadget::vf12(int *self,undefined4 *param_2)
 
 {
-  int iVar1;
-  HDC pHVar2;
+  int c;
+  HDC hdc;
   uint uVar3;
   uint uVar4;
-  tagRECT *ptVar5;
+  tagRECT *pRect;
   int iVar6;
-  tagRECT local_30;
-  tagRECT local_20;
-  int local_10;
-  int local_c;
-  uint local_8;
+  tagRECT rect;
+  tagRECT rect2;
+  int unused;
+  int unused2;
+  uint edge;
   
-  if (((DAT_00467240 & 1) != 0) && ((char)param_1[0x11] != '\0')) {
+  if (((DAT_00467240 & 1) != 0) && ((char)self[0x11] != '\0')) {
     if ((DAT_00467240 & 0x10) == 0) {
       uVar4 = 0;
-      local_8 = 4;
+      edge = 4;
     }
     else {
       uVar4 = 0x4000;
-      local_8 = 1;
+      edge = 1;
     }
-    if (*(char *)(*(int *)((int)param_1 + 6) + 0x35) == '\0') {
-      local_20.left = 0;
-      local_20.top = 0;
-      local_20.right = 0;
-      local_20.bottom = 0;
-      FUN_0042d568(**(int **)((int)param_1 + 6),&local_20);
-      local_c = DAT_0046981c;
-      iVar1 = GetSystemMetrics(DAT_0046981c);
-      FUN_0041d740(&local_20.left,0,-iVar1);
-      iVar1 = 2;
-      ptVar5 = &local_20;
-      pHVar2 = (HDC)(**(code **)(*(int *)((int)param_2 + 5) + 0x5c))();
-      DPtoLP(pHVar2,(LPPOINT)ptVar5,iVar1);
-      uVar3 = *(int *)((int)param_1 + 0x12) - *(int *)((int)param_1 + 10);
-      local_20.right = (int)uVar3 >> 1;
-      if (local_20.right < 0) {
-        local_20.right = local_20.right + (uint)((uVar3 & 1) != 0);
+    if (*(char *)(*(int *)((int)self + 6) + 0x35) == '\0') {
+      rect2.left = 0;
+      rect2.top = 0;
+      rect2.right = 0;
+      rect2.bottom = 0;
+      FUN_0042d568(**(int **)((int)self + 6),&rect2);
+      unused2 = DAT_0046981c;
+      c = GetSystemMetrics(DAT_0046981c);
+      FUN_0041d740(&rect2.left,0,-c);
+      c = 2;
+      pRect = &rect2;
+      hdc = (HDC)(**(code **)(*(int *)((int)param_2 + 5) + 0x5c))();
+      DPtoLP(hdc,(LPPOINT)pRect,c);
+      uVar3 = *(int *)((int)self + 0x12) - *(int *)((int)self + 10);
+      rect2.right = (int)uVar3 >> 1;
+      if (rect2.right < 0) {
+        rect2.right = rect2.right + (uint)((uVar3 & 1) != 0);
       }
-      local_20.left = local_20.right + -1;
-      local_20.right = local_20.right + 1;
-      FUN_00425be4(param_2,&local_20,local_8,uVar4 | 4);
+      rect2.left = rect2.right + -1;
+      rect2.right = rect2.right + 1;
+      FUN_00425be4(param_2,&rect2,edge,uVar4 | 4);
     }
-    else if (*(char *)(*(int *)((int)param_1 + 6) + 0x35) == '\x01') {
-      local_30.left = 0;
-      local_30.top = 0;
-      local_30.right = 0;
-      local_30.bottom = 0;
-      FUN_0042d568(**(int **)((int)param_1 + 6),&local_30);
+    else if (*(char *)(*(int *)((int)self + 6) + 0x35) == '\x01') {
+      rect.left = 0;
+      rect.top = 0;
+      rect.right = 0;
+      rect.bottom = 0;
+      FUN_0042d568(**(int **)((int)self + 6),&rect);
       iVar6 = 0;
-      local_10 = DAT_00469814;
-      iVar1 = GetSystemMetrics(DAT_00469814);
-      FUN_0041d740(&local_30.left,-iVar1,iVar6);
-      iVar1 = 2;
-      ptVar5 = &local_30;
-      pHVar2 = (HDC)(**(code **)(*(int *)((int)param_2 + 5) + 0x5c))();
-      DPtoLP(pHVar2,(LPPOINT)ptVar5,iVar1);
-      uVar3 = *(int *)((int)param_1 + 0x16) - *(int *)((int)param_1 + 0xe);
-      local_30.bottom = (int)uVar3 >> 1;
-      if (local_30.bottom < 0) {
-        local_30.bottom = local_30.bottom + (uint)((uVar3 & 1) != 0);
+      unused = DAT_00469814;
+      c = GetSystemMetrics(DAT_00469814);
+      FUN_0041d740(&rect.left,-c,iVar6);
+      c = 2;
+      pRect = &rect;
+      hdc = (HDC)(**(code **)(*(int *)((int)param_2 + 5) + 0x5c))();
+      DPtoLP(hdc,(LPPOINT)pRect,c);
+      uVar3 = *(int *)((int)self + 0x16) - *(int *)((int)self + 0xe);
+      rect.bottom = (int)uVar3 >> 1;
+      if (rect.bottom < 0) {
+        rect.bottom = rect.bottom + (uint)((uVar3 & 1) != 0);
       }
-      local_30.top = local_30.bottom + -1;
-      local_30.bottom = local_30.bottom + 1;
-      FUN_00425be4(param_2,&local_30,local_8,uVar4 | 2);
+      rect.top = rect.bottom + -1;
+      rect.bottom = rect.bottom + 1;
+      FUN_00425be4(param_2,&rect,edge,uVar4 | 2);
     }
   }
-  OWL::TGadget::vf12(param_1);
+  OWL::TGadget::vf12(self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00419d84  OWL::TSeparatorGadget::~TSeparatorGadget   (66 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as OWL::TSeparatorGadget::_dtor
-void __cdecl OWL::TSeparatorGadget::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl OWL::TSeparatorGadget::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4670ac);
-  if (param_1 != (undefined4 *)0x0) {
-    OWL::TGadget::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    OWL::TGadget::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

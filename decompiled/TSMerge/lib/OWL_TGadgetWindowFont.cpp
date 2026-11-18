@@ -9,20 +9,20 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0041c6d8  OWL::TGadgetWindowFont::~TGadgetWindowFont   (69 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TGadgetWindowFont::_dtor
-void __cdecl OWL::TGadgetWindowFont::_dtor(uint *param_1,byte param_2)
+void __cdecl OWL::TGadgetWindowFont::_dtor(uint *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4676b4);
-  if (param_1 != (uint *)0x0) {
-    OWL::TGdiObject::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (uint *)0x0) {
+    OWL::TGdiObject::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

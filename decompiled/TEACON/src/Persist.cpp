@@ -1,5 +1,5 @@
 // TEACON.exe — application module "Persist"
-// 9 functions, 0x0041193c..0x00411e94. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 8 functions, 0x0041193c..0x00411dd8. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -9,65 +9,65 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0041193c  Persist::Persist   (201 bytes)   [analysis]
 //   opens or creates the registry key (RegOpenKeyExA / RegCreateKeyExA)
-char * __cdecl Persist::Persist(char *param_1,int param_2,char param_3,char param_4)
+char * __cdecl Persist::Persist(char *self,int keyPath,char create,char tryLocalMachine)
 
 {
-  HKEY hKey;
+  HKEY hRoot;
   int iVar1;
-  undefined4 *in_FS_OFFSET;
-  DWORD local_2c;
-  undefined4 local_28;
-  undefined2 local_18;
+  undefined4 *sehChainHead;
+  DWORD disposition;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
   
   __InitExceptBlockLDTC(0x42df7c);
-  *param_1 = param_3;
-  param_1[4] = '\0';
-  param_1[5] = '\0';
-  param_1[6] = '\0';
-  param_1[7] = '\0';
+  *self = create;
+  self[m_hKey] = '\0';
+  self[5] = '\0';
+  self[6] = '\0';
+  self[7] = '\0';
   while( true ) {
-    if (param_4 == '\0') {
-      hKey = (HKEY)0x80000001;
+    if (tryLocalMachine == '\0') {
+      hRoot = (HKEY)0x80000001;
     }
     else {
-      hKey = (HKEY)0x80000002;
+      hRoot = (HKEY)0x80000002;
     }
-    local_18 = 8;
-    if (*param_1 == '\x01') {
-      iVar1 = RegCreateKeyExA(hKey,*(LPCSTR *)(param_2 + 8),0,&DAT_0042defe,0,0x2001f,
-                              (LPSECURITY_ATTRIBUTES)0x0,(PHKEY)(param_1 + 4),&local_2c);
+    ehContext = 8;
+    if (*self == '\x01') {
+      iVar1 = RegCreateKeyExA(hRoot,*(LPCSTR *)(keyPath + 8),0,&DAT_0042defe,0,0x2001f,
+                              (LPSECURITY_ATTRIBUTES)0x0,(PHKEY)(self + m_hKey),&disposition);
     }
     else {
-      iVar1 = RegOpenKeyExA(hKey,*(LPCSTR *)(param_2 + 8),0,0x20019,(PHKEY)(param_1 + 4));
+      iVar1 = RegOpenKeyExA(hRoot,*(LPCSTR *)(keyPath + 8),0,0x20019,(PHKEY)(self + m_hKey));
     }
     if (iVar1 == 0) break;
-    if (param_4 == '\0') {
-      param_1[4] = '\0';
-      param_1[5] = '\0';
-      param_1[6] = '\0';
-      param_1[7] = '\0';
-      *in_FS_OFFSET = local_28;
+    if (tryLocalMachine == '\0') {
+      self[m_hKey] = '\0';
+      self[5] = '\0';
+      self[6] = '\0';
+      self[7] = '\0';
+      *sehChainHead = sehPrevFrame;
 LAB_004119f3:
-      *in_FS_OFFSET = local_28;
-      return param_1;
+      *sehChainHead = sehPrevFrame;
+      return self;
     }
-    param_4 = '\0';
+    tryLocalMachine = '\0';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   goto LAB_004119f3;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00411a20  Persist::~Persist   (42 bytes)   [rtti:dtor destructor]
 //   written in code as Persist::_dtor
-void __cdecl Persist::_dtor(int param_1,byte param_2)
+void __cdecl Persist::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
-    if (*(HKEY *)(param_1 + 4) != (HKEY)0x0) {
-      RegCloseKey(*(HKEY *)(param_1 + 4));
+  if (self != 0) {
+    if (*(HKEY *)(self + m_hKey) != (HKEY)0x0) {
+      RegCloseKey(*(HKEY *)(self + m_hKey));
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -75,257 +75,234 @@ void __cdecl Persist::_dtor(int param_1,byte param_2)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00411a4c  Persist::QueryValueSized   (116 bytes)   [analysis]
-//   RegQueryValueExA wrapper
-undefined4 __cdecl Persist::QueryValueSized(int param_1,int param_2,int param_3)
+// 0x00411a4c  Persist::QueryString   (116 bytes)   [analysis]
+//   reads a REG_SZ value (up to 64 KB) into a std::string; true if present
+undefined4 __cdecl Persist::QueryString(int self,int valueName,int out)
 
 {
-  int iVar1;
-  LSTATUS LVar2;
-  uint auStackY_1000c [15352];
-  undefined4 uStackY_102c;
-  DWORD local_c [2];
+  int probe;
+  LSTATUS regStatus;
+  uint buf [15352];
+  undefined4 retAddr;
+  DWORD typeAndSize [2];
   
-  iVar1 = 0x10;
+  probe = 0x10;
   do {
-    iVar1 = iVar1 + -1;
-  } while (iVar1 != 0);
-  if (*(int *)(param_1 + 4) != 0) {
-    local_c[1] = 0x10000;
-    local_c[0] = 1;
-    uStackY_102c = 0x411a9e;
-    LVar2 = RegQueryValueExA(*(HKEY *)(param_1 + 4),*(LPCSTR *)(param_2 + 8),(LPDWORD)0x0,local_c,
-                             (LPBYTE)auStackY_1000c,local_c + 1);
-    if (LVar2 == 0) {
-      iVar1 = FUN_00416c68(param_3,auStackY_1000c);
-      return CONCAT31((int3)((uint)iVar1 >> 8),1);
+    probe = probe + -1;
+  } while (probe != 0);
+  if (*(int *)(self + m_hKey) != 0) {
+    typeAndSize[1] = 0x10000;
+    typeAndSize[0] = 1;
+    retAddr = 0x411a9e;
+    regStatus = RegQueryValueExA(*(HKEY *)(self + m_hKey),*(LPCSTR *)(valueName + 8),(LPDWORD)0x0,typeAndSize,
+                             (LPBYTE)buf,typeAndSize + 1);
+    if (regStatus == 0) {
+      probe = std::string::assign_cstr(out,buf);
+      return CONCAT31((int3)((uint)probe >> 8),1);
     }
   }
   return 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00411ac0  Persist::QueryValue   (83 bytes)   [analysis]
-//   RegQueryValueExA wrapper
-undefined4 __cdecl Persist::QueryValue(int param_1,int param_2,undefined4 *param_3)
+// 0x00411ac0  Persist::QueryDword   (83 bytes)   [analysis]
+//   reads a REG_DWORD value; true if present
+undefined4 __cdecl Persist::QueryDword(int self,int valueName,undefined4 *out)
 
 {
-  LSTATUS LVar1;
-  DWORD local_10 [2];
-  undefined4 local_8;
+  LSTATUS regStatus;
+  DWORD typeAndSize [2];
+  undefined4 value;
   
-  if (*(int *)(param_1 + 4) != 0) {
-    local_10[1] = 4;
-    local_10[0] = 4;
-    LVar1 = RegQueryValueExA(*(HKEY *)(param_1 + 4),*(LPCSTR *)(param_2 + 8),(LPDWORD)0x0,local_10,
-                             (LPBYTE)&local_8,local_10 + 1);
-    if (LVar1 == 0) {
-      *param_3 = local_8;
-      return CONCAT31((int3)((uint)param_3 >> 8),1);
+  if (*(int *)(self + m_hKey) != 0) {
+    typeAndSize[1] = 4;
+    typeAndSize[0] = 4;
+    regStatus = RegQueryValueExA(*(HKEY *)(self + m_hKey),*(LPCSTR *)(valueName + 8),(LPDWORD)0x0,typeAndSize,
+                             (LPBYTE)&value,typeAndSize + 1);
+    if (regStatus == 0) {
+      *out = value;
+      return CONCAT31((int3)((uint)out >> 8),1);
     }
   }
   return 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00411b14  FUN_00411b14   (364 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_00411b14(int param_1,int param_2,int param_3,uint *param_4)
+// 0x00411b14  Persist::QueryFont   (364 bytes)   [analysis]
+//   reads a font value ("height width escapement ... facename") into a LOGFONT; the default text is used when the value is absent
+undefined4 __cdecl Persist::QueryFont(int self,int valueName,int defaultText,uint *logFont)
 
 {
-  uint uVar1;
-  undefined4 uVar2;
-  int iVar3;
-  int *piVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  undefined1 local_14 [8];
-  int *local_c;
+  uint len;
+  undefined4 found;
+  int refs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 text [8];
+  int *textData;
   
   __InitExceptBlockLDTC(0x42dfb0);
-  local_c = (int *)0x0;
-  iVar3 = *(int *)(*(int *)(param_3 + 8) + -0xc);
-  if (iVar3 == -1 || iVar3 + 1 < 0) {
-    uVar1 = *(uint *)(*(int *)(param_3 + 8) + -4);
-    local_c = std::string::__getRep(local_14,uVar1,uVar1);
-    local_c = local_c + 3;
-    memcpy(local_c,*(undefined4 **)(param_3 + 8),uVar1);
+  textData = (int *)0x0;
+  refs = *(int *)(*(int *)(defaultText + 8) + -0xc);
+  if (refs == -1 || refs + 1 < 0) {
+    len = *(uint *)(*(int *)(defaultText + 8) + -4);
+    textData = std::string::__getRep(text,len,len);
+    textData = textData + 3;
+    memcpy(textData,*(undefined4 **)(defaultText + 8),len);
   }
   else {
-    local_c = *(int **)(param_3 + 8);
-    piVar4 = local_c + -3;
-    if (piVar4 != &DAT_0042fab4) {
-      *piVar4 = *piVar4 + 1;
+    textData = *(int **)(defaultText + 8);
+    strRep = textData + -3;
+    if (strRep != &g_nullStringRep) {
+      *strRep = *strRep + 1;
     }
   }
-  uVar2 = Persist::QueryValueSized(param_1,param_2,(int)local_14);
-  FUN_00411dd8((char *)local_c,param_4);
-  if (local_c != (int *)0x0) {
-    if (local_c[-3] != -1) {
-      piVar4 = local_c + -3;
-      if (piVar4 == &DAT_0042fab4) {
-        iVar3 = 1;
+  found = Persist::QueryString(self,valueName,(int)text);
+  ParseLogFont((char *)textData,logFont);
+  if (textData != (int *)0x0) {
+    if (textData[-3] != -1) {
+      strRep = textData + -3;
+      if (strRep == &g_nullStringRep) {
+        refs = 1;
       }
-      else if (piVar4 == &DAT_0042fab4) {
-        iVar3 = 1;
+      else if (strRep == &g_nullStringRep) {
+        refs = 1;
       }
       else {
-        *piVar4 = *piVar4 + -1;
-        iVar3 = *piVar4 + 1;
+        *strRep = *strRep + -1;
+        refs = *strRep + 1;
       }
-      if (iVar3 != 0) goto LAB_00411c6e;
+      if (refs != 0) goto LAB_00411c6e;
     }
     operator_delete();
   }
 LAB_00411c6e:
-  *in_FS_OFFSET = local_38;
-  return uVar2;
+  *sehChainHead = sehPrevFrame;
+  return found;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00411c80  FUN_00411c80   (248 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
+// 0x00411c80  Persist::QueryColour   (248 bytes)   [analysis]
+//   reads a colour value ("r g b") into a COLORREF; true if present
 /* WARNING: Removing unreachable block (ram,0x00411cbe) */
-uint __cdecl FUN_00411c80(int param_1,int param_2,uint *param_3)
+uint __cdecl Persist::QueryColour(int self,int valueName,uint *colour)
 
 {
-  char cVar1;
-  undefined4 uVar2;
-  uint uVar3;
-  int iVar4;
-  int *piVar5;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  undefined1 local_14 [8];
-  char *local_c;
+  char found;
+  undefined4 result;
+  uint ret;
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 text [8];
+  char *textData;
   
   __InitExceptBlockLDTC(0x42e008);
-  local_c = &DAT_0042fac0;
-  uVar2 = Persist::QueryValueSized(param_1,param_2,(int)local_14);
-  cVar1 = (char)uVar2;
-  if (cVar1 == '\x01') {
-    uVar2 = FUN_00411d78(local_c,param_3);
+  textData = &g_emptyStringData;
+  result = Persist::QueryString(self,valueName,(int)text);
+  found = (char)result;
+  if (found == '\x01') {
+    result = ParseColour(textData,colour);
   }
-  uVar3 = CONCAT31((int3)((uint)uVar2 >> 8),cVar1);
-  if (local_c != (char *)0x0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      piVar5 = (int *)(local_c + -0xc);
-      if (piVar5 == &DAT_0042fab4) {
-        iVar4 = 1;
+  ret = CONCAT31((int3)((uint)result >> 8),found);
+  if (textData != (char *)0x0) {
+    if (*(int *)(textData + -0xc) != -1) {
+      strRep = (int *)(textData + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar5 == &DAT_0042fab4) {
-        iVar4 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar5 = *piVar5 + -1;
-        iVar4 = *piVar5 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar4 != 0) goto LAB_00411d66;
+      if (prevRefs != 0) goto LAB_00411d66;
     }
     operator_delete();
   }
 LAB_00411d66:
-  *in_FS_OFFSET = local_38;
-  return uVar3;
+  *sehChainHead = sehPrevFrame;
+  return ret;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00411d78  FUN_00411d78   (95 bytes)   [unnamed]
+// 0x00411d78  ParseColour   (95 bytes)   [analysis]
+//   "r g b" -> COLORREF (r | g << 8 | b << 16)
 //   file placement: inferred (address adjacency)
-uint * __cdecl FUN_00411d78(char *param_1,uint *param_2)
+uint * __cdecl ParseColour(char *text,uint *colour)
 
 {
-  byte bVar1;
-  char *pcVar2;
-  uint uVar4;
-  uint uVar5;
-  int iVar3;
+  byte red;
+  char *token;
+  uint green;
+  uint blue;
+  int value;
   
-  pcVar2 = FUN_0041f304(param_1,PTR_DAT_0042def8);
-  if (pcVar2 == (char *)0x0) {
-    bVar1 = 0;
+  token = strtok(text,g_fieldSeparators);
+  if (token == (char *)0x0) {
+    red = 0;
   }
   else {
-    iVar3 = FUN_00424b58(pcVar2);
-    bVar1 = (byte)iVar3;
+    value = atoi(token);
+    red = (byte)value;
   }
-  uVar4 = FUN_00411910();
-  uVar5 = FUN_00411910();
-  *param_2 = (uint)bVar1 | (uVar4 & 0xff) << 8 | (uVar5 & 0xff) << 0x10;
-  return param_2;
+  green = NextTokenInt();
+  blue = NextTokenInt();
+  *colour = (uint)red | (green & 0xff) << 8 | (blue & 0xff) << 0x10;
+  return colour;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00411dd8  FUN_00411dd8   (186 bytes)   [unnamed]
+// 0x00411dd8  ParseLogFont   (186 bytes)   [analysis]
+//   space-separated LOGFONT fields (height, width, escapement, orientation, weight, italic, underline, strikeout, charset, out/clip precision, quality, pitch) then the face name
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_00411dd8(char *param_1,uint *param_2)
+void __cdecl ParseLogFont(char *text,uint *logFont)
 
 {
-  uint uVar1;
-  int iVar2;
-  uint *puVar3;
+  uint value;
+  int byteValue;
+  uint *faceName;
   
-  memset(param_2,0,0x40);
-  FUN_00411d78(param_1,param_2);
-  uVar1 = FUN_00411910();
-  param_2[1] = uVar1;
-  uVar1 = FUN_00411910();
-  param_2[2] = uVar1;
-  uVar1 = FUN_00411910();
-  param_2[3] = uVar1;
-  uVar1 = FUN_00411910();
-  param_2[4] = uVar1;
-  uVar1 = FUN_00411910();
-  param_2[5] = uVar1;
-  iVar2 = FUN_00411910();
-  *(char *)(param_2 + 6) = (char)iVar2;
-  iVar2 = FUN_00411910();
-  *(char *)((int)param_2 + 0x19) = (char)iVar2;
-  iVar2 = FUN_00411910();
-  *(char *)((int)param_2 + 0x1a) = (char)iVar2;
-  iVar2 = FUN_00411910();
-  *(char *)((int)param_2 + 0x1b) = (char)iVar2;
-  iVar2 = FUN_00411910();
-  *(char *)(param_2 + 7) = (char)iVar2;
-  iVar2 = FUN_00411910();
-  *(char *)((int)param_2 + 0x1d) = (char)iVar2;
-  iVar2 = FUN_00411910();
-  *(char *)((int)param_2 + 0x1e) = (char)iVar2;
-  iVar2 = FUN_00411910();
-  *(char *)((int)param_2 + 0x1f) = (char)iVar2;
-  puVar3 = (uint *)FUN_0041f304((char *)0x0,PTR_DAT_0042def8);
-  if (puVar3 == (uint *)0x0) {
-    *(undefined1 *)(param_2 + 8) = 0;
+  memset(logFont,0,0x40);
+  ParseColour(text,logFont);
+  value = NextTokenInt();
+  logFont[1] = value;
+  value = NextTokenInt();
+  logFont[2] = value;
+  value = NextTokenInt();
+  logFont[3] = value;
+  value = NextTokenInt();
+  logFont[4] = value;
+  value = NextTokenInt();
+  logFont[5] = value;
+  byteValue = NextTokenInt();
+  *(char *)(logFont + 6) = (char)byteValue;
+  byteValue = NextTokenInt();
+  *(char *)((int)logFont + 0x19) = (char)byteValue;
+  byteValue = NextTokenInt();
+  *(char *)((int)logFont + 0x1a) = (char)byteValue;
+  byteValue = NextTokenInt();
+  *(char *)((int)logFont + 0x1b) = (char)byteValue;
+  byteValue = NextTokenInt();
+  *(char *)(logFont + 7) = (char)byteValue;
+  byteValue = NextTokenInt();
+  *(char *)((int)logFont + 0x1d) = (char)byteValue;
+  byteValue = NextTokenInt();
+  *(char *)((int)logFont + 0x1e) = (char)byteValue;
+  byteValue = NextTokenInt();
+  *(char *)((int)logFont + 0x1f) = (char)byteValue;
+  faceName = (uint *)strtok((char *)0x0,g_fieldSeparators);
+  if (faceName == (uint *)0x0) {
+    *(undefined1 *)(logFont + 8) = 0;
   }
   else {
-    FUN_0041f1c0(param_2 + 8,puVar3,(char *)0x20);
+    strncpy(logFont + 8,faceName,(char *)0x20);
   }
   return;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00411e94  FUN_00411e94   (162 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-/* WARNING: Removing unreachable block (ram,0x00411f15) */
-/* WARNING: Removing unreachable block (ram,0x00411edb) */
-/* WARNING: Heritage AFTER dead removal. Example location: s0xffffffd4 : 0x00411ee6 */
-/* WARNING: Restarted to delay deadcode elimination for space: stack */
-undefined4 * __cdecl FUN_00411e94(undefined4 *param_1)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x42e1b4);
-  param_1[1] = 0;
-  param_1[2] = 0;
-  param_1[6] = 0;
-  *param_1 = 0x100;
-  param_1[10] = 0;
-  param_1[10] = &DAT_0042fac0;
-  *(undefined1 *)(param_1 + 0xc) = 0;
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 } // namespace tea

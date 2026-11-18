@@ -1,5 +1,5 @@
 // TEA.exe — runtime / library code "std_out_of_range"
-// 1 functions, 0x004dc634..0x004dc634. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 2 functions, 0x004cfecc..0x004dc634. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,23 +7,39 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004dc634  std::out_of_range::~out_of_range   (93 bytes)   [rtti:dtor destructor]
-//   written in code as std::out_of_range::_dtor
-void __cdecl std::out_of_range::_dtor(undefined4 *param_1,byte param_2)
+// 0x004cfecc  std::out_of_range::out_of_range   (69 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores std::out_of_range's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl std::out_of_range::out_of_range(undefined4 *self,int what)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x515724);
+  std::logic_error::logic_error_416de8(self,what);
+  *self = &std::out_of_range::vftable;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004dc634  std::out_of_range::~out_of_range   (93 bytes)   [rtti:dtor destructor]
+//   written in code as std::out_of_range::_dtor
+void __cdecl std::out_of_range::_dtor(undefined4 *self,byte dtorFlags)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x516cdc);
-  if (param_1 != (undefined4 *)0x0) {
-    *param_1 = &std::out_of_range::vftable;
-    std::logic_error::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    *self = &std::out_of_range::vftable;
+    std::logic_error::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

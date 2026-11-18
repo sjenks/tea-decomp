@@ -29,6 +29,18 @@ function loadJournal(rawDir) {
   return fns;
 }
 
+// Method names for vtable slots of OWL classes. OWL::TWindow's were identified from its own slot
+// implementations in TEA.exe (e.g. slot 3 registers the WNDCLASS, slot 5 calls CreateWindowExA, slot 29
+// returns "OWL_Window") and from which slot its message handlers call (EvPaint -> 21, EvCreate -> 30,
+// EvDestroy -> 31); they follow OWL 5's declaration order.
+const SLOT_NAMES = {
+  "OWL::TWindow": ["~TWindow", "GetTooltip", "EnableTooltip", "Register", "Create", "PerformCreate", "Destroy", "Execute", "DoExecute", "CloseWindow",
+    "PreProcessMsg", "IdleAction", "HoldFocusHWnd", "SetParent", "SetDocTitle", "CanClose", "WindowProc", "DefWindowProc", "EvCommand", "EvNotify",
+    "EvCommandEnable", "Paint", "Transfer", "TransferData", "EnableWindow", "ShowWindow", "Invalidate", "InvalidateRect", "GetWindowClass", "GetClassName",
+    "SetupWindow", "CleanupWindow", "RemoveChild", "Find"],
+};
+const SLOT_NOTE = "slot name identified from OWL::TWindow's own implementation of that slot";
+
 function build(exe, rawDir, resFile, manualFiles) {
   const r = extract(exe);
   const p = r.p;
@@ -48,6 +60,18 @@ function build(exe, rawDir, resFile, manualFiles) {
   const res = fs.existsSync(resFile) ? JSON.parse(fs.readFileSync(resFile, "utf8")) : { commands: {}, strings: {}, dialogs: {}, menus: {} };
 
   const sym = { functions: {}, data: {}, notes: [] };
+  // vtable slot names: OWL's (SLOT_NAMES) plus hand-assigned ones (manual entries with slotClass/slot)
+  const slotNames = {};
+  const slotNotes = {};
+  for (const [k, v] of Object.entries(SLOT_NAMES)) slotNames[k] = [...v];
+  for (const mf of manualFiles) {
+    if (!fs.existsSync(mf)) continue;
+    for (const m of JSON.parse(fs.readFileSync(mf, "utf8"))) {
+      if (!m.slotClass) continue;
+      (slotNames[m.slotClass] ||= [])[m.slot] = m.name;
+      (slotNotes[m.slotClass] ||= [])[m.slot] = m.note;
+    }
+  }
   const usedNames = new Map();
   const setFn = (addr, name, info) => {
     if (!fnAt.has(addr)) { sym.notes.push(`${hex(addr)} ${name}: not a function entry in the Ghidra inventory (${info.source})`); return false; }
@@ -97,6 +121,16 @@ function build(exe, rawDir, resFile, manualFiles) {
     }
     return n.slice(cut, firstLt >= 0 ? firstLt : n.length).trim();
   };
+  // the name of vtable slot i of class c: from c or the nearest base at offset 0 (which shares the vtable prefix)
+  const slotNameFor = (c, i) => {
+    for (let x = c, guard = 0; x && guard < 40; guard++) {
+      const sn = slotNames[x.name];
+      if (sn && sn[i] && x.vtables.length && i < x.vtables[0].slots.length) return { name: sn[i], from: x.name, note: (slotNotes[x.name] || [])[i] };
+      const b = x.bases.find((y) => y.offset === 0);
+      x = b ? byName.get(b.name) : null;
+    }
+    return null;
+  };
   for (const c of ordered) {
     if (c.dtor) setFn(c.dtor, `${c.name}::~${shortName(c.name)}`, { cls: c.name, kind: "destructor", source: "rtti:dtor", priority: 5 });
     c.vtables.forEach((v, vi) => {
@@ -111,13 +145,55 @@ function build(exe, rawDir, resFile, manualFiles) {
           setFn(fn, n >= 12 ? `__vstub_${fn.toString(16)}` : `vshared_${fn.toString(16)}`, { kind: "shared-virtual-stub", source: "rtti:vtable", note: `in vtables of ${n} classes across unrelated hierarchies (${intro.slice(0, 4).join(", ")}${intro.length > 4 ? ", …" : ""})`, priority: 1 });
           return;
         }
-        setFn(fn, `${c.name}::vf${i}`, { cls: c.name, kind: "virtual", slot: i, source: "rtti:vtable", priority: 2 });
+        const sn = vi === 0 ? slotNameFor(c, i) : null;
+        setFn(fn, sn ? `${c.name}::${sn.name}` : `${c.name}::vf${i}`, { cls: c.name, kind: "virtual", slot: i, source: "rtti:vtable",
+          note: sn ? `vtable slot ${i}${sn.from !== c.name ? " (introduced by " + sn.from + ")" : ""}; ${sn.note || SLOT_NOTE}` : undefined, priority: 2 });
       });
     });
   }
 
-  // ---- response tables -------------------------------------------------------
+  // ---- vtables of virtual-base subobjects (OWL::TWindow in every window class) ------------------
+  // Each table belongs to the class whose constructor/destructor stores it. A slot that differs from the
+  // base's own entry is that class's (or an ancestor's) override; tables are visited bases first so an
+  // inherited override is named after the class that defines it.
   const text = p.text;
+  {
+    const refFns = (va) => {
+      const needle = Buffer.alloc(4); needle.writeUInt32LE(va);
+      const out = [];
+      let pos = text.raw;
+      while ((pos = p.b.indexOf(needle, pos)) >= 0 && pos < text.raw + text.rawSize) { const f = containing(p.off2va(pos)); if (f && !out.includes(f.addr)) out.push(f.addr); pos++; }
+      return out;
+    };
+    const dtorOf = new Map(r.classes.filter((c) => c.dtor).map((c) => [c.dtor, c.name]));
+    const tables = [];
+    for (const t of r.secondaryVtables || []) {
+      const refs = refFns(t.va);
+      let owner = null;
+      for (const a of refs) if (dtorOf.has(a)) { owner = dtorOf.get(a); break; }
+      if (!owner) for (const a of refs) { const s = sym.functions[a]; if (s && s.cls && s.cls !== t.base) { owner = s.cls; break; } }
+      if (!owner) continue;
+      const oc = byName.get(owner);
+      tables.push({ ...t, owner, depth: oc ? depthOf(oc) : 99 });
+      sym.data[t.va] = { name: `${owner}::vftable_${t.base.replace(/^.*::/, "")}`, source: "rtti:vtable (virtual-base subobject)", cls: owner };
+    }
+    tables.sort((a, b) => a.depth - b.depth);
+    const done = new Set();
+    for (const t of tables) {
+      const names = SLOT_NAMES[t.base];
+      for (const s of t.slots) {
+        if (s.inherited || s.i === 0 || done.has(s.target)) continue;
+        done.add(s.target);
+        const base = byName.get(t.base);
+        const baseFn = base && base.vtables[0] ? base.vtables[0].slots[s.i] : null;
+        const leaf = names ? names[s.i] : `${t.base.replace(/^.*::/, "")}_vf${s.i}`;
+        setFn(s.target, `${t.owner}::${leaf}`, { cls: t.owner, kind: "virtual", slot: s.i, source: "rtti:vtable",
+          note: `override of ${t.base} vtable slot ${s.i}${names ? "" : " (" + (baseFn && sym.functions[baseFn] ? sym.functions[baseFn].name : "?") + ")"}, from ${t.owner}'s ${t.base} subobject vtable at ${hex(t.va)}${s.thunk ? " (through the this-adjusting thunk at " + hex(s.thunk) + ")" : ""}${names ? "; " + SLOT_NOTE : ""}`, priority: 2.5 });
+      }
+    }
+  }
+
+  // ---- response tables -------------------------------------------------------
   const cmdIdent = (id) => {
     const list = res.commands[id];
     if (!list) return null;
@@ -177,11 +253,33 @@ function build(exe, rawDir, resFile, manualFiles) {
     tableOut.push({ va: t.va, owner, find: findFn, rows });
   }
 
+  // ---- constructors: functions that store a class's vtable at that class's vptr offset in `this` ----
+  // Base-class constructors are inlined or called first, so the last such store names the class being
+  // built. Stores into locals (temporary exception objects) do not count: only param_1 is `this`.
+  {
+    const vtClass = new Map(); // vtable VA -> class (primary vtables only)
+    for (const c of r.classes) if (c.vtables.length) vtClass.set(c.vtables[0].va, c);
+    const ctorRe = /^\s*(\*param_1|param_1\[(\d+)\]|\*\([^()]*\)\(param_1 \+ (0x[0-9a-f]+|\d+)\)) = (?:\([^()]*\))?(?:&(?:PTR_(?:FUN|LAB|DAT)_|DAT_)([0-9a-f]{8})|0x([0-9a-f]{6,8}));/gm;
+    for (const f of fns) {
+      if (sym.functions[f.addr] || f.status !== "written" || !f.file) continue;
+      const text = fs.readFileSync(path.join(rawDir, f.file), "utf8");
+      let last = null;
+      for (const m of text.matchAll(ctorRe)) {
+        const off = m[1] === "*param_1" ? 0 : m[2] !== undefined ? +m[2] * 4 : parseInt(m[3]);
+        const c = vtClass.get(parseInt(m[4] || m[5], 16));
+        if (c && c.vptrOffs === off) last = c;
+      }
+      if (last) setFn(f.addr, `${last.name}::${shortName(last.name)}`, { cls: last.name, kind: "constructor", source: "rtti:vtable-store",
+        note: `constructor: stores ${last.name}'s vtable at its vptr offset (+${hex(last.vptrOffs, 1)}) in this`, priority: 1.5 });
+    }
+  }
+
   // ---- manual names (highest priority) ---------------------------------------
   for (const mf of manualFiles) {
     if (!fs.existsSync(mf)) continue;
     for (const m of JSON.parse(fs.readFileSync(mf, "utf8"))) {
       const a = typeof m.addr === "string" ? parseInt(m.addr, 16) : m.addr;
+      if (m.slotClass) continue;
       if (m.data) { sym.data[a] = { name: m.name, source: m.source || "analysis", note: m.note }; continue; }
       setFn(a, m.name, { cls: m.cls, module: m.module, kind: m.kind || "function", source: m.source || "analysis", note: m.note, priority: 10 });
     }

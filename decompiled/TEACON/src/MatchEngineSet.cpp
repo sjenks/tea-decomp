@@ -1,5 +1,5 @@
 // TEACON.exe — application module "MatchEngineSet"
-// 22 functions, 0x00411f58..0x00414ab4. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 23 functions, 0x00411e94..0x00414ab4. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,45 +7,70 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00411f58  MatchEngineSet::~MatchEngineSet   (243 bytes)   [rtti:dtor destructor]
-//   written in code as MatchEngineSet::_dtor
-void __cdecl MatchEngineSet::_dtor(int param_1,byte param_2)
+// 0x00411e94  MatchEngineSet::MatchEngineSet   (162 bytes)   [analysis]
+//   constructor: empty engine vector (256 reserved), empty logic opcode string
+/* WARNING: Removing unreachable block (ram,0x00411f15) */
+/* WARNING: Removing unreachable block (ram,0x00411edb) */
+/* WARNING: Heritage AFTER dead removal. Example location: s0xffffffd4 : 0x00411ee6 */
+/* WARNING: Restarted to delay deadcode elimination for space: stack */
+undefined4 * __cdecl MatchEngineSet::MatchEngineSet(undefined4 *self)
 
 {
-  int iVar1;
-  int *piVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x42e1b4);
+  self[m_enginesBegin / 4] = 0;
+  self[m_enginesEnd / 4] = 0;
+  self[m_enginesCapacityEnd / 4] = 0;
+  *self = 0x100;
+  self[m_opsData / 4] = 0;
+  self[m_opsData / 4] = &g_emptyStringData;
+  *(undefined1 *)(self + m_status / 4) = 0;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00411f58  MatchEngineSet::~MatchEngineSet   (243 bytes)   [rtti:dtor destructor]
+//   written in code as MatchEngineSet::_dtor
+void __cdecl MatchEngineSet::_dtor(int self,byte dtorFlags)
+
+{
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x42e1f0);
-  if (param_1 == 0) goto LAB_0041203a;
-  FUN_00413e18(param_1);
-  if (*(int *)(param_1 + 0x28) != 0) {
-    if (*(int *)(*(int *)(param_1 + 0x28) + -0xc) != -1) {
-      piVar2 = (int *)(*(int *)(param_1 + 0x28) + -0xc);
-      if (piVar2 == &DAT_0042fab4) {
-        iVar1 = 1;
+  if (self == 0) goto LAB_0041203a;
+  MatchEngineSet::Clear(self);
+  if (*(int *)(self + m_opsData) != 0) {
+    if (*(int *)(*(int *)(self + m_opsData) + -0xc) != -1) {
+      strRep = (int *)(*(int *)(self + m_opsData) + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar2 == &DAT_0042fab4) {
-        iVar1 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar1 = *piVar2 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar1 != 0) goto LAB_00412000;
+      if (prevRefs != 0) goto LAB_00412000;
     }
     operator_delete();
-    *(undefined4 *)(param_1 + 0x28) = 0;
+    *(undefined4 *)(self + m_opsData) = 0;
   }
 LAB_00412000:
-  FUN_004050b4(param_1,*(int *)(param_1 + 4),*(int *)(param_1 + 8));
+  std::_Destroy_range_ptr(self,*(int *)(self + m_enginesBegin),*(int *)(self + m_enginesEnd));
   operator_delete();
-  if ((param_2 & 1) != 0) {
+  if ((dtorFlags & 1) != 0) {
     operator_delete();
   }
 LAB_0041203a:
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -81,740 +106,746 @@ LAB_0041203a:
 /* WARNING: Removing unreachable block (ram,0x00412f1f) */
 /* WARNING: Removing unreachable block (ram,0x00412f79) */
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-undefined1 __cdecl MatchEngineSet::Compile(int param_1,int param_2,int param_3,int param_4,int param_5,int param_6,int param_7)
+undefined1 __cdecl MatchEngineSet::Compile(int self,int dictList,int dictIndex,int query,int shortest,int longest,int ignoreUnusedPunctuation)
 
 {
-  char cVar1;
-  undefined1 uVar2;
-  int iVar3;
-  uint uVar4;
-  uint uVar5;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uVar6;
-  undefined *puVar7;
-  uint uVar8;
-  undefined4 uVar9;
-  undefined4 uVar10;
-  undefined4 uVar11;
-  undefined1 local_618 [248];
-  undefined4 local_520;
-  int *local_510;
-  int *local_500;
-  undefined1 local_4f8 [544];
-  uint local_2d8;
-  uint local_2d4;
-  uint local_2d0;
-  uint local_2cc;
-  undefined1 *local_2c8;
-  undefined4 local_2c4;
-  uint *local_2c0;
-  uint *local_2bc;
-  uint *local_2b8;
-  int local_2b4;
-  byte local_2ad;
-  int local_2ac;
-  byte local_2a5;
-  undefined4 *local_2a4;
-  undefined4 *local_2a0;
-  undefined4 local_29c;
-  undefined4 *local_298;
-  undefined4 *local_294;
-  int *local_290;
-  uint local_28c;
-  undefined1 local_285 [73];
-  int local_23c;
-  byte local_235;
-  undefined4 *local_234;
-  undefined4 *local_230;
-  undefined4 local_22c;
-  byte local_225;
-  uint local_224;
-  undefined1 local_21d;
-  uint local_21c;
-  undefined1 *local_218;
-  undefined4 local_214;
-  int *local_210;
-  int *local_20c;
-  int *local_208;
-  int *local_204;
-  int *local_200;
-  uint local_1fc;
-  undefined1 *local_1f8;
-  int *local_1f4;
-  int *local_1f0;
-  uint local_1ec;
-  int *local_1e8;
-  undefined1 *local_1e4;
-  int *local_1e0;
-  undefined4 local_1dc;
-  uint *local_1d0;
-  uint local_1cc;
-  undefined1 *local_1c8;
-  undefined4 local_1c4;
-  int *local_1c0;
-  int *local_1bc;
-  int *local_1b8;
-  int *local_1b4;
-  int *local_1b0;
-  uint local_1ac;
-  undefined1 *local_1a8;
-  int *local_1a4;
-  int *local_1a0;
-  uint local_19c;
-  int *local_198;
-  undefined1 *local_194;
-  int *local_190;
-  undefined4 local_18c;
-  uint *local_180;
-  uint *local_17c;
-  int local_178;
-  uint *local_174;
-  int local_170;
-  char local_169;
-  int local_168;
-  uint local_164;
-  uint *local_160;
-  uint local_15c;
-  uint *local_158;
-  int local_154;
-  uint local_150;
-  uint local_14c;
-  uint local_148;
-  uint local_144;
-  byte local_13d;
-  int local_13c;
-  char *local_138;
-  uint local_134;
-  uint local_e8;
-  uint local_e4;
-  int local_e0;
-  undefined4 local_dc;
-  undefined2 local_cc;
-  int local_c0;
-  int *local_b8;
-  undefined1 local_8c [8];
-  int *local_84;
-  undefined1 local_7c [8];
-  int *local_74;
-  undefined **local_6c [2];
-  undefined1 local_64 [8];
-  int *local_5c;
-  undefined **local_54 [2];
-  undefined1 local_4c [8];
-  int *local_44;
-  undefined1 local_14 [8];
-  uint *local_c;
+  char ch;
+  undefined1 status;
+  int n;
+  uint opPos;
+  uint pos;
+  undefined4 *sehChainHead;
+  undefined4 objectDtor;
+  undefined *copyCtor;
+  uint copyCtorMask;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined1 exceptMsg [248];
+  undefined4 unused;
+  int *newData;
+  int *unused2;
+  undefined1 exceptMsg2 [544];
+  uint unused3;
+  uint unused4;
+  uint unused5;
+  uint i;
+  undefined1 *unused6;
+  undefined4 unused7;
+  uint *unused8;
+  uint *unused9;
+  uint *strRep;
+  int opsRef3;
+  byte opByte;
+  int opsRef2;
+  byte unused10;
+  undefined4 *slot3;
+  undefined4 *unused11;
+  undefined4 nullEngine;
+  undefined4 *slot2;
+  undefined4 *unused12;
+  int *engine;
+  uint eraseLen2;
+  undefined1 nul2 [73];
+  int opsRef;
+  byte unused13;
+  undefined4 *slot;
+  undefined4 *unused14;
+  undefined4 nullEngine2;
+  byte negate;
+  uint eraseLen;
+  undefined1 nul;
+  uint available;
+  undefined1 *unused15;
+  undefined4 unused16;
+  int *unused17;
+  int *unused18;
+  int *strRep2;
+  int *newData2;
+  int *unused19;
+  uint unused20;
+  undefined1 *unused21;
+  int *newRep;
+  int *unused22;
+  uint len;
+  int *strRep3;
+  undefined1 *unused23;
+  int *unused24;
+  undefined4 unused25;
+  uint *msgText;
+  uint tailLen;
+  undefined1 *unused26;
+  undefined4 unused27;
+  int *unused28;
+  int *unused29;
+  int *strRep4;
+  int *unused30;
+  int *unused31;
+  uint unused32;
+  undefined1 *unused33;
+  int *newRep2;
+  int *unused34;
+  uint len2;
+  int *strRep5;
+  undefined1 *unused35;
+  int *unused36;
+  undefined4 unused37;
+  uint *msgText2;
+  uint *strRep6;
+  int beforeLast;
+  uint *strRep7;
+  int lastPos;
+  char lastCh;
+  int trailingCloses;
+  uint balanced;
+  uint *strRep8;
+  uint idx;
+  uint *strRep9;
+  int prevIdx;
+  uint closes;
+  uint opens;
+  uint notDepth;
+  uint unused38;
+  byte logicOp;
+  int prevPos;
+  char *rest;
+  uint opPos2;
+  uint searchPos;
+  uint start;
+  int depth;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  int *newEngine;
+  undefined1 str [8];
+  int *str3;
+  undefined1 str2 [8];
+  int *str4;
+  undefined **outOfRange [2];
+  undefined1 newStr [8];
+  int *unused39;
+  undefined **lengthError [2];
+  undefined1 newStr2 [8];
+  int *unused40;
+  undefined1 leaf [8];
+  uint *leafData;
   
   __InitExceptBlockLDTC(0x42e2f8);
-  FUN_00413e18(param_1);
-  local_e0 = 0;
-  local_e4 = 0;
-  uVar5 = local_e4;
+  MatchEngineSet::Clear(self);
+  depth = 0;
+  start = 0;
+  pos = start;
   do {
     while( true ) {
-      uVar4 = (*(uint *)&DAT_0042fce8);
-      local_e8 = uVar5;
-      if (uVar5 <= *(uint *)(*(int *)(param_4 + 8) + -4)) {
-        local_138 = (char *)(*(int *)(param_4 + 8) + uVar5);
-        iVar3 = FUN_0041f118(local_138,&DAT_0042e040);
-        local_134 = iVar3 + local_e8;
-        uVar4 = local_134;
-        if (*(uint *)(*(int *)(param_4 + 8) + -4) <= local_134) {
-          uVar4 = (*(uint *)&DAT_0042fce8);
+      opPos = (*(uint *)&g_stringNpos);
+      searchPos = pos;
+      if (pos <= *(uint *)(*(int *)(query + 8) + -4)) {
+        rest = (char *)(*(int *)(query + 8) + pos);
+        n = strcspn(rest,&g_logicOperators);
+        opPos2 = n + searchPos;
+        opPos = opPos2;
+        if (*(uint *)(*(int *)(query + 8) + -4) <= opPos2) {
+          opPos = (*(uint *)&g_stringNpos);
         }
       }
-      if (((uVar4 == (*(uint *)&DAT_0042fce8)) || (uVar4 == 0)) ||
-         (local_13c = uVar4 - 1, *(char *)(*(int *)(param_4 + 8) + local_13c) != '\\')) break;
-      uVar5 = uVar4 + 1;
+      if (((opPos == (*(uint *)&g_stringNpos)) || (opPos == 0)) ||
+         (prevPos = opPos - 1, *(char *)(*(int *)(query + 8) + prevPos) != '\\')) break;
+      pos = opPos + 1;
     }
-    local_cc = 0x50;
-    uVar5 = (*(uint *)&DAT_0042fce8);
-    if (uVar4 != (*(uint *)&DAT_0042fce8)) {
-      uVar5 = uVar4 - local_e4;
+    ehContext = 0x50;
+    pos = (*(uint *)&g_stringNpos);
+    if (opPos != (*(uint *)&g_stringNpos)) {
+      pos = opPos - start;
     }
-    FUN_0041b368((int)local_14,param_4,local_e4,uVar5);
-    local_c0 = local_c0 + 1;
-    local_cc = 0x44;
-    local_13d = 3;
-    if (uVar4 != (*(uint *)&DAT_0042fce8)) {
-      if (*(char *)(*(int *)(param_4 + 8) + uVar4) == '&') {
-        local_13d = 2;
+    std::string::substr((int)leaf,query,start,pos);
+    ehDtorCount = ehDtorCount + 1;
+    ehContext = 0x44;
+    logicOp = 3;
+    if (opPos != (*(uint *)&g_stringNpos)) {
+      if (*(char *)(*(int *)(query + 8) + opPos) == '&') {
+        logicOp = 2;
       }
       else {
-        local_13d = 1;
+        logicOp = 1;
       }
-      local_e4 = uVar4 + 1;
-      local_144 = uVar4;
+      start = opPos + 1;
+      unused38 = opPos;
     }
-    local_148 = 0;
-    local_14c = 0;
-    local_150 = 0;
-    for (uVar5 = 0; uVar5 < local_c[-1]; uVar5 = uVar5 + 1) {
-      if (uVar5 == 0) {
+    notDepth = 0;
+    opens = 0;
+    closes = 0;
+    for (pos = 0; pos < leafData[-1]; pos = pos + 1) {
+      if (pos == 0) {
 LAB_0041245b:
-        local_15c = uVar5;
-        if (1 < (int)(local_c[-3] + 1)) {
-          FUN_0041a7fc((int)local_14);
+        idx = pos;
+        if (1 < (int)(leafData[-3] + 1)) {
+          std::string::__unshare((int)leaf);
         }
-        local_160 = local_c + -3;
-        if (local_160 != &DAT_0042fab4) {
-          *local_160 = 0xffffffff;
+        strRep8 = leafData + -3;
+        if (strRep8 != &g_nullStringRep) {
+          *strRep8 = 0xffffffff;
         }
-        cVar1 = *(char *)((int)local_c + local_15c);
-        local_cc = 0x44;
-        if (cVar1 == '(') {
-          local_14c = local_14c + 1;
+        ch = *(char *)((int)leafData + idx);
+        ehContext = 0x44;
+        if (ch == '(') {
+          opens = opens + 1;
         }
-        else if (cVar1 == ')') {
-          local_150 = local_150 + 1;
+        else if (ch == ')') {
+          closes = closes + 1;
         }
-        else if (cVar1 == '!') {
-          local_148 = local_14c;
+        else if (ch == '!') {
+          notDepth = opens;
         }
       }
       else {
-        local_154 = uVar5 - 1;
-        if (1 < (int)(local_c[-3] + 1)) {
-          FUN_0041a7fc((int)local_14);
+        prevIdx = pos - 1;
+        if (1 < (int)(leafData[-3] + 1)) {
+          std::string::__unshare((int)leaf);
         }
-        local_158 = local_c + -3;
-        if (local_158 != &DAT_0042fab4) {
-          *local_158 = 0xffffffff;
+        strRep9 = leafData + -3;
+        if (strRep9 != &g_nullStringRep) {
+          *strRep9 = 0xffffffff;
         }
-        if (*(char *)((int)local_c + local_154) != '\\') goto LAB_0041245b;
+        if (*(char *)((int)leafData + prevIdx) != '\\') goto LAB_0041245b;
       }
     }
-    local_164 = local_150;
-    if (local_14c < local_150) {
-      local_164 = local_14c;
+    balanced = closes;
+    if (opens < closes) {
+      balanced = opens;
     }
-    local_cc = 0x44;
-    if (local_14c - local_164 < local_148) {
-      local_164 = local_14c - local_148;
+    ehContext = 0x44;
+    if (opens - balanced < notDepth) {
+      balanced = opens - notDepth;
     }
-    local_14c = local_14c - local_164;
-    local_150 = local_150 - local_164;
-    local_168 = 0;
-    while (uVar5 = local_c[-1], uVar5 != 0) {
-      local_170 = uVar5 - 1;
-      if (1 < (int)(local_c[-3] + 1)) {
-        FUN_0041a7fc((int)local_14);
+    opens = opens - balanced;
+    closes = closes - balanced;
+    trailingCloses = 0;
+    while (pos = leafData[-1], pos != 0) {
+      lastPos = pos - 1;
+      if (1 < (int)(leafData[-3] + 1)) {
+        std::string::__unshare((int)leaf);
       }
-      local_174 = local_c + -3;
-      if (local_174 != &DAT_0042fab4) {
-        *local_174 = 0xffffffff;
+      strRep7 = leafData + -3;
+      if (strRep7 != &g_nullStringRep) {
+        *strRep7 = 0xffffffff;
       }
-      local_169 = *(char *)((int)local_c + local_170);
-      local_cc = 0x44;
-      if ((local_150 == 0) || (local_169 != ')')) {
+      lastCh = *(char *)((int)leafData + lastPos);
+      ehContext = 0x44;
+      if ((closes == 0) || (lastCh != ')')) {
 LAB_00412635:
-        if (local_169 != ' ') break;
+        if (lastCh != ' ') break;
       }
       else {
-        if (uVar5 != 1) {
-          local_178 = uVar5 - 2;
-          if (1 < (int)(local_c[-3] + 1)) {
-            FUN_0041a7fc((int)local_14);
+        if (pos != 1) {
+          beforeLast = pos - 2;
+          if (1 < (int)(leafData[-3] + 1)) {
+            std::string::__unshare((int)leaf);
           }
-          local_17c = local_c + -3;
-          if (local_17c != &DAT_0042fab4) {
-            *local_17c = 0xffffffff;
+          strRep6 = leafData + -3;
+          if (strRep6 != &g_nullStringRep) {
+            *strRep6 = 0xffffffff;
           }
-          if (*(char *)((int)local_c + local_178) == '\\') goto LAB_00412635;
+          if (*(char *)((int)leafData + beforeLast) == '\\') goto LAB_00412635;
         }
-        local_168 = local_168 + 1;
-        local_150 = local_150 + -1;
+        trailingCloses = trailingCloses + 1;
+        closes = closes + -1;
       }
-      uVar5 = uVar5 - 1;
-      if ((*(uint *)&DAT_0042fce8) - 0xe < uVar5) {
-        uVar11 = 0;
-        uVar10 = 0;
-        uVar9 = 0;
-        uVar8 = 1;
-        puVar7 = &LAB_00405f50;
-        uVar6 = 0;
-        local_cc = 0x68;
-        local_180 = (uint *)FUN_0041ea4c(local_4f8,PTR_s_invalid_string_size_parameter_in_00431a78);
-        std::string::string_from_cstr((int)local_7c,local_180);
-        local_c0 = local_c0 + 2;
-        local_54[0] = &std::logic_error::vftable;
-        local_18c = 0;
-        local_44 = (int *)0x0;
-        local_cc = 0x74;
-        if (local_74[-3] == -1 || local_74[-3] + 1 < 0) {
-          local_19c = local_74[-1];
-          local_1a4 = std::string::__getRep(local_4c,local_19c,local_19c);
-          local_1a8 = local_4c;
-          local_510 = local_1a4 + 3;
-          local_1ac = local_19c;
-          local_1b0 = local_74;
-          local_1b4 = local_510;
-          local_1a0 = local_510;
-          local_44 = local_510;
-          memcpy(local_510,local_74,local_19c);
+      pos = pos - 1;
+      if ((*(uint *)&g_stringNpos) - 0xe < pos) {
+        throwLine = 0;
+        throwFile = 0;
+        throwFlags = 0;
+        copyCtorMask = 1;
+        copyCtor = &LAB_00405f50;
+        objectDtor = 0;
+        ehContext = 0x68;
+        msgText2 = (uint *)__rwstd::except_msg_string::format(exceptMsg2,PTR_s_invalid_string_size_parameter_in_00431a78);
+        std::string::string_from_cstr((int)str2,msgText2);
+        ehDtorCount = ehDtorCount + 2;
+        lengthError[0] = &std::logic_error::vftable;
+        unused37 = 0;
+        unused40 = (int *)0x0;
+        ehContext = 0x74;
+        if (str4[-3] == -1 || str4[-3] + 1 < 0) {
+          len2 = str4[-1];
+          newRep2 = std::string::__getRep(newStr2,len2,len2);
+          unused33 = newStr2;
+          newData = newRep2 + 3;
+          unused32 = len2;
+          unused31 = str4;
+          unused30 = newData;
+          unused34 = newData;
+          unused40 = newData;
+          memcpy(newData,str4,len2);
         }
         else {
-          local_194 = local_4c;
-          local_190 = local_74;
-          local_44 = local_74;
-          local_500 = local_74;
-          local_198 = local_74 + -3;
-          if (local_198 != &DAT_0042fab4) {
-            *local_198 = *local_198 + 1;
+          unused35 = newStr2;
+          unused36 = str4;
+          unused40 = str4;
+          unused2 = str4;
+          strRep5 = str4 + -3;
+          if (strRep5 != &g_nullStringRep) {
+            *strRep5 = *strRep5 + 1;
           }
         }
-        local_cc = 0x68;
-        local_54[0] = &std::length_error::vftable;
-        local_c0 = local_c0 + 2;
-        if (local_74 != (int *)0x0) {
-          if (local_74[-3] != -1) {
-            local_1b8 = local_74 + -3;
-            if (local_1b8 == &DAT_0042fab4) {
-              iVar3 = 1;
+        ehContext = 0x68;
+        lengthError[0] = &std::length_error::vftable;
+        ehDtorCount = ehDtorCount + 2;
+        if (str4 != (int *)0x0) {
+          if (str4[-3] != -1) {
+            strRep4 = str4 + -3;
+            if (strRep4 == &g_nullStringRep) {
+              n = 1;
             }
-            else if (local_1b8 == &DAT_0042fab4) {
-              iVar3 = 1;
+            else if (strRep4 == &g_nullStringRep) {
+              n = 1;
             }
             else {
-              *local_1b8 = *local_1b8 + -1;
-              iVar3 = *local_1b8 + 1;
+              *strRep4 = *strRep4 + -1;
+              n = *strRep4 + 1;
             }
-            if (iVar3 != 0) goto LAB_0041289c;
+            if (n != 0) goto LAB_0041289c;
           }
-          local_1bc = local_74 + -3;
-          local_1c0 = local_74 + -3;
+          unused29 = str4 + -3;
+          unused28 = str4 + -3;
           operator_delete();
-          local_1c4 = 0;
-          local_1c8 = local_7c;
-          local_74 = (int *)0x0;
-          local_520 = 0;
+          unused27 = 0;
+          unused26 = str2;
+          str4 = (int *)0x0;
+          unused = 0;
         }
 LAB_0041289c:
-        local_cc = 0x5c;
-        FUN_004280a0((uint *)&DAT_00405ef4,(undefined4*)local_54,uVar6,puVar7,uVar8,uVar9,uVar10,uVar11);
+        ehContext = 0x5c;
+        _ThrowExceptionLDTC((uint *)&DAT_00405ef4,(undefined4*)lengthError,objectDtor,copyCtor,copyCtorMask,throwFlags,throwFile,throwLine);
       }
-      if (uVar5 < local_c[-1]) {
-        local_1cc = local_c[-1] - uVar5;
-        if (local_c[-1] < uVar5) {
-          uVar11 = 0;
-          uVar10 = 0;
-          uVar9 = 0;
-          uVar8 = 1;
-          puVar7 = &LAB_004060a8;
-          uVar6 = 0;
-          local_cc = 0x98;
-          local_1d0 = (uint *)FUN_0041ea4c(local_618,PTR_s_string_index_out_of_range_in_fun_00431a84
+      if (pos < leafData[-1]) {
+        tailLen = leafData[-1] - pos;
+        if (leafData[-1] < pos) {
+          throwLine = 0;
+          throwFile = 0;
+          throwFlags = 0;
+          copyCtorMask = 1;
+          copyCtor = &LAB_004060a8;
+          objectDtor = 0;
+          ehContext = 0x98;
+          msgText = (uint *)__rwstd::except_msg_string::format(exceptMsg,PTR_s_string_index_out_of_range_in_fun_00431a84
                                           );
-          std::string::string_from_cstr((int)local_8c,local_1d0);
-          local_c0 = local_c0 + 2;
-          local_6c[0] = &std::logic_error::vftable;
-          local_1dc = 0;
-          local_5c = (int *)0x0;
-          local_cc = 0xa4;
-          if (local_84[-3] == -1 || local_84[-3] + 1 < 0) {
-            local_1ec = local_84[-1];
-            local_1f4 = std::string::__getRep(local_64,local_1ec,local_1ec);
-            local_1f8 = local_64;
-            local_204 = local_1f4 + 3;
-            local_1fc = local_1ec;
-            local_200 = local_84;
-            local_1f0 = local_204;
-            local_5c = local_204;
-            memcpy(local_204,local_84,local_1ec);
+          std::string::string_from_cstr((int)str,msgText);
+          ehDtorCount = ehDtorCount + 2;
+          outOfRange[0] = &std::logic_error::vftable;
+          unused25 = 0;
+          unused39 = (int *)0x0;
+          ehContext = 0xa4;
+          if (str3[-3] == -1 || str3[-3] + 1 < 0) {
+            len = str3[-1];
+            newRep = std::string::__getRep(newStr,len,len);
+            unused21 = newStr;
+            newData2 = newRep + 3;
+            unused20 = len;
+            unused19 = str3;
+            unused22 = newData2;
+            unused39 = newData2;
+            memcpy(newData2,str3,len);
           }
           else {
-            local_1e4 = local_64;
-            local_1e0 = local_84;
-            local_5c = local_84;
-            local_1e8 = local_84 + -3;
-            if (local_1e8 != &DAT_0042fab4) {
-              *local_1e8 = *local_1e8 + 1;
+            unused23 = newStr;
+            unused24 = str3;
+            unused39 = str3;
+            strRep3 = str3 + -3;
+            if (strRep3 != &g_nullStringRep) {
+              *strRep3 = *strRep3 + 1;
             }
           }
-          local_cc = 0x98;
-          local_6c[0] = &std::out_of_range::vftable;
-          local_c0 = local_c0 + 2;
-          if (local_84 != (int *)0x0) {
-            if (local_84[-3] != -1) {
-              local_208 = local_84 + -3;
-              if (local_208 == &DAT_0042fab4) {
-                iVar3 = 1;
+          ehContext = 0x98;
+          outOfRange[0] = &std::out_of_range::vftable;
+          ehDtorCount = ehDtorCount + 2;
+          if (str3 != (int *)0x0) {
+            if (str3[-3] != -1) {
+              strRep2 = str3 + -3;
+              if (strRep2 == &g_nullStringRep) {
+                n = 1;
               }
-              else if (local_208 == &DAT_0042fab4) {
-                iVar3 = 1;
+              else if (strRep2 == &g_nullStringRep) {
+                n = 1;
               }
               else {
-                *local_208 = *local_208 + -1;
-                iVar3 = *local_208 + 1;
+                *strRep2 = *strRep2 + -1;
+                n = *strRep2 + 1;
               }
-              if (iVar3 != 0) goto LAB_00412b21;
+              if (n != 0) goto LAB_00412b21;
             }
-            local_20c = local_84 + -3;
-            local_210 = local_84 + -3;
+            unused18 = str3 + -3;
+            unused17 = str3 + -3;
             operator_delete();
-            local_214 = 0;
-            local_218 = local_8c;
-            local_84 = (int *)0x0;
+            unused16 = 0;
+            unused15 = str;
+            str3 = (int *)0x0;
           }
 LAB_00412b21:
-          local_cc = 0x5c;
-          FUN_004280a0((uint *)&DAT_0040604c,(undefined4*)local_6c,uVar6,puVar7,uVar8,uVar9,uVar10,uVar11);
+          ehContext = 0x5c;
+          _ThrowExceptionLDTC((uint *)&DAT_0040604c,(undefined4*)outOfRange,objectDtor,copyCtor,copyCtorMask,throwFlags,throwFile,throwLine);
         }
-        local_21c = local_c[-1] - uVar5;
-        local_21d = 0;
-        local_224 = local_21c;
-        if (local_1cc < local_21c) {
-          local_224 = local_1cc;
+        available = leafData[-1] - pos;
+        nul = 0;
+        eraseLen = available;
+        if (tailLen < available) {
+          eraseLen = tailLen;
         }
-        FUN_00417320((int)local_14,uVar5,local_224,(uint)&local_21d,0,0,0);
+        std::string::replace((int)leaf,pos,eraseLen,(uint)&nul,0,0,0);
       }
       else {
-        std::string::replace_fill((int)local_14,local_c[-1],0,uVar5 - local_c[-1],0);
+        std::string::replace_fill((int)leaf,leafData[-1],0,pos - leafData[-1],0);
       }
-      if (local_c + -3 != &DAT_0042fab4) {
-        local_c[-3] = 0;
+      if (leafData + -3 != &g_nullStringRep) {
+        leafData[-3] = 0;
       }
     }
-    local_225 = 0;
-    local_cc = 0x44;
-    while (local_c[-1] != 0) {
-      if (1 < (int)(local_c[-3] + 1)) {
-        FUN_0041a7fc((int)local_14);
+    negate = 0;
+    ehContext = 0x44;
+    while (leafData[-1] != 0) {
+      if (1 < (int)(leafData[-3] + 1)) {
+        std::string::__unshare((int)leaf);
       }
-      if (local_c + -3 != &DAT_0042fab4) {
-        local_c[-3] = 0xffffffff;
+      if (leafData + -3 != &g_nullStringRep) {
+        leafData[-3] = 0xffffffff;
       }
-      cVar1 = (char)*local_c;
-      local_cc = 0x44;
-      if ((local_14c == 0) || (cVar1 != '(')) {
-        if (cVar1 == '!') {
-          local_225 = local_225 ^ 8;
+      ch = (char)*leafData;
+      ehContext = 0x44;
+      if ((opens == 0) || (ch != '(')) {
+        if (ch == '!') {
+          negate = negate ^ 8;
         }
-        else if (cVar1 != ' ') break;
+        else if (ch != ' ') break;
       }
       else {
-        local_22c = 0;
-        if (*(int *)(param_1 + 8) == *(int *)(param_1 + 0x18)) {
-          FUN_004134dc(param_1,*(undefined4 **)(param_1 + 8),&local_22c);
+        nullEngine2 = 0;
+        if (*(int *)(self + m_enginesEnd) == *(int *)(self + m_enginesCapacityEnd)) {
+          std::vector_MatchEngine_ptr::insert_aux(self,*(undefined4 **)(self + m_enginesEnd),&nullEngine2);
         }
         else {
-          local_234 = *(undefined4 **)(param_1 + 8);
-          *local_234 = 0;
-          *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 4;
-          local_230 = local_234;
+          slot = *(undefined4 **)(self + m_enginesEnd);
+          *slot = 0;
+          *(int *)(self + m_enginesEnd) = *(int *)(self + m_enginesEnd) + 4;
+          unused14 = slot;
         }
-        local_235 = local_225 | 4;
-        local_23c = param_1 + 0x20;
-        std::string::replace_fill(local_23c,*(uint *)(*(int *)(param_1 + 0x28) + -4),0,1,local_225 | 4);
-        local_e0 = local_e0 + 1;
-        local_225 = 0;
-        local_14c = local_14c + -1;
+        unused13 = negate | 4;
+        opsRef = self + m_ops;
+        std::string::replace_fill(opsRef,*(uint *)(*(int *)(self + m_opsData) + -4),0,1,negate | 4);
+        depth = depth + 1;
+        negate = 0;
+        opens = opens + -1;
       }
-      local_28c = local_c[-1];
-      local_285[0] = 0;
-      if (1 < local_28c) {
-        local_28c = 1;
+      eraseLen2 = leafData[-1];
+      nul2[0] = 0;
+      if (1 < eraseLen2) {
+        eraseLen2 = 1;
       }
-      FUN_00417320((int)local_14,0,local_28c,(uint)local_285,0,0,0);
+      std::string::replace((int)leaf,0,eraseLen2,(uint)nul2,0,0,0);
     }
-    local_b8 = (int *)operator_new();
-    if (local_b8 != (int *)0x0) {
-      local_cc = 0x110;
-      MatchEngine::MatchEngine(local_b8);
+    newEngine = (int *)operator_new();
+    if (newEngine != (int *)0x0) {
+      ehContext = 0x110;
+      MatchEngine::MatchEngine(newEngine);
     }
-    local_cc = 0x44;
-    local_290 = local_b8;
-    MatchEngine::SetShortest((int)local_b8,param_5);
-    MatchEngine::SetLongest((int)local_290,param_6);
-    MatchEngine::Compile(local_290,param_2,param_3,local_c,param_7);
-    if (*(int *)(param_1 + 8) == *(int *)(param_1 + 0x18)) {
-      FUN_004134dc(param_1,*(undefined4 **)(param_1 + 8),(undefined4*)&local_290);
+    ehContext = 0x44;
+    engine = newEngine;
+    MatchEngine::SetShortest((int)newEngine,shortest);
+    MatchEngine::SetLongest((int)engine,longest);
+    MatchEngine::Compile(engine,dictList,dictIndex,leafData,ignoreUnusedPunctuation);
+    if (*(int *)(self + m_enginesEnd) == *(int *)(self + m_enginesCapacityEnd)) {
+      std::vector_MatchEngine_ptr::insert_aux(self,*(undefined4 **)(self + m_enginesEnd),(undefined4*)&engine);
     }
     else {
-      local_298 = *(undefined4 **)(param_1 + 8);
-      *local_298 = local_290;
-      *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 4;
-      local_294 = local_298;
+      slot2 = *(undefined4 **)(self + m_enginesEnd);
+      *slot2 = engine;
+      *(int *)(self + m_enginesEnd) = *(int *)(self + m_enginesEnd) + 4;
+      unused12 = slot2;
     }
-    if (0x1f < local_e0) {
-      local_e0 = 0x10000;
+    if (0x1f < depth) {
+      depth = 0x10000;
     }
-    local_e0 = local_e0 - local_168;
-    if (local_e0 < 0) {
-      local_e0 = -0x10000;
+    depth = depth - trailingCloses;
+    if (depth < 0) {
+      depth = -0x10000;
     }
-    for (; local_168 != 0; local_168 = local_168 + -1) {
-      local_29c = 0;
-      if (*(int *)(param_1 + 8) == *(int *)(param_1 + 0x18)) {
-        FUN_004134dc(param_1,*(undefined4 **)(param_1 + 8),&local_29c);
+    for (; trailingCloses != 0; trailingCloses = trailingCloses + -1) {
+      nullEngine = 0;
+      if (*(int *)(self + m_enginesEnd) == *(int *)(self + m_enginesCapacityEnd)) {
+        std::vector_MatchEngine_ptr::insert_aux(self,*(undefined4 **)(self + m_enginesEnd),&nullEngine);
       }
       else {
-        local_2a4 = *(undefined4 **)(param_1 + 8);
-        *local_2a4 = 0;
-        *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 4;
-        local_2a0 = local_2a4;
+        slot3 = *(undefined4 **)(self + m_enginesEnd);
+        *slot3 = 0;
+        *(int *)(self + m_enginesEnd) = *(int *)(self + m_enginesEnd) + 4;
+        unused11 = slot3;
       }
-      local_2a5 = local_225 | 5;
-      local_2ac = param_1 + 0x20;
-      std::string::replace_fill(local_2ac,*(uint *)(*(int *)(param_1 + 0x28) + -4),0,1,local_225 | 5);
-      local_225 = 0;
+      unused10 = negate | 5;
+      opsRef2 = self + m_ops;
+      std::string::replace_fill(opsRef2,*(uint *)(*(int *)(self + m_opsData) + -4),0,1,negate | 5);
+      negate = 0;
     }
-    local_2ad = local_13d | local_225;
-    local_2b4 = param_1 + 0x20;
-    local_13d = local_2ad;
-    std::string::replace_fill(local_2b4,*(uint *)(*(int *)(param_1 + 0x28) + -4),0,1,local_2ad);
-    local_c0 = local_c0 + -1;
-    if (local_c != (uint *)0x0) {
-      if (local_c[-3] != 0xffffffff) {
-        local_2b8 = local_c + -3;
-        if (local_2b8 == &DAT_0042fab4) {
-          iVar3 = 1;
+    opByte = logicOp | negate;
+    opsRef3 = self + m_ops;
+    logicOp = opByte;
+    std::string::replace_fill(opsRef3,*(uint *)(*(int *)(self + m_opsData) + -4),0,1,opByte);
+    ehDtorCount = ehDtorCount + -1;
+    if (leafData != (uint *)0x0) {
+      if (leafData[-3] != 0xffffffff) {
+        strRep = leafData + -3;
+        if (strRep == &g_nullStringRep) {
+          n = 1;
         }
-        else if (local_2b8 == &DAT_0042fab4) {
-          iVar3 = 1;
+        else if (strRep == &g_nullStringRep) {
+          n = 1;
         }
         else {
-          *local_2b8 = *local_2b8 - 1;
-          iVar3 = *local_2b8 + 1;
+          *strRep = *strRep - 1;
+          n = *strRep + 1;
         }
-        if (iVar3 != 0) goto LAB_004132c1;
+        if (n != 0) goto LAB_004132c1;
       }
-      local_2bc = local_c + -3;
-      local_2c0 = local_c + -3;
+      unused9 = leafData + -3;
+      unused8 = leafData + -3;
       operator_delete();
-      local_2c4 = 0;
-      local_2c8 = local_14;
-      local_c = (uint *)0x0;
+      unused7 = 0;
+      unused6 = leaf;
+      leafData = (uint *)0x0;
     }
 LAB_004132c1:
-    local_cc = 0;
-    uVar5 = local_e4;
-    if (uVar4 == (*(uint *)&DAT_0042fce8)) {
-      if (local_e0 < 1) {
-        if (-1 < local_e0) {
-          local_2cc = 0;
+    ehContext = 0;
+    pos = start;
+    if (opPos == (*(uint *)&g_stringNpos)) {
+      if (depth < 1) {
+        if (-1 < depth) {
+          i = 0;
           while( true ) {
-            iVar3 = *(int *)(param_1 + 8) - *(int *)(param_1 + 4);
-            if (iVar3 < 0) {
-              iVar3 = iVar3 + 3;
+            n = *(int *)(self + m_enginesEnd) - *(int *)(self + m_enginesBegin);
+            if (n < 0) {
+              n = n + 3;
             }
-            if ((uint)(iVar3 >> 2) <= local_2cc) break;
-            local_2d0 = local_2cc;
-            if (*(int *)(*(int *)(param_1 + 4) + local_2cc * 4) != 0) {
-              local_2d4 = local_2cc;
-              iVar3 = MatchEngine::IsValid(*(int *)(*(int *)(param_1 + 4) + local_2cc * 4));
-              if (iVar3 == 0) {
-                local_2d8 = local_2cc;
-                uVar2 = MatchEngine::GetStatus(*(int *)(*(int *)(param_1 + 4) + local_2cc * 4));
-                *(undefined1 *)(param_1 + 0x30) = uVar2;
-                *in_FS_OFFSET = local_dc;
-                return uVar2;
+            if ((uint)(n >> 2) <= i) break;
+            unused5 = i;
+            if (*(int *)(*(int *)(self + m_enginesBegin) + i * 4) != 0) {
+              unused4 = i;
+              n = MatchEngine::IsValid(*(int *)(*(int *)(self + m_enginesBegin) + i * 4));
+              if (n == 0) {
+                unused3 = i;
+                status = MatchEngine::GetStatus(*(int *)(*(int *)(self + m_enginesBegin) + i * 4));
+                *(undefined1 *)(self + m_status) = status;
+                *sehChainHead = sehPrevFrame;
+                return status;
               }
             }
-            local_2cc = local_2cc + 1;
+            i = i + 1;
           }
-          *(undefined1 *)(param_1 + 0x30) = 0;
-          *in_FS_OFFSET = local_dc;
+          *(undefined1 *)(self + m_status) = 0;
+          *sehChainHead = sehPrevFrame;
           return 0;
         }
-        *(undefined1 *)(param_1 + 0x30) = 8;
-        uVar2 = 8;
-        *in_FS_OFFSET = local_dc;
+        *(undefined1 *)(self + m_status) = 8;
+        status = 8;
+        *sehChainHead = sehPrevFrame;
       }
       else {
-        *(undefined1 *)(param_1 + 0x30) = 7;
-        uVar2 = 7;
-        *in_FS_OFFSET = local_dc;
+        *(undefined1 *)(self + m_status) = 7;
+        status = 7;
+        *sehChainHead = sehPrevFrame;
       }
-      return uVar2;
+      return status;
     }
   } while( true );
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004133f0  FUN_004133f0   (236 bytes)   [unnamed]
+// 0x004133f0  std::logic_error::logic_error_copy   (236 bytes)   [analysis]
+//   copy constructor of std::logic_error (copies the message string)
+//   also: std::logic_error::logic_error [rtti:vtable-store]
 //   file placement: inferred (address adjacency)
-undefined4 * __cdecl FUN_004133f0(undefined4 *param_1,int param_2)
+undefined4 * __cdecl std::logic_error::logic_error_copy(undefined4 *self,int other)
 
 {
-  int iVar1;
-  uint uVar2;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  int refs;
+  uint len;
+  int *rep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x42e6ec);
-  *param_1 = &std::exception::vftable;
-  param_1[4] = 0;
-  iVar1 = *(int *)(*(int *)(param_2 + 0x10) + -0xc);
-  if (iVar1 == -1 || iVar1 + 1 < 0) {
-    uVar2 = *(uint *)(*(int *)(param_2 + 0x10) + -4);
-    piVar3 = std::string::__getRep(param_1 + 2,uVar2,uVar2);
-    param_1[4] = piVar3 + 3;
-    memcpy((undefined4 *)param_1[4],*(undefined4 **)(param_2 + 0x10),uVar2);
+  *self = &std::exception::vftable;
+  self[4] = 0;
+  refs = *(int *)(*(int *)(other + 0x10) + -0xc);
+  if (refs == -1 || refs + 1 < 0) {
+    len = *(uint *)(*(int *)(other + 0x10) + -4);
+    rep = std::string::__getRep(self + 2,len,len);
+    self[4] = rep + 3;
+    memcpy((undefined4 *)self[4],*(undefined4 **)(other + 0x10),len);
   }
   else {
-    param_1[4] = *(undefined4 *)(param_2 + 0x10);
-    piVar3 = (int *)(param_1[4] + -0xc);
-    if (piVar3 != &DAT_0042fab4) {
-      *piVar3 = *piVar3 + 1;
+    self[4] = *(undefined4 *)(other + 0x10);
+    rep = (int *)(self[4] + -0xc);
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
-  *param_1 = &std::logic_error::vftable;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  *self = &std::logic_error::vftable;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004134dc  FUN_004134dc   (437 bytes, 2 ranges)   [unnamed]
+// 0x004134dc  std::vector_MatchEngine_ptr::insert_aux   (437 bytes, 2 ranges)   [analysis]
+//   std::vector<MatchEngine *> insert at a position, growing the storage when full
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_004134dc(int param_1,undefined4 *param_2,undefined4 *param_3)
+void __cdecl std::vector_MatchEngine_ptr::insert_aux(int vec,undefined4 *pos,undefined4 *value)
 
 {
-  int iVar1;
-  undefined4 *puVar2;
-  int iVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
-  undefined **local_8;
+  int newCapacity;
+  undefined4 *storage;
+  int index;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined **badAlloc;
   
   __InitExceptBlockLDTC(0x42e450);
-  puVar2 = *(undefined4 **)(param_1 + 8);
-  if (puVar2 == *(undefined4 **)(param_1 + 0x18)) {
-    iVar1 = *(int *)(param_1 + 8) - *(int *)(param_1 + 4);
-    if (iVar1 < 0) {
-      iVar1 = iVar1 + 3;
+  storage = *(undefined4 **)(vec + 8);
+  if (storage == *(undefined4 **)(vec + 0x18)) {
+    newCapacity = *(int *)(vec + 8) - *(int *)(vec + 4);
+    if (newCapacity < 0) {
+      newCapacity = newCapacity + 3;
     }
-    if (iVar1 >> 2 == 0) {
-      iVar1 = 0x100;
+    if (newCapacity >> 2 == 0) {
+      newCapacity = 0x100;
     }
     else {
-      iVar1 = (iVar1 >> 2) * 2;
+      newCapacity = (newCapacity >> 2) * 2;
     }
-    puVar2 = (undefined4 *)operator_new();
-    if (puVar2 == (undefined4 *)0x0) {
-      local_8 = &std::bad_alloc::vftable;
-      FUN_004280a0((uint *)&DAT_00404c94,(undefined4*)&local_8,0,&LAB_00404cec,1,0,0,0);
+    storage = (undefined4 *)operator_new();
+    if (storage == (undefined4 *)0x0) {
+      badAlloc = &std::bad_alloc::vftable;
+      _ThrowExceptionLDTC((uint *)&DAT_00404c94,(undefined4*)&badAlloc,0,&LAB_00404cec,1,0,0,0);
     }
-    FUN_004136d8(*(undefined4 **)(param_1 + 4),param_2,puVar2);
-    iVar3 = (int)param_2 - *(int *)(param_1 + 4);
-    if (iVar3 < 0) {
-      iVar3 = iVar3 + 3;
+    std::copy_ptr_4136d8(*(undefined4 **)(vec + 4),pos,storage);
+    index = (int)pos - *(int *)(vec + 4);
+    if (index < 0) {
+      index = index + 3;
     }
-    puVar2[iVar3 >> 2] = *param_3;
-    iVar3 = (int)param_2 - *(int *)(param_1 + 4);
-    if (iVar3 < 0) {
-      iVar3 = iVar3 + 3;
+    storage[index >> 2] = *value;
+    index = (int)pos - *(int *)(vec + 4);
+    if (index < 0) {
+      index = index + 3;
     }
-    FUN_004136d8(param_2,*(undefined4 **)(param_1 + 8),puVar2 + (iVar3 >> 2) + 1);
-    iVar3 = *(int *)(param_1 + 8) - *(int *)(param_1 + 4);
-    if (iVar3 < 0) {
-      iVar3 = iVar3 + 3;
+    std::copy_ptr_4136d8(pos,*(undefined4 **)(vec + 8),storage + (index >> 2) + 1);
+    index = *(int *)(vec + 8) - *(int *)(vec + 4);
+    if (index < 0) {
+      index = index + 3;
     }
-    FUN_004050b4(param_1,*(int *)(param_1 + 4),*(int *)(param_1 + 8));
+    std::_Destroy_range_ptr(vec,*(int *)(vec + 4),*(int *)(vec + 8));
     operator_delete();
-    *(undefined4 **)(param_1 + 0x18) = puVar2 + iVar1;
-    *(undefined4 **)(param_1 + 8) = puVar2 + (iVar3 >> 2) + 1;
-    *(undefined4 **)(param_1 + 4) = puVar2;
+    *(undefined4 **)(vec + 0x18) = storage + newCapacity;
+    *(undefined4 **)(vec + 8) = storage + (index >> 2) + 1;
+    *(undefined4 **)(vec + 4) = storage;
   }
   else {
-    *puVar2 = puVar2[-1];
-    FUN_004136b4(param_2,*(undefined4 **)(param_1 + 8) + -1,*(undefined4 **)(param_1 + 8));
-    *param_2 = *param_3;
-    *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 4;
+    *storage = storage[-1];
+    std::copy_backward_ptr_4136b4(pos,*(undefined4 **)(vec + 8) + -1,*(undefined4 **)(vec + 8));
+    *pos = *value;
+    *(int *)(vec + 8) = *(int *)(vec + 8) + 4;
   }
-  *in_FS_OFFSET = local_2c;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004136b4  FUN_004136b4   (36 bytes)   [unnamed]
+// 0x004136b4  std::copy_backward_ptr_4136b4   (36 bytes)   [analysis]
+//   copy_backward over a range of pointers
 //   file placement: inferred (address adjacency)
-undefined4 * __cdecl FUN_004136b4(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3)
+undefined4 * __cdecl std::copy_backward_ptr_4136b4(undefined4 *first,undefined4 *last,undefined4 *destEnd)
 
 {
-  while (param_2 != param_1) {
-    param_2 = param_2 + -1;
-    param_3 = param_3 + -1;
-    *param_3 = *param_2;
+  while (last != first) {
+    last = last + -1;
+    destEnd = destEnd + -1;
+    *destEnd = *last;
   }
-  return param_3;
+  return destEnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004136d8  FUN_004136d8   (89 bytes, 2 ranges)   [unnamed]
+// 0x004136d8  std::copy_ptr_4136d8   (89 bytes, 2 ranges)   [analysis]
+//   copy over a range of pointers
 //   file placement: inferred (address adjacency)
-undefined4 * __cdecl FUN_004136d8(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3)
+undefined4 * __cdecl std::copy_ptr_4136d8(undefined4 *first,undefined4 *last,undefined4 *dest)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x42e490);
-  for (; param_2 != param_1; param_1 = param_1 + 1) {
-    *param_3 = *param_1;
-    param_3 = param_3 + 1;
+  for (; last != first; first = first + 1) {
+    *dest = *first;
+    dest = dest + 1;
   }
-  *in_FS_OFFSET = local_28;
-  return param_3;
+  *sehChainHead = sehPrevFrame;
+  return dest;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00413758  FUN_00413758   (22 bytes)   [unnamed]
+// 0x00413758  std::_Destroy_range_ptr_413758   (22 bytes)   [analysis]
+//   destroys a range of pointers (nothing to do)
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_00413758(int param_1,int param_2)
+void __cdecl std::_Destroy_range_ptr_413758(int first,int last)
 
 {
-  for (; param_2 != param_1; param_1 = param_1 + 4) {
+  for (; last != first; first = first + 4) {
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00413770  FUN_00413770   (146 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_00413770(int param_1,int param_2)
+// 0x00413770  MatchEngineSet::SetWordLength   (146 bytes)   [analysis]
+//   tells every leaf whose length range admits `length` the current word length; 0 when the query is a single leaf that cannot match that length
+undefined4 __cdecl MatchEngineSet::SetWordLength(int self,int length)
 
 {
-  int iVar1;
-  int iVar2;
-  uint uVar3;
-  uint uVar4;
-  undefined4 local_8;
+  int minLength;
+  int engine;
+  uint count;
+  uint i;
+  undefined4 possible;
   
-  local_8 = 1;
-  iVar2 = *(int *)(param_1 + 8) - *(int *)(param_1 + 4);
-  if (iVar2 < 0) {
-    iVar2 = iVar2 + 3;
+  possible = 1;
+  engine = *(int *)(self + m_enginesEnd) - *(int *)(self + m_enginesBegin);
+  if (engine < 0) {
+    engine = engine + 3;
   }
-  uVar3 = iVar2 >> 2;
-  uVar4 = 0;
-  if (uVar3 != 0) {
+  count = engine >> 2;
+  i = 0;
+  if (count != 0) {
     do {
-      iVar2 = *(int *)(*(int *)(param_1 + 4) + uVar4 * 4);
-      if (iVar2 != 0) {
-        iVar1 = MatchEngine::GetMinLength(iVar2);
-        if (iVar1 <= param_2) {
-          iVar2 = MatchEngine::GetMaxLength(iVar2);
-          if (param_2 <= iVar2) {
-            MatchEngine::SetWordLength(*(int *)(*(int *)(param_1 + 4) + uVar4 * 4),param_2);
+      engine = *(int *)(*(int *)(self + m_enginesBegin) + i * 4);
+      if (engine != 0) {
+        minLength = MatchEngine::GetMinLength(engine);
+        if (minLength <= length) {
+          engine = MatchEngine::GetMaxLength(engine);
+          if (length <= engine) {
+            MatchEngine::SetWordLength(*(int *)(*(int *)(self + m_enginesBegin) + i * 4),length);
             goto LAB_004137f2;
           }
         }
-        if (uVar3 == 1) {
-          local_8 = 0;
+        if (count == 1) {
+          possible = 0;
         }
       }
 LAB_004137f2:
-      uVar4 = uVar4 + 1;
-    } while (uVar4 < uVar3);
+      i = i + 1;
+    } while (i < count);
   }
-  return local_8;
+  return possible;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00413804  FUN_00413804   (1439 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
+// 0x00413804  MatchEngineSet::GetBalanceText   (1439 bytes)   [analysis]
+//   for a single-leaf query, the anagram balance (" -XY+Z") with `prefix` inserted in front; empty otherwise
 /* WARNING: Removing unreachable block (ram,0x00413834) */
 /* WARNING: Removing unreachable block (ram,0x00413914) */
 /* WARNING: Removing unreachable block (ram,0x004138c0) */
@@ -843,96 +874,96 @@ LAB_004137f2:
 /* WARNING: Removing unreachable block (ram,0x00413c69) */
 /* WARNING: Removing unreachable block (ram,0x00413c6d) */
 /* WARNING: Removing unreachable block (ram,0x00413cbb) */
-void __cdecl FUN_00413804(int param_1,int param_2,int param_3)
+void __cdecl MatchEngineSet::GetBalanceText(int self,int prefix,int out)
 
 {
-  undefined4 *puVar1;
-  int iVar2;
-  uint uVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined1 local_111;
-  uint local_110;
-  uint local_c4;
-  undefined4 local_78;
+  undefined4 *rep;
+  int byteSize;
+  uint len;
+  undefined4 *sehChainHead;
+  undefined1 nul;
+  uint len2;
+  uint len1;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x42e4f8);
-  if (*(int *)(*(int *)(param_3 + 8) + -4) == 0) {
-    std::string::replace_fill(param_3,*(uint *)(*(int *)(param_3 + 8) + -4),0,
-                 -*(int *)(*(int *)(param_3 + 8) + -4),0);
+  if (*(int *)(*(int *)(out + 8) + -4) == 0) {
+    std::string::replace_fill(out,*(uint *)(*(int *)(out + 8) + -4),0,
+                 -*(int *)(*(int *)(out + 8) + -4),0);
   }
   else {
-    local_c4 = *(uint *)(*(int *)(param_3 + 8) + -4);
-    local_110 = *(uint *)(*(int *)(param_3 + 8) + -4);
-    local_111 = 0;
-    uVar3 = local_110;
-    if (local_c4 < local_110) {
-      uVar3 = local_c4;
+    len1 = *(uint *)(*(int *)(out + 8) + -4);
+    len2 = *(uint *)(*(int *)(out + 8) + -4);
+    nul = 0;
+    len = len2;
+    if (len1 < len2) {
+      len = len1;
     }
-    FUN_00417320(param_3,0,uVar3,(uint)&local_111,0,0,0);
+    std::string::replace(out,0,len,(uint)&nul,0,0,0);
   }
-  puVar1 = (undefined4 *)(*(int *)(param_3 + 8) + -0xc);
-  if (puVar1 != &DAT_0042fab4) {
-    *puVar1 = 0;
+  rep = (undefined4 *)(*(int *)(out + 8) + -0xc);
+  if (rep != &g_nullStringRep) {
+    *rep = 0;
   }
-  iVar2 = *(int *)(param_1 + 8) - *(int *)(param_1 + 4);
-  if (iVar2 < 0) {
-    iVar2 = iVar2 + 3;
+  byteSize = *(int *)(self + m_enginesEnd) - *(int *)(self + m_enginesBegin);
+  if (byteSize < 0) {
+    byteSize = byteSize + 3;
   }
-  if ((iVar2 >> 2 == 1) &&
-     (MatchEngine::FormatBalance(**(int **)(param_1 + 4),param_3), *(int *)(*(int *)(param_3 + 8) + -4) != 0)) {
-    FUN_0041acdc(param_3,0,param_2);
+  if ((byteSize >> 2 == 1) &&
+     (MatchEngine::FormatBalance(**(int **)(self + m_enginesBegin),out), *(int *)(*(int *)(out + 8) + -4) != 0)) {
+    std::string::insert(out,0,prefix);
   }
-  *in_FS_OFFSET = local_78;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00413da4  FUN_00413da4   (115 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_00413da4(int param_1,int *param_2,int *param_3)
+// 0x00413da4  MatchEngineSet::GetLengthRange   (115 bytes)   [analysis]
+//   shortest and longest word length (1..100) the logic can accept, by evaluating it in length-check mode for each length; first = 101 when none
+void __cdecl MatchEngineSet::GetLengthRange(int self,int *first,int *last)
 
 {
-  int iVar1;
-  uint uVar2;
-  byte *pbVar3;
-  int *piVar4;
-  int iVar5;
+  int byteSize;
+  uint possible;
+  byte *ops;
+  int *engines;
+  int length;
   
-  *param_2 = 0x65;
-  *param_3 = 0;
-  iVar5 = 1;
+  *first = 0x65;
+  *last = 0;
+  length = 1;
   do {
-    iVar1 = *(int *)(param_1 + 8) - *(int *)(param_1 + 4);
-    if (iVar1 < 0) {
-      iVar1 = iVar1 + 3;
+    byteSize = *(int *)(self + m_enginesEnd) - *(int *)(self + m_enginesBegin);
+    if (byteSize < 0) {
+      byteSize = byteSize + 3;
     }
-    if (iVar1 >> 2 == 0) {
-      piVar4 = (int *)0x0;
-    }
-    else {
-      piVar4 = *(int **)(param_1 + 4);
-    }
-    if (*(int *)(*(int *)(param_1 + 0x28) + -4) == 0) {
-      pbVar3 = (byte *)0x0;
+    if (byteSize >> 2 == 0) {
+      engines = (int *)0x0;
     }
     else {
-      pbVar3 = *(byte **)(param_1 + 0x28);
+      engines = *(int **)(self + m_enginesBegin);
     }
-    uVar2 = MatchEngineSet::EvalLogic('\x01',0,iVar5,pbVar3,piVar4);
-    if (uVar2 != 0) {
-      if (*param_2 == 0x65) {
-        *param_2 = iVar5;
+    if (*(int *)(*(int *)(self + m_opsData) + -4) == 0) {
+      ops = (byte *)0x0;
+    }
+    else {
+      ops = *(byte **)(self + m_opsData);
+    }
+    possible = MatchEngineSet::EvalLogic('\x01',0,length,ops,engines);
+    if (possible != 0) {
+      if (*first == 0x65) {
+        *first = length;
       }
-      *param_3 = iVar5;
+      *last = length;
     }
-    iVar5 = iVar5 + 1;
-  } while (iVar5 < 0x65);
+    length = length + 1;
+  } while (length < 0x65);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00413e18  FUN_00413e18   (1613 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
+// 0x00413e18  MatchEngineSet::Clear   (1613 bytes)   [analysis]
+//   deletes every leaf engine and empties the logic opcodes
 /* WARNING: Removing unreachable block (ram,0x00413f58) */
 /* WARNING: Removing unreachable block (ram,0x0041403d) */
 /* WARNING: Removing unreachable block (ram,0x00413fec) */
@@ -961,441 +992,452 @@ void __cdecl FUN_00413da4(int param_1,int *param_2,int *param_3)
 /* WARNING: Removing unreachable block (ram,0x00414371) */
 /* WARNING: Removing unreachable block (ram,0x00414375) */
 /* WARNING: Removing unreachable block (ram,0x004143c3) */
-void __cdecl FUN_00413e18(int param_1)
+void __cdecl MatchEngineSet::Clear(int self)
 
 {
-  undefined4 *puVar1;
-  int iVar2;
-  int iVar3;
-  uint uVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined1 local_125;
-  uint local_124;
-  uint local_d8;
-  int local_90;
-  undefined4 local_8c;
-  int local_88;
-  int local_84;
-  int *local_80;
-  undefined4 local_7c;
-  undefined2 local_6c;
-  int local_60;
-  int local_8;
+  undefined4 *rep;
+  int engine;
+  int prevRefs;
+  uint i;
+  undefined4 *sehChainHead;
+  undefined1 nul;
+  uint len2;
+  uint len1;
+  int unused;
+  undefined4 unused2;
+  int unused3;
+  int unused4;
+  int *strRep;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  int engineObj;
   
   __InitExceptBlockLDTC(0x42e5d0);
-  uVar4 = 0;
+  i = 0;
   do {
-    iVar2 = *(int *)(param_1 + 8) - *(int *)(param_1 + 4);
-    if (iVar2 < 0) {
-      iVar2 = iVar2 + 3;
+    engine = *(int *)(self + m_enginesEnd) - *(int *)(self + m_enginesBegin);
+    if (engine < 0) {
+      engine = engine + 3;
     }
-    if ((uint)(iVar2 >> 2) <= uVar4) {
-      FUN_00414468(param_1,0);
-      local_d8 = *(uint *)(*(int *)(param_1 + 0x28) + -4);
-      if (local_d8 == 0) {
-        std::string::replace_fill(param_1 + 0x20,0,0,0,0);
+    if ((uint)(engine >> 2) <= i) {
+      std::vector_MatchEngine_ptr::resize(self,0);
+      len1 = *(uint *)(*(int *)(self + m_opsData) + -4);
+      if (len1 == 0) {
+        std::string::replace_fill(self + m_ops,0,0,0,0);
       }
       else {
-        local_124 = *(uint *)(*(int *)(param_1 + 0x28) + -4);
-        local_125 = 0;
-        uVar4 = local_124;
-        if (local_d8 < local_124) {
-          uVar4 = local_d8;
+        len2 = *(uint *)(*(int *)(self + m_opsData) + -4);
+        nul = 0;
+        i = len2;
+        if (len1 < len2) {
+          i = len1;
         }
-        FUN_00417320(param_1 + 0x20,0,uVar4,(uint)&local_125,0,0,0);
+        std::string::replace(self + m_ops,0,i,(uint)&nul,0,0,0);
       }
-      puVar1 = (undefined4 *)(*(int *)(param_1 + 0x28) + -0xc);
-      if (puVar1 != &DAT_0042fab4) {
-        *puVar1 = 0;
+      rep = (undefined4 *)(*(int *)(self + m_opsData) + -0xc);
+      if (rep != &g_nullStringRep) {
+        *rep = 0;
       }
-      *in_FS_OFFSET = local_7c;
+      *sehChainHead = sehPrevFrame;
       return;
     }
-    iVar2 = *(int *)(uVar4 * 4 + *(int *)(param_1 + 4));
-    local_8 = iVar2;
-    if (iVar2 != 0) {
-      local_6c = 0x14;
-      local_60 = local_60 + -1;
-      if (*(int *)(iVar2 + 0x1010) != 0) {
-        if (*(int *)(*(int *)(iVar2 + 0x1010) + -0xc) != -1) {
-          local_80 = (int *)(*(int *)(iVar2 + 0x1010) + -0xc);
-          if (local_80 == &DAT_0042fab4) {
-            iVar3 = 1;
+    engine = *(int *)(i * 4 + *(int *)(self + m_enginesBegin));
+    engineObj = engine;
+    if (engine != 0) {
+      ehContext = 0x14;
+      ehDtorCount = ehDtorCount + -1;
+      if (*(int *)(engine + 0x1010) != 0) {
+        if (*(int *)(*(int *)(engine + 0x1010) + -0xc) != -1) {
+          strRep = (int *)(*(int *)(engine + 0x1010) + -0xc);
+          if (strRep == &g_nullStringRep) {
+            prevRefs = 1;
           }
-          else if (local_80 == &DAT_0042fab4) {
-            iVar3 = 1;
+          else if (strRep == &g_nullStringRep) {
+            prevRefs = 1;
           }
           else {
-            *local_80 = *local_80 + -1;
-            iVar3 = *local_80 + 1;
+            *strRep = *strRep + -1;
+            prevRefs = *strRep + 1;
           }
-          if (iVar3 != 0) goto LAB_00413ef7;
+          if (prevRefs != 0) goto LAB_00413ef7;
         }
-        local_84 = *(int *)(iVar2 + 0x1010) + -0xc;
-        local_88 = *(int *)(iVar2 + 0x1010) + -0xc;
+        unused4 = *(int *)(engine + 0x1010) + -0xc;
+        unused3 = *(int *)(engine + 0x1010) + -0xc;
         operator_delete();
-        local_8c = 0;
-        *(undefined4 *)(iVar2 + 0x1010) = 0;
-        local_90 = iVar2 + 0x1008;
+        unused2 = 0;
+        *(undefined4 *)(engine + 0x1010) = 0;
+        unused = engine + 0x1008;
       }
 LAB_00413ef7:
-      local_60 = local_60 + -0x101;
-      Pattern::_dtor(local_8,2);
+      ehDtorCount = ehDtorCount + -0x101;
+      Pattern::_dtor(engineObj,2);
       operator_delete();
-      local_6c = 8;
+      ehContext = 8;
     }
-    uVar4 = uVar4 + 1;
+    i = i + 1;
   } while( true );
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00414468  FUN_00414468   (157 bytes)   [unnamed]
+// 0x00414468  std::vector_MatchEngine_ptr::resize   (157 bytes)   [analysis]
+//   resize(n) with null pointers
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_00414468(int param_1,uint param_2)
+void __cdecl std::vector_MatchEngine_ptr::resize(int vec,uint n)
 
 {
-  undefined4 *puVar1;
-  undefined4 *puVar2;
-  int iVar3;
-  undefined4 *puVar4;
-  int iVar5;
-  undefined4 local_8;
+  undefined4 *end;
+  undefined4 *newEnd;
+  int size;
+  undefined4 *cut;
+  int removed;
+  undefined4 nullValue;
   
-  iVar3 = *(int *)(param_1 + 8) - *(int *)(param_1 + 4);
-  if (iVar3 < 0) {
-    iVar3 = iVar3 + 3;
+  size = *(int *)(vec + 8) - *(int *)(vec + 4);
+  if (size < 0) {
+    size = size + 3;
   }
-  if ((uint)(iVar3 >> 2) < param_2) {
-    local_8 = 0;
-    iVar3 = (int)*(undefined4 **)(param_1 + 8) - *(int *)(param_1 + 4);
-    if (iVar3 < 0) {
-      iVar3 = iVar3 + 3;
+  if ((uint)(size >> 2) < n) {
+    nullValue = 0;
+    size = (int)*(undefined4 **)(vec + 8) - *(int *)(vec + 4);
+    if (size < 0) {
+      size = size + 3;
     }
-    FUN_00414508(param_1,*(undefined4 **)(param_1 + 8),param_2 - (iVar3 >> 2),&local_8);
+    std::vector_MatchEngine_ptr::insert_fill(vec,*(undefined4 **)(vec + 8),n - (size >> 2),&nullValue);
   }
   else {
-    puVar1 = *(undefined4 **)(param_1 + 8);
-    iVar3 = (int)puVar1 - *(int *)(param_1 + 4);
-    if (iVar3 < 0) {
-      iVar3 = iVar3 + 3;
+    end = *(undefined4 **)(vec + 8);
+    size = (int)end - *(int *)(vec + 4);
+    if (size < 0) {
+      size = size + 3;
     }
-    if (param_2 < (uint)(iVar3 >> 2)) {
-      puVar4 = (undefined4 *)(param_2 * 4 + *(int *)(param_1 + 4));
-      puVar2 = FUN_0041484c(puVar1,puVar1,puVar4);
-      iVar3 = *(int *)(param_1 + 8);
-      iVar5 = (int)puVar1 - (int)puVar4;
-      if (iVar5 < 0) {
-        iVar5 = iVar5 + 3;
+    if (n < (uint)(size >> 2)) {
+      cut = (undefined4 *)(n * 4 + *(int *)(vec + 4));
+      newEnd = std::copy_ptr_41484c(end,end,cut);
+      size = *(int *)(vec + 8);
+      removed = (int)end - (int)cut;
+      if (removed < 0) {
+        removed = removed + 3;
       }
-      *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + (iVar5 >> 2) * -4;
-      FUN_004050b4(param_1,(int)puVar2,iVar3);
+      *(int *)(vec + 8) = *(int *)(vec + 8) + (removed >> 2) * -4;
+      std::_Destroy_range_ptr(vec,(int)newEnd,size);
     }
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00414508  FUN_00414508   (646 bytes, 2 ranges)   [unnamed]
+// 0x00414508  std::vector_MatchEngine_ptr::insert_fill   (646 bytes, 2 ranges)   [analysis]
+//   inserts n copies of a value at a position, growing the storage when needed
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_00414508(int param_1,undefined4 *param_2,uint param_3,undefined4 *param_4)
+undefined4 __cdecl std::vector_MatchEngine_ptr::insert_fill(int vec,undefined4 *first,uint n,undefined4 *value)
 
 {
-  undefined4 *puVar1;
-  int iVar2;
-  uint *puVar3;
-  undefined4 *in_FS_OFFSET;
-  uint local_3c;
-  int local_38;
-  undefined4 local_2c;
-  undefined2 local_1c;
-  int local_10;
-  undefined **local_8;
+  undefined4 *storage;
+  int count;
+  uint *growBy;
+  undefined4 *sehChainHead;
+  uint size;
+  int newCapacity;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined **badAlloc;
   
   __InitExceptBlockLDTC(0x42e698);
-  if (param_3 == 0) {
-    *in_FS_OFFSET = local_2c;
+  if (n == 0) {
+    *sehChainHead = sehPrevFrame;
   }
   else {
-    puVar1 = *(undefined4 **)(param_1 + 8);
-    iVar2 = *(int *)(param_1 + 0x18) - (int)puVar1;
-    if (iVar2 < 0) {
-      iVar2 = iVar2 + 3;
+    storage = *(undefined4 **)(vec + 8);
+    count = *(int *)(vec + 0x18) - (int)storage;
+    if (count < 0) {
+      count = count + 3;
     }
-    if ((uint)(iVar2 >> 2) < param_3) {
-      iVar2 = *(int *)(param_1 + 8) - *(int *)(param_1 + 4);
-      if (iVar2 < 0) {
-        iVar2 = iVar2 + 3;
+    if ((uint)(count >> 2) < n) {
+      count = *(int *)(vec + 8) - *(int *)(vec + 4);
+      if (count < 0) {
+        count = count + 3;
       }
-      local_3c = iVar2 >> 2;
-      if (param_3 < local_3c) {
-        puVar3 = &local_3c;
+      size = count >> 2;
+      if (n < size) {
+        growBy = &size;
       }
       else {
-        puVar3 = &param_3;
+        growBy = &n;
       }
-      local_38 = local_3c + *puVar3;
-      puVar1 = (undefined4 *)operator_new();
-      if (puVar1 == (undefined4 *)0x0) {
-        local_1c = 8;
-        local_8 = &std::bad_alloc::vftable;
-        local_10 = local_10 + 2;
-        FUN_004280a0((uint *)&DAT_00404c94,(undefined4*)&local_8,0,&LAB_00404cec,1,0,0,0);
+      newCapacity = size + *growBy;
+      storage = (undefined4 *)operator_new();
+      if (storage == (undefined4 *)0x0) {
+        ehContext = 8;
+        badAlloc = &std::bad_alloc::vftable;
+        ehDtorCount = ehDtorCount + 2;
+        _ThrowExceptionLDTC((uint *)&DAT_00404c94,(undefined4*)&badAlloc,0,&LAB_00404cec,1,0,0,0);
       }
-      local_1c = 0x14;
-      FUN_004136d8(*(undefined4 **)(param_1 + 4),param_2,puVar1);
-      iVar2 = (int)param_2 - *(int *)(param_1 + 4);
-      if (iVar2 < 0) {
-        iVar2 = iVar2 + 3;
+      ehContext = 0x14;
+      std::copy_ptr_4136d8(*(undefined4 **)(vec + 4),first,storage);
+      count = (int)first - *(int *)(vec + 4);
+      if (count < 0) {
+        count = count + 3;
       }
-      FUN_004147d0(puVar1 + (iVar2 >> 2),param_3,param_4);
-      iVar2 = (int)param_2 - *(int *)(param_1 + 4);
-      if (iVar2 < 0) {
-        iVar2 = iVar2 + 3;
+      std::fill_n_ptr(storage + (count >> 2),n,value);
+      count = (int)first - *(int *)(vec + 4);
+      if (count < 0) {
+        count = count + 3;
       }
-      FUN_004136d8(param_2,*(undefined4 **)(param_1 + 8),puVar1 + (iVar2 >> 2) + param_3);
-      local_1c = 0;
-      iVar2 = *(int *)(param_1 + 8) - *(int *)(param_1 + 4);
-      if (iVar2 < 0) {
-        iVar2 = iVar2 + 3;
+      std::copy_ptr_4136d8(first,*(undefined4 **)(vec + 8),storage + (count >> 2) + n);
+      ehContext = 0;
+      count = *(int *)(vec + 8) - *(int *)(vec + 4);
+      if (count < 0) {
+        count = count + 3;
       }
-      FUN_004050b4(param_1,*(int *)(param_1 + 4),*(int *)(param_1 + 8));
+      std::_Destroy_range_ptr(vec,*(int *)(vec + 4),*(int *)(vec + 8));
       operator_delete();
-      *(undefined4 **)(param_1 + 0x18) = puVar1 + local_38;
-      *(undefined4 **)(param_1 + 8) = puVar1 + (iVar2 >> 2) + param_3;
-      *(undefined4 **)(param_1 + 4) = puVar1;
+      *(undefined4 **)(vec + 0x18) = storage + newCapacity;
+      *(undefined4 **)(vec + 8) = storage + (count >> 2) + n;
+      *(undefined4 **)(vec + 4) = storage;
     }
     else {
-      iVar2 = (int)puVar1 - (int)param_2;
-      if (iVar2 < 0) {
-        iVar2 = iVar2 + 3;
+      count = (int)storage - (int)first;
+      if (count < 0) {
+        count = count + 3;
       }
-      if (param_3 < (uint)(iVar2 >> 2)) {
-        FUN_004136d8(puVar1 + -param_3,puVar1,puVar1);
-        *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + param_3 * 4;
-        FUN_004136b4(param_2,puVar1 + -param_3,puVar1);
-        FUN_004147b0(param_2,param_2 + param_3,param_4);
+      if (n < (uint)(count >> 2)) {
+        std::copy_ptr_4136d8(storage + -n,storage,storage);
+        *(int *)(vec + 8) = *(int *)(vec + 8) + n * 4;
+        std::copy_backward_ptr_4136b4(first,storage + -n,storage);
+        std::fill_ptr(first,first + n,value);
       }
       else {
-        iVar2 = (int)puVar1 - (int)param_2;
-        if (iVar2 < 0) {
-          iVar2 = iVar2 + 3;
+        count = (int)storage - (int)first;
+        if (count < 0) {
+          count = count + 3;
         }
-        iVar2 = param_3 - (iVar2 >> 2);
-        FUN_004147d0(puVar1,iVar2,param_4);
-        *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + iVar2 * 4;
-        FUN_004136d8(param_2,puVar1,param_2 + param_3);
-        *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + (param_3 - iVar2) * 4;
-        FUN_004147b0(param_2,puVar1,param_4);
+        count = n - (count >> 2);
+        std::fill_n_ptr(storage,count,value);
+        *(int *)(vec + 8) = *(int *)(vec + 8) + count * 4;
+        std::copy_ptr_4136d8(first,storage,first + n);
+        *(int *)(vec + 8) = *(int *)(vec + 8) + (n - count) * 4;
+        std::fill_ptr(first,storage,value);
       }
     }
-    *in_FS_OFFSET = local_2c;
+    *sehChainHead = sehPrevFrame;
   }
-  return local_2c;
+  return sehPrevFrame;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004147b0  FUN_004147b0   (31 bytes)   [unnamed]
+// 0x004147b0  std::fill_ptr   (31 bytes)   [analysis]
+//   fill a range of pointers with a value
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_004147b0(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3)
+void __cdecl std::fill_ptr(undefined4 *first,undefined4 *last,undefined4 *value)
 
 {
-  for (; param_2 != param_1; param_1 = param_1 + 1) {
-    *param_1 = *param_3;
+  for (; last != first; first = first + 1) {
+    *first = *value;
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004147d0  FUN_004147d0   (85 bytes, 2 ranges)   [unnamed]
+// 0x004147d0  std::fill_n_ptr   (85 bytes, 2 ranges)   [analysis]
+//   fill n pointers with a value
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_004147d0(undefined4 *param_1,int param_2,undefined4 *param_3)
+void __cdecl std::fill_n_ptr(undefined4 *first,int n,undefined4 *value)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x42e6d8);
-  while (param_2 != 0) {
-    *param_1 = *param_3;
-    param_2 = param_2 + -1;
-    param_1 = param_1 + 1;
+  while (n != 0) {
+    *first = *value;
+    n = n + -1;
+    first = first + 1;
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041484c  FUN_0041484c   (36 bytes)   [unnamed]
+// 0x0041484c  std::copy_ptr_41484c   (36 bytes)   [analysis]
+//   copy over a range of pointers
 //   file placement: inferred (address adjacency)
-undefined4 * __cdecl FUN_0041484c(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3)
+undefined4 * __cdecl std::copy_ptr_41484c(undefined4 *first,undefined4 *last,undefined4 *dest)
 
 {
-  for (; param_2 != param_1; param_1 = param_1 + 1) {
-    *param_3 = *param_1;
-    param_3 = param_3 + 1;
+  for (; last != first; first = first + 1) {
+    *dest = *first;
+    dest = dest + 1;
   }
-  return param_3;
+  return dest;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00414870  FUN_00414870   (21 bytes)   [unnamed]
+// 0x00414870  CheckLicenseKey   (21 bytes)   [analysis]
+//   CheckLicenseKeyImpl
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_00414870(byte *param_1,char *param_2)
+undefined4 __cdecl CheckLicenseKey(byte *owner,char *key)
 
 {
-  bool bVar1;
-  undefined3 extraout_var;
+  bool ok;
+  undefined3 regHigh;
   
-  bVar1 = FUN_00414888(param_1,param_2);
-  return CONCAT31(extraout_var,bVar1);
+  ok = CheckLicenseKeyImpl(owner,key);
+  return CONCAT31(regHigh,ok);
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00414888  FUN_00414888   (374 bytes)   [unnamed]
+// 0x00414888  CheckLicenseKeyImpl   (374 bytes)   [analysis]
+//   licence check: hashes "TEAWIN" and the letters of the owner name (upper-cased, last to first) with LicenseHashByte, then compares each derived letter with the 10-letter key
 //   file placement: inferred (address adjacency)
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-bool __cdecl FUN_00414888(byte *param_1,char *param_2)
+bool __cdecl CheckLicenseKeyImpl(byte *owner,char *key)
 
 {
-  int iVar1;
-  uint uVar2;
-  byte bVar3;
-  byte *pbVar4;
-  byte *pbVar5;
-  char *pcVar6;
-  int local_8;
+  int isLetter;
+  uint ch;
+  byte keyChar;
+  byte *p;
+  byte *q;
+  char *keyAt;
+  int letterCount;
   
-  DAT_00434698 = 0;
+  g_licenseHashHigh = 0;
   _DAT_00434694 = 0;
-  for (pbVar4 = PTR_s_TEAWIN_0042e708; *pbVar4 != 0; pbVar4 = pbVar4 + 1) {
-    FUN_00414a00(*pbVar4,&DAT_00434694,&DAT_0042e700);
+  for (p = PTR_s_TEAWIN_0042e708; *p != 0; p = p + 1) {
+    LicenseHashByte(*p,&g_licenseHash,&g_licensePolynomial);
   }
-  local_8 = 0;
-  for (pbVar4 = param_1; *pbVar4 != 0; pbVar4 = pbVar4 + 1) {
+  letterCount = 0;
+  for (p = owner; *p != 0; p = p + 1) {
   }
-  while (param_1 < pbVar4) {
-    pbVar4 = pbVar4 + -1;
-    bVar3 = *pbVar4;
-    uVar2 = (uint)bVar3;
-    iVar1 = FUN_004225cc((uint)bVar3);
-    if (iVar1 != 0) {
-      uVar2 = FUN_0042428c((uint)bVar3);
+  while (owner < p) {
+    p = p + -1;
+    keyChar = *p;
+    ch = (uint)keyChar;
+    isLetter = islower((uint)keyChar);
+    if (isLetter != 0) {
+      ch = toupper((uint)keyChar);
     }
-    iVar1 = FUN_00422548(uVar2 & 0xff);
-    if (iVar1 != 0) {
-      local_8 = local_8 + 1;
-      FUN_00414a00((byte)uVar2,&DAT_00434694,&DAT_0042e700);
+    isLetter = isalnum(ch & 0xff);
+    if (isLetter != 0) {
+      letterCount = letterCount + 1;
+      LicenseHashByte((byte)ch,&g_licenseHash,&g_licensePolynomial);
     }
   }
-  pbVar4 = param_1;
-  pcVar6 = param_2;
-  if (0 < local_8) {
+  p = owner;
+  keyAt = key;
+  if (0 < letterCount) {
     do {
       do {
-        while (pbVar5 = pbVar4, *pbVar5 != 0) {
-          pbVar4 = pbVar5 + 1;
+        while (q = p, *q != 0) {
+          p = q + 1;
         }
-        pbVar4 = param_1;
-      } while (pbVar5 <= param_1);
+        p = owner;
+      } while (q <= owner);
       do {
-        pbVar5 = pbVar5 + -1;
-        bVar3 = *pbVar5;
-        uVar2 = (uint)bVar3;
-        iVar1 = FUN_004225cc((uint)bVar3);
-        if (iVar1 != 0) {
-          uVar2 = FUN_0042428c((uint)bVar3);
+        q = q + -1;
+        keyChar = *q;
+        ch = (uint)keyChar;
+        isLetter = islower((uint)keyChar);
+        if (isLetter != 0) {
+          ch = toupper((uint)keyChar);
         }
-        iVar1 = FUN_00422548(uVar2 & 0xff);
-        if (iVar1 != 0) {
-          bVar3 = (byte)((char)uVar2 + -0x41 + (char)((ulonglong)DAT_00434698 % 0x1a)) % 0x1a + 0x41
+        isLetter = isalnum(ch & 0xff);
+        if (isLetter != 0) {
+          keyChar = (byte)((char)ch + -0x41 + (char)((ulonglong)g_licenseHashHigh % 0x1a)) % 0x1a + 0x41
           ;
-          if (((uint)bVar3 != (int)*pcVar6) &&
-             (uVar2 = FUN_00424238((uint)bVar3), uVar2 != (int)*pcVar6)) {
+          if (((uint)keyChar != (int)*keyAt) &&
+             (ch = tolower((uint)keyChar), ch != (int)*keyAt)) {
             return false;
           }
-          pcVar6 = pcVar6 + 1;
-          FUN_00414a00(bVar3,&DAT_00434694,&DAT_0042e700);
-          if (pcVar6 == param_2 + 10) {
-            return *pcVar6 == '\0';
+          keyAt = keyAt + 1;
+          LicenseHashByte(keyChar,&g_licenseHash,&g_licensePolynomial);
+          if (keyAt == key + 10) {
+            return *keyAt == '\0';
           }
         }
-      } while (param_1 < pbVar5);
+      } while (owner < q);
     } while( true );
   }
   return false;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00414a00  FUN_00414a00   (129 bytes)   [unnamed]
+// 0x00414a00  LicenseHashByte   (129 bytes)   [analysis]
+//   feeds one byte into the 64-bit licence hash: shift left, XOR the polynomial when the outgoing bit differs from the input bit
 //   file placement: inferred (address adjacency)
-void __cdecl FUN_00414a00(byte param_1,byte *param_2,byte *param_3)
+void __cdecl LicenseHashByte(byte input,byte *state,byte *polynomial)
 
 {
-  byte bVar1;
-  int iVar2;
-  byte *pbVar3;
-  byte *pbVar4;
-  uint uVar5;
-  int local_c;
+  byte topByte;
+  int k;
+  byte *p;
+  byte *q;
+  uint carry;
+  int bit;
   
-  local_c = 0;
+  bit = 0;
   do {
-    bVar1 = *param_2;
-    uVar5 = 0;
-    iVar2 = 7;
-    pbVar3 = param_2 + 7;
+    topByte = *state;
+    carry = 0;
+    k = 7;
+    p = state + 7;
     do {
-      uVar5 = (uint)*pbVar3 * 2 + (uint)(uVar5 != 0);
-      iVar2 = iVar2 + -1;
-      *pbVar3 = (byte)uVar5;
-      pbVar3 = pbVar3 + -1;
-      uVar5 = uVar5 & 0x100;
-    } while (-1 < iVar2);
-    if (((bVar1 ^ param_1) & 0x80) != 0) {
-      iVar2 = 0;
-      pbVar3 = param_3;
-      pbVar4 = param_2;
+      carry = (uint)*p * 2 + (uint)(carry != 0);
+      k = k + -1;
+      *p = (byte)carry;
+      p = p + -1;
+      carry = carry & 0x100;
+    } while (-1 < k);
+    if (((topByte ^ input) & 0x80) != 0) {
+      k = 0;
+      p = polynomial;
+      q = state;
       do {
-        *pbVar4 = *pbVar4 ^ *pbVar3;
-        iVar2 = iVar2 + 1;
-        pbVar4 = pbVar4 + 1;
-        pbVar3 = pbVar3 + 1;
-      } while (iVar2 < 8);
+        *q = *q ^ *p;
+        k = k + 1;
+        q = q + 1;
+        p = p + 1;
+      } while (k < 8);
     }
-    param_1 = param_1 << 1;
-    local_c = local_c + 1;
-  } while (local_c < 8);
+    input = input << 1;
+    bit = bit + 1;
+  } while (bit < 8);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00414a84  FUN_00414a84   (21 bytes)   [unnamed]
+// 0x00414a84  CheckLicenseKey2   (21 bytes)   [analysis]
+//   CheckLicenseKeyImpl (second entry point)
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_00414a84(byte *param_1,char *param_2)
+undefined4 __cdecl CheckLicenseKey2(byte *owner,char *key)
 
 {
-  bool bVar1;
-  undefined3 extraout_var;
+  bool ok;
+  undefined3 regHigh;
   
-  bVar1 = FUN_00414888(param_1,param_2);
-  return CONCAT31(extraout_var,bVar1);
+  ok = CheckLicenseKeyImpl(owner,key);
+  return CONCAT31(regHigh,ok);
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00414a9c  FUN_00414a9c   (21 bytes)   [unnamed]
+// 0x00414a9c  CheckLicenseKey3   (21 bytes)   [analysis]
+//   CheckLicenseKeyImpl (third entry point)
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_00414a9c(byte *param_1,char *param_2)
+undefined4 __cdecl CheckLicenseKey3(byte *owner,char *key)
 
 {
-  bool bVar1;
-  undefined3 extraout_var;
+  bool ok;
+  undefined3 regHigh;
   
-  bVar1 = FUN_00414888(param_1,param_2);
-  return CONCAT31(extraout_var,bVar1);
+  ok = CheckLicenseKeyImpl(owner,key);
+  return CONCAT31(regHigh,ok);
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00414ab4  FUN_00414ab4   (784 bytes)   [unnamed]
+// 0x00414ab4  GetCommonIniPath   (784 bytes)   [analysis]
+//   SHGetFolderPathA folder + subdirectory + "\common.ini" when that folder exists; empty otherwise
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x00414afb) */
 /* WARNING: Removing unreachable block (ram,0x00414b9f) */
@@ -1412,49 +1454,49 @@ undefined4 __cdecl FUN_00414a9c(byte *param_1,char *param_2)
 /* WARNING: Removing unreachable block (ram,0x00414d13) */
 /* WARNING: Removing unreachable block (ram,0x00414d17) */
 /* WARNING: Removing unreachable block (ram,0x00414d65) */
-int __cdecl FUN_00414ab4(int param_1,int param_2)
+int __cdecl GetCommonIniPath(int result,int subdir)
 
 {
-  uint uVar1;
-  int iVar2;
-  char *pcVar3;
-  uint uVar4;
-  undefined4 *in_FS_OFFSET;
-  uint local_1cc [67];
-  undefined4 local_c0;
-  undefined1 local_b5 [101];
-  undefined4 local_50;
-  undefined2 local_40;
-  int local_34;
+  uint len;
+  int status;
+  char *len2;
+  uint clearLen;
+  undefined4 *sehChainHead;
+  uint folder [67];
+  undefined4 unused;
+  undefined1 nul [101];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
   
   __InitExceptBlockLDTC(0x42e7a4);
-  local_40 = 8;
-  *(undefined4 *)(param_1 + 8) = 0;
-  *(undefined1 **)(param_1 + 8) = &DAT_0042fac0;
-  local_c0 = *(undefined4 *)(param_1 + 8);
-  local_34 = local_34 + 1;
-  iVar2 = import_SHGetFolderPathA();
-  if (iVar2 == 0) {
-    FUN_00416c68(param_1,local_1cc);
-    std::string::append(param_1,param_2);
-    iVar2 = thunk_FUN_0041ffa0(*(LPCSTR *)(param_1 + 8),0);
-    if (iVar2 == 0) {
-      uVar1 = *(uint *)(*(int *)(param_1 + 8) + -4);
-      pcVar3 = strlen((uint *)"\\common.ini");
-      FUN_00417320(param_1,uVar1,0,0x42e734,(uint)pcVar3,0,(uint)pcVar3);
+  ehContext = 8;
+  *(undefined4 *)(result + 8) = 0;
+  *(undefined1 **)(result + 8) = &g_emptyStringData;
+  unused = *(undefined4 *)(result + 8);
+  ehDtorCount = ehDtorCount + 1;
+  status = import_SHGetFolderPathA();
+  if (status == 0) {
+    std::string::assign_cstr(result,folder);
+    std::string::append(result,subdir);
+    status = thunk_access(*(LPCSTR *)(result + 8),0);
+    if (status == 0) {
+      len = *(uint *)(*(int *)(result + 8) + -4);
+      len2 = strlen((uint *)"\\common.ini");
+      std::string::replace(result,len,0,0x42e734,(uint)len2,0,(uint)len2);
     }
     else {
-      uVar1 = *(uint *)(*(int *)(param_1 + 8) + -4);
-      local_b5[0] = 0;
-      uVar4 = (*(uint *)&DAT_0042fce8);
-      if (uVar1 <= (*(uint *)&DAT_0042fce8)) {
-        uVar4 = uVar1;
+      len = *(uint *)(*(int *)(result + 8) + -4);
+      nul[0] = 0;
+      clearLen = (*(uint *)&g_stringNpos);
+      if (len <= (*(uint *)&g_stringNpos)) {
+        clearLen = len;
       }
-      FUN_00417320(param_1,0,uVar4,(uint)local_b5,0,0,0);
+      std::string::replace(result,0,clearLen,(uint)nul,0,0,0);
     }
   }
-  *in_FS_OFFSET = local_50;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 } // namespace tea

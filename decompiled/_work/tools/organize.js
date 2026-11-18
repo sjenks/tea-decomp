@@ -317,7 +317,7 @@ const protos = []; // {code, proto} for decomp.h
 const problems = [];
 let namedCount = 0;
 for (const f of fns) {
-  const raw = fs.readFileSync(path.join(rawDir, f.file), "utf8");
+  const raw = fs.readFileSync(path.join(rawDir, f.file), "utf8").replace(/\r\n/g, "\n");
   const i = raw.indexOf("// pseudocode:");
   const text = raw.slice(i < 0 ? 0 : raw.indexOf("\n", i) + 1).replace(/^\s*\n+/, "").replace(/\s+$/, "");
   const h = splitHeader(text);
@@ -332,6 +332,120 @@ for (const f of fns) {
   }
   f.text = (h.pre ? h.pre + "\n" : "") + f.protoTemplate.replace("\u0000", f.code) + "\n\n" + rewriteBody(h.body, f);
 }
+
+// ---------- variable names (varnames.js): hand-assigned, carried from identical functions, and by rule -------
+const varStats = { declared: 0, generic: 0, hand: 0, rule: 0, genericLeft: 0, src: { declared: 0, generic: 0, hand: 0, rule: 0, genericLeft: 0 } };
+const varRows = [];
+{
+  const VN = require("./varnames");
+  const manualDir = path.join(seedsDir, "..", "manual");
+  const hand = new Map();
+  const loadVars = (file, rule) => {
+    if (!fs.existsSync(file)) return;
+    for (const [a, m] of Object.entries(JSON.parse(fs.readFileSync(file, "utf8")))) {
+      if (a.startsWith("_")) continue;
+      const addr = parseInt(a, 16);
+      const cur = hand.get(addr) || {};
+      for (const [tok, v] of Object.entries(m.vars || m)) {
+        if (tok.startsWith("_") || cur[tok]) continue;
+        cur[tok] = typeof v === "string" ? { name: v, rule: m.from ? `${rule} (identical body in ${m.from})` : rule } : v;
+      }
+      hand.set(addr, cur);
+    }
+  };
+  loadVars(path.join(manualDir, `${progName}.vars.json`), "hand-assigned");
+  loadVars(path.join(seedsDir, `${progName}.propagated-vars.json`), "hand-assigned");
+  const apiParams = new Map();
+  for (const x of externals) {
+    const leaf = leafOf(x.name);
+    const m = x.proto.match(/\((.*)\)\s*$/);
+    if (!m || !m[1].trim() || m[1].trim() === "void") continue;
+    apiParams.set(leaf, VN.splitTopLevel(m[1]).map((p) => { const q = p.match(/([A-Za-z_][A-Za-z0-9_]*)\s*$/); return q ? q[1] : null; }));
+  }
+  // the shared empty string rep of Borland's std::string: the global compared twice in every release sequence
+  const repVotes = new Map();
+  for (const f of fns) if (f.text) for (const m of f.text.matchAll(/else if \([A-Za-z_][A-Za-z0-9_]* == (?:\([a-z ]+\*\))?&([A-Za-z_][A-Za-z0-9_:]*)\)/g)) repVotes.set(m[1], (repVotes.get(m[1]) || 0) + 1);
+  const nullRep = [...repVotes.entries()].sort((a, b) => b[1] - a[1])[0];
+  const input = fns.filter((f) => f.text).map((f) => {
+    const s = fnSym.get(f.addr);
+    return { addr: f.addr, code: f.code, display: f.display, cls: s ? s.cls : undefined, kind: s ? s.kind : undefined, handNamed: !!(s && /^(analysis|notes)/.test(s.source)), text: f.text };
+  });
+  const named = VN.nameAll(input, { hand, apiParams, nullRep: nullRep ? nullRep[0] : null });
+  for (const f of fns) {
+    if (!f.text) continue;
+    const r = named.get(f.addr);
+    const P = VN.parse(f.text);
+    const decl = P ? [...P.params.filter((p) => p.name), ...P.locals] : [];
+    const isSrc = f.addr < libStart;
+    for (const v of decl) {
+      const gen = VN.GENERIC.test(v.name);
+      const nm = r && r.map.get(v.name);
+      const row = r && r.rows.find((x) => x[0] === v.name);
+      for (const st of isSrc ? [varStats, varStats.src] : [varStats]) {
+        st.declared++;
+        if (gen) st.generic++;
+        if (nm) st[row[2]]++;
+        else if (gen) st.genericLeft++;
+      }
+    }
+    if (!r || !r.map.size) continue;
+    f.text = VN.applyNames(f.text, r.map);
+    if (f.protoTemplate) f.protoTemplate = VN.applyNames(f.protoTemplate, r.map);
+    for (const [tok, name, src, rule] of r.rows) varRows.push([hex(f.addr), f.display, tok, name, src, rule].join("\t"));
+  }
+}
+
+// ---------- member names (manual/<Program>.fields.json): named offsets inside member functions ---------
+// The binary records no member layout, so members stay offsets from `this`; each known offset becomes a
+// named constant of the class (m_<name>, declared in decomp.h) and `self + 0x1148` reads `self + m_opCount`.
+// Inherited members are included at their base's offset.
+const fieldConsts = new Map(); // class code name -> [[name, offset, type, note]]
+let fieldUses = 0;
+{
+  const fieldsFile = path.join(seedsDir, "..", "manual", `${progName}.fields.json`);
+  const own = fs.existsSync(fieldsFile) ? JSON.parse(fs.readFileSync(fieldsFile, "utf8")) : {};
+  const classByName = new Map(sym.classes.map((c) => [c.name, c]));
+  const layout = (cls, guard = 0) => {
+    const out = new Map();
+    const c = classByName.get(cls);
+    if (c && guard < 20) for (const b of [...c.bases, ...c.vbases.filter(() => false)]) for (const [o, v] of layout(b.name, guard + 1)) out.set(o + b.offset, v);
+    for (const [o, v] of Object.entries(own[cls] || {})) out.set(parseInt(o, 16), v);
+    return out;
+  };
+  const classesWithFields = new Set();
+  for (const cls of Object.keys(own)) classesWithFields.add(cls);
+  for (const c of sym.classes) if ([...layout(c.name).keys()].length) classesWithFields.add(c.name);
+  for (const cls of classesWithFields) {
+    const L = layout(cls);
+    if (!L.size) continue;
+    fieldConsts.set(toCode(pretty(cls)), [...L.entries()].sort((a, b) => a[0] - b[0]).map(([o, v]) => ["m_" + v.name, o, v.type, v.note]));
+  }
+  const NUM = "(0x[0-9a-f]+|[0-9]+)";
+  for (const f of fns) {
+    if (!f.text) continue;
+    const s = fnSym.get(f.addr);
+    if (!s || !s.cls) continue;
+    const consts = fieldConsts.get(toCode(s.cls));
+    if (!consts) continue;
+    const byOff = new Map(consts.map(([n, o]) => [o, n]));
+    const P = require("./varnames").parse(f.text);
+    const selfParam = P && P.params.find((p) => p.name === "self");
+    if (!selfParam) continue;
+    const t = selfParam.type.replace(/\s+/g, "");
+    const elem = /^(int|uint|undefined4|dword|long|ulong)\*$/.test(t) ? 4 : /^(short|ushort|undefined2|word)\*$/.test(t) ? 2 : /^(char|byte|undefined1|uchar)\*$/.test(t) ? 1 : 0;
+    const P0 = P.lines.slice(P.bodyStart).join("\n");
+    let body = P0;
+    if (/^(int|uint|undefined4)$/.test(t)) {
+      body = body.replace(new RegExp(String.raw`(?<![\w.>])self \+ ${NUM}(?![\w\[(])`, "g"), (m, n) => { const o = parseInt(n); const nm = byOff.get(o); if (!nm) return m; fieldUses++; return `self + ${nm}`; });
+    } else if (elem) {
+      body = body.replace(new RegExp(String.raw`(?<![\w.>])self\[${NUM}\]`, "g"), (m, n) => { const o = parseInt(n) * elem; const nm = byOff.get(o); if (!nm) return m; fieldUses++; return elem === 1 ? `self[${nm}]` : `self[${nm} / ${elem}]`; });
+      body = body.replace(new RegExp(String.raw`(?<![\w.>])self \+ ${NUM}(?![\w\[(])`, "g"), (m, n) => { const o = parseInt(n) * elem; const nm = byOff.get(o); if (!nm) return m; fieldUses++; return elem === 1 ? `self + ${nm}` : `self + ${nm} / ${elem}`; });
+      body = body.replace(new RegExp(String.raw`\(int\)self \+ ${NUM}(?![\w\[(])`, "g"), (m, n) => { const o = parseInt(n); const nm = byOff.get(o); if (!nm) return m; fieldUses++; return `(int)self + ${nm}`; });
+    }
+    if (body !== P0) f.text = P.lines.slice(0, P.bodyStart).join("\n") + "\n" + body;
+  }
+}
+
 for (const m of modules.values()) {
   m.fns.sort((a, b) => a.addr - b.addr);
   const lo = m.fns[0].addr, hi = m.fns[m.fns.length - 1].addr;
@@ -358,6 +472,7 @@ for (const m of modules.values()) {
   fs.writeFileSync(path.join(outDir, m.dir, m.name + ".cpp"), L.join("\n") + "\n");
 }
 fs.writeFileSync(path.join(outDir, "symbols.tsv"), ["address\tname\tname_in_code\tclass\tkind\tname_source\tfile\tbytes"].concat(symRows.sort()).join("\n") + "\n");
+fs.writeFileSync(path.join(outDir, "varnames.tsv"), ["address\tfunction\tghidra_name\tname\tsource\tevidence"].concat(varRows).join("\n") + "\n");
 
 // ---------- decomp.h: declarations for everything the pseudocode refers to -----------------------
 {
@@ -397,6 +512,15 @@ fs.writeFileSync(path.join(outDir, "symbols.tsv"), ["address\tname\tname_in_code
     declared.add(e.codeName);
     const d = (leaf) => (e.type === "code" ? `code ${leaf};` : `extern ${declOf(e.type, leaf)};`);
     L.push(nsWrap(e.codeName, d) + (e.a !== null ? `   // ${hex(e.a)}${e.display !== e.t ? "  " + e.t : ""}` : ""));
+  }
+  if (fieldConsts.size) {
+    L.push("", `// ---- member offsets (${fieldConsts.size} classes): byte offset of each known member from the start of the object ----`,
+      "// Member functions write `self + m_name` (or `self[m_name / 4]` when Ghidra typed `self` as an int pointer).");
+    for (const [code, list] of [...fieldConsts.entries()].sort()) {
+      L.push(`namespace ${code.split("::").join(" { namespace ")} { enum : int {`);
+      for (const [n, o, type, note] of list) L.push(`  ${n} = ${hex(o, 1)},   // ${type || ""}${note ? " — " + note : ""}`);
+      L.push(`}; ${"}".repeat(code.split("::").length)}`);
+    }
   }
   L.push("", `} // namespace ${NS}`);
   fs.writeFileSync(path.join(outDir, "decomp.h"), L.join("\n") + "\n");
@@ -462,7 +586,7 @@ const summary = {
   definedByTables: [...created.values()].filter((w) => w !== "prologue-scan").length, definedByPrologueScan: [...created.values()].filter((w) => w === "prologue-scan").length,
   classes: sym.classes.length, appClasses: sym.classes.filter((c) => !isLibClass(c.name)).length,
   responseTables: sym.responseTables.length, responseTablesOwned: sym.responseTables.filter((t) => t.owner).length,
-  globalsDeclared: globals.size, generatorProblems: problems,
+  globalsDeclared: globals.size, generatorProblems: problems, variables: varStats,
   modules: srcMods.map((m) => ({ file: `src/${m.name}.cpp`, functions: m.fns.length, named: m.fns.filter((f) => fnSym.has(f.addr)).length, from: hex(m.fns[0].addr), to: hex(m.fns[m.fns.length - 1].addr), bytes: m.fns.reduce((a, f) => a + size(f), 0) })).sort((a, b) => parseInt(a.from, 16) - parseInt(b.from, 16)),
   libFiles: [...modules.values()].filter((m) => m.dir === "lib").length,
 };
@@ -470,4 +594,5 @@ fs.writeFileSync(path.join(outDir, "summary.json"), JSON.stringify(summary, null
 // API names whose prototypes Ghidra knows: probe-imports.js checks which of them the SDK headers declare
 fs.writeFileSync(path.join(seedsDir, `${progName}.imports.json`), JSON.stringify([...new Set(externals.map((x) => leafOf(x.name)).filter((n) => isIdent(n) && !unknownProtoImports.has(n)))].sort()));
 console.log(`${exeName}: ${summary.functions} functions -> ${srcMods.length} app modules (${summary.appFunctions} fns, ${summary.appNamed} named) + ${summary.libFiles} lib files (${summary.libFunctions} fns); named total ${summary.named}; globals ${globals.size}; libStart ${summary.libStart}${problems.length ? "; generator problems " + problems.length : ""}`);
+console.log(`   variables: ${varStats.declared} declared, ${varStats.generic} with Ghidra storage names; named by hand ${varStats.hand}, by rule ${varStats.rule}; still generic ${varStats.genericLeft} (src/: ${varStats.src.genericLeft} of ${varStats.src.generic})`);
 for (const x of problems.slice(0, 8)) console.log("   ! " + x);

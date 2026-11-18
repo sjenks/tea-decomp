@@ -1,5 +1,5 @@
 // TSBuild.exe — application module "TSDictionaryBuilderProgressBar"
-// 15 functions, 0x00417310..0x004198b4. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 14 functions, 0x004171b4..0x00419664. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,85 +7,111 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00417310  TSDictionaryBuilderProgressBar::~TSDictionaryBuilderProgressBar   (251 bytes)   [rtti:dtor destructor]
-//   written in code as TSDictionaryBuilderProgressBar::_dtor
-void __cdecl TSDictionaryBuilderProgressBar::_dtor(int *param_1,uint param_2)
+// 0x004171b4  TSDictionaryBuilderProgressBar::TSDictionaryBuilderProgressBar   (300 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores TSDictionaryBuilderProgressBar's vtable at its vptr offset (+0xc) in this
+int * __cdecl TSDictionaryBuilderProgressBar::TSDictionaryBuilderProgressBar(int *self,int vbasesBuilt,undefined4 param_3,undefined4 param_4)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
-  __InitExceptBlockLDTC(0x477034);
-  if (param_1 != (int *)0x0) {
-    param_1[3] = (int)&TSDictionaryBuilderProgressBar::vftable;
-    *(undefined ***)param_1[1] = &PTR_LAB_004770c8;
-    *(undefined ***)param_1[2] = &PTR_LAB_004770d4;
-    *(undefined ***)(*param_1 + 8) = &PTR_LAB_004770e0;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -6;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -6;
-    OWL::TButton::_dtor(param_1,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 6;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 6;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0xb,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 9,0);
-    }
-    if ((param_2 & 1) != 0) {
-      operator_delete();
-    }
+  __InitExceptBlockLDTC(0x477010);
+  if (vbasesBuilt == 0) {
+    *self = (int)(self + 0xb);
+    self[0xb] = (int)(self + 8);
+    self[0xc] = (int)(self + 9);
+    self[1] = (int)(self + 8);
+    self[2] = (int)(self + 9);
+    self[7] = 0;
+    self[10] = 0;
+    self[8] = (int)&OWL::TEventHandler::vftable;
+    self[9] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::TWindow_435d18(self + 0xb,1);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
   }
-  *in_FS_OFFSET = local_28;
-  return;
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -6;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -6;
+  OWL::TButton::TButton(self,1,param_3,param_4,0);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 6;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 6;
+  self[3] = (int)&TSDictionaryBuilderProgressBar::vftable;
+  *(undefined ***)self[1] = &PTR_LAB_004770c8;
+  *(undefined ***)self[2] = &PTR_LAB_004770d4;
+  *(undefined ***)(*self + 8) = &TSDictionaryBuilderProgressBar::vftable_TWindow;
+  self[6] = 0;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041740c  FUN_0041740c   (33 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-void __cdecl FUN_0041740c(int *param_1,int param_2)
+// 0x00417310  TSDictionaryBuilderProgressBar::~TSDictionaryBuilderProgressBar   (251 bytes)   [rtti:dtor destructor]
+//   written in code as TSDictionaryBuilderProgressBar::_dtor
+void __cdecl TSDictionaryBuilderProgressBar::_dtor(int *self,uint dtorFlags)
 
 {
-  if (param_2 != param_1[6]) {
-    param_1[6] = param_2;
-    (**(code **)(*(int *)(*param_1 + 8) + 0x68))();
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x477034);
+  if (self != (int *)0x0) {
+    self[3] = (int)&TSDictionaryBuilderProgressBar::vftable;
+    *(undefined ***)self[1] = &PTR_LAB_004770c8;
+    *(undefined ***)self[2] = &PTR_LAB_004770d4;
+    *(undefined ***)(*self + 8) = &TSDictionaryBuilderProgressBar::vftable_TWindow;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -6;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -6;
+    OWL::TButton::_dtor(self,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 6;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 6;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0xb,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 9,0);
+    }
+    if ((dtorFlags & 1) != 0) {
+      operator_delete();
+    }
   }
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00417430  TSDictionaryBuilderProgressBar::vf5   (367 bytes)   [rtti:vtable virtual slot 5]
-void __cdecl TSDictionaryBuilderProgressBar::vf5(int param_1,int param_2)
+void __cdecl TSDictionaryBuilderProgressBar::vf5(int self,int param_2)
 
 {
   int iVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_4c;
-  HDC local_28 [9];
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  HDC tdc [9];
   
   __InitExceptBlockLDTC(0x477068);
-  FUN_00421c0c((undefined4*)local_28,*(undefined4 *)(param_2 + 0x18));
-  iVar1 = ((*(int *)(param_2 + 0x24) - *(int *)(param_2 + 0x1c)) * *(int *)(param_1 + 0x18)) / 100;
-  OWL::TDC::vf6((undefined4*)local_28,7);
-  OWL::TDC::vf6((undefined4*)local_28,5);
-  Rectangle(local_28[0],*(int *)(param_2 + 0x1c),*(int *)(param_2 + 0x20),*(int *)(param_2 + 0x24),
+  FUN_00421c0c((undefined4*)tdc,*(undefined4 *)(param_2 + 0x18));
+  iVar1 = ((*(int *)(param_2 + 0x24) - *(int *)(param_2 + 0x1c)) * *(int *)(self + 0x18)) / 100;
+  OWL::TDC::vf6((undefined4*)tdc,7);
+  OWL::TDC::vf6((undefined4*)tdc,5);
+  Rectangle(tdc[0],*(int *)(param_2 + 0x1c),*(int *)(param_2 + 0x20),*(int *)(param_2 + 0x24),
             *(int *)(param_2 + 0x28));
-  OWL::TDC::vf6((undefined4*)local_28,8);
-  OWL::TDC::vf6((undefined4*)local_28,2);
-  Rectangle(local_28[0],*(int *)(param_2 + 0x1c) + 1,*(int *)(param_2 + 0x20) + 1,
+  OWL::TDC::vf6((undefined4*)tdc,8);
+  OWL::TDC::vf6((undefined4*)tdc,2);
+  Rectangle(tdc[0],*(int *)(param_2 + 0x1c) + 1,*(int *)(param_2 + 0x20) + 1,
             *(int *)(param_2 + 0x1c) + iVar1,*(int *)(param_2 + 0x28));
-  OWL::TDC::vf6((undefined4*)local_28,0);
-  Rectangle(local_28[0],iVar1 + *(int *)(param_2 + 0x1c) + 1,*(int *)(param_2 + 0x20) + 1,
+  OWL::TDC::vf6((undefined4*)tdc,0);
+  Rectangle(tdc[0],iVar1 + *(int *)(param_2 + 0x1c) + 1,*(int *)(param_2 + 0x20) + 1,
             *(int *)(param_2 + 0x24) + -1,*(int *)(param_2 + 0x28));
-  OWL::TDC::_dtor((int *)local_28,2);
-  *in_FS_OFFSET = local_4c;
+  OWL::TDC::_dtor((int *)tdc,2);
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00417698  FUN_00417698   (126 bytes)   [unnamed]
+// 0x00417698  CollationCompare   (126 bytes)   [analysis (matched TEA.exe)]
+//   identical body to TEA.exe 0x0043c624. compares two words letter by letter with the Windows-1252 collation table
 //   file placement: inferred (address adjacency)
-int __cdecl FUN_00417698(byte *param_1,int param_2,byte *param_3,int param_4)
+int __cdecl CollationCompare(byte *param_1,int param_2,byte *param_3,int param_4)
 
 {
   uint in_ECX;
@@ -123,744 +149,749 @@ int __cdecl FUN_00417698(byte *param_1,int param_2,byte *param_3,int param_4)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00417718  FUN_00417718   (3505 bytes)   [unnamed]
+// 0x00417718  ExpandLongPathName   (3505 bytes)   [analysis]
+//   rebuilds a path component by component from the end, replacing each with the name FindFirstFileA reports (long name, on-disk case)
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x004178b4) */
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-int __cdecl FUN_00417718(int param_1,int param_2)
+int __cdecl ExpandLongPathName(int result,int path)
 
 {
-  char *pcVar1;
+  char *len;
   HANDLE hFindFile;
-  int iVar2;
-  int *piVar3;
+  int lhs;
+  int *strRep;
   uint uVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uVar5;
-  undefined *puVar6;
-  uint uVar7;
-  undefined4 uVar8;
-  undefined4 uVar9;
-  undefined4 uVar10;
-  undefined1 *puVar11;
-  undefined1 local_608 [248];
-  undefined4 local_510;
-  int *local_500;
-  int *local_4f0;
-  undefined1 local_4e8 [264];
-  undefined4 local_3e0;
-  undefined4 local_3d0;
-  undefined4 local_3c0;
-  _WIN32_FIND_DATAA local_3b8;
-  undefined *local_270;
-  int *local_260;
+  undefined4 *sehChainHead;
+  undefined4 objectDtor;
+  undefined *copyCtor;
+  uint copyCtorMask;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined1 *rhs;
+  undefined1 exceptMsg [248];
+  undefined4 unused;
+  int *newData;
+  int *unused2;
+  undefined1 exceptMsg2 [264];
+  undefined4 unused3;
+  undefined4 unused4;
+  undefined4 unused5;
+  _WIN32_FIND_DATAA findData;
+  undefined *unused6;
+  int *newData2;
   int *local_250;
-  int *local_240;
-  int *local_23c;
-  int *local_238;
-  undefined1 *local_234;
-  undefined4 local_230;
-  undefined *local_22c;
-  undefined *local_228;
-  int *local_224;
-  undefined1 *local_220;
-  undefined4 local_21c;
-  int local_218;
-  int local_214;
-  int *local_210;
+  int *unused7;
+  int *unused8;
+  int *strRep2;
+  undefined1 *unused9;
+  undefined4 unused10;
+  undefined *unused11;
+  undefined *unused12;
+  int *strRep3;
+  undefined1 *unused13;
+  undefined4 unused14;
+  int unused15;
+  int unused16;
+  int *strRep4;
   uint local_20c;
-  undefined1 local_205;
+  undefined1 s;
   uint local_204;
-  undefined1 *local_200;
-  undefined4 local_1fc;
-  int *local_1f8;
-  int *local_1f4;
-  int *local_1f0;
-  int *local_1ec;
-  int *local_1e8;
-  uint local_1e4;
-  undefined1 *local_1e0;
-  int *local_1dc;
-  int *local_1d8;
-  uint local_1d4;
-  int *local_1d0;
-  undefined1 *local_1cc;
-  int *local_1c8;
-  undefined4 local_1c4;
-  uint *local_1b8;
+  undefined1 *unused17;
+  undefined4 unused18;
+  int *unused19;
+  int *unused20;
+  int *strRep5;
+  int *newData3;
+  int *unused21;
+  uint unused22;
+  undefined1 *unused23;
+  int *newRep;
+  int *unused24;
+  uint len2;
+  int *strRep6;
+  undefined1 *unused25;
+  int *unused26;
+  undefined4 unused27;
+  uint *msgText;
   uint local_1b4;
-  undefined1 *local_1b0;
-  undefined4 local_1ac;
-  int *local_1a8;
-  int *local_1a4;
-  int *local_1a0;
-  int *local_19c;
-  int *local_198;
-  uint local_194;
-  undefined1 *local_190;
-  int *local_18c;
-  int *local_188;
-  uint local_184;
-  int *local_180;
-  undefined1 *local_17c;
-  int *local_178;
-  undefined4 local_174;
-  uint *local_168;
-  int *local_15c;
-  int *local_158;
-  int *local_154;
-  undefined1 *local_150;
-  undefined4 local_14c;
-  undefined *local_148;
-  undefined *local_144;
-  undefined1 *local_140;
-  undefined4 local_13c;
-  int local_138;
-  int local_134;
-  int *local_130;
-  undefined1 *local_12c;
-  undefined4 local_128;
-  int local_124;
-  int local_120;
-  int *local_11c;
+  undefined1 *unused28;
+  undefined4 unused29;
+  int *unused30;
+  int *unused31;
+  int *strRep7;
+  int *unused32;
+  int *unused33;
+  uint unused34;
+  undefined1 *unused35;
+  int *newRep2;
+  int *unused36;
+  uint len3;
+  int *strRep8;
+  undefined1 *unused37;
+  int *unused38;
+  undefined4 unused39;
+  uint *msgText2;
+  int *unused40;
+  int *unused41;
+  int *strRep9;
+  undefined1 *unused42;
+  undefined4 unused43;
+  undefined *unused44;
+  undefined *unused45;
+  undefined1 *unused46;
+  undefined4 unused47;
+  int unused48;
+  int unused49;
+  int *strRep10;
+  undefined1 *unused50;
+  undefined4 unused51;
+  int unused52;
+  int unused53;
+  int *strRep11;
   char *local_110;
   int local_10c;
   uint local_108;
-  undefined1 *local_104;
-  undefined *local_100;
-  undefined4 local_fc;
-  int *local_f8;
-  undefined4 *local_f4;
-  uint local_f0;
-  undefined1 *local_ec;
-  int *local_e8;
-  int *local_e4;
-  uint local_e0;
-  int *local_dc;
-  undefined1 *local_d8;
-  int *local_d4;
-  undefined4 local_d0;
-  int local_cc;
-  undefined4 local_c8;
-  undefined2 local_b8;
-  int local_ac;
+  undefined1 *unused54;
+  undefined *unused55;
+  undefined4 unused56;
+  int *unused57;
+  undefined4 *src;
+  uint unused58;
+  undefined1 *unused59;
+  int *newRep3;
+  int *unused60;
+  uint len4;
+  int *strRep12;
+  undefined1 *unused61;
+  int *unused62;
+  undefined4 unused63;
+  int path2;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
   undefined1 local_a4 [8];
-  int local_9c;
-  undefined1 local_94 [8];
-  int *local_8c;
-  undefined1 local_84 [8];
-  int *local_7c;
-  undefined **local_74 [2];
-  undefined1 local_6c [8];
-  int *local_64;
-  undefined **local_5c [2];
-  undefined1 local_54 [8];
-  int *local_4c;
-  undefined1 local_44 [8];
-  int local_3c;
-  undefined1 local_34 [8];
-  int local_2c;
-  undefined1 local_24 [8];
+  int str4;
+  undefined1 str [8];
+  int *str5;
+  undefined1 str2 [8];
+  int *str6;
+  undefined **outOfRange [2];
+  undefined1 newStr [8];
+  int *unused64;
+  undefined **lengthError [2];
+  undefined1 newStr2 [8];
+  int *unused65;
+  undefined1 result2 [8];
+  int str7;
+  undefined1 str3 [8];
+  int str8;
+  undefined1 rhs2 [8];
   undefined *local_1c;
-  undefined1 local_14 [8];
-  int *local_c;
+  undefined1 lhs2 [8];
+  int *fileName;
   
   __InitExceptBlockLDTC(0x477804);
-  local_b8 = 0x14;
-  local_cc = param_2;
-  local_d0 = 0;
-  local_c = (int *)0x0;
-  iVar2 = *(int *)(*(int *)(param_2 + 8) + -0xc);
-  if (iVar2 == -1 || iVar2 + 1 < 0) {
-    local_e0 = *(uint *)(*(int *)(param_2 + 8) + -4);
-    local_e8 = std::string::__getRep(local_14,local_e0,local_e0);
-    local_260 = local_e8 + 3;
-    local_f0 = local_e0;
-    local_f4 = *(undefined4 **)(local_cc + 8);
-    local_f8 = local_260;
-    local_ec = local_14;
-    local_e4 = local_260;
-    local_c = local_260;
-    memcpy(local_260,local_f4,local_e0);
+  ehContext = 0x14;
+  path2 = path;
+  unused63 = 0;
+  fileName = (int *)0x0;
+  lhs = *(int *)(*(int *)(path + 8) + -0xc);
+  if (lhs == -1 || lhs + 1 < 0) {
+    len4 = *(uint *)(*(int *)(path + 8) + -4);
+    newRep3 = std::string::__getRep(lhs2,len4,len4);
+    newData2 = newRep3 + 3;
+    unused58 = len4;
+    src = *(undefined4 **)(path2 + 8);
+    unused57 = newData2;
+    unused59 = lhs2;
+    unused60 = newData2;
+    fileName = newData2;
+    memcpy(newData2,src,len4);
   }
   else {
-    local_250 = *(int **)(param_2 + 8);
-    local_dc = local_250 + -3;
-    local_d8 = local_14;
-    local_d4 = local_250;
-    local_c = local_250;
-    if (local_dc != &DAT_00485bcc) {
-      *local_dc = *local_dc + 1;
+    local_250 = *(int **)(path + 8);
+    strRep12 = local_250 + -3;
+    unused61 = lhs2;
+    unused62 = local_250;
+    fileName = local_250;
+    if (strRep12 != &g_nullStringRep) {
+      *strRep12 = *strRep12 + 1;
     }
   }
-  local_fc = 0;
-  local_104 = local_24;
-  local_100 = &DAT_00485bd8;
-  local_1c = &DAT_00485bd8;
-  local_270 = &DAT_00485bd8;
-  local_ac = local_ac + 2;
-  local_b8 = 8;
+  unused56 = 0;
+  unused54 = rhs2;
+  unused55 = &g_emptyStringData;
+  local_1c = &g_emptyStringData;
+  unused6 = &g_emptyStringData;
+  ehDtorCount = ehDtorCount + 2;
+  ehContext = 8;
   local_10c = 0;
   while( true ) {
-    uVar4 = (*(uint *)&DAT_00485f20);
-    if ((uint)local_c[-1] < (*(uint *)&DAT_00485f20)) {
-      uVar4 = local_c[-1];
+    uVar4 = (*(uint *)&g_stringNpos);
+    if ((uint)fileName[-1] < (*(uint *)&g_stringNpos)) {
+      uVar4 = fileName[-1];
     }
-    local_110 = FUN_004184cc((char *)local_c,'\\',uVar4);
-    local_108 = (*(uint *)&DAT_00485f20);
+    local_110 = memrchr((char *)fileName,'\\',uVar4);
+    local_108 = (*(uint *)&g_stringNpos);
     if (local_110 != (char *)0x0) {
-      local_108 = (int)local_110 - (int)local_c;
+      local_108 = (int)local_110 - (int)fileName;
     }
     if (local_108 == 0xffffffff) break;
-    if (local_108 < local_c[-1] - 1U) {
+    if (local_108 < fileName[-1] - 1U) {
       if (local_10c != 0) {
-        pcVar1 = strlen((uint *)&DAT_0047766d);
-        FUN_0045a224((int)local_24,0,0,0x47766d,(uint)pcVar1,0,(uint)pcVar1);
+        len = strlen((uint *)&DAT_0047766d);
+        std::string::replace((int)rhs2,0,0,0x47766d,(uint)len,0,(uint)len);
       }
-      hFindFile = FindFirstFileA((LPCSTR)local_c,&local_3b8);
-      local_b8 = 8;
+      hFindFile = FindFirstFileA((LPCSTR)fileName,&findData);
+      ehContext = 8;
       if (hFindFile == (HANDLE)0xffffffff) {
-        local_b8 = 0x68;
-        FUN_004184f8(param_1,(int)local_14,(int)local_24);
-        local_b8 = 0x74;
-        local_ac = local_ac + -1;
+        ehContext = 0x68;
+        std::operator_plus(result,(int)lhs2,(int)rhs2);
+        ehContext = 0x74;
+        ehDtorCount = ehDtorCount + -1;
         if (local_1c != (undefined *)0x0) {
           if (*(int *)(local_1c + -0xc) != -1) {
-            piVar3 = (int *)(local_1c + -0xc);
-            if (piVar3 == &DAT_00485bcc) {
-              iVar2 = 1;
+            strRep = (int *)(local_1c + -0xc);
+            if (strRep == &g_nullStringRep) {
+              lhs = 1;
             }
-            else if (piVar3 == &DAT_00485bcc) {
-              iVar2 = 1;
+            else if (strRep == &g_nullStringRep) {
+              lhs = 1;
             }
             else {
-              *piVar3 = *piVar3 + -1;
-              iVar2 = *piVar3 + 1;
+              *strRep = *strRep + -1;
+              lhs = *strRep + 1;
             }
-            if (iVar2 != 0) goto LAB_00417b9d;
+            if (lhs != 0) goto LAB_00417b9d;
           }
-          local_144 = local_1c + -0xc;
-          local_148 = local_1c + -0xc;
+          unused45 = local_1c + -0xc;
+          unused44 = local_1c + -0xc;
           operator_delete();
-          local_14c = 0;
-          local_150 = local_24;
+          unused43 = 0;
+          unused42 = rhs2;
           local_1c = (undefined *)0x0;
-          local_3e0 = 0;
+          unused3 = 0;
         }
 LAB_00417b9d:
-        local_ac = local_ac + -1;
-        if (local_c != (int *)0x0) {
-          if (local_c[-3] != -1) {
-            local_154 = local_c + -3;
-            if (local_154 == &DAT_00485bcc) {
-              iVar2 = 1;
+        ehDtorCount = ehDtorCount + -1;
+        if (fileName != (int *)0x0) {
+          if (fileName[-3] != -1) {
+            strRep9 = fileName + -3;
+            if (strRep9 == &g_nullStringRep) {
+              lhs = 1;
             }
-            else if (local_154 == &DAT_00485bcc) {
-              iVar2 = 1;
+            else if (strRep9 == &g_nullStringRep) {
+              lhs = 1;
             }
             else {
-              *local_154 = *local_154 + -1;
-              iVar2 = *local_154 + 1;
+              *strRep9 = *strRep9 + -1;
+              lhs = *strRep9 + 1;
             }
-            if (iVar2 != 0) goto LAB_00417c49;
+            if (lhs != 0) goto LAB_00417c49;
           }
-          local_158 = local_c + -3;
-          local_15c = local_c + -3;
+          unused41 = fileName + -3;
+          unused40 = fileName + -3;
           operator_delete();
         }
 LAB_00417c49:
-        *in_FS_OFFSET = local_c8;
-        return param_1;
+        *sehChainHead = sehPrevFrame;
+        return result;
       }
       FindClose(hFindFile);
-      local_b8 = 0x44;
-      puVar11 = local_24;
-      iVar2 = std::string::string_from_cstr((int)local_34,(uint *)local_3b8.cFileName);
-      local_ac = local_ac + 1;
-      FUN_004184f8((int)local_44,iVar2,(int)puVar11);
-      local_ac = local_ac + 1;
-      FUN_00459ad4((int)local_24,(int)local_44);
-      local_ac = local_ac + -1;
-      if (local_3c != 0) {
-        if (*(int *)(local_3c + -0xc) != -1) {
-          local_11c = (int *)(local_3c + -0xc);
-          if (local_11c == &DAT_00485bcc) {
-            iVar2 = 1;
+      ehContext = 0x44;
+      rhs = rhs2;
+      lhs = std::string::string_from_cstr((int)str3,(uint *)findData.cFileName);
+      ehDtorCount = ehDtorCount + 1;
+      std::operator_plus((int)result2,lhs,(int)rhs);
+      ehDtorCount = ehDtorCount + 1;
+      std::string::operator_assign((int)rhs2,(int)result2);
+      ehDtorCount = ehDtorCount + -1;
+      if (str7 != 0) {
+        if (*(int *)(str7 + -0xc) != -1) {
+          strRep11 = (int *)(str7 + -0xc);
+          if (strRep11 == &g_nullStringRep) {
+            lhs = 1;
           }
-          else if (local_11c == &DAT_00485bcc) {
-            iVar2 = 1;
+          else if (strRep11 == &g_nullStringRep) {
+            lhs = 1;
           }
           else {
-            *local_11c = *local_11c + -1;
-            iVar2 = *local_11c + 1;
+            *strRep11 = *strRep11 + -1;
+            lhs = *strRep11 + 1;
           }
-          if (iVar2 != 0) goto LAB_00417a2b;
+          if (lhs != 0) goto LAB_00417a2b;
         }
-        local_120 = local_3c + -0xc;
-        local_124 = local_3c + -0xc;
+        unused53 = str7 + -0xc;
+        unused52 = str7 + -0xc;
         operator_delete();
-        local_128 = 0;
-        local_12c = local_44;
-        local_3c = 0;
-        local_3c0 = 0;
+        unused51 = 0;
+        unused50 = result2;
+        str7 = 0;
+        unused5 = 0;
       }
 LAB_00417a2b:
-      local_b8 = 8;
-      local_ac = local_ac + -1;
-      if (local_2c != 0) {
-        if (*(int *)(local_2c + -0xc) != -1) {
-          local_130 = (int *)(local_2c + -0xc);
-          if (local_130 == &DAT_00485bcc) {
-            iVar2 = 1;
+      ehContext = 8;
+      ehDtorCount = ehDtorCount + -1;
+      if (str8 != 0) {
+        if (*(int *)(str8 + -0xc) != -1) {
+          strRep10 = (int *)(str8 + -0xc);
+          if (strRep10 == &g_nullStringRep) {
+            lhs = 1;
           }
-          else if (local_130 == &DAT_00485bcc) {
-            iVar2 = 1;
+          else if (strRep10 == &g_nullStringRep) {
+            lhs = 1;
           }
           else {
-            *local_130 = *local_130 + -1;
-            iVar2 = *local_130 + 1;
+            *strRep10 = *strRep10 + -1;
+            lhs = *strRep10 + 1;
           }
-          if (iVar2 != 0) goto LAB_00417c61;
+          if (lhs != 0) goto LAB_00417c61;
         }
-        local_134 = local_2c + -0xc;
-        local_138 = local_2c + -0xc;
+        unused49 = str8 + -0xc;
+        unused48 = str8 + -0xc;
         operator_delete();
-        local_13c = 0;
-        local_140 = local_34;
-        local_2c = 0;
-        local_3d0 = 0;
+        unused47 = 0;
+        unused46 = str3;
+        str8 = 0;
+        unused4 = 0;
       }
     }
 LAB_00417c61:
     uVar4 = local_108;
-    if ((*(uint *)&DAT_00485f20) - 0xe < local_108) {
-      uVar10 = 0;
-      uVar9 = 0;
-      uVar8 = 0;
-      uVar7 = 1;
-      puVar6 = &LAB_00402064;
-      uVar5 = 0;
-      local_b8 = 0xa4;
-      local_168 = (uint *)FUN_004670cc(local_4e8,PTR_s_invalid_string_size_parameter_in_00488a54);
-      std::string::string_from_cstr((int)local_84,local_168);
-      local_ac = local_ac + 2;
-      local_5c[0] = &std::logic_error::vftable;
-      local_174 = 0;
-      local_4c = (int *)0x0;
-      local_b8 = 0xb0;
-      if (local_7c[-3] == -1 || local_7c[-3] + 1 < 0) {
-        local_184 = local_7c[-1];
-        local_18c = std::string::__getRep(local_54,local_184,local_184);
-        local_190 = local_54;
-        local_500 = local_18c + 3;
-        local_194 = local_184;
-        local_198 = local_7c;
-        local_19c = local_500;
-        local_188 = local_500;
-        local_4c = local_500;
-        memcpy(local_500,local_7c,local_184);
+    if ((*(uint *)&g_stringNpos) - 0xe < local_108) {
+      throwLine = 0;
+      throwFile = 0;
+      throwFlags = 0;
+      copyCtorMask = 1;
+      copyCtor = &LAB_00402064;
+      objectDtor = 0;
+      ehContext = 0xa4;
+      msgText2 = (uint *)__rwstd::except_msg_string::format(exceptMsg2,PTR_s_invalid_string_size_parameter_in_00488a54);
+      std::string::string_from_cstr((int)str2,msgText2);
+      ehDtorCount = ehDtorCount + 2;
+      lengthError[0] = &std::logic_error::vftable;
+      unused39 = 0;
+      unused65 = (int *)0x0;
+      ehContext = 0xb0;
+      if (str6[-3] == -1 || str6[-3] + 1 < 0) {
+        len3 = str6[-1];
+        newRep2 = std::string::__getRep(newStr2,len3,len3);
+        unused35 = newStr2;
+        newData = newRep2 + 3;
+        unused34 = len3;
+        unused33 = str6;
+        unused32 = newData;
+        unused36 = newData;
+        unused65 = newData;
+        memcpy(newData,str6,len3);
       }
       else {
-        local_17c = local_54;
-        local_178 = local_7c;
-        local_4c = local_7c;
-        local_4f0 = local_7c;
-        local_180 = local_7c + -3;
-        if (local_180 != &DAT_00485bcc) {
-          *local_180 = *local_180 + 1;
+        unused37 = newStr2;
+        unused38 = str6;
+        unused65 = str6;
+        unused2 = str6;
+        strRep8 = str6 + -3;
+        if (strRep8 != &g_nullStringRep) {
+          *strRep8 = *strRep8 + 1;
         }
       }
-      local_b8 = 0xa4;
-      local_5c[0] = &std::length_error::vftable;
-      local_ac = local_ac + 2;
-      if (local_7c != (int *)0x0) {
-        if (local_7c[-3] != -1) {
-          local_1a0 = local_7c + -3;
-          if (local_1a0 == &DAT_00485bcc) {
-            iVar2 = 1;
+      ehContext = 0xa4;
+      lengthError[0] = &std::length_error::vftable;
+      ehDtorCount = ehDtorCount + 2;
+      if (str6 != (int *)0x0) {
+        if (str6[-3] != -1) {
+          strRep7 = str6 + -3;
+          if (strRep7 == &g_nullStringRep) {
+            lhs = 1;
           }
-          else if (local_1a0 == &DAT_00485bcc) {
-            iVar2 = 1;
+          else if (strRep7 == &g_nullStringRep) {
+            lhs = 1;
           }
           else {
-            *local_1a0 = *local_1a0 + -1;
-            iVar2 = *local_1a0 + 1;
+            *strRep7 = *strRep7 + -1;
+            lhs = *strRep7 + 1;
           }
-          if (iVar2 != 0) goto LAB_00417ebb;
+          if (lhs != 0) goto LAB_00417ebb;
         }
-        local_1a4 = local_7c + -3;
-        local_1a8 = local_7c + -3;
+        unused31 = str6 + -3;
+        unused30 = str6 + -3;
         operator_delete();
-        local_1ac = 0;
-        local_1b0 = local_84;
-        local_7c = (int *)0x0;
-        local_510 = 0;
+        unused29 = 0;
+        unused28 = str2;
+        str6 = (int *)0x0;
+        unused = 0;
       }
 LAB_00417ebb:
-      local_b8 = 0x98;
-      FUN_00471ae8((uint *)&DAT_00402008,(undefined4*)local_5c,uVar5,puVar6,uVar7,uVar8,uVar9,uVar10);
+      ehContext = 0x98;
+      _ThrowExceptionLDTC((uint *)&DAT_00402008,(undefined4*)lengthError,objectDtor,copyCtor,copyCtorMask,throwFlags,throwFile,throwLine);
     }
-    if (uVar4 < (uint)local_c[-1]) {
-      local_1b4 = local_c[-1] - uVar4;
-      if ((uint)local_c[-1] < uVar4) {
-        uVar10 = 0;
-        uVar9 = 0;
-        uVar8 = 0;
-        uVar7 = 1;
-        puVar6 = &LAB_004021bc;
-        uVar5 = 0;
-        local_b8 = 0xd4;
-        local_1b8 = (uint *)FUN_004670cc(local_608,PTR_s_string_index_out_of_range_in_fun_00488a60);
-        std::string::string_from_cstr((int)local_94,local_1b8);
-        local_ac = local_ac + 2;
-        local_74[0] = &std::logic_error::vftable;
-        local_1c4 = 0;
-        local_64 = (int *)0x0;
-        local_b8 = 0xe0;
-        if (local_8c[-3] == -1 || local_8c[-3] + 1 < 0) {
-          local_1d4 = local_8c[-1];
-          local_1dc = std::string::__getRep(local_6c,local_1d4,local_1d4);
-          local_1e0 = local_6c;
-          local_1ec = local_1dc + 3;
-          local_1e4 = local_1d4;
-          local_1e8 = local_8c;
-          local_1d8 = local_1ec;
-          local_64 = local_1ec;
-          memcpy(local_1ec,local_8c,local_1d4);
+    if (uVar4 < (uint)fileName[-1]) {
+      local_1b4 = fileName[-1] - uVar4;
+      if ((uint)fileName[-1] < uVar4) {
+        throwLine = 0;
+        throwFile = 0;
+        throwFlags = 0;
+        copyCtorMask = 1;
+        copyCtor = &LAB_004021bc;
+        objectDtor = 0;
+        ehContext = 0xd4;
+        msgText = (uint *)__rwstd::except_msg_string::format(exceptMsg,PTR_s_string_index_out_of_range_in_fun_00488a60);
+        std::string::string_from_cstr((int)str,msgText);
+        ehDtorCount = ehDtorCount + 2;
+        outOfRange[0] = &std::logic_error::vftable;
+        unused27 = 0;
+        unused64 = (int *)0x0;
+        ehContext = 0xe0;
+        if (str5[-3] == -1 || str5[-3] + 1 < 0) {
+          len2 = str5[-1];
+          newRep = std::string::__getRep(newStr,len2,len2);
+          unused23 = newStr;
+          newData3 = newRep + 3;
+          unused22 = len2;
+          unused21 = str5;
+          unused24 = newData3;
+          unused64 = newData3;
+          memcpy(newData3,str5,len2);
         }
         else {
-          local_1cc = local_6c;
-          local_1c8 = local_8c;
-          local_64 = local_8c;
-          local_1d0 = local_8c + -3;
-          if (local_1d0 != &DAT_00485bcc) {
-            *local_1d0 = *local_1d0 + 1;
+          unused25 = newStr;
+          unused26 = str5;
+          unused64 = str5;
+          strRep6 = str5 + -3;
+          if (strRep6 != &g_nullStringRep) {
+            *strRep6 = *strRep6 + 1;
           }
         }
-        local_b8 = 0xd4;
-        local_74[0] = &std::out_of_range::vftable;
-        local_ac = local_ac + 2;
-        if (local_8c != (int *)0x0) {
-          if (local_8c[-3] != -1) {
-            local_1f0 = local_8c + -3;
-            if (local_1f0 == &DAT_00485bcc) {
-              iVar2 = 1;
+        ehContext = 0xd4;
+        outOfRange[0] = &std::out_of_range::vftable;
+        ehDtorCount = ehDtorCount + 2;
+        if (str5 != (int *)0x0) {
+          if (str5[-3] != -1) {
+            strRep5 = str5 + -3;
+            if (strRep5 == &g_nullStringRep) {
+              lhs = 1;
             }
-            else if (local_1f0 == &DAT_00485bcc) {
-              iVar2 = 1;
+            else if (strRep5 == &g_nullStringRep) {
+              lhs = 1;
             }
             else {
-              *local_1f0 = *local_1f0 + -1;
-              iVar2 = *local_1f0 + 1;
+              *strRep5 = *strRep5 + -1;
+              lhs = *strRep5 + 1;
             }
-            if (iVar2 != 0) goto LAB_0041815e;
+            if (lhs != 0) goto LAB_0041815e;
           }
-          local_1f4 = local_8c + -3;
-          local_1f8 = local_8c + -3;
+          unused20 = str5 + -3;
+          unused19 = str5 + -3;
           operator_delete();
-          local_1fc = 0;
-          local_200 = local_94;
-          local_8c = (int *)0x0;
+          unused18 = 0;
+          unused17 = str;
+          str5 = (int *)0x0;
         }
 LAB_0041815e:
-        local_b8 = 0x98;
-        FUN_00471ae8((uint *)&DAT_00402160,(undefined4*)local_74,uVar5,puVar6,uVar7,uVar8,uVar9,uVar10);
+        ehContext = 0x98;
+        _ThrowExceptionLDTC((uint *)&DAT_00402160,(undefined4*)outOfRange,objectDtor,copyCtor,copyCtorMask,throwFlags,throwFile,throwLine);
       }
-      local_204 = local_c[-1] - uVar4;
-      local_205 = 0;
+      local_204 = fileName[-1] - uVar4;
+      s = 0;
       local_20c = local_204;
       if (local_1b4 < local_204) {
         local_20c = local_1b4;
       }
-      FUN_0045a224((int)local_14,uVar4,local_20c,(uint)&local_205,0,0,0);
+      std::string::replace((int)lhs2,uVar4,local_20c,(uint)&s,0,0,0);
     }
     else {
-      std::string::replace_fill((int)local_14,local_c[-1],0,uVar4 - local_c[-1],0);
+      std::string::replace_fill((int)lhs2,fileName[-1],0,uVar4 - fileName[-1],0);
     }
-    if (local_c + -3 != &DAT_00485bcc) {
-      local_c[-3] = 0;
+    if (fileName + -3 != &g_nullStringRep) {
+      fileName[-3] = 0;
     }
     local_10c = 1;
   }
-  local_b8 = 0x104;
-  puVar11 = local_24;
-  FUN_00418778((int)local_a4,(int)local_14);
-  local_ac = local_ac + 1;
-  FUN_004184f8(param_1,(int)local_a4,(int)puVar11);
-  local_b8 = 0x110;
-  local_ac = local_ac + -1;
-  if (local_9c != 0) {
-    if (*(int *)(local_9c + -0xc) != -1) {
-      local_210 = (int *)(local_9c + -0xc);
-      if (local_210 == &DAT_00485bcc) {
-        iVar2 = 1;
+  ehContext = 0x104;
+  rhs = rhs2;
+  AppendChar((int)local_a4,(int)lhs2);
+  ehDtorCount = ehDtorCount + 1;
+  std::operator_plus(result,(int)local_a4,(int)rhs);
+  ehContext = 0x110;
+  ehDtorCount = ehDtorCount + -1;
+  if (str4 != 0) {
+    if (*(int *)(str4 + -0xc) != -1) {
+      strRep4 = (int *)(str4 + -0xc);
+      if (strRep4 == &g_nullStringRep) {
+        lhs = 1;
       }
-      else if (local_210 == &DAT_00485bcc) {
-        iVar2 = 1;
+      else if (strRep4 == &g_nullStringRep) {
+        lhs = 1;
       }
       else {
-        *local_210 = *local_210 + -1;
-        iVar2 = *local_210 + 1;
+        *strRep4 = *strRep4 + -1;
+        lhs = *strRep4 + 1;
       }
-      if (iVar2 != 0) goto LAB_00418354;
+      if (lhs != 0) goto LAB_00418354;
     }
-    local_214 = local_9c + -0xc;
-    local_218 = local_9c + -0xc;
+    unused16 = str4 + -0xc;
+    unused15 = str4 + -0xc;
     operator_delete();
-    local_21c = 0;
-    local_220 = local_a4;
-    local_9c = 0;
+    unused14 = 0;
+    unused13 = local_a4;
+    str4 = 0;
   }
 LAB_00418354:
-  local_ac = local_ac + -1;
+  ehDtorCount = ehDtorCount + -1;
   if (local_1c != (undefined *)0x0) {
     if (*(int *)(local_1c + -0xc) != -1) {
-      local_224 = (int *)(local_1c + -0xc);
-      if (local_224 == &DAT_00485bcc) {
-        iVar2 = 1;
+      strRep3 = (int *)(local_1c + -0xc);
+      if (strRep3 == &g_nullStringRep) {
+        lhs = 1;
       }
-      else if (local_224 == &DAT_00485bcc) {
-        iVar2 = 1;
+      else if (strRep3 == &g_nullStringRep) {
+        lhs = 1;
       }
       else {
-        *local_224 = *local_224 + -1;
-        iVar2 = *local_224 + 1;
+        *strRep3 = *strRep3 + -1;
+        lhs = *strRep3 + 1;
       }
-      if (iVar2 != 0) goto LAB_00418403;
+      if (lhs != 0) goto LAB_00418403;
     }
-    local_228 = local_1c + -0xc;
-    local_22c = local_1c + -0xc;
+    unused12 = local_1c + -0xc;
+    unused11 = local_1c + -0xc;
     operator_delete();
-    local_230 = 0;
-    local_234 = local_24;
+    unused10 = 0;
+    unused9 = rhs2;
     local_1c = (undefined *)0x0;
   }
 LAB_00418403:
-  local_ac = local_ac + -1;
-  if (local_c != (int *)0x0) {
-    if (local_c[-3] != -1) {
-      local_238 = local_c + -3;
-      if (local_238 == &DAT_00485bcc) {
-        iVar2 = 1;
+  ehDtorCount = ehDtorCount + -1;
+  if (fileName != (int *)0x0) {
+    if (fileName[-3] != -1) {
+      strRep2 = fileName + -3;
+      if (strRep2 == &g_nullStringRep) {
+        lhs = 1;
       }
-      else if (local_238 == &DAT_00485bcc) {
-        iVar2 = 1;
+      else if (strRep2 == &g_nullStringRep) {
+        lhs = 1;
       }
       else {
-        *local_238 = *local_238 + -1;
-        iVar2 = *local_238 + 1;
+        *strRep2 = *strRep2 + -1;
+        lhs = *strRep2 + 1;
       }
-      if (iVar2 != 0) goto LAB_004184af;
+      if (lhs != 0) goto LAB_004184af;
     }
-    local_23c = local_c + -3;
-    local_240 = local_c + -3;
+    unused8 = fileName + -3;
+    unused7 = fileName + -3;
     operator_delete();
   }
 LAB_004184af:
-  *in_FS_OFFSET = local_c8;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004184cc  FUN_004184cc   (41 bytes)   [unnamed]
+// 0x004184cc  memrchr   (41 bytes)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x00408894. last occurrence of a character in [p, p + n], or 0
 //   file placement: inferred (address adjacency)
-char * __cdecl FUN_004184cc(char *param_1,char param_2,int param_3)
+char * __cdecl memrchr(char *p,char ch,int n)
 
 {
-  char *pcVar1;
+  char *q;
   
-  pcVar1 = param_1 + param_3;
+  q = p + n;
   while( true ) {
-    if (pcVar1 < param_1) {
+    if (q < p) {
       return (char *)0x0;
     }
-    if (param_2 == *pcVar1) break;
-    pcVar1 = pcVar1 + -1;
+    if (ch == *q) break;
+    q = q + -1;
   }
-  return pcVar1;
+  return q;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004184f8  FUN_004184f8   (638 bytes)   [unnamed]
+// 0x004184f8  std::operator_plus   (638 bytes)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x004088c0. result = lhs + rhs for two std::string
 //   file placement: inferred (address adjacency)
-int __cdecl FUN_004184f8(int param_1,int param_2,int param_3)
+int __cdecl std::operator_plus(int result,int lhs,int rhs)
 
 {
-  uint uVar1;
-  int iVar2;
-  int iVar3;
-  int *piVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  undefined1 local_14 [8];
-  int *local_c;
+  uint len;
+  int sum;
+  int refs;
+  int *rep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 tmp [8];
+  int *tmpData;
   
   __InitExceptBlockLDTC(0x477970);
-  local_c = (int *)0x0;
-  iVar3 = *(int *)(*(int *)(param_2 + 8) + -0xc);
-  if (iVar3 == -1 || iVar3 + 1 < 0) {
-    uVar1 = *(uint *)(*(int *)(param_2 + 8) + -4);
-    local_c = std::string::__getRep(local_14,uVar1,uVar1);
-    local_c = local_c + 3;
-    memcpy(local_c,*(undefined4 **)(param_2 + 8),uVar1);
+  tmpData = (int *)0x0;
+  refs = *(int *)(*(int *)(lhs + 8) + -0xc);
+  if (refs == -1 || refs + 1 < 0) {
+    len = *(uint *)(*(int *)(lhs + 8) + -4);
+    tmpData = std::string::__getRep(tmp,len,len);
+    tmpData = tmpData + 3;
+    memcpy(tmpData,*(undefined4 **)(lhs + 8),len);
   }
   else {
-    local_c = *(int **)(param_2 + 8);
-    piVar4 = local_c + -3;
-    if (piVar4 != &DAT_00485bcc) {
-      *piVar4 = *piVar4 + 1;
+    tmpData = *(int **)(lhs + 8);
+    rep = tmpData + -3;
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
-  iVar2 = std::string::append((int)local_14,param_3);
-  *(undefined4 *)(param_1 + 8) = 0;
-  iVar3 = *(int *)(*(int *)(iVar2 + 8) + -0xc);
-  if (iVar3 == -1 || iVar3 + 1 < 0) {
-    uVar1 = *(uint *)(*(int *)(iVar2 + 8) + -4);
-    piVar4 = std::string::__getRep(param_1,uVar1,uVar1);
-    *(int **)(param_1 + 8) = piVar4 + 3;
-    memcpy(*(undefined4 **)(param_1 + 8),*(undefined4 **)(iVar2 + 8),uVar1);
+  sum = std::string::append((int)tmp,rhs);
+  *(undefined4 *)(result + 8) = 0;
+  refs = *(int *)(*(int *)(sum + 8) + -0xc);
+  if (refs == -1 || refs + 1 < 0) {
+    len = *(uint *)(*(int *)(sum + 8) + -4);
+    rep = std::string::__getRep(result,len,len);
+    *(int **)(result + 8) = rep + 3;
+    memcpy(*(undefined4 **)(result + 8),*(undefined4 **)(sum + 8),len);
   }
   else {
-    *(undefined4 *)(param_1 + 8) = *(undefined4 *)(iVar2 + 8);
-    piVar4 = (int *)(*(int *)(param_1 + 8) + -0xc);
-    if (piVar4 != &DAT_00485bcc) {
-      *piVar4 = *piVar4 + 1;
+    *(undefined4 *)(result + 8) = *(undefined4 *)(sum + 8);
+    rep = (int *)(*(int *)(result + 8) + -0xc);
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
-  if (local_c != (int *)0x0) {
-    if (local_c[-3] != -1) {
-      piVar4 = local_c + -3;
-      if (piVar4 == &DAT_00485bcc) {
-        iVar3 = 1;
+  if (tmpData != (int *)0x0) {
+    if (tmpData[-3] != -1) {
+      rep = tmpData + -3;
+      if (rep == &g_nullStringRep) {
+        refs = 1;
       }
-      else if (piVar4 == &DAT_00485bcc) {
-        iVar3 = 1;
+      else if (rep == &g_nullStringRep) {
+        refs = 1;
       }
       else {
-        *piVar4 = *piVar4 + -1;
-        iVar3 = *piVar4 + 1;
+        *rep = *rep + -1;
+        refs = *rep + 1;
       }
-      if (iVar3 != 0) goto LAB_0041875b;
+      if (refs != 0) goto LAB_0041875b;
     }
     operator_delete();
   }
 LAB_0041875b:
-  *in_FS_OFFSET = local_38;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00418778  FUN_00418778   (899 bytes)   [unnamed]
+// 0x00418778  AppendChar   (899 bytes)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x00408b40. result = str + std::string(1, c) (the character is not visible in the decompiled call to the fill constructor)
 //   file placement: inferred (address adjacency)
-int __cdecl FUN_00418778(int param_1,int param_2)
+int __cdecl AppendChar(int result,int str)
 
 {
-  uint uVar1;
-  int iVar2;
-  int *piVar3;
-  int iVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined1 *puVar5;
-  undefined4 local_48;
-  undefined1 local_24 [8];
-  int *local_1c;
-  undefined1 local_14 [8];
-  int local_c;
+  uint len;
+  int sum;
+  int *rep;
+  int refs;
+  undefined4 *sehChainHead;
+  undefined1 *suffixArg;
+  undefined4 sehPrevFrame;
+  undefined1 tmp [8];
+  int *tmpData;
+  undefined1 suffix [8];
+  int suffixData;
   
   __InitExceptBlockLDTC(0x4779ec);
-  local_c = 0;
-  FUN_00460bbc((int)local_14,1);
-  puVar5 = local_14;
-  local_1c = (int *)0x0;
-  iVar4 = *(int *)(*(int *)(param_2 + 8) + -0xc);
-  if (iVar4 == -1 || iVar4 + 1 < 0) {
-    uVar1 = *(uint *)(*(int *)(param_2 + 8) + -4);
-    local_1c = std::string::__getRep(local_24,uVar1,uVar1);
-    local_1c = local_1c + 3;
-    memcpy(local_1c,*(undefined4 **)(param_2 + 8),uVar1);
+  suffixData = 0;
+  std::string::string_fill((int)suffix,1);
+  suffixArg = suffix;
+  tmpData = (int *)0x0;
+  refs = *(int *)(*(int *)(str + 8) + -0xc);
+  if (refs == -1 || refs + 1 < 0) {
+    len = *(uint *)(*(int *)(str + 8) + -4);
+    tmpData = std::string::__getRep(tmp,len,len);
+    tmpData = tmpData + 3;
+    memcpy(tmpData,*(undefined4 **)(str + 8),len);
   }
   else {
-    local_1c = *(int **)(param_2 + 8);
-    piVar3 = local_1c + -3;
-    if (piVar3 != &DAT_00485bcc) {
-      *piVar3 = *piVar3 + 1;
+    tmpData = *(int **)(str + 8);
+    rep = tmpData + -3;
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
-  iVar2 = std::string::append((int)local_24,(int)puVar5);
-  *(undefined4 *)(param_1 + 8) = 0;
-  iVar4 = *(int *)(*(int *)(iVar2 + 8) + -0xc);
-  if (iVar4 == -1 || iVar4 + 1 < 0) {
-    uVar1 = *(uint *)(*(int *)(iVar2 + 8) + -4);
-    piVar3 = std::string::__getRep(param_1,uVar1,uVar1);
-    *(int **)(param_1 + 8) = piVar3 + 3;
-    memcpy(*(undefined4 **)(param_1 + 8),*(undefined4 **)(iVar2 + 8),uVar1);
+  sum = std::string::append((int)tmp,(int)suffixArg);
+  *(undefined4 *)(result + 8) = 0;
+  refs = *(int *)(*(int *)(sum + 8) + -0xc);
+  if (refs == -1 || refs + 1 < 0) {
+    len = *(uint *)(*(int *)(sum + 8) + -4);
+    rep = std::string::__getRep(result,len,len);
+    *(int **)(result + 8) = rep + 3;
+    memcpy(*(undefined4 **)(result + 8),*(undefined4 **)(sum + 8),len);
   }
   else {
-    *(undefined4 *)(param_1 + 8) = *(undefined4 *)(iVar2 + 8);
-    piVar3 = (int *)(*(int *)(param_1 + 8) + -0xc);
-    if (piVar3 != &DAT_00485bcc) {
-      *piVar3 = *piVar3 + 1;
+    *(undefined4 *)(result + 8) = *(undefined4 *)(sum + 8);
+    rep = (int *)(*(int *)(result + 8) + -0xc);
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
-  if (local_c != 0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      piVar3 = (int *)(local_c + -0xc);
-      if (piVar3 == &DAT_00485bcc) {
-        iVar4 = 1;
+  if (suffixData != 0) {
+    if (*(int *)(suffixData + -0xc) != -1) {
+      rep = (int *)(suffixData + -0xc);
+      if (rep == &g_nullStringRep) {
+        refs = 1;
       }
-      else if (piVar3 == &DAT_00485bcc) {
-        iVar4 = 1;
+      else if (rep == &g_nullStringRep) {
+        refs = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar4 = *piVar3 + 1;
+        *rep = *rep + -1;
+        refs = *rep + 1;
       }
-      if (iVar4 != 0) goto LAB_00418a31;
+      if (refs != 0) goto LAB_00418a31;
     }
     operator_delete();
-    local_c = 0;
+    suffixData = 0;
   }
 LAB_00418a31:
-  if (local_1c != (int *)0x0) {
-    if (local_1c[-3] != -1) {
-      piVar3 = local_1c + -3;
-      if (piVar3 == &DAT_00485bcc) {
-        iVar4 = 1;
+  if (tmpData != (int *)0x0) {
+    if (tmpData[-3] != -1) {
+      rep = tmpData + -3;
+      if (rep == &g_nullStringRep) {
+        refs = 1;
       }
-      else if (piVar3 == &DAT_00485bcc) {
-        iVar4 = 1;
+      else if (rep == &g_nullStringRep) {
+        refs = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar4 = *piVar3 + 1;
+        *rep = *rep + -1;
+        refs = *rep + 1;
       }
-      if (iVar4 != 0) goto LAB_00418ae0;
+      if (refs != 0) goto LAB_00418ae0;
     }
     operator_delete();
   }
 LAB_00418ae0:
-  *in_FS_OFFSET = local_48;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00418afc  FUN_00418afc   (153 bytes)   [unnamed]
+// 0x00418afc  IsRelativePath   (153 bytes)   [analysis]
+//   true unless the path starts with '\' or has a drive colon followed by '\'
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x00418b13) */
-bool __cdecl FUN_00418afc(int param_1)
+bool __cdecl IsRelativePath(int path)
 
 {
   char *pcVar1;
   int iVar2;
   bool bVar3;
   
-  pcVar1 = thunk_memchr(*(char **)(param_1 + 8),':',*(int *)(*(int *)(param_1 + 8) + -4));
-  iVar2 = DAT_00485f20;
+  pcVar1 = thunk_memchr(*(char **)(path + 8),':',*(int *)(*(int *)(path + 8) + -4));
+  iVar2 = g_stringNpos;
   if (pcVar1 != (char *)0x0) {
-    iVar2 = (int)pcVar1 - *(int *)(param_1 + 8);
+    iVar2 = (int)pcVar1 - *(int *)(path + 8);
   }
   if (iVar2 == -1) {
-    if ((*(int *)(*(char **)(param_1 + 8) + -4) == 0) || (**(char **)(param_1 + 8) != '\\')) {
+    if ((*(int *)(*(char **)(path + 8) + -4) == 0) || (**(char **)(path + 8) != '\\')) {
       bVar3 = true;
     }
     else {
@@ -868,7 +899,7 @@ bool __cdecl FUN_00418afc(int param_1)
     }
   }
   else {
-    bVar3 = *(char *)(*(int *)(param_1 + 8) + iVar2 + 1) != '\\';
+    bVar3 = *(char *)(*(int *)(path + 8) + iVar2 + 1) != '\\';
   }
   return bVar3;
 }
@@ -878,406 +909,410 @@ bool __cdecl FUN_00418afc(int param_1)
 //   identical body to TEACON.exe 0x0040909c. GetModuleFileNameA, truncated after the last backslash
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x00418ce2) */
-int __cdecl GetProgramDirectory(int param_1)
+int __cdecl GetProgramDirectory(int result)
 
 {
-  DWORD DVar1;
-  uint *puVar2;
-  int iVar3;
-  int *piVar4;
-  undefined4 *in_FS_OFFSET;
-  uint local_154 [68];
-  int local_44;
-  undefined4 local_38;
-  undefined2 local_28;
-  int local_1c;
-  undefined1 local_14 [8];
-  int local_c;
+  DWORD len;
+  uint *lastSep;
+  int dir;
+  int *strRep;
+  undefined4 *sehChainHead;
+  uint filename [68];
+  int unused;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 dirStr [8];
+  int dirData;
   
   __InitExceptBlockLDTC(0x477a84);
-  DVar1 = GetModuleFileNameA((HMODULE)0x0,(LPSTR)local_154,0x104);
-  *(undefined1 *)((int)local_154 + DVar1) = 0;
-  puVar2 = thunk_strrchr(local_154,'\\');
-  if (puVar2 == (uint *)0x0) {
-    *(undefined4 *)(param_1 + 8) = 0;
-    *(undefined **)(param_1 + 8) = &DAT_00485bd8;
-    *in_FS_OFFSET = local_38;
-    return param_1;
+  len = GetModuleFileNameA((HMODULE)0x0,(LPSTR)filename,0x104);
+  *(undefined1 *)((int)filename + len) = 0;
+  lastSep = thunk_strrchr(filename,'\\');
+  if (lastSep == (uint *)0x0) {
+    *(undefined4 *)(result + 8) = 0;
+    *(undefined **)(result + 8) = &g_emptyStringData;
+    *sehChainHead = sehPrevFrame;
+    return result;
   }
-  local_28 = 8;
-  iVar3 = FUN_0045c644((int)local_14,local_154,(int)puVar2 + (1 - (int)local_154));
-  local_1c = local_1c + 1;
-  FUN_00417718(param_1,iVar3);
-  local_28 = 0x14;
-  local_1c = local_1c + -1;
-  if (local_c != 0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      piVar4 = (int *)(local_c + -0xc);
-      if (piVar4 == &DAT_00485bcc) {
-        iVar3 = 1;
+  ehContext = 8;
+  dir = std::string::string_from_buf((int)dirStr,filename,(int)lastSep + (1 - (int)filename));
+  ehDtorCount = ehDtorCount + 1;
+  ExpandLongPathName(result,dir);
+  ehContext = 0x14;
+  ehDtorCount = ehDtorCount + -1;
+  if (dirData != 0) {
+    if (*(int *)(dirData + -0xc) != -1) {
+      strRep = (int *)(dirData + -0xc);
+      if (strRep == &g_nullStringRep) {
+        dir = 1;
       }
-      else if (piVar4 == &DAT_00485bcc) {
-        iVar3 = 1;
+      else if (strRep == &g_nullStringRep) {
+        dir = 1;
       }
       else {
-        *piVar4 = *piVar4 + -1;
-        iVar3 = *piVar4 + 1;
+        *strRep = *strRep + -1;
+        dir = *strRep + 1;
       }
-      if (iVar3 != 0) goto LAB_00418c99;
+      if (dir != 0) goto LAB_00418c99;
     }
-    local_44 = local_c + -0xc;
+    unused = dirData + -0xc;
     operator_delete();
   }
 LAB_00418c99:
-  *in_FS_OFFSET = local_38;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00418d04  FUN_00418d04   (791 bytes)   [unnamed]
+// 0x00418d04  GetMyDocumentsDirectory   (791 bytes)   [analysis]
+//   the user's documents folder (SHGetSpecialFolderLocation), or the program directory
 //   file placement: inferred (address adjacency)
 /* WARNING: Removing unreachable block (ram,0x00418d45) */
-int __cdecl FUN_00418d04(int param_1)
+int __cdecl GetMyDocumentsDirectory(int result)
 
 {
-  uint uVar1;
-  HRESULT HVar2;
+  uint len;
+  HRESULT hr;
   IMalloc *This;
-  BOOL BVar3;
+  BOOL ok;
   int iVar4;
-  int *piVar5;
-  undefined4 *in_FS_OFFSET;
-  uint local_1a4 [67];
-  undefined *local_98;
-  undefined4 *local_88;
-  undefined4 *local_84;
-  undefined4 *local_80;
-  undefined4 *local_7c;
-  uint local_78;
-  int local_74;
-  int *local_70;
-  int *local_6c;
-  int local_68;
-  undefined4 *local_64;
-  undefined4 local_60;
-  undefined1 *local_5c;
-  undefined4 local_58;
-  int local_54;
+  int *strRep;
+  undefined4 *sehChainHead;
+  uint path [67];
+  undefined *unused;
+  undefined4 *unused2;
+  undefined4 *unused3;
+  undefined4 *dest;
+  undefined4 *unused4;
+  uint unused5;
+  int unused6;
+  int *newRep;
+  int *newData;
+  int unused7;
+  undefined4 *unused8;
+  undefined4 unused9;
+  undefined1 *unused10;
+  undefined4 unused11;
+  int unused12;
   LPCITEMIDLIST local_50;
-  IMalloc *local_4c;
-  undefined4 local_48;
-  undefined2 local_38;
-  int local_2c;
-  undefined1 local_24 [8];
-  int local_1c;
-  undefined1 local_14 [8];
+  IMalloc *ppMalloc;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 result2 [8];
+  int str2;
+  undefined1 str [8];
   undefined4 *local_c;
   
   __InitExceptBlockLDTC(0x477b18);
-  local_c = (undefined4 *)&DAT_00485bd8;
-  local_98 = &DAT_00485bd8;
-  local_2c = local_2c + 1;
-  local_38 = 0x20;
-  HVar2 = SHGetMalloc(&local_4c);
-  if (HVar2 == 0) {
+  local_c = (undefined4 *)&g_emptyStringData;
+  unused = &g_emptyStringData;
+  ehDtorCount = ehDtorCount + 1;
+  ehContext = 0x20;
+  hr = SHGetMalloc(&ppMalloc);
+  if (hr == 0) {
     This = (IMalloc *)SHGetSpecialFolderLocation((HWND)0x0,5,&local_50);
     if (This == (IMalloc *)0x0) {
-      BVar3 = SHGetPathFromIDListA(local_50,(LPSTR)local_1a4);
-      if (BVar3 != 0) {
-        FUN_00459b6c((int)local_14,local_1a4);
+      ok = SHGetPathFromIDListA(local_50,(LPSTR)path);
+      if (ok != 0) {
+        std::string::assign_cstr((int)str,path);
       }
-      This = (IMalloc *)((code *)local_4c->lpVtbl->Free)((IMalloc *)local_4c->lpVtbl,local_50);
+      This = (IMalloc *)((code *)ppMalloc->lpVtbl->Free)((IMalloc *)ppMalloc->lpVtbl,local_50);
     }
-    (*local_4c->lpVtbl->Release)(This);
+    (*ppMalloc->lpVtbl->Release)(This);
   }
   iVar4 = local_c[-1];
   if (iVar4 == 0) {
-    local_38 = 0x2c;
-    GetProgramDirectory((int)local_24);
-    local_2c = local_2c + 1;
-    FUN_00459ad4((int)local_14,(int)local_24);
-    local_2c = local_2c + -1;
-    if (local_1c != 0) {
-      if (*(int *)(local_1c + -0xc) != -1) {
-        piVar5 = (int *)(local_1c + -0xc);
-        if (piVar5 == &DAT_00485bcc) {
+    ehContext = 0x2c;
+    GetProgramDirectory((int)result2);
+    ehDtorCount = ehDtorCount + 1;
+    std::string::operator_assign((int)str,(int)result2);
+    ehDtorCount = ehDtorCount + -1;
+    if (str2 != 0) {
+      if (*(int *)(str2 + -0xc) != -1) {
+        strRep = (int *)(str2 + -0xc);
+        if (strRep == &g_nullStringRep) {
           iVar4 = 1;
         }
-        else if (piVar5 == &DAT_00485bcc) {
+        else if (strRep == &g_nullStringRep) {
           iVar4 = 1;
         }
         else {
-          *piVar5 = *piVar5 + -1;
-          iVar4 = *piVar5 + 1;
+          *strRep = *strRep + -1;
+          iVar4 = *strRep + 1;
         }
         if (iVar4 != 0) goto LAB_00418ead;
       }
-      local_54 = local_1c + -0xc;
+      unused12 = str2 + -0xc;
       operator_delete();
-      local_58 = 0;
-      local_5c = local_24;
-      local_1c = 0;
+      unused11 = 0;
+      unused10 = result2;
+      str2 = 0;
     }
   }
   else {
     if (1 < local_c[-3] + 1) {
-      FUN_0045f64c((int)local_14);
+      std::string::__unshare((int)str);
     }
-    if (local_c + -3 != &DAT_00485bcc) {
+    if (local_c + -3 != &g_nullStringRep) {
       local_c[-3] = 0xffffffff;
     }
     if (*(char *)((int)local_c + iVar4 + -1) != '\\') {
-      std::string::replace_fill((int)local_14,local_c[-1],0,1,0x5c);
+      std::string::replace_fill((int)str,local_c[-1],0,1,0x5c);
     }
   }
 LAB_00418ead:
-  local_38 = 0x44;
-  local_60 = 0;
-  *(undefined4 *)(param_1 + 8) = 0;
+  ehContext = 0x44;
+  unused9 = 0;
+  *(undefined4 *)(result + 8) = 0;
   if (local_c[-3] == -1 || local_c[-3] + 1 < 0) {
-    uVar1 = local_c[-1];
-    local_70 = std::string::__getRep(param_1,uVar1,uVar1);
-    local_6c = local_70 + 3;
-    *(int **)(param_1 + 8) = local_6c;
-    local_74 = param_1;
-    local_7c = local_c;
-    local_80 = *(undefined4 **)(param_1 + 8);
-    local_78 = uVar1;
-    memcpy(local_80,local_c,uVar1);
+    len = local_c[-1];
+    newRep = std::string::__getRep(result,len,len);
+    newData = newRep + 3;
+    *(int **)(result + 8) = newData;
+    unused6 = result;
+    unused4 = local_c;
+    dest = *(undefined4 **)(result + 8);
+    unused5 = len;
+    memcpy(dest,local_c,len);
   }
   else {
-    local_64 = local_c;
-    *(undefined4 **)(param_1 + 8) = local_c;
-    local_68 = param_1;
-    piVar5 = (int *)(*(int *)(param_1 + 8) + -0xc);
-    if (piVar5 != &DAT_00485bcc) {
-      *piVar5 = *piVar5 + 1;
+    unused8 = local_c;
+    *(undefined4 **)(result + 8) = local_c;
+    unused7 = result;
+    strRep = (int *)(*(int *)(result + 8) + -0xc);
+    if (strRep != &g_nullStringRep) {
+      *strRep = *strRep + 1;
     }
   }
-  local_38 = 0x5c;
+  ehContext = 0x5c;
   if (local_c != (undefined4 *)0x0) {
     if (local_c[-3] != -1) {
-      piVar5 = local_c + -3;
-      if (piVar5 == &DAT_00485bcc) {
+      strRep = local_c + -3;
+      if (strRep == &g_nullStringRep) {
         iVar4 = 1;
       }
-      else if (piVar5 == &DAT_00485bcc) {
+      else if (strRep == &g_nullStringRep) {
         iVar4 = 1;
       }
       else {
-        *piVar5 = *piVar5 + -1;
-        iVar4 = *piVar5 + 1;
+        *strRep = *strRep + -1;
+        iVar4 = *strRep + 1;
       }
       if (iVar4 != 0) goto LAB_00419000;
     }
-    local_84 = local_c + -3;
-    local_88 = local_c + -3;
+    unused3 = local_c + -3;
+    unused2 = local_c + -3;
     operator_delete();
   }
 LAB_00419000:
-  *in_FS_OFFSET = local_48;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041901c  FUN_0041901c   (1103 bytes)   [unnamed]
+// 0x0041901c  ResolveRelativePath   (1103 bytes)   [analysis]
+//   prefixes the program directory to a relative path
 //   file placement: inferred (address adjacency)
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-int __cdecl FUN_0041901c(int param_1,int param_2)
+int __cdecl ResolveRelativePath(int result,int path)
 
 {
   bool bVar1;
-  undefined3 extraout_var;
-  int iVar2;
+  undefined3 regHigh;
+  int prevRefs;
   char *pcVar3;
   int iVar4;
-  int *piVar5;
+  int *rep;
   uint uVar6;
-  undefined4 *in_FS_OFFSET;
-  undefined1 *puVar7;
-  undefined4 local_58;
+  undefined4 *sehChainHead;
+  undefined1 *rhs;
+  undefined4 sehPrevFrame;
   undefined1 local_34 [8];
-  int local_2c;
-  undefined1 local_24 [8];
-  int local_1c;
-  undefined1 local_14 [8];
-  int *local_c;
+  int str2;
+  undefined1 result2 [8];
+  int str3;
+  undefined1 str [8];
+  int *str4;
   
   __InitExceptBlockLDTC(0x477bf8);
-  if ((*(int *)(*(int *)(param_2 + 8) + -4) == 0) ||
-     (bVar1 = FUN_00418afc(param_2), CONCAT31(extraout_var,bVar1) == 0)) {
-    *(undefined4 *)(param_1 + 8) = 0;
-    iVar4 = *(int *)(*(int *)(param_2 + 8) + -0xc);
+  if ((*(int *)(*(int *)(path + 8) + -4) == 0) ||
+     (bVar1 = IsRelativePath(path), CONCAT31(regHigh,bVar1) == 0)) {
+    *(undefined4 *)(result + 8) = 0;
+    iVar4 = *(int *)(*(int *)(path + 8) + -0xc);
     if (iVar4 == -1 || iVar4 + 1 < 0) {
-      uVar6 = *(uint *)(*(int *)(param_2 + 8) + -4);
-      piVar5 = std::string::__getRep(param_1,uVar6,uVar6);
-      *(int **)(param_1 + 8) = piVar5 + 3;
-      memcpy(*(undefined4 **)(param_1 + 8),*(undefined4 **)(param_2 + 8),uVar6);
+      uVar6 = *(uint *)(*(int *)(path + 8) + -4);
+      rep = std::string::__getRep(result,uVar6,uVar6);
+      *(int **)(result + 8) = rep + 3;
+      memcpy(*(undefined4 **)(result + 8),*(undefined4 **)(path + 8),uVar6);
     }
     else {
-      *(undefined4 *)(param_1 + 8) = *(undefined4 *)(param_2 + 8);
-      piVar5 = (int *)(*(int *)(param_1 + 8) + -0xc);
-      if (piVar5 != &DAT_00485bcc) {
-        *piVar5 = *piVar5 + 1;
+      *(undefined4 *)(result + 8) = *(undefined4 *)(path + 8);
+      rep = (int *)(*(int *)(result + 8) + -0xc);
+      if (rep != &g_nullStringRep) {
+        *rep = *rep + 1;
       }
     }
-    *in_FS_OFFSET = local_58;
-    return param_1;
+    *sehChainHead = sehPrevFrame;
+    return result;
   }
-  local_c = (int *)0x0;
-  iVar4 = *(int *)(*(int *)(param_2 + 8) + -0xc);
+  str4 = (int *)0x0;
+  iVar4 = *(int *)(*(int *)(path + 8) + -0xc);
   if (iVar4 == -1 || iVar4 + 1 < 0) {
-    uVar6 = *(uint *)(*(int *)(param_2 + 8) + -4);
-    local_c = std::string::__getRep(local_14,uVar6,uVar6);
-    local_c = local_c + 3;
-    memcpy(local_c,*(undefined4 **)(param_2 + 8),uVar6);
+    uVar6 = *(uint *)(*(int *)(path + 8) + -4);
+    str4 = std::string::__getRep(str,uVar6,uVar6);
+    str4 = str4 + 3;
+    memcpy(str4,*(undefined4 **)(path + 8),uVar6);
   }
   else {
-    local_c = *(int **)(param_2 + 8);
-    piVar5 = local_c + -3;
-    if (piVar5 != &DAT_00485bcc) {
-      *piVar5 = *piVar5 + 1;
+    str4 = *(int **)(path + 8);
+    rep = str4 + -3;
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
-  iVar4 = local_c[-1];
+  iVar4 = str4[-1];
 LAB_004192c9:
   do {
     if (iVar4 == 0) break;
     uVar6 = iVar4 - 1;
-    if ((uint)local_c[-1] < uVar6) {
-      uVar6 = local_c[-1];
+    if ((uint)str4[-1] < uVar6) {
+      uVar6 = str4[-1];
     }
-    pcVar3 = FUN_004184cc((char *)local_c,';',uVar6);
-    iVar4 = DAT_00485f20;
+    pcVar3 = memrchr((char *)str4,';',uVar6);
+    iVar4 = g_stringNpos;
     if (pcVar3 != (char *)0x0) {
-      iVar4 = (int)pcVar3 - (int)local_c;
+      iVar4 = (int)pcVar3 - (int)str4;
     }
     if (iVar4 == -1) break;
-    GetProgramDirectory((int)local_24);
-    FUN_00460414((int)local_14,iVar4 + 1,(int)local_24);
-    if (local_1c != 0) {
-      if (*(int *)(local_1c + -0xc) != -1) {
-        piVar5 = (int *)(local_1c + -0xc);
-        if (piVar5 == &DAT_00485bcc) {
-          iVar2 = 1;
+    GetProgramDirectory((int)result2);
+    std::string::insert((int)str,iVar4 + 1,(int)result2);
+    if (str3 != 0) {
+      if (*(int *)(str3 + -0xc) != -1) {
+        rep = (int *)(str3 + -0xc);
+        if (rep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (piVar5 == &DAT_00485bcc) {
-          iVar2 = 1;
+        else if (rep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *piVar5 = *piVar5 + -1;
-          iVar2 = *piVar5 + 1;
+          *rep = *rep + -1;
+          prevRefs = *rep + 1;
         }
-        if (iVar2 != 0) goto LAB_004192c9;
+        if (prevRefs != 0) goto LAB_004192c9;
       }
       operator_delete();
-      local_1c = 0;
+      str3 = 0;
     }
   } while( true );
-  puVar7 = local_14;
+  rhs = str;
   GetProgramDirectory((int)local_34);
-  FUN_004184f8(param_1,(int)local_34,(int)puVar7);
-  if (local_2c != 0) {
-    if (*(int *)(local_2c + -0xc) != -1) {
-      piVar5 = (int *)(local_2c + -0xc);
-      if (piVar5 == &DAT_00485bcc) {
+  std::operator_plus(result,(int)local_34,(int)rhs);
+  if (str2 != 0) {
+    if (*(int *)(str2 + -0xc) != -1) {
+      rep = (int *)(str2 + -0xc);
+      if (rep == &g_nullStringRep) {
         iVar4 = 1;
       }
-      else if (piVar5 == &DAT_00485bcc) {
+      else if (rep == &g_nullStringRep) {
         iVar4 = 1;
       }
       else {
-        *piVar5 = *piVar5 + -1;
-        iVar4 = *piVar5 + 1;
+        *rep = *rep + -1;
+        iVar4 = *rep + 1;
       }
       if (iVar4 != 0) goto LAB_004193bd;
     }
     operator_delete();
-    local_2c = 0;
+    str2 = 0;
   }
 LAB_004193bd:
-  if (local_c != (int *)0x0) {
-    if (local_c[-3] != -1) {
-      piVar5 = local_c + -3;
-      if (piVar5 == &DAT_00485bcc) {
+  if (str4 != (int *)0x0) {
+    if (str4[-3] != -1) {
+      rep = str4 + -3;
+      if (rep == &g_nullStringRep) {
         iVar4 = 1;
       }
-      else if (piVar5 == &DAT_00485bcc) {
+      else if (rep == &g_nullStringRep) {
         iVar4 = 1;
       }
       else {
-        *piVar5 = *piVar5 + -1;
-        iVar4 = *piVar5 + 1;
+        *rep = *rep + -1;
+        iVar4 = *rep + 1;
       }
       if (iVar4 != 0) goto LAB_00419450;
     }
     operator_delete();
   }
 LAB_00419450:
-  *in_FS_OFFSET = local_58;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041946c  FUN_0041946c   (359 bytes)   [unnamed]
+// 0x0041946c  IsAnsiTextFile   (359 bytes)   [analysis]
+//   reads the start of a file and rejects it when IsTextUnicode says it is Unicode
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_0041946c(LPCSTR param_1)
+undefined4 __cdecl IsAnsiTextFile(LPCSTR fileName)
 
 {
   uint iSize;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   undefined4 uVar1;
-  char local_4b4;
+  char lpv;
   char local_4b3;
   char local_4b2;
-  uint local_b4;
-  undefined4 local_b0;
-  undefined2 local_a0;
-  int local_94;
-  int local_8c [34];
+  uint lpiResult;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  int basicIfstream [34];
   
   __InitExceptBlockLDTC(0x477ca4);
-  local_a0 = 8;
-  FUN_0045b958(local_8c,0,param_1,6,0x1b6);
-  local_94 = local_94 + 8;
-  local_a0 = 0x14;
-  if (*(int *)(local_8c[0] + 0x30) == 0) {
-    FUN_0045f1c0(local_8c,&local_4b4,0x400);
-    iSize = FUN_0045f178((int)local_8c);
+  ehContext = 8;
+  std::basic_ifstream_char::basic_ifstream(basicIfstream,0,fileName,6,0x1b6);
+  ehDtorCount = ehDtorCount + 8;
+  ehContext = 0x14;
+  if (*(int *)(basicIfstream[0] + 0x30) == 0) {
+    FUN_0045f1c0(basicIfstream,&lpv,0x400);
+    iSize = FUN_0045f178((int)basicIfstream);
     if (iSize == 0) {
       uVar1 = 1;
-      local_94 = local_94 + -8;
-      std::basic_ifstream_char::_dtor(local_8c,2);
-      *in_FS_OFFSET = local_b0;
+      ehDtorCount = ehDtorCount + -8;
+      std::basic_ifstream_char::_dtor(basicIfstream,2);
+      *sehChainHead = sehPrevFrame;
     }
     else {
-      local_b4 = 0x1088;
-      IsTextUnicode(&local_4b4,iSize,(LPINT)&local_b4);
-      if (((local_b4 & 0x1088) == 0) &&
-         ((((iSize < 3 || (local_4b4 != -0x11)) || (local_4b3 != -0x45)) || (local_4b2 != -0x41))))
+      lpiResult = 0x1088;
+      IsTextUnicode(&lpv,iSize,(LPINT)&lpiResult);
+      if (((lpiResult & 0x1088) == 0) &&
+         ((((iSize < 3 || (lpv != -0x11)) || (local_4b3 != -0x45)) || (local_4b2 != -0x41))))
       {
         uVar1 = 1;
       }
       else {
         uVar1 = 0;
       }
-      local_94 = local_94 + -8;
-      std::basic_ifstream_char::_dtor(local_8c,2);
-      *in_FS_OFFSET = local_b0;
+      ehDtorCount = ehDtorCount + -8;
+      std::basic_ifstream_char::_dtor(basicIfstream,2);
+      *sehChainHead = sehPrevFrame;
     }
   }
   else {
     uVar1 = 0;
-    std::basic_ifstream_char::_dtor(local_8c,2);
-    *in_FS_OFFSET = local_b0;
+    std::basic_ifstream_char::_dtor(basicIfstream,2);
+    *sehChainHead = sehPrevFrame;
   }
   return uVar1;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00419664  FUN_00419664   (344 bytes)   [unnamed]
+// 0x00419664  ReadDescriptionLine   (344 bytes)   [analysis]
+//   reads the first line of the word list (the dictionary description) into a buffer
 //   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_00419664(LPCSTR param_1,char *param_2,uint param_3,int *param_4)
+undefined4 __cdecl ReadDescriptionLine(LPCSTR fileName,char *buf,uint bufSize,int *lineLen)
 
 {
   int *piVar1;
@@ -1292,8 +1327,8 @@ undefined4 __cdecl FUN_00419664(LPCSTR param_1,char *param_2,uint param_3,int *p
   undefined4 local_154;
   byte local_104 [256];
   
-  *param_4 = 0;
-  piVar1 = fopen(param_1,&DAT_004776f8);
+  *lineLen = 0;
+  piVar1 = fopen(fileName,&DAT_004776f8);
   if (piVar1 == (int *)0x0) {
     uVar2 = 0;
   }
@@ -1306,8 +1341,8 @@ undefined4 __cdecl FUN_00419664(LPCSTR param_1,char *param_2,uint param_3,int *p
       pbVar6 = pbVar6 + 1;
     } while (uVar3 < 0x100);
     while (puVar4 = FUN_00469618(&local_154,0x50,piVar1), puVar4 != (undefined4 *)0x0) {
-      *param_4 = *param_4 + 1;
-      pcVar8 = thunk_FUN_004676d0((char *)&local_154,'\n');
+      *lineLen = *lineLen + 1;
+      pcVar8 = thunk_strchr((char *)&local_154,'\n');
       if (pcVar8 != (char *)0x0) {
         *pcVar8 = '\0';
       }
@@ -1325,7 +1360,7 @@ undefined4 __cdecl FUN_00419664(LPCSTR param_1,char *param_2,uint param_3,int *p
     }
     FUN_00469508(piVar1);
     uVar3 = 0;
-    pcVar8 = param_2;
+    pcVar8 = buf;
     do {
       uVar7 = 0;
       piVar1 = local_554;
@@ -1339,63 +1374,18 @@ undefined4 __cdecl FUN_00419664(LPCSTR param_1,char *param_2,uint param_3,int *p
           uVar5 = (uint)local_104[uVar5 & 0xff]) {
         local_554[uVar5 & 0xff] = 1;
       }
-      if (uVar3 < param_3) {
+      if (uVar3 < bufSize) {
         *pcVar8 = (char)uVar5;
       }
       uVar3 = uVar3 + 1;
       pcVar8 = pcVar8 + 1;
     } while (uVar3 < 0x100);
-    *param_2 = '\0';
-    param_2[10] = '\0';
-    param_2[0xd] = '\0';
+    *buf = '\0';
+    buf[10] = '\0';
+    buf[0xd] = '\0';
     uVar2 = 1;
   }
   return uVar2;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x004198b4  FUN_004198b4   (201 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-int * __cdecl FUN_004198b4(int *param_1,int param_2,int param_3,int param_4)
-
-{
-  HKEY hKey;
-  int iVar1;
-  undefined4 *in_FS_OFFSET;
-  DWORD local_2c;
-  undefined4 local_28;
-  undefined2 local_18;
-  
-  __InitExceptBlockLDTC(0x477d3c);
-  *param_1 = param_3;
-  param_1[1] = 0;
-  while( true ) {
-    if (param_4 == 0) {
-      hKey = (HKEY)0x80000001;
-    }
-    else {
-      hKey = (HKEY)0x80000002;
-    }
-    local_18 = 8;
-    if (*param_1 == 1) {
-      iVar1 = RegCreateKeyExA(hKey,*(LPCSTR *)(param_2 + 8),0,"Position" + 8,0,0x2001f,
-                              (LPSECURITY_ATTRIBUTES)0x0,(PHKEY)(param_1 + 1),&local_2c);
-    }
-    else {
-      iVar1 = RegOpenKeyExA(hKey,*(LPCSTR *)(param_2 + 8),0,0x20019,(PHKEY)(param_1 + 1));
-    }
-    if (iVar1 == 0) break;
-    if (param_4 == 0) {
-      param_1[1] = 0;
-      *in_FS_OFFSET = local_28;
-LAB_0041996b:
-      *in_FS_OFFSET = local_28;
-      return param_1;
-    }
-    param_4 = 0;
-  }
-  *in_FS_OFFSET = local_28;
-  goto LAB_0041996b;
 }
 
 } // namespace tea

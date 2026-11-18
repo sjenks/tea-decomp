@@ -1,5 +1,5 @@
 // TSBuild.exe — runtime / library code "OWL_TXBase"
-// 4 functions, 0x00422d84..0x00422f18. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 6 functions, 0x00422bc0..0x00422f18. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,38 +7,105 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
+// 0x00422bc0  OWL::TXBase::TXBase   (288 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TXBase's vtable at its vptr offset (+0x0) in this
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+undefined4 * __cdecl OWL::TXBase::TXBase(undefined4 *self,int param_2)
+
+{
+  int refs;
+  uint len;
+  int iVar3;
+  int *rep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x47a57c);
+  *self = &std::exception::vftable;
+  *self = &OWL::TXBase::vftable;
+  _DAT_0047a558 = _DAT_0047a558 + 1;
+  iVar3 = operator_new();
+  if (iVar3 != 0) {
+    *(undefined4 *)(iVar3 + 8) = 0;
+    refs = *(int *)(*(int *)(param_2 + 8) + -0xc);
+    if (refs == -1 || refs + 1 < 0) {
+      len = *(uint *)(*(int *)(param_2 + 8) + -4);
+      rep = std::string::__getRep(iVar3,len,len);
+      *(int **)(iVar3 + 8) = rep + 3;
+      memcpy(*(undefined4 **)(iVar3 + 8),*(undefined4 **)(param_2 + 8),len);
+    }
+    else {
+      *(undefined4 *)(iVar3 + 8) = *(undefined4 *)(param_2 + 8);
+      rep = (int *)(*(int *)(iVar3 + 8) + -0xc);
+      if (rep != &g_nullStringRep) {
+        *rep = *rep + 1;
+      }
+    }
+  }
+  self[1] = iVar3;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00422cfc  OWL::TXBase::TXBase_422cfc   (135 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TXBase's vtable at its vptr offset (+0x0) in this
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+undefined4 * __cdecl OWL::TXBase::TXBase_422cfc(undefined4 *self,int *param_2)
+
+{
+  int str;
+  uint *s;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x47a5d4);
+  *self = &std::exception::vftable;
+  *self = &OWL::TXBase::vftable;
+  _DAT_0047a558 = _DAT_0047a558 + 1;
+  str = operator_new();
+  if (str != 0) {
+    s = (uint *)(**(code **)(*param_2 + 4))();
+    std::string::string_from_cstr(str,s);
+  }
+  self[1] = str;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
 // 0x00422d84  OWL::TXBase::~TXBase   (233 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TXBase::_dtor
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-void __cdecl OWL::TXBase::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl OWL::TXBase::_dtor(undefined4 *self,byte dtorFlags)
 
 {
   int iVar1;
-  int iVar2;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x47a614);
-  if (param_1 == (undefined4 *)0x0) goto LAB_00422e5c;
-  *param_1 = &OWL::TXBase::vftable;
+  if (self == (undefined4 *)0x0) goto LAB_00422e5c;
+  *self = &OWL::TXBase::vftable;
   _DAT_0047a558 = _DAT_0047a558 + -1;
-  iVar1 = param_1[1];
+  iVar1 = self[1];
   if (iVar1 != 0) {
     if (*(int *)(iVar1 + 8) != 0) {
       if (*(int *)(*(int *)(iVar1 + 8) + -0xc) != -1) {
-        piVar3 = (int *)(*(int *)(iVar1 + 8) + -0xc);
-        if (piVar3 == &DAT_00485bcc) {
-          iVar2 = 1;
+        strRep = (int *)(*(int *)(iVar1 + 8) + -0xc);
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (piVar3 == &DAT_00485bcc) {
-          iVar2 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *piVar3 = *piVar3 + -1;
-          iVar2 = *piVar3 + 1;
+          *strRep = *strRep + -1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar2 != 0) goto LAB_00422e36;
+        if (prevRefs != 0) goto LAB_00422e36;
       }
       operator_delete();
       *(undefined4 *)(iVar1 + 8) = 0;
@@ -46,70 +113,70 @@ void __cdecl OWL::TXBase::_dtor(undefined4 *param_1,byte param_2)
 LAB_00422e36:
     operator_delete();
   }
-  std::exception::_dtor(param_1,0);
-  if ((param_2 & 1) != 0) {
+  std::exception::_dtor(self,0);
+  if ((dtorFlags & 1) != 0) {
     operator_delete();
   }
 LAB_00422e5c:
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00422e70  OWL::TXBase::vf2   (82 bytes)   [rtti:vtable virtual slot 2]
-undefined4 * __cdecl OWL::TXBase::vf2(int *param_1)
+undefined4 * __cdecl OWL::TXBase::vf2(int *self)
 
 {
-  undefined4 *puVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *txBase;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x47a644);
-  puVar1 = (undefined4 *)operator_new();
-  if (puVar1 != (undefined4 *)0x0) {
-    FUN_00422cfc(puVar1,param_1);
+  txBase = (undefined4 *)operator_new();
+  if (txBase != (undefined4 *)0x0) {
+    OWL::TXBase::TXBase_422cfc(txBase,self);
   }
-  *in_FS_OFFSET = local_2c;
-  return puVar1;
+  *sehChainHead = sehPrevFrame;
+  return txBase;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00422ec4  OWL::TXBase::vf3   (84 bytes)   [rtti:vtable virtual slot 3]
-void __cdecl OWL::TXBase::vf3(int *param_1)
+void __cdecl OWL::TXBase::vf3(int *self)
 
 {
-  undefined4 uVar1;
-  code *pcVar2;
-  uint uVar3;
-  undefined4 uVar4;
-  undefined4 uVar5;
-  undefined4 uVar6;
-  undefined4 local_c [2];
+  undefined4 objectDtor;
+  code *copyCtor;
+  uint copyCtorMask;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined4 txBase [2];
   
   __InitExceptBlockLDTC(0x47a674);
-  uVar6 = 0;
-  uVar5 = 0;
-  uVar4 = 0;
-  uVar3 = 1;
-  pcVar2 = FUN_00422cfc;
-  uVar1 = 0;
-  FUN_00422cfc(local_c,param_1);
-  FUN_00471ae8((uint *)&DAT_0041b820,local_c,uVar1,(undefined*)pcVar2,uVar3,uVar4,uVar5,uVar6);
+  throwLine = 0;
+  throwFile = 0;
+  throwFlags = 0;
+  copyCtorMask = 1;
+  copyCtor = OWL::TXBase::TXBase_422cfc;
+  objectDtor = 0;
+  OWL::TXBase::TXBase_422cfc(txBase,self);
+  _ThrowExceptionLDTC((uint *)&DAT_0041b820,txBase,objectDtor,(undefined*)copyCtor,copyCtorMask,throwFlags,throwFile,throwLine);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00422f18  OWL::TXBase::vf1   (41 bytes)   [rtti:vtable virtual slot 1]
-undefined4 __cdecl OWL::TXBase::vf1(int param_1)
+undefined4 __cdecl OWL::TXBase::vf1(int self)
 
 {
   undefined4 uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x47a68c);
-  uVar1 = *(undefined4 *)(*(int *)(param_1 + 4) + 8);
-  *in_FS_OFFSET = local_28;
+  uVar1 = *(undefined4 *)(*(int *)(self + 4) + 8);
+  *sehChainHead = sehPrevFrame;
   return uVar1;
 }
 

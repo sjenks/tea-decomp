@@ -9,28 +9,28 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x004393a8  OWL::TWindowDC::~TWindowDC   (132 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TWindowDC::_dtor
-int * __cdecl OWL::TWindowDC::_dtor(int *param_1,byte param_2)
+int * __cdecl OWL::TWindowDC::_dtor(int *self,byte dtorFlags)
 
 {
   int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   piVar1 = (int *)__InitExceptBlockLDTC(0x47e9d0);
-  if (param_1 != (int *)0x0) {
-    *(undefined ***)((int)param_1 + 5) = &OWL::TWindowDC::vftable;
-    FUN_00421ef4(param_1);
-    if ((char)param_1[1] != '\0') {
-      ReleaseDC(*(HWND *)((int)param_1 + 0x21),(HDC)*param_1);
+  if (self != (int *)0x0) {
+    *(undefined ***)((int)self + 5) = &OWL::TWindowDC::vftable;
+    FUN_00421ef4(self);
+    if ((char)self[1] != '\0') {
+      ReleaseDC(*(HWND *)((int)self + 0x21),(HDC)*self);
     }
-    *param_1 = 0;
-    OWL::TDC::_dtor(param_1,0);
-    piVar1 = param_1;
-    if ((param_2 & 1) != 0) {
+    *self = 0;
+    OWL::TDC::_dtor(self,0);
+    piVar1 = self;
+    if ((dtorFlags & 1) != 0) {
       piVar1 = (int *)operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return piVar1;
 }
 

@@ -9,161 +9,161 @@ namespace tea {
 
 // ---- functions (825) ----
 void __stdcall entry(void);
-void __stdcall FUN_00401012(void);
-void __cdecl __GetExceptDLLinfo(undefined4 *param_1);
-undefined4 __stdcall FUN_00401140(void);
-void __stdcall FUN_00401150(void);
-void __stdcall FUN_004011a8(void);
-undefined4 __stdcall main_(int param_1,int param_2);
-void __cdecl FUN_0040483c(undefined4 param_1,int param_2,int param_3);
-void __cdecl FUN_004048f4(int param_1,int param_2,int param_3);
-int __cdecl FUN_00404d2c(int param_1,int param_2,int param_3);
-int __cdecl FUN_00404d5c(int param_1,int param_2,int param_3);
-void __cdecl FUN_00404ea8(int param_1,int param_2);
+void __stdcall __startup(void);
+void __cdecl __GetExceptDLLinfo(undefined4 *info);
+undefined4 __stdcall __getTlsBlock(void);
+void __stdcall InitRegistryPaths(void);
+void __stdcall DestroyRegistryPaths(void);
+undefined4 __stdcall main_(int argc,int argv);
+namespace std { void __cdecl _Destroy_range_string(undefined4 vec,int first,int last); }
+namespace std::vector_string { void __cdecl insert_aux(int vec,int pos,int value); }
+namespace std { int __cdecl copy_backward_string(int first,int last,int destEnd); }
+namespace std { int __cdecl uninitialized_copy_string(int first,int last,int dest); }
+namespace std { void __cdecl _Destroy_range_16(int first,int last); }
 namespace std::exception { undefined * __stdcall vf1(void); }
 namespace std::bad_alloc { undefined * __stdcall vf1(void); }
-namespace std::string { void __cdecl _dtor(int param_1,byte param_2); }
-namespace std::vector_std_string { void __cdecl _dtor(int param_1,byte param_2); }
-namespace std::vector_MatchEngine_ptr { void __cdecl _dtor(int param_1,byte param_2); }
-void __cdecl FUN_004050b4(undefined4 param_1,int param_2,int param_3);
-void __stdcall FUN_004050cc(void);
-void __stdcall FUN_00405164(void);
-undefined4 * __cdecl FUN_004051bc(undefined4 *param_1,uint *param_2);
-namespace TSDictionaryList { void __cdecl _dtor(int param_1,byte param_2); }
-void __cdecl FUN_004052f4(undefined4 param_1,int param_2,int param_3);
-undefined4 * __cdecl FUN_0040530c(uint *param_1);
-void __cdecl FUN_004061d0(int param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_004063a8(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_004063cc(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-void __cdecl FUN_0040644c(int param_1,int param_2);
-namespace TSDictionaryList { void __cdecl ReleaseDictionaries(int param_1); }
-int * __cdecl FUN_00406564(int *param_1,int *param_2,int *param_3);
-undefined4 * __cdecl FUN_00406584(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-namespace TSDictionaryList { int __cdecl GetCount(int param_1); }
-undefined4 __cdecl FUN_004065c8(int param_1);
-undefined1 __cdecl FUN_00406600(int param_1,int param_2);
-undefined4 __cdecl FUN_004066fc(int param_1,int param_2);
-undefined4 __cdecl FUN_00406720(int param_1,int param_2);
-namespace TSDictionaryList { undefined2 __cdecl GetNumLengths(int param_1,int param_2); }
-namespace TSDictionaryList { undefined4 __cdecl GetWordStreamOffset(int param_1,int param_2,int param_3); }
-undefined4 __cdecl FUN_00406780(int param_1,int param_2,int param_3);
-int __cdecl FUN_004067a0(int param_1,int param_2);
-namespace TSDictionaryList::Dictionary { undefined4 * __cdecl Dictionary(undefined4 *param_1,int param_2); }
-namespace TSDictionaryList::Dictionary { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace TSDictionaryList::Dictionary { int * __cdecl Load(int *param_1,int param_2); }
-namespace TSDictionaryList::Dictionary { undefined4 * __cdecl Unload(int param_1); }
-namespace TSDictionaryList::Dictionary { int __cdecl EnsureCurrent(int *param_1); }
-namespace TSDictionaryList::Dictionary { undefined4 __cdecl vf4(int param_1); }
-namespace TSDictionaryList::Dictionary { int __cdecl GetFileTitle(int param_1,int param_2); }
-namespace TSDictionaryList::Dictionary { undefined4 __cdecl vf6(int param_1); }
-namespace TSDictionaryList::Dictionary { void __cdecl GetCounts(int param_1,int *param_2,int *param_3,int *param_4,int *param_5); }
-namespace TSDictionaryList::Dictionary { uint __cdecl GetSummaryText(int *param_1,int param_2); }
-namespace TSDictionaryList::Dictionary { int __cdecl GetFileDateText(int param_1,int param_2); }
-namespace TSDictionaryList::Dictionary { int __cdecl GetDescription(int param_1,int param_2); }
-namespace MatchEngine { void __cdecl _dtor(int param_1,byte param_2); }
-namespace std::logic_error { undefined4 __cdecl vf1(int param_1); }
-namespace std::vector_TSDictionaryList_Dictionary_ptr { void __cdecl _dtor(int param_1,byte param_2); }
-int __cdecl FUN_00407ae0(int param_1,int param_2);
-char * __cdecl FUN_00408894(char *param_1,char param_2,int param_3);
-int __cdecl FUN_004088c0(int param_1,int param_2,int param_3);
-int __cdecl FUN_00408b40(int param_1,int param_2);
-int __cdecl GetFileTitleString(int param_1,int param_2);
-bool __cdecl FUN_00409000(int param_1);
-int __cdecl GetProgramDirectory(int param_1);
-int __cdecl FUN_00409208(int param_1,int param_2);
-bool __cdecl ReadFileTime(int param_1,char param_2,LPFILETIME param_3);
-namespace std::locale { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace InputEngine { undefined4 * __cdecl InputEngine(undefined4 *param_1,int param_2,int param_3); }
-namespace InputEngine { void __cdecl _dtor(int param_1,byte param_2); }
-namespace InputEngine { bool __cdecl StartLength(int param_1,int param_2); }
-namespace InputEngine { char * __cdecl NextMatch(int param_1,int param_2); }
-namespace MatchEngineSet { uint __cdecl EvalLogic(char param_1,int param_2,int param_3,byte *param_4,int *param_5); }
-namespace InputEngine { bool __cdecl OpenFile(int param_1); }
-namespace InputEngine { char * __cdecl GetAnnotation(int param_1); }
-undefined4 __cdecl FUN_0040a360(int param_1,undefined4 param_2);
-namespace MatchEngine { int __cdecl CompilePattern(int *param_1,int *param_2,int param_3,int *param_4,int *param_5,int *param_6); }
-namespace MatchEngine { int __cdecl CompileTemplate(int param_1,int *param_2,int param_3,int *param_4,int *param_5,undefined4 *param_6); }
-namespace MatchEngine { int __cdecl CompileAnagram(int *param_1,undefined4 *param_2,int param_3,undefined4 *param_4,int param_5); }
-namespace MatchEngine { void __cdecl Compile(int *param_1,int param_2,int param_3,uint *param_4,int param_5); }
-namespace MatchEngine { undefined4 __cdecl IsValid(int param_1); }
-namespace MatchEngine { undefined1 __cdecl GetStatus(int param_1); }
-namespace MatchEngine { undefined4 * __cdecl MatchEngine(undefined4 *param_1); }
-namespace MatchEngine { void __cdecl SetShortest(int param_1,int param_2); }
-namespace MatchEngine { void __cdecl SetLongest(int param_1,int param_2); }
-namespace MatchEngine { void __cdecl SetWordLength(int param_1,int param_2); }
-namespace MatchEngine { bool __cdecl MatchWord(int param_1,int param_2); }
-namespace MatchEngine { void __cdecl FormatBalance(int param_1,int param_2); }
-namespace MatchEngine { int __cdecl GetMinLength(int param_1); }
-namespace MatchEngine { int __cdecl GetMaxLength(int param_1); }
-namespace VariableValues { bool __cdecl Bind(int param_1,char param_2); }
-namespace VariableValues { undefined1 * __cdecl Get(int param_1); }
-namespace VariableValues { undefined4 __cdecl IsLetterBound(char param_1); }
+namespace std::string { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::vector_std_string { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::vector_MatchEngine_ptr { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std { void __cdecl _Destroy_range_ptr(undefined4 vec,int first,int last); }
+void __stdcall InitDictionaryCache(void);
+void __stdcall DestroyDictionaryCache(void);
+namespace TSDictionaryList { undefined4 * __cdecl TSDictionaryList(undefined4 *self,uint *paths); }
+namespace TSDictionaryList { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std { void __cdecl _Destroy_range_ptr_4052f4(undefined4 vec,int first,int last); }
+namespace TSDictionaryList { undefined4 * __cdecl Open(uint *paths); }
+namespace std::vector_ptr { void __cdecl insert_aux(int vec,undefined4 *pos,undefined4 *value); }
+namespace std { undefined4 * __cdecl copy_backward_ptr(undefined4 *first,undefined4 *last,undefined4 *destEnd); }
+namespace std { undefined4 * __cdecl copy_ptr(undefined4 *first,undefined4 *last,undefined4 *dest); }
+namespace std { void __cdecl _Destroy_range_ptr_40644c(int first,int last); }
+namespace TSDictionaryList { void __cdecl ReleaseDictionaries(int self); }
+namespace std { int * __cdecl find_ptr(int *first,int *last,int *value); }
+namespace std { undefined4 * __cdecl copy_ptr_406584(undefined4 *first,undefined4 *last,undefined4 *dest); }
+namespace TSDictionaryList { int __cdecl GetCount(int self); }
+namespace TSDictionaryList { undefined4 __cdecl GetFirstMissingPath(int self); }
+namespace TSDictionaryList { undefined1 __cdecl IsLoaded(int self,int index); }
+namespace TSDictionaryList { undefined4 __cdecl EnsureCurrent(int self,int index); }
+namespace TSDictionaryList { undefined4 __cdecl GetPath(int self,int index); }
+namespace TSDictionaryList { undefined2 __cdecl GetNumLengths(int self,int index); }
+namespace TSDictionaryList { undefined4 __cdecl GetWordStreamOffset(int self,int index,int length); }
+namespace TSDictionaryList { undefined4 __cdecl GetLetterChar(int self,int index,int letterClass); }
+namespace TSDictionaryList { int __cdecl GetNumUsedLetters(int self,int index); }
+namespace TSDictionaryList::Dictionary { undefined4 * __cdecl Dictionary(undefined4 *self,int path); }
+namespace TSDictionaryList::Dictionary { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace TSDictionaryList::Dictionary { int * __cdecl Load(int *self,int reload); }
+namespace TSDictionaryList::Dictionary { undefined4 * __cdecl Unload(int self); }
+namespace TSDictionaryList::Dictionary { int __cdecl EnsureCurrent(int *self); }
+namespace TSDictionaryList::Dictionary { undefined4 __cdecl GetPathData(int self); }
+namespace TSDictionaryList::Dictionary { int __cdecl GetFileTitle(int result,int self); }
+namespace TSDictionaryList::Dictionary { undefined4 __cdecl GetFileName(int self); }
+namespace TSDictionaryList::Dictionary { void __cdecl GetCounts(int self,int *totalWords,int *totalLinked,int *shortest,int *longest); }
+namespace TSDictionaryList::Dictionary { uint __cdecl GetSummaryText(int *self,int out); }
+namespace TSDictionaryList::Dictionary { int __cdecl GetFileDateText(int result,int self); }
+namespace TSDictionaryList::Dictionary { int __cdecl GetDescription(int result,int self); }
+namespace MatchEngine { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::logic_error { undefined4 __cdecl vf1(int self); }
+namespace std::vector_TSDictionaryList_Dictionary_ptr { void __cdecl _dtor(int self,byte dtorFlags); }
+int __cdecl ExpandLongPathName(int result,int path);
+char * __cdecl memrchr(char *p,char ch,int n);
+namespace std { int __cdecl operator_plus(int result,int lhs,int rhs); }
+int __cdecl AppendChar(int result,int str);
+int __cdecl GetFileTitleString(int result,int path);
+bool __cdecl IsRelativePath(int path);
+int __cdecl GetProgramDirectory(int result);
+int __cdecl ResolveRelativePaths(int result,int paths);
+bool __cdecl ReadFileTime(int path,char wantWriteTime,LPFILETIME timeOut);
+namespace std::locale { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace InputEngine { undefined4 * __cdecl InputEngine(undefined4 *self,int dictList,int dictIndex); }
+namespace InputEngine { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace InputEngine { bool __cdecl StartLength(int self,int length); }
+namespace InputEngine { char * __cdecl NextMatch(int self,int matchSet); }
+namespace MatchEngineSet { uint __cdecl EvalLogic(char mode,int wordBuf,int length,byte *ops,int *engines); }
+namespace InputEngine { bool __cdecl OpenFile(int self); }
+namespace InputEngine { char * __cdecl GetAnnotation(int self); }
+namespace MatchEngine { undefined4 __cdecl Emit(int self,undefined4 op); }
+namespace MatchEngine { int __cdecl CompilePattern(int *self,int *cursor,int bc,int *outVarPos,int *outEndPos,int *outExtra); }
+namespace MatchEngine { int __cdecl CompileTemplate(int self,int *cursorRef,int bc,int *outVarPos,int *outEndPos,undefined4 *outExtra); }
+namespace MatchEngine { int __cdecl CompileAnagram(int *self,undefined4 *cursorRef,int bc,undefined4 *outExtra,int templateExtra); }
+namespace MatchEngine { void __cdecl Compile(int *self,int dictList,int dictIndex,uint *patternText,int ignoreUnusedPunctuation); }
+namespace MatchEngine { undefined4 __cdecl IsValid(int self); }
+namespace MatchEngine { undefined1 __cdecl GetStatus(int self); }
+namespace MatchEngine { undefined4 * __cdecl MatchEngine(undefined4 *self); }
+namespace MatchEngine { void __cdecl SetShortest(int self,int shortest); }
+namespace MatchEngine { void __cdecl SetLongest(int self,int longest); }
+namespace MatchEngine { void __cdecl SetWordLength(int self,int length); }
+namespace MatchEngine { bool __cdecl MatchWord(int self,int wordBuf); }
+namespace MatchEngine { void __cdecl FormatBalance(int self,int out); }
+namespace MatchEngine { int __cdecl GetMinLength(int self); }
+namespace MatchEngine { int __cdecl GetMaxLength(int self); }
+namespace VariableValues { bool __cdecl Bind(int var,char letter); }
+namespace VariableValues { undefined1 * __cdecl Get(int var); }
+namespace VariableValues { undefined4 __cdecl IsLetterBound(char letter); }
 namespace VariableValues { void __stdcall Clear(void); }
-namespace VariableValues { void __cdecl Save(undefined1 *param_1); }
-namespace VariableValues { void __cdecl Restore(undefined1 *param_1); }
+namespace VariableValues { void __cdecl Save(undefined1 *snapshot); }
+namespace VariableValues { void __cdecl Restore(undefined1 *snapshot); }
 namespace MatchEngine { void __stdcall ResetMatchState(void); }
-int __cdecl FUN_0040da88(int param_1);
-namespace Pattern { undefined4 * __cdecl Pattern(undefined4 *param_1); }
-namespace Pattern { void __cdecl _dtor(int param_1,byte param_2); }
-namespace Pattern { int __cdecl Add(int *param_1,int param_2); }
-namespace Pattern { void __cdecl Clear(undefined4 *param_1); }
-namespace Pattern { int __cdecl At(int param_1,byte param_2); }
-namespace MatchEngine { byte * MatchFixedTemplate(undefined4 param_1,int param_2,int param_3); }
-namespace MatchEngine { byte * MatchDistinctAnagram(undefined4 param_1,int param_2,byte *param_3); }
-namespace MatchEngine { byte * MatchMultiAnagram(undefined4 param_1,int param_2,byte *param_3); }
-namespace MatchEngine { byte * RunTemplateVM(int param_1,byte *param_2,byte *param_3,int param_4,int param_5); }
-namespace MatchEngine { byte * AnagramSingleLetters(undefined4 param_1,byte *param_2,int param_3,int param_4); }
-namespace MatchEngine { byte * AnagramMultiLetters(undefined4 param_1,byte *param_2,int param_3,int param_4); }
-int FUN_0040e474(undefined4 param_1,int param_2);
-namespace MatchEngine { int AnagramChoiceLists(undefined4 param_1,byte *param_2,int param_3,int param_4,int param_5,int param_6, int param_7,undefined4 param_8); }
-namespace MatchEngine { void AnagramChoiceListsOp(int param_1,byte *param_2,int param_3,int param_4,int param_5); }
-namespace MatchEngine { int AnagramVariables(undefined4 param_1,int param_2,byte *param_3,int param_4,int param_5,int param_6); }
-int FUN_0040e700(undefined4 param_1,byte *param_2,byte *param_3,int param_4,int param_5);
-namespace MatchEngine { int AnagramSubPattern(int param_1,byte *param_2,int param_3,char param_4,int param_5,int param_6, int param_7,uint param_8,int param_9,undefined4 param_10); }
-namespace MatchEngine { byte * RunAnagramVM(int param_1,byte *param_2,byte *param_3,undefined4 param_4,uint param_5, int param_6,undefined4 param_7); }
-namespace MatchEngine { void ComputeBalance(char *param_1,byte *param_2,int param_3); }
-namespace MatchEngine { byte * MatchGeneral(int param_1,char *param_2,byte *param_3,int param_4,int param_5,int param_6); }
-namespace VariableValues { void __cdecl _dtor(char *param_1,byte param_2); }
-int __cdecl FilterWordByCaseMode(int param_1,int param_2,char param_3);
-namespace TEAViewProfileWindows { int __cdecl Load(int param_1,int param_2); }
-namespace TEAViewProfileWindows { void __cdecl _dtor(int param_1,byte param_2); }
-int __cdecl ExpandQueryMacros(int param_1,int param_2,int param_3);
-void __cdecl LoadPatternOptions(int param_1,int param_2);
-int __stdcall FUN_00411910(void);
-namespace Persist { char * __cdecl Persist(char *param_1,int param_2,char param_3,char param_4); }
-namespace Persist { void __cdecl _dtor(int param_1,byte param_2); }
-namespace Persist { undefined4 __cdecl QueryValueSized(int param_1,int param_2,int param_3); }
-namespace Persist { undefined4 __cdecl QueryValue(int param_1,int param_2,undefined4 *param_3); }
-undefined4 __cdecl FUN_00411b14(int param_1,int param_2,int param_3,uint *param_4);
-uint __cdecl FUN_00411c80(int param_1,int param_2,uint *param_3);
-uint * __cdecl FUN_00411d78(char *param_1,uint *param_2);
-void __cdecl FUN_00411dd8(char *param_1,uint *param_2);
-undefined4 * __cdecl FUN_00411e94(undefined4 *param_1);
-namespace MatchEngineSet { void __cdecl _dtor(int param_1,byte param_2); }
-namespace MatchEngineSet { undefined1 __cdecl Compile(int param_1,int param_2,int param_3,int param_4,int param_5,int param_6,int param_7); }
-undefined4 * __cdecl FUN_004133f0(undefined4 *param_1,int param_2);
-void __cdecl FUN_004134dc(int param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_004136b4(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_004136d8(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-void __cdecl FUN_00413758(int param_1,int param_2);
-undefined4 __cdecl FUN_00413770(int param_1,int param_2);
-void __cdecl FUN_00413804(int param_1,int param_2,int param_3);
-void __cdecl FUN_00413da4(int param_1,int *param_2,int *param_3);
-void __cdecl FUN_00413e18(int param_1);
-void __cdecl FUN_00414468(int param_1,uint param_2);
-undefined4 __cdecl FUN_00414508(int param_1,undefined4 *param_2,uint param_3,undefined4 *param_4);
-void __cdecl FUN_004147b0(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-void __cdecl FUN_004147d0(undefined4 *param_1,int param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_0041484c(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 __cdecl FUN_00414870(byte *param_1,char *param_2);
-bool __cdecl FUN_00414888(byte *param_1,char *param_2);
-void __cdecl FUN_00414a00(byte param_1,byte *param_2,byte *param_3);
-undefined4 __cdecl FUN_00414a84(byte *param_1,char *param_2);
-undefined4 __cdecl FUN_00414a9c(byte *param_1,char *param_2);
-int __cdecl FUN_00414ab4(int param_1,int param_2);
-namespace Common { void __cdecl _dtor(int param_1,byte param_2); }
-undefined4 __cdecl FUN_00414ea8(int param_1,int param_2,int param_3);
-undefined4 * __cdecl calloc(int param_1,int param_2);
+namespace std::string { int __cdecl string(int self); }
+namespace Pattern { undefined4 * __cdecl Pattern(undefined4 *self); }
+namespace Pattern { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace Pattern { int __cdecl Add(int *self,int str); }
+namespace Pattern { void __cdecl Clear(undefined4 *self); }
+namespace Pattern { int __cdecl At(int self,byte index); }
+namespace MatchEngine { byte * MatchFixedTemplate(undefined4 self,int bc,int wordBuf); }
+namespace MatchEngine { byte * MatchDistinctAnagram(undefined4 self,int bc,byte *letters); }
+namespace MatchEngine { byte * MatchMultiAnagram(undefined4 self,int bc,byte *letters); }
+namespace MatchEngine { byte * RunTemplateVM(int self,byte *bc,byte *wordBuf,int punctIdx,int slack); }
+namespace MatchEngine { byte * AnagramSingleLetters(undefined4 self,byte *bc,int hist,int budget); }
+namespace MatchEngine { byte * AnagramMultiLetters(undefined4 self,byte *bc,int hist,int budget); }
+namespace MatchEngine { int AnagramEnd(undefined4 self,int bc); }
+namespace MatchEngine { int AnagramChoiceLists(undefined4 self,byte *bc,int hist,int idx,int mult,int allowed, int budget,undefined4 numLetters); }
+namespace MatchEngine { void AnagramChoiceListsOp(int self,byte *bc,int hist,int budget,int numLetters); }
+namespace MatchEngine { int AnagramVariables(undefined4 self,int varCounts,byte *hist,int var,int budget,int numLetters); }
+namespace MatchEngine { int AnagramBoundVariables(undefined4 self,byte *varCounts,byte *hist,int budget,int numLetters); }
+namespace MatchEngine { int AnagramSubPattern(int self,byte *bc,int letters,char op,int mult,int sub, int punctIdx,uint budget,int n,undefined4 numLetters); }
+namespace MatchEngine { byte * RunAnagramVM(int self,byte *bc,byte *letters,undefined4 punctIdx,uint budget, int n,undefined4 numLetters); }
+namespace MatchEngine { void ComputeBalance(char *bc,byte *letters,int n); }
+namespace MatchEngine { byte * MatchGeneral(int self,char *bc,byte *wordBuf,int punctIdx,int slack,int n); }
+namespace VariableValues { void __cdecl _dtor(char *self,byte dtorFlags); }
+int __cdecl FilterWordByCaseMode(int result,int word_,char mode);
+namespace TEAViewProfileWindows { int __cdecl TEAViewProfileWindows(int self,int keyPath); }
+namespace TEAViewProfileWindows { void __cdecl _dtor(int self,byte dtorFlags); }
+int __cdecl ExpandQueryMacros(int result,int expansions,int query);
+void __cdecl LoadPatternOptions(int options,int keyPath);
+int __stdcall NextTokenInt(void);
+namespace Persist { char * __cdecl Persist(char *self,int keyPath,char create,char tryLocalMachine); }
+namespace Persist { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace Persist { undefined4 __cdecl QueryString(int self,int valueName,int out); }
+namespace Persist { undefined4 __cdecl QueryDword(int self,int valueName,undefined4 *out); }
+namespace Persist { undefined4 __cdecl QueryFont(int self,int valueName,int defaultText,uint *logFont); }
+namespace Persist { uint __cdecl QueryColour(int self,int valueName,uint *colour); }
+uint * __cdecl ParseColour(char *text,uint *colour);
+void __cdecl ParseLogFont(char *text,uint *logFont);
+namespace MatchEngineSet { undefined4 * __cdecl MatchEngineSet(undefined4 *self); }
+namespace MatchEngineSet { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace MatchEngineSet { undefined1 __cdecl Compile(int self,int dictList,int dictIndex,int query,int shortest,int longest,int ignoreUnusedPunctuation); }
+namespace std::logic_error { undefined4 * __cdecl logic_error_copy(undefined4 *self,int other); }
+namespace std::vector_MatchEngine_ptr { void __cdecl insert_aux(int vec,undefined4 *pos,undefined4 *value); }
+namespace std { undefined4 * __cdecl copy_backward_ptr_4136b4(undefined4 *first,undefined4 *last,undefined4 *destEnd); }
+namespace std { undefined4 * __cdecl copy_ptr_4136d8(undefined4 *first,undefined4 *last,undefined4 *dest); }
+namespace std { void __cdecl _Destroy_range_ptr_413758(int first,int last); }
+namespace MatchEngineSet { undefined4 __cdecl SetWordLength(int self,int length); }
+namespace MatchEngineSet { void __cdecl GetBalanceText(int self,int prefix,int out); }
+namespace MatchEngineSet { void __cdecl GetLengthRange(int self,int *first,int *last); }
+namespace MatchEngineSet { void __cdecl Clear(int self); }
+namespace std::vector_MatchEngine_ptr { void __cdecl resize(int vec,uint n); }
+namespace std::vector_MatchEngine_ptr { undefined4 __cdecl insert_fill(int vec,undefined4 *first,uint n,undefined4 *value); }
+namespace std { void __cdecl fill_ptr(undefined4 *first,undefined4 *last,undefined4 *value); }
+namespace std { void __cdecl fill_n_ptr(undefined4 *first,int n,undefined4 *value); }
+namespace std { undefined4 * __cdecl copy_ptr_41484c(undefined4 *first,undefined4 *last,undefined4 *dest); }
+undefined4 __cdecl CheckLicenseKey(byte *owner,char *key);
+bool __cdecl CheckLicenseKeyImpl(byte *owner,char *key);
+void __cdecl LicenseHashByte(byte input,byte *state,byte *polynomial);
+undefined4 __cdecl CheckLicenseKey2(byte *owner,char *key);
+undefined4 __cdecl CheckLicenseKey3(byte *owner,char *key);
+int __cdecl GetCommonIniPath(int result,int subdir);
+namespace Common { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace Common { undefined4 __cdecl ReadLicense(int self,int owner,int key); }
+undefined4 * __cdecl calloc(int count,int size);
 void __stdcall operator_delete(void);
 void __stdcall operator_delete_array(void);
 undefined4 __cdecl set_new_handler(undefined4 param_1);
@@ -176,10 +176,10 @@ void __cdecl _vector_delete_ldtc_(int param_1,int param_2,int param_3,uint param
 int __cdecl FUN_00415144(int param_1,int param_2,int param_3,uint param_4,undefined *param_5);
 int * __cdecl _vector_new_ldtc_(int *param_1,int param_2,int param_3,uint param_4,undefined *param_5);
 bool FUN_0041543c(int param_1,undefined4 *param_2,uint *param_3);
-bool FUN_004154a8(undefined4 *param_1,SIZE_T param_2);
-undefined4 FUN_004154d0(LPVOID param_1,int param_2);
-undefined4 FUN_0041551c(LPVOID param_1,SIZE_T param_2);
-undefined4 FUN_00415534(LPVOID param_1);
+bool FUN_004154a8(undefined4 *param_1,SIZE_T size);
+undefined4 FUN_004154d0(LPVOID address,int param_2);
+undefined4 FUN_0041551c(LPVOID address,SIZE_T size);
+undefined4 FUN_00415534(LPVOID address);
 undefined4 __cdecl FUN_00415570(int *param_1,int *param_2,int *param_3);
 undefined4 __stdcall FUN_004155ec(void);
 undefined4 __stdcall malloc(void);
@@ -210,51 +210,51 @@ void __stdcall FUN_00416344(void);
 void __stdcall FUN_00416348(void);
 void __cdecl FUN_0041662c(int param_1);
 void __cdecl FUN_00416664(int param_1);
-void __cdecl FUN_0041669c(int param_1);
-undefined4 __cdecl FUN_00416734(int param_1);
-int __cdecl FUN_00416740(int param_1);
+void __cdecl FUN_0041669c(int str);
+namespace std::string { undefined4 __cdecl __data(int param_1); }
+namespace std::string { int __cdecl __getRepOf(int param_1); }
 int __cdecl FUN_00416754(int *param_1);
 int __cdecl FUN_00416760(int *param_1);
-undefined4 * __stdcall FUN_00416784(void);
+namespace std::string { undefined4 * __stdcall __nullref(void); }
 undefined4 * __cdecl FUN_0041678c(undefined4 *param_1);
 undefined4 * __cdecl FUN_004167c0(undefined4 *param_1,undefined4 param_2);
 int __cdecl FUN_004167f4(int *param_1);
-undefined4 __cdecl FUN_00416814(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator_416814(undefined4 param_1); }
 void __stdcall FUN_0041683c(void);
 void __stdcall FUN_0041684c(void);
-undefined4 __cdecl FUN_00416854(undefined4 param_1);
-undefined4 __cdecl FUN_0041687c(int param_1);
+namespace std::allocator { undefined4 __cdecl allocator_416854(undefined4 param_1); }
+namespace std::string { undefined4 __cdecl size(int self); }
 void __stdcall FUN_00416890(void);
 int __cdecl FUN_004168a0(int param_1,int param_2,undefined4 *param_3);
 int __cdecl FUN_004168c4(int param_1,int param_2);
-undefined4 __cdecl FUN_004168f8(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator(undefined4 param_1); }
 int * __cdecl FUN_00416920(int *param_1);
 undefined4 __cdecl FUN_0041695c(undefined4 *param_1);
 undefined4 __cdecl FUN_00416968(int *param_1,uint param_2);
 void __cdecl FUN_00416980(int param_1,uint *param_2,undefined4 param_3);
 undefined4 * __stdcall FUN_004169b8(void);
 undefined4 * __cdecl FUN_00416a0c(undefined4 *param_1);
-undefined4 * __cdecl FUN_00416a38(undefined4 *param_1,undefined4 param_2,undefined4 param_3);
+namespace std::locale::facet { undefined4 * __cdecl facet(undefined4 *self,undefined4 param_2,undefined4 param_3); }
 int * __cdecl FUN_00416a80(int *param_1,int param_2);
 undefined4 __cdecl FUN_00416b00(int param_1);
 int __cdecl FUN_00416b0c(int *param_1,int param_2);
 int * __cdecl FUN_00416b20(int *param_1,int param_2,undefined4 *param_3);
-namespace __rwstd::locale_vector_rwstd_facet_imp_ptr { void __cdecl _dtor(int *param_1,byte param_2); }
-int __cdecl FUN_00416bd0(int param_1,int param_2);
+namespace __rwstd::locale_vector_rwstd_facet_imp_ptr { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace std::string { int __cdecl operator_assign(int self,int other); }
 void __cdecl FUN_00416c40(int *param_1);
 undefined4 __cdecl FUN_00416c58(int param_1);
-int __cdecl FUN_00416c68(int param_1,uint *param_2);
-undefined4 __cdecl FUN_00416de0(undefined4 param_1);
-undefined4 * __cdecl FUN_00416de8(undefined4 *param_1,int param_2);
+namespace std::string { int __cdecl assign_cstr(int self,uint *s); }
+namespace __rwstd::except_msg_string { undefined4 __cdecl msgstr(undefined4 param_1); }
+namespace std::logic_error { undefined4 * __cdecl logic_error_416de8(undefined4 *logicError,int str); }
 bool __cdecl FUN_00416e3c(char *param_1,char *param_2);
 void __cdecl FUN_00416e54(undefined1 *param_1,undefined1 *param_2);
-char * __cdecl FUN_00416e64(uint *param_1);
-namespace std::string { int __cdecl string_from_cstr(int param_1,uint *param_2); }
-undefined4 * __cdecl FUN_00416fa4(undefined4 *param_1,undefined4 *param_2,uint param_3);
+char * __cdecl FUN_00416e64(uint *s);
+namespace std::string { int __cdecl string_from_cstr(int self,uint *s); }
+undefined4 * __cdecl FUN_00416fa4(undefined4 *param_1,undefined4 *src,uint n);
 int __cdecl FUN_00416fc4(int param_1,undefined4 param_2);
-namespace std::string { int * __cdecl __getRep(undefined4 param_1,uint param_2,uint param_3); }
+namespace std::string { int * __cdecl __getRep(undefined4 alloc,uint capacity,uint length); }
 int __stdcall FUN_004170bc(void);
-undefined4 * __cdecl FUN_00417128(undefined4 *param_1);
+namespace std::bad_alloc { undefined4 * __cdecl bad_alloc(undefined4 *self); }
 undefined4 * __cdecl FUN_00417168(undefined4 *param_1,int param_2);
 void __cdecl FUN_0041719c(undefined4 param_1,undefined4 param_2,undefined4 *param_3);
 void __cdecl FUN_004171b4(undefined4 param_1,undefined4 *param_2);
@@ -264,55 +264,55 @@ void __cdecl FUN_00417298(undefined4 param_1,undefined4 param_2,undefined1 *para
 void __cdecl FUN_004172b0(undefined4 param_1,undefined1 *param_2);
 void __cdecl FUN_004172cc(int *param_1,int param_2);
 undefined4 __stdcall FUN_004172e8(void);
-int __cdecl FUN_004172ec(int param_1);
-int __cdecl FUN_004172f8(int param_1,uint param_2,uint param_3,uint param_4,uint param_5);
-int __cdecl FUN_00417320(int param_1,uint param_2,uint param_3,uint param_4,uint param_5,uint param_6, uint param_7);
-undefined4 * __cdecl FUN_00417718(undefined4 *param_1,int param_2);
-undefined4 * __cdecl FUN_00417760(undefined4 *param_1,int param_2);
+namespace std::string { int __cdecl __rep_data(int rep); }
+int __cdecl FUN_004172f8(int str,uint pos,uint n1,uint s,uint param_5);
+namespace std::string { int __cdecl replace(int self,uint pos,uint n1,uint s,uint n2,uint param_6, uint param_7); }
+namespace std::out_of_range { undefined4 * __cdecl out_of_range(undefined4 *self,int what); }
+namespace std::length_error { undefined4 * __cdecl length_error(undefined4 *self,int what); }
 undefined4 * __cdecl FUN_004177a8(undefined4 *param_1,undefined4 *param_2,uint param_3);
 undefined4 __cdecl FUN_004177c8(int param_1);
 undefined4 __cdecl FUN_004177e0(int param_1);
-undefined4 __cdecl FUN_004177ec(int param_1);
-namespace __rwstd::locale_vector_std_string { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace std::wstring { void __cdecl _dtor(int param_1,byte param_2); }
-void __cdecl FUN_0041790c(int param_1);
+namespace std::string { undefined4 __cdecl data(int self); }
+namespace __rwstd::locale_vector_std_string { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace std::wstring { void __cdecl _dtor(int self,byte dtorFlags); }
+void __cdecl FUN_0041790c(int str);
 undefined4 __cdecl FUN_004179a4(int param_1);
-int __cdecl FUN_004179b0(int param_1);
+namespace std::string { int __cdecl __getRepOf_4179b0(int param_1); }
 int __cdecl FUN_004179c4(int *param_1);
 int __cdecl FUN_004179d0(int *param_1);
 undefined * __stdcall FUN_004179f4(void);
 undefined4 * __cdecl FUN_004179fc(undefined4 *param_1);
 undefined4 * __cdecl FUN_00417a34(undefined4 *param_1,undefined4 param_2);
 int __cdecl FUN_00417a68(int *param_1);
-undefined4 __cdecl FUN_00417a88(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator_417a88(undefined4 param_1); }
 void __stdcall FUN_00417ab0(void);
 void __stdcall FUN_00417ac0(void);
-undefined4 __cdecl FUN_00417ac8(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator_417ac8(undefined4 param_1); }
 void __stdcall FUN_00417af0(void);
 int __cdecl FUN_00417b00(int param_1,int param_2,undefined4 *param_3);
 int __cdecl FUN_00417b24(int param_1,int param_2);
-undefined4 __cdecl FUN_00417b58(undefined4 param_1);
-undefined4 __cdecl FUN_00417b80(int param_1);
+namespace std::allocator { undefined4 __cdecl allocator_417b58(undefined4 param_1); }
+namespace std::string { undefined4 __cdecl size_417b80(int self); }
 int __cdecl FUN_00417b94(int param_1);
 int __cdecl FUN_00417c04(int param_1,undefined4 *param_2);
 int __cdecl FUN_00417c40(int param_1);
 int __cdecl FUN_00417ccc(int param_1,undefined4 *param_2);
 int __cdecl FUN_00417d08(int param_1);
 void __cdecl FUN_00417d14(int *param_1);
-namespace std::locale::facet { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace std::locale::facet { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 undefined4 * __cdecl FUN_00417d8c(undefined4 *param_1,undefined4 param_2);
-undefined4 * __cdecl FUN_00417df4(undefined4 *param_1);
+namespace std::basic_streambuf_char { undefined4 * __cdecl basic_streambuf(undefined4 *self); }
 int * __cdecl FUN_00417e44(int *param_1);
 void __cdecl FUN_00417eac(int param_1,char param_2);
 undefined4 __stdcall FUN_00417ee0(void);
-undefined4 * __cdecl FUN_00417ee8(undefined4 *param_1,int param_2);
-namespace std::basic_filebuf_char { void __cdecl _dtor(int *param_1,byte param_2); }
+namespace std::basic_filebuf_char { undefined4 * __cdecl basic_filebuf(undefined4 *self,int vbasesBuilt); }
+namespace std::basic_filebuf_char { void __cdecl _dtor(int *self,byte dtorFlags); }
 int * __cdecl FUN_00418080(int *param_1);
 undefined4 __stdcall FUN_004181e8(void);
 bool __cdecl FUN_004181ec(undefined4 param_1,int param_2);
 undefined4 __cdecl FUN_004181fc(undefined4 param_1,uint param_2);
-namespace std::basic_streambuf_char { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-undefined4 * __cdecl FUN_004182a4(undefined4 *param_1);
+namespace std::basic_streambuf_char { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::basic_ios_char { undefined4 * __cdecl basic_ios(undefined4 *self); }
 void __cdecl FUN_0041830c(int param_1,undefined4 param_2);
 undefined4 __cdecl FUN_0041835c(int param_1);
 undefined4 __cdecl FUN_004183c0(int *param_1);
@@ -320,14 +320,14 @@ void __cdecl FUN_004183d8(int param_1,uint param_2);
 void __cdecl FUN_004183f0(int param_1,uint param_2);
 undefined4 __cdecl FUN_00418730(int param_1);
 undefined4 __cdecl FUN_0041873c(int param_1);
-DWORD __cdecl FUN_00418748(undefined4 param_1,uint param_2,LONG param_3,int param_4);
+DWORD __cdecl FUN_00418748(undefined4 param_1,uint param_2,LONG lDistanceToMove,int param_4);
 void __cdecl FUN_00418764(int param_1,uint param_2);
-namespace std::basic_ostream_char { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
-namespace std::basic_istream_char { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
-namespace std::basic_ios_char { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-int * __cdecl FUN_004188cc(int *param_1,int param_2,int param_3);
+namespace std::basic_ostream_char { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
+namespace std::basic_istream_char { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
+namespace std::basic_ios_char { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::basic_istream_char { int * __cdecl basic_istream(int *self,int vbasesBuilt,int param_3); }
 undefined4 __cdecl FUN_0041897c(int param_1);
-int * __cdecl FUN_00418988(int *param_1,int param_2,int param_3);
+namespace std::basic_ostream_char { int * __cdecl basic_ostream(int *self,int vbasesBuilt,int param_3); }
 undefined4 * __cdecl FUN_00418a30(undefined4 *param_1,int *param_2,char param_3);
 undefined4 __cdecl FUN_00418bb4(int param_1);
 bool __cdecl FUN_00418bc0(int *param_1,int *param_2);
@@ -344,20 +344,20 @@ undefined4 __cdecl FUN_00418ce0(int param_1);
 void __cdecl FUN_00418cec(int *param_1);
 undefined4 __cdecl FUN_00418d30(int *param_1);
 void __cdecl FUN_00418d7c(int param_1,int param_2);
-namespace std::basic_istream_char::sentry { void __cdecl _dtor(int param_1,byte param_2); }
+namespace std::basic_istream_char::sentry { void __cdecl _dtor(int self,byte dtorFlags); }
 void __cdecl FUN_00418da8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4);
 void __cdecl FUN_00418dc4(int param_1,undefined4 param_2,undefined4 param_3);
 void __cdecl FUN_00418ddc(int param_1,int param_2);
-int __cdecl FUN_00418dec(int param_1,undefined4 *param_2,uint param_3);
-undefined4 * __cdecl FUN_00418fc0(undefined4 *param_1,undefined4 param_2);
-int __cdecl FUN_00419008(int param_1,int param_2);
+namespace std::string { int __cdecl string_from_buf(int self,undefined4 *s,uint n); }
+undefined4 * __cdecl FUN_00418fc0(undefined4 *facet2,undefined4 param_2);
+int __cdecl FUN_00419008(int param_1,int str);
 int __cdecl FUN_004190ec(int *param_1,uint param_2,undefined4 param_3);
 void __cdecl FUN_00419170(int param_1,undefined4 param_2,undefined4 param_3);
 undefined4 * __stdcall FUN_004191a8(void);
 void __stdcall FUN_00419230(void);
 undefined4 * __cdecl FUN_00419248(undefined4 param_1,undefined4 param_2,undefined4 param_3);
 undefined1 __cdecl FUN_0041929c(undefined1 *param_1);
-namespace std::basic_filebuf_char { void __cdecl vf9(int *param_1); }
+namespace std::basic_filebuf_char { void __cdecl vf9(int *self); }
 undefined4 __cdecl FUN_00419738(int *param_1);
 undefined4 * __cdecl FUN_00419748(undefined4 *param_1,undefined4 *param_2);
 undefined4 __cdecl FUN_0041975c(int *param_1);
@@ -370,9 +370,9 @@ undefined4 __cdecl FUN_004197d4(int *param_1,undefined1 param_2);
 int * __cdecl FUN_00419820(int *param_1,int param_2);
 int * __cdecl FUN_00419864(int *param_1,int *param_2);
 int * __cdecl FUN_004198b8(int *param_1);
-bool __cdecl FUN_004198f4(undefined4 param_1,uint param_2,char *param_3,int param_4,int param_5);
-namespace std::basic_filebuf_char { int __cdecl vf10(int param_1,int param_2); }
-namespace std::basic_filebuf_char { undefined4 __cdecl vf12(int *param_1); }
+bool __cdecl FUN_004198f4(undefined4 param_1,uint param_2,char *buffer,int param_4,int param_5);
+namespace std::basic_filebuf_char { int __cdecl vf10(int self,int param_2); }
+namespace std::basic_filebuf_char { undefined4 __cdecl vf12(int *self); }
 int * __cdecl FUN_00419cd8(int *param_1,int param_2);
 undefined4 * __cdecl FUN_00419d2c(undefined4 *param_1,undefined4 *param_2);
 undefined4 __cdecl FUN_00419d58(undefined4 *param_1);
@@ -380,98 +380,98 @@ bool __cdecl FUN_00419d64(int *param_1,int *param_2);
 undefined4 * __cdecl FUN_00419d7c(undefined4 *param_1,undefined4 *param_2);
 undefined4 __cdecl FUN_00419dcc(int *param_1,int *param_2);
 bool __cdecl FUN_00419e18(int *param_1,int *param_2);
-namespace std::basic_filebuf_char { void __cdecl vf7(int *param_1); }
+namespace std::basic_filebuf_char { void __cdecl vf7(int *self); }
 undefined4 __cdecl FUN_0041a274(int *param_1);
 void __cdecl FUN_0041a2a4(undefined4 *param_1,undefined4 param_2);
-char * __cdecl FUN_0041a2b4(undefined4 param_1,uint param_2,char *param_3,int param_4,int param_5);
+char * __cdecl FUN_0041a2b4(undefined4 param_1,uint param_2,char *buffer,int param_4,int param_5);
 int __cdecl FUN_0041a2dc(int param_1,char *param_2,char *param_3);
 namespace std::basic_streambuf_char { void __stdcall vf9(void); }
 namespace std::basic_streambuf_char { void __stdcall vf10(void); }
 namespace std::basic_streambuf_char { undefined4 __stdcall vf12(void); }
-namespace std::basic_streambuf_char { void __cdecl vf8(int *param_1); }
+namespace std::basic_streambuf_char { void __cdecl vf8(int *self); }
 namespace std::basic_streambuf_char { void __stdcall vf7(void); }
-namespace std::basic_filebuf_char { int __cdecl vf5(int param_1); }
-namespace std::basic_filebuf_char { int __cdecl vf11(int *param_1,undefined1 *param_2,int param_3); }
+namespace std::basic_filebuf_char { int __cdecl vf5(int self); }
+namespace std::basic_filebuf_char { int __cdecl vf11(int *self,undefined1 *param_2,int param_3); }
 int __cdecl FUN_0041a5b0(int *param_1);
 undefined1 __cdecl FUN_0041a664(int param_1);
-namespace std::basic_streambuf_char { int __cdecl vf5(int param_1); }
-namespace std::basic_streambuf_char { uint __cdecl vf6(int *param_1,undefined4 *param_2,uint param_3); }
-namespace std::basic_streambuf_char { int __cdecl vf11(int *param_1,undefined1 *param_2,int param_3); }
-void __cdecl FUN_0041a7fc(int param_1);
+namespace std::basic_streambuf_char { int __cdecl vf5(int self); }
+namespace std::basic_streambuf_char { uint __cdecl vf6(int *self,undefined4 *param_2,uint param_3); }
+namespace std::basic_streambuf_char { int __cdecl vf11(int *self,undefined1 *param_2,int param_3); }
+namespace std::string { void __cdecl __unshare(int self); }
 int * __cdecl FUN_0041a86c(int *param_1,undefined1 *param_2,int param_3,char param_4);
 undefined4 __cdecl FUN_0041aa58(int param_1,undefined4 param_2);
-namespace std::basic_filebuf_char { int * __cdecl vf2(int *param_1,int param_2,int param_3); }
-namespace std::basic_streambuf_char { undefined4 __cdecl vf2(undefined4 param_1); }
-namespace std::string { int __cdecl append(int param_1,int param_2); }
-namespace std::string { void __cdecl assign(int param_1,int param_2); }
-int __cdecl FUN_0041aca0(int param_1,uint param_2,uint param_3,int param_4);
-void __cdecl FUN_0041acdc(int param_1,uint param_2,int param_3);
-namespace std::string { int __cdecl replace_fill(int param_1,uint param_2,uint param_3,uint param_4,undefined1 param_5); }
-undefined4 * __cdecl FUN_0041b214(undefined4 *param_1,uint param_2,undefined1 param_3);
+namespace std::basic_filebuf_char { int * __cdecl vf2(int *self,int param_2,int param_3); }
+namespace std::basic_streambuf_char { undefined4 __cdecl vf2(undefined4 self); }
+namespace std::string { int __cdecl append(int self,int other); }
+namespace std::string { void __cdecl assign(int self,int other); }
+namespace std::string { int __cdecl replace_str(int self,uint pos,uint n1,int other); }
+namespace std::string { void __cdecl insert(int self,uint pos,int other); }
+namespace std::string { int __cdecl replace_fill(int self,uint pos,uint n1,uint count,undefined1 ch); }
+undefined4 * __cdecl FUN_0041b214(undefined4 *param_1,uint n,undefined1 ch);
 int __cdecl FUN_0041b234(int *param_1,uint param_2);
-int __cdecl FUN_0041b368(int param_1,int param_2,uint param_3,uint param_4);
-void __cdecl FUN_0041b484(int param_1,uint param_2);
-namespace std::basic_filebuf_char { int * __cdecl vf3(int *param_1,int *param_2,int param_3,int param_4); }
+namespace std::string { int __cdecl substr(int result,int self,uint pos,uint n); }
+namespace std::string { void __cdecl string_fill(int self,uint n); }
+namespace std::basic_filebuf_char { int * __cdecl vf3(int *self,int *param_2,int param_3,int param_4); }
 undefined4 __cdecl FUN_0041bbc8(int *param_1);
 undefined4 * __cdecl FUN_0041bbd8(undefined4 *param_1,undefined4 *param_2);
 void __cdecl FUN_0041bc08(int *param_1,int param_2);
 void __cdecl FUN_0041bc18(int *param_1,int param_2);
-namespace std::basic_filebuf_char { int * __cdecl vf4(int *param_1,int *param_2); }
+namespace std::basic_filebuf_char { int * __cdecl vf4(int *self,int *param_2); }
 undefined4 * __cdecl FUN_0041be10(undefined4 *param_1,int param_2);
-namespace std::basic_streambuf_char { int * __cdecl vf3(int *param_1); }
-namespace std::basic_streambuf_char { int * __cdecl vf4(int *param_1); }
-namespace std::basic_streambuf_char { void __cdecl vf1(int param_1,int *param_2); }
+namespace std::basic_streambuf_char { int * __cdecl vf3(int *self); }
+namespace std::basic_streambuf_char { int * __cdecl vf4(int *self); }
+namespace std::basic_streambuf_char { void __cdecl vf1(int self,int *param_2); }
 undefined4 __cdecl FUN_0041bed0(int param_1,uint param_2);
 undefined4 * __stdcall FUN_0041bf00(void);
 undefined4 * __cdecl FUN_0041bf74(undefined4 param_1,uint *param_2,undefined4 param_3);
 undefined4 * __cdecl FUN_0041bff4(undefined4 *param_1);
-undefined4 * __cdecl FUN_0041c020(undefined4 *param_1,undefined4 param_2,undefined4 param_3);
-undefined4 * __cdecl FUN_0041c098(undefined4 *param_1);
-undefined4 * __cdecl FUN_0041c0e8(undefined4 *param_1);
+namespace __rwstd::facet_imp { undefined4 * __cdecl facet_imp(undefined4 *self,undefined4 param_2,undefined4 param_3); }
+namespace std::exception { undefined4 * __cdecl exception(undefined4 *self); }
+namespace std::exception { undefined4 * __cdecl exception_41c0e8(undefined4 *self); }
 void __cdecl FUN_0041c158(int param_1);
-undefined4 * __cdecl FUN_0041c164(undefined4 *param_1,undefined4 param_2);
-namespace __rwstd::facet_imp { byte * vf2(int *param_1,byte *param_2,char *param_3,ushort param_4,undefined4 param_5, char *param_6,byte *param_7,char *param_8,byte *param_9,undefined4 *param_10, undefined4 *param_11,char *param_12,ushort param_13,undefined4 param_14, char *param_15,byte *param_16,char *param_17,byte *param_18); }
-namespace __rwstd::facet_imp { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace __rwstd::ref_counted { undefined4 * __cdecl ref_counted(undefined4 *self,undefined4 param_2); }
+namespace __rwstd::facet_imp { byte * vf2(int *self,byte *param_2,char *param_3,ushort param_4,undefined4 param_5, char *param_6,byte *param_7,char *param_8,byte *param_9,undefined4 *param_10, undefined4 *param_11,char *param_12,ushort param_13,undefined4 param_14, char *param_15,byte *param_16,char *param_17,byte *param_18); }
+namespace __rwstd::facet_imp { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 namespace __rwstd::facet_imp { void __stdcall vf1(void); }
-undefined4 * __cdecl FUN_0041c778(undefined4 *param_1,int param_2);
-namespace std::ios_base::failure { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::ios_base::failure { undefined4 __cdecl vf1(int param_1); }
+namespace std::ios_base::failure { undefined4 * __cdecl failure(undefined4 *self,int param_2); }
+namespace std::ios_base::failure { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::ios_base::failure { undefined4 __cdecl vf1(int self); }
 undefined4 __cdecl FUN_0041c970(undefined4 param_1);
-namespace std::ios_base::Init { void __cdecl _dtor(int param_1,byte param_2); }
-undefined4 * __cdecl FUN_0041ca64(undefined4 *param_1);
-namespace std::ios_base { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace std::ios_base::Init { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::ios_base { undefined4 * __cdecl ios_base(undefined4 *self); }
+namespace std::ios_base { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __stdcall FUN_0041cc28(void);
 void __stdcall FUN_0041ccf4(void);
-undefined4 * __cdecl FUN_0041cdc4(undefined4 *param_1,undefined4 param_2,undefined1 param_3,undefined4 param_4);
+namespace std::locale::facet { undefined4 * __cdecl facet_41cdc4(undefined4 *self,undefined4 param_2,undefined1 param_3,undefined4 param_4); }
 void __cdecl FUN_0041cffc(int param_1,int *param_2);
-void __cdecl FUN_0041d1d8(undefined4 *param_1,byte param_2);
+void __cdecl FUN_0041d1d8(undefined4 *refCounted,byte param_2);
 uint __cdecl FUN_0041d26c(int param_1,uint param_2);
 void __cdecl FUN_0041d2a0(int param_1,byte *param_2,byte *param_3);
 uint __cdecl FUN_0041d2dc(int param_1,uint param_2);
 void __cdecl FUN_0041d310(int param_1,byte *param_2,byte *param_3);
 undefined1 __cdecl FUN_0041d34c(undefined4 param_1,undefined1 param_2);
-int __cdecl FUN_0041d354(undefined4 param_1,undefined4 *param_2,int param_3,undefined4 *param_4);
+int __cdecl FUN_0041d354(undefined4 param_1,undefined4 *param_2,int param_3,undefined4 *dest);
 undefined1 __cdecl FUN_0041d378(undefined4 param_1,undefined1 param_2);
-int __cdecl FUN_0041d380(undefined4 param_1,undefined4 *param_2,int param_3,undefined4 param_4, undefined4 *param_5);
+int __cdecl FUN_0041d380(undefined4 param_1,undefined4 *param_2,int param_3,undefined4 param_4, undefined4 *dest);
 undefined4 __cdecl FUN_0041d3a4(char *param_1);
-undefined4 * __cdecl FUN_0041d404(undefined4 *param_1,uint *param_2,undefined4 param_3);
-void __cdecl FUN_0041d5c4(undefined4 *param_1,byte param_2);
+undefined4 * __cdecl FUN_0041d404(undefined4 *facet2,uint *param_2,undefined4 param_3);
+void __cdecl FUN_0041d5c4(undefined4 *refCounted,byte param_2);
 uint * __cdecl FUN_0041d624(uint *param_1);
 void __stdcall FUN_0041d7a8(void);
-int __cdecl FUN_0041d818(int param_1);
-namespace __rwstd::ref_counted { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace std::string { int __cdecl string_41d818(int self); }
+namespace __rwstd::ref_counted { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 int * __cdecl FUN_0041d890(int *param_1);
-undefined4 * __cdecl FUN_0041d8b0(undefined4 *param_1,int param_2,undefined4 param_3);
-namespace __rwstd::locale_imp { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace __rwstd::locale_imp { undefined4 * __cdecl locale_imp(undefined4 *self,int param_2,undefined4 param_3); }
+namespace __rwstd::locale_imp { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 undefined * __cdecl FUN_0041db58(int param_1,uint param_2);
 int * __cdecl FUN_0041db8c(int *param_1,uint *param_2,int param_3);
-namespace __rwstd::use_Clib_locale { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace __rwstd::use_Clib_locale { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __stdcall FUN_0041dd4c(void);
 int * __cdecl FUN_0041e168(int *param_1,int *param_2);
-int __cdecl FUN_0041e1dc(int param_1,int *param_2);
+int __cdecl FUN_0041e1dc(int str,int *param_2);
 int * __cdecl FUN_0041e54c(int *param_1,uint *param_2,char param_3,uint param_4,undefined *param_5);
 void __cdecl FUN_0041e6ec(int *param_1,int *param_2,uint *param_3);
-void __cdecl FUN_0041e7ac(undefined4 *param_1,byte param_2);
+void __cdecl FUN_0041e7ac(undefined4 *refCounted,byte param_2);
 undefined4 __cdecl FUN_0041e810(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 *param_5,undefined4 param_6,undefined4 param_7,undefined4 *param_8);
 undefined4 __cdecl FUN_0041e82c(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 *param_5,undefined4 param_6,undefined4 param_7,undefined4 *param_8);
 undefined4 __stdcall FUN_0041e848(void);
@@ -479,41 +479,41 @@ undefined1 __stdcall FUN_0041e854(void);
 undefined4 __stdcall FUN_0041e85c(void);
 uint __cdecl FUN_0041e868(undefined4 param_1,undefined4 param_2,int param_3,int param_4,uint param_5);
 undefined4 __stdcall FUN_0041e87c(void);
-namespace std::runtime_error { undefined4 __cdecl vf1(int param_1); }
-undefined4 __cdecl FUN_0041e908(int param_1,int *param_2);
-undefined1 * __cdecl FUN_0041ea4c(undefined1 *param_1,byte *param_2);
-namespace std::exception { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::bad_alloc { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::logic_error { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::length_error { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::out_of_range { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::runtime_error { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-char * __cdecl memchr(char *param_1,char param_2,int param_3);
+namespace std::runtime_error { undefined4 __cdecl vf1(int self); }
+undefined4 __cdecl FUN_0041e908(int str,int *param_2);
+namespace __rwstd::except_msg_string { undefined1 * __cdecl format(undefined1 *exceptMsg,byte *format2); }
+namespace std::exception { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::bad_alloc { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::logic_error { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::length_error { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::out_of_range { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::runtime_error { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+char * __cdecl memchr(char *s,char ch,int n);
 short * __cdecl FUN_0041edbc(short *param_1,short param_2,int param_3);
-undefined4 * __cdecl memcpy(undefined4 *param_1,undefined4 *param_2,uint param_3);
+undefined4 * __cdecl memcpy(undefined4 *dest,undefined4 *src,uint n);
 undefined4 * __cdecl FUN_0041ee00(undefined4 *param_1,undefined4 *param_2,uint param_3);
-undefined4 * __cdecl memset(undefined4 *param_1,undefined1 param_2,uint param_3);
+undefined4 * __cdecl memset(undefined4 *dest,undefined1 ch,uint n);
 undefined2 * __cdecl FUN_0041eed8(undefined2 *param_1,undefined2 param_2,int param_3);
 char * __cdecl FUN_0041eef0(char *param_1,char *param_2);
-char * __cdecl FUN_0041ef2c(char *param_1,char param_2);
-char * __cdecl strlen(uint *param_1);
+char * __cdecl strchr(char *s,char ch);
+char * __cdecl strlen(uint *s);
 char * __cdecl FUN_0041efdc(char *param_1,char *param_2,uint param_3);
 uint __cdecl FUN_0041f04c(byte *param_1,byte *param_2,int param_3);
 char * __cdecl thunk_memchr(char *param_1,char param_2,int param_3);
 char * __cdecl thunk_memchr_41f079(char *param_1,char param_2,int param_3);
-char * __cdecl thunk_FUN_0041ef2c(char *param_1,char param_2);
-char * __cdecl thunk_FUN_0041ef2c_41f08d(char *param_1,char param_2);
+char * __cdecl thunk_strchr(char *param_1,char param_2);
+char * __cdecl thunk_strchr_41f08d(char *param_1,char param_2);
 uint * __cdecl thunk_strrchr(uint *param_1,char param_2);
 char * __cdecl thunk_FUN_0041f2b0(char *param_1,char *param_2);
 int __cdecl FUN_0041f0ac(byte *param_1,byte *param_2,int param_3);
-int __cdecl FUN_0041f118(char *param_1,char *param_2);
+int __cdecl strcspn(char *s,char *reject);
 undefined4 * __cdecl FUN_0041f144(uint *param_1);
-int __cdecl FUN_0041f178(char *param_1,char *param_2);
-undefined4 * __cdecl FUN_0041f1c0(undefined4 *param_1,uint *param_2,char *param_3);
-int __cdecl FUN_0041f210(char *param_1,char *param_2,int param_3);
-uint * __cdecl strrchr(uint *param_1,char param_2);
+int __cdecl strcmp(char *s1,char *s2);
+undefined4 * __cdecl strncpy(undefined4 *dest,uint *src,char *n);
+int __cdecl strncmp(char *s1,char *s2,int n);
+uint * __cdecl strrchr(uint *s,char ch);
 char * __cdecl FUN_0041f2b0(char *param_1,char *param_2);
-char * __cdecl FUN_0041f304(char *param_1,char *param_2);
+char * __cdecl strtok(char *s,char *delimiters);
 char * __cdecl FUN_0041f36c(char *param_1,char *param_2);
 int __cdecl FUN_0041f3a4(short *param_1);
 short * __cdecl FUN_0041f3bc(short *param_1,short *param_2);
@@ -533,34 +533,34 @@ void __stdcall FUN_0041fd00(void);
 void __cdecl FUN_0041fd38(undefined4 *param_1);
 void __cdecl FUN_0041fd84(undefined4 *param_1);
 undefined4 __stdcall FUN_0041fdac(void);
-LONG __cdecl FUN_0041fdb8(PEXCEPTION_RECORD param_1,PVOID param_2,PCONTEXT param_3);
+LONG __cdecl FUN_0041fdb8(PEXCEPTION_RECORD exceptionRecord,PVOID targetFrame,PCONTEXT param_3);
 void __cdecl FUN_0041fea8(undefined4 *param_1);
 void __cdecl FUN_0041fec4(undefined4 *param_1);
 undefined4 __cdecl FUN_0041fed4(undefined4 param_1);
 void __stdcall FUN_0041ff20(void);
 void __cdecl FUN_0041ff34(undefined4 *param_1);
 void __cdecl FUN_0041ff49(undefined4 *param_1);
-void FUN_0041ff82(PVOID param_1,PEXCEPTION_RECORD param_2);
+void FUN_0041ff82(PVOID targetFrame,PEXCEPTION_RECORD exceptionRecord);
 undefined4 __stdcall FUN_0041ff97(void);
-undefined4 __cdecl FUN_0041ffa0(LPCSTR param_1,byte param_2);
+undefined4 __cdecl access(LPCSTR path,byte mode);
 undefined4 __cdecl FUN_0041ffdc(uint param_1);
 uint __cdecl FUN_0042003c(uint param_1);
 bool __cdecl FUN_004200c4(uint param_1);
-bool __cdecl FUN_004200f4(HANDLE param_1);
-DWORD __cdecl FUN_0042010c(uint param_1,LONG param_2,int param_3);
-int __cdecl FUN_00420184(LPCSTR param_1,uint param_2,uint param_3);
+bool __cdecl FUN_004200f4(HANDLE hFile);
+DWORD __cdecl FUN_0042010c(uint param_1,LONG lDistanceToMove,int param_3);
+int __cdecl FUN_00420184(LPCSTR fileName,uint param_2,uint param_3);
 char * __cdecl FUN_00420380(char *param_1,int param_2);
-char * __cdecl FUN_004203ec(uint param_1,char *param_2,char *param_3);
-int __cdecl FUN_0042051c(uint param_1,char *param_2,uint param_3);
+char * __cdecl FUN_004203ec(uint param_1,char *buffer,char *numberOfBytesToRead);
+int __cdecl FUN_0042051c(uint param_1,char *buffer,uint numberOfBytesToWrite);
 undefined4 __cdecl FUN_00420638(undefined1 *param_1);
 int __stdcall FUN_0042064c(void);
-void __cdecl FUN_00420684(byte param_1,int *param_2);
-undefined4 __cdecl FUN_004206a4(uint param_1,LPVOID param_2,DWORD param_3);
-void __cdecl FUN_004206ec(uint param_1,char *param_2,char *param_3);
-undefined4 __cdecl FUN_00420708(uint param_1,LPCVOID param_2,DWORD param_3);
-void __cdecl FUN_00420750(uint param_1,char *param_2,uint param_3);
-undefined4 __cdecl thunk_FUN_0041ffa0(LPCSTR param_1,byte param_2);
-undefined4 __cdecl FUN_00420774(int *param_1,int param_2,int param_3,int param_4);
+void __cdecl _flsbuf(byte param_1,int *param_2);
+undefined4 __cdecl FUN_004206a4(uint param_1,LPVOID buffer,DWORD numberOfBytesToRead);
+void __cdecl FUN_004206ec(uint param_1,char *buffer,char *numberOfBytesToRead);
+undefined4 __cdecl FUN_00420708(uint param_1,LPCVOID buffer,DWORD numberOfBytesToWrite);
+void __cdecl FUN_00420750(uint param_1,char *buffer,uint numberOfBytesToWrite);
+undefined4 __cdecl thunk_access(LPCSTR fileName,byte param_2);
+undefined4 __cdecl FUN_00420774(int *param_1,int mem,int param_3,int param_4);
 undefined4 __cdecl thunk_FUN_0041ffdc(uint param_1);
 undefined4 __cdecl FUN_004207fc(int *param_1);
 undefined4 __cdecl FUN_0042088c(int *param_1);
@@ -568,15 +568,15 @@ int __stdcall FUN_0042090c(void);
 void __cdecl FUN_00420968(undefined *param_1);
 void __cdecl FUN_00420978(undefined4 *param_1);
 uint __cdecl FUN_0042098c(char *param_1,uint *param_2,undefined4 *param_3);
-int * __cdecl FUN_00420a68(int *param_1,LPCSTR param_2,char *param_3,uint param_4);
+int * __cdecl FUN_00420a68(int *param_1,LPCSTR fileName,char *param_3,uint param_4);
 undefined4 * __stdcall FUN_00420b14(void);
-int * __cdecl fopen(LPCSTR param_1,char *param_2);
-void __cdecl FUN_00420b6c(undefined4 param_1,byte *param_2);
-uint __cdecl FUN_00420b90(byte *param_1,uint param_2,int *param_3);
+int * __cdecl fopen(LPCSTR fileName,char *param_2);
+void __cdecl fprintf(undefined4 stream,byte *format);
+uint __cdecl FUN_00420b90(byte *buffer,uint numberOfBytesToWrite,int *param_3);
 char * __cdecl FUN_00420c6c(char *param_1,char *param_2,int *param_3);
 uint __cdecl FUN_00420d9c(char *param_1,int param_2,int param_3,int *param_4);
 int __cdecl FUN_00420dd0(undefined4 *param_1);
-undefined4 __cdecl fseek(int *param_1,LONG param_2,int param_3);
+undefined4 __cdecl fseek(int *param_1,LONG lDistanceToMove,int param_3);
 DWORD __cdecl FUN_00420e90(undefined4 *param_1);
 int __cdecl FUN_00420f10(undefined4 param_1,undefined4 param_2);
 uint __cdecl FUN_00420f50(uint param_1,uint param_2,undefined4 param_3);
@@ -590,80 +590,80 @@ undefined4 __cdecl FUN_00421278(undefined4 *param_1);
 uint __cdecl FUN_004212e4(int *param_1);
 uint __cdecl FUN_004212fc(int *param_1);
 uint __cdecl FUN_004213e4(byte param_1,int *param_2);
-DWORD __cdecl thunk_FUN_0042010c(uint param_1,LONG param_2,int param_3);
+DWORD __cdecl thunk_FUN_0042010c(uint param_1,LONG lDistanceToMove,int param_3);
 char * __cdecl FUN_004214fc(char *param_1,char *param_2,ushort param_3);
-char * __cdecl FUN_0042154c(char *param_1,ushort *param_2);
-undefined4 __cdecl FUN_00421590(uint *param_1);
-char * __cdecl thunk_FUN_004203ec(uint param_1,char *param_2,char *param_3);
-undefined4 __cdecl setvbuf(int *param_1,int param_2,int param_3,uint param_4);
-uint __cdecl FUN_00421638(undefined4 *param_1,uint param_2,int *param_3);
-void __cdecl FUN_00421660(undefined1 *param_1,byte *param_2);
+char * __cdecl FUN_0042154c(char *fileName,ushort *param_2);
+undefined4 __cdecl puts(uint *s);
+char * __cdecl thunk_FUN_004203ec(uint param_1,char *buffer,char *numberOfBytesToRead);
+undefined4 __cdecl setvbuf(int *param_1,int mem,int param_3,uint param_4);
+uint __cdecl FUN_00421638(undefined4 *src,uint param_2,int *param_3);
+void __cdecl sprintf(undefined1 *buf,byte *format);
 void __cdecl FUN_00421688(undefined1 *param_1,byte *param_2,uint *param_3);
-undefined4 __cdecl FUN_004217c8(LPCSTR param_1);
+undefined4 __cdecl FUN_004217c8(LPCSTR fileName);
 void __cdecl FUN_004217e4(int param_1);
 void __cdecl FUN_0042182c(undefined1 param_1,int param_2);
 void __cdecl FUN_00421860(uint param_1,int param_2);
 uint __cdecl FUN_00421894(undefined4 param_1,undefined4 param_2,byte *param_3,int param_4,undefined4 param_5, uint *param_6);
-int __cdecl thunk_FUN_0042051c(uint param_1,char *param_2,uint param_3);
-char * __cdecl FUN_00422230(char *param_1,char *param_2,uint param_3);
+int __cdecl thunk_FUN_0042051c(uint param_1,char *buffer,uint numberOfBytesToWrite);
+char * __cdecl FUN_00422230(char *param_1,char *param_2,uint n);
 undefined4 __cdecl FUN_004224f4(int param_1);
-undefined4 __cdecl FUN_00422548(uint param_1);
+undefined4 __cdecl isalnum(uint ch);
 bool __cdecl FUN_00422560(uint param_1);
-undefined4 __cdecl FUN_00422574(uint param_1);
-undefined4 __cdecl FUN_0042258c(uint param_1);
-undefined4 __cdecl FUN_004225a0(uint param_1);
-undefined4 __cdecl FUN_004225b4(uint param_1);
-undefined4 __cdecl FUN_004225cc(uint param_1);
-undefined4 __cdecl FUN_004225e0(uint param_1);
-undefined4 __cdecl FUN_004225f8(uint param_1);
-undefined4 __cdecl FUN_0042260c(uint param_1);
-undefined4 __cdecl FUN_00422620(uint param_1);
-undefined4 __cdecl FUN_00422634(uint param_1);
-void __cdecl FUN_0042264c(ushort param_1);
+undefined4 __cdecl isalpha(uint ch);
+undefined4 __cdecl FUN_0042258c(uint ch);
+undefined4 __cdecl isdigit(uint ch);
+undefined4 __cdecl FUN_004225b4(uint ch);
+undefined4 __cdecl islower(uint ch);
+undefined4 __cdecl FUN_004225e0(uint ch);
+undefined4 __cdecl FUN_004225f8(uint ch);
+undefined4 __cdecl FUN_0042260c(uint ch);
+undefined4 __cdecl FUN_00422620(uint ch);
+undefined4 __cdecl FUN_00422634(uint ch);
+void __cdecl FUN_0042264c(ushort srcStr);
 bool __cdecl FUN_00422664(ushort param_1);
-void __cdecl FUN_00422678(ushort param_1);
-void __cdecl FUN_00422690(ushort param_1);
-void __cdecl FUN_004226a4(ushort param_1);
-void __cdecl FUN_004226b8(ushort param_1);
-void __cdecl FUN_004226d0(ushort param_1);
-void __cdecl FUN_004226e4(ushort param_1);
-void __cdecl FUN_004226fc(ushort param_1);
-uint __cdecl FUN_00422710(ushort param_1);
-void __cdecl FUN_00422724(ushort param_1);
-void __cdecl FUN_00422738(ushort param_1);
-ushort __cdecl FUN_00422750(uint param_1,ushort param_2);
-uint __cdecl FUN_00422794(WCHAR param_1,uint param_2);
-undefined4 __cdecl FUN_004227ec(ushort param_1,LPCWSTR param_2);
+void __cdecl FUN_00422678(ushort srcStr);
+void __cdecl FUN_00422690(ushort srcStr);
+void __cdecl FUN_004226a4(ushort srcStr);
+void __cdecl FUN_004226b8(ushort srcStr);
+void __cdecl FUN_004226d0(ushort srcStr);
+void __cdecl FUN_004226e4(ushort srcStr);
+void __cdecl FUN_004226fc(ushort srcStr);
+uint __cdecl FUN_00422710(ushort srcStr);
+void __cdecl FUN_00422724(ushort srcStr);
+void __cdecl FUN_00422738(ushort srcStr);
+ushort __cdecl _isctype(uint ch,ushort mask);
+uint __cdecl FUN_00422794(WCHAR srcStr,uint param_2);
+undefined4 __cdecl FUN_004227ec(ushort param_1,LPCWSTR wideCharStr);
 undefined4 __cdecl FUN_0042289c(ushort param_1,uint *param_2);
 uint __cdecl FUN_00422dec(int *param_1,byte *param_2);
 int __cdecl FUN_00423044(uint *param_1,ushort param_2);
 void __cdecl FUN_00423200(int param_1);
 undefined4 __cdecl FUN_004235ac(int *param_1,char *param_2);
 undefined4 __cdecl FUN_004237cc(uint *param_1,uint *param_2);
-undefined4 __cdecl FUN_0042396c(LCID param_1,LCTYPE param_2,undefined4 *param_3);
-undefined4 __cdecl FUN_004239c8(LCID param_1,LCTYPE param_2,undefined2 *param_3,int param_4);
-undefined4 __cdecl FUN_00423a24(LCID param_1,UINT param_2,undefined4 *param_3);
-bool __cdecl FUN_00423b0c(LCID param_1,undefined2 *param_2);
-bool __cdecl FUN_00423c8c(LCID param_1,undefined4 *param_2);
-bool __cdecl FUN_004240e8(LCID param_1,undefined4 *param_2);
+undefined4 __cdecl FUN_0042396c(LCID locale,LCTYPE lcType,undefined4 *param_3);
+undefined4 __cdecl FUN_004239c8(LCID locale,LCTYPE lcType,undefined2 *param_3,int param_4);
+undefined4 __cdecl FUN_00423a24(LCID locale,UINT codePage,undefined4 *param_3);
+bool __cdecl FUN_00423b0c(LCID locale,undefined2 *param_2);
+bool __cdecl FUN_00423c8c(LCID locale,undefined4 *param_2);
+bool __cdecl FUN_004240e8(LCID locale,undefined4 *param_2);
 undefined4 __stdcall FUN_00424170(void);
 undefined ** __stdcall FUN_0042417c(void);
 byte * __cdecl FUN_00424214(byte *param_1);
-uint __cdecl FUN_00424238(uint param_1);
-uint __cdecl FUN_0042428c(uint param_1);
-undefined4 __cdecl FUN_004242e0(byte *param_1,int param_2);
-undefined4 __cdecl FUN_0042435c(LPWSTR param_1,byte *param_2,int param_3);
-int __cdecl FUN_00424430(LPSTR param_1,ushort param_2);
-char * __cdecl FUN_004244a4(LPWSTR param_1,uint *param_2,char *param_3);
+uint __cdecl tolower(uint ch);
+uint __cdecl toupper(uint ch);
+undefined4 __cdecl FUN_004242e0(byte *multiByteStr,int param_2);
+undefined4 __cdecl FUN_0042435c(LPWSTR wideCharStr,byte *multiByteStr,int param_3);
+int __cdecl FUN_00424430(LPSTR multiByteStr,ushort wideCharStr);
+char * __cdecl FUN_004244a4(LPWSTR wideCharStr,uint *multiByteStr,char *wideChar);
 int __cdecl FUN_004245d0(short *param_1,int param_2);
-uint __cdecl FUN_0042460c(LPSTR param_1,LPCWSTR param_2,uint param_3);
+uint __cdecl FUN_0042460c(LPSTR multiByteStr,LPCWSTR wideCharStr,uint multiByte);
 undefined4 __cdecl FUN_004247b0(ushort param_1,uint *param_2);
 int FUN_00424863(int param_1,uint param_2,undefined4 param_3,uint param_4,uint param_5);
 uint FUN_00424926(int param_1,uint param_2,undefined4 param_3,uint param_4,uint param_5);
 void __cdecl thunk_FUN_00424f88(uint param_1,char *param_2,uint param_3);
 void __stdcall FUN_004249d0(void);
-int __cdecl FUN_00424b58(char *param_1);
-void __cdecl FUN_00424bc0(char *param_1);
+int __cdecl atoi(char *s);
+void __cdecl FUN_00424bc0(char *s);
 undefined2 __stdcall FUN_00424bd0(void);
 uint __cdecl FUN_00424be4(uint param_1,int param_2);
 undefined4 __stdcall thunk_FUN_00424c2c(void);
@@ -697,24 +697,24 @@ void __cdecl FUN_00425b90(undefined4 *param_1,undefined *param_2,undefined *para
 void __cdecl FUN_00425fd8(float *param_1,double *param_2,uint param_3);
 int __cdecl FUN_00426070(longdouble *param_1,uint param_2,uint *param_3,undefined4 *param_4,int param_5);
 int __cdecl FUN_00426344(longdouble *param_1,int param_2,uint *param_3,undefined2 *param_4,int param_5);
-undefined4 __cdecl FUN_00426638(UINT param_1);
-undefined4 __cdecl FUN_00426774(uint param_1);
+undefined4 __cdecl FUN_00426638(UINT codePage);
+undefined4 __cdecl FUN_00426774(uint ch);
 byte * __cdecl FUN_00426790(byte *param_1,uint param_2);
 void __cdecl FUN_004267e8(uint *param_1,int param_2);
 void __cdecl FUN_00426830(undefined4 param_1,undefined4 param_2,uint param_3);
 undefined * __stdcall FUN_00426890(void);
-void __cdecl FUN_004268e0(LPCSTR param_1,uint *param_2);
+void __cdecl FUN_004268e0(LPCSTR fileName,uint *buffer);
 undefined4 __stdcall FUN_00426948(undefined4 param_1,undefined4 *param_2);
 undefined4 __stdcall FUN_0042695c(void);
-void __cdecl FUN_004269a0(uint *param_1);
-void __cdecl FUN_00426abc(uint *param_1);
-void __cdecl FUN_00426acc(uint *param_1);
+void __cdecl FUN_004269a0(uint *buffer);
+void __cdecl FUN_00426abc(uint *buffer);
+void __cdecl FUN_00426acc(uint *buffer);
 void __stdcall FUN_00426b70(void);
 void __stdcall FUN_00426b84(void);
 void __stdcall FUN_00426b94(void);
-void __cdecl FUN_00426b98(int param_1,int param_2,UINT param_3);
-void __cdecl FUN_00426bec(UINT param_1);
-void __cdecl FUN_00426c04(UINT param_1);
+void __cdecl FUN_00426b98(int param_1,int param_2,UINT exitCode);
+void __cdecl FUN_00426bec(UINT exitCode);
+void __cdecl FUN_00426c04(UINT exitCode);
 void __cdecl FUN_00426c3c(undefined4 *param_1,undefined4 *param_2);
 void __cdecl FUN_00426c58(undefined4 param_1,undefined *param_2);
 void __cdecl FUN_00426c6c(undefined4 param_1,undefined *param_2);
@@ -730,16 +730,16 @@ undefined4 __cdecl FUN_0042742c(int *param_1,undefined4 param_2,int param_3);
 undefined4 __stdcall FUN_0042760c(int param_1);
 undefined4 __cdecl FUN_00427634(int param_1,undefined4 param_2);
 undefined4 __cdecl FUN_00427694(int param_1);
-void __stdcall FUN_00427704(UINT param_1);
+void __stdcall FUN_00427704(UINT exitCode);
 undefined4 __stdcall FUN_00427714(void);
 undefined4 __stdcall FUN_00427718(void);
 void __cdecl FUN_0042771c(int *param_1,int param_2);
 void __stdcall FUN_004277f0(void);
 void __cdecl FUN_0042785c(int param_1);
 WORD __stdcall FUN_004279e0(void);
-void __stdcall FUN_00427a08(DWORD param_1);
-void __stdcall FUN_00427a18(DWORD param_1);
-void __stdcall FUN_00427a28(DWORD param_1,LPVOID param_2);
+void __stdcall FUN_00427a08(DWORD tlsIndex);
+void __stdcall FUN_00427a18(DWORD tlsIndex);
+void __stdcall FUN_00427a28(DWORD tlsIndex,LPVOID tlsValue);
 void __stdcall FUN_00427a3c(void);
 void __stdcall FUN_00427a44(void);
 void FUN_00427a7b(undefined *UNRECOVERED_JUMPTABLE);
@@ -748,13 +748,13 @@ void __cdecl FUN_00427acc(int param_1);
 undefined4 __cdecl FUN_00427af9(int *param_1,undefined4 param_2,int *param_3,byte param_4);
 void __cdecl FUN_00427bbf(undefined4 param_1,undefined4 param_2,undefined *param_3,uint param_4);
 int __cdecl FUN_00427ccd(char *param_1);
-void __cdecl FUN_00427ce5(undefined4 param_1,int param_2);
+void __cdecl FUN_00427ce5(undefined4 arguments,int param_2);
 void __cdecl FUN_00427d02(undefined4 param_1,int param_2,byte param_3,undefined *param_4,uint param_5,int param_6 );
 void __cdecl FUN_00427dd2(undefined4 param_1,undefined *param_2,uint param_3);
-void __cdecl FUN_00427e50(uint *param_1,undefined4 *param_2,undefined4 param_3,undefined *param_4,uint param_5, undefined4 param_6,undefined4 param_7,undefined4 param_8,undefined4 param_9);
-void __cdecl FUN_004280a0(uint *param_1,undefined4 *param_2,undefined4 param_3,undefined *param_4,uint param_5, undefined4 param_6,undefined4 param_7,undefined4 param_8);
-void __cdecl FUN_004280d5(undefined4 param_1,undefined4 param_2);
-void __cdecl FUN_00428140(PVOID param_1,PEXCEPTION_RECORD param_2);
+void __cdecl __raiseException(uint *typeDesc,undefined4 *object,undefined4 objectDtor,undefined *copyCtor,uint copyCtorMask, undefined4 throwFlags,undefined4 throwFile,undefined4 throwLine,undefined4 throwReturn);
+void __cdecl _ThrowExceptionLDTC(uint *typeDesc,undefined4 *object,undefined4 objectDtor,undefined *copyCtor,uint copyCtorMask, undefined4 throwFlags,undefined4 throwFile,undefined4 throwLine);
+void __cdecl FUN_004280d5(undefined4 throwFile,undefined4 throwLine);
+void __cdecl FUN_00428140(PVOID targetFrame,PEXCEPTION_RECORD exceptionRecord);
 void __cdecl FUN_0042817f(undefined4 param_1,int param_2,undefined *param_3,uint param_4);
 void __cdecl FUN_004281f4(int param_1);
 void __stdcall FUN_0042827c(void);
@@ -871,14 +871,14 @@ namespace std::exception { extern undefined * vftable; }   // 0x0042b388  PTR_FU
 namespace std::bad_alloc { extern undefined * vftable; }   // 0x0042b39c  PTR_FUN_0042b39c
 extern undefined DAT_0042b445;   // 0x0042b445
 extern undefined4 _DAT_0042b5e4;   // 0x0042b5e4
-extern undefined DAT_0042b5e4;   // 0x0042b5e4
-extern int DAT_0042b5e8;   // 0x0042b5e8
-extern int DAT_0042b5ec;   // 0x0042b5ec
-extern undefined4 DAT_0042b5fc;   // 0x0042b5fc
-extern char DAT_0042b604;   // 0x0042b604
+extern undefined g_dictionaryCache;   // 0x0042b5e4  DAT_0042b5e4
+extern int g_dictionaryCacheBegin;   // 0x0042b5e8  DAT_0042b5e8
+extern int g_dictionaryCacheEnd;   // 0x0042b5ec  DAT_0042b5ec
+extern undefined4 g_dictionaryCacheCapacityEnd;   // 0x0042b5fc  DAT_0042b5fc
+extern char g_dictionaryCacheInitialised;   // 0x0042b604  DAT_0042b604
 extern undefined4 _DAT_0042b608;   // 0x0042b608
 extern undefined4 _DAT_0042b60c;   // 0x0042b60c
-extern char DAT_0042b610;   // 0x0042b610
+extern char g_lengthLimitsInitialised;   // 0x0042b610  DAT_0042b610
 namespace TSDictionaryList::Dictionary { extern undefined * vftable; }   // 0x0042bbb8  PTR_FUN_0042bbb8
 namespace std::out_of_range { extern undefined * vftable; }   // 0x0042bbf0  PTR_FUN_0042bbf0
 namespace std::logic_error { extern undefined * vftable; }   // 0x0042bc04  PTR_FUN_0042bc04
@@ -886,20 +886,20 @@ namespace std::length_error { extern pointer vftable; }   // 0x0042bc18  PTR_FUN
 extern undefined DAT_0042bc20;   // 0x0042bc20
 extern undefined * PTR_DAT_0042bc44;   // 0x0042bc44
 extern undefined DAT_0042be01;   // 0x0042be01
-extern undefined4 * DAT_0042c484;   // 0x0042c484
-extern undefined4 * DAT_0042c488;   // 0x0042c488
+extern undefined4 * g_inputEngineHead;   // 0x0042c484  DAT_0042c484
+extern undefined4 * g_inputEngineTail;   // 0x0042c488  DAT_0042c488
 extern undefined * PTR_s_ptr_0042c4bc;   // 0x0042c4bc
-extern undefined4 DAT_0042c4c0;   // 0x0042c4c0
+extern undefined4 g_spaceTerminators;   // 0x0042c4c0  DAT_0042c4c0
 extern undefined1 DAT_0042c4c4;   // 0x0042c4c4
-extern int DAT_0042c930;   // 0x0042c930
-extern undefined * PTR_FUN_0042c990;   // 0x0042c990
-extern undefined DAT_0042ce84;   // 0x0042ce84
+extern int g_exclusiveVariables;   // 0x0042c930  DAT_0042c930
+extern undefined * g_anagramStageOps;   // 0x0042c990  PTR_FUN_0042c990
+extern undefined g_charExpansions;   // 0x0042ce84  DAT_0042ce84
 extern pointer PTR_s_OutputLower_0042d554;   // 0x0042d554
 extern pointer PTR_s_1913_Webster_s_Unabridged_0042d698;   // 0x0042d698
-extern undefined * PTR_DAT_0042def8;   // 0x0042def8
+extern undefined * g_fieldSeparators;   // 0x0042def8  PTR_DAT_0042def8
 extern undefined DAT_0042defe;   // 0x0042defe
-extern undefined DAT_0042e040;   // 0x0042e040
-extern undefined DAT_0042e700;   // 0x0042e700
+extern undefined g_logicOperators;   // 0x0042e040  DAT_0042e040
+extern undefined g_licensePolynomial;   // 0x0042e700  DAT_0042e700
 extern undefined * PTR_s_TEAWIN_0042e708;   // 0x0042e708
 extern undefined DAT_0042e763;   // 0x0042e763
 extern undefined DAT_0042e764;   // 0x0042e764
@@ -925,9 +925,9 @@ extern undefined * PTR_DAT_0042eaa4;   // 0x0042eaa4
 extern uint DAT_0042eaa8;   // 0x0042eaa8
 extern uint DAT_0042eaac;   // 0x0042eaac
 extern undefined DAT_0042edd9;   // 0x0042edd9
-extern int DAT_0042fab4;   // 0x0042fab4
-extern undefined1 DAT_0042fac0;   // 0x0042fac0
-extern int DAT_0042fce8;   // 0x0042fce8
+extern int g_nullStringRep;   // 0x0042fab4  DAT_0042fab4
+extern undefined1 g_emptyStringData;   // 0x0042fac0  DAT_0042fac0
+extern int g_stringNpos;   // 0x0042fce8  DAT_0042fce8
 extern undefined DAT_0042fd34;   // 0x0042fd34
 namespace __rwstd::ref_counted { extern pointer vftable; }   // 0x00430a68  PTR_FUN_00430a68
 namespace __rwstd::facet_imp { extern undefined * vftable; }   // 0x00430a78  PTR_FUN_00430a78
@@ -979,9 +979,9 @@ extern undefined * PTR_FUN_0043206c;   // 0x0043206c
 extern uint _DAT_00432070;   // 0x00432070
 extern undefined4 _DAT_00432074;   // 0x00432074
 extern undefined4 DAT_00432078;   // 0x00432078
-extern undefined1 * DAT_00432090;   // 0x00432090
-extern int DAT_00432098;   // 0x00432098
-extern undefined DAT_004320a8;   // 0x004320a8
+extern undefined1 * g_stdoutPtr;   // 0x00432090  DAT_00432090
+extern int g_stdoutLevel;   // 0x00432098  DAT_00432098
+extern undefined g_stderr;   // 0x004320a8  DAT_004320a8
 extern uint DAT_00432528;   // 0x00432528
 extern undefined4 DAT_0043252c;   // 0x0043252c
 extern undefined * PTR_DAT_004325f8;   // 0x004325f8
@@ -1112,16 +1112,16 @@ extern int DAT_004339cc;   // 0x004339cc
 extern int DAT_004339d0;   // 0x004339d0
 extern undefined DAT_00433bec;   // 0x00433bec
 extern undefined DAT_0043424d;   // 0x0043424d
-extern int DAT_00434268;   // 0x00434268
-extern int DAT_00434278;   // 0x00434278
-extern undefined4 DAT_00434280;   // 0x00434280
-extern int DAT_00434680;   // 0x00434680
-extern undefined1 DAT_00434684;   // 0x00434684
-extern undefined1 DAT_00434688;   // 0x00434688
+extern int g_registryKeyPathData;   // 0x00434268  DAT_00434268
+extern int g_appDataSubdirData;   // 0x00434278  DAT_00434278
+extern undefined4 g_balance;   // 0x00434280  DAT_00434280
+extern int g_balanceCount;   // 0x00434680  DAT_00434680
+extern undefined1 g_varsActive;   // 0x00434684  DAT_00434684
+extern undefined1 g_varValues;   // 0x00434688  DAT_00434688
 extern undefined DAT_00434692;   // 0x00434692
 extern undefined4 _DAT_00434694;   // 0x00434694
-extern undefined DAT_00434694;   // 0x00434694
-extern uint DAT_00434698;   // 0x00434698
+extern undefined g_licenseHash;   // 0x00434694  DAT_00434694
+extern uint g_licenseHashHigh;   // 0x00434698  DAT_00434698
 extern undefined * DAT_0043469c;   // 0x0043469c
 extern undefined * * _DAT_004346a0;   // 0x004346a0
 extern undefined DAT_004346a0;   // 0x004346a0
@@ -1177,5 +1177,103 @@ extern undefined4 DAT_00435104;   // 0x00435104
 extern int * DAT_00435108;   // 0x00435108
 extern undefined4 _DAT_0043510c;   // 0x0043510c
 extern undefined4 _DAT_00435110;   // 0x00435110
+
+// ---- member offsets (8 classes): byte offset of each known member from the start of the object ----
+// Member functions write `self + m_name` (or `self[m_name / 4]` when Ghidra typed `self` as an int pointer).
+namespace Common { enum : int {
+  m_path = 0x0,   // std::string — path of common.ini
+  m_pathData = 0x8,   // char* — character data of path
+}; }
+namespace InputEngine { enum : int {
+  m_next = 0x0,   // InputEngine* — next engine in the global list
+  m_prev = 0x4,   // InputEngine* — previous engine in the global list
+  m_dictList = 0x8,   // TSDictionaryList* — dictionary list
+  m_dictIndex = 0xc,   // int — dictionary within the list
+  m_dict = 0x10,   // Dictionary* — the dictionary being read
+  m_hFile = 0x14,   // HANDLE — the open .tsd file (INVALID_HANDLE_VALUE when closed)
+  m_fileOffset = 0x18,   // uint — file position to resume reading at
+  m_wordsScanned = 0x1c,   // int — words decoded so far
+  m_letters = 0x20,   // byte[] — the current word's letter classes (0xff-terminated), followed by punctuation and filtered copies
+  m_rawWord = 0x408,   // char[] — the current word as stored, then its annotation
+  m_readBuf = 0x7f0,   // byte[0x4000] — file read buffer
+  m_bitPtr = 0x47f0,   // uint* — next 32-bit word of the bit stream
+  m_bitEnd = 0x47f4,   // uint* — end of the buffered bit stream
+  m_bitPos = 0x47f8,   // int — bits already used of the current word
+  m_length = 0x47fc,   // int — word length being read
+  m_linkMode = 0x4800,   // char — TSD1 link bits: 2 while reading words with link flags
+  m_hasLinks = 0x4804,   // int — the current word has definitions or an occurrence list
+  m_linkIndex = 0x4808,   // int — 1-based count of linked words so far
+}; }
+namespace MatchEngine { enum : int {
+  m_bc = 0x1008,   // std::string — compiled bytecode of the leaf
+  m_bcData = 0x1010,   // char* — character data of bc
+  m_minLen = 0x1018,   // int — fewest letters a match can have
+  m_maxLen = 0x101c,   // int — most letters a match can have (above 100: unlimited)
+  m_valid = 0x1020,   // int — the pattern compiled
+  m_status = 0x1024,   // char — pattern error code (0 = none)
+  m_punctMode = 0x1025,   // char[256] — per byte: 0 ignore, 0xff significant punctuation, 0xfe case-exact letter
+  m_needsRaw = 0x1128,   // int — the pattern looks at punctuation or exact case
+  m_dictList = 0x112c,   // TSDictionaryList* — dictionaries the leaf was compiled for
+  m_dictIndex = 0x1130,   // int — which dictionary of the list
+  m_shortest = 0x1134,   // int — shortest-word setting
+  m_longest = 0x1138,   // int — longest-word setting
+  m_curLen = 0x113c,   // int — length of the words being tested
+  m_slack = 0x1140,   // int — curLen - minLen
+  m_lastOp = 0x1144,   // char — last opcode emitted while compiling
+  m_opCount = 0x1148,   // int — opcodes emitted while compiling
+  m_matcher = 0x114c,   // code* — matcher chosen by Compile (MatchGeneral or a fast path)
+}; }
+namespace MatchEngineSet { enum : int {
+  m_engines = 0x0,   // std::vector — one MatchEngine per leaf (null where the logic has a parenthesis)
+  m_enginesBegin = 0x4,   // MatchEngine** — engines begin
+  m_enginesEnd = 0x8,   // MatchEngine** — engines end
+  m_enginesCapacityEnd = 0x18,   // MatchEngine** — engines end of storage
+  m_ops = 0x20,   // std::string — logic opcodes, one per leaf slot
+  m_opsData = 0x28,   // char* — character data of ops
+  m_status = 0x30,   // char — error code of the first invalid leaf
+}; }
+namespace Pattern { enum : int {
+  m_count = 0x0,   // int — number of pooled strings
+  m_pool = 0x8,   // std::string[256] — the pooled sub-patterns and choice-list letter sets (16 bytes each)
+}; }
+namespace Persist { enum : int {
+  m_create = 0x0,   // char — create the key when missing
+  m_hKey = 0x4,   // HKEY — the open registry key
+}; }
+namespace TSDictionaryList { enum : int {
+  m_paths = 0x0,   // char* — the ';'-separated path list
+  m_dicts = 0x8,   // std::vector — the dictionaries (Dictionary pointers)
+  m_dictsBegin = 0xc,   // Dictionary** — dicts begin
+  m_dictsEnd = 0x10,   // Dictionary** — dicts end
+  m_dictsCapacityEnd = 0x20,   // Dictionary** — dicts end of storage
+}; }
+namespace TSDictionaryList { namespace Dictionary { enum : int {
+  m_huffman = 0x4,   // int[768][2] — per symbol {code length, letter class}, then decoding-tree nodes {child0, child1} (root 256)
+  m_lookahead8 = 0x1804,   // int[256] — node or symbol reached after 8 bits
+  m_lookahead8Len = 0x1c04,   // int[256] — code length of that symbol
+  m_loaded = 0x2004,   // int — the header loaded
+  m_fileTime = 0x2008,   // FILETIME — last-write time when loaded
+  m_refCount = 0x2010,   // int — lists sharing this dictionary
+  m_description = 0x2014,   // char[1000] — header description
+  m_format = 0x23fc,   // int — 0 = TSD0, 1 = TSD1
+  m_defStart = 0x2400,   // uint — definition section start (TSD1)
+  m_defPass2 = 0x2404,   // uint — start of headword definitions
+  m_defEnd = 0x2408,   // uint — definition section end
+  m_numLengths = 0x240c,   // ushort — longest word length + 1
+  m_wordStreamOffset = 0x2410,   // uint[101] — file offset of each length's word stream
+  m_wordCount = 0x25a4,   // uint[101] — words of each length
+  m_occIndexOffset = 0x2738,   // uint[101] — full-text index of words found only in definitions
+  m_defLinkOffset = 0x28cc,   // uint[101] — link table of words with definitions
+  m_defLinkCount = 0x2a60,   // uint[101] — entries in that table
+  m_numUsedLetters = 0x2bf4,   // short — letter classes used
+  m_numTotalLetters = 0x2bf6,   // short — letter classes in the alphabet
+  m_canonical = 0x2bf8,   // char[256] — letter class -> display byte
+  m_symbolByte = 0x2cf8,   // char[256] — Huffman symbol -> byte value
+  m_numCalibrationRows = 0x2df8,   // ushort — rows of the calibration matrix
+  m_calibration = 0x2dfc,   // char** — the calibration matrix
+  m_lengthTables = 0x2e00,   // void*[101] — per-length tables loaded on demand
+  m_path = 0x2f94,   // std::string — the .tsd path
+  m_pathData = 0x2f9c,   // char* — character data of path
+}; }}
 
 } // namespace tea

@@ -5,11 +5,12 @@ SHA-256 `d83da2a8dc455b244bf6914112374c0ebdfddfb0d64371dd33a3238dde9c8136`
 | | |
 |---|---|
 | Functions decompiled | 4489 (+4 that Ghidra could not decompile, listed below) |
-| Application functions (`src/`) | 1385, of which 639 have a recovered name (46.1%) |
+| Application functions (`src/`) | 1385, of which 1383 have a recovered name (99.9%) |
 | Runtime / library functions (`lib/`) | 3104 |
-| **Compiles** | **275 files, 0 errors** — 275 object files produced |
-| Mechanical repairs needed for C++ | 360 in 72 files |
+| **Compiles** | **281 files, 0 errors** — 281 object files produced |
+| Mechanical repairs needed for C++ | 360 in 73 files |
 | Links into a program | no — 1645 symbols undefined (e.g. `DAT_00513d58`, `DAT_0051aeb4`, `DefinitionRichEdit::__entries`) |
+| Variables (parameters and locals) | 29864; 2723 named by hand, 14440 by rule, 11303 still with Ghidra's storage name. In `src/`: 14054, of which 2932 keep a storage name (79.1% named) |
 | Globals declared in `decomp.h` | 1569 |
 | Classes recovered from RTTI | 356 (83 application classes) |
 | OWL response tables (message maps) | 53, 48 tied to their class |
@@ -35,105 +36,108 @@ Each was applied at a location the compiler reported, in a fixed way; see ../REA
 
 | source tag | functions |
 |---|---|
-| unnamed | 2877 |
-| rtti:vtable | 882 |
+| unnamed | 1920 |
+| rtti:vtable | 880 |
+| analysis | 602 |
 | owl:response-table | 325 |
 | rtti:dtor | 302 |
-| analysis (matched TEACON.exe) | 26 |
+| rtti:vtable-store | 191 |
+| analysis (matched TEACON.exe, duplicated code) | 83 |
+| analysis (matched TEACON.exe) | 82 |
+| analysis (matched TEA.exe, duplicated code) | 22 |
+| analysis (position-matched TEACON.exe) | 13 |
 | analysis (usage pattern) (matched TEACON.exe) | 13 |
+| notes+analysis (matched TEACON.exe) | 9 |
 | notes+analysis | 9 |
-| notes+analysis (matched TEACON.exe) | 8 |
 | notes | 6 |
-| notes (matched TEACON.exe) | 6 |
-| analysis (position-matched TEACON.exe) | 5 |
-| analysis | 5 |
+| notes+analysis (position-matched TEACON.exe) | 6 |
+| notes (matched TEACON.exe) | 5 |
 | analysis (usage pattern) (position-matched TEACON.exe) | 5 |
 | analysis (matched TEACON.exe by position and size) | 4 |
 | notes+analysis (matched TEACON.exe by position and size) | 3 |
 | analysis (usage pattern) | 3 |
-| notes (inferred) (position-matched TEACON.exe) | 2 |
-| notes (position-matched TEACON.exe) | 2 |
+| notes (matched TEA.exe, duplicated code) | 2 |
 | analysis (usage pattern, less certain) (matched TEACON.exe) | 2 |
-| analysis (inferred) | 1 |
-| notes (structure checked) (position-matched TEACON.exe) | 1 |
-| notes+analysis (position-matched TEACON.exe) | 1 |
+| analysis (matched TSBuild.exe) | 1 |
 | analysis (usage pattern, less certain) (position-matched TEACON.exe) | 1 |
+
+Every renamed variable, with the rule or hand assignment behind it, is listed in [varnames.tsv](varnames.tsv).
 
 ## Application modules (`src/`)
 
 | file | functions | named | address range |
 |---|---|---|---|
-| [src/TEADictionaryPropertiesWindows.cpp](src/TEADictionaryPropertiesWindows.cpp) | 18 | 11 | 0x00401000 – 0x00402f68 |
-| [src/PrintoutFeeder.cpp](src/PrintoutFeeder.cpp) | 6 | 3 | 0x00402f80 – 0x00404870 |
-| [src/TEAPrintout.cpp](src/TEAPrintout.cpp) | 16 | 9 | 0x004030f4 – 0x004044dc |
+| [src/TEADictionaryPropertiesWindows.cpp](src/TEADictionaryPropertiesWindows.cpp) | 18 | 16 | 0x00401000 – 0x00402f68 |
+| [src/PrintoutFeeder.cpp](src/PrintoutFeeder.cpp) | 3 | 3 | 0x00402f80 – 0x00404784 |
+| [src/TEAPrintout.cpp](src/TEAPrintout.cpp) | 17 | 17 | 0x00402fa0 – 0x004044dc |
 | [src/PrintPreviewPrintout.cpp](src/PrintPreviewPrintout.cpp) | 1 | 1 | 0x00404548 – 0x00404548 |
-| [src/TEAPropertiesViewWindows.cpp](src/TEAPropertiesViewWindows.cpp) | 17 | 11 | 0x00404f80 – 0x004075e4 |
-| [src/TSDictionaryList.cpp](src/TSDictionaryList.cpp) | 63 | 18 | 0x004076a8 – 0x0040c800 |
-| [src/TSDictionaryDefinitionRetriever.cpp](src/TSDictionaryDefinitionRetriever.cpp) | 11 | 3 | 0x0040c84c – 0x0040e240 |
-| [src/TSDictionaryDefinitionSearchIndexed.cpp](src/TSDictionaryDefinitionSearchIndexed.cpp) | 20 | 7 | 0x0040e5e0 – 0x00410750 |
-| [src/TSDictionaryDefinitionSearchSequential.cpp](src/TSDictionaryDefinitionSearchSequential.cpp) | 5 | 3 | 0x00410788 – 0x00410da0 |
+| [src/TEAPrintoutFeeder.cpp](src/TEAPrintoutFeeder.cpp) | 11 | 11 | 0x004047bc – 0x0043c6d4 |
+| [src/TEAPropertiesViewWindows.cpp](src/TEAPropertiesViewWindows.cpp) | 17 | 17 | 0x00404870 – 0x0040758c |
+| [src/TSDictionaryList.cpp](src/TSDictionaryList.cpp) | 64 | 64 | 0x004075e4 – 0x0040c800 |
+| [src/TSDictionaryDefinitionRetriever.cpp](src/TSDictionaryDefinitionRetriever.cpp) | 11 | 11 | 0x0040c84c – 0x0040e240 |
+| [src/TSDictionaryDefinitionSearchIndexed.cpp](src/TSDictionaryDefinitionSearchIndexed.cpp) | 20 | 20 | 0x0040e5e0 – 0x00410750 |
+| [src/TSDictionaryDefinitionSearchSequential.cpp](src/TSDictionaryDefinitionSearchSequential.cpp) | 5 | 5 | 0x00410788 – 0x00410da0 |
 | [src/Definition.cpp](src/Definition.cpp) | 1 | 1 | 0x00410f40 – 0x00410f40 |
-| [src/MatchEngine.cpp](src/MatchEngine.cpp) | 38 | 34 | 0x00411264 – 0x00460050 |
-| [src/InputEngine.cpp](src/InputEngine.cpp) | 16 | 9 | 0x00411680 – 0x00412cf0 |
-| [src/FileHistory.cpp](src/FileHistory.cpp) | 1 | 1 | 0x004131f8 – 0x004131f8 |
-| [src/IntroductionViewWindows.cpp](src/IntroductionViewWindows.cpp) | 8 | 6 | 0x00413260 – 0x00413990 |
-| [src/PropertiesViewWindows.cpp](src/PropertiesViewWindows.cpp) | 75 | 49 | 0x00413c7c – 0x004178ac |
+| [src/MatchEngine.cpp](src/MatchEngine.cpp) | 39 | 39 | 0x00411264 – 0x00460050 |
+| [src/InputEngine.cpp](src/InputEngine.cpp) | 12 | 12 | 0x00411680 – 0x0041238c |
+| [src/FileHistory.cpp](src/FileHistory.cpp) | 5 | 5 | 0x00412434 – 0x004131f8 |
+| [src/IntroductionViewWindows.cpp](src/IntroductionViewWindows.cpp) | 8 | 8 | 0x00413260 – 0x00413990 |
+| [src/PropertiesViewWindows.cpp](src/PropertiesViewWindows.cpp) | 75 | 75 | 0x00413c7c – 0x004178ac |
 | [src/PVWBrush.cpp](src/PVWBrush.cpp) | 1 | 1 | 0x0041794c – 0x0041794c |
-| [src/PVWPushButton.cpp](src/PVWPushButton.cpp) | 6 | 5 | 0x004179a8 – 0x00417d50 |
-| [src/PVWRadioButton.cpp](src/PVWRadioButton.cpp) | 9 | 8 | 0x00417dec – 0x004182b4 |
-| [src/PVWCheckBox.cpp](src/PVWCheckBox.cpp) | 5 | 4 | 0x00418350 – 0x004186c0 |
-| [src/PVWColourButton.cpp](src/PVWColourButton.cpp) | 10 | 8 | 0x0041875c – 0x00418e14 |
-| [src/PVWFontButton.cpp](src/PVWFontButton.cpp) | 10 | 8 | 0x004190f0 – 0x00419874 |
-| [src/PVWRichEdit.cpp](src/PVWRichEdit.cpp) | 18 | 11 | 0x00419bb8 – 0x0041ae3c |
-| [src/PVWEdit.cpp](src/PVWEdit.cpp) | 14 | 6 | 0x0041aef0 – 0x0041b600 |
-| [src/PVWStatic.cpp](src/PVWStatic.cpp) | 6 | 3 | 0x0041b638 – 0x0041bad8 |
-| [src/PVWUpDown.cpp](src/PVWUpDown.cpp) | 5 | 4 | 0x0041bafc – 0x0041bdf0 |
-| [src/PVWEnumeration.cpp](src/PVWEnumeration.cpp) | 6 | 4 | 0x0041be30 – 0x0041c1e4 |
-| [src/PVWCombo.cpp](src/PVWCombo.cpp) | 11 | 4 | 0x0041c210 – 0x0041ca1c |
-| [src/PVWURL.cpp](src/PVWURL.cpp) | 14 | 11 | 0x0041d510 – 0x0041e888 |
-| [src/PVWFontMaintainer.cpp](src/PVWFontMaintainer.cpp) | 4 | 1 | 0x0041e8d8 – 0x0041ea74 |
-| [src/PVWTabs.cpp](src/PVWTabs.cpp) | 5 | 4 | 0x0041ea80 – 0x0041ee00 |
-| [src/PVWPathListBox.cpp](src/PVWPathListBox.cpp) | 10 | 4 | 0x0041ee74 – 0x0041fedc |
-| [src/PVWPathList.cpp](src/PVWPathList.cpp) | 78 | 55 | 0x00420274 – 0x004258e8 |
-| [src/LookupConfiguration.cpp](src/LookupConfiguration.cpp) | 4 | 3 | 0x00425984 – 0x004263ec |
-| [src/PrintPreviewWindow.cpp](src/PrintPreviewWindow.cpp) | 25 | 21 | 0x00426498 – 0x004283a8 |
-| [src/MyScroller.cpp](src/MyScroller.cpp) | 26 | 21 | 0x004283f4 – 0x0044fb08 |
-| [src/MatchListLabelWindows.cpp](src/MatchListLabelWindows.cpp) | 4 | 1 | 0x00428eb4 – 0x0042909c |
-| [src/MatchListWindows.cpp](src/MatchListWindows.cpp) | 109 | 30 | 0x004292c0 – 0x00431458 |
-| [src/Pattern.cpp](src/Pattern.cpp) | 6 | 3 | 0x00434b30 – 0x00434cd0 |
-| [src/GridAboutBoxViewWindows.cpp](src/GridAboutBoxViewWindows.cpp) | 20 | 4 | 0x004350d4 – 0x00437fc4 |
-| [src/TEAViewProfileWindows.cpp](src/TEAViewProfileWindows.cpp) | 2 | 1 | 0x00439ea0 – 0x0043a064 |
+| [src/PVWPushButton.cpp](src/PVWPushButton.cpp) | 6 | 6 | 0x004179a8 – 0x00417d50 |
+| [src/PVWRadioButton.cpp](src/PVWRadioButton.cpp) | 9 | 9 | 0x00417dec – 0x004182b4 |
+| [src/PVWCheckBox.cpp](src/PVWCheckBox.cpp) | 5 | 5 | 0x00418350 – 0x004186c0 |
+| [src/PVWColourButton.cpp](src/PVWColourButton.cpp) | 10 | 10 | 0x0041875c – 0x00418e14 |
+| [src/PVWFontButton.cpp](src/PVWFontButton.cpp) | 10 | 10 | 0x004190f0 – 0x00419874 |
+| [src/PVWRichEdit.cpp](src/PVWRichEdit.cpp) | 34 | 34 | 0x00419bb8 – 0x00469f48 |
+| [src/PVWEdit.cpp](src/PVWEdit.cpp) | 14 | 14 | 0x0041aef0 – 0x0041b600 |
+| [src/PVWStatic.cpp](src/PVWStatic.cpp) | 6 | 6 | 0x0041b638 – 0x0041bad8 |
+| [src/PVWUpDown.cpp](src/PVWUpDown.cpp) | 5 | 5 | 0x0041bafc – 0x0041bdf0 |
+| [src/PVWEnumeration.cpp](src/PVWEnumeration.cpp) | 6 | 6 | 0x0041be30 – 0x0041c1e4 |
+| [src/PVWCombo.cpp](src/PVWCombo.cpp) | 11 | 11 | 0x0041c210 – 0x0041ca1c |
+| [src/PVWURL.cpp](src/PVWURL.cpp) | 14 | 14 | 0x0041d510 – 0x0041e888 |
+| [src/PVWFontMaintainer.cpp](src/PVWFontMaintainer.cpp) | 4 | 4 | 0x0041e8d8 – 0x0041ea74 |
+| [src/PVWTabs.cpp](src/PVWTabs.cpp) | 5 | 5 | 0x0041ea80 – 0x0041ee00 |
+| [src/PVWPathListBox.cpp](src/PVWPathListBox.cpp) | 9 | 9 | 0x0041ee74 – 0x0041fea4 |
+| [src/PVWPathList.cpp](src/PVWPathList.cpp) | 65 | 65 | 0x0041fedc – 0x00422cf8 |
+| [src/LookupConfiguration.cpp](src/LookupConfiguration.cpp) | 17 | 17 | 0x00422de4 – 0x0042612c |
+| [src/MyScroller.cpp](src/MyScroller.cpp) | 26 | 26 | 0x004263ec – 0x0044faac |
+| [src/PrintPreviewWindow.cpp](src/PrintPreviewWindow.cpp) | 25 | 25 | 0x00426498 – 0x004283a8 |
+| [src/MatchListLabelWindows.cpp](src/MatchListLabelWindows.cpp) | 5 | 5 | 0x00428ce4 – 0x0042909c |
+| [src/MatchListWindows.cpp](src/MatchListWindows.cpp) | 108 | 108 | 0x004292c0 – 0x004313f8 |
+| [src/Pattern.cpp](src/Pattern.cpp) | 5 | 5 | 0x00434b30 – 0x00434cb8 |
+| [src/GridAboutBoxViewWindows.cpp](src/GridAboutBoxViewWindows.cpp) | 20 | 20 | 0x00434cd0 – 0x00437eb0 |
+| [src/TEAViewProfileWindows.cpp](src/TEAViewProfileWindows.cpp) | 3 | 3 | 0x00437fc4 – 0x0043a064 |
 | [src/main.cpp](src/main.cpp) | 2 | 2 | 0x0043b544 – 0x0043b7a8 |
-| [src/PrintPreviewWindowTEA.cpp](src/PrintPreviewWindowTEA.cpp) | 6 | 4 | 0x0043bbb4 – 0x0043c330 |
-| [src/TEAPrintoutFeeder.cpp](src/TEAPrintoutFeeder.cpp) | 10 | 6 | 0x0043c3a8 – 0x0043c6fc |
-| [src/TSDictionarySaveTEADialog.cpp](src/TSDictionarySaveTEADialog.cpp) | 3 | 3 | 0x0043c8a4 – 0x0043ca6c |
-| [src/TSDictionarySaveDialog.cpp](src/TSDictionarySaveDialog.cpp) | 31 | 10 | 0x0043cdcc – 0x0043fd98 |
-| [src/DictionaryMaintainer.cpp](src/DictionaryMaintainer.cpp) | 16 | 9 | 0x0043fdec – 0x0044e810 |
-| [src/OccurrenceListCache.cpp](src/OccurrenceListCache.cpp) | 68 | 2 | 0x0043fe0c – 0x0044d44c |
-| [src/Persist.cpp](src/Persist.cpp) | 21 | 4 | 0x0044e83c – 0x0044f260 |
-| [src/TEAProgressBar.cpp](src/TEAProgressBar.cpp) | 7 | 3 | 0x0044fc80 – 0x00450940 |
-| [src/SearchModeButton.cpp](src/SearchModeButton.cpp) | 8 | 7 | 0x00450a78 – 0x0045f0c4 |
-| [src/TEAViewWindows.cpp](src/TEAViewWindows.cpp) | 110 | 38 | 0x00450af4 – 0x0045e8c4 |
-| [src/VariableValues.cpp](src/VariableValues.cpp) | 64 | 37 | 0x004601e8 – 0x00469f48 |
-| [src/LookupPropertiesViewWindows.cpp](src/LookupPropertiesViewWindows.cpp) | 16 | 10 | 0x00460e4c – 0x00462d9c |
-| [src/GridViewWindows.cpp](src/GridViewWindows.cpp) | 36 | 1 | 0x00463058 – 0x004671dc |
-| [src/TEAQuickReferenceViewWindows.cpp](src/TEAQuickReferenceViewWindows.cpp) | 6 | 4 | 0x00467594 – 0x00467ae8 |
-| [src/TabbyPropertiesViewWindows.cpp](src/TabbyPropertiesViewWindows.cpp) | 15 | 12 | 0x00467d40 – 0x00468548 |
-| [src/DefinitionRichEdit.cpp](src/DefinitionRichEdit.cpp) | 5 | 4 | 0x0046a010 – 0x0046a360 |
-| [src/DefinitionViewWindows.cpp](src/DefinitionViewWindows.cpp) | 42 | 16 | 0x0046a3c4 – 0x004723b0 |
-| [src/DefinitionViewFrame.cpp](src/DefinitionViewFrame.cpp) | 8 | 4 | 0x00472edc – 0x00473650 |
-| [src/GripBar.cpp](src/GripBar.cpp) | 3 | 2 | 0x00473ba8 – 0x00473df0 |
-| [src/TEAFrameWindow.cpp](src/TEAFrameWindow.cpp) | 31 | 29 | 0x00473f30 – 0x00474e1c |
-| [src/TEAAppWindows.cpp](src/TEAAppWindows.cpp) | 8 | 5 | 0x00474ef0 – 0x00475a74 |
-| [src/ExternalLookupViewWindows.cpp](src/ExternalLookupViewWindows.cpp) | 5 | 4 | 0x00475d20 – 0x004760d8 |
-| [src/DictionaryListViewWindows.cpp](src/DictionaryListViewWindows.cpp) | 16 | 13 | 0x004765a0 – 0x00477ca0 |
-| [src/MatchEngineSet.cpp](src/MatchEngineSet.cpp) | 28 | 2 | 0x00477d64 – 0x0047ab54 |
-| [src/TEAStartupTipsViewWindows.cpp](src/TEAStartupTipsViewWindows.cpp) | 63 | 9 | 0x0047ad78 – 0x00481c1c |
-| [src/FormattedTextSegment.cpp](src/FormattedTextSegment.cpp) | 2 | 1 | 0x00481ebc – 0x00481f7c |
-| [src/FormattedTextParagraph.cpp](src/FormattedTextParagraph.cpp) | 33 | 3 | 0x0048209c – 0x00485a4c |
-| [src/Help.cpp](src/Help.cpp) | 2 | 1 | 0x00485b70 – 0x00485bb8 |
-| [src/Common.cpp](src/Common.cpp) | 7 | 1 | 0x00485ee0 – 0x004862b0 |
-| [src/LicenseViewWindows.cpp](src/LicenseViewWindows.cpp) | 9 | 2 | 0x00486488 – 0x0048698c |
+| [src/PrintPreviewWindowTEA.cpp](src/PrintPreviewWindowTEA.cpp) | 5 | 5 | 0x0043bbb4 – 0x0043c04c |
+| [src/TSDictionarySaveTEADialog.cpp](src/TSDictionarySaveTEADialog.cpp) | 4 | 4 | 0x0043c6fc – 0x0043ca6c |
+| [src/TSDictionarySaveDialog.cpp](src/TSDictionarySaveDialog.cpp) | 30 | 30 | 0x0043cdcc – 0x0043fd78 |
+| [src/DictionaryMaintainer.cpp](src/DictionaryMaintainer.cpp) | 17 | 17 | 0x0043fd98 – 0x0044e810 |
+| [src/OccurrenceListCache.cpp](src/OccurrenceListCache.cpp) | 68 | 68 | 0x0043fe0c – 0x0044d44c |
+| [src/Persist.cpp](src/Persist.cpp) | 20 | 20 | 0x0044e83c – 0x0044f21c |
+| [src/TEAProgressBar.cpp](src/TEAProgressBar.cpp) | 7 | 7 | 0x0044fb08 – 0x004508e0 |
+| [src/SearchModeButton.cpp](src/SearchModeButton.cpp) | 9 | 9 | 0x00450940 – 0x0045f0c4 |
+| [src/TEAViewWindows.cpp](src/TEAViewWindows.cpp) | 110 | 110 | 0x00450af4 – 0x0045e8c4 |
+| [src/VariableValues.cpp](src/VariableValues.cpp) | 47 | 47 | 0x004601e8 – 0x004695a8 |
+| [src/LookupPropertiesViewWindows.cpp](src/LookupPropertiesViewWindows.cpp) | 16 | 16 | 0x00460220 – 0x00462d44 |
+| [src/TEAAppWindows.cpp](src/TEAAppWindows.cpp) | 43 | 43 | 0x00462d9c – 0x004757b4 |
+| [src/GridViewWindows.cpp](src/GridViewWindows.cpp) | 1 | 1 | 0x00463058 – 0x00463058 |
+| [src/TEAQuickReferenceViewWindows.cpp](src/TEAQuickReferenceViewWindows.cpp) | 7 | 7 | 0x004671dc – 0x00467ae8 |
+| [src/TabbyPropertiesViewWindows.cpp](src/TabbyPropertiesViewWindows.cpp) | 15 | 15 | 0x00467d40 – 0x00468548 |
+| [src/DefinitionRichEdit.cpp](src/DefinitionRichEdit.cpp) | 5 | 5 | 0x0046a010 – 0x0046a360 |
+| [src/DefinitionViewWindows.cpp](src/DefinitionViewWindows.cpp) | 41 | 41 | 0x0046a3c4 – 0x00472370 |
+| [src/DefinitionViewFrame.cpp](src/DefinitionViewFrame.cpp) | 9 | 9 | 0x004723b0 – 0x00473650 |
+| [src/GripBar.cpp](src/GripBar.cpp) | 55 | 55 | 0x00473ba8 – 0x00481c1c |
+| [src/TEAFrameWindow.cpp](src/TEAFrameWindow.cpp) | 30 | 30 | 0x00473f30 – 0x00474d04 |
+| [src/ExternalLookupViewWindows.cpp](src/ExternalLookupViewWindows.cpp) | 6 | 6 | 0x00475a74 – 0x004760d8 |
+| [src/DictionaryListViewWindows.cpp](src/DictionaryListViewWindows.cpp) | 16 | 16 | 0x004765a0 – 0x00477ca0 |
+| [src/MatchEngineSet.cpp](src/MatchEngineSet.cpp) | 27 | 27 | 0x00477d64 – 0x0047ab30 |
+| [src/TEAStartupTipsViewWindows.cpp](src/TEAStartupTipsViewWindows.cpp) | 12 | 12 | 0x0047ab54 – 0x0047bdc0 |
+| [src/FormattedTextSegment.cpp](src/FormattedTextSegment.cpp) | 2 | 2 | 0x00481ebc – 0x00481f7c |
+| [src/FormattedTextParagraph.cpp](src/FormattedTextParagraph.cpp) | 33 | 33 | 0x0048209c – 0x00485a4c |
+| [src/Help.cpp](src/Help.cpp) | 2 | 2 | 0x00485b70 – 0x00485bb8 |
+| [src/Common.cpp](src/Common.cpp) | 6 | 6 | 0x00485ee0 – 0x0048622c |
+| [src/LicenseViewWindows.cpp](src/LicenseViewWindows.cpp) | 10 | 10 | 0x004862b0 – 0x0048698c |
 
 ## Application classes (83)
 

@@ -9,17 +9,17 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x00455a00  OWL::TBarDescr::~TBarDescr   (6 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TBarDescr::_dtor
-void __stdcall OWL::TBarDescr::_dtor(undefined4 *param_1,byte param_2)
+void __stdcall OWL::TBarDescr::_dtor(undefined4 *self,byte dtorFlags)
 
 {
   int iVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uStack_38;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x484380);
-  if (param_1 != (undefined4 *)0x0) {
-    *param_1 = &OWL::TBarDescr::vftable;
-    iVar1 = param_1[0xc];
+  if (self != (undefined4 *)0x0) {
+    *self = &OWL::TBarDescr::vftable;
+    iVar1 = self[0xc];
     if (iVar1 != 0) {
       FUN_00455aec(iVar1,'\x01');
       if (*(int *)(iVar1 + 9) != 0) {
@@ -27,24 +27,24 @@ void __stdcall OWL::TBarDescr::_dtor(undefined4 *param_1,byte param_2)
       }
       operator_delete();
     }
-    if ((undefined4 *)param_1[7] != (undefined4 *)0x0) {
-      OWL::TToolbarRes::_dtor((undefined4 *)param_1[7],3);
+    if ((undefined4 *)self[7] != (undefined4 *)0x0) {
+      OWL::TToolbarRes::_dtor((undefined4 *)self[7],3);
     }
-    if ((undefined4 *)param_1[8] != (undefined4 *)0x0) {
-      (*(code *)**(undefined4 **)param_1[8])();
+    if ((undefined4 *)self[8] != (undefined4 *)0x0) {
+      (*(code *)**(undefined4 **)self[8])();
     }
     operator_delete();
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = uStack_38;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00455b7c  OWL::TBarDescr::vf1   (345 bytes)   [rtti:vtable virtual slot 1]
-undefined4 __cdecl OWL::TBarDescr::vf1(int param_1,int param_2)
+undefined4 __cdecl OWL::TBarDescr::vf1(int self,int param_2)
 
 {
   undefined2 uVar1;
@@ -52,95 +52,95 @@ undefined4 __cdecl OWL::TBarDescr::vf1(int param_1,int param_2)
   undefined4 uVar3;
   undefined4 *puVar4;
   int iVar5;
-  undefined2 extraout_var;
-  undefined2 extraout_var_00;
-  undefined2 extraout_var_01;
-  undefined2 extraout_var_02;
+  undefined2 regHigh;
+  undefined2 regHigh2;
+  undefined2 regHigh3;
+  undefined2 regHigh4;
   int iVar6;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   undefined4 uVar7;
   int local_3c;
   undefined4 local_38;
-  undefined4 local_34;
-  undefined4 local_30;
-  undefined4 local_2c;
-  undefined2 local_1c;
-  undefined4 *local_8;
+  undefined4 unused;
+  undefined4 unused2;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  undefined4 *celArray;
   
   __InitExceptBlockLDTC(0x484400);
-  if ((*(int *)(param_1 + 0x1c) == 0) ||
-     (uVar3 = FUN_00455b38(*(int **)(param_1 + 0x1c)), (char)uVar3 == '\0')) {
+  if ((*(int *)(self + 0x1c) == 0) ||
+     (uVar3 = FUN_00455b38(*(int **)(self + 0x1c)), (char)uVar3 == '\0')) {
     uVar3 = 0;
-    *in_FS_OFFSET = local_2c;
+    *sehChainHead = sehPrevFrame;
   }
   else {
-    if (*(int *)(*(int *)(param_1 + 0x30) + 1) == 0) {
-      FUN_004557ea(*(int *)(param_1 + 0x30),*(int *)(param_1 + 0x2c),*(int *)(param_1 + 0x1c));
+    if (*(int *)(*(int *)(self + 0x30) + 1) == 0) {
+      FUN_004557ea(*(int *)(self + 0x30),*(int *)(self + 0x2c),*(int *)(self + 0x1c));
     }
-    puVar4 = (undefined4 *)FUN_0042f818(*(int *)(param_1 + 0x1c));
+    puVar4 = (undefined4 *)FUN_0042f818(*(int *)(self + 0x1c));
     iVar5 = FUN_0041d060(puVar4);
-    uVar1 = FUN_0042f868(*(int *)(param_1 + 0x1c));
-    iVar5 = iVar5 / CONCAT22(extraout_var,uVar1);
-    local_8 = (undefined4 *)operator_new();
-    if (local_8 != (undefined4 *)0x0) {
-      local_1c = 0x14;
+    uVar1 = FUN_0042f868(*(int *)(self + 0x1c));
+    iVar5 = iVar5 / CONCAT22(regHigh,uVar1);
+    celArray = (undefined4 *)operator_new();
+    if (celArray != (undefined4 *)0x0) {
+      ehContext = 0x14;
       uVar7 = 5;
-      uVar1 = FUN_0042f824(*(int *)(param_1 + 0x1c));
-      iVar6 = CONCAT22(extraout_var_00,uVar1);
+      uVar1 = FUN_0042f824(*(int *)(self + 0x1c));
+      iVar6 = CONCAT22(regHigh2,uVar1);
       uVar3 = 0;
-      uVar1 = FUN_0042f868(*(int *)(param_1 + 0x1c));
-      uVar2 = FUN_0042f850(*(int *)(param_1 + 0x1c));
-      local_38 = CONCAT22(extraout_var_02,uVar2);
-      local_34 = CONCAT22(extraout_var_01,uVar1);
-      local_30 = local_38;
-      FUN_0041eb38(local_8,&local_38,uVar3,iVar6,uVar7,iVar5);
-      local_1c = 8;
+      uVar1 = FUN_0042f868(*(int *)(self + 0x1c));
+      uVar2 = FUN_0042f850(*(int *)(self + 0x1c));
+      local_38 = CONCAT22(regHigh4,uVar2);
+      unused = CONCAT22(regHigh3,uVar1);
+      unused2 = local_38;
+      OWL::TCelArray::TCelArray_41eb38(celArray,&local_38,uVar3,iVar6,uVar7,iVar5);
+      ehContext = 8;
     }
-    puVar4 = local_8;
-    FUN_0041ee7c((int)local_8,-1);
+    puVar4 = celArray;
+    FUN_0041ee7c((int)celArray,-1);
     (**(code **)(*(int *)(param_2 + 0x18) + 0x28))();
     iVar5 = 0;
     local_3c = 0;
-    for (iVar6 = 0; iVar6 < *(int *)(*(int *)(param_1 + 0x30) + 1); iVar6 = iVar6 + 1) {
+    for (iVar6 = 0; iVar6 < *(int *)(*(int *)(self + 0x30) + 1); iVar6 = iVar6 + 1) {
       (**(code **)(*(int *)(param_2 + 0x18) + 0x14))();
-      iVar5 = *(int *)(param_1 + 0x30);
+      iVar5 = *(int *)(self + 0x30);
       if (*(char *)(*(int *)(*(int *)(iVar5 + 9) + iVar6 * 4) + 4) != '\0') {
-        iVar5 = FUN_0041eddc((int)puVar4,*(int *)(param_1 + 0x20),local_3c);
+        iVar5 = FUN_0041eddc((int)puVar4,*(int *)(self + 0x20),local_3c);
         local_3c = local_3c + 1;
       }
     }
     uVar3 = CONCAT31((int3)((uint)iVar5 >> 8),1);
-    *in_FS_OFFSET = local_2c;
+    *sehChainHead = sehPrevFrame;
   }
   return uVar3;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00455cd8  OWL::TBarDescr::vf2   (538 bytes)   [rtti:vtable virtual slot 2]
-undefined4 __cdecl OWL::TBarDescr::vf2(int param_1,int param_2,int *param_3)
+undefined4 __cdecl OWL::TBarDescr::vf2(int self,int param_2,int *param_3)
 
 {
   int *piVar1;
   undefined4 uVar2;
   int iVar3;
   undefined4 *puVar4;
-  BOOL BVar5;
+  BOOL ok;
   int iVar6;
   int iVar7;
   int local_24;
-  int local_20;
+  int i;
   int local_1c;
   int local_18;
   int local_14;
   int local_10;
   int local_c;
   
-  if ((*(int *)(param_1 + 0x1c) == 0) ||
-     (uVar2 = FUN_00455b38(*(int **)(param_1 + 0x1c)), (char)uVar2 == '\0')) {
+  if ((*(int *)(self + 0x1c) == 0) ||
+     (uVar2 = FUN_00455b38(*(int **)(self + 0x1c)), (char)uVar2 == '\0')) {
     uVar2 = 0;
   }
   else {
-    FUN_00456024(param_1,(int)param_3);
+    FUN_00456024(self,(int)param_3);
     if (*(int *)(*(int *)(param_2 + 0x30) + 1) == 0) {
       FUN_004557ea(*(int *)(param_2 + 0x30),*(int *)(param_2 + 0x2c),*(int *)(param_2 + 0x1c));
     }
@@ -154,13 +154,13 @@ undefined4 __cdecl OWL::TBarDescr::vf2(int param_1,int param_2,int *param_3)
     iVar7 = 0;
     do {
       if (*(int *)(param_2 + 4 + iVar7 * 4) < 1) {
-        if ((*(int *)(param_2 + 4 + iVar7 * 4) == 0) && (0 < *(int *)(param_1 + 4 + iVar7 * 4))) {
-          for (local_24 = 0; local_24 < *(int *)(param_1 + 4 + iVar7 * 4); local_24 = local_24 + 1)
+        if ((*(int *)(param_2 + 4 + iVar7 * 4) == 0) && (0 < *(int *)(self + 4 + iVar7 * 4))) {
+          for (local_24 = 0; local_24 < *(int *)(self + 4 + iVar7 * 4); local_24 = local_24 + 1)
           {
-            piVar1 = *(int **)(*(int *)(*(int *)(param_1 + 0x30) + 9) + local_10 * 4);
+            piVar1 = *(int **)(*(int *)(*(int *)(self + 0x30) + 9) + local_10 * 4);
             (**(code **)(param_3[6] + 0x14))();
             if ((char)piVar1[1] != '\0') {
-              FUN_0041eddc(iVar3,*(int *)(param_1 + 0x20),local_1c);
+              FUN_0041eddc(iVar3,*(int *)(self + 0x20),local_1c);
               if (*piVar1 == 0) {
                 iVar6 = 0;
               }
@@ -179,7 +179,7 @@ undefined4 __cdecl OWL::TBarDescr::vf2(int param_1,int param_2,int *param_3)
         }
       }
       else {
-        for (local_20 = 0; local_20 < *(int *)(param_2 + 4 + iVar7 * 4); local_20 = local_20 + 1) {
+        for (i = 0; i < *(int *)(param_2 + 4 + iVar7 * 4); i = i + 1) {
           piVar1 = *(int **)(*(int *)(*(int *)(param_2 + 0x30) + 9) + local_c * 4);
           (**(code **)(param_3[6] + 0x14))();
           if ((char)piVar1[1] != '\0') {
@@ -204,15 +204,15 @@ undefined4 __cdecl OWL::TBarDescr::vf2(int param_1,int param_2,int *param_3)
     } while (iVar7 < 6);
     (**(code **)(*(int *)(*param_3 + 8) + 0x68))();
     (**(code **)(param_3[6] + 0x34))();
-    BVar5 = UpdateWindow(*(HWND *)(*param_3 + 0xc));
-    uVar2 = CONCAT31((int3)((uint)BVar5 >> 8),1);
+    ok = UpdateWindow(*(HWND *)(*param_3 + 0xc));
+    uVar2 = CONCAT31((int3)((uint)ok >> 8),1);
   }
   return uVar2;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00455ef4  OWL::TBarDescr::vf3   (302 bytes)   [rtti:vtable virtual slot 3]
-undefined4 __cdecl OWL::TBarDescr::vf3(int param_1,int *param_2)
+undefined4 __cdecl OWL::TBarDescr::vf3(int self,int *param_2)
 
 {
   int *piVar1;
@@ -220,27 +220,27 @@ undefined4 __cdecl OWL::TBarDescr::vf3(int param_1,int *param_2)
   int iVar3;
   int iVar4;
   undefined4 *puVar5;
-  BOOL BVar6;
+  BOOL ok;
   int iVar7;
-  int local_14;
+  int i;
   int local_10;
   int local_c;
   
-  if ((*(int *)(param_1 + 0x1c) != 0) &&
-     (uVar2 = FUN_00455b38(*(int **)(param_1 + 0x1c)), (char)uVar2 != '\0')) {
-    FUN_00456024(param_1,(int)param_2);
+  if ((*(int *)(self + 0x1c) != 0) &&
+     (uVar2 = FUN_00455b38(*(int **)(self + 0x1c)), (char)uVar2 != '\0')) {
+    FUN_00456024(self,(int)param_2);
     iVar3 = (**(code **)(param_2[6] + 0x2c))();
     FUN_0041ee7c(iVar3,-1);
     local_c = 0;
     local_10 = 0;
     iVar7 = 0;
     do {
-      if (*(int *)(param_1 + 4 + iVar7 * 4) != 0) {
-        for (local_14 = 0; local_14 < *(int *)(param_1 + 4 + iVar7 * 4); local_14 = local_14 + 1) {
-          piVar1 = *(int **)(*(int *)(*(int *)(param_1 + 0x30) + 9) + local_c * 4);
+      if (*(int *)(self + 4 + iVar7 * 4) != 0) {
+        for (i = 0; i < *(int *)(self + 4 + iVar7 * 4); i = i + 1) {
+          piVar1 = *(int **)(*(int *)(*(int *)(self + 0x30) + 9) + local_c * 4);
           (**(code **)(param_2[6] + 0x14))();
           if ((char)piVar1[1] != '\0') {
-            FUN_0041eddc(iVar3,*(int *)(param_1 + 0x20),local_10);
+            FUN_0041eddc(iVar3,*(int *)(self + 0x20),local_10);
             if (*piVar1 == 0) {
               iVar4 = 0;
             }
@@ -260,8 +260,8 @@ undefined4 __cdecl OWL::TBarDescr::vf3(int param_1,int *param_2)
     } while (iVar7 < 6);
     (**(code **)(*(int *)(*param_2 + 8) + 0x68))();
     (**(code **)(param_2[6] + 0x34))();
-    BVar6 = UpdateWindow(*(HWND *)(*param_2 + 0xc));
-    return CONCAT31((int3)((uint)BVar6 >> 8),1);
+    ok = UpdateWindow(*(HWND *)(*param_2 + 0xc));
+    return CONCAT31((int3)((uint)ok >> 8),1);
   }
   return 0;
 }

@@ -10,211 +10,211 @@ namespace tea {
 // 0x0043b544  ExpandQueryMacros   (612 bytes)   [notes+analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x0041130c. replaces unescaped @ and # with the configured expansions; \x pairs are copied verbatim
 /* WARNING: Removing unreachable block (ram,0x0043b585) */
-int __cdecl ExpandQueryMacros(int param_1,int param_2,int param_3)
+int __cdecl ExpandQueryMacros(int result,int expansions,int query)
 
 {
-  uint uVar1;
-  char cVar2;
-  int iVar3;
-  int iVar4;
-  int *piVar5;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  undefined1 local_14 [8];
-  undefined4 *local_c;
+  uint len;
+  char ch;
+  int queryLen;
+  int i;
+  int *rep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined1 out [8];
+  undefined4 *outData;
   
   __InitExceptBlockLDTC(0x4f4abc);
-  local_c = (undefined4 *)&DAT_00513d64;
-  iVar3 = *(int *)(*(int *)(param_3 + 8) + -4);
-  iVar4 = 0;
-  if (0 < iVar3) {
+  outData = (undefined4 *)&g_emptyStringData;
+  queryLen = *(int *)(*(int *)(query + 8) + -4);
+  i = 0;
+  if (0 < queryLen) {
     do {
-      cVar2 = *(char *)(*(int *)(param_3 + 8) + iVar4);
-      if ((cVar2 == '@') && (*(int *)(*(int *)(param_2 + 8) + -4) != 0)) {
-        std::string::append((int)local_14,param_2);
+      ch = *(char *)(*(int *)(query + 8) + i);
+      if ((ch == '@') && (*(int *)(*(int *)(expansions + 8) + -4) != 0)) {
+        std::string::append((int)out,expansions);
       }
-      else if ((cVar2 == '#') && (*(int *)(*(int *)(param_2 + 0x18) + -4) != 0)) {
-        std::string::append((int)local_14,param_2 + 0x10);
+      else if ((ch == '#') && (*(int *)(*(int *)(expansions + 0x18) + -4) != 0)) {
+        std::string::append((int)out,expansions + 0x10);
       }
       else {
-        if ((cVar2 == '\\') && (iVar4 + 1 < iVar3)) {
-          std::string::replace_fill((int)local_14,local_c[-1],0,1,0x5c);
-          iVar4 = iVar4 + 1;
-          cVar2 = *(char *)(*(int *)(param_3 + 8) + iVar4);
+        if ((ch == '\\') && (i + 1 < queryLen)) {
+          std::string::replace_fill((int)out,outData[-1],0,1,0x5c);
+          i = i + 1;
+          ch = *(char *)(*(int *)(query + 8) + i);
         }
-        std::string::replace_fill((int)local_14,local_c[-1],0,1,cVar2);
+        std::string::replace_fill((int)out,outData[-1],0,1,ch);
       }
-      iVar4 = iVar4 + 1;
-    } while (iVar4 < iVar3);
+      i = i + 1;
+    } while (i < queryLen);
   }
-  *(undefined4 *)(param_1 + 8) = 0;
-  if (local_c[-3] == -1 || local_c[-3] + 1 < 0) {
-    uVar1 = local_c[-1];
-    piVar5 = std::string::__getRep(param_1,uVar1,uVar1);
-    *(int **)(param_1 + 8) = piVar5 + 3;
-    memcpy(*(undefined4 **)(param_1 + 8),local_c,uVar1);
+  *(undefined4 *)(result + 8) = 0;
+  if (outData[-3] == -1 || outData[-3] + 1 < 0) {
+    len = outData[-1];
+    rep = std::string::__getRep(result,len,len);
+    *(int **)(result + 8) = rep + 3;
+    memcpy(*(undefined4 **)(result + 8),outData,len);
   }
   else {
-    *(undefined4 **)(param_1 + 8) = local_c;
-    piVar5 = (int *)(*(int *)(param_1 + 8) + -0xc);
-    if (piVar5 != &DAT_00513d58) {
-      *piVar5 = *piVar5 + 1;
+    *(undefined4 **)(result + 8) = outData;
+    rep = (int *)(*(int *)(result + 8) + -0xc);
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
-  if (local_c != (undefined4 *)0x0) {
-    if (local_c[-3] != -1) {
-      piVar5 = local_c + -3;
-      if (piVar5 == &DAT_00513d58) {
-        iVar3 = 1;
+  if (outData != (undefined4 *)0x0) {
+    if (outData[-3] != -1) {
+      rep = outData + -3;
+      if (rep == &g_nullStringRep) {
+        queryLen = 1;
       }
-      else if (piVar5 == &DAT_00513d58) {
-        iVar3 = 1;
+      else if (rep == &g_nullStringRep) {
+        queryLen = 1;
       }
       else {
-        *piVar5 = *piVar5 + -1;
-        iVar3 = *piVar5 + 1;
+        *rep = *rep + -1;
+        queryLen = *rep + 1;
       }
-      if (iVar3 != 0) goto LAB_0043b78d;
+      if (queryLen != 0) goto LAB_0043b78d;
     }
     operator_delete();
   }
 LAB_0043b78d:
-  *in_FS_OFFSET = local_38;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0043b7a8  LoadPatternOptions   (926 bytes)   [analysis (matched TEACON.exe)]
 //   identical body to TEACON.exe 0x00411570. reads ExpansionAt, ExpansionHash, VariablesExclusive, IgnoreUnusedPunctuation from the registry profile
 //   file placement: inferred (address adjacency)
-void __cdecl LoadPatternOptions(int param_1,int param_2)
+void __cdecl LoadPatternOptions(int options,int param_2)
 
 {
-  uint uVar1;
-  int iVar2;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  char cVar4;
-  undefined4 *puVar5;
-  undefined4 local_70;
-  undefined1 local_4c [8];
-  int local_44;
-  undefined1 local_3c [8];
-  int local_34;
-  undefined1 local_2c [8];
-  int local_24;
-  undefined1 local_1c [8];
-  int local_14;
-  int local_c [2];
+  uint found;
+  int out;
+  int *strRep;
+  undefined4 *sehChainHead;
+  char missing;
+  undefined4 *out2;
+  undefined4 sehPrevFrame;
+  undefined1 valueName [8];
+  int str;
+  undefined1 valueName2 [8];
+  int str2;
+  undefined1 valueName3 [8];
+  int str3;
+  undefined1 valueName4 [8];
+  int str4;
+  int persist [2];
   
   __InitExceptBlockLDTC(0x4f4b78);
-  Persist::Persist(local_c,param_2,0,0);
-  iVar2 = param_1;
-  std::string::string_from_cstr((int)local_1c,(uint *)"ExpansionAt");
-  uVar1 = Persist::QueryValueSized((int)local_c,(int)local_1c,iVar2);
-  cVar4 = (uVar1 & 0xff) == 0;
-  if (local_14 != 0) {
-    if (*(int *)(local_14 + -0xc) != -1) {
-      piVar3 = (int *)(local_14 + -0xc);
-      if (piVar3 == &DAT_00513d58) {
-        iVar2 = 1;
+  Persist::Persist(persist,param_2,0,0);
+  out = options;
+  std::string::string_from_cstr((int)valueName4,(uint *)"ExpansionAt");
+  found = Persist::QueryString((int)persist,(int)valueName4,out);
+  missing = (found & 0xff) == 0;
+  if (str4 != 0) {
+    if (*(int *)(str4 + -0xc) != -1) {
+      strRep = (int *)(str4 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        out = 1;
       }
-      else if (piVar3 == &DAT_00513d58) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        out = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar2 = *piVar3 + 1;
+        *strRep = *strRep + -1;
+        out = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_0043b893;
+      if (out != 0) goto LAB_0043b893;
     }
     operator_delete();
-    local_14 = 0;
+    str4 = 0;
   }
 LAB_0043b893:
-  if (cVar4 != '\0') {
-    FUN_004cf41c(param_1,(uint *)"[aeiou]");
+  if (missing != '\0') {
+    std::string::assign_cstr(options,(uint *)"[aeiou]");
   }
-  iVar2 = param_1 + 0x10;
-  std::string::string_from_cstr((int)local_2c,(uint *)"ExpansionHash");
-  uVar1 = Persist::QueryValueSized((int)local_c,(int)local_2c,iVar2);
-  cVar4 = (uVar1 & 0xff) == 0;
-  if (local_24 != 0) {
-    if (*(int *)(local_24 + -0xc) != -1) {
-      piVar3 = (int *)(local_24 + -0xc);
-      if (piVar3 == &DAT_00513d58) {
-        iVar2 = 1;
+  out = options + 0x10;
+  std::string::string_from_cstr((int)valueName3,(uint *)"ExpansionHash");
+  found = Persist::QueryString((int)persist,(int)valueName3,out);
+  missing = (found & 0xff) == 0;
+  if (str3 != 0) {
+    if (*(int *)(str3 + -0xc) != -1) {
+      strRep = (int *)(str3 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        out = 1;
       }
-      else if (piVar3 == &DAT_00513d58) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        out = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar2 = *piVar3 + 1;
+        *strRep = *strRep + -1;
+        out = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_0043b96a;
+      if (out != 0) goto LAB_0043b96a;
     }
     operator_delete();
-    local_24 = 0;
+    str3 = 0;
   }
 LAB_0043b96a:
-  if (cVar4 != '\0') {
-    FUN_004cf41c(param_1 + 0x10,(uint *)"[^aeiou]");
+  if (missing != '\0') {
+    std::string::assign_cstr(options + 0x10,(uint *)"[^aeiou]");
   }
-  puVar5 = &DAT_004fcb84;
-  std::string::string_from_cstr((int)local_3c,(uint *)"VariablesExclusive");
-  uVar1 = Persist::QueryValue((int)local_c,(int)local_3c,puVar5);
-  cVar4 = (uVar1 & 0xff) == 0;
-  if (local_34 != 0) {
-    if (*(int *)(local_34 + -0xc) != -1) {
-      piVar3 = (int *)(local_34 + -0xc);
-      if (piVar3 == &DAT_00513d58) {
-        iVar2 = 1;
+  out2 = &g_exclusiveVariables;
+  std::string::string_from_cstr((int)valueName2,(uint *)"VariablesExclusive");
+  found = Persist::QueryDword((int)persist,(int)valueName2,out2);
+  missing = (found & 0xff) == 0;
+  if (str2 != 0) {
+    if (*(int *)(str2 + -0xc) != -1) {
+      strRep = (int *)(str2 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        out = 1;
       }
-      else if (piVar3 == &DAT_00513d58) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        out = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar2 = *piVar3 + 1;
+        *strRep = *strRep + -1;
+        out = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_0043ba45;
+      if (out != 0) goto LAB_0043ba45;
     }
     operator_delete();
-    local_34 = 0;
+    str2 = 0;
   }
 LAB_0043ba45:
-  if (cVar4 != '\0') {
-    DAT_004fcb84 = 1;
+  if (missing != '\0') {
+    g_exclusiveVariables = 1;
   }
-  puVar5 = (undefined4 *)(param_1 + 0x20);
-  std::string::string_from_cstr((int)local_4c,(uint *)"IgnoreUnusedPunctuation");
-  uVar1 = Persist::QueryValue((int)local_c,(int)local_4c,puVar5);
-  cVar4 = (uVar1 & 0xff) == 0;
-  if (local_44 != 0) {
-    if (*(int *)(local_44 + -0xc) != -1) {
-      piVar3 = (int *)(local_44 + -0xc);
-      if (piVar3 == &DAT_00513d58) {
-        iVar2 = 1;
+  out2 = (undefined4 *)(options + 0x20);
+  std::string::string_from_cstr((int)valueName,(uint *)"IgnoreUnusedPunctuation");
+  found = Persist::QueryDword((int)persist,(int)valueName,out2);
+  missing = (found & 0xff) == 0;
+  if (str != 0) {
+    if (*(int *)(str + -0xc) != -1) {
+      strRep = (int *)(str + -0xc);
+      if (strRep == &g_nullStringRep) {
+        out = 1;
       }
-      else if (piVar3 == &DAT_00513d58) {
-        iVar2 = 1;
+      else if (strRep == &g_nullStringRep) {
+        out = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar2 = *piVar3 + 1;
+        *strRep = *strRep + -1;
+        out = *strRep + 1;
       }
-      if (iVar2 != 0) goto LAB_0043bb18;
+      if (out != 0) goto LAB_0043bb18;
     }
     operator_delete();
-    local_44 = 0;
+    str = 0;
   }
 LAB_0043bb18:
-  if (cVar4 != '\0') {
-    *(undefined4 *)(param_1 + 0x20) = 1;
+  if (missing != '\0') {
+    *(undefined4 *)(options + 0x20) = 1;
   }
-  Persist::_dtor((int)local_c,2);
-  *in_FS_OFFSET = local_70;
+  Persist::_dtor((int)persist,2);
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

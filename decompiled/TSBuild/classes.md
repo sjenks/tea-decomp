@@ -82,17 +82,17 @@ class DMDialog : public OWL::TDialog, public DictionaryMaintainer, public virtua
     //   [ 0] 0x00404164  DMDialog::~DMDialog
     //   [ 1] 0x0043fc98  OWL::TDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
-    //   [ 4] 0x0043fee4  OWL::TDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
-    //   [ 6] 0x0043ffc0  OWL::TDialog::vf6
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
+    //   [ 4] 0x0043fee4  OWL::TDialog::PerformCreate
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
+    //   [ 6] 0x0043ffc0  OWL::TDialog::DoExecute
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
     //   [ 9] 0x004017c8  DMDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
     //   [11] 0x004017ec  DMDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
     //   [14] 0x0040124c  DMDialog::Find
     //   [15] 0x004016c0  DMDialog::vf15
     //   [16] 0x004023b0  DMDialog::vf16
@@ -169,8 +169,8 @@ class TSDictionaryBuilderProgressBar : public OWL::TButton, public virtual OWL::
     //   [ 6] 0x0043d938  OWL::TControl::vf6
     //   [ 7] 0x0043d960  OWL::TControl::vf7
     //   [ 8] 0x0043c79c  OWL::TButton::Find
-    //   [ 9] 0x0043caa0  OWL::TButton::vf9
-    //   [10] 0x0043cac0  OWL::TButton::vf10
+    //   [ 9] 0x0043caa0  OWL::TButton::GetClassName
+    //   [10] 0x0043cac0  OWL::TButton::SetupWindow
 };
 ```
 
@@ -539,8 +539,8 @@ class OWL::TButton : public OWL::TControl, public virtual OWL::TEventHandler, pu
     //   [ 6] 0x0043d938  OWL::TControl::vf6
     //   [ 7] 0x0043d960  OWL::TControl::vf7
     //   [ 8] 0x0043c79c  OWL::TButton::Find
-    //   [ 9] 0x0043caa0  OWL::TButton::vf9
-    //   [10] 0x0043cac0  OWL::TButton::vf10
+    //   [ 9] 0x0043caa0  OWL::TButton::GetClassName
+    //   [10] 0x0043cac0  OWL::TButton::SetupWindow
     // response table at 0x0047f538 (2 entries)
     //   WM_GETDLGCODE                                -> 0x0043caf4  OWL::TButton::EvGetDlgCode
     //   message 0x00f4                               -> 0x0043cb2c  OWL::TButton::EvMsg_f4
@@ -655,10 +655,10 @@ class OWL::TCheckBox : public OWL::TButton, public virtual OWL::TEventHandler, p
     //   [ 5] 0x0043d908  OWL::TControl::vf5
     //   [ 6] 0x0043d938  OWL::TControl::vf6
     //   [ 7] 0x0043d960  OWL::TControl::vf7
-    //   [ 8] 0x0043cfc8  OWL::TCheckBox::vf8
-    //   [ 9] 0x0043d2f4  OWL::TCheckBox::vf9
-    //   [10] 0x0043cac0  OWL::TButton::vf10
-    //   [11] 0x0043d314  OWL::TCheckBox::vf11
+    //   [ 8] 0x0043cfc8  OWL::TCheckBox::Find
+    //   [ 9] 0x0043d2f4  OWL::TCheckBox::GetClassName
+    //   [10] 0x0043cac0  OWL::TButton::SetupWindow
+    //   [11] 0x0043d314  OWL::TCheckBox::Transfer
 };
 ```
 
@@ -713,17 +713,17 @@ class OWL::TCommonDialog : public OWL::TDialog, public virtual OWL::TEventHandle
     //   [ 0] 0x00420788  OWL::TCommonDialog::~TCommonDialog
     //   [ 1] 0x0043fc98  OWL::TDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
-    //   [ 4] 0x004208a8  OWL::TCommonDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
-    //   [ 6] 0x004208b0  OWL::TCommonDialog::vf6
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
-    //   [ 9] 0x00440254  OWL::TDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
-    //   [11] 0x00420884  OWL::TCommonDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
+    //   [ 4] 0x004208a8  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
+    //   [ 6] 0x004208b0  OWL::TCommonDialog::DoExecute
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00440254  OWL::TDialog::Destroy
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
+    //   [11] 0x00420884  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
     //   [14] 0x004205cc  OWL::TCommonDialog::Find
     // response table at 0x00479d3c (3 entries)
     //   WM_CLOSE                                     -> 0x00420614  OWL::TCommonDialog::EvClose
@@ -787,10 +787,10 @@ class OWL::TControlBar : public OWL::TGadgetWindow, public virtual OWL::TEventHa
     /* +0x000 */ // base subobject OWL::TGadgetWindow
     // vtable at 0x0047a018 (27 slots)
     //   [ 0] 0x004211b8  OWL::TControlBar::~TControlBar
-    //   [ 1] 0x00425c40  OWL::TGadgetWindow::vf1
+    //   [ 1] 0x00425c40  OWL::TGadgetWindow::Create
     //   [ 2] 0x00425c5c  OWL::TGadgetWindow::vf2
-    //   [ 3] 0x00421318  OWL::TGadgetWindow::vf3
-    //   [ 4] 0x00427278  OWL::TGadgetWindow::vf4
+    //   [ 3] 0x00421318  OWL::TGadgetWindow::GetTooltip
+    //   [ 4] 0x00427278  OWL::TGadgetWindow::EnableTooltip
     //   [ 5] 0x004268cc  OWL::TGadgetWindow::vf5
     //   [ 6] 0x004268f4  OWL::TGadgetWindow::vf6
     //   [ 7] 0x0042695c  OWL::TGadgetWindow::vf7
@@ -798,20 +798,20 @@ class OWL::TControlBar : public OWL::TGadgetWindow, public virtual OWL::TEventHa
     //   [ 9] 0x00426980  OWL::TGadgetWindow::vf9
     //   [10] 0x00426a00  OWL::TGadgetWindow::vf10
     //   [11] 0x00426a58  OWL::TGadgetWindow::vf11
-    //   [12] 0x00425878  OWL::TGadgetWindow::vf12
+    //   [12] 0x00425878  OWL::TGadgetWindow::IdleAction
     //   [13] 0x00425a50  OWL::TGadgetWindow::vf13
     //   [14] 0x00425a88  OWL::TGadgetWindow::vf14
     //   [15] 0x00426d60  OWL::TGadgetWindow::vf15
     //   [16] 0x00425ce0  OWL::TGadgetWindow::vf16
     //   [17] 0x00426880  OWL::TGadgetWindow::vf17
     //   [18] 0x00425de0  OWL::TGadgetWindow::vf18
-    //   [19] 0x00426ef4  OWL::TGadgetWindow::vf19
+    //   [19] 0x00426ef4  OWL::TGadgetWindow::Paint
     //   [20] 0x00425d98  OWL::TGadgetWindow::vf20
-    //   [21] 0x00426af0  OWL::TGadgetWindow::vf21
-    //   [22] 0x00426bb4  OWL::TGadgetWindow::vf22
-    //   [23] 0x00426c20  OWL::TGadgetWindow::vf23
-    //   [24] 0x00427428  OWL::TGadgetWindow::vf24
-    //   [25] 0x004274f4  OWL::TGadgetWindow::vf25
+    //   [21] 0x00426af0  OWL::TGadgetWindow::SetupWindow
+    //   [22] 0x00426bb4  OWL::TGadgetWindow::CleanupWindow
+    //   [23] 0x00426c20  OWL::TGadgetWindow::PreProcessMsg
+    //   [24] 0x00427428  OWL::TGadgetWindow::EvCommand
+    //   [25] 0x004274f4  OWL::TGadgetWindow::EvCommandEnable
     //   [26] 0x004251dc  OWL::TGadgetWindow::Find
 };
 ```
@@ -916,17 +916,17 @@ class OWL::TDecoratedFrame : public OWL::TLayoutWindow, public virtual OWL::TEve
     //   [ 0] 0x0043df5c  OWL::TDecoratedFrame::~TDecoratedFrame
     //   [ 1] 0x0043f1b4  OWL::TDecoratedFrame::vf1
     //   [ 2] 0x0043e3ec  OWL::TDecoratedFrame::vf2
-    //   [ 3] 0x0043e37c  OWL::TDecoratedFrame::vf3
-    //   [ 4] 0x0043e198  OWL::TDecoratedFrame::vf4
+    //   [ 3] 0x0043e37c  OWL::TDecoratedFrame::TFrameWindow_vf10
+    //   [ 4] 0x0043e198  OWL::TDecoratedFrame::TFrameWindow_vf7
     //   [ 5] 0x0043f27c  OWL::TDecoratedFrame::vf5
-    //   [ 6] 0x0043f364  OWL::TDecoratedFrame::vf6
-    //   [ 7] 0x0043f3a4  OWL::TDecoratedFrame::vf7
+    //   [ 6] 0x0043f364  OWL::TDecoratedFrame::TFrameWindow_vf4
+    //   [ 7] 0x0043f3a4  OWL::TDecoratedFrame::TFrameWindow_vf5
     //   [ 8] 0x0043f2f8  OWL::TDecoratedFrame::vf8
-    //   [ 9] 0x0043e0dc  OWL::TDecoratedFrame::vf9
-    //   [10] 0x0043e164  OWL::TDecoratedFrame::vf10
-    //   [11] 0x0043e33c  OWL::TDecoratedFrame::vf11
-    //   [12] 0x0043e770  OWL::TDecoratedFrame::vf12
-    //   [13] 0x0043e8e8  OWL::TDecoratedFrame::vf13
+    //   [ 9] 0x0043e0dc  OWL::TDecoratedFrame::TFrameWindow_vf16
+    //   [10] 0x0043e164  OWL::TDecoratedFrame::TFrameWindow_vf17
+    //   [11] 0x0043e33c  OWL::TDecoratedFrame::TFrameWindow_vf8
+    //   [12] 0x0043e770  OWL::TDecoratedFrame::TFrameWindow_vf14
+    //   [13] 0x0043e8e8  OWL::TDecoratedFrame::TFrameWindow_vf15
     //   [14] 0x0043dee0  OWL::TDecoratedFrame::Find
     // response table at 0x0047fbe0 (3 entries)
     //   WM_ENTERIDLE                                 -> 0x0043e6bc  OWL::TDecoratedFrame::EvEnteridle
@@ -984,18 +984,18 @@ class OWL::TDialog : public virtual OWL::TEventHandler, public virtual OWL::TStr
     //   [ 0] 0x0043f8f4  OWL::TDialog::~TDialog
     //   [ 1] 0x0043fc98  OWL::TDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
-    //   [ 4] 0x0043fee4  OWL::TDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
-    //   [ 6] 0x0043ffc0  OWL::TDialog::vf6
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
-    //   [ 9] 0x00440254  OWL::TDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
-    //   [11] 0x004401b8  OWL::TDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
-    //   [14] 0x0043f5e0  OWL::TDialog::vf14
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
+    //   [ 4] 0x0043fee4  OWL::TDialog::PerformCreate
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
+    //   [ 6] 0x0043ffc0  OWL::TDialog::DoExecute
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00440254  OWL::TDialog::Destroy
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
+    //   [11] 0x004401b8  OWL::TDialog::SetupWindow
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
+    //   [14] 0x0043f5e0  OWL::TDialog::Find
 };
 ```
 
@@ -1192,17 +1192,17 @@ class OWL::TDvFileOpenDialog : public OWL::TFileOpenDialog, public OWL::TDvOpenS
     //   [ 0] 0x004441cc  OWL::TDvFileOpenDialog::~TDvFileOpenDialog
     //   [ 1] 0x0044152c  OWL::TDvFileOpenDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
-    //   [ 4] 0x004208a8  OWL::TCommonDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
+    //   [ 4] 0x004208a8  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
     //   [ 6] 0x00451198  OWL::TFileOpenDialog::vf6
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
-    //   [ 9] 0x00440254  OWL::TDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
-    //   [11] 0x00420884  OWL::TCommonDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00440254  OWL::TDialog::Destroy
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
+    //   [11] 0x00420884  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
     //   [14] 0x00450d4c  OWL::TOpenSaveDialog::vf14
     //   [15] 0x00451034  OWL::TOpenSaveDialog::vf15
 };
@@ -1219,17 +1219,17 @@ class OWL::TDvFileSaveDialog : public OWL::TFileSaveDialog, public OWL::TDvOpenS
     //   [ 0] 0x004442e0  OWL::TDvFileSaveDialog::~TDvFileSaveDialog
     //   [ 1] 0x00441704  OWL::TDvFileSaveDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
-    //   [ 4] 0x004208a8  OWL::TCommonDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
+    //   [ 4] 0x004208a8  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
     //   [ 6] 0x00451350  OWL::TFileSaveDialog::vf6
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
-    //   [ 9] 0x00440254  OWL::TDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
-    //   [11] 0x00420884  OWL::TCommonDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00440254  OWL::TDialog::Destroy
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
+    //   [11] 0x00420884  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
     //   [14] 0x00450d4c  OWL::TOpenSaveDialog::vf14
     //   [15] 0x00451034  OWL::TOpenSaveDialog::vf15
 };
@@ -1269,18 +1269,18 @@ class OWL::TEdit : public OWL::TStatic, public virtual OWL::TEventHandler, publi
     //   [ 7] 0x0043d960  OWL::TControl::vf7
     //   [ 8] 0x00445598  OWL::TEdit::Find
     //   [ 9] 0x00445e50  OWL::TEdit::vf9
-    //   [10] 0x00446660  OWL::TEdit::vf10
-    //   [11] 0x00446520  OWL::TEdit::vf11
-    //   [12] 0x004463bc  OWL::TEdit::vf12
-    //   [13] 0x0041b1c0  OWL::TEdit::vf13
+    //   [10] 0x00446660  OWL::TEdit::Transfer
+    //   [11] 0x00446520  OWL::TEdit::GetClassName
+    //   [12] 0x004463bc  OWL::TEdit::GetSubText
+    //   [13] 0x0041b1c0  OWL::TEdit::GetSelection
     //   [14] 0x0041b1e0  OWL::TEdit::vf14
-    //   [15] 0x0041b204  OWL::TEdit::vf15
+    //   [15] 0x0041b204  OWL::TEdit::SetSelection
     //   [16] 0x00446204  OWL::TEdit::vf16
-    //   [17] 0x0041b22c  OWL::TEdit::vf17
-    //   [18] 0x0041b248  OWL::TEdit::vf18
-    //   [19] 0x0041b274  OWL::TEdit::vf19
-    //   [20] 0x0044652c  OWL::TEdit::vf20
-    //   [21] 0x00445e68  OWL::TEdit::vf21
+    //   [17] 0x0041b22c  OWL::TEdit::Paste
+    //   [18] 0x0041b248  OWL::TEdit::CharFromPos
+    //   [19] 0x0041b274  OWL::TEdit::PosFromChar
+    //   [20] 0x0044652c  OWL::TEdit::SetupWindow
+    //   [21] 0x00445e68  OWL::TEdit::CanClose
     // response table at 0x0048108c (20 entries)
     //   EV_COMMAND(24322)                            -> 0x004455e0  OWL::TEdit::Cmd24322
     //   EV_COMMAND(24323)                            -> 0x004455fc  OWL::TEdit::Cmd24323
@@ -1335,20 +1335,20 @@ class OWL::TEditFile : public OWL::TEditSearch, public virtual OWL::TEventHandle
     //   [ 5] 0x0043d908  OWL::TControl::vf5
     //   [ 6] 0x0043d938  OWL::TControl::vf6
     //   [ 7] 0x0043d960  OWL::TControl::vf7
-    //   [ 8] 0x00446b4c  OWL::TEditFile::vf8
+    //   [ 8] 0x00446b4c  OWL::TEditFile::Find
     //   [ 9] 0x00445e50  OWL::TEdit::vf9
-    //   [10] 0x00446660  OWL::TEdit::vf10
-    //   [11] 0x00446520  OWL::TEdit::vf11
-    //   [12] 0x004463bc  OWL::TEdit::vf12
-    //   [13] 0x0041b1c0  OWL::TEdit::vf13
+    //   [10] 0x00446660  OWL::TEdit::Transfer
+    //   [11] 0x00446520  OWL::TEdit::GetClassName
+    //   [12] 0x004463bc  OWL::TEdit::GetSubText
+    //   [13] 0x0041b1c0  OWL::TEdit::GetSelection
     //   [14] 0x0041b1e0  OWL::TEdit::vf14
-    //   [15] 0x0041b204  OWL::TEdit::vf15
+    //   [15] 0x0041b204  OWL::TEdit::SetSelection
     //   [16] 0x00446204  OWL::TEdit::vf16
-    //   [17] 0x0041b22c  OWL::TEdit::vf17
-    //   [18] 0x0041b248  OWL::TEdit::vf18
-    //   [19] 0x0041b274  OWL::TEdit::vf19
-    //   [20] 0x00446cf0  OWL::TEditFile::vf20
-    //   [21] 0x00448408  OWL::TEditFile::vf21
+    //   [17] 0x0041b22c  OWL::TEdit::Paste
+    //   [18] 0x0041b248  OWL::TEdit::CharFromPos
+    //   [19] 0x0041b274  OWL::TEdit::PosFromChar
+    //   [20] 0x00446cf0  OWL::TEditFile::SetupWindow
+    //   [21] 0x00448408  OWL::TEditFile::CanClose
     //   [22] 0x00447f1c  OWL::TEditFile::vf22
     //   [23] 0x00447238  OWL::TEditFile::vf23
     //   [24] 0x004474e8  OWL::TEditFile::vf24
@@ -1392,18 +1392,18 @@ class OWL::TEditSearch : public OWL::TEdit, public virtual OWL::TEventHandler, p
     //   [ 7] 0x0043d960  OWL::TControl::vf7
     //   [ 8] 0x004488a4  OWL::TEditSearch::Find
     //   [ 9] 0x00445e50  OWL::TEdit::vf9
-    //   [10] 0x00446660  OWL::TEdit::vf10
-    //   [11] 0x00446520  OWL::TEdit::vf11
-    //   [12] 0x004463bc  OWL::TEdit::vf12
-    //   [13] 0x0041b1c0  OWL::TEdit::vf13
+    //   [10] 0x00446660  OWL::TEdit::Transfer
+    //   [11] 0x00446520  OWL::TEdit::GetClassName
+    //   [12] 0x004463bc  OWL::TEdit::GetSubText
+    //   [13] 0x0041b1c0  OWL::TEdit::GetSelection
     //   [14] 0x0041b1e0  OWL::TEdit::vf14
-    //   [15] 0x0041b204  OWL::TEdit::vf15
+    //   [15] 0x0041b204  OWL::TEdit::SetSelection
     //   [16] 0x00446204  OWL::TEdit::vf16
-    //   [17] 0x0041b22c  OWL::TEdit::vf17
-    //   [18] 0x0041b248  OWL::TEdit::vf18
-    //   [19] 0x0041b274  OWL::TEdit::vf19
-    //   [20] 0x00448a7c  OWL::TEditSearch::vf20
-    //   [21] 0x00445e68  OWL::TEdit::vf21
+    //   [17] 0x0041b22c  OWL::TEdit::Paste
+    //   [18] 0x0041b248  OWL::TEdit::CharFromPos
+    //   [19] 0x0041b274  OWL::TEdit::PosFromChar
+    //   [20] 0x00448a7c  OWL::TEditSearch::SetupWindow
+    //   [21] 0x00445e68  OWL::TEdit::CanClose
     // response table at 0x00481adc (7 entries)
     //   EV_COMMAND(24351)                            -> 0x00448d94  OWL::TEditSearch::Cmd24351
     //   EV_COMMAND_ENABLE(24351)                     -> 0x00448f48  OWL::TEditSearch::CeRange24351to24352
@@ -1554,17 +1554,17 @@ class OWL::TFileOpenDialog : public OWL::TOpenSaveDialog, public virtual OWL::TE
     //   [ 0] 0x00403e58  OWL::TFileOpenDialog::~TFileOpenDialog
     //   [ 1] 0x00450ff0  OWL::TOpenSaveDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
-    //   [ 4] 0x004208a8  OWL::TCommonDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
+    //   [ 4] 0x004208a8  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
     //   [ 6] 0x00451198  OWL::TFileOpenDialog::vf6
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
-    //   [ 9] 0x00440254  OWL::TDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
-    //   [11] 0x00420884  OWL::TCommonDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00440254  OWL::TDialog::Destroy
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
+    //   [11] 0x00420884  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
     //   [14] 0x00450d4c  OWL::TOpenSaveDialog::vf14
     //   [15] 0x00451034  OWL::TOpenSaveDialog::vf15
 };
@@ -1580,17 +1580,17 @@ class OWL::TFileSaveDialog : public OWL::TOpenSaveDialog, public virtual OWL::TE
     //   [ 0] 0x00403ae8  OWL::TFileSaveDialog::~TFileSaveDialog
     //   [ 1] 0x00450ff0  OWL::TOpenSaveDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
-    //   [ 4] 0x004208a8  OWL::TCommonDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
+    //   [ 4] 0x004208a8  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
     //   [ 6] 0x00451350  OWL::TFileSaveDialog::vf6
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
-    //   [ 9] 0x00440254  OWL::TDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
-    //   [11] 0x00420884  OWL::TCommonDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00440254  OWL::TDialog::Destroy
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
+    //   [11] 0x00420884  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
     //   [14] 0x00450d4c  OWL::TOpenSaveDialog::vf14
     //   [15] 0x00451034  OWL::TOpenSaveDialog::vf15
 };
@@ -1606,17 +1606,17 @@ class OWL::TFindDialog : public OWL::TFindReplaceDialog, public virtual OWL::TEv
     //   [ 0] 0x00449198  OWL::TFindDialog::~TFindDialog
     //   [ 1] 0x0044c1f0  OWL::TFindReplaceDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
     //   [ 4] 0x0044c368  OWL::TFindDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
-    //   [ 6] 0x004208b0  OWL::TCommonDialog::vf6
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
-    //   [ 9] 0x00440254  OWL::TDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
-    //   [11] 0x00420884  OWL::TCommonDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
+    //   [ 6] 0x004208b0  OWL::TCommonDialog::DoExecute
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00440254  OWL::TDialog::Destroy
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
+    //   [11] 0x00420884  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
     //   [14] 0x0044bfc4  OWL::TFindReplaceDialog::Find
 };
 ```
@@ -1631,17 +1631,17 @@ class OWL::TFindReplaceDialog : public OWL::TCommonDialog, public virtual OWL::T
     //   [ 0] 0x004492e8  OWL::TFindReplaceDialog::~TFindReplaceDialog
     //   [ 1] 0x0044c1f0  OWL::TFindReplaceDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
     //   [ 4] 0x0044c1e8  OWL::TFindReplaceDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
-    //   [ 6] 0x004208b0  OWL::TCommonDialog::vf6
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
-    //   [ 9] 0x00440254  OWL::TDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
-    //   [11] 0x00420884  OWL::TCommonDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
+    //   [ 6] 0x004208b0  OWL::TCommonDialog::DoExecute
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00440254  OWL::TDialog::Destroy
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
+    //   [11] 0x00420884  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
     //   [14] 0x0044bfc4  OWL::TFindReplaceDialog::Find
     // response table at 0x004824ac (1 entries)
     //   WM_NCDESTROY                                 -> 0x0044c20c  OWL::TFindReplaceDialog::EvNCDestroy
@@ -1700,16 +1700,16 @@ class OWL::TFrameWindow : public virtual OWL::TEventHandler, public virtual OWL:
     //   [ 5] 0x00430c4c  OWL::TFrameWindow::vf5
     //   [ 6] 0x0044d450  OWL::TFrameWindow::vf6
     //   [ 7] 0x0044d45c  OWL::TFrameWindow::vf7
-    //   [ 8] 0x0044d530  OWL::TFrameWindow::vf8
+    //   [ 8] 0x0044d530  OWL::TFrameWindow::RemoveChild
     //   [ 9] 0x0044d048  OWL::TFrameWindow::vf9
-    //   [10] 0x0044d15c  OWL::TFrameWindow::vf10
+    //   [10] 0x0044d15c  OWL::TFrameWindow::PreProcessMsg
     //   [11] 0x0044cfcc  Child4509768_Notify4453474_44cfcc
-    //   [12] 0x0044d90c  OWL::TFrameWindow::vf12
-    //   [13] 0x0044d568  OWL::TFrameWindow::vf13
-    //   [14] 0x0044d0cc  OWL::TFrameWindow::vf14
-    //   [15] 0x0044d13c  OWL::TFrameWindow::vf15
-    //   [16] 0x0044e048  OWL::TFrameWindow::vf16
-    //   [17] 0x0044e1f0  OWL::TFrameWindow::vf17
+    //   [12] 0x0044d90c  OWL::TFrameWindow::HoldFocusHWnd
+    //   [13] 0x0044d568  OWL::TFrameWindow::SetDocTitle
+    //   [14] 0x0044d0cc  OWL::TFrameWindow::EvCommand
+    //   [15] 0x0044d13c  OWL::TFrameWindow::EvCommandEnable
+    //   [16] 0x0044e048  OWL::TFrameWindow::SetupWindow
+    //   [17] 0x0044e1f0  OWL::TFrameWindow::CleanupWindow
     //   [18] 0x0044ca68  OWL::TFrameWindow::Find
     // response table at 0x00482838 (9 entries)
     //   WM_PAINT                                     -> 0x0044d734  OWL::TFrameWindow::EvPaint
@@ -1778,10 +1778,10 @@ class OWL::TGadgetWindow : public OWL::TGadgetList, public virtual OWL::TEventHa
     /* +0x004 */ // base subobject OWL::TGadgetList
     // vtable at 0x0047b35c (27 slots)
     //   [ 0] 0x00425710  OWL::TGadgetWindow::~TGadgetWindow
-    //   [ 1] 0x00425c40  OWL::TGadgetWindow::vf1
+    //   [ 1] 0x00425c40  OWL::TGadgetWindow::Create
     //   [ 2] 0x00425c5c  OWL::TGadgetWindow::vf2
-    //   [ 3] 0x00421318  OWL::TGadgetWindow::vf3
-    //   [ 4] 0x00427278  OWL::TGadgetWindow::vf4
+    //   [ 3] 0x00421318  OWL::TGadgetWindow::GetTooltip
+    //   [ 4] 0x00427278  OWL::TGadgetWindow::EnableTooltip
     //   [ 5] 0x004268cc  OWL::TGadgetWindow::vf5
     //   [ 6] 0x004268f4  OWL::TGadgetWindow::vf6
     //   [ 7] 0x0042695c  OWL::TGadgetWindow::vf7
@@ -1789,20 +1789,20 @@ class OWL::TGadgetWindow : public OWL::TGadgetList, public virtual OWL::TEventHa
     //   [ 9] 0x00426980  OWL::TGadgetWindow::vf9
     //   [10] 0x00426a00  OWL::TGadgetWindow::vf10
     //   [11] 0x00426a58  OWL::TGadgetWindow::vf11
-    //   [12] 0x00425878  OWL::TGadgetWindow::vf12
+    //   [12] 0x00425878  OWL::TGadgetWindow::IdleAction
     //   [13] 0x00425a50  OWL::TGadgetWindow::vf13
     //   [14] 0x00425a88  OWL::TGadgetWindow::vf14
     //   [15] 0x00426d60  OWL::TGadgetWindow::vf15
     //   [16] 0x00425ce0  OWL::TGadgetWindow::vf16
     //   [17] 0x00426880  OWL::TGadgetWindow::vf17
     //   [18] 0x00425de0  OWL::TGadgetWindow::vf18
-    //   [19] 0x00426ef4  OWL::TGadgetWindow::vf19
+    //   [19] 0x00426ef4  OWL::TGadgetWindow::Paint
     //   [20] 0x00425d98  OWL::TGadgetWindow::vf20
-    //   [21] 0x00426af0  OWL::TGadgetWindow::vf21
-    //   [22] 0x00426bb4  OWL::TGadgetWindow::vf22
-    //   [23] 0x00426c20  OWL::TGadgetWindow::vf23
-    //   [24] 0x00427428  OWL::TGadgetWindow::vf24
-    //   [25] 0x004274f4  OWL::TGadgetWindow::vf25
+    //   [21] 0x00426af0  OWL::TGadgetWindow::SetupWindow
+    //   [22] 0x00426bb4  OWL::TGadgetWindow::CleanupWindow
+    //   [23] 0x00426c20  OWL::TGadgetWindow::PreProcessMsg
+    //   [24] 0x00427428  OWL::TGadgetWindow::EvCommand
+    //   [25] 0x004274f4  OWL::TGadgetWindow::EvCommandEnable
     //   [26] 0x004251dc  OWL::TGadgetWindow::Find
     // response table at 0x0047af2c (9 entries)
     //   WM_LBUTTONDOWN                               -> 0x00426f24  OWL::TGadgetWindow::EvLButtonDown
@@ -1869,7 +1869,7 @@ class OWL::TLayoutWindow : public virtual OWL::TEventHandler, public virtual OWL
     // vtable at 0x0047ba24 (4 slots)
     //   [ 0] 0x00428e84  OWL::TLayoutWindow::~TLayoutWindow
     //   [ 1] 0x00428fb4  OWL::TLayoutWindow::vf1
-    //   [ 2] 0x00429498  OWL::TLayoutWindow::vf2
+    //   [ 2] 0x00429498  OWL::TLayoutWindow::RemoveChild
     //   [ 3] 0x00428de4  OWL::TLayoutWindow::Find
     // response table at 0x0047b830 (1 entries)
     //   WM_SIZE                                      -> 0x00429440  OWL::TLayoutWindow::EvSize
@@ -1990,10 +1990,10 @@ class OWL::TMessageBar : public OWL::TGadgetWindow, public virtual OWL::TEventHa
     /* +0x000 */ // base subobject OWL::TGadgetWindow
     // vtable at 0x0047c3a8 (28 slots)
     //   [ 0] 0x0042c2b0  OWL::TMessageBar::~TMessageBar
-    //   [ 1] 0x00425c40  OWL::TGadgetWindow::vf1
+    //   [ 1] 0x00425c40  OWL::TGadgetWindow::Create
     //   [ 2] 0x00425c5c  OWL::TGadgetWindow::vf2
-    //   [ 3] 0x00421318  OWL::TGadgetWindow::vf3
-    //   [ 4] 0x00427278  OWL::TGadgetWindow::vf4
+    //   [ 3] 0x00421318  OWL::TGadgetWindow::GetTooltip
+    //   [ 4] 0x00427278  OWL::TGadgetWindow::EnableTooltip
     //   [ 5] 0x004268cc  OWL::TGadgetWindow::vf5
     //   [ 6] 0x004268f4  OWL::TGadgetWindow::vf6
     //   [ 7] 0x0042695c  OWL::TGadgetWindow::vf7
@@ -2001,20 +2001,20 @@ class OWL::TMessageBar : public OWL::TGadgetWindow, public virtual OWL::TEventHa
     //   [ 9] 0x00426980  OWL::TGadgetWindow::vf9
     //   [10] 0x00426a00  OWL::TGadgetWindow::vf10
     //   [11] 0x00426a58  OWL::TGadgetWindow::vf11
-    //   [12] 0x00425878  OWL::TGadgetWindow::vf12
+    //   [12] 0x00425878  OWL::TGadgetWindow::IdleAction
     //   [13] 0x00425a50  OWL::TGadgetWindow::vf13
     //   [14] 0x0042c528  OWL::TMessageBar::vf14
     //   [15] 0x0042c3c0  OWL::TMessageBar::vf15
     //   [16] 0x0042c4f8  OWL::TMessageBar::vf16
     //   [17] 0x00426880  OWL::TGadgetWindow::vf17
     //   [18] 0x00425de0  OWL::TGadgetWindow::vf18
-    //   [19] 0x00426ef4  OWL::TGadgetWindow::vf19
+    //   [19] 0x00426ef4  OWL::TGadgetWindow::Paint
     //   [20] 0x00425d98  OWL::TGadgetWindow::vf20
-    //   [21] 0x00426af0  OWL::TGadgetWindow::vf21
-    //   [22] 0x00426bb4  OWL::TGadgetWindow::vf22
-    //   [23] 0x00426c20  OWL::TGadgetWindow::vf23
-    //   [24] 0x00427428  OWL::TGadgetWindow::vf24
-    //   [25] 0x004274f4  OWL::TGadgetWindow::vf25
+    //   [21] 0x00426af0  OWL::TGadgetWindow::SetupWindow
+    //   [22] 0x00426bb4  OWL::TGadgetWindow::CleanupWindow
+    //   [23] 0x00426c20  OWL::TGadgetWindow::PreProcessMsg
+    //   [24] 0x00427428  OWL::TGadgetWindow::EvCommand
+    //   [25] 0x004274f4  OWL::TGadgetWindow::EvCommandEnable
     //   [26] 0x004251dc  OWL::TGadgetWindow::Find
     //   [27] 0x0042c54c  OWL::TMessageBar::vf27
 };
@@ -2111,17 +2111,17 @@ class OWL::TOpenSaveDialog : public OWL::TCommonDialog, public virtual OWL::TEve
     //   [ 0] 0x00404c4c  OWL::TOpenSaveDialog::~TOpenSaveDialog
     //   [ 1] 0x00450ff0  OWL::TOpenSaveDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
-    //   [ 4] 0x004208a8  OWL::TCommonDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
+    //   [ 4] 0x004208a8  OWL::TCommonDialog::PerformCreate
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
     //   [ 6] 0x00470140  vshared_470140
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
-    //   [ 9] 0x00440254  OWL::TDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
-    //   [11] 0x00420884  OWL::TCommonDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00440254  OWL::TDialog::Destroy
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
+    //   [11] 0x00420884  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
     //   [14] 0x00450d4c  OWL::TOpenSaveDialog::vf14
     //   [15] 0x00451034  OWL::TOpenSaveDialog::vf15
 };
@@ -2188,38 +2188,38 @@ class OWL::TPickListPopup : public OWL::TWindow, public virtual OWL::TEventHandl
     /* +0x086 */ OWL::TPopupMenu m_86;
     // vtable at 0x0047cbbc (34 slots)
     //   [ 0] 0x0042f5ac  OWL::TPickListPopup::~TPickListPopup
-    //   [ 1] 0x00404558  OWL::TWindow::vf1
-    //   [ 2] 0x00438d94  OWL::TWindow::vf2
-    //   [ 3] 0x00437dd4  OWL::TWindow::vf3
-    //   [ 4] 0x00437aac  OWL::TWindow::vf4
-    //   [ 5] 0x00437a5c  OWL::TWindow::vf5
-    //   [ 6] 0x00437894  OWL::TWindow::vf6
-    //   [ 7] 0x0042f49c  OWL::TPickListPopup::vf7
-    //   [ 8] 0x00437c2c  OWL::TWindow::vf8
-    //   [ 9] 0x00437ee4  OWL::TWindow::vf9
-    //   [10] 0x00436168  OWL::TWindow::vf10
-    //   [11] 0x00436208  OWL::TWindow::vf11
-    //   [12] 0x00436e78  OWL::TWindow::vf12
-    //   [13] 0x004362f8  OWL::TWindow::vf13
-    //   [14] 0x00436384  OWL::TWindow::vf14
-    //   [15] 0x00437ec0  OWL::TWindow::vf15
-    //   [16] 0x00436aec  OWL::TWindow::vf16
-    //   [17] 0x00436984  OWL::TWindow::vf17
-    //   [18] 0x0042f51c  OWL::TPickListPopup::vf18
-    //   [19] 0x004366cc  OWL::TWindow::vf19
-    //   [20] 0x004367c0  OWL::TWindow::vf20
-    //   [21] 0x004377a4  OWL::TWindow::vf21
-    //   [22] 0x00437d08  OWL::TWindow::vf22
-    //   [23] 0x00437d54  OWL::TWindow::vf23
-    //   [24] 0x00404564  OWL::TWindow::vf24
-    //   [25] 0x004387b4  OWL::TWindow::vf25
-    //   [26] 0x00404588  OWL::TWindow::vf26
-    //   [27] 0x004045a4  OWL::TWindow::vf27
-    //   [28] 0x00437914  OWL::TWindow::vf28
-    //   [29] 0x004379bc  OWL::TWindow::vf29
-    //   [30] 0x00437c68  OWL::TWindow::vf30
-    //   [31] 0x00437d00  OWL::TWindow::vf31
-    //   [32] 0x004362a4  OWL::TWindow::vf32
+    //   [ 1] 0x00404558  OWL::TWindow::GetTooltip
+    //   [ 2] 0x00438d94  OWL::TWindow::EnableTooltip
+    //   [ 3] 0x00437dd4  OWL::TWindow::Register
+    //   [ 4] 0x00437aac  OWL::TWindow::Create
+    //   [ 5] 0x00437a5c  OWL::TWindow::PerformCreate
+    //   [ 6] 0x00437894  OWL::TWindow::Destroy
+    //   [ 7] 0x0042f49c  OWL::TPickListPopup::Execute
+    //   [ 8] 0x00437c2c  OWL::TWindow::DoExecute
+    //   [ 9] 0x00437ee4  OWL::TWindow::CloseWindow
+    //   [10] 0x00436168  OWL::TWindow::PreProcessMsg
+    //   [11] 0x00436208  OWL::TWindow::IdleAction
+    //   [12] 0x00436e78  OWL::TWindow::HoldFocusHWnd
+    //   [13] 0x004362f8  OWL::TWindow::SetParent
+    //   [14] 0x00436384  OWL::TWindow::SetDocTitle
+    //   [15] 0x00437ec0  OWL::TWindow::CanClose
+    //   [16] 0x00436aec  OWL::TWindow::WindowProc
+    //   [17] 0x00436984  OWL::TWindow::DefWindowProc
+    //   [18] 0x0042f51c  OWL::TPickListPopup::EvCommand
+    //   [19] 0x004366cc  OWL::TWindow::EvNotify
+    //   [20] 0x004367c0  OWL::TWindow::EvCommandEnable
+    //   [21] 0x004377a4  OWL::TWindow::Paint
+    //   [22] 0x00437d08  OWL::TWindow::Transfer
+    //   [23] 0x00437d54  OWL::TWindow::TransferData
+    //   [24] 0x00404564  OWL::TWindow::EnableWindow
+    //   [25] 0x004387b4  OWL::TWindow::ShowWindow
+    //   [26] 0x00404588  OWL::TWindow::Invalidate
+    //   [27] 0x004045a4  OWL::TWindow::InvalidateRect
+    //   [28] 0x00437914  OWL::TWindow::GetWindowClass
+    //   [29] 0x004379bc  OWL::TWindow::GetClassName
+    //   [30] 0x00437c68  OWL::TWindow::SetupWindow
+    //   [31] 0x00437d00  OWL::TWindow::CleanupWindow
+    //   [32] 0x004362a4  OWL::TWindow::RemoveChild
     //   [33] 0x00435b8c  OWL::TWindow::Find
 };
 ```
@@ -2366,17 +2366,17 @@ class OWL::TReplaceDialog : public OWL::TFindReplaceDialog, public virtual OWL::
     //   [ 0] 0x00449240  OWL::TReplaceDialog::~TReplaceDialog
     //   [ 1] 0x0044c1f0  OWL::TFindReplaceDialog::vf1
     //   [ 2] 0x00440188  OWL::TDialog::vf2
-    //   [ 3] 0x0043fe6c  OWL::TDialog::vf3
+    //   [ 3] 0x0043fe6c  OWL::TDialog::Create
     //   [ 4] 0x0044c4ac  OWL::TReplaceDialog::vf4
-    //   [ 5] 0x0043ff60  OWL::TDialog::vf5
-    //   [ 6] 0x004208b0  OWL::TCommonDialog::vf6
-    //   [ 7] 0x0043fa68  OWL::TDialog::vf7
-    //   [ 8] 0x004401fc  OWL::TDialog::vf8
-    //   [ 9] 0x00440254  OWL::TDialog::vf9
-    //   [10] 0x0044051c  OWL::TDialog::vf10
-    //   [11] 0x00420884  OWL::TCommonDialog::vf11
-    //   [12] 0x0043fafc  OWL::TDialog::vf12
-    //   [13] 0x0043fb1c  OWL::TDialog::vf13
+    //   [ 5] 0x0043ff60  OWL::TDialog::Execute
+    //   [ 6] 0x004208b0  OWL::TCommonDialog::DoExecute
+    //   [ 7] 0x0043fa68  OWL::TDialog::PreProcessMsg
+    //   [ 8] 0x004401fc  OWL::TDialog::CloseWindow
+    //   [ 9] 0x00440254  OWL::TDialog::Destroy
+    //   [10] 0x0044051c  OWL::TDialog::IdleAction
+    //   [11] 0x00420884  OWL::TCommonDialog::SetupWindow
+    //   [12] 0x0043fafc  OWL::TDialog::GetClassName
+    //   [13] 0x0043fb1c  OWL::TDialog::GetWindowClass
     //   [14] 0x0044bfc4  OWL::TFindReplaceDialog::Find
 };
 ```
@@ -2408,24 +2408,24 @@ class OWL::TRichEdit : public OWL::TEditFile, public virtual OWL::TEventHandler,
     //   [ 9] 0x00445e50  OWL::TEdit::vf9
     //   [10] 0x0041a63c  OWL::TRichEdit::vf10
     //   [11] 0x0041a470  OWL::TRichEdit::vf11
-    //   [12] 0x0041a0f8  OWL::TRichEdit::vf12
-    //   [13] 0x0041a03c  OWL::TRichEdit::vf13
+    //   [12] 0x0041a0f8  OWL::TRichEdit::GetSubText
+    //   [13] 0x0041a03c  OWL::TRichEdit::GetSelection
     //   [14] 0x0041b1e0  OWL::TEdit::vf14
-    //   [15] 0x0041a090  OWL::TRichEdit::vf15
+    //   [15] 0x0041a090  OWL::TRichEdit::SetSelection
     //   [16] 0x0041a148  OWL::TRichEdit::vf16
-    //   [17] 0x0041a204  OWL::TRichEdit::vf17
-    //   [18] 0x0041b3b4  OWL::TRichEdit::vf18
-    //   [19] 0x0041b3e8  OWL::TRichEdit::vf19
+    //   [17] 0x0041a204  OWL::TRichEdit::Paste
+    //   [18] 0x0041b3b4  OWL::TRichEdit::CharFromPos
+    //   [19] 0x0041b3e8  OWL::TRichEdit::PosFromChar
     //   [20] 0x0041a498  OWL::TRichEdit::vf20
-    //   [21] 0x00448408  OWL::TEditFile::vf21
+    //   [21] 0x00448408  OWL::TEditFile::CanClose
     //   [22] 0x00447f1c  OWL::TEditFile::vf22
     //   [23] 0x00447238  OWL::TEditFile::vf23
     //   [24] 0x004474e8  OWL::TEditFile::vf24
-    //   [25] 0x0041a6bc  OWL::TRichEdit::vf25
+    //   [25] 0x0041a6bc  OWL::TRichEdit::ReadFromFile
     //   [26] 0x00447284  OWL::TEditFile::vf26
     //   [27] 0x00447740  OWL::TEditFile::vf27
     //   [28] 0x004479c0  OWL::TEditFile::vf28
-    //   [29] 0x0041a7dc  OWL::TRichEdit::vf29
+    //   [29] 0x0041a7dc  OWL::TRichEdit::WriteToFile
     // response table at 0x00477ed4 (17 entries)
     //   EV_COMMAND(24322)                            -> 0x00419edc  OWL::TRichEdit::Cmd24322
     //   EV_COMMAND(24323)                            -> 0x00419ef8  OWL::TRichEdit::Cmd24323
@@ -2639,7 +2639,7 @@ class OWL::TStatic : public OWL::TControl, public virtual OWL::TEventHandler, pu
     //   [ 7] 0x0043d960  OWL::TControl::vf7
     //   [ 8] 0x00452d84  OWL::TStatic::Find
     //   [ 9] 0x00452f80  OWL::TStatic::vf9
-    //   [10] 0x00452f48  OWL::TStatic::vf10
+    //   [10] 0x00452f48  OWL::TUrlLink::Transfer
     //   [11] 0x00452f28  OWL::TStatic::vf11
     // response table at 0x00483b30 (1 entries)
     //   WM_SIZE                                      -> 0x00452f00  OWL::TStatic::EvSize
@@ -2716,8 +2716,8 @@ class OWL::TSystemMessage {
 class OWL::TTinyCaption : public virtual OWL::TEventHandler, public virtual OWL::TStreamableBase, public virtual OWL::TWindow {
     // vtable at 0x00483fc0 (3 slots)
     //   [ 0] 0x004533cc  OWL::TTinyCaption::~TTinyCaption
-    //   [ 1] 0x00453f1c  OWL::TTinyCaption::vf1
-    //   [ 2] 0x00453388  OWL::TTinyCaption::vf2
+    //   [ 1] 0x00453f1c  OWL::TTinyCaption::EvCommand
+    //   [ 2] 0x00453388  OWL::TTinyCaption::Find
 };
 ```
 
@@ -2763,7 +2763,7 @@ class OWL::TTooltip : public OWL::TControl, public virtual OWL::TEventHandler, p
     //   [ 6] 0x0043d938  OWL::TControl::vf6
     //   [ 7] 0x0043d960  OWL::TControl::vf7
     //   [ 8] 0x0043d3bc  OWL::TControl::Find
-    //   [ 9] 0x00430b94  OWL::TTooltip::vf9
+    //   [ 9] 0x00430b94  OWL::TTooltip::GetClassName
 };
 ```
 
@@ -2808,14 +2808,14 @@ class OWL::TUrlLink : public OWL::TStatic, public virtual OWL::TEventHandler, pu
     //   [ 7] 0x0043d960  OWL::TControl::vf7
     //   [ 8] 0x00433094  OWL::TUrlLink::Find
     //   [ 9] 0x00452f80  OWL::TStatic::vf9
-    //   [10] 0x00452f48  OWL::TStatic::vf10
-    //   [11] 0x004332d8  OWL::TUrlLink::vf11
-    //   [12] 0x004354d8  OWL::TUrlLink::vf12
-    //   [13] 0x004335cc  OWL::TUrlLink::vf13
-    //   [14] 0x004337bc  OWL::TUrlLink::vf14
-    //   [15] 0x004332e4  OWL::TUrlLink::vf15
-    //   [16] 0x00433870  OWL::TUrlLink::vf16
-    //   [17] 0x004338e4  OWL::TUrlLink::vf17
+    //   [10] 0x00452f48  OWL::TUrlLink::Transfer
+    //   [11] 0x004332d8  OWL::TUrlLink::GetClassName
+    //   [12] 0x004354d8  OWL::TUrlLink::GetTooltip
+    //   [13] 0x004335cc  OWL::TUrlLink::EnableTooltip
+    //   [14] 0x004337bc  OWL::TUrlLink::PreProcessMsg
+    //   [15] 0x004332e4  OWL::TUrlLink::SetupWindow
+    //   [16] 0x00433870  OWL::TUrlLink::GetWindowClass
+    //   [17] 0x004338e4  OWL::TUrlLink::Paint
     //   [18] 0x00433f0c  OWL::TUrlLink::vf18
     //   [19] 0x00434160  OWL::TUrlLink::vf19
     //   [20] 0x00434c50  OWL::TUrlLink::vf20
@@ -2902,38 +2902,38 @@ class OWL::TView : public virtual OWL::TEventHandler, public virtual OWL::TStrea
 class OWL::TWindow : public virtual OWL::TEventHandler, public virtual OWL::TStreamableBase {
     // vtable at 0x0047cdb8 (34 slots)
     //   [ 0] 0x00435f74  OWL::TWindow::~TWindow
-    //   [ 1] 0x00404558  OWL::TWindow::vf1
-    //   [ 2] 0x00438d94  OWL::TWindow::vf2
-    //   [ 3] 0x00437dd4  OWL::TWindow::vf3
-    //   [ 4] 0x00437aac  OWL::TWindow::vf4
-    //   [ 5] 0x00437a5c  OWL::TWindow::vf5
-    //   [ 6] 0x00437894  OWL::TWindow::vf6
-    //   [ 7] 0x00437c1c  OWL::TWindow::vf7
-    //   [ 8] 0x00437c2c  OWL::TWindow::vf8
-    //   [ 9] 0x00437ee4  OWL::TWindow::vf9
-    //   [10] 0x00436168  OWL::TWindow::vf10
-    //   [11] 0x00436208  OWL::TWindow::vf11
-    //   [12] 0x00436e78  OWL::TWindow::vf12
-    //   [13] 0x004362f8  OWL::TWindow::vf13
-    //   [14] 0x00436384  OWL::TWindow::vf14
-    //   [15] 0x00437ec0  OWL::TWindow::vf15
-    //   [16] 0x00436aec  OWL::TWindow::vf16
-    //   [17] 0x00436984  OWL::TWindow::vf17
-    //   [18] 0x0043661c  OWL::TWindow::vf18
-    //   [19] 0x004366cc  OWL::TWindow::vf19
-    //   [20] 0x004367c0  OWL::TWindow::vf20
-    //   [21] 0x004377a4  OWL::TWindow::vf21
-    //   [22] 0x00437d08  OWL::TWindow::vf22
-    //   [23] 0x00437d54  OWL::TWindow::vf23
-    //   [24] 0x00404564  OWL::TWindow::vf24
-    //   [25] 0x004387b4  OWL::TWindow::vf25
-    //   [26] 0x00404588  OWL::TWindow::vf26
-    //   [27] 0x004045a4  OWL::TWindow::vf27
-    //   [28] 0x00437914  OWL::TWindow::vf28
-    //   [29] 0x004379bc  OWL::TWindow::vf29
-    //   [30] 0x00437c68  OWL::TWindow::vf30
-    //   [31] 0x00437d00  OWL::TWindow::vf31
-    //   [32] 0x004362a4  OWL::TWindow::vf32
+    //   [ 1] 0x00404558  OWL::TWindow::GetTooltip
+    //   [ 2] 0x00438d94  OWL::TWindow::EnableTooltip
+    //   [ 3] 0x00437dd4  OWL::TWindow::Register
+    //   [ 4] 0x00437aac  OWL::TWindow::Create
+    //   [ 5] 0x00437a5c  OWL::TWindow::PerformCreate
+    //   [ 6] 0x00437894  OWL::TWindow::Destroy
+    //   [ 7] 0x00437c1c  OWL::TWindow::Execute
+    //   [ 8] 0x00437c2c  OWL::TWindow::DoExecute
+    //   [ 9] 0x00437ee4  OWL::TWindow::CloseWindow
+    //   [10] 0x00436168  OWL::TWindow::PreProcessMsg
+    //   [11] 0x00436208  OWL::TWindow::IdleAction
+    //   [12] 0x00436e78  OWL::TWindow::HoldFocusHWnd
+    //   [13] 0x004362f8  OWL::TWindow::SetParent
+    //   [14] 0x00436384  OWL::TWindow::SetDocTitle
+    //   [15] 0x00437ec0  OWL::TWindow::CanClose
+    //   [16] 0x00436aec  OWL::TWindow::WindowProc
+    //   [17] 0x00436984  OWL::TWindow::DefWindowProc
+    //   [18] 0x0043661c  OWL::TWindow::EvCommand
+    //   [19] 0x004366cc  OWL::TWindow::EvNotify
+    //   [20] 0x004367c0  OWL::TWindow::EvCommandEnable
+    //   [21] 0x004377a4  OWL::TWindow::Paint
+    //   [22] 0x00437d08  OWL::TWindow::Transfer
+    //   [23] 0x00437d54  OWL::TWindow::TransferData
+    //   [24] 0x00404564  OWL::TWindow::EnableWindow
+    //   [25] 0x004387b4  OWL::TWindow::ShowWindow
+    //   [26] 0x00404588  OWL::TWindow::Invalidate
+    //   [27] 0x004045a4  OWL::TWindow::InvalidateRect
+    //   [28] 0x00437914  OWL::TWindow::GetWindowClass
+    //   [29] 0x004379bc  OWL::TWindow::GetClassName
+    //   [30] 0x00437c68  OWL::TWindow::SetupWindow
+    //   [31] 0x00437d00  OWL::TWindow::CleanupWindow
+    //   [32] 0x004362a4  OWL::TWindow::RemoveChild
     //   [33] 0x00435b8c  OWL::TWindow::Find
     // response table at 0x0047e2c0 (34 entries)
     //   WM_SETCURSOR                                 -> 0x004377ac  OWL::TWindow::EvSetCursor

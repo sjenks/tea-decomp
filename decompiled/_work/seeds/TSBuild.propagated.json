@@ -1,5 +1,208 @@
 [
  {
+  "addr": "0x00401012",
+  "name": "__startup",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00401012. C runtime start: records the TLS index, initialises the RTL and calls the program's main through the startup table"
+ },
+ {
+  "addr": "0x0040ebc0",
+  "name": "std::uninitialized_fill_n_WordMap",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x004487c0. copy-constructs n word maps"
+ },
+ {
+  "addr": "0x0040ff14",
+  "name": "std::uninitialized_fill_n_WordMap2",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x00449b14. copy-constructs n word maps"
+ },
+ {
+  "addr": "0x0041047c",
+  "name": "std::vector_int::vector",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044a07c. vector of n copies of a value"
+ },
+ {
+  "addr": "0x0041058c",
+  "name": "std::fill_n_ptr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x004147d0. fill n pointers with a value"
+ },
+ {
+  "addr": "0x004106d0",
+  "name": "WordMap::insert_hint",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044a23c. insert with a position hint (collation order, then exact string order)"
+ },
+ {
+  "addr": "0x00410acc",
+  "name": "WordMap::__insert",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044a638. links a new node under the parent and rebalances (red-black insert)"
+ },
+ {
+  "addr": "0x00410e14",
+  "name": "WordMap::insert_unique",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044a980. insert unless an equal key exists (collation order, then exact string order)"
+ },
+ {
+  "addr": "0x00411168",
+  "name": "std::vector_MatchEngine_ptr::resize",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00414468. resize(n) with null pointers"
+ },
+ {
+  "addr": "0x00411208",
+  "name": "std::vector_MatchEngine_ptr::insert_fill",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00414508. inserts n copies of a value at a position, growing the storage when needed"
+ },
+ {
+  "addr": "0x00411554",
+  "name": "std::fill_ptr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x004147b0. fill a range of pointers with a value"
+ },
+ {
+  "addr": "0x0041225c",
+  "name": "std::vector_string::insert_aux",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x004048f4. std::vector<std::string> insert at a position, growing the storage (doubling, at least 64) when full"
+ },
+ {
+  "addr": "0x004125fc",
+  "name": "std::copy_backward_string",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00404d2c. copy_backward over std::string objects (16 bytes each)"
+ },
+ {
+  "addr": "0x0041262c",
+  "name": "std::uninitialized_copy_string",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00404d5c. copy-constructs std::string objects from [first, last) into raw storage"
+ },
+ {
+  "addr": "0x00414020",
+  "name": "std::_Destroy_range_string",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0040483c. destroys the std::string objects in [first, last)"
+ },
+ {
+  "addr": "0x004140d8",
+  "name": "std::vector_16::reserve",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044caa8. reserve(n) for a vector of 16-byte elements (throws length_error past max_size)"
+ },
+ {
+  "addr": "0x00414410",
+  "name": "std::uninitialized_copy_16",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044cde0. copies 16-byte elements into raw storage"
+ },
+ {
+  "addr": "0x004144d0",
+  "name": "std::vector_16::insert_aux",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044cea0. insert at a position into a vector of 16-byte elements, growing the storage (doubling, at least 64)"
+ },
+ {
+  "addr": "0x004146f8",
+  "name": "std::copy_backward_16",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044d0c8. copy_backward over 16-byte elements"
+ },
+ {
+  "addr": "0x00414728",
+  "name": "std::__final_insertion_sort",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044d0f8. last step of std::sort: insertion sort of the first 16, unguarded for the rest"
+ },
+ {
+  "addr": "0x00414784",
+  "name": "std::__insertion_sort",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044d154. insertion sort of [first, last)"
+ },
+ {
+  "addr": "0x00414820",
+  "name": "std::__unguarded_linear_insert",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044d1f0. moves one element left until in order"
+ },
+ {
+  "addr": "0x00414868",
+  "name": "std::__unguarded_insertion_sort",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044d238. unguarded insertion sort of [first, last)"
+ },
+ {
+  "addr": "0x004148a8",
+  "name": "std::__introsort_loop",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044d278. quicksort with median-of-three pivots until ranges are 16 elements or fewer"
+ },
+ {
+  "addr": "0x004149e8",
+  "name": "std::__unguarded_partition",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044d3b8. partitions [first, last) around the pivot"
+ },
+ {
+  "addr": "0x00417698",
+  "name": "CollationCompare",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0043c624. compares two words letter by letter with the Windows-1252 collation table"
+ },
+ {
+  "addr": "0x004184cc",
+  "name": "memrchr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00408894. last occurrence of a character in [p, p + n], or 0"
+ },
+ {
+  "addr": "0x004184f8",
+  "name": "std::operator_plus",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x004088c0. result = lhs + rhs for two std::string"
+ },
+ {
+  "addr": "0x00418778",
+  "name": "AppendChar",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00408b40. result = str + std::string(1, c) (the character is not visible in the decompiled call to the fill constructor)"
+ },
+ {
   "addr": "0x00418b98",
   "name": "GetProgramDirectory",
   "kind": "function",
@@ -8,19 +211,42 @@
  },
  {
   "addr": "0x004199c4",
-  "name": "Persist::QueryValueSized",
+  "name": "Persist::QueryString",
   "cls": "Persist",
   "kind": "function",
   "source": "analysis (matched TEACON.exe)",
-  "note": "identical body to TEACON.exe 0x00411a4c. RegQueryValueExA wrapper"
+  "note": "identical body to TEACON.exe 0x00411a4c. reads a REG_SZ value (up to 64 KB) into a std::string; true if present"
  },
  {
   "addr": "0x00419a38",
-  "name": "Persist::QueryValue",
+  "name": "Persist::QueryDword",
   "cls": "Persist",
   "kind": "function",
   "source": "analysis (matched TEACON.exe)",
-  "note": "identical body to TEACON.exe 0x00411ac0. RegQueryValueExA wrapper"
+  "note": "identical body to TEACON.exe 0x00411ac0. reads a REG_DWORD value; true if present"
+ },
+ {
+  "addr": "0x00419a8c",
+  "name": "Persist::SetString",
+  "cls": "Persist",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044ec78. writes a REG_SZ value"
+ },
+ {
+  "addr": "0x00419abc",
+  "name": "Persist::SetDword",
+  "cls": "Persist",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x0044eca8. writes a REG_DWORD value (the value is the third argument on the stack)"
+ },
+ {
+  "addr": "0x0041acb0",
+  "name": "OWL::TRichEdit::UseRichEdit2",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x00469b1c. whether the RichEdit 2.0 control is available"
  },
  {
   "addr": "0x004567e0",
@@ -51,6 +277,27 @@
   "note": "identical body to TEACON.exe 0x00415280. Borland RTL array constructor helper (ptr, elemSize, count, mode, ctor)"
  },
  {
+  "addr": "0x00459ad4",
+  "name": "std::string::operator_assign",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00416bd0. std::string assignment from another string (shares the rep)"
+ },
+ {
+  "addr": "0x00459b6c",
+  "name": "std::string::assign_cstr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00416c68. assigns a NUL-terminated string"
+ },
+ {
+  "addr": "0x00459cec",
+  "name": "std::logic_error::logic_error_416de8",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00416de8. constructs a std::logic_error from a message string"
+ },
+ {
   "addr": "0x00459d78",
   "name": "std::string::string_from_cstr",
   "kind": "function",
@@ -65,6 +312,34 @@
   "note": "identical body to TEACON.exe 0x00416ffc. allocates a string representation of the given capacity"
  },
  {
+  "addr": "0x0045a224",
+  "name": "std::string::replace",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00417320. replace(pos, n1, const char *s, n2, ...): with n1 = 0 at the end it appends s"
+ },
+ {
+  "addr": "0x0045c644",
+  "name": "std::string::string_from_buf",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00418dec. std::string(const char *s, size_type n)"
+ },
+ {
+  "addr": "0x0045ea80",
+  "name": "std::string::compare",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x004d40d0. compare(pos, n, const char *s, n2): <0, 0 or >0"
+ },
+ {
+  "addr": "0x0045f64c",
+  "name": "std::string::__unshare",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041a7fc. gives the string its own copy of a shared rep before it is modified"
+ },
+ {
   "addr": "0x004602c4",
   "name": "std::string::append",
   "kind": "function",
@@ -72,11 +347,46 @@
   "note": "identical body to TEACON.exe 0x0041ab68."
  },
  {
+  "addr": "0x004603d8",
+  "name": "std::string::replace_str",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041aca0. replace(pos, n1, const std::string &)"
+ },
+ {
+  "addr": "0x00460414",
+  "name": "std::string::insert",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041acdc. insert(pos, const std::string &)"
+ },
+ {
   "addr": "0x004605c8",
   "name": "std::string::replace_fill",
   "kind": "function",
   "source": "analysis (usage pattern) (matched TEACON.exe)",
   "note": "identical body to TEACON.exe 0x0041ae90. replace(pos, n1, n2, ch); with pos=size,n1=0 it appends n2 copies of ch"
+ },
+ {
+  "addr": "0x00460aa0",
+  "name": "std::string::substr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041b368. result = substr(pos, n)"
+ },
+ {
+  "addr": "0x00460bbc",
+  "name": "std::string::string_fill",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041b484. std::string(n, c); throws length_error for npos (the character argument is not visible)"
+ },
+ {
+  "addr": "0x004670cc",
+  "name": "__rwstd::except_msg_string::format",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ea4c. formats a library exception message (printf-style) into a buffer; the result is used to build the exception's what() string"
  },
  {
   "addr": "0x00467540",
@@ -100,11 +410,39 @@
   "note": "identical body to TEACON.exe 0x0041ee4c."
  },
  {
+  "addr": "0x004676d0",
+  "name": "strchr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ef2c."
+ },
+ {
   "addr": "0x004677a0",
   "name": "strlen",
   "kind": "function",
   "source": "analysis (usage pattern) (matched TEACON.exe)",
   "note": "identical body to TEACON.exe 0x0041ef80."
+ },
+ {
+  "addr": "0x00467944",
+  "name": "strcspn",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041f118."
+ },
+ {
+  "addr": "0x004679a4",
+  "name": "strcmp",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041f178."
+ },
+ {
+  "addr": "0x004679ec",
+  "name": "strncpy",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041f1c0."
  },
  {
   "addr": "0x00467a68",
@@ -119,6 +457,13 @@
   "kind": "function",
   "source": "analysis (usage pattern) (matched TEACON.exe)",
   "note": "identical body to TEACON.exe 0x0041f3fc. Borland exception-frame setup; first call in most functions, argument is that function's exception table"
+ },
+ {
+  "addr": "0x00468a98",
+  "name": "access",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0041ffa0. C runtime access(path, mode): 0 when the path exists"
  },
  {
   "addr": "0x0046997c",
@@ -140,6 +485,503 @@
   "kind": "function",
   "source": "analysis (usage pattern) (matched TEA.exe)",
   "note": "identical body to TEA.exe 0x004e02cc."
+ },
+ {
+  "addr": "0x0046a5c8",
+  "name": "sprintf",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00421660."
+ },
+ {
+  "addr": "0x0046b6c0",
+  "name": "_isctype",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00422750. tests a character's classification bits (C1_* mask)"
+ },
+ {
+  "addr": "0x0046d1a8",
+  "name": "tolower",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00424238."
+ },
+ {
+  "addr": "0x0046d1fc",
+  "name": "toupper",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x0042428c."
+ },
+ {
+  "addr": "0x0046db78",
+  "name": "atoi",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00424b58."
+ },
+ {
+  "addr": "0x0046ddac",
+  "name": "__ftol",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe)",
+  "note": "identical body to TEA.exe 0x004e3c04. converts the FPU top-of-stack to a 32-bit integer (rounded); the floating-point operands of its callers are not visible in the decompiled code"
+ },
+ {
+  "addr": "0x00471898",
+  "name": "__raiseException",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x00427e50. builds the Borland exception record (type, object copy, source position) and calls RaiseException"
+ },
+ {
+  "addr": "0x00471ae8",
+  "name": "_ThrowExceptionLDTC",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe)",
+  "note": "identical body to TEACON.exe 0x004280a0. Borland throw: records the exception type descriptor and object in the thread's exception state and raises it"
+ },
+ {
+  "addr": "0x00406154",
+  "name": "__rwstd::__rb_tree::iterator::increment",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042aec0 (99 bytes; the code occurs several times, e.g. one template instance per type). ++iterator (in-order successor)"
+ },
+ {
+  "addr": "0x004061b8",
+  "name": "std::_Destroy_range_ptr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004050b4 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of pointers (nothing to do; the loop is left in)"
+ },
+ {
+  "addr": "0x00406e88",
+  "name": "__rwstd::__rb_tree::__minimum",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042ae80 (29 bytes; the code occurs several times, e.g. one template instance per type). leftmost node of a subtree"
+ },
+ {
+  "addr": "0x00406ea8",
+  "name": "__rwstd::__rb_tree::__maximum",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042aea0 (29 bytes; the code occurs several times, e.g. one template instance per type). rightmost node of a subtree"
+ },
+ {
+  "addr": "0x00406ec8",
+  "name": "__rwstd::__rb_tree::__deallocate_buffers",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042af24 (63 bytes; the code occurs several times, e.g. one template instance per type). frees every node buffer of a tree"
+ },
+ {
+  "addr": "0x0040eff4",
+  "name": "__rwstd::__rb_tree::__minimum",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042ae80 (29 bytes; the code occurs several times, e.g. one template instance per type). leftmost node of a subtree"
+ },
+ {
+  "addr": "0x0040f014",
+  "name": "__rwstd::__rb_tree::__maximum",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042aea0 (29 bytes; the code occurs several times, e.g. one template instance per type). rightmost node of a subtree"
+ },
+ {
+  "addr": "0x0040f034",
+  "name": "std::_Destroy_range",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x00448c34 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of trivially destructible objects (nothing to do)"
+ },
+ {
+  "addr": "0x0040f04c",
+  "name": "WordListMap::AllocateNode",
+  "kind": "function",
+  "source": "notes (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x00448c4c (297 bytes; the code occurs several times, e.g. one template instance per type). node slab allocator for the duplicate-suppression map per your notes. Entry checked; body not read"
+ },
+ {
+  "addr": "0x0040fd50",
+  "name": "__rwstd::__rb_tree::iterator::increment",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042aec0 (99 bytes; the code occurs several times, e.g. one template instance per type). ++iterator (in-order successor)"
+ },
+ {
+  "addr": "0x0040fdb4",
+  "name": "__rwstd::__rb_tree::__deallocate_buffers",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042af24 (63 bytes; the code occurs several times, e.g. one template instance per type). frees every node buffer of a tree"
+ },
+ {
+  "addr": "0x00410318",
+  "name": "std::_Destroy_range",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x00448c34 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of trivially destructible objects (nothing to do)"
+ },
+ {
+  "addr": "0x00410330",
+  "name": "WordListMap::AllocateNode",
+  "kind": "function",
+  "source": "notes (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x00448c4c (297 bytes; the code occurs several times, e.g. one template instance per type). node slab allocator for the duplicate-suppression map per your notes. Entry checked; body not read"
+ },
+ {
+  "addr": "0x00410608",
+  "name": "std::_Destroy_range_ptr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x0040644c (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of pointers (nothing to do)"
+ },
+ {
+  "addr": "0x004110fc",
+  "name": "__rwstd::__rb_tree::iterator::decrement",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042e9d8 (107 bytes; the code occurs several times, e.g. one template instance per type). --iterator (in-order predecessor)"
+ },
+ {
+  "addr": "0x004114b0",
+  "name": "std::copy_ptr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004063cc (89 bytes; the code occurs several times, e.g. one template instance per type). copy over a range of pointers"
+ },
+ {
+  "addr": "0x00411530",
+  "name": "std::copy_backward_ptr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004063a8 (36 bytes; the code occurs several times, e.g. one template instance per type). copy_backward over a range of pointers"
+ },
+ {
+  "addr": "0x00411574",
+  "name": "std::copy_ptr",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x00406584 (36 bytes; the code occurs several times, e.g. one template instance per type). copy over a range of pointers (vector erase)"
+ },
+ {
+  "addr": "0x00411c1c",
+  "name": "__rwstd::__rb_tree::iterator::decrement",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042e9d8 (107 bytes; the code occurs several times, e.g. one template instance per type). --iterator (in-order predecessor)"
+ },
+ {
+  "addr": "0x00411e60",
+  "name": "__rwstd::__rb_tree::iterator::increment",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042aec0 (99 bytes; the code occurs several times, e.g. one template instance per type). ++iterator (in-order successor)"
+ },
+ {
+  "addr": "0x00411ec4",
+  "name": "WordListMap::AllocateNode",
+  "kind": "function",
+  "source": "notes (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x00448c4c (297 bytes; the code occurs several times, e.g. one template instance per type). node slab allocator for the duplicate-suppression map per your notes. Entry checked; body not read"
+ },
+ {
+  "addr": "0x0041221c",
+  "name": "__rwstd::__rb_tree::__deallocate_buffers",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042af24 (63 bytes; the code occurs several times, e.g. one template instance per type). frees every node buffer of a tree"
+ },
+ {
+  "addr": "0x00412778",
+  "name": "std::_Destroy_range_16",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x00404ea8 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of 16-byte objects with trivial destructors (nothing to do)"
+ },
+ {
+  "addr": "0x0041288c",
+  "name": "__rwstd::__rb_tree::iterator::increment",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042aec0 (99 bytes; the code occurs several times, e.g. one template instance per type). ++iterator (in-order successor)"
+ },
+ {
+  "addr": "0x0041329c",
+  "name": "__rwstd::__rb_tree::__minimum",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042ae80 (29 bytes; the code occurs several times, e.g. one template instance per type). leftmost node of a subtree"
+ },
+ {
+  "addr": "0x004132bc",
+  "name": "__rwstd::__rb_tree::__maximum",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042aea0 (29 bytes; the code occurs several times, e.g. one template instance per type). rightmost node of a subtree"
+ },
+ {
+  "addr": "0x00413a0c",
+  "name": "__rwstd::__rb_tree::iterator::decrement",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0042e9d8 (107 bytes; the code occurs several times, e.g. one template instance per type). --iterator (in-order predecessor)"
+ },
+ {
+  "addr": "0x004144b8",
+  "name": "std::_Destroy_range_16",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x00404ea8 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of 16-byte objects with trivial destructors (nothing to do)"
+ },
+ {
+  "addr": "0x00414a7c",
+  "name": "std::_Destroy_range_16",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0044d44c (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of 16-byte objects with trivial destructors (nothing to do)"
+ },
+ {
+  "addr": "0x00419ae0",
+  "name": "DestroyRichEditLoader",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader"
+ },
+ {
+  "addr": "0x0041c460",
+  "name": "DestroyRichEditLoader",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader"
+ },
+ {
+  "addr": "0x00428c58",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x0042a4d7",
+  "name": "DestroyRichEditLoader",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader"
+ },
+ {
+  "addr": "0x0042b6ed",
+  "name": "DestroyRichEditLoader",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader"
+ },
+ {
+  "addr": "0x0042facc",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x0043300c",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x0043c0c8",
+  "name": "DestroyRichEditLoader",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader"
+ },
+ {
+  "addr": "0x0043cb8c",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x0043d988",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x004467cc",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x00448418",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x0044938c",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x00450854",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x0045284c",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x00453004",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x004551e8",
+  "name": "InitRichEditStreamer",
+  "kind": "function",
+  "source": "analysis (matched TEA.exe, duplicated code)",
+  "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x00458f14",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x00459080",
+  "name": "std::string::__getRepOf",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x00416740 (20 bytes; the code occurs several times, e.g. one template instance per type). the rep header of a string (data - 12)"
+ },
+ {
+  "addr": "0x00459154",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x00459194",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x004591bc",
+  "name": "std::string::size",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x0041687c (20 bytes; the code occurs several times, e.g. one template instance per type). length of the string (rep->length)"
+ },
+ {
+  "addr": "0x00459238",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x00459348",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x00459370",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x004593a8",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x0045a8b4",
+  "name": "std::string::__getRepOf",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x00416740 (20 bytes; the code occurs several times, e.g. one template instance per type). the rep header of a string (data - 12)"
+ },
+ {
+  "addr": "0x0045a98c",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x0045a9cc",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x0045aa5c",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x0045aa84",
+  "name": "std::string::size",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x0041687c (20 bytes; the code occurs several times, e.g. one template instance per type). length of the string (rep->length)"
+ },
+ {
+  "addr": "0x00465870",
+  "name": "std::string::string",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x0040da88 (87 bytes; the code occurs several times, e.g. one template instance per type). default constructor: data = the shared empty rep"
+ },
+ {
+  "addr": "0x0046b4b8",
+  "name": "isalnum",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x00422548 (22 bytes; the code occurs several times, e.g. one template instance per type). _isctype(c, C1_ALPHA | C1_DIGIT)"
+ },
+ {
+  "addr": "0x0046b4e4",
+  "name": "isalpha",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x00422574 (22 bytes; the code occurs several times, e.g. one template instance per type). _isctype(c, C1_ALPHA)"
  },
  {
   "addr": "0x0045680c",
@@ -184,10 +1026,73 @@
   "note": "same masked bytes as TEACON.exe 0x00415600 (16 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. called by operator delete"
  },
  {
-  "addr": "0x0040f04c",
-  "name": "WordListMap::AllocateNode",
+  "addr": "0x00459ce4",
+  "name": "__rwstd::except_msg_string::msgstr",
   "kind": "function",
-  "source": "notes (position-matched TEA.exe)",
-  "note": "same masked bytes as TEA.exe 0x00448c4c (297 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. node slab allocator for the duplicate-suppression map per your notes. Entry checked; body not read"
+  "source": "analysis (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x00416de0 (8 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. the formatted message text"
+ },
+ {
+  "addr": "0x0045a1f0",
+  "name": "std::string::__rep_data",
+  "kind": "function",
+  "source": "analysis (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x004172ec (11 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. character data of a rep (rep + 12)"
+ },
+ {
+  "addr": "0x0045a664",
+  "name": "std::length_error::length_error",
+  "kind": "function",
+  "source": "analysis (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x00417760 (69 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. constructs a std::length_error from a message string"
+ },
+ {
+  "addr": "0x0045a6f0",
+  "name": "std::string::data",
+  "kind": "function",
+  "source": "analysis (position-matched TEACON.exe)",
+  "note": "same masked bytes as TEACON.exe 0x004177ec (15 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. pointer to the character data"
+ },
+ {
+  "addr": "0x0040f198",
+  "name": "WordMap2::erase_range",
+  "kind": "function",
+  "source": "analysis (position-matched TEA.exe)",
+  "note": "same masked bytes as TEA.exe 0x00448d98 (258 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. __rb_tree::erase(first, last)"
+ },
+ {
+  "addr": "0x0040f29c",
+  "name": "WordMap2::__erase",
+  "kind": "function",
+  "source": "analysis (position-matched TEA.exe)",
+  "note": "same masked bytes as TEA.exe 0x00448e9c (262 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. returns a subtree's nodes to the free list, releasing each key string"
+ },
+ {
+  "addr": "0x00410104",
+  "name": "WordMap2::__copy",
+  "kind": "function",
+  "source": "analysis (position-matched TEA.exe)",
+  "note": "same masked bytes as TEA.exe 0x00449d04 (105 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. copies a subtree under a parent node"
+ },
+ {
+  "addr": "0x00410170",
+  "name": "WordMap2::__get_node",
+  "kind": "function",
+  "source": "analysis (position-matched TEA.exe)",
+  "note": "same masked bytes as TEA.exe 0x00449d70 (381 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. takes a node from the free list (or a new buffer) and copy-constructs the value"
+ },
+ {
+  "addr": "0x0041a0c0",
+  "name": "OWL::TRichEdit::SetSelection_46924c",
+  "kind": "function",
+  "source": "analysis (position-matched TEA.exe)",
+  "note": "paired with TEA.exe 0x0046924c by position between identical neighbours; the bodies differ (30 vs 28 bytes), so treat the name as probable. EM_EXSETSEL"
+ },
+ {
+  "addr": "0x0041a0dc",
+  "name": "OWL::TRichEdit::GetTextRange",
+  "kind": "function",
+  "source": "analysis (position-matched TEA.exe)",
+  "note": "paired with TEA.exe 0x0046926c by position between identical neighbours; the bodies differ (30 vs 28 bytes), so treat the name as probable. EM_GETTEXTRANGE"
  }
 ]

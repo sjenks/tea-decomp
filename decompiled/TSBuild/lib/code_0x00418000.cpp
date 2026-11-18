@@ -1,5 +1,5 @@
 // TSBuild.exe — runtime / library code "code_0x00418000"
-// 34 functions, 0x00419fa4..0x0041be50. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 31 functions, 0x00419fa4..0x0041be50. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -11,80 +11,82 @@ namespace tea {
 void __cdecl FUN_00419fa4(int param_1,byte param_2)
 
 {
-  int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
+  int *moduleInstance;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x478094);
   if (param_1 != 0) {
-    piVar1 = (int *)FUN_00419e8c();
-    if ((undefined4 *)*piVar1 != (undefined4 *)0x0) {
-      (*(code *)**(undefined4 **)*piVar1)();
+    moduleInstance = (int *)OWL::TRichEdit::GetModuleInstance();
+    if ((undefined4 *)*moduleInstance != (undefined4 *)0x0) {
+      (*(code *)**(undefined4 **)*moduleInstance)();
     }
-    *piVar1 = 0;
+    *moduleInstance = 0;
     if ((param_2 & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_30;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041a074  FUN_0041a074   (28 bytes)   [unnamed]
-void __cdecl FUN_0041a074(int *param_1,LPARAM param_2)
+void __cdecl FUN_0041a074(int *param_1,LPARAM lParam)
 
 {
-  FUN_00438338(*param_1,0x434,0,param_2);
+  FUN_00438338(*param_1,0x434,0,lParam);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041a0c0  FUN_0041a0c0   (28 bytes)   [unnamed]
-undefined4 __cdecl FUN_0041a0c0(int *param_1,LPARAM param_2)
+// 0x0041a0c0  OWL::TRichEdit::SetSelection_46924c   (28 bytes)   [analysis (position-matched TEA.exe)]
+//   paired with TEA.exe 0x0046924c by position between identical neighbours; the bodies differ (30 vs 28 bytes), so treat the name as probable. EM_EXSETSEL
+undefined4 __cdecl OWL::TRichEdit::SetSelection_46924c(int *self,LPARAM range)
 
 {
   undefined4 uVar1;
   
-  uVar1 = FUN_00438338(*param_1,0x437,0,param_2);
+  uVar1 = FUN_00438338(*self,0x437,0,range);
   return uVar1;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041a0dc  FUN_0041a0dc   (28 bytes)   [unnamed]
-void __cdecl FUN_0041a0dc(int *param_1,LPARAM param_2)
+// 0x0041a0dc  OWL::TRichEdit::GetTextRange   (28 bytes)   [analysis (position-matched TEA.exe)]
+//   paired with TEA.exe 0x0046926c by position between identical neighbours; the bodies differ (30 vs 28 bytes), so treat the name as probable. EM_GETTEXTRANGE
+void __cdecl OWL::TRichEdit::GetTextRange(int *self,LPARAM textRange)
 
 {
-  FUN_00438338(*param_1,1099,0,param_2);
+  FUN_00438338(*self,1099,0,textRange);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041a128  FUN_0041a128   (29 bytes)   [unnamed]
-undefined4 __cdecl FUN_0041a128(int *param_1,WPARAM param_2,LPARAM param_3)
+undefined4 __cdecl FUN_0041a128(int *param_1,WPARAM wParam,LPARAM lParam)
 
 {
   undefined4 uVar1;
   
-  uVar1 = FUN_00438338(*param_1,0x438,param_2,param_3);
+  uVar1 = FUN_00438338(*param_1,0x438,wParam,lParam);
   return uVar1;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041a220  FUN_0041a220   (31 bytes)   [unnamed]
-void __cdecl FUN_0041a220(int *param_1,WPARAM param_2,LPARAM param_3)
+void __cdecl FUN_0041a220(int *param_1,WPARAM wParam,LPARAM lParam)
 
 {
-  FUN_00438338(*param_1,0x449,param_2,param_3);
+  FUN_00438338(*param_1,0x449,wParam,lParam);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041a240  FUN_0041a240   (31 bytes)   [unnamed]
-void __cdecl FUN_0041a240(int *param_1,WPARAM param_2,LPARAM param_3)
+void __cdecl FUN_0041a240(int *param_1,WPARAM wParam,LPARAM lParam)
 
 {
-  FUN_00438338(*param_1,0x44a,param_2,param_3);
+  FUN_00438338(*param_1,0x44a,wParam,lParam);
   return;
 }
 
@@ -123,97 +125,34 @@ undefined4 __stdcall FUN_0041a5ac(int *param_1,int param_2,int param_3,int *para
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041a644  FUN_0041a644   (57 bytes)   [unnamed]
-bool __cdecl FUN_0041a644(int *param_1,undefined4 param_2,WPARAM param_3)
+bool __cdecl FUN_0041a644(int *param_1,undefined4 param_2,WPARAM wParam)
 
 {
-  undefined4 local_10;
+  undefined4 lParam;
   int local_c;
-  code *local_8;
+  code *unused;
   
-  local_10 = param_2;
+  lParam = param_2;
   local_c = 0;
-  local_8 = FUN_0041a568;
-  FUN_0041a220(param_1,param_3,(LPARAM)&local_10);
+  unused = FUN_0041a568;
+  FUN_0041a220(param_1,wParam,(LPARAM)&lParam);
   return local_c == 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041a680  FUN_0041a680   (57 bytes)   [unnamed]
-bool __cdecl FUN_0041a680(int *param_1,undefined4 param_2,WPARAM param_3)
+bool __cdecl FUN_0041a680(int *param_1,undefined4 param_2,WPARAM wParam)
 
 {
-  undefined4 local_10;
+  undefined4 lParam;
   int local_c;
-  code *local_8;
+  code *unused;
   
-  local_10 = param_2;
+  lParam = param_2;
   local_c = 0;
-  local_8 = FUN_0041a5ac;
-  FUN_0041a240(param_1,param_3,(LPARAM)&local_10);
+  unused = FUN_0041a5ac;
+  FUN_0041a240(param_1,wParam,(LPARAM)&lParam);
   return local_c == 0;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0041aa00  FUN_0041aa00   (102 bytes)   [unnamed]
-undefined4 * __cdecl FUN_0041aa00(undefined4 *param_1,int *param_2)
-
-{
-  undefined4 *puVar1;
-  int iVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x4781a4);
-  *param_1 = &OWL::TStreamer::vftable;
-  param_1[1] = param_2;
-  *param_1 = &OWL::TNewStreamer::vftable;
-  *param_1 = &OWL::TRichEdit::Streamer::vftable;
-  if (param_2 == (int *)0x0) {
-    iVar2 = 0;
-  }
-  else {
-    iVar2 = *param_2;
-  }
-  puVar1 = FUN_00468488((int)param_2,iVar2,(int *)&DAT_00403c1c,(int *)&DAT_0041a984,0);
-  param_1[2] = puVar1;
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0041aa68  FUN_0041aa68   (284 bytes)   [unnamed]
-int * __cdecl FUN_0041aa68(int *param_1,int param_2)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x4781bc);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 0x1e);
-    param_1[0x1e] = (int)(param_1 + 0x1b);
-    param_1[0x1f] = (int)(param_1 + 0x1c);
-    param_1[1] = (int)(param_1 + 0x1b);
-    param_1[2] = (int)(param_1 + 0x1c);
-    param_1[0x1a] = 0;
-    param_1[0x1d] = 0;
-    param_1[0x1b] = (int)&OWL::TEventHandler::vftable;
-    param_1[0x1c] = (int)&OWL::TStreamableBase::vftable;
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-    FUN_00435d18(param_1 + 0x1e,1);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-  }
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -4;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -4;
-  FUN_00448508(param_1,1);
-  *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 4;
-  *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 4;
-  param_1[3] = (int)&OWL::TRichEdit::vftable;
-  *(undefined ***)param_1[1] = &PTR_LAB_0047853c;
-  *(undefined ***)param_1[2] = &PTR_LAB_00478548;
-  *(undefined ***)(*param_1 + 8) = &PTR_LAB_00478554;
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -222,7 +161,7 @@ void __cdecl FUN_0041aba0(int param_1,int *param_2)
 
 {
   int *piVar1;
-  undefined4 local_14 [3];
+  undefined4 streamer [3];
   undefined4 local_8;
   
   local_8 = 0;
@@ -235,7 +174,7 @@ void __cdecl FUN_0041aba0(int param_1,int *param_2)
   else {
     piVar1 = *(int **)(param_1 + 8);
   }
-  piVar1 = FUN_004484a0(local_14,piVar1);
+  piVar1 = OWL::TEditFile::Streamer::Streamer(streamer,piVar1);
   (**(code **)(*piVar1 + 4))();
   return;
 }
@@ -246,7 +185,7 @@ void __cdecl FUN_0041ac10(int param_1,int *param_2)
 
 {
   int *piVar1;
-  undefined4 local_14 [3];
+  undefined4 streamer [3];
   undefined4 local_8;
   
   if (param_1 == 0) {
@@ -255,21 +194,22 @@ void __cdecl FUN_0041ac10(int param_1,int *param_2)
   else {
     piVar1 = *(int **)(param_1 + 8);
   }
-  FUN_004484a0(local_14,piVar1);
+  OWL::TEditFile::Streamer::Streamer(streamer,piVar1);
   local_8 = 1;
   FUN_0042de94(param_2,&local_8,4);
-  OWL::TEditFile::Streamer::vf2((int)local_14,param_2);
+  OWL::TEditFile::Streamer::vf2((int)streamer,param_2);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041acb0  FUN_0041acb0   (48 bytes)   [unnamed]
-undefined4 __cdecl FUN_0041acb0(char param_1)
+// 0x0041acb0  OWL::TRichEdit::UseRichEdit2   (48 bytes)   [analysis (matched TEA.exe)]
+//   identical body to TEA.exe 0x00469b1c. whether the RichEdit 2.0 control is available
+undefined4 __cdecl OWL::TRichEdit::UseRichEdit2(char load)
 
 {
   if (DAT_00477e78 == '\0') {
-    if (param_1 == '\0') {
-      DAT_00477e74 = FUN_00419d5c();
+    if (load == '\0') {
+      DAT_00477e74 = GetRichEditVersion();
     }
     else {
       DAT_00477e74 = 1;
@@ -284,28 +224,28 @@ undefined4 __cdecl FUN_0041acb0(char param_1)
 undefined4 * __cdecl FUN_0041ace0(int *param_1)
 
 {
-  undefined4 *puVar1;
-  int *piVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
+  undefined4 *streamer;
+  int *richEdit;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4781f0);
-  puVar1 = (undefined4 *)operator_new();
-  if (puVar1 != (undefined4 *)0x0) {
+  streamer = (undefined4 *)operator_new();
+  if (streamer != (undefined4 *)0x0) {
     if (param_1 == (int *)0x0) {
-      piVar2 = (int *)operator_new();
-      if (piVar2 == (int *)0x0) {
+      richEdit = (int *)operator_new();
+      if (richEdit == (int *)0x0) {
         param_1 = (int *)0x0;
       }
       else {
-        FUN_0041aa68(piVar2,0);
-        param_1 = (int *)piVar2[2];
+        OWL::TRichEdit::TRichEdit(richEdit,0);
+        param_1 = (int *)richEdit[2];
       }
     }
-    FUN_0041aa00(puVar1,param_1);
+    OWL::TRichEdit::Streamer::Streamer(streamer,param_1);
   }
-  *in_FS_OFFSET = local_30;
-  return puVar1;
+  *sehChainHead = sehPrevFrame;
+  return streamer;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -313,44 +253,16 @@ undefined4 * __cdecl FUN_0041ace0(int *param_1)
 void __stdcall FUN_0041b534(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x47863c);
   if (DAT_0047863b != '\0') {
     OWL::TModule::_dtor((undefined4 *)&DAT_0048c470,0);
     DAT_0047863b = '\0';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0041b578  FUN_0041b578   (149 bytes)   [unnamed]
-undefined4 * __cdecl FUN_0041b578(undefined4 *param_1)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_3c;
-  undefined2 local_38;
-  undefined2 local_34;
-  undefined4 local_28;
-  undefined2 local_18;
-  int local_c;
-  
-  __InitExceptBlockLDTC(0x478b08);
-  local_18 = 8;
-  FUN_0044ecbc(param_1,(uint *)"COMCTL32.DLL",'\x01','\x01','\0');
-  local_c = local_c + 2;
-  *param_1 = &OWL::TCommCtrlDll::vftable;
-  *(undefined4 *)((int)param_1 + 0xd) = 0;
-  FUN_0041b630((int)param_1);
-  memset(&local_3c,0,0x14);
-  local_3c = 0x14;
-  FUN_0041b660((int)param_1,(int)&local_3c);
-  *(uint *)((int)param_1 + 0xd) = CONCAT22(local_38,local_34);
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -398,15 +310,15 @@ bool __cdecl FUN_0041b660(int param_1,int param_2)
 undefined * __stdcall FUN_0041b6c8(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x478b2c);
   if (DAT_0047863b == '\0') {
-    FUN_0041b578((undefined4 *)&DAT_0048c470);
+    OWL::TCommCtrlDll::TCommCtrlDll((undefined4 *)&DAT_0048c470);
     DAT_0047863b = DAT_0047863b + '\x01';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return &DAT_0048c470;
 }
 
@@ -492,8 +404,8 @@ bool __stdcall FUN_0041b9e4(void)
 void __stdcall FUN_0041b9fc(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x478ba4);
   if (DAT_00478ba3 != '\0') {
@@ -528,7 +440,7 @@ void __stdcall FUN_0041b9fc(void)
     OWL::TRegKey::_dtor((int *)&DAT_0048c53c,2);
     DAT_00478b9c = '\0';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -537,48 +449,48 @@ void __stdcall FUN_0041b9fc(void)
 undefined * __stdcall FUN_0041bb2c(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x478ca0);
   if (DAT_00478b9c == '\0') {
     FUN_0041bca8((undefined4 *)&DAT_0048c53c,0x80000000,1,(uint *)"HKEY_CLASSES_ROOT");
     DAT_00478b9c = DAT_00478b9c + '\x01';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return &DAT_0048c53c;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041bbd0  FUN_0041bbd0   (188 bytes)   [unnamed]
-PHKEY __cdecl FUN_0041bbd0(PHKEY param_1,HKEY param_2,uint *param_3,REGSAM param_4,int param_5)
+PHKEY __cdecl FUN_0041bbd0(PHKEY phkResult,HKEY hKey,uint *param_3,REGSAM samDesired,int param_5)
 
 {
-  HKEY pHVar1;
-  undefined4 *in_FS_OFFSET;
-  DWORD local_2c;
-  undefined4 local_28;
-  undefined2 local_18;
+  HKEY hKey2;
+  undefined4 *sehChainHead;
+  DWORD lpdwDisposition;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
   
   __InitExceptBlockLDTC(0x478cc4);
-  local_18 = 8;
-  *param_1 = (HKEY)0x0;
-  pHVar1 = (HKEY)FUN_0042aea0(param_3);
-  param_1[1] = pHVar1;
+  ehContext = 8;
+  *phkResult = (HKEY)0x0;
+  hKey2 = (HKEY)FUN_0042aea0(param_3);
+  phkResult[1] = hKey2;
   if (param_5 == 0) {
-    RegCreateKeyExA(param_2,(LPCSTR)param_1[1],0,"HKEY_CLASSES_ROOT" + 0x11,0,param_4,
-                    (LPSECURITY_ATTRIBUTES)0x0,param_1,&local_2c);
+    RegCreateKeyExA(hKey,(LPCSTR)phkResult[1],0,"HKEY_CLASSES_ROOT" + 0x11,0,samDesired,
+                    (LPSECURITY_ATTRIBUTES)0x0,phkResult,&lpdwDisposition);
   }
   else {
-    RegOpenKeyExA(param_2,(LPCSTR)param_1[1],0,param_4,param_1);
+    RegOpenKeyExA(hKey,(LPCSTR)phkResult[1],0,samDesired,phkResult);
   }
-  if (*param_1 != (HKEY)0x0) {
-    FUN_0041bda0((undefined4*)param_1,(LPSTR)0x0,(LPDWORD)0x0,(LPDWORD)(param_1 + 2),(LPDWORD)0x0,(DWORD *)0x0,
-                 (DWORD *)(param_1 + 3),(LPDWORD)0x0,(LPDWORD)0x0,(LPDWORD)0x0,(PFILETIME)0x0);
+  if (*phkResult != (HKEY)0x0) {
+    FUN_0041bda0((undefined4*)phkResult,(LPSTR)0x0,(LPDWORD)0x0,(LPDWORD)(phkResult + 2),(LPDWORD)0x0,(DWORD *)0x0,
+                 (DWORD *)(phkResult + 3),(LPDWORD)0x0,(LPDWORD)0x0,(LPDWORD)0x0,(PFILETIME)0x0);
   }
-  *(undefined1 *)(param_1 + 4) = 1;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  *(undefined1 *)(phkResult + 4) = 1;
+  *sehChainHead = sehPrevFrame;
+  return phkResult;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -588,8 +500,8 @@ undefined4 * __cdecl FUN_0041bca8(undefined4 *param_1,undefined4 param_2,undefin
 {
   undefined4 uVar1;
   int iVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x478cf4);
   *param_1 = param_2;
@@ -601,17 +513,17 @@ undefined4 * __cdecl FUN_0041bca8(undefined4 *param_1,undefined4 param_2,undefin
   if ((iVar2 != 0) && (iVar2 != 0x7a)) {
     *param_1 = 0;
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041bda0  FUN_0041bda0   (173 bytes)   [unnamed]
-LSTATUS __cdecl FUN_0041bda0(undefined4 *param_1,LPSTR param_2,LPDWORD param_3,LPDWORD param_4,LPDWORD param_5, DWORD *param_6,DWORD *param_7,LPDWORD param_8,LPDWORD param_9,LPDWORD param_10, PFILETIME param_11)
+LSTATUS __cdecl FUN_0041bda0(undefined4 *param_1,LPSTR class_,LPDWORD lpcchClass,LPDWORD subKeys,LPDWORD maxSubKeyLen, DWORD *maxClassLen,DWORD *values,LPDWORD maxValueNameLen,LPDWORD maxValueLen,LPDWORD securityDescriptor, PFILETIME lpftLastWriteTime)
 
 {
-  LSTATUS LVar1;
-  _FILETIME local_28;
+  LSTATUS regStatus;
+  _FILETIME fileTime;
   DWORD local_20 [7];
   
   local_20[6] = 0;
@@ -621,33 +533,33 @@ LSTATUS __cdecl FUN_0041bda0(undefined4 *param_1,LPSTR param_2,LPDWORD param_3,L
   local_20[2] = 0;
   local_20[1] = 0;
   local_20[0] = 0;
-  if (param_11 == (PFILETIME)0x0) {
-    param_11 = &local_28;
+  if (lpftLastWriteTime == (PFILETIME)0x0) {
+    lpftLastWriteTime = &fileTime;
   }
-  if (param_10 == (LPDWORD)0x0) {
-    param_10 = local_20;
+  if (securityDescriptor == (LPDWORD)0x0) {
+    securityDescriptor = local_20;
   }
-  if (param_9 == (LPDWORD)0x0) {
-    param_9 = local_20 + 1;
+  if (maxValueLen == (LPDWORD)0x0) {
+    maxValueLen = local_20 + 1;
   }
-  if (param_8 == (LPDWORD)0x0) {
-    param_8 = local_20 + 2;
+  if (maxValueNameLen == (LPDWORD)0x0) {
+    maxValueNameLen = local_20 + 2;
   }
-  if (param_7 == (DWORD *)0x0) {
-    param_7 = local_20 + 3;
+  if (values == (DWORD *)0x0) {
+    values = local_20 + 3;
   }
-  if (param_6 == (DWORD *)0x0) {
-    param_6 = local_20 + 4;
+  if (maxClassLen == (DWORD *)0x0) {
+    maxClassLen = local_20 + 4;
   }
-  if (param_5 == (LPDWORD)0x0) {
-    param_5 = local_20 + 5;
+  if (maxSubKeyLen == (LPDWORD)0x0) {
+    maxSubKeyLen = local_20 + 5;
   }
-  if (param_4 == (LPDWORD)0x0) {
-    param_4 = local_20 + 6;
+  if (subKeys == (LPDWORD)0x0) {
+    subKeys = local_20 + 6;
   }
-  LVar1 = RegQueryInfoKeyA((HKEY)*param_1,param_2,param_3,(LPDWORD)0x0,param_4,param_5,param_6,
-                           param_7,param_8,param_9,param_10,param_11);
-  return LVar1;
+  regStatus = RegQueryInfoKeyA((HKEY)*param_1,class_,lpcchClass,(LPDWORD)0x0,subKeys,maxSubKeyLen,maxClassLen,
+                           values,maxValueNameLen,maxValueLen,securityDescriptor,lpftLastWriteTime);
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -655,8 +567,8 @@ LSTATUS __cdecl FUN_0041bda0(undefined4 *param_1,LPSTR param_2,LPDWORD param_3,L
 undefined4 * __cdecl FUN_0041be50(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x478d30);
   *param_1 = param_2;
@@ -666,7 +578,7 @@ undefined4 * __cdecl FUN_0041be50(undefined4 *param_1,undefined4 param_2,undefin
   param_1[5] = 0;
   RegQueryValueExA(*(HKEY *)*param_1,(LPCSTR)param_1[1],(LPDWORD)0x0,param_1 + 3,(LPBYTE)0x0,
                    param_1 + 5);
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 

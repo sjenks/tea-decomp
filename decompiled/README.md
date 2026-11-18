@@ -2,16 +2,16 @@
 
 Readable decompilation of the four programs in `TEA Crossword Helper 2.11/`: Ghidra decompiler pseudocode with recovered names, grouped into one file per class.
 
-**It compiles, and it is not a working rebuild.** All 683 source files compile to object files with 0 errors under 32-bit GCC. The objects do not link into a runnable program, and the code is the decompiler's reading of the machine code, not the original source. Both points are explained below.
+**It compiles, and it is not a working rebuild.** All 689 source files compile to object files with 0 errors under 32-bit GCC. The objects do not link into a runnable program, and the code is the decompiler's reading of the machine code, not the original source. Both points are explained below.
 
 There are programs you can run, written by hand from this tree and checked against the originals: [`../teacon-rebuild`](../teacon-rebuild/README.md) reimplements the console version `TEACON.exe`, and [`../tea-rebuild`](../tea-rebuild/README.md) the window program `TEA.exe`.
 
 | program | role | functions | app functions (named) | app classes | compiles | start here |
 |---|---|---|---|---|---|---|
-| `TEA.exe` | main GUI program (OWL) | 4489 | 1385 (639) | 83 | 275 files, 0 errors | [TEA/README.md](TEA/README.md) |
-| `TEACON.exe` | console version | 825 | 155 (89) | 10 | 35 files, 0 errors | [TEACON/README.md](TEACON/README.md) |
-| `TSBuild.exe` | dictionary builder (OWL) | 3029 | 215 (61) | 8 | 192 files, 0 errors | [TSBuild/README.md](TSBuild/README.md) |
-| `TSMerge.exe` | word-list merge tool (OWL) | 2691 | 116 (44) | 8 | 181 files, 0 errors | [TSMerge/README.md](TSMerge/README.md) |
+| `TEA.exe` | main GUI program (OWL) | 4489 | 1385 (1383) | 83 | 281 files, 0 errors | [TEA/README.md](TEA/README.md) |
+| `TEACON.exe` | console version | 825 | 155 (153) | 10 | 35 files, 0 errors | [TEACON/README.md](TEACON/README.md) |
+| `TSBuild.exe` | dictionary builder (OWL) | 3029 | 215 (213) | 8 | 192 files, 0 errors | [TSBuild/README.md](TSBuild/README.md) |
+| `TSMerge.exe` | word-list merge tool (OWL) | 2691 | 116 (114) | 8 | 181 files, 0 errors | [TSMerge/README.md](TSMerge/README.md) |
 
 All four are 32-bit Windows programs built with Borland C++ 5.x (runtime banner `Borland C++ - Copyright 1999 Inprise Corporation`); three use the OWL framework, statically linked. None is packed.
 
@@ -94,7 +94,8 @@ The tag in brackets says where the **name** came from, which is also how much to
 | tag | meaning | reliability |
 |---|---|---|
 | `rtti:dtor` | destructor address stored in the class's Borland type descriptor | read from the binary |
-| `rtti:vtable` | function is slot N of that class's vtable; named `Class::vfN` | class and slot are read from the binary; the method's real name is unknown |
+| `rtti:vtable` | function is slot N of that class's vtable (or of its TWindow-subobject vtable); named after the slot's method where that is known, else `Class::vfN` | class and slot are read from the binary; slot names as described below |
+| `rtti:vtable-store` | constructor: stores the class's vtable at its vptr offset in `this` | read from the binary |
 | `owl:response-table` | handler listed in an OWL message map; named from the Windows message (`EvPaint`) or the menu caption of its command id (`CmFileOpen`) | message/command id read from the binary; the identifier is a reconstruction in OWL's naming style |
 | `analysis` | named after reading the decompiled code | my judgement; the header line gives the reason |
 | `analysis (usage pattern)` | runtime-library function recognised by how it is called (`operator_new`, `memcpy`, …) | likely; "less certain" is marked where it applies |
@@ -103,11 +104,25 @@ The tag in brackets says where the **name** came from, which is also how much to
 | `… (position-matched X.exe)`, `… by position and size` | carried over where the bodies differ but the function sits in the same position between identical neighbours, with a comparable size | probable; the header line says so |
 | `unnamed` | still `FUN_<address>` | — |
 
+### Variable, member and method names
+
+Ghidra names variables after their storage (`param_1`, `local_28`, `iVar3`). They are renamed per function, in this order of trust (`_work/tools/varnames.js`; every rename and its reason is in `<Program>/varnames.tsv`):
+
+1. **Hand-assigned** names (`_work/manual/<Program>.vars.json`), written after reading the function, and carried to the other programs where the body is byte-for-byte the same (or where a position-matched counterpart declares exactly the same variables).
+2. **Rules** that recognise what a variable is from how it is used: `self` for `this` in member functions, `dtorFlags`, Borland exception-frame slots (`sehChainHead`, `sehPrevFrame`, `ehContext`, `ehDtorCount`), the inlined reference-counted `std::string` code (`str`, `strRep`, `refs`, `len`, `newRep`, `prevRefs`), dead stores (`unused`), loop indexes, Win32 struct and handle types (`rect`, `findData`, `hWnd`), objects whose vtable is stored (`lengthError`), upper register bytes (`regHigh`).
+3. **Names carried between functions**: an argument passed to a parameter that has a name takes it (Windows API parameter names count: `lpFileName` becomes `fileName`), an object passed as `this` is named after its class, and a variable that only holds one named function's result is named after it (`GetCount` gives `count`).
+
+Variables nothing identifies keep Ghidra's name, mostly in `lib/`, the statically linked runtime.
+
+**Members** have no names in the binary. For the classes in `_work/manual/<Program>.fields.json` each known offset is a named constant of the class in `decomp.h` (`MatchEngine::m_opCount = 0x1148`), and member functions read `*(int *)(self + m_opCount)` instead of `*(int *)(self + 0x1148)`.
+
+**Constructors** are found by the vtable they store at the class's vptr offset (tag `rtti:vtable-store`). **Virtual methods** get real names where the slot is known: OWL `TWindow`'s 34 slots were identified from TWindow's own implementations (slot 3 registers the WNDCLASS, 5 calls CreateWindowExA, 29 returns "OWL_Window") and from the slots its message handlers call (EvPaint calls 21, `Paint`; EvCreate calls 30, `SetupWindow`); `TListBox`/`TComboBox`/`TEdit` slots from the message each sends; the dialog base `PropertiesViewWindows`'s own slots from what the controls call (`OnButton`, `OnEditChange`, ...). Overrides of `TWindow` virtuals in window classes are found through the vtable of each class's `TWindow` virtual-base subobject, which has no RTTI prefix and is located by shape. A slot whose meaning was not established keeps `vfN` (or a name that says so).
+
 Things that are **inferred, not observed**:
 
 - **File grouping.** The binaries carry no file names. Functions are grouped under the class of the nearest preceding function whose class is known (address order approximates source order within a Borland object file). Each function says `file placement: inferred …` when it has no class evidence of its own. Addresses are always shown, so the true neighbours are never hidden.
-- **Class members.** `classes.md` lists only members that have destructors — that is all the RTTI records. Plain fields (ints, pointers, char arrays) appear in the code only as `this + 0x…` offsets.
-- **Types and parameter names** are Ghidra's (`param_1`, `undefined4`, …). Member functions take `this` as `param_1`.
+- **Class members.** `classes.md` lists only members that have destructors — that is all the RTTI records. Plain fields appear as `this + 0x…` offsets, named (`m_…`) only for the classes that were analysed.
+- **Types** are Ghidra's (`undefined4`, `int` for pointers). Parameter and local names are recovered as described above; member functions take `this` as their first parameter, named `self`.
 - **Static analysis only.** Nothing here was run or observed at run time. Compiling the tree checks that it is well-formed, not that it behaves like the original.
 
 ## How it was produced
@@ -143,8 +158,9 @@ The reverse-engineering notes supplied with this task (binary internals and `.ts
 
 ## Known gaps
 
-- **7332 of 11034 functions are still unnamed**, most of them in the statically linked libraries. Ghidra ships no signature database for Borland's RTL or OWL, so library functions are named only where a class table or a usage pattern identified them.
-- **Virtual methods are `vfN`.** Slot numbers are exact; OWL's real method names could be mapped from OWLNext sources if the exact OWL version were established. That was not done.
+- **5676 of 11034 functions are still unnamed**, most of them in the statically linked libraries. Ghidra ships no signature database for Borland's RTL or OWL, so library functions are named only where a class table or a usage pattern identified them.
+- **Some virtual methods are still `vfN`**: slots of OWL classes other than TWindow, TListBox, TComboBox and TEdit (TScroller, TApplication, TDecoratedFrame, ...) and a few application slots. 8 application functions keep Ghidra's FUN_ name.
+- **Most library variables keep Ghidra's names**, and most members of the GUI classes are still offsets: hand-naming covered the application code and the engine classes.
 - **TEA.exe: 4 tiny library functions failed in Ghidra's decompiler** (`0x488b50`, `0x49b0e8`, `0x4ba5d8`, `0x4ba6cc`); they are declared but have no body, and are listed in TEA/README.md.
 - **TSBuild.exe: 3 tiny library functions failed in Ghidra's decompiler** (`0x41d6cc`, `0x421198`, `0x4498f4`); they are declared but have no body, and are listed in TSBuild/README.md.
 - **TSMerge.exe: 5 tiny library functions failed in Ghidra's decompiler** (`0x4125b0`, `0x416174`, `0x42111c`, `0x423bac`, `0x43e760`); they are declared but have no body, and are listed in TSMerge/README.md.
@@ -154,7 +170,7 @@ The reverse-engineering notes supplied with this task (binary internals and `.ts
 
 ## Extending it
 
-Add or correct names in `_work/manual/<Program>.json` (address, name, optional class, source, note), then:
+Add or correct names in `_work/manual/<Program>.json` (functions, globals, vtable slots), `<Program>.vars.json` (variables) and `<Program>.fields.json` (members); `node _work/tools/addnames.js <Program> file` takes a compact text form (`fn`, `v`, `data`, `slot`, `field` lines; see its header). `node _work/tools/readfn.js <Program> <addr>` prints a function with Ghidra's variable names beside the new ones, and `node _work/tools/status.js <Program>` shows what is still unnamed. Then:
 
 ```
 _work/tools/build-all.sh                      # names, cross-program matching, src/ lib/ decomp.h, repairs

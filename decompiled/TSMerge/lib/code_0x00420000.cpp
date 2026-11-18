@@ -1,5 +1,5 @@
 // TSMerge.exe — runtime / library code "code_0x00420000"
-// 95 functions, 0x0042027c..0x00423c10. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 88 functions, 0x0042027c..0x00423c10. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -15,8 +15,8 @@ int * __cdecl FUN_0042027c(int *param_1,int param_2)
   undefined *puVar2;
   int *piVar3;
   int iVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4680fc);
   iVar4 = 0;
@@ -42,7 +42,7 @@ int * __cdecl FUN_0042027c(int *param_1,int param_2)
     *param_1 = iVar4;
     param_1[1] = -1;
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -51,32 +51,33 @@ int * __cdecl FUN_0042027c(int *param_1,int param_2)
 undefined * __stdcall FUN_00420530(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4681d5);
   if (DAT_004681c4 == '\0') {
     FUN_0042060c(0x476dc4);
     DAT_004681c4 = DAT_004681c4 + '\x01';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return &DAT_00476dc4;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00420579  FUN_00420579   (64 bytes)   [unnamed]
-void __stdcall FUN_00420579(void)
+// 0x00420579  DestroyRichEditLoader_420579   (64 bytes)   [analysis (matched TEA.exe, duplicated code)]
+//   same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader
+void __stdcall DestroyRichEditLoader_420579(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4681e9);
   if (DAT_004681c4 != '\0') {
     OWL::TMemDCCache::_dtor(0x476dc4,2);
     DAT_004681c4 = '\0';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -86,8 +87,8 @@ int __cdecl FUN_0042060c(int param_1)
 
 {
   int iVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468204);
   iVar1 = 0;
@@ -96,7 +97,7 @@ int __cdecl FUN_0042060c(int param_1)
     *(undefined1 *)(param_1 + 4 + iVar1 * 5) = 0;
     iVar1 = iVar1 + 1;
   } while (iVar1 < 0x10);
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -106,15 +107,15 @@ undefined4 __cdecl FUN_004206b0(int param_1)
 
 {
   HDC hdc;
-  HDC pHVar1;
+  HDC hdc2;
   int iVar2;
   
   iVar2 = 0;
   while( true ) {
     if (*(int *)(param_1 + iVar2 * 5) == 0) {
       hdc = GetWindowDC((HWND)0x0);
-      pHVar1 = CreateCompatibleDC(hdc);
-      *(HDC *)(param_1 + iVar2 * 5) = pHVar1;
+      hdc2 = CreateCompatibleDC(hdc);
+      *(HDC *)(param_1 + iVar2 * 5) = hdc2;
       ReleaseDC((HWND)0x0,hdc);
     }
     if (*(char *)(param_1 + 4 + iVar2 * 5) == '\0') break;
@@ -132,11 +133,11 @@ undefined4 __cdecl FUN_004206b0(int param_1)
 void __cdecl FUN_00420708(int param_1,int param_2)
 
 {
-  int iVar1;
+  int i;
   
-  for (iVar1 = 0; (iVar1 < 0x10 && (*(int *)(param_1 + iVar1 * 5) != 0)); iVar1 = iVar1 + 1) {
-    if (param_2 == *(int *)(param_1 + iVar1 * 5)) {
-      *(undefined1 *)(param_1 + 4 + iVar1 * 5) = 0;
+  for (i = 0; (i < 0x10 && (*(int *)(param_1 + i * 5) != 0)); i = i + 1) {
+    if (param_2 == *(int *)(param_1 + i * 5)) {
+      *(undefined1 *)(param_1 + 4 + i * 5) = 0;
       return;
     }
   }
@@ -148,14 +149,14 @@ void __cdecl FUN_00420708(int param_1,int param_2)
 int * __cdecl FUN_0042073c(int *param_1)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468228);
   FUN_00416614(param_1);
   *(undefined ***)((int)param_1 + 5) = &OWL::TMemoryDC::vftable;
   FUN_00420864(param_1);
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -164,18 +165,18 @@ int * __cdecl FUN_0042073c(int *param_1)
 int * __cdecl FUN_004207a4(int *param_1,undefined4 *param_2)
 
 {
-  HDC pHVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  HDC hdc;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46824c);
   FUN_00416614(param_1);
   *(undefined ***)((int)param_1 + 5) = &OWL::TMemoryDC::vftable;
-  pHVar1 = CreateCompatibleDC((HDC)*param_2);
-  *param_1 = (int)pHVar1;
+  hdc = CreateCompatibleDC((HDC)*param_2);
+  *param_1 = (int)hdc;
   FUN_0041c800(param_1,0x7fe3);
   *(undefined4 *)((int)param_1 + 0x21) = 0;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -184,15 +185,15 @@ int * __cdecl FUN_004207a4(int *param_1,undefined4 *param_2)
 int * __cdecl FUN_0042080c(int *param_1,uint *param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468270);
   FUN_00416614(param_1);
   *(undefined ***)((int)param_1 + 5) = &OWL::TMemoryDC::vftable;
   FUN_00420864(param_1);
   FUN_004208a4(param_1,param_2);
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -203,14 +204,14 @@ void __cdecl FUN_00420864(int *param_1)
 {
   undefined *puVar1;
   int iVar2;
-  HDC pHVar3;
+  HDC hdc;
   
   puVar1 = FUN_00420530();
   iVar2 = FUN_004206b0((int)puVar1);
   *param_1 = iVar2;
   if (*param_1 == 0) {
-    pHVar3 = CreateCompatibleDC((HDC)0x0);
-    *param_1 = (int)pHVar3;
+    hdc = CreateCompatibleDC((HDC)0x0);
+    *param_1 = (int)hdc;
     FUN_0041c800(param_1,0x7fe3);
   }
   else {
@@ -225,17 +226,17 @@ void __cdecl FUN_00420864(int *param_1)
 void __cdecl FUN_004208a4(undefined4 *param_1,uint *param_2)
 
 {
-  HGDIOBJ pvVar1;
+  HGDIOBJ hGdiObject;
   
-  pvVar1 = SelectObject((HDC)*param_1,(HGDIOBJ)*param_2);
-  if (pvVar1 != (HGDIOBJ)0x0) {
+  hGdiObject = SelectObject((HDC)*param_1,(HGDIOBJ)*param_2);
+  if (hGdiObject != (HGDIOBJ)0x0) {
     FUN_0041d158(*param_2);
-    if ((HGDIOBJ)0x1 < pvVar1) {
+    if ((HGDIOBJ)0x1 < hGdiObject) {
       if (*(int *)((int)param_1 + 0x21) == 0) {
-        *(HGDIOBJ *)((int)param_1 + 0x21) = pvVar1;
+        *(HGDIOBJ *)((int)param_1 + 0x21) = hGdiObject;
       }
       else {
-        FUN_0041d184((uint)pvVar1);
+        FUN_0041d184((uint)hGdiObject);
       }
     }
   }
@@ -247,119 +248,45 @@ void __cdecl FUN_004208a4(undefined4 *param_1,uint *param_2)
 void __cdecl FUN_004208e8(undefined4 *param_1)
 
 {
-  HGDIOBJ pvVar1;
+  HGDIOBJ hGdiObject;
   
   if (*(int *)((int)param_1 + 0x21) != 0) {
-    pvVar1 = SelectObject((HDC)*param_1,*(HGDIOBJ *)((int)param_1 + 0x21));
-    FUN_0041d184((uint)pvVar1);
+    hGdiObject = SelectObject((HDC)*param_1,*(HGDIOBJ *)((int)param_1 + 0x21));
+    FUN_0041d184((uint)hGdiObject);
     *(undefined4 *)((int)param_1 + 0x21) = 0;
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004209a8  FUN_004209a8   (91 bytes)   [unnamed]
-undefined4 * __cdecl FUN_004209a8(undefined4 *param_1,int param_2)
-
-{
-  HMENU pHVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x468324);
-  *param_1 = &OWL::TMenu::vftable;
-  pHVar1 = CreateMenu();
-  param_1[1] = pHVar1;
-  *(bool *)(param_1 + 2) = param_2 != 0;
-  FUN_00420c24((int)param_1,0x7fe8);
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00420a20  FUN_00420a20   (109 bytes)   [unnamed]
-undefined4 * __cdecl FUN_00420a20(undefined4 *param_1,int *param_2,int param_3)
-
-{
-  HMENU pHVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x468354);
-  *param_1 = &OWL::TMenu::vftable;
-  pHVar1 = CreateMenu();
-  param_1[1] = pHVar1;
-  *(bool *)(param_1 + 2) = param_3 != 0;
-  FUN_00420c24((int)param_1,0x7fe8);
-  FUN_00420c4c((int)param_1,param_2,0,-1);
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00420a90  FUN_00420a90   (74 bytes)   [unnamed]
-undefined4 * __cdecl FUN_00420a90(undefined4 *param_1,undefined4 param_2,int param_3)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x468384);
-  *param_1 = &OWL::TMenu::vftable;
-  param_1[1] = param_2;
-  *(bool *)(param_1 + 2) = param_3 != 0;
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00420adc  FUN_00420adc   (94 bytes)   [unnamed]
-undefined4 * __cdecl FUN_00420adc(undefined4 *param_1,HWND param_2,int param_3)
-
-{
-  HMENU pHVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x4683a8);
-  *param_1 = &OWL::TMenu::vftable;
-  pHVar1 = GetMenu(param_2);
-  param_1[1] = pHVar1;
-  *(bool *)(param_1 + 2) = param_3 != 0;
-  FUN_00420c24((int)param_1,0x7fe8);
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
 // 0x00420b74  FUN_00420b74   (169 bytes, 2 ranges)   [unnamed]
-UINT __cdecl FUN_00420b74(int param_1,int param_2)
+UINT __cdecl FUN_00420b74(int param_1,int pos)
 
 {
   UINT UVar1;
-  HMENU pHVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_34;
-  undefined4 local_10 [3];
+  HMENU hMenu;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined4 menu [3];
   
   __InitExceptBlockLDTC(0x4683e8);
-  UVar1 = GetMenuItemID(*(HMENU *)(param_1 + 4),param_2);
+  UVar1 = GetMenuItemID(*(HMENU *)(param_1 + 4),pos);
   if (UVar1 == 0xffffffff) {
-    pHVar2 = GetSubMenu(*(HMENU *)(param_1 + 4),param_2);
-    if (pHVar2 == (HMENU)0x0) {
+    hMenu = GetSubMenu(*(HMENU *)(param_1 + 4),pos);
+    if (hMenu == (HMENU)0x0) {
       UVar1 = 0;
-      *in_FS_OFFSET = local_34;
+      *sehChainHead = sehPrevFrame;
     }
     else {
-      FUN_00420a90(local_10,pHVar2,0);
-      UVar1 = FUN_00420b74((int)local_10,0);
+      OWL::TMenu::TMenu_420a90(menu,hMenu,0);
+      UVar1 = FUN_00420b74((int)menu,0);
       UVar1 = UVar1 - 1;
-      OWL::TMenu::_dtor(local_10,2);
-      *in_FS_OFFSET = local_34;
+      OWL::TMenu::_dtor(menu,2);
+      *sehChainHead = sehPrevFrame;
     }
   }
   else {
-    *in_FS_OFFSET = local_34;
+    *sehChainHead = sehPrevFrame;
   }
   return UVar1;
 }
@@ -380,100 +307,68 @@ void __cdecl FUN_00420c24(int param_1,uint param_2)
 int * __cdecl FUN_00420c4c(int param_1,int *param_2,int param_3,int param_4)
 
 {
-  int *piVar1;
+  int *menu;
   int iVar2;
   UINT uFlags;
-  HMENU pHVar3;
-  undefined4 *in_FS_OFFSET;
+  HMENU hMenu;
+  undefined4 *sehChainHead;
   int iVar4;
-  CHAR local_14c [256];
-  UINT local_4c;
-  UINT_PTR local_48;
-  int local_44;
+  CHAR newItem [256];
+  UINT idNewItem;
+  UINT_PTR idNewItem2;
+  int pos;
   undefined4 local_40;
-  undefined2 local_30;
-  int local_24;
-  int local_1c [3];
-  int local_10 [3];
+  undefined2 ehContext;
+  int ehDtorCount;
+  int menu2 [3];
+  int menu3 [3];
   
-  piVar1 = (int *)__InitExceptBlockLDTC(0x468444);
+  menu = (int *)__InitExceptBlockLDTC(0x468444);
   if (param_4 < 0) {
     iVar2 = GetMenuItemCount((HMENU)param_2[1]);
-    piVar1 = (int *)(iVar2 - param_3);
-    param_4 = (int)piVar1;
+    menu = (int *)(iVar2 - param_3);
+    param_4 = (int)menu;
   }
   iVar2 = 0;
   if (0 < param_4) {
     do {
       uFlags = GetMenuState((HMENU)param_2[1],param_3 + iVar2,0x400);
       if (uFlags == 0xffffffff) {
-        *in_FS_OFFSET = local_40;
+        *sehChainHead = local_40;
         return (int *)local_40;
       }
       (**(code **)(*param_2 + 4))();
       FUN_00445198();
       if ((uFlags & 0x10) == 0) {
-        local_4c = FUN_00420b74((int)param_2,param_3 + iVar2);
-        piVar1 = (int *)AppendMenuA(*(HMENU *)(param_1 + 4),uFlags,local_4c,local_14c);
+        idNewItem = FUN_00420b74((int)param_2,param_3 + iVar2);
+        menu = (int *)AppendMenuA(*(HMENU *)(param_1 + 4),uFlags,idNewItem,newItem);
       }
       else {
-        local_30 = 8;
+        ehContext = 8;
         iVar4 = 0;
-        local_44 = param_3 + iVar2;
-        pHVar3 = GetSubMenu((HMENU)param_2[1],local_44);
-        FUN_00420a90(local_10,pHVar3,iVar4);
-        local_24 = local_24 + 1;
-        local_30 = 0x20;
-        FUN_004209a8(local_1c,0);
-        local_24 = local_24 + 1;
-        local_30 = 0x14;
-        FUN_00420c4c((int)local_1c,local_10,0,-1);
-        local_48 = (**(code **)(local_1c[0] + 4))();
-        AppendMenuA(*(HMENU *)(param_1 + 4),uFlags & 0x10,local_48,local_14c);
-        local_24 = local_24 + -1;
-        OWL::TMenu::_dtor(local_1c,2);
-        local_24 = local_24 + -1;
-        piVar1 = local_10;
-        OWL::TMenu::_dtor(piVar1,2);
-        local_30 = 0;
+        pos = param_3 + iVar2;
+        hMenu = GetSubMenu((HMENU)param_2[1],pos);
+        OWL::TMenu::TMenu_420a90(menu3,hMenu,iVar4);
+        ehDtorCount = ehDtorCount + 1;
+        ehContext = 0x20;
+        OWL::TMenu::TMenu(menu2,0);
+        ehDtorCount = ehDtorCount + 1;
+        ehContext = 0x14;
+        FUN_00420c4c((int)menu2,menu3,0,-1);
+        idNewItem2 = (**(code **)(menu2[0] + 4))();
+        AppendMenuA(*(HMENU *)(param_1 + 4),uFlags & 0x10,idNewItem2,newItem);
+        ehDtorCount = ehDtorCount + -1;
+        OWL::TMenu::_dtor(menu2,2);
+        ehDtorCount = ehDtorCount + -1;
+        menu = menu3;
+        OWL::TMenu::_dtor(menu,2);
+        ehContext = 0;
       }
       iVar2 = iVar2 + 1;
     } while (iVar2 < param_4);
   }
-  *in_FS_OFFSET = local_40;
-  return piVar1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00420de8  FUN_00420de8   (71 bytes)   [unnamed]
-undefined4 * __cdecl FUN_00420de8(undefined4 *param_1,int param_2)
-
-{
-  HMENU pHVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x468480);
-  pHVar1 = CreatePopupMenu();
-  FUN_00420a90(param_1,pHVar1,param_2);
-  *param_1 = &OWL::TPopupMenu::vftable;
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00420e50  FUN_00420e50   (72 bytes)   [unnamed]
-undefined4 * __cdecl FUN_00420e50(undefined4 *param_1,uint param_2)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x4684a4);
-  FUN_00417f7c(param_1,param_2,DAT_00470a60);
-  *param_1 = &OWL::TXMenu::vftable;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  *sehChainHead = local_40;
+  return menu;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -482,33 +377,16 @@ void __cdecl FUN_00421050(uint param_1)
 
 {
   int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_34;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   undefined4 local_10 [3];
   
   __InitExceptBlockLDTC(0x46851c);
-  piVar1 = FUN_00420e50(local_10,param_1);
+  piVar1 = OWL::TXMenu::TXMenu(local_10,param_1);
   (**(code **)(*piVar1 + 0xc))();
   OWL::TXOwl::_dtor(local_10,0);
-  *in_FS_OFFSET = local_34;
+  *sehChainHead = sehPrevFrame;
   return;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x004216ec  FUN_004216ec   (56 bytes)   [unnamed]
-undefined4 * __cdecl FUN_004216ec(undefined4 *param_1)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x468718);
-  *param_1 = &OWL::TMsgThread::vftable;
-  *(undefined1 *)(param_1 + 1) = 0;
-  *(undefined4 *)((int)param_1 + 5) = 0;
-  *(undefined1 *)((int)param_1 + 9) = 0;
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -517,26 +395,26 @@ undefined4 __cdecl FUN_004217e8(int *param_1)
 
 {
   undefined4 uVar1;
-  BOOL BVar2;
+  BOOL ok;
   undefined4 uVar3;
-  tagMSG local_20;
+  tagMSG msg;
   
   uVar3 = 0;
   while( true ) {
-    BVar2 = PeekMessageA(&local_20,(HWND)0x0,0,0,1);
-    if (BVar2 == 0) {
+    ok = PeekMessageA(&msg,(HWND)0x0,0,0,1);
+    if (ok == 0) {
       return uVar3;
     }
     uVar3 = 1;
-    if (local_20.message == 0x12) break;
+    if (msg.message == 0x12) break;
     uVar1 = (**(code **)(*param_1 + 8))();
     if ((char)uVar1 != '\0') {
       return CONCAT31((int3)((uint)uVar1 >> 8),1);
     }
   }
   *(undefined1 *)(param_1 + 1) = 1;
-  *(WPARAM *)((int)param_1 + 5) = local_20.wParam;
-  PostQuitMessage(local_20.wParam);
+  *(WPARAM *)((int)param_1 + 5) = msg.wParam;
+  PostQuitMessage(msg.wParam);
   return 1;
 }
 
@@ -545,15 +423,15 @@ undefined4 __cdecl FUN_004217e8(int *param_1)
 void __stdcall FUN_00421844(void)
 
 {
-  BOOL BVar1;
-  tagMSG local_20;
+  BOOL ok;
+  tagMSG msg;
   
   do {
-    BVar1 = PeekMessageA(&local_20,(HWND)0x0,0,0,3);
-    if (BVar1 == 0) {
+    ok = PeekMessageA(&msg,(HWND)0x0,0,0,3);
+    if (ok == 0) {
       return;
     }
-  } while (local_20.message != 0xf);
+  } while (msg.message != 0xf);
   return;
 }
 
@@ -592,8 +470,8 @@ void __stdcall FUN_0042197c(void)
 
 {
   int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468804);
   piVar1 = DAT_004687f0;
@@ -601,7 +479,7 @@ void __stdcall FUN_0042197c(void)
     FUN_00421d9c(piVar1);
   }
   DAT_004687f0 = piVar1;
-  *in_FS_OFFSET = local_2c;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -610,13 +488,13 @@ void __stdcall FUN_0042197c(void)
 void __stdcall FUN_004219f8(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468824);
   OWL::TStreamableTypes::_dtor(DAT_004687f0,3);
   DAT_004687f0 = (int *)0x0;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -667,11 +545,11 @@ void __cdecl FUN_00421ae0(int param_1,int param_2)
 
 {
   undefined4 *puVar1;
-  undefined4 uVar2;
+  undefined4 mem;
   
   if (*(int *)(param_1 + 9) == 0) {
-    uVar2 = malloc();
-    *(undefined4 *)(param_1 + 9) = uVar2;
+    mem = malloc();
+    *(undefined4 *)(param_1 + 9) = mem;
   }
   else {
     puVar1 = (undefined4 *)FUN_0044b964();
@@ -774,8 +652,8 @@ undefined4 * __cdecl FUN_00421cd4(undefined4 *param_1,uint *param_2,undefined4 p
 
 {
   undefined4 uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46883c);
   *param_1 = param_3;
@@ -787,7 +665,7 @@ undefined4 * __cdecl FUN_00421cd4(undefined4 *param_1,uint *param_2,undefined4 p
   if (param_5 != 0) {
     FUN_00421928(param_5,(int)param_1);
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -797,8 +675,8 @@ int * __cdecl FUN_00421d9c(int *param_1)
 
 {
   int iVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468870);
   iVar1 = operator_new();
@@ -809,7 +687,7 @@ int * __cdecl FUN_00421d9c(int *param_1)
     FUN_00421ae0(iVar1,0x1e);
   }
   *param_1 = iVar1;
-  *in_FS_OFFSET = local_2c;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -818,18 +696,18 @@ int * __cdecl FUN_00421d9c(int *param_1)
 void __cdecl FUN_00421ed4(int param_1,char param_2)
 
 {
-  int iVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  int i;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4688e4);
   if (param_2 != '\0') {
-    for (iVar1 = 0; iVar1 < *(int *)(param_1 + 1); iVar1 = iVar1 + 1) {
-      OWL::TStreamableClass::_dtor(*(int *)(*(int *)(param_1 + 9) + iVar1 * 4),3);
+    for (i = 0; i < *(int *)(param_1 + 1); i = i + 1) {
+      OWL::TStreamableClass::_dtor(*(int *)(*(int *)(param_1 + 9) + i * 4),3);
     }
   }
   *(undefined4 *)(param_1 + 1) = 0;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -871,174 +749,174 @@ undefined4 __cdecl FUN_00421fa4(int *param_1,undefined4 param_2,uint *param_3)
 
 {
   uint uVar1;
-  char *pcVar2;
+  char *len;
   int *piVar3;
-  int iVar4;
-  undefined4 *in_FS_OFFSET;
+  int prevRefs;
+  undefined4 *sehChainHead;
   undefined4 uVar5;
-  undefined *puVar6;
+  undefined *copyCtor;
   uint uVar7;
-  undefined4 uVar8;
-  undefined4 uVar9;
-  undefined4 uVar10;
-  undefined1 local_1d8 [248];
-  undefined *local_e0;
-  undefined1 *local_d8;
-  undefined4 local_d4;
-  undefined *local_d0;
-  undefined *local_cc;
-  uint local_c8;
-  undefined1 *local_c4;
-  undefined4 local_c0;
-  int *local_bc;
-  int *local_b8;
-  int *local_b4;
-  int *local_b0;
-  int *local_ac;
-  uint local_a8;
-  undefined1 *local_a4;
-  int *local_a0;
-  int *local_9c;
-  uint local_98;
-  int *local_94;
-  undefined1 *local_90;
-  int *local_8c;
-  undefined4 local_88;
-  uint *local_7c;
-  undefined4 local_78;
-  undefined2 local_68;
-  int local_5c;
-  undefined4 local_54 [2];
-  undefined1 local_4c [8];
-  int *local_44;
-  undefined **local_3c [2];
-  undefined1 local_34 [8];
-  int *local_2c;
-  undefined1 local_24 [8];
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined1 exceptMsg [248];
+  undefined *unused;
+  undefined1 *unused2;
+  undefined4 unused3;
+  undefined *unused4;
+  undefined *unused5;
+  uint pos;
+  undefined1 *unused6;
+  undefined4 unused7;
+  int *unused8;
+  int *unused9;
+  int *strRep;
+  int *newData;
+  int *unused10;
+  uint unused11;
+  undefined1 *unused12;
+  int *newRep;
+  int *unused13;
+  uint len2;
+  int *strRep2;
+  undefined1 *unused14;
+  int *unused15;
+  undefined4 unused16;
+  uint *msgText;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined4 txBase [2];
+  undefined1 str2 [8];
+  int *str3;
+  undefined **lengthError [2];
+  undefined1 newStr [8];
+  int *unused17;
+  undefined1 str [8];
   undefined *local_1c;
-  undefined4 local_14 [4];
+  undefined4 streamableClass [4];
   
   __InitExceptBlockLDTC(0x468968);
-  local_68 = 8;
-  FUN_00421cd4(local_14,param_3,0,0,0);
-  local_5c = local_5c + 1;
-  local_68 = 0x14;
-  uVar1 = FUN_00421b7c(*param_1,(int)local_14);
+  ehContext = 8;
+  FUN_00421cd4(streamableClass,param_3,0,0,0);
+  ehDtorCount = ehDtorCount + 1;
+  ehContext = 0x14;
+  uVar1 = FUN_00421b7c(*param_1,(int)streamableClass);
   if (uVar1 != 0xffffffff) goto LAB_004223f7;
-  local_1c = &DAT_00471d68;
-  local_e0 = &DAT_00471d68;
-  local_5c = local_5c + 1;
-  local_68 = 0x38;
-  if (DAT_00471f90 - 0xeU < 0x80) {
-    uVar10 = 0;
-    uVar9 = 0;
-    uVar8 = 0;
+  local_1c = &g_emptyStringData;
+  unused = &g_emptyStringData;
+  ehDtorCount = ehDtorCount + 1;
+  ehContext = 0x38;
+  if (g_stringNpos - 0xeU < 0x80) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
     uVar7 = 1;
-    puVar6 = &LAB_00402ee0;
+    copyCtor = &LAB_00402ee0;
     uVar5 = 0;
-    local_68 = 0x50;
-    local_7c = (uint *)FUN_00455640(local_1d8,PTR_s_invalid_string_size_parameter_in_00474068);
-    std::string::string_from_cstr((int)local_4c,local_7c);
-    local_5c = local_5c + 2;
-    local_3c[0] = &std::logic_error::vftable;
-    local_88 = 0;
-    local_2c = (int *)0x0;
-    local_68 = 0x5c;
-    if (local_44[-3] == -1 || local_44[-3] + 1 < 0) {
-      local_98 = local_44[-1];
-      local_a0 = std::string::__getRep(local_34,local_98,local_98);
-      local_b0 = local_a0 + 3;
-      local_a4 = local_34;
-      local_a8 = local_98;
-      local_ac = local_44;
-      local_9c = local_b0;
-      local_2c = local_b0;
-      memcpy(local_b0,local_44,local_98);
+    ehContext = 0x50;
+    msgText = (uint *)__rwstd::except_msg_string::format(exceptMsg,PTR_s_invalid_string_size_parameter_in_00474068);
+    std::string::string_from_cstr((int)str2,msgText);
+    ehDtorCount = ehDtorCount + 2;
+    lengthError[0] = &std::logic_error::vftable;
+    unused16 = 0;
+    unused17 = (int *)0x0;
+    ehContext = 0x5c;
+    if (str3[-3] == -1 || str3[-3] + 1 < 0) {
+      len2 = str3[-1];
+      newRep = std::string::__getRep(newStr,len2,len2);
+      newData = newRep + 3;
+      unused12 = newStr;
+      unused11 = len2;
+      unused10 = str3;
+      unused13 = newData;
+      unused17 = newData;
+      memcpy(newData,str3,len2);
     }
     else {
-      local_8c = local_44;
-      local_2c = local_44;
-      local_90 = local_34;
-      local_94 = local_44 + -3;
-      if (local_94 != &DAT_00471d5c) {
-        *local_94 = *local_94 + 1;
+      unused15 = str3;
+      unused17 = str3;
+      unused14 = newStr;
+      strRep2 = str3 + -3;
+      if (strRep2 != &g_nullStringRep) {
+        *strRep2 = *strRep2 + 1;
       }
     }
-    local_68 = 0x50;
-    local_3c[0] = &std::length_error::vftable;
-    local_5c = local_5c + 2;
-    if (local_44 != (int *)0x0) {
-      if (local_44[-3] != -1) {
-        local_b4 = local_44 + -3;
-        if (local_b4 == &DAT_00471d5c) {
-          iVar4 = 1;
+    ehContext = 0x50;
+    lengthError[0] = &std::length_error::vftable;
+    ehDtorCount = ehDtorCount + 2;
+    if (str3 != (int *)0x0) {
+      if (str3[-3] != -1) {
+        strRep = str3 + -3;
+        if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
-        else if (local_b4 == &DAT_00471d5c) {
-          iVar4 = 1;
+        else if (strRep == &g_nullStringRep) {
+          prevRefs = 1;
         }
         else {
-          *local_b4 = *local_b4 + -1;
-          iVar4 = *local_b4 + 1;
+          *strRep = *strRep + -1;
+          prevRefs = *strRep + 1;
         }
-        if (iVar4 != 0) goto LAB_0042228c;
+        if (prevRefs != 0) goto LAB_0042228c;
       }
-      local_b8 = local_44 + -3;
-      local_bc = local_44 + -3;
+      unused9 = str3 + -3;
+      unused8 = str3 + -3;
       operator_delete();
-      local_c0 = 0;
-      local_44 = (int *)0x0;
-      local_c4 = local_4c;
+      unused7 = 0;
+      str3 = (int *)0x0;
+      unused6 = str2;
     }
 LAB_0042228c:
-    local_68 = 0x44;
-    FUN_0045ed74((uint *)&DAT_00402e84,(undefined4*)local_3c,uVar5,puVar6,uVar7,uVar8,uVar9,uVar10);
+    ehContext = 0x44;
+    _ThrowExceptionLDTC((uint *)&DAT_00402e84,(undefined4*)lengthError,uVar5,copyCtor,uVar7,throwFlags,throwFile,throwLine);
   }
   if (*(uint *)(local_1c + -8) < 0x80) {
-    FUN_00452c68((int)local_24,0x80);
+    FUN_00452c68((int)str,0x80);
   }
-  FUN_0044cf10((int)local_24,(uint *)"Attempt to stream unregistered type '");
-  local_c8 = *(uint *)(local_1c + -4);
-  pcVar2 = strlen(param_3);
-  FUN_0044d5c8((int)local_24,local_c8,0,(uint)param_3,(uint)pcVar2,0,(uint)pcVar2);
+  std::string::assign_cstr((int)str,(uint *)"Attempt to stream unregistered type '");
+  pos = *(uint *)(local_1c + -4);
+  len = strlen(param_3);
+  std::string::replace((int)str,pos,0,(uint)param_3,(uint)len,0,(uint)len);
   uVar7 = *(uint *)(local_1c + -4);
-  pcVar2 = strlen((uint *)("Attempt to stream unregistered type '" + 0x24));
-  FUN_0044d5c8((int)local_24,uVar7,0,0x4687ee,(uint)pcVar2,0,(uint)pcVar2);
-  local_68 = 0x80;
-  piVar3 = FUN_00417a4c(local_54,(int)local_24);
-  local_5c = local_5c + 2;
+  len = strlen((uint *)("Attempt to stream unregistered type '" + 0x24));
+  std::string::replace((int)str,uVar7,0,0x4687ee,(uint)len,0,(uint)len);
+  ehContext = 0x80;
+  piVar3 = OWL::TXBase::TXBase(txBase,(int)str);
+  ehDtorCount = ehDtorCount + 2;
   (**(code **)(*piVar3 + 0xc))();
-  local_5c = local_5c + -2;
-  OWL::TXBase::_dtor(local_54,2);
-  local_5c = local_5c + -1;
+  ehDtorCount = ehDtorCount + -2;
+  OWL::TXBase::_dtor(txBase,2);
+  ehDtorCount = ehDtorCount + -1;
   if (local_1c != (undefined *)0x0) {
     if (*(int *)(local_1c + -0xc) != -1) {
       piVar3 = (int *)(local_1c + -0xc);
-      if (piVar3 == &DAT_00471d5c) {
-        iVar4 = 1;
+      if (piVar3 == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar3 == &DAT_00471d5c) {
-        iVar4 = 1;
+      else if (piVar3 == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
         *piVar3 = *piVar3 + -1;
-        iVar4 = *piVar3 + 1;
+        prevRefs = *piVar3 + 1;
       }
-      if (iVar4 != 0) goto LAB_004223eb;
+      if (prevRefs != 0) goto LAB_004223eb;
     }
-    local_cc = local_1c + -0xc;
-    local_d0 = local_1c + -0xc;
+    unused5 = local_1c + -0xc;
+    unused4 = local_1c + -0xc;
     operator_delete();
-    local_d4 = 0;
+    unused3 = 0;
     local_1c = (undefined *)0x0;
-    local_d8 = local_24;
+    unused2 = str;
   }
 LAB_004223eb:
-  local_68 = 0x14;
+  ehContext = 0x14;
 LAB_004223f7:
   uVar5 = *(undefined4 *)(*(int *)(*param_1 + 9) + uVar1 * 4);
-  local_5c = local_5c + -1;
-  OWL::TStreamableClass::_dtor((int)local_14,2);
-  *in_FS_OFFSET = local_78;
+  ehDtorCount = ehDtorCount + -1;
+  OWL::TStreamableClass::_dtor((int)streamableClass,2);
+  *sehChainHead = sehPrevFrame;
   return uVar5;
 }
 
@@ -1066,11 +944,11 @@ void __cdecl FUN_00422458(int param_1,int param_2)
 
 {
   undefined4 *puVar1;
-  undefined4 uVar2;
+  undefined4 mem;
   
   if (*(int *)(param_1 + 9) == 0) {
-    uVar2 = malloc();
-    *(undefined4 *)(param_1 + 9) = uVar2;
+    mem = malloc();
+    *(undefined4 *)(param_1 + 9) = mem;
   }
   else {
     puVar1 = (undefined4 *)FUN_0044b964();
@@ -1103,11 +981,11 @@ void __cdecl FUN_00422514(int param_1,int param_2)
 
 {
   undefined4 *puVar1;
-  undefined4 uVar2;
+  undefined4 mem;
   
   if (*(int *)(param_1 + 9) == 0) {
-    uVar2 = malloc();
-    *(undefined4 *)(param_1 + 9) = uVar2;
+    mem = malloc();
+    *(undefined4 *)(param_1 + 9) = mem;
   }
   else {
     puVar1 = (undefined4 *)FUN_0044b964();
@@ -1129,10 +1007,10 @@ void __cdecl FUN_004225b0(int *param_1,int param_2)
 
 {
   uint local_c;
-  int local_8;
+  int unused;
   
   *param_1 = *param_1 + 1;
-  local_8 = *param_1;
+  unused = *param_1;
   local_c = param_2 + 1;
   FUN_004225dc(param_1[1],&local_c);
   return;
@@ -1146,8 +1024,8 @@ int __stdcall FUN_004225dc(int param_1,uint *param_2)
   uint *puVar1;
   uint *puVar2;
   int iVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uStack_2c;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468a10);
   if (*(uint *)(param_1 + 5) <= *(uint *)(param_1 + 1)) {
@@ -1173,7 +1051,7 @@ int __stdcall FUN_004225dc(int param_1,uint *param_2)
     puVar2[1] = param_2[1];
   }
   *(uint **)(*(int *)(param_1 + 9) + iVar3 * 4) = puVar2;
-  *in_FS_OFFSET = uStack_2c;
+  *sehChainHead = sehPrevFrame;
   return iVar3;
 }
 
@@ -1188,7 +1066,7 @@ int __stdcall FUN_004225e2(void)
   undefined4 uVar4;
   int iVar5;
   int unaff_EBP;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   
   iVar2 = *(int *)(unaff_EBP + 8);
   __InitExceptBlockLDTC(0x468a10);
@@ -1227,7 +1105,7 @@ int __stdcall FUN_004225e2(void)
     uVar4 = *(undefined4 *)(unaff_EBP + -4);
   }
   *(undefined4 *)(*(int *)(iVar2 + 9) + iVar5 * 4) = uVar4;
-  *in_FS_OFFSET = *(undefined4 *)(unaff_EBP + -0x28);
+  *sehChainHead = *(undefined4 *)(unaff_EBP + -0x28);
   return iVar5;
 }
 
@@ -1340,27 +1218,27 @@ void __cdecl FUN_0042280c(int *param_1,undefined4 param_2,int param_3)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00422858  FUN_00422858   (173 bytes)   [unnamed]
-void __cdecl FUN_00422858(int *param_1,undefined4 *param_2,uint param_3)
+void __cdecl FUN_00422858(int *param_1,undefined4 *dest,uint param_3)
 
 {
   uint uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
-  undefined4 *local_c [2];
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined4 *tmpBufferBase [2];
   
   __InitExceptBlockLDTC(0x468a50);
   if ((*(int *)(*param_1 + 8) == 0) && (param_3 != 0)) {
-    FUN_0042027c((int *)local_c,param_3);
+    FUN_0042027c((int *)tmpBufferBase,param_3);
     uVar1 = (**(code **)(**(int **)(*param_1 + 4) + 0x18))();
     if (uVar1 == param_3) {
-      memcpy(param_2,local_c[0],param_3);
+      memcpy(dest,tmpBufferBase[0],param_3);
     }
     else {
       *(undefined4 *)(*param_1 + 8) = 4;
     }
-    OWL::TTmpBufferBase::_dtor((undefined4*)local_c,0);
+    OWL::TTmpBufferBase::_dtor((undefined4*)tmpBufferBase,0);
   }
-  *in_FS_OFFSET = local_30;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -1470,24 +1348,24 @@ int __cdecl FUN_004229e8(int *param_1,int param_2,int param_3)
 undefined4 * __cdecl FUN_00422a30(int *param_1)
 
 {
-  undefined4 *puVar1;
+  undefined4 *dest;
   uint uVar2;
   
   if (*(int *)(*param_1 + 8) == 0) {
     uVar2 = FUN_004229b4(param_1);
     if (uVar2 == 0xffffffff) {
-      puVar1 = (undefined4 *)0x0;
+      dest = (undefined4 *)0x0;
     }
     else {
-      puVar1 = (undefined4 *)operator_new_array();
-      FUN_00422858(param_1,puVar1,uVar2);
-      *(undefined1 *)((int)puVar1 + uVar2) = 0;
+      dest = (undefined4 *)operator_new_array();
+      FUN_00422858(param_1,dest,uVar2);
+      *(undefined1 *)((int)dest + uVar2) = 0;
     }
   }
   else {
-    puVar1 = (undefined4 *)0x0;
+    dest = (undefined4 *)0x0;
   }
-  return puVar1;
+  return dest;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1528,8 +1406,8 @@ void __cdecl FUN_00422b00(int *param_1,undefined4 *param_2,int *param_3)
 
 {
   int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468a90);
   piVar1 = (int *)(*(code *)*param_2)();
@@ -1540,7 +1418,7 @@ void __cdecl FUN_00422b00(int *param_1,undefined4 *param_2,int *param_3)
   }
   (**(code **)(*piVar1 + 4))();
   operator_delete();
-  *in_FS_OFFSET = local_2c;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -1674,15 +1552,15 @@ void __cdecl FUN_00422d88(int *param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00422dc4  FUN_00422dc4   (107 bytes)   [unnamed]
-void __cdecl FUN_00422dc4(int *param_1,undefined4 *param_2,uint param_3)
+void __cdecl FUN_00422dc4(int *param_1,undefined4 *src,uint param_3)
 
 {
-  undefined4 *puVar1;
+  undefined4 *dest;
   uint uVar2;
   
   if ((*(int *)(*param_1 + 8) == 0) && (param_3 != 0)) {
-    puVar1 = (undefined4 *)operator_new_array();
-    memcpy(puVar1,param_2,param_3);
+    dest = (undefined4 *)operator_new_array();
+    memcpy(dest,src,param_3);
     uVar2 = (**(code **)(**(int **)(*param_1 + 4) + 0x2c))();
     if (uVar2 != param_3) {
       *(undefined4 *)(*param_1 + 8) = 4;
@@ -1697,16 +1575,16 @@ void __cdecl FUN_00422dc4(int *param_1,undefined4 *param_2,uint param_3)
 void __cdecl FUN_00422e30(int *param_1,uint *param_2)
 
 {
-  char *pcVar1;
+  char *len;
   
   if (*(int *)(*param_1 + 8) == 0) {
     if (param_2 == (uint *)0x0) {
       FUN_00422d88(param_1);
     }
     else {
-      pcVar1 = strlen(param_2);
+      len = strlen(param_2);
       FUN_00422d88(param_1);
-      FUN_00422d00(param_1,param_2,(int)pcVar1);
+      FUN_00422d00(param_1,param_2,(int)len);
     }
   }
   return;
@@ -1714,19 +1592,19 @@ void __cdecl FUN_00422e30(int *param_1,uint *param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00422e78  FUN_00422e78   (72 bytes)   [unnamed]
-void __cdecl FUN_00422e78(int *param_1,uint *param_2)
+void __cdecl FUN_00422e78(int *param_1,uint *src)
 
 {
-  char *pcVar1;
+  char *len;
   
   if (*(int *)(*param_1 + 8) == 0) {
-    if (param_2 == (uint *)0x0) {
+    if (src == (uint *)0x0) {
       FUN_00422d88(param_1);
     }
     else {
-      pcVar1 = strlen(param_2);
+      len = strlen(src);
       FUN_00422d88(param_1);
-      FUN_00422dc4(param_1,param_2,(uint)pcVar1);
+      FUN_00422dc4(param_1,src,(uint)len);
     }
   }
   return;
@@ -1804,8 +1682,8 @@ void __cdecl FUN_00422fc0(int *param_1,int *param_2,undefined4 param_3)
   uint *puVar2;
   int *piVar3;
   int iVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468adc);
   if (*(int *)(*param_1 + 8) == 0) {
@@ -1825,7 +1703,7 @@ void __cdecl FUN_00422fc0(int *param_1,int *param_2,undefined4 param_3)
     (**(code **)(*piVar3 + 8))();
     operator_delete();
   }
-  *in_FS_OFFSET = local_2c;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -1843,8 +1721,8 @@ void __cdecl FUN_004231c4(undefined4 *param_1)
 void __cdecl FUN_004231f4(int param_1,byte param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468b08);
   if (param_1 != 0) {
@@ -1856,7 +1734,7 @@ void __cdecl FUN_004231f4(int param_1,byte param_2)
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -1865,8 +1743,8 @@ void __cdecl FUN_004231f4(int param_1,byte param_2)
 void __cdecl FUN_00423348(int param_1,byte param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468b38);
   if (param_1 != 0) {
@@ -1878,7 +1756,7 @@ void __cdecl FUN_00423348(int param_1,byte param_2)
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -1887,8 +1765,8 @@ void __cdecl FUN_00423348(int param_1,byte param_2)
 void __cdecl FUN_00423498(int param_1,byte param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468b58);
   if (param_1 != 0) {
@@ -1899,7 +1777,7 @@ void __cdecl FUN_00423498(int param_1,byte param_2)
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -1908,8 +1786,8 @@ void __cdecl FUN_00423498(int param_1,byte param_2)
 void __cdecl FUN_00423594(int param_1,byte param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468b7c);
   if (param_1 != 0) {
@@ -1920,7 +1798,7 @@ void __cdecl FUN_00423594(int param_1,byte param_2)
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -1946,11 +1824,11 @@ FARPROC __stdcall FUN_00423684(void)
 
 {
   HMODULE hModule;
-  FARPROC pFVar1;
+  FARPROC procAddress;
   
   hModule = GetModuleHandleA("USER32");
-  pFVar1 = GetProcAddress(hModule,"DefWindowProcA");
-  return pFVar1;
+  procAddress = GetProcAddress(hModule,"DefWindowProcA");
+  return procAddress;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1958,15 +1836,15 @@ FARPROC __stdcall FUN_00423684(void)
 void __stdcall FUN_0042369a(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468ba1);
   if (DAT_00468ba0 != '\0') {
     HeapDestroy(DAT_00476e14);
     DAT_00468ba0 = '\0';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -2003,25 +1881,25 @@ void __cdecl FUN_004236e8(undefined4 param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004236f8  FUN_004236f8   (104 bytes)   [unnamed]
-void __stdcall FUN_004236f8(HWND param_1,UINT param_2,WPARAM param_3,LPARAM param_4)
+void __stdcall FUN_004236f8(HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam)
 
 {
   int iVar1;
   LONG dwNewLong;
-  code *pcVar2;
+  code *windowLong;
   
   iVar1 = FUN_004236d8();
   if (iVar1 == 0) {
-    DefWindowProcA(param_1,param_2,param_3,param_4);
+    DefWindowProcA(hWnd,msg,wParam,lParam);
   }
   else {
     FUN_004236e8(0);
-    *(HWND *)(iVar1 + 0xc) = param_1;
+    *(HWND *)(iVar1 + 0xc) = hWnd;
     dwNewLong = FUN_00423684();
     SetWindowLongA(*(HWND *)(iVar1 + 0xc),-4,dwNewLong);
     FUN_0042cbe0(iVar1);
-    pcVar2 = (code *)GetWindowLongA(*(HWND *)(iVar1 + 0xc),-4);
-    (*pcVar2)();
+    windowLong = (code *)GetWindowLongA(*(HWND *)(iVar1 + 0xc),-4);
+    (*windowLong)();
   }
   return;
 }
@@ -2031,30 +1909,30 @@ void __stdcall FUN_004236f8(HWND param_1,UINT param_2,WPARAM param_3,LPARAM para
 undefined1 * __cdecl FUN_00423760(undefined4 param_1)
 
 {
-  undefined4 *puVar1;
-  undefined1 *puVar2;
+  undefined4 *txOutOfMemory;
+  undefined1 *mem;
   int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
-  undefined4 local_10 [3];
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  undefined4 txOwl [3];
   
   __InitExceptBlockLDTC(0x468bec);
-  puVar1 = FUN_00423828();
-  puVar2 = HeapAlloc((HANDLE)*puVar1,0,10);
-  if (puVar2 == (undefined1 *)0x0) {
-    puVar1 = local_10;
-    piVar3 = FUN_0041864c(puVar1);
-    (**(code **)(*piVar3 + 0xc))(piVar3,*piVar3,puVar1,piVar3);
-    OWL::TXOwl::_dtor(local_10,0);
+  txOutOfMemory = FUN_00423828();
+  mem = HeapAlloc((HANDLE)*txOutOfMemory,0,10);
+  if (mem == (undefined1 *)0x0) {
+    txOutOfMemory = txOwl;
+    piVar3 = OWL::TXOutOfMemory::TXOutOfMemory(txOutOfMemory);
+    (**(code **)(*piVar3 + 0xc))(piVar3,*piVar3,txOutOfMemory,piVar3);
+    OWL::TXOwl::_dtor(txOwl,0);
   }
   else {
-    *puVar2 = 0xb8;
-    puVar2[5] = 0xe9;
-    *(undefined4 *)(puVar2 + 1) = param_1;
-    *(int *)(puVar2 + 6) = 0x423906 - (int)puVar2;
+    *mem = 0xb8;
+    mem[5] = 0xe9;
+    *(undefined4 *)(mem + 1) = param_1;
+    *(int *)(mem + 6) = 0x423906 - (int)mem;
   }
-  *in_FS_OFFSET = local_38;
-  return puVar2;
+  *sehChainHead = sehPrevFrame;
+  return mem;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2063,21 +1941,21 @@ undefined4 * __stdcall FUN_00423828(void)
 
 {
   int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_34;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   undefined4 local_10 [3];
   
   __InitExceptBlockLDTC(0x468c38);
   if (DAT_00468ba0 == '\0') {
     DAT_00476e14 = HeapCreate(0x40000,0x8000,0);
     if (DAT_00476e14 == (HANDLE)0x0) {
-      piVar1 = FUN_0041864c(local_10);
+      piVar1 = OWL::TXOutOfMemory::TXOutOfMemory(local_10);
       (**(code **)(*piVar1 + 0xc))();
       OWL::TXOwl::_dtor(local_10,0);
     }
     DAT_00468ba0 = DAT_00468ba0 + '\x01';
   }
-  *in_FS_OFFSET = local_34;
+  *sehChainHead = sehPrevFrame;
   return (undefined4*)&DAT_00476e14;
 }
 
@@ -2120,35 +1998,35 @@ void FUN_00423910(int param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004239d4  FUN_004239d4   (35 bytes)   [unnamed; function defined from prologue-scan]
-void __cdecl FUN_004239d4(LPVOID param_1)
+void __cdecl FUN_004239d4(LPVOID mem)
 
 {
   undefined4 *puVar1;
   
-  if (param_1 != (LPVOID)0x0) {
+  if (mem != (LPVOID)0x0) {
     puVar1 = FUN_00423828();
-    HeapFree((HANDLE)*puVar1,0,param_1);
+    HeapFree((HANDLE)*puVar1,0,mem);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004239f8  FUN_004239f8   (106 bytes)   [unnamed]
-int * __cdecl FUN_004239f8(int *param_1,HWND param_2)
+int * __cdecl FUN_004239f8(int *param_1,HWND hWnd)
 
 {
-  HDC pHVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  HDC hdc;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468c74);
   FUN_00416afc(param_1);
   *(undefined ***)((int)param_1 + 5) = &OWL::TPaintDC::vftable;
-  *(HWND *)((int)param_1 + 0x61) = param_2;
-  pHVar1 = BeginPaint(param_2,(LPPAINTSTRUCT)((int)param_1 + 0x21));
-  *param_1 = (int)pHVar1;
+  *(HWND *)((int)param_1 + 0x61) = hWnd;
+  hdc = BeginPaint(hWnd,(LPPAINTSTRUCT)((int)param_1 + 0x21));
+  *param_1 = (int)hdc;
   FUN_0041c800(param_1,0x7fe3);
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -2157,15 +2035,15 @@ int * __cdecl FUN_004239f8(int *param_1,HWND param_2)
 uint * __cdecl FUN_00423b58(uint *param_1,undefined4 param_2,int param_3)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468d28);
   FUN_0041d2fc(param_1,param_2,param_3);
   if ((char)param_1[1] != '\0') {
     FUN_0041cf04(*param_1,4);
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -2174,13 +2052,13 @@ uint * __cdecl FUN_00423b58(uint *param_1,undefined4 param_2,int param_3)
 uint * __cdecl FUN_00423bc8(uint *param_1,int param_2,BYTE param_3)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x468d4c);
   FUN_0041d2ac(param_1);
   FUN_00423c10(param_1,*(int *)(param_2 + 9),param_3);
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -2192,7 +2070,7 @@ void __cdecl FUN_00423c10(uint *param_1,int param_2,BYTE param_3)
   ushort uVar1;
   int iVar2;
   LOGPALETTE *plpal;
-  HPALETTE pHVar3;
+  HPALETTE hPalette;
   ushort uVar4;
   
   if (*(int *)(param_2 + 0x20) == 0) {
@@ -2219,8 +2097,8 @@ void __cdecl FUN_00423c10(uint *param_1,int param_2,BYTE param_3)
         uVar1 = uVar1 + 1;
       } while (uVar1 < uVar4);
     }
-    pHVar3 = CreatePalette(plpal);
-    *param_1 = (uint)pHVar3;
+    hPalette = CreatePalette(plpal);
+    *param_1 = (uint)hPalette;
     operator_delete_array();
   }
   FUN_0041c800((int *)param_1,0x7fe3);

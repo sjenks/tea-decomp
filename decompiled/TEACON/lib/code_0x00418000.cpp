@@ -1,5 +1,5 @@
 // TEACON.exe — runtime / library code "code_0x00418000"
-// 92 functions, 0x00418080..0x0041bff4. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 89 functions, 0x00418080..0x0041bff4. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -14,8 +14,8 @@ int * __cdecl FUN_00418080(int *param_1)
   bool bVar1;
   undefined4 *puVar2;
   int iVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x42fecc);
   operator_delete();
@@ -40,13 +40,13 @@ int * __cdecl FUN_00418080(int *param_1)
     *(undefined1 *)(param_1 + 10) = 0;
     *(undefined1 *)((int)param_1 + 0x29) = 0;
     param_1[0xb] = 0;
-    *in_FS_OFFSET = local_30;
+    *sehChainHead = sehPrevFrame;
   }
   else {
     iVar3 = FUN_00417ee0();
     if (iVar3 == param_1[9]) {
       param_1 = (int *)0x0;
-      *in_FS_OFFSET = local_30;
+      *sehChainHead = sehPrevFrame;
     }
     else {
       if (*(char *)((int)param_1 + 0x29) != '\0') {
@@ -61,12 +61,12 @@ int * __cdecl FUN_00418080(int *param_1)
       iVar3 = FUN_004181fc(param_1,param_1[9]);
       if (iVar3 == -1) {
         param_1 = (int *)0x0;
-        *in_FS_OFFSET = local_30;
+        *sehChainHead = sehPrevFrame;
       }
       else {
         iVar3 = FUN_00417ee0();
         param_1[9] = iVar3;
-        *in_FS_OFFSET = local_30;
+        *sehChainHead = sehPrevFrame;
       }
     }
   }
@@ -101,22 +101,6 @@ undefined4 __cdecl FUN_004181fc(undefined4 param_1,uint param_2)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004182a4  FUN_004182a4   (77 bytes)   [unnamed]
-undefined4 * __cdecl FUN_004182a4(undefined4 *param_1)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x42ff38);
-  FUN_0041ca64(param_1);
-  *param_1 = &std::basic_ios_char::vftable;
-  FUN_0041830c((int)param_1,0);
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
 // 0x0041830c  FUN_0041830c   (79 bytes)   [unnamed]
 void __cdecl FUN_0041830c(int param_1,undefined4 param_2)
 
@@ -147,16 +131,16 @@ undefined4 __cdecl FUN_0041835c(int param_1)
 {
   int *piVar1;
   undefined4 uVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
-  int local_8;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  int loc;
   
   __InitExceptBlockLDTC(0x42ff5c);
-  FUN_00416a80(&local_8,param_1);
-  piVar1 = (int *)FUN_00416920(&local_8);
+  FUN_00416a80(&loc,param_1);
+  piVar1 = (int *)FUN_00416920(&loc);
   uVar2 = FUN_004183c0(piVar1);
-  std::locale::_dtor(&local_8,2);
-  *in_FS_OFFSET = local_2c;
+  std::locale::_dtor(&loc,2);
+  *sehChainHead = sehPrevFrame;
   return uVar2;
 }
 
@@ -187,30 +171,30 @@ void __cdecl FUN_004183f0(int param_1,uint param_2)
 {
   uint uVar1;
   uint uVar2;
-  undefined1 *puVar3;
+  undefined1 *msgText;
   uint *puVar4;
   int iVar5;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uVar6;
-  undefined *puVar7;
-  undefined4 uVar8;
-  undefined4 uVar9;
-  undefined4 uVar10;
-  undefined1 local_388 [240];
-  undefined1 local_298 [240];
-  undefined1 local_1a8 [240];
+  undefined4 *sehChainHead;
+  undefined4 objectDtor;
+  undefined *copyCtor;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined1 exceptMsg [240];
+  undefined1 exceptMsg2 [240];
+  undefined1 exceptMsg3 [240];
   undefined1 local_b8 [8];
   undefined1 local_b0 [8];
   undefined1 local_a8 [8];
-  undefined4 local_a0;
-  undefined2 local_90;
-  int local_84;
-  undefined1 local_7c [16];
-  undefined4 local_6c [6];
-  undefined1 local_54 [16];
-  undefined4 local_44 [6];
-  undefined1 local_2c [16];
-  undefined4 local_1c [6];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [16];
+  undefined4 failure2 [6];
+  undefined1 str2 [16];
+  undefined4 failure3 [6];
+  undefined1 str3 [16];
+  undefined4 failure4 [6];
   
   __InitExceptBlockLDTC(0x42fff4);
   if (*(int *)(param_1 + 0x24) == 0) {
@@ -225,70 +209,70 @@ void __cdecl FUN_004183f0(int param_1,uint param_2)
     uVar2 = FUN_0041873c(param_1);
     if ((uVar1 & uVar2 & 4) != 0) {
       *(uint *)(param_1 + 0x30) = param_2;
-      uVar10 = 0;
-      uVar9 = 0;
-      uVar8 = 0;
+      throwLine = 0;
+      throwFile = 0;
+      throwFlags = 0;
       uVar1 = 1;
-      puVar7 = &LAB_004186d8;
-      uVar6 = 0;
-      local_90 = 0x14;
-      FUN_004168f8(local_a8);
-      puVar3 = FUN_0041ea4c(local_1a8,PTR_s_iostream_object_has_failbit_set_00430ba8);
-      puVar4 = (uint *)FUN_00416de0(puVar3);
-      iVar5 = std::string::string_from_cstr((int)local_2c,puVar4);
-      local_84 = local_84 + 1;
-      FUN_0041c778(local_1c,iVar5);
-      local_84 = local_84 + 2;
-      std::string::_dtor((int)local_2c,2);
-      local_90 = 8;
-      FUN_004280a0((uint *)&DAT_00418670,local_1c,uVar6,puVar7,uVar1,uVar8,uVar9,uVar10);
+      copyCtor = &LAB_004186d8;
+      objectDtor = 0;
+      ehContext = 0x14;
+      std::allocator::allocator(local_a8);
+      msgText = __rwstd::except_msg_string::format(exceptMsg3,PTR_s_iostream_object_has_failbit_set_00430ba8);
+      puVar4 = (uint *)__rwstd::except_msg_string::msgstr(msgText);
+      iVar5 = std::string::string_from_cstr((int)str3,puVar4);
+      ehDtorCount = ehDtorCount + 1;
+      std::ios_base::failure::failure(failure4,iVar5);
+      ehDtorCount = ehDtorCount + 2;
+      std::string::_dtor((int)str3,2);
+      ehContext = 8;
+      _ThrowExceptionLDTC((uint *)&DAT_00418670,failure4,objectDtor,copyCtor,uVar1,throwFlags,throwFile,throwLine);
     }
     uVar1 = FUN_00418730(param_1);
     uVar2 = FUN_0041873c(param_1);
     if ((uVar1 & uVar2 & 1) != 0) {
       *(uint *)(param_1 + 0x30) = param_2;
-      uVar10 = 0;
-      uVar9 = 0;
-      uVar8 = 0;
+      throwLine = 0;
+      throwFile = 0;
+      throwFlags = 0;
       uVar1 = 1;
-      puVar7 = &LAB_004186d8;
-      uVar6 = 0;
-      local_90 = 0x2c;
-      FUN_004168f8(local_b0);
-      puVar3 = FUN_0041ea4c(local_298,PTR_s_iostream_object_has_badbit_set_00430bac);
-      puVar4 = (uint *)FUN_00416de0(puVar3);
-      iVar5 = std::string::string_from_cstr((int)local_54,puVar4);
-      local_84 = local_84 + 1;
-      FUN_0041c778(local_44,iVar5);
-      local_84 = local_84 + 2;
-      std::string::_dtor((int)local_54,2);
-      local_90 = 0x20;
-      FUN_004280a0((uint *)&DAT_00418670,local_44,uVar6,puVar7,uVar1,uVar8,uVar9,uVar10);
+      copyCtor = &LAB_004186d8;
+      objectDtor = 0;
+      ehContext = 0x2c;
+      std::allocator::allocator(local_b0);
+      msgText = __rwstd::except_msg_string::format(exceptMsg2,PTR_s_iostream_object_has_badbit_set_00430bac);
+      puVar4 = (uint *)__rwstd::except_msg_string::msgstr(msgText);
+      iVar5 = std::string::string_from_cstr((int)str2,puVar4);
+      ehDtorCount = ehDtorCount + 1;
+      std::ios_base::failure::failure(failure3,iVar5);
+      ehDtorCount = ehDtorCount + 2;
+      std::string::_dtor((int)str2,2);
+      ehContext = 0x20;
+      _ThrowExceptionLDTC((uint *)&DAT_00418670,failure3,objectDtor,copyCtor,uVar1,throwFlags,throwFile,throwLine);
     }
     uVar1 = FUN_00418730(param_1);
     uVar2 = FUN_0041873c(param_1);
     if ((uVar1 & uVar2 & 2) != 0) {
       *(uint *)(param_1 + 0x30) = param_2;
-      uVar10 = 0;
-      uVar9 = 0;
-      uVar8 = 0;
+      throwLine = 0;
+      throwFile = 0;
+      throwFlags = 0;
       uVar1 = 1;
-      puVar7 = &LAB_004186d8;
-      uVar6 = 0;
-      local_90 = 0x44;
-      FUN_004168f8(local_b8);
-      puVar3 = FUN_0041ea4c(local_388,PTR_s_iostream_object_has_eofbit_set_00430bb0);
-      puVar4 = (uint *)FUN_00416de0(puVar3);
-      iVar5 = std::string::string_from_cstr((int)local_7c,puVar4);
-      local_84 = local_84 + 1;
-      FUN_0041c778(local_6c,iVar5);
-      local_84 = local_84 + 2;
-      std::string::_dtor((int)local_7c,2);
-      local_90 = 0x38;
-      FUN_004280a0((uint *)&DAT_00418670,local_6c,uVar6,puVar7,uVar1,uVar8,uVar9,uVar10);
+      copyCtor = &LAB_004186d8;
+      objectDtor = 0;
+      ehContext = 0x44;
+      std::allocator::allocator(local_b8);
+      msgText = __rwstd::except_msg_string::format(exceptMsg,PTR_s_iostream_object_has_eofbit_set_00430bb0);
+      puVar4 = (uint *)__rwstd::except_msg_string::msgstr(msgText);
+      iVar5 = std::string::string_from_cstr((int)str,puVar4);
+      ehDtorCount = ehDtorCount + 1;
+      std::ios_base::failure::failure(failure2,iVar5);
+      ehDtorCount = ehDtorCount + 2;
+      std::string::_dtor((int)str,2);
+      ehContext = 0x38;
+      _ThrowExceptionLDTC((uint *)&DAT_00418670,failure2,objectDtor,copyCtor,uVar1,throwFlags,throwFile,throwLine);
     }
   }
-  *in_FS_OFFSET = local_a0;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -310,12 +294,12 @@ undefined4 __cdecl FUN_0041873c(int param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00418748  FUN_00418748   (25 bytes)   [unnamed]
-DWORD __cdecl FUN_00418748(undefined4 param_1,uint param_2,LONG param_3,int param_4)
+DWORD __cdecl FUN_00418748(undefined4 param_1,uint param_2,LONG lDistanceToMove,int param_4)
 
 {
   DWORD DVar1;
   
-  DVar1 = thunk_FUN_0042010c(param_2,param_3,param_4);
+  DVar1 = thunk_FUN_0042010c(param_2,lDistanceToMove,param_4);
   return DVar1;
 }
 
@@ -329,76 +313,11 @@ void __cdecl FUN_00418764(int param_1,uint param_2)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004188cc  FUN_004188cc   (175 bytes)   [unnamed]
-int * __cdecl FUN_004188cc(int *param_1,int param_2,int param_3)
-
-{
-  uint uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x4300c0);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 3);
-    FUN_004182a4(param_1 + 3);
-  }
-  param_1[1] = (int)&std::basic_istream_char::vftable;
-  *(undefined ***)*param_1 = &PTR_LAB_00430b1c;
-  param_1[2] = 0;
-  if (param_3 == 0) {
-    FUN_0041830c(*param_1,0);
-  }
-  else {
-    uVar1 = FUN_0041897c(param_3);
-    if ((uVar1 & 4) == 0) {
-      FUN_0041830c(*param_1,0);
-    }
-    else {
-      FUN_0041830c(*param_1,param_3);
-    }
-  }
-  *in_FS_OFFSET = local_28;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
 // 0x0041897c  FUN_0041897c   (11 bytes)   [unnamed]
 undefined4 __cdecl FUN_0041897c(int param_1)
 
 {
   return *(undefined4 *)(param_1 + 4);
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x00418988  FUN_00418988   (166 bytes)   [unnamed]
-int * __cdecl FUN_00418988(int *param_1,int param_2,int param_3)
-
-{
-  uint uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x4300e4);
-  if (param_2 == 0) {
-    *param_1 = (int)(param_1 + 2);
-    FUN_004182a4(param_1 + 2);
-  }
-  param_1[1] = (int)&std::basic_ostream_char::vftable;
-  *(undefined ***)*param_1 = &PTR_LAB_00430b00;
-  if (param_3 == 0) {
-    FUN_0041830c(*param_1,0);
-  }
-  else {
-    uVar1 = FUN_0041897c(param_3);
-    if ((uVar1 & 8) == 0) {
-      FUN_0041830c(*param_1,0);
-    }
-    else {
-      FUN_0041830c(*param_1,param_3);
-    }
-  }
-  *in_FS_OFFSET = local_28;
-  return param_1;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -410,17 +329,17 @@ undefined4 * __cdecl FUN_00418a30(undefined4 *param_1,int *param_2,char param_3)
   int iVar2;
   int *piVar3;
   uint uVar4;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   int local_38;
   int local_34;
   int local_30;
-  undefined4 local_2c;
-  undefined2 local_1c;
-  int local_10;
-  int local_8;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  int loc;
   
   __InitExceptBlockLDTC(0x430118);
-  local_1c = 8;
+  ehContext = 8;
   *param_1 = param_2;
   bVar1 = FUN_00418c18(*param_2);
   if (!bVar1) {
@@ -436,11 +355,11 @@ undefined4 * __cdecl FUN_00418a30(undefined4 *param_1,int *param_2,char param_3)
   if (param_3 == '\0') {
     uVar4 = FUN_00418bb4(*param_2);
     if ((uVar4 & 0x1000) != 0) {
-      local_1c = 0x14;
-      FUN_00416a80(&local_8,*param_2);
-      local_10 = local_10 + 1;
-      iVar2 = FUN_00416920(&local_8);
-      local_1c = 8;
+      ehContext = 0x14;
+      FUN_00416a80(&loc,*param_2);
+      ehDtorCount = ehDtorCount + 1;
+      iVar2 = FUN_00416920(&loc);
+      ehContext = 8;
       do {
         piVar3 = (int *)FUN_00418c84(*param_2);
         local_30 = FUN_00418c90(piVar3);
@@ -468,8 +387,8 @@ code_r0x00418b3a:
   if (bVar1) {
     FUN_00418764(*param_2,2);
   }
-  local_10 = local_10 + -1;
-  std::locale::_dtor(&local_8,2);
+  ehDtorCount = ehDtorCount + -1;
+  std::locale::_dtor(&loc,2);
 LAB_00418b74:
   bVar1 = FUN_00418c18(*param_2);
   if (bVar1) {
@@ -480,7 +399,7 @@ LAB_00418b74:
     *(undefined1 *)(param_1 + 1) = 0;
   }
 LAB_00418b9e:
-  *in_FS_OFFSET = local_2c;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -572,7 +491,7 @@ undefined4 __cdecl FUN_00418c90(int *param_1)
   uint uVar3;
   undefined4 uVar4;
   undefined1 *puVar5;
-  undefined3 extraout_var;
+  undefined3 regHigh;
   undefined4 extraout_EDX;
   int *piVar6;
   
@@ -582,7 +501,7 @@ undefined4 __cdecl FUN_00418c90(int *param_1)
   if (uVar2 < uVar3) {
     puVar5 = (undefined1 *)FUN_00418cd4((int)param_1);
     uVar1 = FUN_00418cc8(puVar5);
-    uVar4 = CONCAT31(extraout_var,uVar1);
+    uVar4 = CONCAT31(regHigh,uVar1);
   }
   else {
     uVar4 = (**(code **)(*param_1 + 0x1c))(*param_1,extraout_EDX,piVar6,param_1);
@@ -647,7 +566,7 @@ undefined4 __cdecl FUN_00418d30(int *param_1)
   uint uVar3;
   undefined4 uVar4;
   undefined1 *puVar5;
-  undefined3 extraout_var;
+  undefined3 regHigh;
   undefined4 uStack_8;
   
   uVar2 = FUN_00418cd4((int)param_1);
@@ -657,7 +576,7 @@ undefined4 __cdecl FUN_00418d30(int *param_1)
     uStack_8 = CONCAT13(*puVar5,(undefined3)uStack_8);
     FUN_00418d7c((int)param_1,1);
     uVar1 = FUN_00418cc8((undefined1 *)((int)&uStack_8 + 3));
-    uVar4 = CONCAT31(extraout_var,uVar1);
+    uVar4 = CONCAT31(regHigh,uVar1);
   }
   else {
     uVar4 = (**(code **)(*param_1 + 0x20))();
@@ -706,144 +625,145 @@ void __cdecl FUN_00418ddc(int param_1,int param_2)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00418dec  FUN_00418dec   (465 bytes)   [unnamed]
-int __cdecl FUN_00418dec(int param_1,undefined4 *param_2,uint param_3)
+// 0x00418dec  std::string::string_from_buf   (465 bytes)   [analysis]
+//   std::string(const char *s, size_type n)
+int __cdecl std::string::string_from_buf(int self,undefined4 *s,uint n)
 
 {
-  undefined1 *puVar1;
+  undefined1 *msgText;
   uint *puVar2;
-  int *piVar3;
+  int *rep;
   undefined4 *puVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uVar5;
-  code *pcVar6;
-  undefined *puVar7;
-  uint uVar8;
-  undefined4 uVar9;
-  undefined4 uVar10;
-  undefined4 uVar11;
+  undefined4 *sehChainHead;
+  undefined4 objectDtor;
+  code *copyCtor;
+  undefined *copyCtor2;
+  uint copyCtorMask;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
   undefined1 local_27c [16];
-  undefined1 local_26c [240];
-  undefined1 local_17c [240];
+  undefined1 exceptMsg [240];
+  undefined1 exceptMsg2 [240];
   int local_8c;
   undefined1 local_88 [8];
   undefined1 local_80 [8];
-  undefined4 local_78;
-  undefined2 local_68;
-  int local_5c;
-  undefined1 local_54 [16];
-  undefined4 local_44 [6];
-  undefined1 local_2c [16];
-  undefined4 local_1c [6];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [16];
+  undefined4 lengthError [6];
+  undefined1 str2 [16];
+  undefined4 logicError [6];
   
   __InitExceptBlockLDTC(0x4301a0);
-  local_68 = 8;
-  FUN_00416fc4(param_1,0);
-  if (param_2 == (undefined4 *)0x0) {
-    uVar11 = 0;
-    uVar10 = 0;
-    uVar9 = 0;
-    uVar8 = 1;
-    pcVar6 = FUN_004133f0;
-    uVar5 = 0;
-    local_68 = 0x2c;
-    FUN_004168f8(local_80);
-    puVar1 = FUN_0041ea4c(local_17c,PTR_s_unexpected_NULL_pointer_in_funct_00431a88);
-    puVar2 = (uint *)FUN_00416de0(puVar1);
-    std::string::string_from_cstr((int)local_2c,puVar2);
-    local_5c = local_5c + 1;
-    FUN_00416de8(local_1c,(int)local_2c);
-    local_5c = local_5c + 2;
-    std::string::_dtor((int)local_2c,2);
-    local_68 = 0x20;
-    FUN_004280a0((uint *)&DAT_004079c4,local_1c,uVar5,(undefined*)pcVar6,uVar8,uVar9,uVar10,uVar11);
+  ehContext = 8;
+  FUN_00416fc4(self,0);
+  if (s == (undefined4 *)0x0) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
+    copyCtorMask = 1;
+    copyCtor = std::logic_error::logic_error_copy;
+    objectDtor = 0;
+    ehContext = 0x2c;
+    std::allocator::allocator(local_80);
+    msgText = __rwstd::except_msg_string::format(exceptMsg2,PTR_s_unexpected_NULL_pointer_in_funct_00431a88);
+    puVar2 = (uint *)__rwstd::except_msg_string::msgstr(msgText);
+    std::string::string_from_cstr((int)str2,puVar2);
+    ehDtorCount = ehDtorCount + 1;
+    std::logic_error::logic_error_416de8(logicError,(int)str2);
+    ehDtorCount = ehDtorCount + 2;
+    std::string::_dtor((int)str2,2);
+    ehContext = 0x20;
+    _ThrowExceptionLDTC((uint *)&DAT_004079c4,logicError,objectDtor,(undefined*)copyCtor,copyCtorMask,throwFlags,throwFile,throwLine);
   }
-  if (param_3 == (*(uint *)&DAT_0042fce8)) {
-    uVar11 = 0;
-    uVar10 = 0;
-    uVar9 = 0;
-    uVar8 = 1;
-    puVar7 = &LAB_00405f50;
-    uVar5 = 0;
-    local_68 = 0x44;
-    FUN_004168f8(local_88);
-    puVar1 = FUN_0041ea4c(local_26c,PTR_s_invalid_string_size_parameter_in_00431a78);
-    puVar2 = (uint *)FUN_00416de0(puVar1);
-    std::string::string_from_cstr((int)local_54,puVar2);
-    local_5c = local_5c + 1;
-    FUN_00417760(local_44,(int)local_54);
-    local_5c = local_5c + 3;
-    std::string::_dtor((int)local_54,2);
-    local_68 = 0x38;
-    FUN_004280a0((uint *)&DAT_00405ef4,local_44,uVar5,puVar7,uVar8,uVar9,uVar10,uVar11);
+  if (n == (*(uint *)&g_stringNpos)) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
+    copyCtorMask = 1;
+    copyCtor2 = &LAB_00405f50;
+    objectDtor = 0;
+    ehContext = 0x44;
+    std::allocator::allocator(local_88);
+    msgText = __rwstd::except_msg_string::format(exceptMsg,PTR_s_invalid_string_size_parameter_in_00431a78);
+    puVar2 = (uint *)__rwstd::except_msg_string::msgstr(msgText);
+    std::string::string_from_cstr((int)str,puVar2);
+    ehDtorCount = ehDtorCount + 1;
+    std::length_error::length_error(lengthError,(int)str);
+    ehDtorCount = ehDtorCount + 3;
+    std::string::_dtor((int)str,2);
+    ehContext = 0x38;
+    _ThrowExceptionLDTC((uint *)&DAT_00405ef4,lengthError,objectDtor,copyCtor2,copyCtorMask,throwFlags,throwFile,throwLine);
   }
-  piVar3 = std::string::__getRep(param_1,param_3,param_3);
-  local_8c = FUN_004172ec((int)piVar3);
-  FUN_004168a0((int)local_27c,param_1,&local_8c);
-  puVar4 = (undefined4 *)FUN_00416734(param_1);
-  FUN_00416fa4(puVar4,param_2,param_3);
-  *in_FS_OFFSET = local_78;
-  return param_1;
+  rep = std::string::__getRep(self,n,n);
+  local_8c = std::string::__rep_data((int)rep);
+  FUN_004168a0((int)local_27c,self,&local_8c);
+  puVar4 = (undefined4 *)std::string::__data(self);
+  FUN_00416fa4(puVar4,s,n);
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00418fc0  FUN_00418fc0   (71 bytes)   [unnamed]
-undefined4 * __cdecl FUN_00418fc0(undefined4 *param_1,undefined4 param_2)
+undefined4 * __cdecl FUN_00418fc0(undefined4 *facet2,undefined4 param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x430984);
-  FUN_00416a38(param_1,param_2,0x20);
-  *param_1 = &PTR_FUN_00430a8c;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  std::locale::facet::facet(facet2,param_2,0x20);
+  *facet2 = &PTR_FUN_00430a8c;
+  *sehChainHead = sehPrevFrame;
+  return facet2;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00419008  FUN_00419008   (226 bytes)   [unnamed]
-int __cdecl FUN_00419008(int param_1,int param_2)
+int __cdecl FUN_00419008(int param_1,int str)
 
 {
   int *piVar1;
   int iVar2;
-  uint uVar3;
-  undefined4 *puVar4;
+  uint n;
+  undefined4 *src;
   undefined4 *puVar5;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   undefined1 local_5c [16];
   undefined1 local_4c [16];
   int local_3c;
   undefined4 local_38;
   undefined1 local_34 [8];
   undefined4 local_2c;
-  undefined4 local_28;
-  undefined2 local_18;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
   
   __InitExceptBlockLDTC(0x430200);
-  local_18 = 8;
-  FUN_004168f8(local_34);
+  ehContext = 8;
+  std::allocator::allocator(local_34);
   local_2c = 0;
   FUN_00417c04(param_1,&local_2c);
-  piVar1 = (int *)FUN_00416740(param_2);
+  piVar1 = (int *)std::string::__getRepOf(str);
   iVar2 = FUN_00416754(piVar1);
   if (iVar2 < 1) {
-    uVar3 = FUN_0041687c(param_2);
-    piVar1 = std::string::__getRep(param_1,uVar3,uVar3);
-    local_3c = FUN_004172ec((int)piVar1);
+    n = std::string::size(str);
+    piVar1 = std::string::__getRep(param_1,n,n);
+    local_3c = std::string::__rep_data((int)piVar1);
     FUN_004168a0((int)local_5c,param_1,&local_3c);
-    puVar4 = (undefined4 *)FUN_00416c58(param_2);
-    puVar5 = (undefined4 *)FUN_00416734(param_1);
-    FUN_00416fa4(puVar5,puVar4,uVar3);
+    src = (undefined4 *)FUN_00416c58(str);
+    puVar5 = (undefined4 *)std::string::__data(param_1);
+    FUN_00416fa4(puVar5,src,n);
   }
   else {
-    local_38 = FUN_00416734(param_2);
+    local_38 = std::string::__data(str);
     FUN_004168a0((int)local_4c,param_1,&local_38);
-    piVar1 = (int *)FUN_00416740(param_1);
+    piVar1 = (int *)std::string::__getRepOf(param_1);
     FUN_00416c40(piVar1);
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -903,17 +823,17 @@ void __cdecl FUN_00419170(int param_1,undefined4 param_2,undefined4 param_3)
 undefined4 * __stdcall FUN_004191a8(void)
 
 {
-  undefined4 *puVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *facet;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x430230);
-  puVar1 = (undefined4 *)operator_new();
-  if (puVar1 != (undefined4 *)0x0) {
-    FUN_00418fc0(puVar1,1);
+  facet = (undefined4 *)operator_new();
+  if (facet != (undefined4 *)0x0) {
+    FUN_00418fc0(facet,1);
   }
-  *in_FS_OFFSET = local_2c;
-  return puVar1;
+  *sehChainHead = sehPrevFrame;
+  return facet;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -930,17 +850,17 @@ void __stdcall FUN_00419230(void)
 undefined4 * __cdecl FUN_00419248(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {
-  undefined4 *puVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *facet;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x430260);
-  puVar1 = (undefined4 *)operator_new();
-  if (puVar1 != (undefined4 *)0x0) {
-    FUN_00418fc0(puVar1,param_3);
+  facet = (undefined4 *)operator_new();
+  if (facet != (undefined4 *)0x0) {
+    FUN_00418fc0(facet,param_3);
   }
-  *in_FS_OFFSET = local_2c;
-  return puVar1;
+  *sehChainHead = sehPrevFrame;
+  return facet;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1036,7 +956,7 @@ undefined4 __cdecl FUN_004197d4(int *param_1,undefined1 param_2)
   uint uVar2;
   uint uVar3;
   undefined4 uVar4;
-  undefined3 extraout_var;
+  undefined3 regHigh;
   undefined1 *puVar5;
   
   uVar2 = FUN_004197a4((int)param_1);
@@ -1046,7 +966,7 @@ undefined4 __cdecl FUN_004197d4(int *param_1,undefined1 param_2)
     param_1[6] = param_1[6] + 1;
     *puVar5 = param_2;
     uVar1 = FUN_00418cc8(&param_2);
-    uVar4 = CONCAT31(extraout_var,uVar1);
+    uVar4 = CONCAT31(regHigh,uVar1);
   }
   else {
     puVar5 = &param_2;
@@ -1061,12 +981,12 @@ undefined4 __cdecl FUN_004197d4(int *param_1,undefined1 param_2)
 int * __cdecl FUN_00419820(int *param_1,int param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4302d0);
   FUN_00419864(param_1,(int *)(param_2 + 0x20));
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -1076,14 +996,14 @@ int * __cdecl FUN_00419864(int *param_1,int *param_2)
 
 {
   int iVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4309a8);
   iVar1 = *param_2;
   *param_1 = iVar1;
   FUN_0041c158(iVar1);
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -1105,12 +1025,12 @@ int * __cdecl FUN_004198b8(int *param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004198f4  FUN_004198f4   (49 bytes)   [unnamed]
-bool __cdecl FUN_004198f4(undefined4 param_1,uint param_2,char *param_3,int param_4,int param_5)
+bool __cdecl FUN_004198f4(undefined4 param_1,uint param_2,char *buffer,int param_4,int param_5)
 
 {
   uint uVar1;
   
-  uVar1 = thunk_FUN_0042051c(param_2,param_3,param_4 * param_5);
+  uVar1 = thunk_FUN_0042051c(param_2,buffer,param_4 * param_5);
   return uVar1 == param_4 * param_5;
 }
 
@@ -1120,9 +1040,9 @@ int * __cdecl FUN_00419cd8(int *param_1,int param_2)
 
 {
   undefined4 *puVar1;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   undefined4 local_2c;
-  undefined4 local_28;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4302e4);
   *param_1 = param_2;
@@ -1132,7 +1052,7 @@ int * __cdecl FUN_00419cd8(int *param_1,int param_2)
   if (param_2 == -1) {
     *(undefined1 *)(param_1 + 2) = 0;
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -1141,12 +1061,12 @@ int * __cdecl FUN_00419cd8(int *param_1,int param_2)
 undefined4 * __cdecl FUN_00419d2c(undefined4 *param_1,undefined4 *param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4309bc);
   *param_1 = *param_2;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -1171,15 +1091,15 @@ bool __cdecl FUN_00419d64(int *param_1,int *param_2)
 undefined4 * __cdecl FUN_00419d7c(undefined4 *param_1,undefined4 *param_2)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4302ec);
   FUN_00417d8c(param_1 + 1,0);
   *param_1 = *param_2;
   FUN_00419748(param_1 + 1,param_2 + 1);
   *(undefined1 *)(param_1 + 2) = *(undefined1 *)(param_2 + 2);
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -1236,12 +1156,12 @@ void __cdecl FUN_0041a2a4(undefined4 *param_1,undefined4 param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041a2b4  FUN_0041a2b4   (40 bytes)   [unnamed]
-char * __cdecl FUN_0041a2b4(undefined4 param_1,uint param_2,char *param_3,int param_4,int param_5)
+char * __cdecl FUN_0041a2b4(undefined4 param_1,uint param_2,char *buffer,int param_4,int param_5)
 
 {
   char *pcVar1;
   
-  pcVar1 = thunk_FUN_004203ec(param_2,param_3,(char *)(param_4 * param_5));
+  pcVar1 = thunk_FUN_004203ec(param_2,buffer,(char *)(param_4 * param_5));
   if ((int)pcVar1 < 0) {
     pcVar1 = (char *)0x0;
   }
@@ -1257,16 +1177,16 @@ int __cdecl FUN_0041a2dc(int param_1,char *param_2,char *param_3)
   int iVar2;
   int *piVar3;
   undefined4 uVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
-  int local_8;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  int loc;
   
   __InitExceptBlockLDTC(0x430344);
   if ((*(byte *)(param_1 + 4) & 2) == 0) {
-    FUN_00419820(&local_8,param_1);
-    piVar3 = (int *)FUN_00416920(&local_8);
+    FUN_00419820(&loc,param_1);
+    piVar3 = (int *)FUN_00416920(&loc);
     uVar4 = FUN_004183c0(piVar3);
-    std::locale::_dtor(&local_8,2);
+    std::locale::_dtor(&loc,2);
     iVar2 = 0;
     while (param_2 != param_3) {
       cVar1 = *param_2;
@@ -1278,11 +1198,11 @@ int __cdecl FUN_0041a2dc(int param_1,char *param_2,char *param_3)
         iVar2 = iVar2 + 1;
       }
     }
-    *in_FS_OFFSET = local_2c;
+    *sehChainHead = sehPrevFrame;
   }
   else {
     iVar2 = (int)param_3 - (int)param_2;
-    *in_FS_OFFSET = local_2c;
+    *sehChainHead = sehPrevFrame;
   }
   return iVar2;
 }
@@ -1319,28 +1239,29 @@ undefined1 __cdecl FUN_0041a664(int param_1)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041a7fc  FUN_0041a7fc   (110 bytes)   [unnamed]
-void __cdecl FUN_0041a7fc(int param_1)
+// 0x0041a7fc  std::string::__unshare   (110 bytes)   [analysis]
+//   gives the string its own copy of a shared rep before it is modified
+void __cdecl std::string::__unshare(int self)
 
 {
-  uint uVar1;
-  uint uVar2;
-  int *piVar3;
-  undefined4 *puVar4;
-  undefined4 *puVar5;
+  uint len;
+  uint len2;
+  int *rep;
+  undefined4 *src;
+  undefined4 *dst;
   undefined1 local_18 [16];
   int local_8;
   
-  uVar1 = FUN_0041687c(param_1);
-  uVar2 = FUN_0041687c(param_1);
-  piVar3 = std::string::__getRep(param_1,uVar2,uVar1);
-  uVar1 = FUN_0041687c(param_1);
-  puVar4 = (undefined4 *)FUN_004177ec(param_1);
-  puVar5 = (undefined4 *)FUN_004172ec((int)piVar3);
-  FUN_00416fa4(puVar5,puVar4,uVar1);
-  FUN_0041669c(param_1);
-  local_8 = FUN_004172ec((int)piVar3);
-  FUN_004168a0((int)local_18,param_1,&local_8);
+  len = std::string::size(self);
+  len2 = std::string::size(self);
+  rep = std::string::__getRep(self,len2,len);
+  len = std::string::size(self);
+  src = (undefined4 *)std::string::data(self);
+  dst = (undefined4 *)std::string::__rep_data((int)rep);
+  FUN_00416fa4(dst,src,len);
+  FUN_0041669c(self);
+  local_8 = std::string::__rep_data((int)rep);
+  FUN_004168a0((int)local_18,self,&local_8);
   return;
 }
 
@@ -1354,16 +1275,16 @@ int * __cdecl FUN_0041a86c(int *param_1,undefined1 *param_2,int param_3,char par
   int *piVar3;
   int *piVar4;
   int iVar5;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   int local_5c;
   int local_58;
   int local_54;
   undefined1 *local_50;
   uint local_4c;
-  undefined4 local_48;
-  undefined2 local_38;
-  int local_2c;
-  undefined4 local_24 [8];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined4 sentry2 [8];
   
   __InitExceptBlockLDTC(0x4303c4);
   local_4c = 0;
@@ -1372,11 +1293,11 @@ int * __cdecl FUN_0041a86c(int *param_1,undefined1 *param_2,int param_3,char par
     local_4c = 1;
   }
   else {
-    local_38 = 0x14;
-    FUN_00418a30(local_24,param_1,'\x01');
-    local_2c = local_2c + 1;
-    local_38 = 0x20;
-    cVar1 = FUN_0041a664((int)local_24);
+    ehContext = 0x14;
+    FUN_00418a30(sentry2,param_1,'\x01');
+    ehDtorCount = ehDtorCount + 1;
+    ehContext = 0x20;
+    cVar1 = FUN_0041a664((int)sentry2);
     if (cVar1 != '\0') {
       local_50 = param_2;
       local_54 = 0;
@@ -1418,14 +1339,14 @@ int * __cdecl FUN_0041a86c(int *param_1,undefined1 *param_2,int param_3,char par
       }
     }
     *param_2 = 0;
-    local_2c = local_2c + -1;
-    std::basic_istream_char::sentry::_dtor((int)local_24,2);
+    ehDtorCount = ehDtorCount + -1;
+    std::basic_istream_char::sentry::_dtor((int)sentry2,2);
   }
-  local_38 = 0;
+  ehContext = 0;
   if (local_4c != 0) {
     FUN_00418764(*param_1,local_4c);
   }
-  *in_FS_OFFSET = local_48;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -1443,330 +1364,332 @@ undefined4 __cdecl FUN_0041aa58(int param_1,undefined4 param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041ab68  std::string::append   (274 bytes)   [analysis (usage pattern)]
-int __cdecl std::string::append(int param_1,int param_2)
+int __cdecl std::string::append(int self,int other)
 
 {
-  int iVar1;
+  int otherLen;
   uint uVar2;
-  undefined1 *puVar3;
-  uint *puVar4;
-  uint uVar5;
-  uint uVar6;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uVar7;
-  undefined *puVar8;
-  undefined4 uVar9;
-  undefined4 uVar10;
-  uint uVar11;
-  undefined4 uVar12;
-  undefined1 local_148 [240];
+  undefined1 *msgText;
+  uint *s;
+  uint pos;
+  uint room;
+  undefined4 *sehChainHead;
+  undefined4 objectDtor;
+  undefined *copyCtor;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  uint n1;
+  undefined4 throwLine;
+  undefined1 exceptMsg [240];
   undefined1 local_58 [8];
-  undefined4 local_50;
-  undefined2 local_40;
-  int local_34;
-  undefined1 local_2c [16];
-  undefined4 local_1c [6];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [16];
+  undefined4 lengthError [6];
   
   __InitExceptBlockLDTC(0x430448);
-  iVar1 = FUN_0041687c(param_2);
-  uVar6 = DAT_0042fce8 - iVar1;
-  uVar2 = FUN_0041687c(param_1);
-  if (uVar6 <= uVar2) {
-    uVar12 = 0;
-    uVar10 = 0;
-    uVar9 = 0;
+  otherLen = std::string::size(other);
+  room = g_stringNpos - otherLen;
+  uVar2 = std::string::size(self);
+  if (room <= uVar2) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
     uVar2 = 1;
-    puVar8 = &LAB_00405f50;
-    uVar7 = 0;
-    local_40 = 0x14;
-    FUN_004168f8(local_58);
-    FUN_0041687c(param_2);
-    FUN_0041687c(param_1);
-    puVar3 = FUN_0041ea4c(local_148,PTR_s_resulting_length_is_invalid_in_f_00431a80);
-    puVar4 = (uint *)FUN_00416de0(puVar3);
-    std::string::string_from_cstr((int)local_2c,puVar4);
-    local_34 = local_34 + 1;
-    FUN_00417760(local_1c,(int)local_2c);
-    local_34 = local_34 + 3;
-    std::string::_dtor((int)local_2c,2);
-    local_40 = 8;
-    FUN_004280a0((uint *)&DAT_00405ef4,local_1c,uVar7,puVar8,uVar2,uVar9,uVar10,uVar12);
+    copyCtor = &LAB_00405f50;
+    objectDtor = 0;
+    ehContext = 0x14;
+    std::allocator::allocator(local_58);
+    std::string::size(other);
+    std::string::size(self);
+    msgText = __rwstd::except_msg_string::format(exceptMsg,PTR_s_resulting_length_is_invalid_in_f_00431a80);
+    s = (uint *)__rwstd::except_msg_string::msgstr(msgText);
+    std::string::string_from_cstr((int)str,s);
+    ehDtorCount = ehDtorCount + 1;
+    std::length_error::length_error(lengthError,(int)str);
+    ehDtorCount = ehDtorCount + 3;
+    std::string::_dtor((int)str,2);
+    ehContext = 8;
+    _ThrowExceptionLDTC((uint *)&DAT_00405ef4,lengthError,objectDtor,copyCtor,uVar2,throwFlags,throwFile,throwLine);
   }
-  uVar2 = FUN_0041687c(param_2);
-  uVar6 = FUN_004177ec(param_2);
-  uVar11 = 0;
-  uVar5 = FUN_0041687c(param_1);
-  FUN_004172f8(param_1,uVar5,uVar11,uVar6,uVar2);
-  *in_FS_OFFSET = local_50;
-  return param_1;
+  uVar2 = std::string::size(other);
+  room = std::string::data(other);
+  n1 = 0;
+  pos = std::string::size(self);
+  FUN_004172f8(self,pos,n1,room,uVar2);
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041ac7c  std::string::assign   (33 bytes)   [analysis (usage pattern, less certain)]
-void __cdecl std::string::assign(int param_1,int param_2)
+void __cdecl std::string::assign(int self,int other)
 
 {
-  uint uVar1;
+  uint len;
   
-  uVar1 = FUN_0041687c(param_1);
-  FUN_0041aca0(param_1,0,uVar1,param_2);
+  len = std::string::size(self);
+  std::string::replace_str(self,0,len,other);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041aca0  FUN_0041aca0   (60 bytes)   [unnamed]
-int __cdecl FUN_0041aca0(int param_1,uint param_2,uint param_3,int param_4)
+// 0x0041aca0  std::string::replace_str   (60 bytes)   [analysis]
+//   replace(pos, n1, const std::string &)
+int __cdecl std::string::replace_str(int self,uint pos,uint n1,int other)
 
 {
-  uint uVar1;
-  uint uVar2;
-  uint uVar3;
-  uint uVar4;
+  uint otherLen;
+  uint otherLen2;
+  uint otherData;
+  uint zero;
   
-  uVar1 = FUN_0041687c(param_4);
-  uVar4 = 0;
-  uVar2 = FUN_0041687c(param_4);
-  uVar3 = FUN_004177ec(param_4);
-  FUN_00417320(param_1,param_2,param_3,uVar3,uVar2,uVar4,uVar1);
-  return param_1;
+  otherLen = std::string::size(other);
+  zero = 0;
+  otherLen2 = std::string::size(other);
+  otherData = std::string::data(other);
+  std::string::replace(self,pos,n1,otherData,otherLen2,zero,otherLen);
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041acdc  FUN_0041acdc   (434 bytes)   [unnamed]
-void __cdecl FUN_0041acdc(int param_1,uint param_2,int param_3)
+// 0x0041acdc  std::string::insert   (434 bytes)   [analysis]
+//   insert(pos, const std::string &)
+void __cdecl std::string::insert(int self,uint pos,int other)
 
 {
   uint uVar1;
-  undefined1 *puVar2;
+  undefined1 *msgText;
   uint *puVar3;
   int iVar4;
   uint uVar5;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uVar6;
-  undefined *puVar7;
-  undefined4 uVar8;
-  undefined4 uVar9;
-  undefined4 uVar10;
-  undefined1 local_268 [240];
-  undefined1 local_178 [240];
+  undefined4 *sehChainHead;
+  undefined4 objectDtor;
+  undefined *copyCtor;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined1 exceptMsg [240];
+  undefined1 exceptMsg2 [240];
   undefined1 local_88 [8];
   undefined1 local_80 [8];
-  undefined4 local_78;
-  undefined2 local_68;
-  int local_5c;
-  undefined1 local_54 [16];
-  undefined4 local_44 [6];
-  undefined1 local_2c [16];
-  undefined4 local_1c [6];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [16];
+  undefined4 lengthError [6];
+  undefined1 str2 [16];
+  undefined4 outOfRange [6];
   
   __InitExceptBlockLDTC(0x4304c0);
-  uVar1 = FUN_0041687c(param_1);
-  if (uVar1 < param_2) {
-    uVar10 = 0;
-    uVar9 = 0;
-    uVar8 = 0;
+  uVar1 = std::string::size(self);
+  if (uVar1 < pos) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
     uVar1 = 1;
-    puVar7 = &LAB_004060a8;
-    uVar6 = 0;
-    local_68 = 0x14;
-    FUN_004168f8(local_80);
-    FUN_0041687c(param_1);
-    puVar2 = FUN_0041ea4c(local_178,PTR_s_string_index_out_of_range_in_fun_00431a84);
-    puVar3 = (uint *)FUN_00416de0(puVar2);
-    std::string::string_from_cstr((int)local_2c,puVar3);
-    local_5c = local_5c + 1;
-    FUN_00417718(local_1c,(int)local_2c);
-    local_5c = local_5c + 3;
-    std::string::_dtor((int)local_2c,2);
-    local_68 = 8;
-    FUN_004280a0((uint *)&DAT_0040604c,local_1c,uVar6,puVar7,uVar1,uVar8,uVar9,uVar10);
+    copyCtor = &LAB_004060a8;
+    objectDtor = 0;
+    ehContext = 0x14;
+    std::allocator::allocator(local_80);
+    std::string::size(self);
+    msgText = __rwstd::except_msg_string::format(exceptMsg2,PTR_s_string_index_out_of_range_in_fun_00431a84);
+    puVar3 = (uint *)__rwstd::except_msg_string::msgstr(msgText);
+    std::string::string_from_cstr((int)str2,puVar3);
+    ehDtorCount = ehDtorCount + 1;
+    std::out_of_range::out_of_range(outOfRange,(int)str2);
+    ehDtorCount = ehDtorCount + 3;
+    std::string::_dtor((int)str2,2);
+    ehContext = 8;
+    _ThrowExceptionLDTC((uint *)&DAT_0040604c,outOfRange,objectDtor,copyCtor,uVar1,throwFlags,throwFile,throwLine);
   }
-  iVar4 = FUN_0041687c(param_3);
-  uVar5 = DAT_0042fce8 - iVar4;
-  uVar1 = FUN_0041687c(param_1);
+  iVar4 = std::string::size(other);
+  uVar5 = g_stringNpos - iVar4;
+  uVar1 = std::string::size(self);
   if (uVar5 <= uVar1) {
-    uVar10 = 0;
-    uVar9 = 0;
-    uVar8 = 0;
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
     uVar1 = 1;
-    puVar7 = &LAB_00405f50;
-    uVar6 = 0;
-    local_68 = 0x2c;
-    FUN_004168f8(local_88);
-    FUN_0041687c(param_3);
-    FUN_0041687c(param_1);
-    puVar2 = FUN_0041ea4c(local_268,PTR_s_resulting_length_is_invalid_in_f_00431a80);
-    puVar3 = (uint *)FUN_00416de0(puVar2);
-    std::string::string_from_cstr((int)local_54,puVar3);
-    local_5c = local_5c + 1;
-    FUN_00417760(local_44,(int)local_54);
-    local_5c = local_5c + 3;
-    std::string::_dtor((int)local_54,2);
-    local_68 = 0x20;
-    FUN_004280a0((uint *)&DAT_00405ef4,local_44,uVar6,puVar7,uVar1,uVar8,uVar9,uVar10);
+    copyCtor = &LAB_00405f50;
+    objectDtor = 0;
+    ehContext = 0x2c;
+    std::allocator::allocator(local_88);
+    std::string::size(other);
+    std::string::size(self);
+    msgText = __rwstd::except_msg_string::format(exceptMsg,PTR_s_resulting_length_is_invalid_in_f_00431a80);
+    puVar3 = (uint *)__rwstd::except_msg_string::msgstr(msgText);
+    std::string::string_from_cstr((int)str,puVar3);
+    ehDtorCount = ehDtorCount + 1;
+    std::length_error::length_error(lengthError,(int)str);
+    ehDtorCount = ehDtorCount + 3;
+    std::string::_dtor((int)str,2);
+    ehContext = 0x20;
+    _ThrowExceptionLDTC((uint *)&DAT_00405ef4,lengthError,objectDtor,copyCtor,uVar1,throwFlags,throwFile,throwLine);
   }
-  FUN_0041aca0(param_1,param_2,0,param_3);
-  *in_FS_OFFSET = local_78;
+  std::string::replace_str(self,pos,0,other);
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041ae90  std::string::replace_fill   (899 bytes)   [analysis (usage pattern)]
 //   replace(pos, n1, n2, ch); with pos=size,n1=0 it appends n2 copies of ch
-int __cdecl std::string::replace_fill(int param_1,uint param_2,uint param_3,uint param_4,undefined1 param_5)
+int __cdecl std::string::replace_fill(int self,uint pos,uint n1,uint count,undefined1 ch)
 
 {
-  uint uVar1;
+  uint n;
   undefined1 *puVar2;
   uint *puVar3;
   int iVar4;
   int *piVar5;
-  undefined4 *puVar6;
+  undefined4 *src;
   undefined4 *puVar7;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   undefined4 uVar8;
-  undefined *puVar9;
-  undefined4 uVar10;
-  undefined4 uVar11;
-  undefined4 uVar12;
+  undefined *copyCtor;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
   undefined1 local_2a0 [16];
   undefined1 local_290 [16];
-  undefined1 local_280 [240];
-  undefined1 local_190 [240];
+  undefined1 exceptMsg [240];
+  undefined1 exceptMsg2 [240];
   int local_a0;
-  int *local_9c;
+  int *rep;
   uint local_98;
   int local_94;
   uint local_90;
   undefined1 local_8c [8];
   uint local_84;
   undefined1 local_80 [8];
-  undefined4 local_78;
-  undefined2 local_68;
-  int local_5c;
-  undefined1 local_54 [16];
-  undefined4 local_44 [6];
-  undefined1 local_2c [16];
-  undefined4 local_1c [6];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [16];
+  undefined4 lengthError [6];
+  undefined1 str2 [16];
+  undefined4 outOfRange [6];
   
   __InitExceptBlockLDTC(0x430550);
-  uVar1 = FUN_0041687c(param_1);
-  if (uVar1 < param_2) {
-    uVar12 = 0;
-    uVar11 = 0;
-    uVar10 = 0;
-    uVar1 = 1;
-    puVar9 = &LAB_004060a8;
+  n = std::string::size(self);
+  if (n < pos) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
+    n = 1;
+    copyCtor = &LAB_004060a8;
     uVar8 = 0;
-    local_68 = 0x14;
-    FUN_004168f8(local_80);
-    FUN_0041687c(param_1);
-    puVar2 = FUN_0041ea4c(local_190,PTR_s_string_index_out_of_range_in_fun_00431a84);
-    puVar3 = (uint *)FUN_00416de0(puVar2);
-    std::string::string_from_cstr((int)local_2c,puVar3);
-    local_5c = local_5c + 1;
-    FUN_00417718(local_1c,(int)local_2c);
-    local_5c = local_5c + 3;
-    std::string::_dtor((int)local_2c,2);
-    local_68 = 8;
-    FUN_004280a0((uint *)&DAT_0040604c,local_1c,uVar8,puVar9,uVar1,uVar10,uVar11,uVar12);
+    ehContext = 0x14;
+    std::allocator::allocator(local_80);
+    std::string::size(self);
+    puVar2 = __rwstd::except_msg_string::format(exceptMsg2,PTR_s_string_index_out_of_range_in_fun_00431a84);
+    puVar3 = (uint *)__rwstd::except_msg_string::msgstr(puVar2);
+    std::string::string_from_cstr((int)str2,puVar3);
+    ehDtorCount = ehDtorCount + 1;
+    std::out_of_range::out_of_range(outOfRange,(int)str2);
+    ehDtorCount = ehDtorCount + 3;
+    std::string::_dtor((int)str2,2);
+    ehContext = 8;
+    _ThrowExceptionLDTC((uint *)&DAT_0040604c,outOfRange,uVar8,copyCtor,n,throwFlags,throwFile,throwLine);
   }
-  iVar4 = FUN_0041687c(param_1);
-  local_84 = iVar4 - param_2;
-  if (param_3 < local_84) {
-    local_84 = param_3;
+  iVar4 = std::string::size(self);
+  local_84 = iVar4 - pos;
+  if (n1 < local_84) {
+    local_84 = n1;
   }
-  iVar4 = FUN_0041687c(param_1);
-  if (DAT_0042fce8 - param_4 <= iVar4 - local_84) {
-    uVar12 = 0;
-    uVar11 = 0;
-    uVar10 = 0;
-    uVar1 = 1;
-    puVar9 = &LAB_00405f50;
+  iVar4 = std::string::size(self);
+  if (g_stringNpos - count <= iVar4 - local_84) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
+    n = 1;
+    copyCtor = &LAB_00405f50;
     uVar8 = 0;
-    local_68 = 0x2c;
-    FUN_004168f8(local_8c);
-    FUN_0041687c(param_1);
-    puVar2 = FUN_0041ea4c(local_280,PTR_s_resulting_length_is_invalid_in_f_00431a80);
-    puVar3 = (uint *)FUN_00416de0(puVar2);
-    std::string::string_from_cstr((int)local_54,puVar3);
-    local_5c = local_5c + 1;
-    FUN_00417760(local_44,(int)local_54);
-    local_5c = local_5c + 3;
-    std::string::_dtor((int)local_54,2);
-    local_68 = 0x20;
-    FUN_004280a0((uint *)&DAT_00405ef4,local_44,uVar8,puVar9,uVar1,uVar10,uVar11,uVar12);
+    ehContext = 0x2c;
+    std::allocator::allocator(local_8c);
+    std::string::size(self);
+    puVar2 = __rwstd::except_msg_string::format(exceptMsg,PTR_s_resulting_length_is_invalid_in_f_00431a80);
+    puVar3 = (uint *)__rwstd::except_msg_string::msgstr(puVar2);
+    std::string::string_from_cstr((int)str,puVar3);
+    ehDtorCount = ehDtorCount + 1;
+    std::length_error::length_error(lengthError,(int)str);
+    ehDtorCount = ehDtorCount + 3;
+    std::string::_dtor((int)str,2);
+    ehContext = 0x20;
+    _ThrowExceptionLDTC((uint *)&DAT_00405ef4,lengthError,uVar8,copyCtor,n,throwFlags,throwFile,throwLine);
   }
-  iVar4 = FUN_0041687c(param_1);
-  local_90 = (iVar4 - local_84) + param_4;
+  iVar4 = std::string::size(self);
+  local_90 = (iVar4 - local_84) + count;
   if (local_90 == 0) {
-    FUN_0041669c(param_1);
-    piVar5 = FUN_00416784();
+    FUN_0041669c(self);
+    piVar5 = std::string::__nullref();
     FUN_00416c40(piVar5);
-    puVar6 = FUN_00416784();
-    local_94 = FUN_004172ec((int)puVar6);
-    FUN_004168a0((int)local_290,param_1,&local_94);
+    src = std::string::__nullref();
+    local_94 = std::string::__rep_data((int)src);
+    FUN_004168a0((int)local_290,self,&local_94);
   }
   else {
-    iVar4 = FUN_0041687c(param_1);
-    local_98 = (iVar4 - local_84) - param_2;
-    piVar5 = (int *)FUN_00416740(param_1);
+    iVar4 = std::string::size(self);
+    local_98 = (iVar4 - local_84) - pos;
+    piVar5 = (int *)std::string::__getRepOf(self);
     iVar4 = FUN_00416754(piVar5);
-    if ((iVar4 < 2) && (uVar1 = FUN_004177c8(param_1), local_90 <= uVar1)) {
+    if ((iVar4 < 2) && (n = FUN_004177c8(self), local_90 <= n)) {
       if (local_98 != 0) {
-        uVar1 = local_98;
-        iVar4 = FUN_00416734(param_1);
-        puVar6 = (undefined4 *)(iVar4 + param_2 + param_3);
-        iVar4 = FUN_00416734(param_1);
-        FUN_004177a8((undefined4 *)(iVar4 + param_2 + param_4),puVar6,uVar1);
+        n = local_98;
+        iVar4 = std::string::__data(self);
+        src = (undefined4 *)(iVar4 + pos + n1);
+        iVar4 = std::string::__data(self);
+        FUN_004177a8((undefined4 *)(iVar4 + pos + count),src,n);
       }
-      if (param_4 != 0) {
-        iVar4 = FUN_00416734(param_1);
-        FUN_0041b214((undefined4 *)(iVar4 + param_2),param_4,param_5);
+      if (count != 0) {
+        iVar4 = std::string::__data(self);
+        FUN_0041b214((undefined4 *)(iVar4 + pos),count,ch);
       }
-      iVar4 = FUN_00416740(param_1);
-      uVar1 = local_90;
+      iVar4 = std::string::__getRepOf(self);
+      n = local_90;
       *(uint *)(iVar4 + 8) = local_90;
-      iVar4 = FUN_00416734(param_1);
-      puVar2 = (undefined1 *)(iVar4 + uVar1);
+      iVar4 = std::string::__data(self);
+      puVar2 = (undefined1 *)(iVar4 + n);
       uVar8 = FUN_004172e8();
       *puVar2 = (char)uVar8;
     }
     else {
-      local_9c = std::string::__getRep(param_1,local_90,local_90);
-      if (param_2 != 0) {
-        uVar1 = param_2;
-        puVar6 = (undefined4 *)FUN_00416734(param_1);
-        puVar7 = (undefined4 *)FUN_004172ec((int)local_9c);
-        FUN_00416fa4(puVar7,puVar6,uVar1);
+      rep = std::string::__getRep(self,local_90,local_90);
+      if (pos != 0) {
+        n = pos;
+        src = (undefined4 *)std::string::__data(self);
+        puVar7 = (undefined4 *)std::string::__rep_data((int)rep);
+        FUN_00416fa4(puVar7,src,n);
       }
-      if (param_4 != 0) {
-        uVar1 = param_4;
-        iVar4 = FUN_004172ec((int)local_9c);
-        FUN_0041b214((undefined4 *)(iVar4 + param_2),uVar1,param_5);
+      if (count != 0) {
+        n = count;
+        iVar4 = std::string::__rep_data((int)rep);
+        FUN_0041b214((undefined4 *)(iVar4 + pos),n,ch);
       }
       if (local_98 != 0) {
-        uVar1 = local_98;
-        iVar4 = FUN_00416734(param_1);
-        puVar6 = (undefined4 *)(iVar4 + param_2 + param_3);
-        iVar4 = FUN_004172ec((int)local_9c);
-        FUN_00416fa4((undefined4 *)(iVar4 + param_2 + param_4),puVar6,uVar1);
+        n = local_98;
+        iVar4 = std::string::__data(self);
+        src = (undefined4 *)(iVar4 + pos + n1);
+        iVar4 = std::string::__rep_data((int)rep);
+        FUN_00416fa4((undefined4 *)(iVar4 + pos + count),src,n);
       }
-      FUN_0041669c(param_1);
-      local_a0 = FUN_004172ec((int)local_9c);
-      FUN_004168a0((int)local_2a0,param_1,&local_a0);
+      FUN_0041669c(self);
+      local_a0 = std::string::__rep_data((int)rep);
+      FUN_004168a0((int)local_2a0,self,&local_a0);
     }
   }
-  *in_FS_OFFSET = local_78;
-  return param_1;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041b214  FUN_0041b214   (30 bytes)   [unnamed]
-undefined4 * __cdecl FUN_0041b214(undefined4 *param_1,uint param_2,undefined1 param_3)
+undefined4 * __cdecl FUN_0041b214(undefined4 *param_1,uint n,undefined1 ch)
 
 {
-  memset(param_1,param_3,param_2);
+  memset(param_1,ch,n);
   return param_1;
 }
 
@@ -1778,9 +1701,9 @@ int __cdecl FUN_0041b234(int *param_1,uint param_2)
   int *piVar1;
   int iVar2;
   uint uVar3;
-  undefined4 *in_FS_OFFSET;
-  int *local_38;
-  undefined4 local_30;
+  undefined4 *sehChainHead;
+  int *str;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4305b8);
   piVar1 = (int *)operator_new_array();
@@ -1794,13 +1717,13 @@ int __cdecl FUN_0041b234(int *param_1,uint param_2)
   if ((uint)param_1[1] < param_2) {
     uVar3 = param_1[1];
   }
-  local_38 = piVar1;
+  str = piVar1;
   for (iVar2 = *param_1; iVar2 != *param_1 + uVar3 * 0x10; iVar2 = iVar2 + 0x10) {
-    FUN_00416bd0((int)local_38,iVar2);
-    local_38 = local_38 + 4;
+    std::string::operator_assign((int)str,iVar2);
+    str = str + 4;
   }
   for (; uVar3 < param_2; uVar3 = uVar3 + 1) {
-    FUN_00416bd0((int)(piVar1 + uVar3 * 4),(int)&GHIDRA_STACK(0x0000000c));
+    std::string::operator_assign((int)(piVar1 + uVar3 * 4),(int)&GHIDRA_STACK(0x0000000c));
   }
   if (*param_1 != 0) {
     _vector_delete_ldtc_(*param_1,0x10,0,0x19,(undefined*)std::string::_dtor);
@@ -1809,124 +1732,126 @@ int __cdecl FUN_0041b234(int *param_1,uint param_2)
   param_1[1] = param_2;
   iVar2 = *param_1;
   std::string::_dtor((int)&GHIDRA_STACK(0x0000000c),2);
-  *in_FS_OFFSET = local_30;
+  *sehChainHead = sehPrevFrame;
   return iVar2;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041b368  FUN_0041b368   (281 bytes)   [unnamed]
-int __cdecl FUN_0041b368(int param_1,int param_2,uint param_3,uint param_4)
+// 0x0041b368  std::string::substr   (281 bytes)   [analysis]
+//   result = substr(pos, n)
+int __cdecl std::string::substr(int result,int self,uint pos,uint n)
 
 {
   uint uVar1;
-  undefined1 *puVar2;
-  uint *puVar3;
+  undefined1 *msgText;
+  uint *s;
   int iVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uVar5;
-  undefined *puVar6;
-  undefined4 uVar7;
-  undefined4 uVar8;
-  undefined4 uVar9;
-  undefined1 local_150 [240];
+  undefined4 *sehChainHead;
+  undefined4 objectDtor;
+  undefined *copyCtor;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined1 exceptMsg [240];
   undefined1 local_60 [8];
   undefined1 local_58 [8];
-  undefined4 local_50;
-  undefined2 local_40;
-  int local_34;
-  undefined1 local_2c [16];
-  undefined4 local_1c [6];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [16];
+  undefined4 outOfRange [6];
   
   __InitExceptBlockLDTC(0x430638);
-  uVar1 = FUN_0041687c(param_2);
-  if (uVar1 < param_3) {
-    uVar9 = 0;
-    uVar8 = 0;
-    uVar7 = 0;
+  uVar1 = std::string::size(self);
+  if (uVar1 < pos) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
     uVar1 = 1;
-    puVar6 = &LAB_004060a8;
-    uVar5 = 0;
-    local_40 = 0x14;
-    FUN_004168f8(local_58);
-    FUN_0041687c(param_2);
-    puVar2 = FUN_0041ea4c(local_150,PTR_s_position_beyond_end_of_string_in_00431a7c);
-    puVar3 = (uint *)FUN_00416de0(puVar2);
-    std::string::string_from_cstr((int)local_2c,puVar3);
-    local_34 = local_34 + 1;
-    FUN_00417718(local_1c,(int)local_2c);
-    local_34 = local_34 + 3;
-    std::string::_dtor((int)local_2c,2);
-    local_40 = 8;
-    FUN_004280a0((uint *)&DAT_0040604c,local_1c,uVar5,puVar6,uVar1,uVar7,uVar8,uVar9);
+    copyCtor = &LAB_004060a8;
+    objectDtor = 0;
+    ehContext = 0x14;
+    std::allocator::allocator(local_58);
+    std::string::size(self);
+    msgText = __rwstd::except_msg_string::format(exceptMsg,PTR_s_position_beyond_end_of_string_in_00431a7c);
+    s = (uint *)__rwstd::except_msg_string::msgstr(msgText);
+    std::string::string_from_cstr((int)str,s);
+    ehDtorCount = ehDtorCount + 1;
+    std::out_of_range::out_of_range(outOfRange,(int)str);
+    ehDtorCount = ehDtorCount + 3;
+    std::string::_dtor((int)str,2);
+    ehContext = 8;
+    _ThrowExceptionLDTC((uint *)&DAT_0040604c,outOfRange,objectDtor,copyCtor,uVar1,throwFlags,throwFile,throwLine);
   }
-  iVar4 = FUN_0041687c(param_2);
-  if (iVar4 - param_3 <= param_4) {
-    param_4 = iVar4 - param_3;
+  iVar4 = std::string::size(self);
+  if (iVar4 - pos <= n) {
+    n = iVar4 - pos;
   }
-  local_40 = 0x20;
-  FUN_004168f8(local_60);
-  iVar4 = FUN_00416734(param_2);
-  FUN_00418dec(param_1,(undefined4 *)(iVar4 + param_3),param_4);
-  *in_FS_OFFSET = local_50;
-  return param_1;
+  ehContext = 0x20;
+  std::allocator::allocator(local_60);
+  iVar4 = std::string::__data(self);
+  std::string::string_from_buf(result,(undefined4 *)(iVar4 + pos),n);
+  *sehChainHead = sehPrevFrame;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041b484  FUN_0041b484   (281 bytes)   [unnamed]
-void __cdecl FUN_0041b484(int param_1,uint param_2)
+// 0x0041b484  std::string::string_fill   (281 bytes)   [analysis]
+//   std::string(n, c); throws length_error for npos (the character argument is not visible)
+void __cdecl std::string::string_fill(int self,uint n)
 
 {
   undefined1 *puVar1;
-  uint *puVar2;
-  int *piVar3;
+  uint *s;
+  int *rep;
   int iVar4;
-  undefined4 *in_FS_OFFSET;
-  undefined4 uVar5;
-  undefined *puVar6;
-  uint uVar7;
-  undefined4 uVar8;
-  undefined4 uVar9;
-  undefined4 uVar10;
+  undefined4 *sehChainHead;
+  undefined4 objectDtor;
+  undefined *copyCtor;
+  uint copyCtorMask;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
   undefined1 local_15c [16];
-  undefined1 local_14c [240];
+  undefined1 exceptMsg [240];
   int local_5c;
   undefined1 local_58 [8];
-  undefined4 local_50;
-  undefined2 local_40;
-  int local_34;
-  undefined1 local_2c [16];
-  undefined4 local_1c [6];
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  undefined1 str [16];
+  undefined4 lengthError [6];
   
   __InitExceptBlockLDTC(0x430690);
-  if (param_2 == (*(uint *)&DAT_0042fce8)) {
-    uVar10 = 0;
-    uVar9 = 0;
-    uVar8 = 0;
-    uVar7 = 1;
-    puVar6 = &LAB_00405f50;
-    uVar5 = 0;
-    local_40 = 0x14;
-    FUN_004168f8(local_58);
-    puVar1 = FUN_0041ea4c(local_14c,PTR_s_invalid_string_size_parameter_in_00431a78);
-    puVar2 = (uint *)FUN_00416de0(puVar1);
-    std::string::string_from_cstr((int)local_2c,puVar2);
-    local_34 = local_34 + 1;
-    FUN_00417760(local_1c,(int)local_2c);
-    local_34 = local_34 + 3;
-    std::string::_dtor((int)local_2c,2);
-    local_40 = 8;
-    FUN_004280a0((uint *)&DAT_00405ef4,local_1c,uVar5,puVar6,uVar7,uVar8,uVar9,uVar10);
+  if (n == (*(uint *)&g_stringNpos)) {
+    throwLine = 0;
+    throwFile = 0;
+    throwFlags = 0;
+    copyCtorMask = 1;
+    copyCtor = &LAB_00405f50;
+    objectDtor = 0;
+    ehContext = 0x14;
+    std::allocator::allocator(local_58);
+    puVar1 = __rwstd::except_msg_string::format(exceptMsg,PTR_s_invalid_string_size_parameter_in_00431a78);
+    s = (uint *)__rwstd::except_msg_string::msgstr(puVar1);
+    std::string::string_from_cstr((int)str,s);
+    ehDtorCount = ehDtorCount + 1;
+    std::length_error::length_error(lengthError,(int)str);
+    ehDtorCount = ehDtorCount + 3;
+    std::string::_dtor((int)str,2);
+    ehContext = 8;
+    _ThrowExceptionLDTC((uint *)&DAT_00405ef4,lengthError,objectDtor,copyCtor,copyCtorMask,throwFlags,throwFile,throwLine);
   }
-  piVar3 = std::string::__getRep(param_1,param_2,param_2);
-  local_5c = FUN_004172ec((int)piVar3);
-  FUN_004168a0((int)local_15c,param_1,&local_5c);
-  while (param_2 != 0) {
+  rep = std::string::__getRep(self,n,n);
+  local_5c = std::string::__rep_data((int)rep);
+  FUN_004168a0((int)local_15c,self,&local_5c);
+  while (n != 0) {
     puVar1 = &GHIDRA_STACK(0x0000000c);
-    iVar4 = FUN_00416734(param_1);
-    FUN_00416e54((undefined1 *)(iVar4 + (param_2 - 1)),puVar1);
-    param_2 = param_2 - 1;
+    iVar4 = std::string::__data(self);
+    FUN_00416e54((undefined1 *)(iVar4 + (n - 1)),puVar1);
+    n = n - 1;
   }
-  *in_FS_OFFSET = local_50;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -2006,17 +1931,17 @@ undefined4 __cdecl FUN_0041bed0(int param_1,uint param_2)
 undefined4 * __stdcall FUN_0041bf00(void)
 
 {
-  undefined4 *puVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *facet2;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4307b0);
-  puVar1 = (undefined4 *)operator_new();
-  if (puVar1 != (undefined4 *)0x0) {
-    FUN_0041cdc4(puVar1,0,0,1);
+  facet2 = (undefined4 *)operator_new();
+  if (facet2 != (undefined4 *)0x0) {
+    std::locale::facet::facet_41cdc4(facet2,0,0,1);
   }
-  *in_FS_OFFSET = local_2c;
-  return puVar1;
+  *sehChainHead = sehPrevFrame;
+  return facet2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2024,17 +1949,17 @@ undefined4 * __stdcall FUN_0041bf00(void)
 undefined4 * __cdecl FUN_0041bf74(undefined4 param_1,uint *param_2,undefined4 param_3)
 
 {
-  undefined4 *puVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *facet;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x430810);
-  puVar1 = (undefined4 *)operator_new();
-  if (puVar1 != (undefined4 *)0x0) {
-    FUN_0041d404(puVar1,param_2,param_3);
+  facet = (undefined4 *)operator_new();
+  if (facet != (undefined4 *)0x0) {
+    FUN_0041d404(facet,param_2,param_3);
   }
-  *in_FS_OFFSET = local_2c;
-  return puVar1;
+  *sehChainHead = sehPrevFrame;
+  return facet;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2042,12 +1967,12 @@ undefined4 * __cdecl FUN_0041bf74(undefined4 param_1,uint *param_2,undefined4 pa
 undefined4 * __cdecl FUN_0041bff4(undefined4 *param_1)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4309c4);
   *param_1 = 0;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 

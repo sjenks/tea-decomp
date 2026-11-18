@@ -9,402 +9,402 @@ namespace tea {
 
 // ---- functions (3032) ----
 void __stdcall entry(void);
-void __stdcall FUN_00401012(void);
-void __cdecl __GetExceptDLLinfo(undefined4 *param_1);
-undefined4 __stdcall FUN_00401140(void);
-void __stdcall FUN_00401150(void);
-void __stdcall FUN_004011a8(void);
-namespace DMDialog { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-int * __cdecl FUN_00401294(int *param_1,int param_2,undefined4 param_3,uint *param_4);
-namespace DMDialog { bool __cdecl vf15(int param_1); }
-namespace DMDialog { void __cdecl vf9(int *param_1,INT_PTR param_2); }
-namespace DMDialog { void __cdecl vf11(int *param_1); }
-namespace DMDialog { void __cdecl EvClose(int *param_1); }
-bool __cdecl FUN_0040234c(int *param_1,int param_2);
-namespace DMDialog { undefined4 __cdecl vf16(int *param_1,undefined4 *param_2,int param_3,uint param_4,int param_5); }
-namespace DMDialog { void __cdecl vf17(int param_1); }
-namespace DMDialog { void __cdecl vf18(int param_1,byte *param_2); }
-namespace DMDialog { void __cdecl vf19(int param_1); }
-namespace DMDialog { int __cdecl Cmd101(int *param_1); }
-namespace DMDialog { void __cdecl Cmd106(int *param_1); }
-namespace DMDialog { void __cdecl Cmd114(undefined4 *param_1); }
-void __cdecl FUN_004029ac(undefined4 param_1,int *param_2,int param_3);
-void __cdecl FUN_004029e8(int param_1);
-namespace DMDialog { void __cdecl Cmd112(int *param_1); }
-namespace DMDialog { void __cdecl Cmd104(int *param_1); }
-namespace DMDialog { void __cdecl Cmd120(undefined4 *param_1); }
-void __cdecl FUN_0040339c(int param_1);
-namespace DMDialog { void __cdecl Cmd108(int param_1); }
-namespace DMDialog { void __cdecl Child108_Notify1(int param_1); }
-namespace DMDialog { void __cdecl Cmd110(int param_1); }
-namespace DMDialog { void __cdecl Child110_Notify1(int param_1); }
-namespace DMDialog { void __cdecl Cmd119(int param_1); }
-namespace DMDialog { void __cdecl Child119_Notify1(int param_1); }
-void __cdecl FUN_00403518(undefined4 param_1,int *param_2);
-void __cdecl FUN_00403554(undefined4 param_1,int *param_2);
-int __cdecl FUN_00403588(undefined4 param_1,int *param_2);
-void __cdecl FUN_004035b8(int param_1,uint *param_2);
-namespace DMApplication { void __cdecl vf17(int param_1); }
-undefined4 __stdcall FUN_00403870(void);
-namespace DMApplication { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TFileSaveDialog { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TFileOpenDialog { void __cdecl _dtor(int *param_1,uint param_2); }
+void __stdcall __startup(void);
+void __cdecl __GetExceptDLLinfo(undefined4 *info);
+undefined4 __stdcall __getTlsBlock(void);
+void __stdcall InitStaticStrings(void);
+void __stdcall DestroyStaticStrings(void);
+namespace DMDialog { undefined4 __cdecl Find(undefined4 *self,int *eventInfo,undefined *equal); }
+namespace DMDialog { int * __cdecl DMDialog(int *self,int vbasesBuilt,undefined4 param_3,uint *param_4); }
+namespace DMDialog { bool __cdecl vf15(int self); }
+namespace DMDialog { void __cdecl vf9(int *self,INT_PTR result); }
+namespace DMDialog { void __cdecl vf11(int *self); }
+namespace DMDialog { void __cdecl EvClose(int *self); }
+namespace DMDialog { bool __cdecl PumpMessages(int *self,int unused); }
+namespace DMDialog { undefined4 __cdecl vf16(int *self,undefined4 *param_2,int param_3,uint param_4,int param_5); }
+namespace DMDialog { void __cdecl vf17(int self); }
+namespace DMDialog { void __cdecl vf18(int self,byte *format); }
+namespace DMDialog { void __cdecl vf19(int self); }
+namespace DMDialog { int __cdecl Cmd101(int *self); }
+namespace DMDialog { void __cdecl Cmd106(int *self); }
+namespace DMDialog { void __cdecl Cmd114(undefined4 *self); }
+namespace DMDialog { void __cdecl GetControlText(undefined4 self,int *edit,int out); }
+namespace DMDialog { void __cdecl UpdateControls(int self); }
+namespace DMDialog { void __cdecl Cmd112(int *self); }
+namespace DMDialog { void __cdecl Cmd104(int *self); }
+namespace DMDialog { void __cdecl Cmd120(undefined4 *self); }
+namespace DMDialog { void __cdecl ReadOptions(int self); }
+namespace DMDialog { void __cdecl Cmd108(int self); }
+namespace DMDialog { void __cdecl Child108_Notify1(int self); }
+namespace DMDialog { void __cdecl Cmd110(int self); }
+namespace DMDialog { void __cdecl Child110_Notify1(int self); }
+namespace DMDialog { void __cdecl Cmd119(int self); }
+namespace DMDialog { void __cdecl Child119_Notify1(int self); }
+namespace DMDialog { void __cdecl ClampLengthEdit(undefined4 self,int *edit); }
+namespace DMDialog { void __cdecl SetIntText(undefined4 self,int *edit); }
+namespace DMDialog { int __cdecl GetIntText(undefined4 self,int *edit); }
+namespace DMDialog { void __cdecl SetWordListFile(int self,uint *fileName); }
+namespace DMApplication { void __cdecl vf17(int self); }
+undefined4 __stdcall OwlMain(void);
+namespace DMApplication { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TFileSaveDialog { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TFileOpenDialog { void __cdecl _dtor(int *self,uint dtorFlags); }
 namespace OWL::TApplication { void __stdcall vf9(void); }
-namespace OWL::TApplication { undefined4 __cdecl vf13(int param_1); }
-namespace std::logic_error { undefined4 __cdecl vf1(int param_1); }
+namespace OWL::TApplication { undefined4 __cdecl vf13(int self); }
+namespace std::logic_error { undefined4 __cdecl vf1(int self); }
 namespace std::exception { undefined * __stdcall vf1(void); }
-namespace DMDialog { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace OWL::TWindow { undefined4 __cdecl vf1(int param_1); }
-namespace OWL::TWindow { bool __cdecl vf24(int param_1,byte param_2); }
-namespace OWL::TWindow { void __cdecl vf26(int param_1,byte param_2); }
-namespace OWL::TWindow { void __cdecl vf27(int param_1,RECT *param_2,byte param_3); }
-namespace std::string { void __cdecl _dtor(int param_1,byte param_2); }
-namespace OWL::TOpenSaveDialog { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TScrollBar { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TStatic { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace std::locale { void __cdecl _dtor(int *param_1,byte param_2); }
-void __cdecl FUN_00405118(int *param_1);
-void __cdecl FUN_00405140(undefined4 *param_1,undefined4 param_2);
-void __cdecl FUN_00405158(undefined4 *param_1,int param_2,uint param_3);
-void __cdecl FUN_004051e4(undefined4 *param_1,byte *param_2,int param_3);
-void __cdecl FUN_00405228(undefined4 *param_1);
-void __cdecl FUN_00405248(undefined4 *param_1);
-undefined4 __cdecl FUN_00405268(uint param_1,uint param_2,uint param_3);
-void __stdcall FUN_00405308(void);
-undefined4 __cdecl FUN_00405368(int *param_1,int *param_2);
-void __cdecl FUN_00405398(int *param_1,int param_2);
-void __cdecl FUN_004053d4(int *param_1);
-int __stdcall FUN_00405414(void);
-int __cdecl FUN_00405568(int param_1,uint *param_2);
-int __cdecl FUN_00405ae0(int param_1,char *param_2);
-uint __cdecl FUN_00405d6c(int *param_1,int param_2);
-bool __cdecl FUN_00405f48(int param_1,int param_2);
-undefined4 * __cdecl FUN_00405f68(undefined4 *param_1);
-namespace DictionaryMaintainer { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OccurrenceListCache { void __cdecl _dtor(int param_1,byte param_2); }
-void __cdecl FUN_00406154(int param_1);
-void __cdecl FUN_004061b8(undefined4 param_1,int param_2,int param_3);
-void __cdecl FUN_004061d0(undefined4 param_1,int param_2,int param_3);
-undefined4 * __cdecl FUN_004062a0(undefined4 *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5);
-void __cdecl FUN_004063a4(int param_1,int param_2);
-undefined4 * __cdecl FUN_004064dc(undefined4 *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5);
-void __cdecl FUN_00406e78(undefined4 *param_1,undefined4 param_2);
-int __cdecl FUN_00406e88(int param_1);
-int __cdecl FUN_00406ea8(int param_1);
-void __cdecl FUN_00406ec8(int param_1);
-uint __stdcall FUN_00406f08(int *param_1,int param_2,LPCSTR param_3,uint *param_4,int param_5,int param_6, int param_7,int param_8);
-void __cdecl FUN_0040ea08(undefined4 *param_1,int param_2,int param_3);
-void __cdecl FUN_0040ebc0(int *param_1,int param_2,int param_3);
-undefined4 * __cdecl FUN_0040edb8(int *param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_0040ee24(int *param_1,int param_2);
-int __cdecl FUN_0040eff4(int param_1);
-int __cdecl FUN_0040f014(int param_1);
-void __cdecl FUN_0040f034(int param_1,int param_2);
+namespace DMDialog { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace OWL::TWindow { undefined4 __cdecl GetTooltip(int self); }
+namespace OWL::TWindow { bool __cdecl EnableWindow(int self,byte enable); }
+namespace OWL::TWindow { void __cdecl Invalidate(int self,byte erase); }
+namespace OWL::TWindow { void __cdecl InvalidateRect(int self,RECT *pRect,byte erase); }
+namespace std::string { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace OWL::TOpenSaveDialog { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TScrollBar { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TStatic { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace std::locale { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace BitWriter { void __cdecl FlushWord(int *file); }
+namespace BitWriter { void __cdecl BitWriter(undefined4 *self,undefined4 file); }
+namespace BitWriter { void __cdecl WriteBits(undefined4 *self,int nbits,uint code_); }
+namespace BitWriter { void __cdecl WriteBytes(undefined4 *self,byte *bytes,int count); }
+namespace BitWriter { void __cdecl AlignToWord(undefined4 *self); }
+namespace BitWriter { void __cdecl Flush(undefined4 *self); }
+undefined4 __cdecl ScaleFrequency(uint count,uint total,uint range);
+void __stdcall ReverseHuffmanCodes(void);
+undefined4 __cdecl HuffmanNodeLess(int *a,int *b);
+void __cdecl AddBitToSubtree(int *node,int bit);
+void __cdecl StoreCodesAndFree(int *node);
+int __stdcall BuildHuffmanCodes(void);
+int __cdecl ParseDefinitionLine(int out,uint *line2);
+int __cdecl ParseMappingLine(int mapping,char *line);
+uint __cdecl WriteDefinitionRecord(int *writer,int definition);
+bool __cdecl DefinitionRecordLess(int a,int b);
+namespace DictionaryMaintainer { undefined4 * __cdecl DictionaryMaintainer(undefined4 *self); }
+namespace DictionaryMaintainer { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OccurrenceListCache { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace __rwstd::__rb_tree::iterator { void __cdecl increment(int it); }
+namespace std { void __cdecl _Destroy_range_ptr(undefined4 vec,int first,int last); }
+namespace std { void __cdecl _Destroy_range_WordMap(undefined4 vec,int first,int last); }
+namespace WordMap { undefined4 * __cdecl erase_range(undefined4 *result,int tree,undefined4 firstLo,undefined4 firstHi,int firstNode); }
+namespace WordMap { void __cdecl __erase(int tree,int node); }
+namespace WordMap { undefined4 * __cdecl erase(undefined4 *result,int tree,undefined4 itLo,undefined4 itHi,int itNode); }
+namespace __rwstd::__rb_tree { void __cdecl __set_node_406e78(undefined4 *dest,undefined4 node); }
+namespace __rwstd::__rb_tree { int __cdecl __minimum(int node); }
+namespace __rwstd::__rb_tree { int __cdecl __maximum(int node); }
+namespace __rwstd::__rb_tree { void __cdecl __deallocate_buffers(int tree); }
+uint __stdcall WriteTsdDictionary(int *self,int wordLists,LPCSTR fileName,uint *description,int shortest,int longest, int progressTotal,int options);
+namespace std::vector_WordMap { void __cdecl vector(undefined4 *self,int n,int value); }
+namespace std { void __cdecl uninitialized_fill_n_WordMap(int *dest,int n,int value); }
+namespace WordMap { undefined4 * __cdecl __copy(int *tree,undefined4 *src,undefined4 *parent); }
+namespace WordMap { undefined4 * __cdecl __get_node(int *tree,int value); }
+namespace __rwstd::__rb_tree { int __cdecl __minimum_40eff4(int node); }
+namespace __rwstd::__rb_tree { int __cdecl __maximum_40f014(int node); }
+namespace std { void __cdecl _Destroy_range(int first,int last); }
 namespace WordListMap { void __cdecl AllocateNode(int *param_1); }
-undefined4 * __cdecl FUN_0040f198(undefined4 *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5);
-void __cdecl FUN_0040f29c(int param_1,int param_2);
-undefined4 * __cdecl FUN_0040f3a4(undefined4 *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5);
-void __cdecl FUN_0040fd40(undefined4 *param_1,undefined4 param_2);
-void __cdecl FUN_0040fd50(int param_1);
-void __cdecl FUN_0040fdb4(int param_1);
-void __cdecl FUN_0040fdf4(undefined4 *param_1,int param_2,int param_3);
-void __cdecl FUN_0040ff14(int *param_1,int param_2,int param_3);
-undefined4 * __cdecl FUN_00410104(int *param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_00410170(int *param_1,int param_2);
-void __cdecl FUN_00410318(int param_1,int param_2);
-void __cdecl FUN_00410330(int *param_1);
-void __cdecl FUN_0041047c(undefined4 *param_1,int param_2,undefined4 *param_3);
-void __cdecl FUN_0041058c(undefined4 *param_1,int param_2,undefined4 *param_3);
-void __cdecl FUN_00410608(int param_1,int param_2);
-void __cdecl FUN_00410620(undefined4 param_1,int param_2,int param_3);
-undefined4 * __cdecl FUN_004106d0(undefined4 *param_1,int *param_2,undefined4 param_3,undefined4 param_4,int param_5, undefined4 param_6,int param_7);
-int __cdecl FUN_00410acc(int param_1,int *param_2,int param_3,int param_4,int param_5);
-undefined4 * __cdecl FUN_00410e14(undefined4 *param_1,int *param_2,int param_3);
-int __cdecl FUN_004110fc(int param_1);
-void __cdecl FUN_00411168(int param_1,uint param_2);
-undefined4 __cdecl FUN_00411208(int param_1,undefined4 *param_2,uint param_3,undefined4 *param_4);
-undefined4 * __cdecl FUN_004114b0(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_00411530(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-void __cdecl FUN_00411554(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_00411574(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_00411598(undefined4 *param_1,int param_2,int param_3);
-undefined4 * __cdecl FUN_00411694(undefined4 *param_1,int *param_2,int param_3);
-int __cdecl FUN_00411904(int param_1,int *param_2,int param_3,int param_4,int param_5);
-void __cdecl FUN_00411c1c(int param_1);
-void __cdecl FUN_00411c88(int param_1,undefined4 *param_2,undefined4 *param_3);
-int __cdecl FUN_00411e60(int param_1);
-void __cdecl FUN_00411ec4(int *param_1);
-undefined4 * __cdecl FUN_00412010(undefined4 *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5);
-void __cdecl FUN_00412114(int param_1,int param_2);
-void __cdecl FUN_0041221c(int param_1);
-void __cdecl FUN_0041225c(int param_1,int param_2,int param_3);
-int __cdecl FUN_004125fc(int param_1,int param_2,int param_3);
-int __cdecl FUN_0041262c(int param_1,int param_2,int param_3);
-void __cdecl FUN_00412778(int param_1,int param_2);
-undefined4 * __cdecl FUN_00412790(undefined4 *param_1,int param_2,int param_3);
-void __cdecl FUN_0041288c(int param_1);
-undefined4 * __cdecl FUN_004128f0(undefined4 *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5);
-void __cdecl FUN_0041328c(undefined4 *param_1,undefined4 param_2);
-int __cdecl FUN_0041329c(int param_1);
-int __cdecl FUN_004132bc(int param_1);
-undefined4 * __cdecl FUN_004132dc(undefined4 *param_1,int *param_2,int param_3);
-int __cdecl FUN_0041354c(int param_1,int *param_2,int param_3,int param_4,int param_5);
-undefined4 * __cdecl FUN_00413864(int *param_1,int param_2);
-void __cdecl FUN_00413a0c(int param_1);
-void __cdecl FUN_00413a78(int param_1,uint param_2);
-undefined4 __cdecl FUN_00413bd8(int param_1,int param_2,uint param_3,int param_4);
-void __cdecl FUN_00413e80(int param_1,int param_2,int param_3);
-void __cdecl FUN_00413eac(int param_1,int param_2,int param_3);
-int __cdecl FUN_00413fec(int param_1,int param_2,int param_3);
-void __cdecl FUN_00414020(undefined4 param_1,int param_2,int param_3);
-void __cdecl FUN_004140d8(int param_1,uint param_2);
-undefined4 * __cdecl FUN_00414410(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-void __cdecl FUN_004144b8(int param_1,int param_2);
-void __cdecl FUN_004144d0(int param_1,undefined4 *param_2,undefined4 *param_3);
-undefined4 * __cdecl FUN_004146f8(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3);
-void __cdecl FUN_00414728(undefined4 *param_1,undefined4 *param_2,undefined *param_3);
-void __cdecl FUN_00414784(undefined4 *param_1,undefined4 *param_2,undefined *param_3);
-void __cdecl FUN_00414820(undefined4 *param_1);
-void __cdecl FUN_00414868(undefined4 *param_1,undefined4 *param_2);
-void __cdecl FUN_004148a8(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,undefined *param_4);
-undefined4 * __cdecl FUN_004149e8(undefined4 *param_1,undefined4 *param_2);
-void __cdecl FUN_00414a7c(undefined4 param_1,int param_2,int param_3);
+namespace WordMap2 { undefined4 * __cdecl erase_range(undefined4 *result,int tree,undefined4 firstLo,undefined4 firstHi,int firstNode); }
+namespace WordMap2 { void __cdecl __erase(int tree,int node); }
+namespace WordMap2 { undefined4 * __cdecl erase(undefined4 *result,int tree,undefined4 itLo,undefined4 itHi,int itNode); }
+namespace __rwstd::__rb_tree { void __cdecl __set_node_40fd40(undefined4 *dest,undefined4 node); }
+namespace __rwstd::__rb_tree::iterator { void __cdecl increment_40fd50(int it); }
+namespace __rwstd::__rb_tree { void __cdecl __deallocate_buffers_40fdb4(int tree); }
+namespace std::vector_WordMap2 { void __cdecl vector(undefined4 *self,int n,int value); }
+namespace std { void __cdecl uninitialized_fill_n_WordMap2(int *dest,int n,int value); }
+namespace WordMap2 { undefined4 * __cdecl __copy(int *tree,undefined4 *src,undefined4 *parent); }
+namespace WordMap2 { undefined4 * __cdecl __get_node(int *tree,int value); }
+namespace std { void __cdecl _Destroy_range_410318(int first,int last); }
+namespace WordListMap { void __cdecl AllocateNode_410330(int *param_1); }
+namespace std::vector_int { void __cdecl vector(undefined4 *self,int n,undefined4 *value); }
+namespace std { void __cdecl fill_n_ptr(undefined4 *first,int n,undefined4 *value); }
+namespace std { void __cdecl _Destroy_range_ptr_410608(int first,int last); }
+namespace std { void __cdecl _Destroy_range_WordMap2(undefined4 vec,int first,int last); }
+namespace WordMap { undefined4 * __cdecl insert_hint(undefined4 *result,int *tree,undefined4 hintLo,undefined4 hintHi,int hintNode, undefined4 unused,int value); }
+namespace WordMap { int __cdecl __insert(int result,int *tree,int forceLeft,int parent,int value); }
+namespace WordMap { undefined4 * __cdecl insert_unique(undefined4 *result,int *tree,int value); }
+namespace __rwstd::__rb_tree::iterator { int __cdecl decrement(int it); }
+namespace std::vector_MatchEngine_ptr { void __cdecl resize(int vec,uint n); }
+namespace std::vector_MatchEngine_ptr { undefined4 __cdecl insert_fill(int vec,undefined4 *first,uint n,undefined4 *value); }
+namespace std { undefined4 * __cdecl copy_ptr(undefined4 *first,undefined4 *last,undefined4 *dest); }
+namespace std { undefined4 * __cdecl copy_backward_ptr(undefined4 *first,undefined4 *last,undefined4 *destEnd); }
+namespace std { void __cdecl fill_ptr(undefined4 *first,undefined4 *last,undefined4 *value); }
+namespace std { undefined4 * __cdecl copy_ptr_411574(undefined4 *first,undefined4 *last,undefined4 *dest); }
+namespace WordMap2 { undefined4 * __cdecl lower_bound(undefined4 *result,int tree,int key); }
+namespace WordMap2 { undefined4 * __cdecl insert_unique(undefined4 *result,int *tree,int value); }
+namespace WordMap2 { int __cdecl __insert(int result,int *tree,int forceLeft,int parent,int value); }
+namespace __rwstd::__rb_tree::iterator { void __cdecl decrement_411c1c(int it); }
+namespace std::vector_ptr { void __cdecl insert_aux_411c88(int vec,undefined4 *pos,undefined4 *value); }
+namespace __rwstd::__rb_tree::iterator { int __cdecl increment_411e60(int it); }
+namespace WordListMap { void __cdecl AllocateNode_411ec4(int *param_1); }
+namespace WordMap3 { undefined4 * __cdecl erase_range(undefined4 *result,int tree,undefined4 firstLo,undefined4 firstHi,int firstNode); }
+namespace WordMap3 { void __cdecl __erase(int tree,int node); }
+namespace __rwstd::__rb_tree { void __cdecl __deallocate_buffers_41221c(int tree); }
+namespace std::vector_string { void __cdecl insert_aux(int vec,int pos,int value); }
+namespace std { int __cdecl copy_backward_string(int first,int last,int destEnd); }
+namespace std { int __cdecl uninitialized_copy_string(int first,int last,int dest); }
+namespace std { void __cdecl _Destroy_range_16(int first,int last); }
+namespace WordMap3 { undefined4 * __cdecl lower_bound(undefined4 *result,int tree,int key); }
+namespace __rwstd::__rb_tree::iterator { void __cdecl increment_41288c(int it); }
+namespace WordMap3 { undefined4 * __cdecl erase(undefined4 *result,int tree,undefined4 itLo,undefined4 itHi,int itNode); }
+namespace __rwstd::__rb_tree { void __cdecl __set_node_41328c(undefined4 *dest,undefined4 node); }
+namespace __rwstd::__rb_tree { int __cdecl __minimum_41329c(int node); }
+namespace __rwstd::__rb_tree { int __cdecl __maximum_4132bc(int node); }
+namespace WordMap3 { undefined4 * __cdecl insert_unique(undefined4 *result,int *tree,int value); }
+namespace WordMap3 { int __cdecl __insert(int result,int *tree,int forceLeft,int parent,int value); }
+namespace WordMap3 { undefined4 * __cdecl __get_node(int *tree,int value); }
+namespace __rwstd::__rb_tree::iterator { void __cdecl decrement_413a0c(int it); }
+namespace std::vector_string { void __cdecl resize(int vec,uint n); }
+namespace std::vector_string { undefined4 __cdecl insert_fill(int vec,int pos,uint n,int value); }
+namespace std { void __cdecl fill_string(int first,int last,int value); }
+namespace std { void __cdecl uninitialized_fill_n_string(int dest,int n,int value); }
+namespace std { int __cdecl copy_string(int first,int last,int dest); }
+namespace std { void __cdecl _Destroy_range_string(undefined4 vec,int first,int last); }
+namespace std::vector_16 { void __cdecl reserve(int vec,uint n); }
+namespace std { undefined4 * __cdecl uninitialized_copy_16(undefined4 *first,undefined4 *last,undefined4 *dest); }
+namespace std { void __cdecl _Destroy_range_16_4144b8(int first,int last); }
+namespace std::vector_16 { void __cdecl insert_aux(int vec,undefined4 *pos,undefined4 *value); }
+namespace std { undefined4 * __cdecl copy_backward_16(undefined4 *first,undefined4 *last,undefined4 *destEnd); }
+namespace std { void __cdecl __final_insertion_sort(undefined4 *first,undefined4 *last,undefined *less); }
+namespace std { void __cdecl __insertion_sort(undefined4 *first,undefined4 *last,undefined *less); }
+namespace std { void __cdecl __unguarded_linear_insert(undefined4 *last); }
+namespace std { void __cdecl __unguarded_insertion_sort(undefined4 *first,undefined4 *last); }
+namespace std { void __cdecl __introsort_loop(undefined4 *first,undefined4 *last,undefined4 depthLimit,undefined *less); }
+namespace std { undefined4 * __cdecl __unguarded_partition(undefined4 *first,undefined4 *last); }
+namespace std { void __cdecl _Destroy_range_16_414a7c(undefined4 vec,int first,int last); }
 namespace DictionaryMaintainer { void __stdcall vf3(void); }
 namespace DictionaryMaintainer { void __stdcall vf4(void); }
-namespace std::map_std_string_long_std_less_std_string { void __cdecl _dtor(int param_1,byte param_2); }
-namespace std::pair_const_std_string_std_vector_long_ptr { void __cdecl _dtor(int param_1,byte param_2); }
-namespace std::pair_const_std_string_long { void __cdecl _dtor(int param_1,byte param_2); }
-namespace std::pair_std_string_long { void __cdecl _dtor(int param_1,byte param_2); }
-namespace std::map_std_string_std_vector_long_ptr_std_less_std_string_std_allocator_std_pair_const_std_string_std_vector_long_ptr { void __cdecl _dtor(int param_1,byte param_2); }
-namespace std::multimap_std_string_long_WordListMapComparator { void __cdecl _dtor(int param_1,byte param_2); }
+namespace std::map_std_string_long_std_less_std_string { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::pair_const_std_string_std_vector_long_ptr { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::pair_const_std_string_long { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::pair_std_string_long { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::map_std_string_std_vector_long_ptr_std_less_std_string_std_allocator_std_pair_const_std_string_std_vector_long_ptr { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::multimap_std_string_long_WordListMapComparator { void __cdecl _dtor(int self,byte dtorFlags); }
 namespace std::bad_alloc { undefined * __stdcall vf1(void); }
-void __cdecl FUN_00415af0(int param_1,byte param_2);
-namespace std::vector_std_string { void __cdecl _dtor(int param_1,byte param_2); }
-namespace std::vector_long { void __cdecl _dtor(int param_1,byte param_2); }
-void __cdecl FUN_00415b98(int param_1,byte param_2);
-void __cdecl FUN_00415d40(int param_1,byte param_2);
-void __cdecl FUN_00415d78(int param_1,byte param_2);
-void __cdecl FUN_00415dec(int param_1,byte param_2);
-void __cdecl FUN_00415e60(int param_1,byte param_2);
-void __stdcall FUN_00415ed4(void);
-void __stdcall FUN_00415f14(void);
-int __cdecl FUN_00415fb8(int param_1);
-namespace TSBuildProfile { void __cdecl _dtor(int param_1,byte param_2); }
-void __cdecl FUN_004162e4(int param_1,int param_2);
-int __cdecl FUN_00416918(int param_1,int param_2,uint *param_3);
-void __cdecl FUN_00416c8c(int param_1);
-int * __cdecl FUN_004171b4(int *param_1,int param_2,undefined4 param_3,undefined4 param_4);
-namespace TSDictionaryBuilderProgressBar { void __cdecl _dtor(int *param_1,uint param_2); }
-void __cdecl FUN_0041740c(int *param_1,int param_2);
-namespace TSDictionaryBuilderProgressBar { void __cdecl vf5(int param_1,int param_2); }
-int __cdecl FUN_00417698(byte *param_1,int param_2,byte *param_3,int param_4);
-int __cdecl FUN_00417718(int param_1,int param_2);
-char * __cdecl FUN_004184cc(char *param_1,char param_2,int param_3);
-int __cdecl FUN_004184f8(int param_1,int param_2,int param_3);
-int __cdecl FUN_00418778(int param_1,int param_2);
-bool __cdecl FUN_00418afc(int param_1);
-int __cdecl GetProgramDirectory(int param_1);
-int __cdecl FUN_00418d04(int param_1);
-int __cdecl FUN_0041901c(int param_1,int param_2);
-undefined4 __cdecl FUN_0041946c(LPCSTR param_1);
-undefined4 __cdecl FUN_00419664(LPCSTR param_1,char *param_2,uint param_3,int *param_4);
-int * __cdecl FUN_004198b4(int *param_1,int param_2,int param_3,int param_4);
-namespace Persist { void __cdecl _dtor(int param_1,byte param_2); }
-namespace Persist { undefined4 __cdecl QueryValueSized(int param_1,int param_2,int param_3); }
-namespace Persist { undefined4 __cdecl QueryValue(int param_1,int param_2,undefined4 *param_3); }
-void __cdecl FUN_00419a8c(int param_1,int param_2,int param_3);
-void __cdecl FUN_00419abc(int param_1,int param_2);
-void __stdcall FUN_00419ae0(void);
-undefined4 __cdecl FUN_00419b20(HWND param_1);
-undefined4 * __cdecl FUN_00419bf0(undefined4 *param_1);
-namespace Help { void __cdecl _dtor(int *param_1,byte param_2); }
-undefined4 __stdcall FUN_00419d5c(void);
-void __stdcall FUN_00419ddb(void);
-void __stdcall FUN_00419e31(void);
-undefined4 __stdcall FUN_00419e84(void);
-undefined * __stdcall FUN_00419e8c(void);
-namespace OWL::TRichEdit { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-namespace OWL::TRichEdit { void __cdecl Cmd24322(int *param_1); }
-namespace OWL::TRichEdit { void __cdecl Cmd24323(int *param_1); }
-namespace OWL::TRichEdit { void __cdecl Cmd24324(int param_1); }
-namespace OWL::TRichEdit { void __cdecl Cmd24325(int *param_1); }
-namespace OWL::TRichEdit { void __cdecl Cmd24326(int param_1); }
-namespace OWL::TRichEdit { void __cdecl Cmd24321(int *param_1); }
+namespace std::vector_16 { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::vector_std_string { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::vector_long { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::vector_WordMap2 { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::vector_WordMap { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace WordMap2 { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace WordMap { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace WordMap3 { void __cdecl _dtor(int self,byte dtorFlags); }
+void __stdcall InitRegistryPaths(void);
+void __stdcall DestroyRegistryPaths(void);
+namespace TSBuildProfile { int __cdecl TSBuildProfile(int self); }
+namespace TSBuildProfile { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace TSBuildProfile { void __cdecl Load(int self,int keyPath); }
+int __cdecl ResolveDataPath(int result,int dir,uint *fileName);
+namespace TSBuildProfile { void __cdecl Save(int self); }
+namespace TSDictionaryBuilderProgressBar { int * __cdecl TSDictionaryBuilderProgressBar(int *self,int vbasesBuilt,undefined4 param_3,undefined4 param_4); }
+namespace TSDictionaryBuilderProgressBar { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace DMDialog { void __cdecl SetAbort(int *self,int abort); }
+namespace TSDictionaryBuilderProgressBar { void __cdecl vf5(int self,int param_2); }
+int __cdecl CollationCompare(byte *param_1,int param_2,byte *param_3,int param_4);
+int __cdecl ExpandLongPathName(int result,int path);
+char * __cdecl memrchr(char *p,char ch,int n);
+namespace std { int __cdecl operator_plus(int result,int lhs,int rhs); }
+int __cdecl AppendChar(int result,int str);
+bool __cdecl IsRelativePath(int path);
+int __cdecl GetProgramDirectory(int result);
+int __cdecl GetMyDocumentsDirectory(int result);
+int __cdecl ResolveRelativePath(int result,int path);
+undefined4 __cdecl IsAnsiTextFile(LPCSTR fileName);
+undefined4 __cdecl ReadDescriptionLine(LPCSTR fileName,char *buf,uint bufSize,int *lineLen);
+namespace Persist { int * __cdecl Persist(int *self,int param_2,int create,int tryLocalMachine); }
+namespace Persist { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace Persist { undefined4 __cdecl QueryString(int self,int valueName,int out); }
+namespace Persist { undefined4 __cdecl QueryDword(int self,int valueName,undefined4 *out); }
+namespace Persist { void __cdecl SetString(int self,int valueName,int value); }
+namespace Persist { void __cdecl SetDword(int self,int valueName); }
+void __stdcall DestroyRichEditLoader(void);
+undefined4 __cdecl ShowHtmlHelp(HWND hWnd);
+undefined4 * __cdecl LoadHtmlHelp(undefined4 *result);
+namespace Help { void __cdecl _dtor(int *self,byte dtorFlags); }
+undefined4 __stdcall GetRichEditVersion(void);
+void __stdcall InitRichEditStreamer(void);
+void __stdcall DestroyRichEditStreamer(void);
+namespace OWL::TRichEdit { undefined4 __stdcall GetModule(void); }
+namespace OWL::TRichEdit { undefined * __stdcall GetModuleInstance(void); }
+namespace OWL::TRichEdit { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TRichEdit { void __cdecl Cmd24322(int *self); }
+namespace OWL::TRichEdit { void __cdecl Cmd24323(int *self); }
+namespace OWL::TRichEdit { void __cdecl Cmd24324(int self); }
+namespace OWL::TRichEdit { void __cdecl Cmd24325(int *self); }
+namespace OWL::TRichEdit { void __cdecl Cmd24326(int self); }
+namespace OWL::TRichEdit { void __cdecl Cmd24321(int *self); }
 void __cdecl FUN_00419fa4(int param_1,byte param_2);
-namespace OWL::TRichEdit { void __cdecl vf13(int *param_1,undefined4 *param_2,undefined4 *param_3); }
-void __cdecl FUN_0041a074(int *param_1,LPARAM param_2);
-namespace OWL::TRichEdit { bool __cdecl vf15(int *param_1,undefined4 param_2,undefined4 param_3); }
-undefined4 __cdecl FUN_0041a0c0(int *param_1,LPARAM param_2);
-void __cdecl FUN_0041a0dc(int *param_1,LPARAM param_2);
-namespace OWL::TRichEdit { void __cdecl vf12(int *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4); }
-undefined4 __cdecl FUN_0041a128(int *param_1,WPARAM param_2,LPARAM param_3);
-namespace OWL::TRichEdit { int __cdecl vf16(int *param_1,int param_2,uint *param_3,char param_4,char param_5,char param_6); }
-namespace OWL::TRichEdit { void __cdecl vf17(int *param_1); }
-void __cdecl FUN_0041a220(int *param_1,WPARAM param_2,LPARAM param_3);
-void __cdecl FUN_0041a240(int *param_1,WPARAM param_2,LPARAM param_3);
-namespace OWL::TRichEdit { void __cdecl EvGetDlgCode(int *param_1); }
-namespace OWL::TRichEdit { void __cdecl EvChar(int *param_1); }
-namespace OWL::TRichEdit { void __cdecl EvKeyDown(int *param_1); }
-namespace OWL::TRichEdit { void __cdecl EvKillFocus(int *param_1); }
-namespace OWL::TRichEdit { void __cdecl EvSetFocus(int *param_1); }
-namespace OWL::TRichEdit { void __cdecl CeShared_41a2bc(int param_1,undefined4 *param_2); }
-namespace OWL::TRichEdit { void __cdecl CeCmd24324(int *param_1,undefined4 *param_2); }
-namespace OWL::TRichEdit { void __cdecl CeCmd24326(int *param_1,undefined4 *param_2); }
-namespace OWL::TRichEdit { void __cdecl CeCmd24321(int *param_1,undefined4 *param_2); }
+namespace OWL::TRichEdit { void __cdecl GetSelection(int *self,undefined4 *param_2,undefined4 *param_3); }
+void __cdecl FUN_0041a074(int *param_1,LPARAM lParam);
+namespace OWL::TRichEdit { bool __cdecl SetSelection(int *self,undefined4 param_2,undefined4 param_3); }
+namespace OWL::TRichEdit { undefined4 __cdecl SetSelection_46924c(int *self,LPARAM range); }
+namespace OWL::TRichEdit { void __cdecl GetTextRange(int *self,LPARAM textRange); }
+namespace OWL::TRichEdit { void __cdecl GetSubText(int *self,undefined4 param_2,undefined4 param_3,undefined4 param_4); }
+undefined4 __cdecl FUN_0041a128(int *param_1,WPARAM wParam,LPARAM lParam);
+namespace OWL::TRichEdit { int __cdecl vf16(int *self,int param_2,uint *param_3,char param_4,char param_5,char param_6); }
+namespace OWL::TRichEdit { void __cdecl Paste(int *self); }
+void __cdecl FUN_0041a220(int *param_1,WPARAM wParam,LPARAM lParam);
+void __cdecl FUN_0041a240(int *param_1,WPARAM wParam,LPARAM lParam);
+namespace OWL::TRichEdit { void __cdecl EvGetDlgCode(int *self); }
+namespace OWL::TRichEdit { void __cdecl EvChar(int *self); }
+namespace OWL::TRichEdit { void __cdecl EvKeyDown(int *self); }
+namespace OWL::TRichEdit { void __cdecl EvKillFocus(int *self); }
+namespace OWL::TRichEdit { void __cdecl EvSetFocus(int *self); }
+namespace OWL::TRichEdit { void __cdecl CeShared_41a2bc(int self,undefined4 *commandEnabler); }
+namespace OWL::TRichEdit { void __cdecl CeCmd24324(int *self,undefined4 *commandEnabler); }
+namespace OWL::TRichEdit { void __cdecl CeCmd24326(int *self,undefined4 *commandEnabler); }
+namespace OWL::TRichEdit { void __cdecl CeCmd24321(int *self,undefined4 *commandEnabler); }
 namespace OWL::TRichEdit { char * __stdcall vf11(void); }
-namespace OWL::TRichEdit { void __cdecl vf20(int *param_1); }
+namespace OWL::TRichEdit { void __cdecl vf20(int *self); }
 undefined4 __stdcall FUN_0041a568(int *param_1,undefined1 *param_2,int param_3,undefined4 *param_4);
 undefined4 __stdcall FUN_0041a5ac(int *param_1,int param_2,int param_3,int *param_4);
 namespace OWL::TRichEdit { undefined4 __stdcall vf10(void); }
-bool __cdecl FUN_0041a644(int *param_1,undefined4 param_2,WPARAM param_3);
-bool __cdecl FUN_0041a680(int *param_1,undefined4 param_2,WPARAM param_3);
-namespace OWL::TRichEdit { undefined4 __cdecl vf25(int *param_1,LPCSTR param_2); }
-namespace OWL::TRichEdit { undefined4 __cdecl vf29(int *param_1,LPCSTR param_2); }
-undefined4 * __cdecl FUN_0041aa00(undefined4 *param_1,int *param_2);
-int * __cdecl FUN_0041aa68(int *param_1,int param_2);
-namespace OWL::TRichEdit::Streamer { undefined4 __cdecl vf1(int param_1,int *param_2); }
+bool __cdecl FUN_0041a644(int *param_1,undefined4 param_2,WPARAM wParam);
+bool __cdecl FUN_0041a680(int *param_1,undefined4 param_2,WPARAM wParam);
+namespace OWL::TRichEdit { undefined4 __cdecl ReadFromFile(int *self,LPCSTR fileName); }
+namespace OWL::TRichEdit { undefined4 __cdecl WriteToFile(int *self,LPCSTR fileName); }
+namespace OWL::TRichEdit::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TRichEdit { int * __cdecl TRichEdit(int *self,int vbasesBuilt); }
+namespace OWL::TRichEdit::Streamer { undefined4 __cdecl vf1(int self,int *param_2); }
 void __cdecl FUN_0041aba0(int param_1,int *param_2);
-namespace OWL::TRichEdit::Streamer { void __cdecl vf2(int param_1,int *param_2); }
+namespace OWL::TRichEdit::Streamer { void __cdecl vf2(int self,int *param_2); }
 void __cdecl FUN_0041ac10(int param_1,int *param_2);
-undefined4 __cdecl FUN_0041acb0(char param_1);
+namespace OWL::TRichEdit { undefined4 __cdecl UseRichEdit2(char load); }
 undefined4 * __cdecl FUN_0041ace0(int *param_1);
-namespace OWL::TErrorMode { void __cdecl _dtor(UINT *param_1,byte param_2); }
-namespace OWL::TRichEdit { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TRichEditModule { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TNewStreamer { void __cdecl vf0(int param_1); }
+namespace OWL::TErrorMode { void __cdecl _dtor(UINT *self,byte dtorFlags); }
+namespace OWL::TRichEdit { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TRichEditModule { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TNewStreamer { void __cdecl vf0(int self); }
 namespace OWL::TRichEdit::Streamer { undefined4 __stdcall vf3(void); }
-namespace OWL::TEdit { void __cdecl vf13(int *param_1,WPARAM param_2,LPARAM param_3); }
-namespace OWL::TEdit { undefined4 __cdecl vf14(int param_1); }
-namespace OWL::TEdit { bool __cdecl vf15(int *param_1,WPARAM param_2,LPARAM param_3); }
-namespace OWL::TEdit { void __cdecl vf17(int *param_1); }
-namespace OWL::TEdit { void __cdecl vf18(int *param_1,undefined2 param_2,undefined2 param_3); }
-namespace OWL::TEdit { void __cdecl vf19(int *param_1,WPARAM param_2); }
-namespace OWL::TRichEdit { void __cdecl vf18(int *param_1,short param_2,short param_3); }
-namespace OWL::TRichEdit { undefined4 __cdecl vf19(int *param_1,WPARAM param_2); }
+namespace OWL::TEdit { void __cdecl GetSelection(int *self,WPARAM wParam,LPARAM lParam); }
+namespace OWL::TEdit { undefined4 __cdecl vf14(int self); }
+namespace OWL::TEdit { bool __cdecl SetSelection(int *self,WPARAM wParam,LPARAM lParam); }
+namespace OWL::TEdit { void __cdecl Paste(int *self); }
+namespace OWL::TEdit { void __cdecl CharFromPos(int *self,undefined2 param_2,undefined2 param_3); }
+namespace OWL::TEdit { void __cdecl PosFromChar(int *self,WPARAM wParam); }
+namespace OWL::TRichEdit { void __cdecl CharFromPos(int *self,short param_2,short param_3); }
+namespace OWL::TRichEdit { undefined4 __cdecl PosFromChar(int *self,WPARAM wParam); }
 void __stdcall FUN_0041b534(void);
-undefined4 * __cdecl FUN_0041b578(undefined4 *param_1);
+namespace OWL::TCommCtrlDll { undefined4 * __cdecl TCommCtrlDll(undefined4 *self); }
 void __cdecl FUN_0041b630(int param_1);
 bool __cdecl FUN_0041b660(int param_1,int param_2);
 undefined * __stdcall FUN_0041b6c8(void);
 undefined * __stdcall FUN_0041b770(void);
 bool __stdcall FUN_0041b778(void);
-namespace OWL::TCommCtrlDll { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TPopupMenu { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TCommCtrlDll { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TPopupMenu { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 undefined * __stdcall FUN_0041b958(void);
 undefined1 __stdcall FUN_0041b984(void);
 undefined1 __stdcall FUN_0041b9b4(void);
 bool __stdcall FUN_0041b9e4(void);
 void __stdcall FUN_0041b9fc(void);
 undefined * __stdcall FUN_0041bb2c(void);
-PHKEY __cdecl FUN_0041bbd0(PHKEY param_1,HKEY param_2,uint *param_3,REGSAM param_4,int param_5);
+PHKEY __cdecl FUN_0041bbd0(PHKEY phkResult,HKEY hKey,uint *param_3,REGSAM samDesired,int param_5);
 undefined4 * __cdecl FUN_0041bca8(undefined4 *param_1,undefined4 param_2,undefined1 param_3,uint *param_4);
-namespace OWL::TRegKey { void __cdecl _dtor(int *param_1,byte param_2); }
-LSTATUS __cdecl FUN_0041bda0(undefined4 *param_1,LPSTR param_2,LPDWORD param_3,LPDWORD param_4,LPDWORD param_5, DWORD *param_6,DWORD *param_7,LPDWORD param_8,LPDWORD param_9,LPDWORD param_10, PFILETIME param_11);
+namespace OWL::TRegKey { void __cdecl _dtor(int *self,byte dtorFlags); }
+LSTATUS __cdecl FUN_0041bda0(undefined4 *param_1,LPSTR class_,LPDWORD lpcchClass,LPDWORD subKeys,LPDWORD maxSubKeyLen, DWORD *maxClassLen,DWORD *values,LPDWORD maxValueNameLen,LPDWORD maxValueLen,LPDWORD securityDescriptor, PFILETIME lpftLastWriteTime);
 undefined4 * __cdecl FUN_0041be50(undefined4 *param_1,undefined4 param_2,undefined4 param_3);
-namespace OWL::TRegValue { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TRegValue { void __cdecl _dtor(int self,byte dtorFlags); }
 void __cdecl FUN_0041c204(undefined4 *param_1);
-namespace OWL::TAPointer_char { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::locale::facet { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TAPointer_char { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::locale::facet { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 namespace __rwstd::facet_imp { void __stdcall vf1(void); }
-namespace __rwstd::facet_imp { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace __rwstd::facet_imp { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __cdecl FUN_0041c404(int *param_1);
-void __stdcall FUN_0041c460(void);
+void __stdcall DestroyRichEditLoader_41c460(void);
 undefined * __stdcall FUN_0041c4a0(void);
 undefined4 * __cdecl FUN_0041c53c(undefined4 *param_1);
-namespace OWL::TAppDictionary { void __cdecl _dtor(int *param_1,byte param_2); }
+namespace OWL::TAppDictionary { void __cdecl _dtor(int *self,byte dtorFlags); }
 undefined4 __cdecl FUN_0041c6e8(undefined4 *param_1,int param_2);
 void __cdecl FUN_0041c718(undefined4 *param_1,undefined4 param_2,int param_3);
 void __cdecl FUN_0041c740(undefined4 *param_1);
 bool __cdecl FUN_0041c78c(undefined4 *param_1);
-undefined4 * __cdecl FUN_0041c7b8(undefined4 *param_1);
-namespace OWL::TAppDictPidImp { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TAppDictPidImp { void __cdecl vf1(int param_1,int param_2,int param_3); }
-namespace OWL::TAppDictPidImp { void __cdecl vf2(int *param_1); }
-namespace OWL::TAppDictPidImp { int * __cdecl vf3(int param_1,int param_2); }
-namespace OWL::TAppDictPidImp { uint __cdecl vf4(int param_1,int param_2); }
-namespace OWL::TAppDictPidImp { void vf5(undefined4 param_1,undefined4 param_2,uint param_3,int param_4,undefined *param_5); }
-namespace OWL::TAppDictPidImp { int __cdecl vf6(int param_1); }
+namespace OWL::TAppDictPidImp { undefined4 * __cdecl TAppDictPidImp(undefined4 *self); }
+namespace OWL::TAppDictPidImp { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TAppDictPidImp { void __cdecl vf1(int self,int param_2,int param_3); }
+namespace OWL::TAppDictPidImp { void __cdecl vf2(int *self); }
+namespace OWL::TAppDictPidImp { int * __cdecl vf3(int self,int param_2); }
+namespace OWL::TAppDictPidImp { uint __cdecl vf4(int self,int param_2); }
+namespace OWL::TAppDictPidImp { void vf5(undefined4 self,undefined4 param_2,uint param_3,int param_4,undefined *param_5); }
+namespace OWL::TAppDictPidImp { int __cdecl vf6(int self); }
 undefined4 * __cdecl FUN_0041c994(int param_1);
 void __stdcall FUN_0041c9c0(void);
 int __cdecl FUN_0041c9d0(int param_1);
 int * __cdecl FUN_0041ca18(int param_1);
-namespace OWL::TAppDictImp { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TAppDictInstImp { void __cdecl _dtor(int param_1,byte param_2); }
-namespace OWL::TAppDictInstImp { void __cdecl vf1(int param_1,undefined4 param_2,undefined4 param_3); }
-namespace OWL::TAppDictInstImp { void __cdecl vf2(int param_1); }
-namespace OWL::TAppDictInstImp { int __cdecl vf3(int param_1); }
-namespace OWL::TAppDictInstImp { int __cdecl vf4(int param_1); }
-namespace OWL::TAppDictInstImp { void __cdecl vf5(undefined4 param_1,undefined *param_2); }
-namespace OWL::TAppDictInstImp { bool __cdecl vf6(int param_1); }
+namespace OWL::TAppDictImp { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TAppDictInstImp { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace OWL::TAppDictInstImp { void __cdecl vf1(int self,undefined4 param_2,undefined4 param_3); }
+namespace OWL::TAppDictInstImp { void __cdecl vf2(int self); }
+namespace OWL::TAppDictInstImp { int __cdecl vf3(int self); }
+namespace OWL::TAppDictInstImp { int __cdecl vf4(int self); }
+namespace OWL::TAppDictInstImp { void __cdecl vf5(undefined4 self,undefined *param_2); }
+namespace OWL::TAppDictInstImp { bool __cdecl vf6(int self); }
 uint * __cdecl FUN_0041cc9c(uint *param_1,undefined4 param_2,int param_3);
-uint * __cdecl FUN_0041cd0c(uint *param_1,int param_2,int param_3,byte param_4,byte param_5,void *param_6);
-uint * __cdecl FUN_0041cd80(uint *param_1,undefined4 *param_2,int param_3,int param_4,char param_5);
+uint * __cdecl FUN_0041cd0c(uint *param_1,int width,int height,byte planes,byte bitCount,void *bits);
+uint * __cdecl FUN_0041cd80(uint *param_1,undefined4 *param_2,int cx,int cy,char param_5);
 uint * __cdecl FUN_0041ce0c(uint *param_1,uint *param_2);
 uint * __cdecl FUN_0041cf04(uint *param_1,int param_2,uint *param_3);
-namespace OWL::TBitmap { void __cdecl _dtor(uint *param_1,byte param_2); }
+namespace OWL::TBitmap { void __cdecl _dtor(uint *self,byte dtorFlags); }
 undefined4 __cdecl FUN_0041d038(undefined4 *param_1);
 undefined4 __cdecl FUN_0041d060(undefined4 *param_1);
 undefined4 * __cdecl FUN_0041d088(undefined4 *param_1,undefined4 *param_2);
 void __cdecl FUN_0041d0c0(uint *param_1,int param_2,uint *param_3);
 void __cdecl FUN_0041d164(uint *param_1,uint *param_2);
-namespace OWL::TPalette { void __cdecl _dtor(uint *param_1,byte param_2); }
-namespace OWL::TScreenDC { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace OWL::TButtonGadget { void vf28(byte *param_1); }
+namespace OWL::TPalette { void __cdecl _dtor(uint *self,byte dtorFlags); }
+namespace OWL::TScreenDC { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace OWL::TButtonGadget { void vf28(byte *self); }
 namespace OWL::TXOutOfMemory { int vf5(...); }   // not decompiled
-namespace OWL::TFont { void __cdecl _dtor(uint *param_1,byte param_2); }
+namespace OWL::TFont { void __cdecl _dtor(uint *self,byte dtorFlags); }
 void __stdcall FUN_0041d8e0(void);
 void __stdcall FUN_0041d920(void);
-namespace OWL::TButtonGadgetEnabler { void __cdecl vf0(int param_1); }
+namespace OWL::TButtonGadgetEnabler { void __cdecl vf0(int self); }
 namespace OWL::TButtonGadgetEnabler { void __stdcall vf1(void); }
-namespace OWL::TButtonGadgetEnabler { void __cdecl vf2(int param_1,int param_2); }
-int * __cdecl FUN_0041d99c(int *param_1,uint *param_2,undefined4 param_3,char param_4,undefined4 param_5, byte param_6,char param_7);
-namespace OWL::TButtonGadget { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TButtonGadgetEnabler { void __cdecl vf2(int self,int param_2); }
+namespace OWL::TButtonGadget { int * __cdecl TButtonGadget(int *self,uint *param_2,undefined4 param_3,char param_4,undefined4 param_5, byte param_6,char param_7); }
+namespace OWL::TButtonGadget { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __cdecl FUN_0041dbbc(int param_1,byte param_2);
-namespace OWL::TButtonGadget { void __cdecl vf5(int param_1); }
-namespace OWL::TButtonGadget { void __cdecl vf6(int *param_1); }
+namespace OWL::TButtonGadget { void __cdecl vf5(int self); }
+namespace OWL::TButtonGadget { void __cdecl vf6(int *self); }
 void __cdecl FUN_0041dcdc(int *param_1);
 void __cdecl FUN_0041de2c(int *param_1,int param_2);
-namespace OWL::TButtonGadget { void __cdecl vf3(int *param_1,int *param_2); }
-namespace OWL::TButtonGadget { void __cdecl vf2(int *param_1,int *param_2); }
-namespace OWL::TButtonGadget { int * __cdecl vf22(int param_1); }
-namespace OWL::TDib { void vf3(char *param_1,int param_2,char param_3); }
-namespace OWL::TButtonGadget { void __cdecl vf23(undefined4 param_1,int param_2); }
-namespace OWL::TButtonGadget { void __cdecl vf24(int *param_1); }
+namespace OWL::TButtonGadget { void __cdecl vf3(int *self,int *param_2); }
+namespace OWL::TButtonGadget { void __cdecl vf2(int *self,int *param_2); }
+namespace OWL::TButtonGadget { int * __cdecl vf22(int self); }
+namespace OWL::TDib { void vf3(char *self,int param_2,char param_3); }
+namespace OWL::TButtonGadget { void __cdecl vf23(undefined4 self,int param_2); }
+namespace OWL::TButtonGadget { void __cdecl vf24(int *self); }
 void __cdecl FUN_0041e2d0(int param_1,undefined4 param_2);
-namespace OWL::TButtonGadget { void __cdecl vf12(int *param_1); }
-namespace OWL::TButtonGadget { void __cdecl vf13(int param_1,undefined4 *param_2); }
+namespace OWL::TButtonGadget { void __cdecl vf12(int *self); }
+namespace OWL::TButtonGadget { void __cdecl vf13(int self,undefined4 *param_2); }
 undefined * __stdcall FUN_0041e4bc(void);
-namespace OWL::TButtonGadget { void __cdecl vf21(int param_1,int *param_2,int *param_3); }
-namespace OWL::TButtonGadget { void __cdecl vf25(int param_1); }
-namespace OWL::TButtonGadget { void __cdecl vf26(int param_1,undefined4 param_2,undefined1 param_3); }
-namespace OWL::TButtonGadget { void __cdecl vf27(int *param_1); }
-namespace OWL::TButtonGadget { void __cdecl vf17(int *param_1); }
-namespace OWL::TButtonGadget { void __cdecl vf14(int param_1); }
-namespace OWL::TButtonGadget { void __cdecl vf15(int *param_1); }
-namespace OWL::TButtonGadget { void __cdecl vf16(int param_1); }
-namespace OWL::TButtonGadget { void __cdecl vf19(int *param_1); }
-namespace OWL::TStreamableBase { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-undefined4 * __cdecl FUN_0041e9bc(undefined4 *param_1,int param_2,int param_3,int param_4);
-undefined4 * __cdecl FUN_0041eb38(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,int param_4, undefined4 param_5,int param_6);
-namespace OWL::TCelArray { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TButtonGadget { void __cdecl vf21(int self,int *param_2,int *param_3); }
+namespace OWL::TButtonGadget { void __cdecl vf25(int self); }
+namespace OWL::TButtonGadget { void __cdecl vf26(int self,undefined4 param_2,undefined1 param_3); }
+namespace OWL::TButtonGadget { void __cdecl vf27(int *self); }
+namespace OWL::TButtonGadget { void __cdecl vf17(int *self); }
+namespace OWL::TButtonGadget { void __cdecl vf14(int self); }
+namespace OWL::TButtonGadget { void __cdecl vf15(int *self); }
+namespace OWL::TButtonGadget { void __cdecl vf16(int self); }
+namespace OWL::TButtonGadget { void __cdecl vf19(int *self); }
+namespace OWL::TStreamableBase { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TCelArray { undefined4 * __cdecl TCelArray(undefined4 *self,int param_2,int param_3,int param_4); }
+namespace OWL::TCelArray { undefined4 * __cdecl TCelArray_41eb38(undefined4 *self,undefined4 *param_2,undefined4 param_3,int param_4, undefined4 param_5,int param_6); }
+namespace OWL::TCelArray { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 int * __cdecl FUN_0041ec8c(int *param_1,int param_2,int param_3,int param_4);
 int * __cdecl FUN_0041ecc8(int *param_1,int param_2,int param_3,int param_4);
 undefined4 __cdecl FUN_0041ed44(int param_1,uint *param_2);
 undefined4 __cdecl FUN_0041eddc(int param_1,int param_2,int param_3);
 undefined4 __cdecl FUN_0041ee7c(int param_1,int param_2);
 undefined4 __cdecl FUN_0041ef8c(int param_1,int param_2,uint *param_3);
-uint __cdecl FUN_0041effc(uint *param_1,uint *param_2,int *param_3,int *param_4,int param_5,int param_6);
+uint __cdecl FUN_0041effc(uint *param_1,uint *param_2,int *param_3,int *param_4,int x1,int y1);
 undefined4 __cdecl FUN_0041f10c(int param_1,int param_2);
 undefined4 __cdecl FUN_0041f14c(int param_1,int param_2);
 void __stdcall FUN_0041f35c(void);
-HMODULE __stdcall FUN_0041f371(HANDLE param_1,LPCVOID param_2);
+HMODULE __stdcall FUN_0041f371(HANDLE hProcess,LPCVOID address);
 undefined4 __cdecl FUN_0041f418(undefined4 param_1,undefined4 param_2,undefined4 *param_3);
 void __stdcall FUN_0041f5d3(void);
 void __stdcall FUN_0041f611(void);
-undefined4 * __cdecl FUN_0041f668(undefined4 *param_1,undefined4 param_2,byte param_3,char param_4);
+namespace OWL::TDiagGroupDef { undefined4 * __cdecl TDiagGroupDef(undefined4 *self,undefined4 param_2,byte param_3,char param_4); }
 namespace OWL::TDiagGroupDef { undefined4 __stdcall vf0(void); }
-undefined4 * __cdecl FUN_0041f6e4(undefined4 *param_1,undefined4 param_2,byte param_3,char param_4);
-namespace OWL::TDiagBase { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TDiagBase { undefined4 * __cdecl TDiagBase(undefined4 *self,undefined4 param_2,byte param_3,char param_4); }
+namespace OWL::TDiagBase { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __cdecl FUN_0041f7ac(undefined4 param_1);
 void __cdecl FUN_0041f7d8(int param_1);
 undefined * __stdcall FUN_0041f808(void);
@@ -414,17 +414,17 @@ void __stdcall FUN_0041f8e4(void);
 undefined4 __stdcall FUN_0041f948(void);
 undefined4 __stdcall FUN_0041f998(void);
 undefined4 __stdcall FUN_0041f9e8(void);
-namespace OWL::TDiagGroupDef { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TDiagGroupDef { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __stdcall FUN_0041fb18(void);
 void __stdcall FUN_0041fb28(void);
-namespace OWL::TTmpBuffer_char { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-char * __cdecl FUN_0041fcdc(char *param_1,HWND param_2,char param_3);
-namespace OWL::TClipboard { void __cdecl _dtor(char *param_1,byte param_2); }
-void __cdecl FUN_0041fe58(undefined4 param_1,HWND param_2);
-undefined4 * __cdecl FUN_0041fe74(undefined4 *param_1,uint param_2);
-namespace OWL::TXClipboard { undefined4 * __cdecl vf2(int *param_1); }
-namespace OWL::TXClipboard { void __cdecl vf3(int *param_1); }
-namespace OWL::TXClipboard { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TTmpBuffer_char { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+char * __cdecl FUN_0041fcdc(char *param_1,HWND hWnd,char param_3);
+namespace OWL::TClipboard { void __cdecl _dtor(char *self,byte dtorFlags); }
+void __cdecl FUN_0041fe58(undefined4 param_1,HWND hWnd);
+namespace OWL::TXClipboard { undefined4 * __cdecl TXClipboard(undefined4 *self,uint param_2); }
+namespace OWL::TXClipboard { undefined4 * __cdecl vf2(int *self); }
+namespace OWL::TXClipboard { void __cdecl vf3(int *self); }
+namespace OWL::TXClipboard { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __stdcall FUN_00420050(void);
 int __cdecl FUN_004202d8(short param_1);
 undefined4 __cdecl FUN_00420318(int param_1);
@@ -440,45 +440,45 @@ undefined4 __stdcall FUN_004204dc(void);
 undefined4 __stdcall FUN_00420524(void);
 undefined4 __stdcall FUN_0042055c(void);
 undefined4 __stdcall FUN_00420594(void);
-namespace OWL::TCommonDialog { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-namespace OWL::TCommonDialog { void __cdecl EvClose(int *param_1); }
-namespace OWL::TCommonDialog { void __cdecl CmRange1to2(int *param_1); }
-int * __cdecl FUN_00420634(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5);
-namespace OWL::TCommonDialog { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TCommonDialog { void __cdecl vf11(int *param_1); }
-namespace OWL::TCommonDialog { void __stdcall vf4(void); }
-namespace OWL::TCommonDialog { undefined4 __stdcall vf6(void); }
+namespace OWL::TCommonDialog { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TCommonDialog { void __cdecl EvClose(int *self); }
+namespace OWL::TCommonDialog { void __cdecl CmRange1to2(int *self); }
+namespace OWL::TCommonDialog { int * __cdecl TCommonDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,int param_5); }
+namespace OWL::TCommonDialog { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TCommonDialog { void __cdecl SetupWindow(int *self); }
+namespace OWL::TCommonDialog { void __stdcall PerformCreate(void); }
+namespace OWL::TCommonDialog { undefined4 __stdcall DoExecute(void); }
 void __cdecl FUN_004209d0(int param_1,uint param_2);
 int __cdecl FUN_00420a1c(int param_1,uint param_2);
 undefined4 __stdcall FUN_00420a68(int param_1);
 undefined4 __stdcall FUN_00420a6e(void);
-namespace OWL::TFile { undefined4 __cdecl vf1(int param_1); }
-namespace OWL::TFile { void __cdecl vf4(int param_1); }
-namespace OWL::TFile { void __cdecl vf5(int param_1); }
-namespace OWL::TFile { void __cdecl vf6(int param_1); }
-namespace OWL::TFile { void __cdecl vf7(int param_1); }
-namespace OWL::TFile { void __cdecl vf8(int param_1); }
-namespace OWL::TFile { void __cdecl vf9(int param_1); }
-namespace OWL::TFile { void __cdecl vf10(int param_1); }
-namespace OWL::TFile { void __cdecl vf11(int param_1); }
-namespace OWL::TFile { void __cdecl vf12(int param_1); }
-namespace OWL::TFile { void __cdecl vf13(int param_1); }
-namespace OWL::TFile { void __cdecl vf17(int param_1); }
-namespace OWL::TFile { void __cdecl vf18(int param_1); }
-namespace OWL::TFile { undefined4 __cdecl vf25(int *param_1,undefined4 param_2); }
-namespace OWL::TFile { void __cdecl vf32(int *param_1,uint *param_2); }
+namespace OWL::TFile { undefined4 __cdecl vf1(int self); }
+namespace OWL::TFile { void __cdecl vf4(int self); }
+namespace OWL::TFile { void __cdecl vf5(int self); }
+namespace OWL::TFile { void __cdecl vf6(int self); }
+namespace OWL::TFile { void __cdecl vf7(int self); }
+namespace OWL::TFile { void __cdecl vf8(int self); }
+namespace OWL::TFile { void __cdecl vf9(int self); }
+namespace OWL::TFile { void __cdecl vf10(int self); }
+namespace OWL::TFile { void __cdecl vf11(int self); }
+namespace OWL::TFile { void __cdecl vf12(int self); }
+namespace OWL::TFile { void __cdecl vf13(int self); }
+namespace OWL::TFile { void __cdecl vf17(int self); }
+namespace OWL::TFile { void __cdecl vf18(int self); }
+namespace OWL::TFile { undefined4 __cdecl vf25(int *self,undefined4 param_2); }
+namespace OWL::TFile { void __cdecl vf32(int *self,uint *param_2); }
 void __stdcall FUN_00420d58(void);
-namespace OWL::TMBlockList_TStandardAllocator { void __cdecl _dtor(int param_1,byte param_2); }
-namespace OWL::TMMemBlocks_TStandardAllocator { void __cdecl _dtor(int param_1,byte param_2); }
-namespace OWL::TMMemStack_TStandardAllocator { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TMBlockList_TStandardAllocator { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace OWL::TMMemBlocks_TStandardAllocator { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace OWL::TMMemStack_TStandardAllocator { void __cdecl _dtor(int self,byte dtorFlags); }
 void __cdecl FUN_00420f5c(int param_1,byte param_2);
-int * __cdecl FUN_00420f84(int *param_1,int param_2,undefined4 param_3,undefined1 param_4,uint *param_5, int param_6);
+namespace OWL::TControlBar { int * __cdecl TControlBar(int *self,int vbasesBuilt,undefined4 param_3,undefined1 param_4,uint *param_5, int param_6); }
 namespace OWL::TControl::Streamer { int vf4(...); }   // not decompiled
-namespace OWL::TControlBar { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TGadgetWindow { undefined4 __cdecl vf3(int param_1); }
+namespace OWL::TControlBar { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TGadgetWindow { undefined4 __cdecl GetTooltip(int self); }
 void __cdecl FUN_004215b8(int param_1,byte param_2);
 undefined4 * __cdecl FUN_00421638(undefined4 *param_1);
-namespace OWL::TCreatedDC { void __cdecl _dtor(int *param_1,byte param_2); }
+namespace OWL::TCreatedDC { void __cdecl _dtor(int *self,byte dtorFlags); }
 int * __cdecl FUN_00421718(int *param_1,int param_2,int param_3);
 int * __cdecl FUN_00421768(int *param_1,uint param_2,uint param_3,uint param_4);
 int * __cdecl FUN_004217a0(int *param_1,ushort *param_2);
@@ -491,46 +491,46 @@ int * __cdecl FUN_004219cc(int *param_1,int *param_2,int param_3);
 int __cdecl FUN_00421a08(int *param_1,uint param_2);
 uint __cdecl FUN_00421a58(int *param_1);
 void __cdecl FUN_00421a80(int *param_1,int *param_2,int param_3);
-undefined4 * __stdcall FUN_00421afc(undefined4 *param_1,int param_2);
+namespace std::ios_base::failure { undefined4 * __stdcall failure(undefined4 *self,int param_2); }
 undefined4 * __stdcall FUN_00421b02(void);
 void __cdecl FUN_00421be4(int param_1);
 undefined4 * __cdecl FUN_00421c0c(undefined4 *param_1,undefined4 param_2);
-namespace std::ios_base::failure { void vf2(char *param_1,byte *param_2,undefined4 param_3); }
+namespace std::ios_base::failure { void vf2(char *self,byte *param_2,undefined4 param_3); }
 undefined4 * __cdecl FUN_00421c70(undefined4 *param_1);
-namespace OWL::TDC { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace OWL::TDC { undefined4 __cdecl vf23(undefined4 *param_1); }
+namespace OWL::TDC { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace OWL::TDC { undefined4 __cdecl vf23(undefined4 *self); }
 void __cdecl FUN_00421cec(undefined4 *param_1,uint *param_2);
-namespace OWL::TDC { void __cdecl vf5(undefined4 *param_1,uint *param_2); }
-void __cdecl FUN_00421d74(undefined4 *param_1,uint *param_2,byte param_3);
-namespace OWL::TDC { void __cdecl vf6(undefined4 *param_1,int param_2); }
+namespace OWL::TDC { void __cdecl vf5(undefined4 *self,uint *param_2); }
+void __cdecl FUN_00421d74(undefined4 *param_1,uint *param_2,byte forceBkgd);
+namespace OWL::TDC { void __cdecl vf6(undefined4 *self,int i); }
 void __cdecl FUN_00421dec(undefined4 *param_1);
 void __cdecl FUN_00421e18(undefined4 *param_1);
-namespace OWL::TDC { void __cdecl vf7(undefined4 *param_1); }
+namespace OWL::TDC { void __cdecl vf7(undefined4 *self); }
 void __cdecl FUN_00421e70(undefined4 *param_1);
 void __cdecl FUN_00421e9c(undefined4 *param_1);
 void __cdecl FUN_00421ec8(undefined4 *param_1);
 void __cdecl FUN_00421ef4(int *param_1);
-void __cdecl FUN_00421f30(undefined4 *param_1,uint *param_2,int *param_3,int param_4,int param_5,DWORD param_6);
-namespace OWL::TDC { void __cdecl vf1(undefined4 *param_1); }
-namespace OWL::TDC { bool __cdecl vf2(undefined4 *param_1,int param_2); }
-namespace OWL::TDC { void __cdecl vf3(int param_1,int param_2); }
-namespace OWL::TDC { bool __cdecl vf4(undefined4 *param_1,DEVMODEA *param_2); }
-namespace OWL::TDC { COLORREF * __cdecl vf8(COLORREF *param_1,int *param_2,uint *param_3); }
-namespace OWL::TDC { COLORREF * __cdecl vf9(COLORREF *param_1,int *param_2,uint *param_3); }
-namespace OWL::TDC { void __cdecl vf10(int *param_1,int param_2); }
-namespace OWL::TDC { bool __cdecl vf11(int *param_1,int *param_2,LPPOINT param_3); }
-namespace OWL::TDC { bool __cdecl vf12(int *param_1,int *param_2,LPPOINT param_3); }
-namespace OWL::TDC { bool __cdecl vf13(int *param_1,int *param_2,LPSIZE param_3); }
-namespace OWL::TDC { bool __cdecl vf14(int *param_1,int param_2,int param_3,int param_4,int param_5,LPSIZE param_6); }
-namespace OWL::TDC { bool __cdecl vf15(int *param_1,int *param_2,LPSIZE param_3); }
-namespace OWL::TDC { bool __cdecl vf16(int *param_1,int param_2,int param_3,int param_4,int param_5,LPSIZE param_6); }
-namespace OWL::TDC { bool __cdecl vf17(undefined4 *param_1,int param_2,int param_3,uint *param_4,char *param_5); }
-namespace OWL::TDC { bool __cdecl vf18(undefined4 *param_1,int param_2,int param_3,ushort param_4,RECT *param_5,uint *param_6, char *param_7,INT *param_8); }
-namespace OWL::TDC { undefined4 __cdecl vf19(undefined4 *param_1,int *param_2,uint *param_3,char *param_4,int param_5,INT *param_6, int param_7,uint *param_8); }
-namespace OWL::TDC { void __cdecl vf20(undefined4 *param_1,LPCSTR param_2,int param_3,LPRECT param_4,ushort param_5); }
-namespace OWL::TDC { void __cdecl vf21(undefined4 *param_1,LPSTR param_2,int param_3,LPRECT param_4,UINT param_5, LPDRAWTEXTPARAMS param_6); }
-namespace OWL::TDC { bool __cdecl vf22(undefined4 *param_1,undefined4 *param_2,GRAYSTRINGPROC param_3,LPARAM param_4, int param_5,int *param_6); }
-namespace OWL::TMemoryDC { void __cdecl vf5(undefined4 *param_1,uint *param_2); }
+void __cdecl FUN_00421f30(undefined4 *param_1,uint *param_2,int *param_3,int w2,int h2,DWORD rop);
+namespace OWL::TDC { void __cdecl vf1(undefined4 *self); }
+namespace OWL::TDC { bool __cdecl vf2(undefined4 *self,int savedDC); }
+namespace OWL::TDC { void __cdecl vf3(int self,int index); }
+namespace OWL::TDC { bool __cdecl vf4(undefined4 *self,DEVMODEA *lpdm); }
+namespace OWL::TDC { COLORREF * __cdecl vf8(COLORREF *self,int *param_2,uint *param_3); }
+namespace OWL::TDC { COLORREF * __cdecl vf9(COLORREF *self,int *param_2,uint *param_3); }
+namespace OWL::TDC { void __cdecl vf10(int *self,int mode); }
+namespace OWL::TDC { bool __cdecl vf11(int *self,int *param_2,LPPOINT lppt); }
+namespace OWL::TDC { bool __cdecl vf12(int *self,int *param_2,LPPOINT lppt); }
+namespace OWL::TDC { bool __cdecl vf13(int *self,int *param_2,LPSIZE lpsz); }
+namespace OWL::TDC { bool __cdecl vf14(int *self,int xn,int dx,int yn,int yd,LPSIZE lpsz); }
+namespace OWL::TDC { bool __cdecl vf15(int *self,int *param_2,LPSIZE lpsz); }
+namespace OWL::TDC { bool __cdecl vf16(int *self,int xn,int xd,int yn,int yd,LPSIZE lpsz); }
+namespace OWL::TDC { bool __cdecl vf17(undefined4 *self,int x,int y,uint *string_,char *len); }
+namespace OWL::TDC { bool __cdecl vf18(undefined4 *self,int x,int y,ushort options,RECT *pRect,uint *string_, char *len,INT *dx); }
+namespace OWL::TDC { undefined4 __cdecl vf19(undefined4 *self,int *param_2,uint *string_,char *len,int tabPositions,INT *lpnTabStopPositions, int tabOrigin,uint *param_8); }
+namespace OWL::TDC { void __cdecl vf20(undefined4 *self,LPCSTR text,int text2,LPRECT lprc,ushort format); }
+namespace OWL::TDC { void __cdecl vf21(undefined4 *self,LPSTR text,int text2,LPRECT lprc,UINT format, LPDRAWTEXTPARAMS lpdtp); }
+namespace OWL::TDC { bool __cdecl vf22(undefined4 *self,undefined4 *param_2,GRAYSTRINGPROC outputFunc,LPARAM lParam, int count,int *param_6); }
+namespace OWL::TMemoryDC { void __cdecl vf5(undefined4 *self,uint *param_2); }
 void __cdecl FUN_004224f0(undefined4 param_1,undefined *param_2);
 undefined1 __cdecl FUN_00422518(undefined4 param_1,undefined *param_2);
 undefined1 __cdecl FUN_00422548(undefined4 param_1,undefined *param_2);
@@ -564,153 +564,153 @@ undefined4 __cdecl FUN_00422ac4(undefined4 param_1,undefined *param_2,undefined4
 namespace OWL::TEventHandler { undefined4 __stdcall vf0(void); }
 undefined4 __cdecl FUN_00422b40(undefined4 param_1,int param_2);
 undefined4 __cdecl FUN_00422b68(undefined4 param_1,int *param_2,int *param_3,undefined *param_4);
-undefined4 * __cdecl FUN_00422bc0(undefined4 *param_1,int param_2);
-undefined4 * __cdecl FUN_00422cfc(undefined4 *param_1,int *param_2);
-namespace OWL::TXBase { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TXBase { undefined4 * __cdecl vf2(int *param_1); }
-namespace OWL::TXBase { void __cdecl vf3(int *param_1); }
-namespace OWL::TXBase { undefined4 __cdecl vf1(int param_1); }
+namespace OWL::TXBase { undefined4 * __cdecl TXBase(undefined4 *self,int param_2); }
+namespace OWL::TXBase { undefined4 * __cdecl TXBase_422cfc(undefined4 *self,int *param_2); }
+namespace OWL::TXBase { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TXBase { undefined4 * __cdecl vf2(int *self); }
+namespace OWL::TXBase { void __cdecl vf3(int *self); }
+namespace OWL::TXBase { undefined4 __cdecl vf1(int self); }
 undefined4 __stdcall FUN_00422f44(void);
 undefined4 __stdcall FUN_00422f98(undefined4 param_1,undefined1 *param_2);
-undefined4 __cdecl FUN_00422fa8(int *param_1,LPCSTR param_2,char *param_3);
-undefined4 * __cdecl FUN_00423088(undefined4 *param_1,int param_2,undefined4 param_3);
-undefined4 * __cdecl FUN_004230f0(undefined4 *param_1,uint param_2,int param_3);
-namespace OWL::TXOwl { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TXOwl { void __cdecl vf4(undefined4 param_1,int *param_2); }
-namespace OWL::TXOwl { undefined4 * __cdecl vf2(int *param_1); }
-namespace OWL::TXOwl { void __cdecl vf3(int *param_1); }
-undefined4 * __cdecl FUN_0042333c(undefined4 *param_1,int *param_2);
+undefined4 __cdecl FUN_00422fa8(int *param_1,LPCSTR caption,char *param_3);
+namespace OWL::TXOwl { undefined4 * __cdecl TXOwl(undefined4 *self,int param_2,undefined4 param_3); }
+namespace OWL::TXOwl { undefined4 * __cdecl TXOwl_4230f0(undefined4 *self,uint param_2,int param_3); }
+namespace OWL::TXOwl { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TXOwl { void __cdecl vf4(undefined4 self,int *param_2); }
+namespace OWL::TXOwl { undefined4 * __cdecl vf2(int *self); }
+namespace OWL::TXOwl { void __cdecl vf3(int *self); }
+namespace OWL::TXOwl { undefined4 * __cdecl TXOwl_42333c(undefined4 *self,int *param_2); }
 void __cdecl FUN_00423384(int param_1,undefined4 param_2);
 int __cdecl FUN_004233d8(int param_1,char *param_2,uint param_3,int param_4);
-int __cdecl FUN_004235b8(int param_1,uint param_2,undefined4 param_3,int param_4);
-int __cdecl FUN_004236bc(int param_1,uint param_2,undefined4 param_3,int param_4);
-undefined4 * __cdecl FUN_004237c0(undefined4 *param_1);
-namespace OWL::TXOutOfMemory { undefined4 * __cdecl vf2(int *param_1); }
-namespace OWL::TXOutOfMemory { void __cdecl vf3(int *param_1); }
+int __cdecl FUN_004235b8(int str,uint param_2,undefined4 param_3,int param_4);
+int __cdecl FUN_004236bc(int str,uint param_2,undefined4 param_3,int param_4);
+namespace OWL::TXOutOfMemory { undefined4 * __cdecl TXOutOfMemory(undefined4 *self); }
+namespace OWL::TXOutOfMemory { undefined4 * __cdecl vf2(int *self); }
+namespace OWL::TXOutOfMemory { void __cdecl vf3(int *self); }
 void __stdcall FUN_004239d4(void);
-namespace OWL::TXOutOfMemory { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TXOutOfMemory { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 uint * __cdecl FUN_00423a68(uint *param_1,undefined4 param_2,int param_3);
-uint * __cdecl FUN_00423abc(uint *param_1,LPCSTR param_2,int param_3,int param_4,int param_5,int param_6, int param_7,byte param_8,byte param_9,byte param_10,byte param_11,byte param_12, byte param_13,byte param_14,byte param_15);
-uint * __cdecl FUN_00423b5c(uint *param_1,LOGFONTA *param_2);
-void __cdecl FUN_00423bbc(undefined4 param_1,LPTEXTMETRICA param_2,int param_3);
-void __cdecl FUN_00423bf8(undefined4 param_1,LPTEXTMETRICA param_2);
+uint * __cdecl FUN_00423abc(uint *param_1,LPCSTR faceName,int cHeight,int cWidth,int cEscapement,int cOrientation, int cWeight,byte pitchAndFamily,byte italic,byte underline,byte strikeOut,byte charSet, byte outPrecision,byte clipPrecision,byte quality);
+uint * __cdecl FUN_00423b5c(uint *param_1,LOGFONTA *pLogFont);
+void __cdecl FUN_00423bbc(undefined4 param_1,LPTEXTMETRICA lptm,int param_3);
+void __cdecl FUN_00423bf8(undefined4 param_1,LPTEXTMETRICA lptm);
 LONG * __cdecl FUN_00423c5c(LONG *param_1,undefined4 param_2);
-LONG * __cdecl FUN_00423ce0(LONG *param_1,undefined4 param_2,uint *param_3);
-LONG * __cdecl FUN_00423d4c(LONG *param_1,undefined4 param_2,int param_3,uint *param_4);
-int __cdecl FUN_00423dc8(int param_1,undefined4 *param_2);
+LONG * __cdecl FUN_00423ce0(LONG *param_1,undefined4 param_2,uint *string_);
+LONG * __cdecl FUN_00423d4c(LONG *param_1,undefined4 param_2,int param_3,uint *string_);
+int __cdecl FUN_00423dc8(int str,undefined4 *param_2);
 undefined1 __cdecl FUN_00423e24(undefined4 *param_1);
 uint * __cdecl FUN_00423e4c(uint *param_1);
-namespace OWL::TDefaultGUIFont { void __cdecl _dtor(uint *param_1,byte param_2); }
+namespace OWL::TDefaultGUIFont { void __cdecl _dtor(uint *self,byte dtorFlags); }
 int __cdecl FUN_00423f6c(int param_1,int param_2);
 undefined4 __cdecl FUN_00423f84(int param_1);
 void __cdecl FUN_00423fac(int *param_1,int *param_2,int *param_3,int *param_4,int *param_5,int param_6);
-undefined4 * __stdcall FUN_004240d0(undefined4 *param_1,undefined4 param_2);
+namespace OWL::TGadget { undefined4 * __stdcall TGadget(undefined4 *self,undefined4 param_2); }
 int __stdcall FUN_004240d6(void);
-namespace OWL::TGadget { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TGadget { undefined4 __cdecl vf4(int *param_1,int param_2); }
+namespace OWL::TGadget { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TGadget { undefined4 __cdecl vf4(int *self,int param_2); }
 namespace OWL::TGadget { void __stdcall vf5(void); }
 namespace OWL::TGadget { void __stdcall vf6(void); }
-namespace OWL::TGadget { void __cdecl vf1(int param_1,char param_2); }
-namespace OWL::TGadget { void __cdecl vf3(int *param_1,int *param_2); }
+namespace OWL::TGadget { void __cdecl vf1(int self,char param_2); }
+namespace OWL::TGadget { void __cdecl vf3(int *self,int *param_2); }
 void __cdecl FUN_00424310(int param_1,undefined4 *param_2);
 void __cdecl FUN_00424340(int param_1,undefined4 param_2);
-namespace OWL::TGadget { undefined4 __cdecl vf11(int param_1,int *param_2); }
-namespace OWL::TGadget { void __cdecl vf7(int param_1); }
+namespace OWL::TGadget { undefined4 __cdecl vf11(int self,int *param_2); }
+namespace OWL::TGadget { void __cdecl vf7(int self); }
 namespace OWL::TGadget { void __stdcall vf8(void); }
-namespace OWL::TGadget { void __cdecl vf10(int param_1); }
-namespace OWL::TGadget { void __cdecl vf9(int param_1); }
+namespace OWL::TGadget { void __cdecl vf10(int self); }
+namespace OWL::TGadget { void __cdecl vf9(int self); }
 void __cdecl FUN_0042471c(int param_1);
 void __cdecl FUN_0042477c(int param_1);
 void __cdecl FUN_004247c8(int param_1);
-namespace OWL::TGadget { void __cdecl vf13(int param_1,undefined4 *param_2); }
-namespace OWL::TGadget { void __cdecl vf12(int *param_1); }
-namespace OWL::TGadget { void __cdecl vf2(int param_1,int *param_2); }
+namespace OWL::TGadget { void __cdecl vf13(int self,undefined4 *param_2); }
+namespace OWL::TGadget { void __cdecl vf12(int *self); }
+namespace OWL::TGadget { void __cdecl vf2(int self,int *param_2); }
 void __cdecl FUN_004249ac(int param_1,int *param_2,int *param_3,int *param_4,int *param_5);
 void __cdecl FUN_00424a64(int param_1,int *param_2);
-namespace OWL::TGadget { void __cdecl vf14(int param_1); }
+namespace OWL::TGadget { void __cdecl vf14(int self); }
 namespace OWL::TGadget { void __stdcall vf15(void); }
-namespace OWL::TGadget { void __cdecl vf16(int param_1); }
-namespace OWL::TGadget { void __cdecl vf17(int param_1); }
-namespace OWL::TGadget { void __cdecl vf19(int param_1); }
+namespace OWL::TGadget { void __cdecl vf16(int self); }
+namespace OWL::TGadget { void __cdecl vf17(int self); }
+namespace OWL::TGadget { void __cdecl vf19(int self); }
 namespace OWL::TGadget { void __stdcall vf18(void); }
 namespace OWL::TGadget { void __stdcall vf20(void); }
-int * __cdecl FUN_00424c0c(int *param_1,int param_2,undefined4 param_3,undefined1 param_4);
-namespace OWL::TSeparatorGadget { void __cdecl vf8(int param_1); }
-namespace OWL::TSeparatorGadget { void __cdecl vf12(int *param_1,undefined4 *param_2); }
-namespace OWL::TSeparatorGadget { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-undefined4 * __cdecl FUN_00424f3c(undefined4 *param_1);
-namespace OWL::TGadgetList { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TSeparatorGadget { int * __cdecl TSeparatorGadget(int *self,int vbasesBuilt,undefined4 param_3,undefined1 param_4); }
+namespace OWL::TSeparatorGadget { void __cdecl vf8(int self); }
+namespace OWL::TSeparatorGadget { void __cdecl vf12(int *self,undefined4 *param_2); }
+namespace OWL::TSeparatorGadget { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TGadgetList { undefined4 * __cdecl TGadgetList(undefined4 *self); }
+namespace OWL::TGadgetList { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 int * __cdecl FUN_0042503c(int param_1);
-namespace OWL::TGadgetList { void __cdecl vf1(int *param_1,int param_2,int param_3,int param_4); }
-namespace OWL::TGadgetList { void vf2(int param_1,undefined4 param_2,undefined4 param_3,int *param_4,int *param_5, int param_6,int param_7); }
-namespace OWL::TGadgetList { int __cdecl vf3(int *param_1,int param_2); }
+namespace OWL::TGadgetList { void __cdecl vf1(int *self,int param_2,int param_3,int param_4); }
+namespace OWL::TGadgetList { void vf2(int self,undefined4 param_2,undefined4 param_3,int *param_4,int *param_5, int param_6,int param_7); }
+namespace OWL::TGadgetList { int __cdecl vf3(int *self,int param_2); }
 namespace OWL::TGadgetList { void __stdcall vf4(void); }
 namespace OWL::TGadgetList { void __stdcall vf5(void); }
-namespace OWL::TGadgetWindow { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-uint * __cdecl FUN_00425224(uint *param_1,int param_2,char param_3,byte param_4);
-int * __cdecl FUN_004253f4(int *param_1,int param_2,undefined4 param_3,undefined1 param_4,uint *param_5, int param_6);
-namespace OWL::TGadgetWindow { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TGadgetWindow { void EvSysColorChange(undefined4 param_1,undefined4 param_2,int *param_3,int param_4); }
-namespace OWL::TGadgetWindow { void __cdecl vf12(int *param_1,int param_2); }
+namespace OWL::TGadgetWindow { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+uint * __cdecl FUN_00425224(uint *param_1,int param_2,char param_3,byte italic);
+namespace OWL::TGadgetWindow { int * __cdecl TGadgetWindow(int *self,int vbasesBuilt,undefined4 param_3,undefined1 param_4,uint *param_5, int param_6); }
+namespace OWL::TGadgetWindow { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TGadgetWindow { void EvSysColorChange(undefined4 self,undefined4 param_2,int *param_3,int param_4); }
+namespace OWL::TGadgetWindow { void __cdecl IdleAction(int *self,int param_2); }
 uint __cdecl FUN_0042590c(int *param_1);
 undefined4 __cdecl FUN_00425950(int *param_1,int param_2);
 void __cdecl FUN_00425974(int param_1,int param_2);
 void __cdecl FUN_00425990(int *param_1,int param_2);
-namespace OWL::TGadgetWindow { void __cdecl vf13(int *param_1); }
-namespace OWL::TGadgetWindow { void __cdecl vf14(int *param_1,undefined4 *param_2); }
+namespace OWL::TGadgetWindow { void __cdecl vf13(int *self); }
+namespace OWL::TGadgetWindow { void __cdecl vf14(int *self,undefined4 *param_2); }
 undefined4 * __cdecl FUN_00425b54(undefined4 *param_1);
 int __cdecl FUN_00425bf0(int *param_1);
-namespace OWL::TGadgetWindow { void __cdecl vf1(int *param_1); }
-namespace OWL::TGadgetWindow { void __cdecl vf2(int *param_1,int param_2); }
-namespace OWL::TGadgetWindow { void __cdecl vf16(int *param_1,int *param_2); }
-namespace OWL::TGadgetWindow { void __cdecl vf20(int param_1,int param_2,int param_3,int *param_4); }
-namespace OWL::TGadgetWindow { int * __cdecl vf18(int *param_1,int param_2); }
+namespace OWL::TGadgetWindow { void __cdecl Create(int *self); }
+namespace OWL::TGadgetWindow { void __cdecl vf2(int *self,int param_2); }
+namespace OWL::TGadgetWindow { void __cdecl vf16(int *self,int *param_2); }
+namespace OWL::TGadgetWindow { void __cdecl vf20(int self,int param_2,int param_3,int *param_4); }
+namespace OWL::TGadgetWindow { int * __cdecl vf18(int *self,int param_2); }
 void __cdecl FUN_00425f74(int param_1,int *param_2);
 void __cdecl FUN_00426244(int param_1,int *param_2);
 void __cdecl FUN_0042645c(undefined4 param_1,int param_2,int param_3,int param_4,int param_5,int param_6, int *param_7);
 void __cdecl FUN_0042652c(int param_1,int *param_2);
-namespace OWL::TGadgetWindow { void __cdecl vf17(int param_1,int param_2,int *param_3); }
+namespace OWL::TGadgetWindow { void __cdecl vf17(int self,int param_2,int *param_3); }
 void __cdecl FUN_004268bc(int param_1);
-namespace OWL::TGadgetWindow { void __cdecl vf5(int *param_1,int param_2,int param_3,int param_4); }
-namespace OWL::TGadgetWindow { void vf6(undefined4 param_1,undefined4 param_2,undefined4 param_3,int *param_4,int *param_5 ,int param_6,int param_7); }
-namespace OWL::TGadgetWindow { void __cdecl vf8(int *param_1,int *param_2); }
-namespace OWL::TGadgetWindow { int __cdecl vf7(int param_1,int param_2); }
-namespace OWL::TGadgetWindow { void __cdecl vf9(int param_1,int *param_2); }
-namespace OWL::TGadgetWindow { void __cdecl vf10(int param_1,undefined4 param_2); }
-namespace OWL::TGadgetWindow { undefined4 __cdecl vf11(int param_1,int param_2,int param_3); }
-namespace OWL::TGadgetWindow { bool __cdecl vf21(int *param_1); }
-namespace OWL::TGadgetWindow { void __cdecl vf22(int *param_1); }
-namespace OWL::TGadgetWindow { void __cdecl vf23(int *param_1,LPMSG param_2); }
-namespace OWL::TGadgetWindow { void __cdecl EvMsg_7ef2(int param_1); }
-namespace OWL::TGadgetWindow { void __cdecl EvWindowPosChanging(int *param_1,int param_2); }
-namespace OWL::TGadgetWindow { void __cdecl vf15(int param_1,undefined4 *param_2,undefined4 param_3,int *param_4); }
-namespace OWL::TGadgetWindow { void __cdecl vf19(int param_1,int param_2); }
-namespace OWL::TGadgetWindow { void __cdecl EvLButtonDown(int *param_1); }
-namespace OWL::TGadgetWindow { void __cdecl EvLButtonUp(int *param_1); }
-namespace OWL::TGadgetWindow { void __cdecl EvLButtonDblClk(int *param_1); }
-namespace OWL::TGadgetWindow { void __cdecl EvRButtonDown(int *param_1); }
-namespace OWL::TGadgetWindow { void __cdecl EvRButtonUp(int *param_1); }
-namespace OWL::TGadgetWindow { void __cdecl EvMouseMove(int *param_1); }
-namespace OWL::TGadgetList { void __stdcall vf6(int *param_1); }
+namespace OWL::TGadgetWindow { void __cdecl vf5(int *self,int param_2,int param_3,int param_4); }
+namespace OWL::TGadgetWindow { void vf6(undefined4 self,undefined4 param_2,undefined4 param_3,int *param_4,int *param_5 ,int param_6,int param_7); }
+namespace OWL::TGadgetWindow { void __cdecl vf8(int *self,int *param_2); }
+namespace OWL::TGadgetWindow { int __cdecl vf7(int self,int param_2); }
+namespace OWL::TGadgetWindow { void __cdecl vf9(int self,int *param_2); }
+namespace OWL::TGadgetWindow { void __cdecl vf10(int self,undefined4 param_2); }
+namespace OWL::TGadgetWindow { undefined4 __cdecl vf11(int self,int param_2,int param_3); }
+namespace OWL::TGadgetWindow { bool __cdecl SetupWindow(int *self); }
+namespace OWL::TGadgetWindow { void __cdecl CleanupWindow(int *self); }
+namespace OWL::TGadgetWindow { void __cdecl PreProcessMsg(int *self,LPMSG lParam); }
+namespace OWL::TGadgetWindow { void __cdecl EvMsg_7ef2(int self); }
+namespace OWL::TGadgetWindow { void __cdecl EvWindowPosChanging(int *self,int windowPos); }
+namespace OWL::TGadgetWindow { void __cdecl vf15(int self,undefined4 *param_2,undefined4 param_3,int *param_4); }
+namespace OWL::TGadgetWindow { void __cdecl Paint(int self,int param_2); }
+namespace OWL::TGadgetWindow { void __cdecl EvLButtonDown(int *self); }
+namespace OWL::TGadgetWindow { void __cdecl EvLButtonUp(int *self); }
+namespace OWL::TGadgetWindow { void __cdecl EvLButtonDblClk(int *self); }
+namespace OWL::TGadgetWindow { void __cdecl EvRButtonDown(int *self); }
+namespace OWL::TGadgetWindow { void __cdecl EvRButtonUp(int *self); }
+namespace OWL::TGadgetWindow { void __cdecl EvMouseMove(int *self); }
+namespace OWL::TGadgetList { void __stdcall vf6(int *self); }
 void __stdcall FUN_00427260(int *param_1);
 void __stdcall FUN_0042726c(int *param_1);
-namespace OWL::TGadgetWindow { void __cdecl vf4(int *param_1,byte param_2); }
+namespace OWL::TGadgetWindow { void __cdecl EnableTooltip(int *self,byte wParam); }
 void __cdecl FUN_00427348(int *param_1,undefined4 param_2);
-namespace OWL::TGadgetWindow { undefined4 __cdecl vf24(int *param_1,int param_2,HWND param_3,undefined4 param_4); }
-namespace OWL::TGadgetWindow { void __cdecl vf25(int *param_1,int param_2); }
-namespace OWL::TGadgetWindow::TLayoutInfo { void __cdecl _dtor(int param_1,byte param_2); }
-namespace OWL::TGadgetWindowFont { void __cdecl _dtor(uint *param_1,byte param_2); }
+namespace OWL::TGadgetWindow { undefined4 __cdecl EvCommand(int *self,int param_2,HWND hWnd,undefined4 param_4); }
+namespace OWL::TGadgetWindow { void __cdecl EvCommandEnable(int *self,int param_2); }
+namespace OWL::TGadgetWindow::TLayoutInfo { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace OWL::TGadgetWindowFont { void __cdecl _dtor(uint *self,byte dtorFlags); }
 void __cdecl FUN_004278dc(undefined4 *param_1);
-namespace OWL::TAPointer_OWL_TRect { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TAPointer_OWL_TRect { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 undefined4 * __cdecl FUN_0042790c(undefined4 *param_1);
 undefined4 * __cdecl FUN_0042793c(undefined4 *param_1,undefined4 param_2,int param_3);
 void __cdecl FUN_00427974(int *param_1,uint param_2);
 void __cdecl FUN_0042798c(int param_1,uint param_2);
-undefined4 * __cdecl FUN_004279a4(undefined4 *param_1,uint param_2,undefined4 param_3);
-namespace OWL::TXGdi { undefined4 * __cdecl vf2(int *param_1); }
-namespace OWL::TXGdi { void __cdecl vf3(int *param_1); }
+namespace OWL::TXGdi { undefined4 * __cdecl TXGdi(undefined4 *self,uint param_2,undefined4 param_3); }
+namespace OWL::TXGdi { undefined4 * __cdecl vf2(int *self); }
+namespace OWL::TXGdi { void __cdecl vf3(int *self); }
 void __cdecl FUN_00427c44(uint param_1,undefined4 param_2);
-namespace OWL::TXGdi { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TXGdi { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 undefined4 __stdcall FUN_00427ce0(void);
 LONG __stdcall FUN_00427dd2(void);
 void __cdecl FUN_00427ed8(int param_1);
@@ -724,8 +724,8 @@ void __cdecl FUN_004282cc(uint param_1);
 uint __cdecl FUN_004282f8(uint param_1);
 undefined4 * __cdecl FUN_00428420(undefined4 *param_1);
 undefined4 * __cdecl FUN_00428470(undefined4 *param_1,undefined4 param_2,int param_3);
-namespace OWL::TGdiObject { void __cdecl _dtor(uint *param_1,byte param_2); }
-namespace OWL::TObjInfo { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TGdiObject { void __cdecl _dtor(uint *self,byte dtorFlags); }
+namespace OWL::TObjInfo { void __cdecl _dtor(int self,byte dtorFlags); }
 void __cdecl FUN_004285e8(int param_1,byte param_2);
 void __cdecl FUN_00428704(int param_1,byte param_2);
 void __cdecl FUN_004287d4(int param_1,byte param_2);
@@ -736,22 +736,22 @@ void __cdecl FUN_00428984(int *param_1,int *param_2);
 undefined4 __cdecl FUN_00428a30(int param_1);
 int __cdecl FUN_00428a4a(int param_1,int param_2);
 void __cdecl FUN_00428a65(int param_1,int param_2,int param_3);
-void __stdcall FUN_00428c58(void);
+void __stdcall InitRichEditStreamer_428c58(void);
 void __stdcall FUN_00428cae(void);
 undefined4 * __cdecl FUN_00428cde(undefined4 *param_1);
-undefined4 * __cdecl FUN_00428d08(undefined4 *param_1,int param_2);
-bool __cdecl FUN_00428d68(int *param_1,HWND param_2,HWND param_3,int param_4,int param_5,int param_6,int param_7, UINT param_8);
+undefined4 * __cdecl FUN_00428d08(undefined4 *param_1,int numWindows);
+bool __cdecl FUN_00428d68(int *param_1,HWND hWnd,HWND hWnd2,int x,int y,int cx,int cy, UINT flags);
 undefined4 __cdecl FUN_00428d9c(undefined4 *param_1);
-namespace OWL::TDeferWinPos { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace OWL::TLayoutWindow { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
+namespace OWL::TDeferWinPos { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace OWL::TLayoutWindow { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
 undefined4 * __cdecl FUN_00428e2c(undefined4 *param_1);
-namespace OWL::TLayoutWindow { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TLayoutWindow { void __cdecl vf1(int *param_1); }
+namespace OWL::TLayoutWindow { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TLayoutWindow { void __cdecl vf1(int *self); }
 void __cdecl FUN_0042918c(int param_1,int param_2,undefined4 *param_3);
 undefined4 __cdecl FUN_0042925c(int param_1,int param_2,undefined4 *param_3);
 undefined4 __cdecl FUN_00429290(int param_1,int param_2);
-namespace OWL::TLayoutWindow { void __cdecl EvSize(int *param_1,int param_2,int *param_3); }
-namespace OWL::TLayoutWindow { void __cdecl vf2(int *param_1,int param_2); }
+namespace OWL::TLayoutWindow { void __cdecl EvSize(int *self,int sizeType,int *size); }
+namespace OWL::TLayoutWindow { void __cdecl RemoveChild(int *self,int param_2); }
 int __cdecl FUN_004294bc(int param_1,int param_2);
 void __cdecl FUN_004294dc(int param_1);
 void __cdecl FUN_00429500(int param_1);
@@ -761,9 +761,9 @@ void __cdecl FUN_00429ac8(int param_1,undefined1 *param_2);
 void __cdecl FUN_00429b3c(int *param_1,char *param_2);
 int __cdecl FUN_00429d28(int param_1,int param_2);
 void __cdecl FUN_00429d48(int *param_1);
-undefined4 * __cdecl FUN_00429ddc(undefined4 *param_1,int *param_2);
-int * __cdecl FUN_00429e44(int *param_1,int param_2);
-namespace OWL::TLayoutWindow::Streamer { undefined4 __cdecl vf1(int param_1); }
+namespace OWL::TLayoutWindow::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TLayoutWindow { int * __cdecl TLayoutWindow(int *self,int vbasesBuilt); }
+namespace OWL::TLayoutWindow::Streamer { undefined4 __cdecl vf1(int self); }
 namespace OWL::TLayoutWindow::Streamer { void __stdcall vf2(void); }
 undefined1 * __cdecl FUN_00429f64(undefined1 *param_1,undefined4 param_2,undefined4 *param_3);
 undefined4 * __cdecl FUN_0042a024(undefined4 *param_1);
@@ -774,29 +774,29 @@ undefined4 * __cdecl FUN_0042a154(undefined4 *param_1);
 undefined4 * __cdecl FUN_0042a24c(int *param_1);
 namespace OWL::TLayoutWindow::Streamer { undefined4 __stdcall vf3(void); }
 undefined * __stdcall FUN_0042a440(void);
-void __stdcall FUN_0042a4d7(void);
+void __stdcall DestroyRichEditLoader_42a4d7(void);
 undefined4 * __cdecl FUN_0042a56c(undefined4 *param_1,undefined4 param_2,undefined4 param_3);
 int __stdcall FUN_0042a5b0(void);
 undefined4 * __cdecl FUN_0042a5c4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5);
 uint * __cdecl FUN_0042a644(undefined4 *param_1,char *param_2);
 int __cdecl FUN_0042a898(int param_1,ushort param_2);
-namespace OWL::_TLocaleCacheList { void __cdecl _dtor(int *param_1,byte param_2); }
+namespace OWL::_TLocaleCacheList { void __cdecl _dtor(int *self,byte dtorFlags); }
 void __cdecl FUN_0042aa7c(int *param_1,int param_2);
 int __cdecl FUN_0042aa90(int *param_1,ushort param_2);
 undefined4 __cdecl FUN_0042ab74(ushort param_1);
-namespace OWL::_TLocaleCache { void __cdecl _dtor(int param_1,byte param_2); }
-int __cdecl FUN_0042ac6c(char *param_1,char *param_2);
+namespace OWL::_TLocaleCache { void __cdecl _dtor(int self,byte dtorFlags); }
+int __cdecl FUN_0042ac6c(char *s1,char *s2);
 undefined * __stdcall FUN_0042acec(void);
 void __stdcall FUN_0042ad37(void);
 char * __cdecl FUN_0042aea0(uint *param_1);
 undefined4 * __cdecl FUN_0042aee8(undefined4 *param_1);
 int * __cdecl FUN_0042b3f0(int *param_1,int param_2);
-namespace OWL::TTmpBufferBase { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::__TFixedAlloc { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TTmpBufferBase { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::__TFixedAlloc { void __cdecl _dtor(int self,byte dtorFlags); }
 undefined * __stdcall FUN_0042b6a4(void);
-void __stdcall FUN_0042b6ed(void);
+void __stdcall DestroyRichEditLoader_42b6ed(void);
 int __cdecl FUN_0042b780(int param_1);
-namespace OWL::TMemDCCache { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TMemDCCache { void __cdecl _dtor(int self,byte dtorFlags); }
 undefined4 __cdecl FUN_0042b824(int param_1);
 void __cdecl FUN_0042b87c(int param_1,int param_2);
 int * __cdecl FUN_0042b8b0(int *param_1);
@@ -805,41 +805,41 @@ int * __cdecl FUN_0042b980(int *param_1,uint *param_2);
 void __cdecl FUN_0042b9d8(int *param_1);
 void __cdecl FUN_0042ba18(undefined4 *param_1,uint *param_2);
 void __cdecl FUN_0042ba5c(undefined4 *param_1);
-namespace OWL::TMemoryDC { int * __cdecl _dtor(int *param_1,byte param_2); }
-undefined4 * __cdecl FUN_0042bb1c(undefined4 *param_1,int param_2);
-namespace OWL::TMemoryDC { undefined4 vf24(byte *param_1,undefined **param_2,undefined4 *param_3); }
-undefined4 * __cdecl FUN_0042bb94(undefined4 *param_1,int *param_2,int param_3);
-undefined4 * __cdecl FUN_0042bc04(undefined4 *param_1,undefined4 param_2,int param_3);
-undefined4 * __cdecl FUN_0042bc50(undefined4 *param_1,HWND param_2,int param_3);
-namespace OWL::TMenu { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-UINT __cdecl FUN_0042bce8(int param_1,int param_2);
+namespace OWL::TMemoryDC { int * __cdecl _dtor(int *self,byte dtorFlags); }
+namespace OWL::TMenu { undefined4 * __cdecl TMenu(undefined4 *self,int param_2); }
+namespace OWL::TMemoryDC { undefined4 vf24(byte *self,undefined **menu,undefined4 *param_3); }
+namespace OWL::TMenu { undefined4 * __cdecl TMenu_42bb94(undefined4 *self,int *param_2,int param_3); }
+namespace OWL::TMenu { undefined4 * __cdecl TMenu_42bc04(undefined4 *self,undefined4 param_2,int param_3); }
+namespace OWL::TMenu { undefined4 * __cdecl TMenu_42bc50(undefined4 *self,HWND hWnd,int param_3); }
+namespace OWL::TMenu { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+UINT __cdecl FUN_0042bce8(int param_1,int pos);
 void __cdecl FUN_0042bd98(int param_1,uint param_2);
 namespace OWL::TMenu { void __stdcall vf2(void); }
 namespace OWL::TMenu { void __stdcall vf3(void); }
 int * __cdecl FUN_0042bdc0(int param_1,int *param_2,int param_3,int param_4);
-undefined4 * __cdecl FUN_0042bf5c(undefined4 *param_1,int param_2);
-undefined4 * __cdecl FUN_0042bfc4(undefined4 *param_1,uint param_2);
-namespace OWL::TXMenu { undefined4 * __cdecl vf2(int *param_1); }
-namespace OWL::TXMenu { void __cdecl vf3(int *param_1); }
+namespace OWL::TPopupMenu { undefined4 * __cdecl TPopupMenu(undefined4 *self,int param_2); }
+namespace OWL::TXMenu { undefined4 * __cdecl TXMenu(undefined4 *self,uint param_2); }
+namespace OWL::TXMenu { undefined4 * __cdecl vf2(int *self); }
+namespace OWL::TXMenu { void __cdecl vf3(int *self); }
 void __cdecl FUN_0042c1c4(uint param_1);
-namespace OWL::TXMenu { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TMenu { undefined4 __cdecl vf1(int param_1); }
-namespace OWL::TMenu { void vf4(char *param_1,byte *param_2,char param_3); }
-namespace OWL::TMessageBar { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TMessageBar { void vf15(undefined4 param_1,undefined4 param_2,undefined4 param_3,int *param_4, undefined4 *param_5,undefined1 param_6,int *param_7); }
-namespace OWL::TMessageBar { void __cdecl vf16(int *param_1,int *param_2); }
-namespace OWL::TMessageBar { void __cdecl vf14(int *param_1,undefined4 *param_2); }
-namespace OWL::TMessageBar { void __cdecl vf27(int *param_1,uint *param_2); }
-namespace OWL::TSystemMessage { void __cdecl _dtor(int param_1,byte param_2); }
-undefined4 * __cdecl FUN_0042c860(undefined4 *param_1);
-namespace OWL::TMsgThread { undefined4 __cdecl vf0(int *param_1); }
+namespace OWL::TXMenu { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TMenu { undefined4 __cdecl vf1(int self); }
+namespace OWL::TMenu { void vf4(char *self,byte *param_2,char param_3); }
+namespace OWL::TMessageBar { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TMessageBar { void vf15(undefined4 self,undefined4 param_2,undefined4 param_3,int *gadgetWindow, undefined4 *param_5,undefined1 param_6,int *param_7); }
+namespace OWL::TMessageBar { void __cdecl vf16(int *self,int *param_2); }
+namespace OWL::TMessageBar { void __cdecl vf14(int *self,undefined4 *param_2); }
+namespace OWL::TMessageBar { void __cdecl vf27(int *self,uint *param_2); }
+namespace OWL::TSystemMessage { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace OWL::TMsgThread { undefined4 * __cdecl TMsgThread(undefined4 *self); }
+namespace OWL::TMsgThread { undefined4 __cdecl vf0(int *self); }
 namespace OWL::TMsgThread { undefined4 __stdcall vf1(void); }
-namespace OWL::TMsgThread { undefined4 __cdecl vf2(undefined4 param_1,MSG *param_2); }
+namespace OWL::TMsgThread { undefined4 __cdecl vf2(undefined4 self,MSG *pMsg); }
 undefined4 __cdecl FUN_0042c95c(int *param_1);
 void __stdcall FUN_0042c9b8(void);
-namespace OWL::TMsgThread { void __cdecl vf3(int *param_1); }
+namespace OWL::TMsgThread { void __cdecl vf3(int *self); }
 namespace OWL::TMsgThread { undefined4 __stdcall vf4(void); }
-namespace OWL::TMsgThread { undefined4 __cdecl vf5(undefined4 param_1,undefined4 param_2); }
+namespace OWL::TMsgThread { undefined4 __cdecl vf5(undefined4 self,undefined4 param_2); }
 void __cdecl FUN_0042cabc(undefined4 param_1,int param_2);
 void __cdecl FUN_0042cad8(undefined4 param_1,int param_2);
 undefined4 __cdecl FUN_0042caf4(undefined4 param_1,uint *param_2);
@@ -849,9 +849,9 @@ int __cdecl FUN_0042cbc4(int param_1,int param_2);
 void __cdecl FUN_0042cc74(int param_1,int param_2);
 uint __cdecl FUN_0042cd10(int param_1,int param_2);
 undefined4 * __cdecl FUN_0042ce68(undefined4 *param_1,uint *param_2,undefined4 param_3,undefined4 param_4,int param_5);
-namespace OWL::TStreamableClass { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TStreamableClass { void __cdecl _dtor(int self,byte dtorFlags); }
 int * __cdecl FUN_0042cf30(int *param_1);
-namespace OWL::TStreamableTypes { void __cdecl _dtor(int *param_1,byte param_2); }
+namespace OWL::TStreamableTypes { void __cdecl _dtor(int *self,byte dtorFlags); }
 void __cdecl FUN_0042d068(int param_1,char param_2);
 void __cdecl FUN_0042d0b4(int *param_1,undefined4 param_2,int param_3);
 void __cdecl FUN_0042d0cc(int *param_1,undefined4 param_2,int param_3);
@@ -868,7 +868,7 @@ uint __cdecl FUN_0042d8bc(int param_1,uint *param_2);
 void __stdcall FUN_0042d944(void);
 uint __cdecl FUN_0042d94c(int *param_1);
 void __cdecl FUN_0042d9a0(int *param_1,undefined4 param_2,int param_3);
-void __cdecl FUN_0042d9ec(int *param_1,undefined4 *param_2,uint param_3);
+void __cdecl FUN_0042d9ec(int *param_1,undefined4 *dest,uint param_3);
 uint __cdecl FUN_0042da9c(int *param_1);
 uint __cdecl FUN_0042dac0(int *param_1);
 undefined4 __cdecl FUN_0042db04(int *param_1);
@@ -883,15 +883,15 @@ void __cdecl FUN_0042de38(int *param_1,byte param_2);
 void __cdecl FUN_0042de94(int *param_1,undefined4 param_2,int param_3);
 void __cdecl FUN_0042dee0(int *param_1);
 void __cdecl FUN_0042df1c(int *param_1);
-void __cdecl FUN_0042df58(int *param_1,undefined4 *param_2,uint param_3);
+void __cdecl FUN_0042df58(int *param_1,undefined4 *src,uint param_3);
 void __cdecl FUN_0042dfc4(int *param_1,uint *param_2);
-void __cdecl FUN_0042e00c(int *param_1,uint *param_2);
+void __cdecl FUN_0042e00c(int *param_1,uint *src);
 void __cdecl FUN_0042e054(int *param_1,int *param_2,undefined4 param_3,undefined4 param_4);
 void __cdecl FUN_0042e090(int *param_1,int *param_2,undefined4 param_3);
 void __cdecl FUN_0042e108(int *param_1,int *param_2);
 void __cdecl FUN_0042e154(int *param_1,int *param_2,undefined4 param_3);
 void __cdecl FUN_0042e358(undefined4 *param_1);
-namespace OWL::TPointer_OWL_TStreamer { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TPointer_OWL_TStreamer { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __cdecl FUN_0042e388(int param_1,byte param_2);
 void __cdecl FUN_0042e4dc(int param_1,byte param_2);
 void __cdecl FUN_0042e62c(int param_1,byte param_2);
@@ -902,32 +902,32 @@ void __stdcall FUN_0042e82e(void);
 undefined4 __stdcall FUN_0042e86c(void);
 undefined * __stdcall FUN_0042e874(void);
 void __cdecl FUN_0042e87c(undefined4 param_1);
-void __stdcall FUN_0042e88c(HWND param_1,UINT param_2,WPARAM param_3,LPARAM param_4);
+void __stdcall FUN_0042e88c(HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam);
 undefined1 * __cdecl FUN_0042e8f4(undefined4 param_1);
 undefined4 * __stdcall FUN_0042e9bc(void);
 void __stdcall FUN_0042ea74(void);
 void __cdecl FUN_0042ea7c(int param_1);
 void FUN_0042eaa4(int param_1);
-namespace TThunkAllocator { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-void __cdecl FUN_0042eb68(LPVOID param_1);
-int * __cdecl FUN_0042eb8c(int *param_1,HWND param_2);
-namespace OWL::TPaintDC { void __cdecl _dtor(int *param_1,byte param_2); }
+namespace TThunkAllocator { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+void __cdecl FUN_0042eb68(LPVOID mem);
+int * __cdecl FUN_0042eb8c(int *param_1,HWND hWnd);
+namespace OWL::TPaintDC { void __cdecl _dtor(int *self,byte dtorFlags); }
 uint * __cdecl FUN_0042ecec(uint *param_1,undefined4 param_2,int param_3);
-namespace OWL::TPaintDC { void vf24(char *param_1,undefined4 param_2,char param_3); }
+namespace OWL::TPaintDC { void vf24(char *self,undefined4 param_2,char param_3); }
 uint * __cdecl FUN_0042ed5c(uint *param_1,int param_2,BYTE param_3);
 void __cdecl FUN_0042eda4(uint *param_1,int param_2,BYTE param_3);
-namespace OWL::TFileName { void __cdecl _dtor(int param_1,byte param_2); }
-int * __cdecl FUN_0042f30c(int *param_1,int param_2,undefined4 param_3,uint param_4);
-undefined4 __cdecl FUN_0042f460(int param_1,LPCSTR param_2);
-namespace OWL::TPickListPopup { undefined4 __cdecl vf7(int param_1); }
-namespace OWL::TPickListPopup { undefined4 __cdecl vf18(int param_1,undefined4 param_2); }
-namespace OWL::TPickListPopup { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TView { undefined4 __cdecl vf1(int param_1); }
-namespace OWL::TView { undefined4 __cdecl vf2(int param_1); }
+namespace OWL::TFileName { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace OWL::TPickListPopup { int * __cdecl TPickListPopup(int *self,int vbasesBuilt,undefined4 param_3,uint param_4); }
+undefined4 __cdecl FUN_0042f460(int param_1,LPCSTR newItem);
+namespace OWL::TPickListPopup { undefined4 __cdecl Execute(int self); }
+namespace OWL::TPickListPopup { undefined4 __cdecl EvCommand(int self,undefined4 param_2); }
+namespace OWL::TPickListPopup { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TView { undefined4 __cdecl vf1(int self); }
+namespace OWL::TView { undefined4 __cdecl vf2(int self); }
 namespace OWL::TView { undefined4 __stdcall vf6(void); }
 namespace OWL::TView { undefined4 __stdcall vf11(void); }
-namespace OWL::TToolbarRes { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TResource_OWL_TOOLBARTEMPLATE_241 { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TToolbarRes { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TResource_OWL_TOOLBARTEMPLATE_241 { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 undefined4 __cdecl FUN_0042f7fc(int param_1);
 undefined4 __cdecl FUN_0042f80c(int param_1);
 undefined4 __cdecl FUN_0042f818(int param_1);
@@ -937,41 +937,41 @@ undefined2 __cdecl FUN_0042f850(int param_1);
 undefined2 __cdecl FUN_0042f868(int param_1);
 undefined * __cdecl FUN_0042f944(undefined4 *param_1,char *param_2,ushort param_3);
 int * __cdecl FUN_0042f998(int *param_1);
-namespace OWL::TRegion { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TRegLink { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-void __stdcall FUN_0042facc(void);
+namespace OWL::TRegion { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TRegLink { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+void __stdcall InitRichEditStreamer_42facc(void);
 void __stdcall FUN_0042fb22(void);
-undefined4 * __cdecl FUN_0042fb54(undefined4 *param_1,int *param_2);
-int * __cdecl FUN_0042fbbc(int *param_1,int param_2);
+namespace OWL::TWindow::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TWindow { int * __cdecl TWindow(int *self,int vbasesBuilt); }
 int * __cdecl FUN_0042fc7c(int *param_1,undefined4 *param_2);
 int * __cdecl FUN_0042fccc(int *param_1,int param_2);
-namespace OWL::TWindow::Streamer { int __cdecl vf1(int param_1,int *param_2,int param_3); }
-namespace OWL::TWindow::Streamer { void __cdecl vf2(int param_1,int *param_2); }
+namespace OWL::TWindow::Streamer { int __cdecl vf1(int self,int *param_2,int param_3); }
+namespace OWL::TWindow::Streamer { void __cdecl vf2(int self,int *param_2); }
 undefined4 * __cdecl FUN_004302e4(int *param_1);
 namespace OWL::TWindow::Streamer { undefined4 __stdcall vf3(void); }
 void __cdecl FUN_0043044c(int *param_1,int *param_2,int param_3);
 int * __cdecl FUN_00430478(int *param_1,uint param_2);
 int * __cdecl FUN_00430568(int *param_1,uint param_2);
 uint * __cdecl FUN_004305b0(uint *param_1,int *param_2,int param_3,int param_4,int param_5);
-uint * __cdecl FUN_00430650(uint *param_1,FILETIME *param_2);
+uint * __cdecl FUN_00430650(uint *param_1,FILETIME *pFileTime);
 undefined4 __cdecl FUN_004306b4(uint *param_1);
 undefined4 * __cdecl FUN_00430728(undefined4 *param_1,char param_2);
 undefined4 * __cdecl FUN_004307c8(undefined4 *param_1,undefined4 param_2,undefined4 *param_3,undefined4 param_4, uint *param_5);
 void __cdecl FUN_0043084c(int param_1,undefined4 param_2,undefined4 param_3);
 void __cdecl FUN_00430864(int param_1,uint *param_2,char param_3);
-void __cdecl FUN_004308b8(int param_1,uint *param_2);
-undefined4 * __cdecl FUN_004308d4(undefined4 *param_1,int param_2,undefined4 param_3);
-namespace OWL::TTooltipEnabler { void __cdecl vf1(int param_1,uint *param_2); }
+void __cdecl FUN_004308b8(int param_1,uint *src);
+namespace OWL::TTooltipEnabler { undefined4 * __cdecl TTooltipEnabler(undefined4 *self,int param_2,undefined4 param_3); }
+namespace OWL::TTooltipEnabler { void __cdecl vf1(int self,uint *src); }
 namespace OWL::TTooltipEnabler { void __stdcall vf2(void); }
-int * __cdecl FUN_00430958(int *param_1,int param_2,undefined4 param_3,char param_4,int param_5);
-namespace OWL::TTooltip { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TTooltip { char * __stdcall vf9(void); }
+namespace OWL::TTooltip { int * __cdecl TTooltip(int *self,int vbasesBuilt,undefined4 param_3,char param_4,int param_5); }
+namespace OWL::TTooltip { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TTooltip { char * __stdcall GetClassName(void); }
 namespace OWL::TFrameWindow { undefined4 __stdcall vf4(void); }
 namespace OWL::TFrameWindow { undefined4 __stdcall vf5(void); }
 undefined4 * __cdecl FUN_00430cac(undefined4 *param_1,undefined4 *param_2,int param_3,uint param_4);
 undefined4 * __cdecl FUN_00430d0c(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,undefined4 param_4);
-void __cdecl FUN_00430d5c(LPRECT param_1,undefined4 *param_2);
-undefined4 __cdecl FUN_00430d78(undefined4 *param_1,LPRECT param_2,uint param_3,uint param_4);
+void __cdecl FUN_00430d5c(LPRECT qrc,undefined4 *param_2);
+undefined4 __cdecl FUN_00430d78(undefined4 *param_1,LPRECT qrc,uint edge,uint grfFlags);
 void __cdecl FUN_004311cc(undefined4 *param_1,int *param_2,uint param_3,uint *param_4,uint *param_5);
 undefined * __stdcall FUN_00431398(void);
 void __stdcall FUN_0043141d(void);
@@ -987,46 +987,46 @@ void __cdecl FUN_004318b4(uint *param_1,int *param_2,undefined4 *param_3,int *pa
 void __cdecl FUN_00431ecc(undefined4 *param_1,int *param_2,undefined4 *param_3,int *param_4,int *param_5, int param_6,char param_7,char param_8,int *param_9,uint *param_10);
 void __cdecl FUN_00431f80(undefined4 param_1,int *param_2,int *param_3,int *param_4,int param_5,char param_6, char param_7,COLORREF *param_8,ushort param_9);
 void __cdecl FUN_00432478(undefined4 *param_1,int *param_2,int *param_3,int *param_4,int param_5,char param_6, char param_7);
-namespace OWL::TUIFaceData { void __cdecl _dtor(uint *param_1,byte param_2); }
-namespace OWL::THatch8x8Brush { void __cdecl _dtor(uint *param_1,byte param_2); }
+namespace OWL::TUIFaceData { void __cdecl _dtor(uint *self,byte dtorFlags); }
+namespace OWL::THatch8x8Brush { void __cdecl _dtor(uint *self,byte dtorFlags); }
 void __cdecl FUN_00432700(undefined4 *param_1);
-namespace OWL::TPointer_OWL_TBitmap { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TPointer_OWL_TBitmap { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __stdcall FUN_00432764(void);
-void __stdcall FUN_0043300c(void);
+void __stdcall InitRichEditStreamer_43300c(void);
 void __stdcall FUN_00433062(void);
-namespace OWL::TUrlLink { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-namespace OWL::TUrlLink { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TUrlLink { char * __stdcall vf11(void); }
-namespace OWL::TUrlLink { void __cdecl vf15(int *param_1); }
-namespace OWL::TUrlLink { void __cdecl vf13(int *param_1,byte param_2); }
+namespace OWL::TUrlLink { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TUrlLink { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TUrlLink { char * __stdcall GetClassName(void); }
+namespace OWL::TUrlLink { void __cdecl SetupWindow(int *self); }
+namespace OWL::TUrlLink { void __cdecl EnableTooltip(int *self,byte wParam); }
 void __cdecl FUN_00433660(int *param_1,int param_2);
-namespace OWL::TUrlLink { void __cdecl vf14(int *param_1,LPMSG param_2); }
-LRESULT __stdcall FUN_00433844(HWND param_1,UINT param_2,WPARAM param_3,LPARAM param_4);
-namespace OWL::TUrlLink { void __cdecl vf16(int *param_1,LPWNDCLASSA param_2); }
-namespace OWL::TUrlLink { void __cdecl vf17(int *param_1,int param_2); }
-namespace OWL::TUrlLink { void __cdecl EvPaint(int *param_1); }
-namespace OWL::TUrlLink { uint __cdecl EvMsg_19(int *param_1,HDC param_2,undefined4 param_3,int param_4); }
-namespace OWL::TUrlLink { void __cdecl EvLButtonDown(int *param_1); }
-namespace OWL::TUrlLink { void __cdecl EvMouseMove(int *param_1,undefined4 param_2,int *param_3); }
-namespace OWL::TUrlLink { undefined4 __cdecl EvGetfont(int param_1); }
-namespace OWL::TUrlLink { void __cdecl EvSetfont(int *param_1,undefined4 param_2,char param_3); }
+namespace OWL::TUrlLink { void __cdecl PreProcessMsg(int *self,LPMSG lParam); }
+LRESULT __stdcall FUN_00433844(HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam);
+namespace OWL::TUrlLink { void __cdecl GetWindowClass(int *self,LPWNDCLASSA wndClass); }
+namespace OWL::TUrlLink { void __cdecl Paint(int *self,int param_2); }
+namespace OWL::TUrlLink { void __cdecl EvPaint(int *self); }
+namespace OWL::TUrlLink { uint __cdecl EvMsg_19(int *self,HDC hdc,undefined4 param_3,int param_4); }
+namespace OWL::TUrlLink { void __cdecl EvLButtonDown(int *self); }
+namespace OWL::TUrlLink { void __cdecl EvMouseMove(int *self,undefined4 modKeys,int *point); }
+namespace OWL::TUrlLink { undefined4 __cdecl EvGetfont(int self); }
+namespace OWL::TUrlLink { void __cdecl EvSetfont(int *self,undefined4 param_2,char param_3); }
 namespace OWL::TUrlLink { undefined4 __stdcall EvGetDlgCode(void); }
-namespace OWL::TUrlLink { void __cdecl vf18(int *param_1); }
+namespace OWL::TUrlLink { void __cdecl vf18(int *self); }
 void __cdecl FUN_00433fdc(int *param_1,undefined1 param_2);
 void __cdecl FUN_00434000(int *param_1);
-namespace OWL::TUrlLink { uint __cdecl vf19(undefined4 param_1,uint *param_2,UINT param_3); }
-namespace OWL::TUrlLink { void __cdecl vf20(int *param_1,undefined4 param_2); }
-undefined4 * __cdecl FUN_00434f74(undefined4 *param_1,int *param_2);
-int * __cdecl FUN_00434fdc(int *param_1,int param_2);
-namespace OWL::TUrlLink::Streamer { undefined4 __cdecl vf1(int param_1,int *param_2); }
+namespace OWL::TUrlLink { uint __cdecl vf19(undefined4 self,uint *param_2,UINT cmdShow); }
+namespace OWL::TUrlLink { void __cdecl vf20(int *self,undefined4 param_2); }
+namespace OWL::TUrlLink::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TUrlLink { int * __cdecl TUrlLink(int *self,int vbasesBuilt); }
+namespace OWL::TUrlLink::Streamer { undefined4 __cdecl vf1(int self,int *param_2); }
 void __cdecl FUN_00435210(int param_1,int *param_2);
-namespace OWL::TUrlLink::Streamer { void __cdecl vf2(int param_1,int *param_2); }
+namespace OWL::TUrlLink::Streamer { void __cdecl vf2(int self,int *param_2); }
 void __cdecl FUN_00435324(int param_1,int *param_2);
 undefined4 * __cdecl FUN_00435378(int *param_1);
 namespace OWL::TUrlLink::Streamer { undefined4 __stdcall vf3(void); }
-namespace OWL::TUrlLink { undefined4 __cdecl vf12(int param_1); }
+namespace OWL::TUrlLink { undefined4 __cdecl GetTooltip(int self); }
 void __cdecl FUN_004355c0(undefined4 *param_1);
-namespace OWL::TPointer_OWL_TFont { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TPointer_OWL_TFont { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __cdecl FUN_00435630(int param_1);
 undefined4 __cdecl FUN_0043568a(int *param_1,int *param_2);
 undefined * __stdcall FUN_004356b3(void);
@@ -1039,82 +1039,82 @@ bool __cdecl FUN_0043599d(int param_1,int *param_2);
 undefined * __cdecl FUN_004359b3(int param_1);
 void __stdcall FUN_00435ae8(void);
 void __stdcall FUN_00435b5b(void);
-namespace OWL::TWindow { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-undefined4 * __cdecl FUN_00435bb0(undefined4 *param_1,undefined4 param_2,undefined4 param_3);
-namespace OWL::TCommandEnabler { void __cdecl vf0(int param_1); }
+namespace OWL::TWindow { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TCommandEnabler { undefined4 * __cdecl TCommandEnabler(undefined4 *self,undefined4 param_2,undefined4 param_3); }
+namespace OWL::TCommandEnabler { void __cdecl vf0(int self); }
 void __cdecl FUN_00435bfc(int param_1);
-int * __cdecl FUN_00435c28(int *param_1,int param_2,undefined4 param_3,uint *param_4,int param_5);
-int * __cdecl FUN_00435d18(int *param_1,int param_2);
+namespace OWL::TWindow { int * __cdecl TWindow_435c28(int *self,int vbasesBuilt,undefined4 param_3,uint *param_4,int param_5); }
+namespace OWL::TWindow { int * __cdecl TWindow_435d18(int *self,int vbasesBuilt); }
 void __cdecl FUN_00435df4(int param_1,undefined4 param_2,uint *param_3,int param_4);
 void __cdecl FUN_00435e48(int param_1,undefined4 param_2,int param_3);
-namespace OWL::TWindow { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
-namespace OWL::TWindow { bool __cdecl vf10(int param_1,LPMSG param_2); }
-namespace OWL::TWindow { undefined4 __cdecl vf11(int param_1,int param_2); }
-namespace OWL::TWindow { void __cdecl EvSysColorChange(int param_1); }
-namespace OWL::TWindow { void __cdecl vf32(int param_1,int param_2); }
-namespace OWL::TWindow { void __cdecl vf13(int param_1,int param_2); }
-namespace OWL::TWindow { undefined4 __cdecl vf14(int param_1); }
+namespace OWL::TWindow { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
+namespace OWL::TWindow { bool __cdecl PreProcessMsg(int self,LPMSG lParam); }
+namespace OWL::TWindow { undefined4 __cdecl IdleAction(int self,int param_2); }
+namespace OWL::TWindow { void __cdecl EvSysColorChange(int self); }
+namespace OWL::TWindow { void __cdecl RemoveChild(int self,int param_2); }
+namespace OWL::TWindow { void __cdecl SetParent(int self,int param_2); }
+namespace OWL::TWindow { undefined4 __cdecl SetDocTitle(int self); }
 void __cdecl FUN_004363ac(int param_1,undefined4 param_2);
 undefined4 __cdecl FUN_00436428(int param_1);
-namespace OWL::TWindow { undefined4 __cdecl vf18(undefined4 *param_1,int param_2,HWND param_3,undefined4 param_4); }
-namespace OWL::TWindow { undefined4 __cdecl vf19(undefined4 *param_1,int param_2,undefined4 *param_3); }
-namespace OWL::TWindow { void __cdecl vf20(undefined4 *param_1,int param_2); }
-void __cdecl FUN_00436810(undefined4 *param_1,HWND param_2,undefined4 *param_3);
-namespace OWL::TWindow { void __cdecl vf17(int param_1,UINT param_2,WPARAM param_3,LPARAM param_4); }
+namespace OWL::TWindow { undefined4 __cdecl EvCommand(undefined4 *self,int param_2,HWND hWnd,undefined4 param_4); }
+namespace OWL::TWindow { undefined4 __cdecl EvNotify(undefined4 *self,int param_2,undefined4 *param_3); }
+namespace OWL::TWindow { void __cdecl EvCommandEnable(undefined4 *self,int param_2); }
+void __cdecl FUN_00436810(undefined4 *window,HWND hWnd2,undefined4 *param_3);
+namespace OWL::TWindow { void __cdecl DefWindowProc(int self,UINT msg,WPARAM wParam,LPARAM lParam); }
 undefined4 * __cdecl FUN_004369a0(undefined4 *param_1);
 void __cdecl FUN_00436a28(int param_1,int param_2);
 void __cdecl FUN_00436a54(int param_1,int param_2,undefined4 param_3,undefined4 param_4,undefined4 param_5, undefined4 param_6);
 undefined4 __cdecl FUN_00436a84(int param_1,int param_2,int param_3,int param_4);
 void __cdecl FUN_00436ac4(int param_1);
 void __cdecl FUN_00436adc(int param_1);
-namespace OWL::TWindow { undefined4 __cdecl vf16(undefined4 *param_1,uint param_2,undefined4 param_3); }
+namespace OWL::TWindow { undefined4 __cdecl WindowProc(undefined4 *self,uint param_2,undefined4 param_3); }
 undefined4 __cdecl FUN_00436d48(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4);
 int __cdecl FUN_00436db0(int param_1,int param_2,undefined4 param_3,int param_4);
-LRESULT __cdecl FUN_00436e00(HWND param_1,LPARAM param_2);
-namespace OWL::TWindow { void __cdecl EvCreate(int param_1); }
-namespace OWL::TWindow { undefined4 __stdcall vf12(void); }
-namespace OWL::TWindow { void __cdecl EvKillFocus(int param_1); }
-namespace OWL::TWindow { void __cdecl EvSize(int param_1,int param_2); }
-namespace OWL::TWindow { void __cdecl EvMove(int param_1); }
-namespace OWL::TWindow { void __cdecl EvCompareitem(int param_1,undefined4 param_2,int param_3); }
-namespace OWL::TWindow { void __cdecl EvDeleteitem(int param_1,undefined4 param_2,int param_3); }
-namespace OWL::TWindow { void __cdecl EvDrawItem(int param_1,undefined4 param_2,int *param_3); }
-namespace OWL::TWindow { void __cdecl EvMeasureItem(undefined4 *param_1,WPARAM param_2,int *param_3); }
-namespace OWL::TWindow { void __cdecl EvShared_4371cc(int param_1); }
-void __cdecl FUN_00437270(int param_1,int param_2,undefined4 param_3,HWND param_4);
-namespace OWL::TWindow { LRESULT __cdecl EvRegisteredMsg_4372e8(int param_1,int param_2,LPARAM param_3); }
-namespace OWL::TWindow { bool __cdecl EvMouseWheel(int param_1,byte param_2,int param_3); }
-namespace OWL::TWindow { void __cdecl EvHScroll(int param_1,int param_2,undefined4 param_3,HWND param_4); }
-namespace OWL::TWindow { void __cdecl EvVScroll(int param_1,int param_2,undefined4 param_3,HWND param_4); }
-namespace OWL::TWindow { bool __cdecl EvEraseBkgnd(int param_1,undefined4 param_2); }
-namespace OWL::TWindow { uint __cdecl EvMsg_19(int param_1,HDC param_2,undefined4 param_3,int param_4); }
-namespace OWL::TWindow { void __cdecl EvPaint(int param_1); }
-namespace OWL::TWindow { void __stdcall vf21(void); }
-namespace OWL::TWindow { bool __cdecl EvSetCursor(int param_1,int param_2,int param_3); }
-namespace OWL::TWindow { void __cdecl EvLButtonDown(int param_1); }
+LRESULT __cdecl FUN_00436e00(HWND hWnd,LPARAM lParam);
+namespace OWL::TWindow { void __cdecl EvCreate(int self); }
+namespace OWL::TWindow { undefined4 __stdcall HoldFocusHWnd(void); }
+namespace OWL::TWindow { void __cdecl EvKillFocus(int self); }
+namespace OWL::TWindow { void __cdecl EvSize(int self,int param_2); }
+namespace OWL::TWindow { void __cdecl EvMove(int self); }
+namespace OWL::TWindow { void __cdecl EvCompareitem(int self,undefined4 param_2,int param_3); }
+namespace OWL::TWindow { void __cdecl EvDeleteitem(int self,undefined4 param_2,int param_3); }
+namespace OWL::TWindow { void __cdecl EvDrawItem(int self,undefined4 ctrlId,int *drawInfo); }
+namespace OWL::TWindow { void __cdecl EvMeasureItem(undefined4 *self,WPARAM ctrlId,int *measureInfo); }
+namespace OWL::TWindow { void __cdecl EvShared_4371cc(int self); }
+void __cdecl FUN_00437270(int param_1,int param_2,undefined4 param_3,HWND hWnd);
+namespace OWL::TWindow { LRESULT __cdecl EvRegisteredMsg_4372e8(int self,int param_2,LPARAM lParam); }
+namespace OWL::TWindow { bool __cdecl EvMouseWheel(int self,byte param_2,int param_3); }
+namespace OWL::TWindow { void __cdecl EvHScroll(int self,int scrollCode,undefined4 thumbPos,HWND hWndCtl); }
+namespace OWL::TWindow { void __cdecl EvVScroll(int self,int scrollCode,undefined4 thumbPos,HWND hWndCtl); }
+namespace OWL::TWindow { bool __cdecl EvEraseBkgnd(int self,undefined4 hdc); }
+namespace OWL::TWindow { uint __cdecl EvMsg_19(int self,HDC hdc,undefined4 param_3,int param_4); }
+namespace OWL::TWindow { void __cdecl EvPaint(int self); }
+namespace OWL::TWindow { void __stdcall Paint(void); }
+namespace OWL::TWindow { bool __cdecl EvSetCursor(int self,int param_2,int param_3); }
+namespace OWL::TWindow { void __cdecl EvLButtonDown(int self); }
 void __cdecl FUN_00437880(int param_1);
-namespace OWL::TWindow { void __cdecl vf6(int param_1,undefined4 param_2); }
-namespace OWL::TWindow { void __cdecl vf28(int param_1,undefined4 *param_2); }
-namespace OWL::TWindow { char * __cdecl vf29(int param_1); }
+namespace OWL::TWindow { void __cdecl Destroy(int self,undefined4 param_2); }
+namespace OWL::TWindow { void __cdecl GetWindowClass(int self,undefined4 *param_2); }
+namespace OWL::TWindow { char * __cdecl GetClassName(int self); }
 void __cdecl FUN_00437a30(int param_1);
-namespace OWL::TWindow { void __cdecl vf5(int param_1,HMENU param_2); }
-namespace OWL::TWindow { undefined4 __cdecl vf4(int param_1); }
-namespace OWL::TWindow { void __cdecl vf7(int param_1); }
-namespace OWL::TWindow { undefined4 __cdecl vf8(int param_1); }
-namespace OWL::TWindow { void __cdecl vf30(int param_1); }
-namespace OWL::TWindow { void __stdcall vf31(void); }
-namespace OWL::TWindow { undefined4 __cdecl vf22(int param_1,int param_2); }
-namespace OWL::TWindow { void __cdecl vf23(int param_1); }
+namespace OWL::TWindow { void __cdecl PerformCreate(int self,HMENU hMenu); }
+namespace OWL::TWindow { undefined4 __cdecl Create(int self); }
+namespace OWL::TWindow { void __cdecl Execute(int self); }
+namespace OWL::TWindow { undefined4 __cdecl DoExecute(int self); }
+namespace OWL::TWindow { void __cdecl SetupWindow(int self); }
+namespace OWL::TWindow { void __stdcall CleanupWindow(void); }
+namespace OWL::TWindow { undefined4 __cdecl Transfer(int self,int param_2); }
+namespace OWL::TWindow { void __cdecl TransferData(int self); }
 void __cdecl FUN_00437d74(int param_1);
-namespace OWL::TWindow { bool __cdecl vf3(int param_1); }
-namespace OWL::TWindow { bool __cdecl vf15(int param_1); }
-namespace OWL::TWindow { void __cdecl vf9(int param_1,undefined4 param_2); }
-namespace OWL::TWindow { void __cdecl EvClose(int param_1); }
-namespace OWL::TWindow { void __cdecl EvDestroy(int param_1); }
-namespace OWL::TWindow { void __cdecl EvNCDestroy(int param_1); }
-namespace OWL::TWindow { uint __cdecl EvQueryEndSession(int param_1); }
-namespace OWL::TWindow { void __cdecl EvEndSession(int param_1,char param_2); }
-namespace OWL::TWindow { void __cdecl EvChildinvalid(undefined4 param_1,HWND param_2); }
+namespace OWL::TWindow { bool __cdecl Register(int self); }
+namespace OWL::TWindow { bool __cdecl CanClose(int self); }
+namespace OWL::TWindow { void __cdecl CloseWindow(int self,undefined4 param_2); }
+namespace OWL::TWindow { void __cdecl EvClose(int self); }
+namespace OWL::TWindow { void __cdecl EvDestroy(int self); }
+namespace OWL::TWindow { void __cdecl EvNCDestroy(int self); }
+namespace OWL::TWindow { uint __cdecl EvQueryEndSession(int self); }
+namespace OWL::TWindow { void __cdecl EvEndSession(int self,char param_2); }
+namespace OWL::TWindow { void __cdecl EvChildinvalid(undefined4 self,HWND hWnd); }
 int __cdecl FUN_004380cc(int param_1);
 void __cdecl FUN_004380e4(int param_1);
 bool __cdecl FUN_0043814c(undefined4 param_1,int param_2,uint *param_3);
@@ -1125,104 +1125,104 @@ void __cdecl FUN_00438260(int param_1,undefined *param_2);
 int __cdecl FUN_00438294(int param_1,undefined *param_2);
 undefined4 __cdecl FUN_004382e8(int param_1);
 int __cdecl FUN_0043831c(int param_1);
-LRESULT __cdecl FUN_00438338(int param_1,UINT param_2,WPARAM param_3,LPARAM param_4);
-LRESULT __cdecl FUN_00438354(int param_1,HWND param_2,char param_3);
+LRESULT __cdecl FUN_00438338(int param_1,UINT msg,WPARAM wParam,LPARAM lParam);
+LRESULT __cdecl FUN_00438354(int param_1,HWND hWnd,char param_3);
 undefined4 __cdecl FUN_00438398(int param_1,char param_2);
-void __cdecl FUN_004383d0(int param_1,UINT param_2,WPARAM param_3,LPARAM param_4);
+void __cdecl FUN_004383d0(int param_1,UINT msg,WPARAM wParam,LPARAM lParam);
 BOOL __cdecl FUN_00438410(int param_1,uint *param_2);
 void __cdecl FUN_00438458(int param_1);
 LONG __cdecl FUN_004384cc(int param_1,char param_2);
 LONG __cdecl FUN_00438580(int param_1);
-LONG __cdecl FUN_004385a0(int param_1,LONG param_2);
+LONG __cdecl FUN_004385a0(int param_1,LONG newLong);
 LONG __cdecl FUN_004385cc(int param_1);
-LONG __cdecl FUN_004385ec(int param_1,LONG param_2);
+LONG __cdecl FUN_004385ec(int param_1,LONG newLong);
 undefined4 __cdecl FUN_00438618(int param_1,uint param_2,uint param_3,uint param_4);
 undefined4 __cdecl FUN_00438670(int param_1,uint param_2,uint param_3,uint param_4);
-void __cdecl FUN_004386c0(int param_1,LPRECT param_2);
-void __cdecl FUN_004386fc(int param_1,LPRECT param_2);
-bool __cdecl FUN_00438730(int param_1,HWND param_2,int param_3,int param_4,int param_5,int param_6,uint param_7);
-namespace OWL::TWindow { bool __cdecl vf25(int param_1,int param_2); }
+void __cdecl FUN_004386c0(int param_1,LPRECT rect);
+void __cdecl FUN_004386fc(int param_1,LPRECT rect);
+bool __cdecl FUN_00438730(int param_1,HWND hWnd,int x,int y,int cx,int cy,uint flags);
+namespace OWL::TWindow { bool __cdecl ShowWindow(int self,int cmdShow); }
 undefined4 __cdecl FUN_0043888c(int param_1,int param_2,int param_3);
-namespace OWL::TWindow { void __cdecl EvInitMenuPopup(int param_1,HMENU param_2,undefined4 param_3,char param_4); }
-namespace OWL::TWindow { void __cdecl EvContextMenu(int param_1,undefined4 param_2,int param_3,int param_4); }
-namespace OWL::TWindow { void __cdecl EvEnteridle(int param_1,int param_2,HWND param_3); }
-int __cdecl FUN_00438bd0(int param_1,int param_2);
-int __cdecl FUN_00438c10(int param_1,int param_2,int param_3,byte param_4);
-void __cdecl FUN_00438c6c(int param_1,int param_2,int *param_3,int *param_4);
-void __cdecl FUN_00438cbc(int param_1,int param_2,int param_3,int param_4,byte param_5);
-void __cdecl FUN_00438d0c(int param_1,int param_2,UINT param_3,byte param_4);
-UINT __cdecl FUN_00438d54(int param_1,int param_2);
-namespace OWL::TWindow { void __cdecl vf2(int param_1,byte param_2); }
+namespace OWL::TWindow { void __cdecl EvInitMenuPopup(int self,HMENU hPopupMenu,undefined4 index,char sysMenu); }
+namespace OWL::TWindow { void __cdecl EvContextMenu(int self,undefined4 hWndChild,int x,int y); }
+namespace OWL::TWindow { void __cdecl EvEnteridle(int self,int param_2,HWND hWnd); }
+int __cdecl FUN_00438bd0(int param_1,int bar);
+int __cdecl FUN_00438c10(int param_1,int bar,int param_3,byte redraw);
+void __cdecl FUN_00438c6c(int param_1,int bar,int *param_3,int *param_4);
+void __cdecl FUN_00438cbc(int param_1,int bar,int param_3,int param_4,byte redraw);
+void __cdecl FUN_00438d0c(int param_1,int bar,UINT param_3,byte redraw);
+UINT __cdecl FUN_00438d54(int param_1,int bar);
+namespace OWL::TWindow { void __cdecl EnableTooltip(int self,byte wParam); }
 void __cdecl FUN_00438e2c(int param_1,undefined4 param_2);
-void __cdecl FUN_00438ed4(int param_1,int param_2,LPCSCROLLINFO param_3,byte param_4);
-void __cdecl FUN_00438ef0(int param_1,int param_2,LPSCROLLINFO param_3);
-undefined4 * __cdecl FUN_00438f08(undefined4 *param_1);
-undefined4 * __cdecl FUN_00438f54(undefined4 *param_1,int param_2,uint param_3);
-undefined4 * __cdecl FUN_00439068(undefined4 *param_1,int *param_2);
-namespace OWL::TXWindow { void __cdecl vf4(int param_1,int *param_2); }
-namespace OWL::TXWindow { undefined4 * __cdecl vf2(int *param_1); }
-namespace OWL::TXWindow { void __cdecl vf3(int *param_1); }
+void __cdecl FUN_00438ed4(int param_1,int bar,LPCSCROLLINFO lpsi,byte redraw);
+void __cdecl FUN_00438ef0(int param_1,int bar,LPSCROLLINFO lpsi);
+undefined4 * __cdecl FUN_00438f08(undefined4 *lp);
+namespace OWL::TXWindow { undefined4 * __cdecl TXWindow(undefined4 *self,int param_2,uint param_3); }
+namespace OWL::TXWindow { undefined4 * __cdecl TXWindow_439068(undefined4 *self,int *param_2); }
+namespace OWL::TXWindow { void __cdecl vf4(int self,int *param_2); }
+namespace OWL::TXWindow { undefined4 * __cdecl vf2(int *self); }
+namespace OWL::TXWindow { void __cdecl vf3(int *self); }
 void __cdecl FUN_004391f0(int param_1,uint param_2);
-namespace OWL::TXWindow { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TCacheEntryStr { void __cdecl _dtor(int param_1,byte param_2); }
-namespace OWL::TCommandEnabler { undefined4 vf3(char *param_1,byte *param_2,undefined4 param_3); }
+namespace OWL::TXWindow { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TCacheEntryStr { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace OWL::TCommandEnabler { undefined4 vf3(char *self,byte *param_2,undefined4 param_3); }
 int * __cdecl FUN_00439340(int *param_1,undefined4 param_2);
-namespace OWL::TWindowDC { int * __cdecl _dtor(int *param_1,byte param_2); }
+namespace OWL::TWindowDC { int * __cdecl _dtor(int *self,byte dtorFlags); }
 int * __cdecl FUN_0043942c(int *param_1);
 int * __cdecl FUN_00439490(int *param_1,undefined4 *param_2);
 int * __cdecl FUN_004394f4(int *param_1,undefined4 *param_2);
-void __cdecl FUN_0043955c(HWND param_1,LPCSTR param_2,LPCSTR param_3,UINT param_4);
+void __cdecl FUN_0043955c(HWND hWnd,LPCSTR text,LPCSTR caption,UINT type);
 void __stdcall FUN_0043958f(void);
 undefined4 * __cdecl FUN_004395e4(undefined4 *param_1);
-namespace OWL::TApplicatData { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TApplicatData { void __cdecl _dtor(int self,byte dtorFlags); }
 undefined * __stdcall FUN_00439654(void);
 undefined * __stdcall FUN_004396f0(void);
-namespace OWL::TEnumInfoStr { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TEnumInfoStr { void __cdecl _dtor(int self,byte dtorFlags); }
 void __stdcall FUN_004397b4(void);
 undefined * __stdcall FUN_0043986c(void);
 int * __cdecl FUN_004398dc(int *param_1,int param_2,uint *param_3,undefined4 *param_4,undefined *param_5);
-namespace OWL::TApplication { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
-namespace OWL::TBwccDll { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TCtl3dDll { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TDocument::TList { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace OWL::TApplication { undefined4 __cdecl vf12(int param_1); }
+namespace OWL::TApplication { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
+namespace OWL::TBwccDll { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TCtl3dDll { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TDocument::TList { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace OWL::TApplication { undefined4 __cdecl vf12(int self); }
 namespace OWL::TApplication { void __stdcall vf15(void); }
-namespace OWL::TApplication { void __cdecl vf16(int param_1); }
-namespace OWL::TApplication { void __cdecl vf17(int param_1); }
-namespace OWL::TApplication { void __cdecl vf18(int param_1,undefined4 param_2); }
+namespace OWL::TApplication { void __cdecl vf16(int self); }
+namespace OWL::TApplication { void __cdecl vf17(int self); }
+namespace OWL::TApplication { void __cdecl vf18(int self,undefined4 param_2); }
 undefined4 __cdecl FUN_0043a224(int param_1,undefined4 param_2);
-int __cdecl FUN_0043a314(int param_1,undefined4 param_2,uint *param_3);
-namespace OWL::TApplication { void __cdecl vf2(int param_1); }
-namespace OWL::TApplication { undefined4 __cdecl vf3(int param_1); }
-namespace OWL::TApplication { undefined4 __cdecl vf4(int param_1); }
-namespace OWL::TApplication { undefined4 __cdecl vf5(int param_1); }
-namespace OWL::TApplication { undefined4 __cdecl vf6(undefined4 *param_1,MSG *param_2); }
-namespace OWL::TApplication { undefined4 __cdecl vf7(int param_1,int *param_2); }
-namespace OWL::TApplication { void __cdecl vf8(int param_1,int param_2,char param_3); }
-namespace OWL::TApplication { void __cdecl vf14(int param_1,byte param_2); }
+int __cdecl FUN_0043a314(int str,undefined4 param_2,uint *s);
+namespace OWL::TApplication { void __cdecl vf2(int self); }
+namespace OWL::TApplication { undefined4 __cdecl vf3(int self); }
+namespace OWL::TApplication { undefined4 __cdecl vf4(int self); }
+namespace OWL::TApplication { undefined4 __cdecl vf5(int self); }
+namespace OWL::TApplication { undefined4 __cdecl vf6(undefined4 *self,MSG *pMsg); }
+namespace OWL::TApplication { undefined4 __cdecl vf7(int self,int *lParam); }
+namespace OWL::TApplication { void __cdecl vf8(int self,int param_2,char param_3); }
+namespace OWL::TApplication { void __cdecl vf14(int self,byte wParam); }
 void __cdecl FUN_0043b838(int param_1,undefined4 param_2);
-namespace OWL::TApplication { void __cdecl EvActivateApp(int param_1,char param_2); }
-namespace OWL::TApplication { void __cdecl Cmd24310(int param_1); }
-namespace OWL::TApplication { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-namespace OWL::TApplication { undefined4 __cdecl vf1(int param_1); }
-namespace OWL::TApplication { void __cdecl vf10(int param_1); }
+namespace OWL::TApplication { void __cdecl EvActivateApp(int self,char param_2); }
+namespace OWL::TApplication { void __cdecl Cmd24310(int self); }
+namespace OWL::TApplication { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TApplication { undefined4 __cdecl vf1(int self); }
+namespace OWL::TApplication { void __cdecl vf10(int self); }
 void __cdecl FUN_0043babc(int param_1,int param_2);
 void __cdecl FUN_0043bafc(int param_1,int param_2);
 void __cdecl FUN_0043bb40(int param_1);
-undefined4 * __cdecl FUN_0043bba8(undefined4 *param_1);
-namespace OWL::TXInvalidMainWindow { undefined4 * __cdecl vf2(int *param_1); }
-namespace OWL::TXInvalidMainWindow { void __cdecl vf3(int *param_1); }
+namespace OWL::TXInvalidMainWindow { undefined4 * __cdecl TXInvalidMainWindow(undefined4 *self); }
+namespace OWL::TXInvalidMainWindow { undefined4 * __cdecl vf2(int *self); }
+namespace OWL::TXInvalidMainWindow { void __cdecl vf3(int *self); }
 void __stdcall FUN_0043bdc8(void);
-namespace OWL::TXInvalidMainWindow { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-undefined4 __stdcall FUN_0043be5c(HWND param_1,int *param_2);
+namespace OWL::TXInvalidMainWindow { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+undefined4 __stdcall FUN_0043be5c(HWND hWnd,int *param_2);
 void __cdecl FUN_0043bea9(int *param_1);
 undefined4 __cdecl FUN_0043bf00(int param_1,int param_2,uint param_3);
 void __cdecl FUN_0043c050(int param_1,undefined4 param_2);
 void __cdecl FUN_0043c074(int param_1,char param_2);
-void __stdcall FUN_0043c0c8(void);
+void __stdcall DestroyRichEditLoader_43c0c8(void);
 undefined * __stdcall FUN_0043c108(void);
 undefined4 * __cdecl FUN_0043c1a4(undefined4 *param_1);
-namespace OWL::TBrushCache { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TBrushCache { void __cdecl _dtor(int self,byte dtorFlags); }
 void __cdecl FUN_0043c26c(undefined4 *param_1,int param_2);
 undefined1 __cdecl FUN_0043c2bc(uint *param_1,uint param_2,uint param_3);
 void __cdecl FUN_0043c378(int param_1,int param_2);
@@ -1230,58 +1230,58 @@ undefined4 __cdecl FUN_0043c3b0(int param_1,int param_2);
 undefined4 __cdecl FUN_0043c3ec(undefined4 *param_1,int param_2);
 uint * __cdecl FUN_0043c430(uint *param_1,undefined4 param_2,int param_3);
 uint * __cdecl FUN_0043c4b4(uint *param_1,uint *param_2,char param_3);
-namespace OWL::TBrush { undefined4 __cdecl _dtor(uint *param_1,byte param_2); }
+namespace OWL::TBrush { undefined4 __cdecl _dtor(uint *self,byte dtorFlags); }
 uint * __cdecl FUN_0043c628(uint *param_1,int param_2,uint *param_3,uint *param_4);
 void __cdecl FUN_0043c698(uint *param_1,int param_2,uint *param_3,uint *param_4);
 HBRUSH __cdecl FUN_0043c6d4(int param_1,uint *param_2,uint *param_3);
-namespace OWL::TButton { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-int * __cdecl FUN_0043c86c(int *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5);
-namespace OWL::TButton { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TButton { char * __cdecl vf9(int *param_1); }
-namespace OWL::TButton { void __cdecl vf10(int *param_1); }
-namespace OWL::TButton { undefined4 __cdecl EvGetDlgCode(int *param_1); }
-namespace OWL::TButton { undefined4 __cdecl EvMsg_f4(int *param_1,int param_2); }
-void __stdcall FUN_0043cb8c(void);
+namespace OWL::TButton { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TButton { int * __cdecl TButton(int *self,int vbasesBuilt,undefined4 param_3,undefined4 param_4,int param_5); }
+namespace OWL::TButton { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TButton { char * __cdecl GetClassName(int *self); }
+namespace OWL::TButton { void __cdecl SetupWindow(int *self); }
+namespace OWL::TButton { undefined4 __cdecl EvGetDlgCode(int *self); }
+namespace OWL::TButton { undefined4 __cdecl EvMsg_f4(int *self,int param_2); }
+void __stdcall InitRichEditStreamer_43cb8c(void);
 void __stdcall FUN_0043cbe2(void);
-undefined4 * __cdecl FUN_0043cc14(undefined4 *param_1,int *param_2);
-int * __cdecl FUN_0043cc7c(int *param_1,int param_2);
+namespace OWL::TButton::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TButton { int * __cdecl TButton_43cc7c(int *self,int vbasesBuilt); }
 undefined4 __cdecl EvRegisteredMsg_43cd98_43cd98(int param_1,int *param_2);
 void __cdecl FUN_0043cdd0(int param_1,int *param_2);
-namespace OWL::TButton::Streamer { void __cdecl vf2(int param_1,int *param_2); }
+namespace OWL::TButton::Streamer { void __cdecl vf2(int self,int *param_2); }
 void __cdecl FUN_0043ce5c(int param_1,int *param_2);
 undefined4 * __cdecl FUN_0043ceb0(int *param_1);
 namespace OWL::TButton::Streamer { undefined4 __stdcall vf3(void); }
-namespace OWL::TCheckBox { undefined4 __cdecl vf8(undefined4 *param_1,int *param_2,undefined *param_3); }
+namespace OWL::TCheckBox { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
 void __cdecl EvGetDlgCode_43d010(int *param_1);
-int * __cdecl FUN_0043d0c0(int *param_1,int param_2,undefined4 param_3,undefined4 param_4,undefined4 param_5, int param_6);
-namespace OWL::TCheckBox { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TCheckBox { char * __cdecl vf9(int *param_1); }
-namespace OWL::TCheckBox { undefined4 __cdecl vf11(int *param_1,ushort *param_2,int param_3); }
-void __cdecl FUN_0043d358(int *param_1,WPARAM param_2);
+namespace OWL::TCheckBox { int * __cdecl TCheckBox(int *self,int vbasesBuilt,undefined4 param_3,undefined4 param_4,undefined4 param_5, int param_6); }
+namespace OWL::TCheckBox { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TCheckBox { char * __cdecl GetClassName(int *self); }
+namespace OWL::TCheckBox { undefined4 __cdecl Transfer(int *self,ushort *param_2,int param_3); }
+void __cdecl FUN_0043d358(int *param_1,WPARAM wParam);
 void __cdecl BNClicked_43d390(int *param_1);
-namespace OWL::TControl { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-int * __cdecl FUN_0043d404(int *param_1,int param_2,undefined4 param_3,undefined4 param_4,uint *param_5, undefined4 param_6,undefined4 param_7,undefined4 param_8,undefined4 param_9,int param_10 );
-int * __cdecl FUN_0043d5a8(int *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5);
-namespace OWL::TControl { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TControl { void __cdecl EvPaint(int *param_1); }
-namespace OWL::TControl { void __cdecl EvCompareitem(int param_1); }
-namespace OWL::TControl { undefined4 __cdecl vf1(int *param_1,int param_2); }
-namespace OWL::TControl { void __cdecl EvDeleteitem(int param_1); }
+namespace OWL::TControl { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TControl { int * __cdecl TControl(int *self,int vbasesBuilt,undefined4 param_3,undefined4 param_4,uint *param_5, undefined4 param_6,undefined4 param_7,undefined4 param_8,undefined4 param_9,int param_10 ); }
+namespace OWL::TControl { int * __cdecl TControl_43d5a8(int *self,int vbasesBuilt,undefined4 param_3,undefined4 param_4,int param_5); }
+namespace OWL::TControl { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TControl { void __cdecl EvPaint(int *self); }
+namespace OWL::TControl { void __cdecl EvCompareitem(int self); }
+namespace OWL::TControl { undefined4 __cdecl vf1(int *self,int param_2); }
+namespace OWL::TControl { void __cdecl EvDeleteitem(int self); }
 namespace OWL::TControl { void __stdcall vf2(void); }
-namespace OWL::TControl { void __cdecl EvMeasureItem(int param_1); }
-namespace OWL::TControl { void __cdecl vf3(undefined4 param_1,int param_2); }
-namespace OWL::TControl { void __cdecl EvDrawItem(int param_1); }
-namespace OWL::TControl { void __cdecl vf4(int param_1,int param_2); }
-namespace OWL::TControl { void __cdecl vf5(undefined4 param_1,int param_2); }
-namespace OWL::TControl { void __cdecl vf6(undefined4 param_1,int param_2); }
-namespace OWL::TControl { void __cdecl vf7(undefined4 param_1,int param_2); }
-void __stdcall FUN_0043d988(void);
+namespace OWL::TControl { void __cdecl EvMeasureItem(int self); }
+namespace OWL::TControl { void __cdecl vf3(undefined4 self,int param_2); }
+namespace OWL::TControl { void __cdecl EvDrawItem(int self); }
+namespace OWL::TControl { void __cdecl vf4(int self,int param_2); }
+namespace OWL::TControl { void __cdecl vf5(undefined4 self,int param_2); }
+namespace OWL::TControl { void __cdecl vf6(undefined4 self,int param_2); }
+namespace OWL::TControl { void __cdecl vf7(undefined4 self,int param_2); }
+void __stdcall InitRichEditStreamer_43d988(void);
 void __stdcall FUN_0043d9de(void);
-undefined4 * __cdecl FUN_0043da10(undefined4 *param_1,int *param_2);
-int * __cdecl FUN_0043da78(int *param_1,int param_2);
-namespace OWL::TControl::Streamer { int * __cdecl vf1(int param_1,int *param_2,uint param_3); }
+namespace OWL::TControl::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TControl { int * __cdecl TControl_43da78(int *self,int vbasesBuilt); }
+namespace OWL::TControl::Streamer { int * __cdecl vf1(int self,int *param_2,uint param_3); }
 void __cdecl FUN_0043dbac(int param_1,int *param_2);
-namespace OWL::TControl::Streamer { void __cdecl vf2(int param_1,int *param_2); }
+namespace OWL::TControl::Streamer { void __cdecl vf2(int self,int *param_2); }
 void __cdecl FUN_0043dc3c(int param_1,int *param_2);
 undefined4 * __cdecl FUN_0043dc90(int *param_1);
 namespace OWL::TControl::Streamer { undefined4 __stdcall vf3(void); }
@@ -1289,324 +1289,324 @@ int * __cdecl FUN_0043dda8(undefined4 param_1);
 undefined4 __cdecl FUN_0043de35(int param_1,int *param_2);
 undefined4 __cdecl FUN_0043de8b(int param_1,int *param_2);
 undefined4 __cdecl FUN_0043deb4(int param_1);
-namespace OWL::TDecoratedFrame { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-namespace OWL::TDecoratedFrame { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TDecoratedFrame { void __cdecl vf9(int *param_1); }
-namespace OWL::TDecoratedFrame { void __cdecl vf10(int *param_1); }
-namespace OWL::TDecoratedFrame { int __cdecl vf4(int *param_1,int *param_2); }
-namespace OWL::TDecoratedFrame { void __cdecl vf11(int *param_1,int param_2); }
-namespace OWL::TDecoratedFrame { undefined4 __cdecl vf3(int *param_1,LPMSG param_2); }
-namespace OWL::TDecoratedFrame { char * __cdecl vf2(int *param_1,uint param_2,uint *param_3,char *param_4,int param_5); }
-namespace OWL::TDecoratedFrame { void __cdecl EvMenuSelect(int param_1,int param_2,uint param_3,int param_4); }
-namespace OWL::TDecoratedFrame { void __cdecl EvSize(undefined4 *param_1,WPARAM param_2,int *param_3); }
-namespace OWL::TDecoratedFrame { void __cdecl EvEnteridle(undefined4 *param_1,int param_2,HWND param_3); }
-namespace OWL::TDecoratedFrame { undefined4 __cdecl vf12(int *param_1,int param_2,HWND param_3,undefined4 param_4); }
-namespace OWL::TDecoratedFrame { void __cdecl vf13(undefined4 *param_1,int *param_2); }
+namespace OWL::TDecoratedFrame { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TDecoratedFrame { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TDecoratedFrame { void __cdecl TFrameWindow_vf16(int *self); }
+namespace OWL::TDecoratedFrame { void __cdecl TFrameWindow_vf17(int *self); }
+namespace OWL::TDecoratedFrame { int __cdecl TFrameWindow_vf7(int *self,int *window); }
+namespace OWL::TDecoratedFrame { void __cdecl TFrameWindow_vf8(int *self,int param_2); }
+namespace OWL::TDecoratedFrame { undefined4 __cdecl TFrameWindow_vf10(int *self,LPMSG lParam); }
+namespace OWL::TDecoratedFrame { char * __cdecl vf2(int *self,uint param_2,uint *multiByteStr,char *multiByte,int param_5); }
+namespace OWL::TDecoratedFrame { void __cdecl EvMenuSelect(int self,int menuItemId,uint flags,int hMenu); }
+namespace OWL::TDecoratedFrame { void __cdecl EvSize(undefined4 *self,WPARAM sizeType,int *size); }
+namespace OWL::TDecoratedFrame { void __cdecl EvEnteridle(undefined4 *self,int param_2,HWND hWnd); }
+namespace OWL::TDecoratedFrame { undefined4 __cdecl TFrameWindow_vf14(int *self,int param_2,HWND hWnd,undefined4 param_4); }
+namespace OWL::TDecoratedFrame { void __cdecl TFrameWindow_vf15(undefined4 *self,int *param_2); }
 void __cdecl FUN_0043e9b0(int param_1,int param_2,int param_3);
 void __cdecl FUN_0043eb34(int *param_1,int param_2,int param_3);
 void __cdecl FUN_0043ecf8(int *param_1,int param_2,int param_3);
 void __cdecl FUN_0043ef34(int *param_1,int param_2,int param_3);
-namespace OWL::TDecoratedFrame { void __cdecl vf1(int *param_1,int param_2,int param_3); }
-namespace OWL::TDecoratedFrame { undefined4 * __cdecl vf5(int param_1); }
-namespace OWL::TDecoratedFrame { undefined4 __cdecl vf8(int *param_1); }
-namespace OWL::TDecoratedFrame { undefined4 __cdecl vf6(int *param_1); }
-namespace OWL::TDecoratedFrame { undefined4 __cdecl vf7(int *param_1); }
+namespace OWL::TDecoratedFrame { void __cdecl vf1(int *self,int param_2,int param_3); }
+namespace OWL::TDecoratedFrame { undefined4 * __cdecl vf5(int self); }
+namespace OWL::TDecoratedFrame { undefined4 __cdecl vf8(int *self); }
+namespace OWL::TDecoratedFrame { undefined4 __cdecl TFrameWindow_vf4(int *self); }
+namespace OWL::TDecoratedFrame { undefined4 __cdecl TFrameWindow_vf5(int *self); }
 void __cdecl Child4453411_Notify4453432_43f3f9(int param_1);
 void __cdecl FUN_0043f40e(int param_1);
-void __cdecl FUN_0043f44d(int param_1,LPMSG param_2);
+void __cdecl FUN_0043f44d(int param_1,LPMSG lParam);
 void __cdecl Child4514932_Notify4510180_43f48c(int param_1);
 void __cdecl FUN_0043f4a1(int param_1);
-namespace OWL::TDialog { undefined4 __cdecl vf14(undefined4 *param_1,int *param_2,undefined *param_3); }
-int * __cdecl FUN_0043f628(int *param_1,int param_2,undefined4 param_3,uint *param_4,int param_5);
+namespace OWL::TDialog { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TDialog { int * __cdecl TDialog(int *self,int vbasesBuilt,undefined4 param_3,uint *param_4,int param_5); }
 bool __cdecl FUN_0043f87c(int param_1);
 void __cdecl FUN_0043f898(int *param_1,undefined4 param_2,undefined4 param_3,int param_4);
-namespace OWL::TDialog { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TDialog { bool __cdecl vf7(int *param_1,LPMSG param_2); }
-namespace OWL::TDialog { char * __cdecl vf12(int *param_1); }
-namespace OWL::TDialog { void __cdecl vf13(int *param_1,int param_2); }
+namespace OWL::TDialog { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TDialog { bool __cdecl PreProcessMsg(int *self,LPMSG lParam); }
+namespace OWL::TDialog { char * __cdecl GetClassName(int *self); }
+namespace OWL::TDialog { void __cdecl GetWindowClass(int *self,int param_2); }
 void __cdecl EvSetfont_43fbc4(int *param_1);
 void __cdecl EvPaint_43fbe8(int *param_1);
-void __cdecl EvMsg_19_43fbf8(int *param_1,HDC param_2,undefined4 param_3,int param_4);
+void __cdecl EvMsg_19_43fbf8(int *param_1,HDC hdc,undefined4 param_3,int param_4);
 void __cdecl EvMsg_400_43fc58(int *param_1);
 bool __cdecl EvMsg_401_43fc6c(int *param_1);
 void __cdecl EvMsg_402_43fc88(int *param_1);
-namespace OWL::TDialog { bool __cdecl vf1(int *param_1,int param_2,undefined4 param_3); }
-undefined1 __stdcall FUN_0043fd80(HWND param_1,int param_2);
+namespace OWL::TDialog { bool __cdecl vf1(int *self,int param_2,undefined4 param_3); }
+undefined1 __stdcall FUN_0043fd80(HWND hWnd,int param_2);
 void __cdecl FUN_0043fe3c(int *param_1);
-namespace OWL::TDialog { undefined4 __cdecl vf3(int *param_1); }
-namespace OWL::TDialog { void __cdecl vf4(int *param_1,LPCDLGTEMPLATEA param_2); }
-namespace OWL::TDialog { int __cdecl vf5(int *param_1); }
-namespace OWL::TDialog { void __cdecl vf6(int *param_1); }
+namespace OWL::TDialog { undefined4 __cdecl Create(int *self); }
+namespace OWL::TDialog { void __cdecl PerformCreate(int *self,LPCDLGTEMPLATEA templateName); }
+namespace OWL::TDialog { int __cdecl Execute(int *self); }
+namespace OWL::TDialog { void __cdecl DoExecute(int *self); }
 char __cdecl FUN_00440054(int *param_1);
-namespace OWL::TDialog { undefined4 __cdecl vf2(int *param_1); }
-namespace OWL::TDialog { void __cdecl vf11(int *param_1); }
-namespace OWL::TDialog { void __cdecl vf8(int *param_1,undefined4 param_2); }
-namespace OWL::TDialog { void __cdecl vf9(int *param_1,INT_PTR param_2); }
+namespace OWL::TDialog { undefined4 __cdecl vf2(int *self); }
+namespace OWL::TDialog { void __cdecl SetupWindow(int *self); }
+namespace OWL::TDialog { void __cdecl CloseWindow(int *self,undefined4 param_2); }
+namespace OWL::TDialog { void __cdecl Destroy(int *self,INT_PTR result); }
 void __cdecl FUN_004402b8(int *param_1,uint *param_2);
 void __cdecl Cmd1_4402e0(int *param_1);
 void __cdecl Cmd2_440334(int *param_1);
 void __cdecl EvClose_440344(int *param_1);
-undefined4 * __cdecl FUN_00440398(undefined4 *param_1,undefined4 param_2,undefined4 param_3);
-namespace OWL::TControlEnabler { void __cdecl vf0(int param_1,byte param_2); }
-namespace OWL::TControlEnabler { void __cdecl vf1(int param_1,char *param_2); }
-namespace OWL::TControlEnabler { void __cdecl vf2(int param_1,WPARAM param_2); }
-namespace OWL::TDialog { undefined4 __cdecl vf10(int *param_1,int param_2); }
+namespace OWL::TControlEnabler { undefined4 * __cdecl TControlEnabler(undefined4 *self,undefined4 param_2,undefined4 param_3); }
+namespace OWL::TControlEnabler { void __cdecl vf0(int self,byte enable); }
+namespace OWL::TControlEnabler { void __cdecl vf1(int self,char *string_); }
+namespace OWL::TControlEnabler { void __cdecl vf2(int self,WPARAM wParam); }
+namespace OWL::TDialog { undefined4 __cdecl IdleAction(int *self,int param_2); }
 void __cdecl FUN_00440590(int *param_1,undefined4 *param_2);
 void __cdecl FUN_004405f8(undefined4 *param_1);
 void __cdecl FUN_004406b0(undefined4 *param_1);
-namespace OWL::TDib { void __cdecl _dtor(int *param_1,byte param_2); }
+namespace OWL::TDib { void __cdecl _dtor(int *self,byte dtorFlags); }
 void __cdecl FUN_00440750(int param_1,int param_2,uint *param_3);
 int __cdecl FUN_004407a4(int param_1,uint *param_2,uint *param_3,char param_4);
 void __cdecl FUN_00440850(int param_1,uint param_2,uint *param_3);
-namespace OWL::TDib { undefined4 __cdecl vf1(int *param_1,int *param_2,char param_3); }
-int * __cdecl FUN_00440b78(int *param_1,HMODULE param_2,LPCSTR param_3);
-bool __cdecl FUN_00440c0c(int *param_1,HMODULE param_2,LPCSTR param_3);
-namespace OWL::TDib { bool __cdecl vf2(undefined4 *param_1,undefined4 *param_2,char param_3); }
-int * __cdecl FUN_00440cd0(int *param_1,int param_2,int param_3,uint param_4,undefined2 param_5);
-namespace OWL::TFloatingSlip { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TFloatingFrame { void __cdecl _dtor(int *param_1,uint param_2); }
+namespace OWL::TDib { undefined4 __cdecl vf1(int *self,int *param_2,char param_3); }
+int * __cdecl FUN_00440b78(int *param_1,HMODULE hModule,LPCSTR name);
+bool __cdecl FUN_00440c0c(int *param_1,HMODULE hModule,LPCSTR name);
+namespace OWL::TDib { bool __cdecl vf2(undefined4 *self,undefined4 *param_2,char param_3); }
+int * __cdecl FUN_00440cd0(int *param_1,int param_2,int param_3,uint cEntries,undefined2 param_5);
+namespace OWL::TFloatingSlip { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TFloatingFrame { void __cdecl _dtor(int *self,uint dtorFlags); }
 void __cdecl FUN_0044123c(int *param_1,int *param_2,int param_3);
 undefined4 __cdecl FUN_0044127a(uint *param_1,uint *param_2);
 uint * __cdecl FUN_004412fc(uint *param_1,uint param_2,uint *param_3,uint param_4,uint param_5,uint param_6, uint param_7,uint param_8);
 undefined4 * __cdecl FUN_0044137c(undefined4 *param_1,undefined4 param_2);
-int * __cdecl FUN_004413a8(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5);
-namespace OWL::TDvFileOpenDialog { void __cdecl vf1(int *param_1,int param_2,undefined4 param_3); }
-int * __cdecl FUN_00441580(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5);
-namespace OWL::TDvFileSaveDialog { void __cdecl vf1(int *param_1,int param_2,undefined4 param_3); }
-namespace OWL::TDocManager { void __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-namespace OWL::TDocManager { void __cdecl Cmd24331(int param_1); }
-namespace OWL::TDocManager { void __cdecl Cmd24332(int param_1); }
-namespace OWL::TDocManager { void __cdecl Cmd24333(int param_1); }
-namespace OWL::TDocManager { void __cdecl Cmd24334(int param_1); }
-namespace OWL::TDocManager { void __cdecl Cmd24335(int param_1); }
-namespace OWL::TDocManager { void __cdecl Cmd24339(int param_1); }
-namespace OWL::TDocManager { void __cdecl Cmd24341(int param_1); }
-namespace OWL::TDocManager { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
+namespace OWL::TDvFileOpenDialog { int * __cdecl TDvFileOpenDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,int param_5); }
+namespace OWL::TDvFileOpenDialog { void __cdecl vf1(int *self,int param_2,undefined4 param_3); }
+namespace OWL::TDvFileSaveDialog { int * __cdecl TDvFileSaveDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,int param_5); }
+namespace OWL::TDvFileSaveDialog { void __cdecl vf1(int *self,int param_2,undefined4 param_3); }
+namespace OWL::TDocManager { void __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TDocManager { void __cdecl Cmd24331(int self); }
+namespace OWL::TDocManager { void __cdecl Cmd24332(int self); }
+namespace OWL::TDocManager { void __cdecl Cmd24333(int self); }
+namespace OWL::TDocManager { void __cdecl Cmd24334(int self); }
+namespace OWL::TDocManager { void __cdecl Cmd24335(int self); }
+namespace OWL::TDocManager { void __cdecl Cmd24339(int self); }
+namespace OWL::TDocManager { void __cdecl Cmd24341(int self); }
+namespace OWL::TDocManager { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
 int __cdecl FUN_004419a0(int param_1,int param_2,int param_3);
-namespace OWL::TDocManager { int __cdecl vf1(int param_1,int param_2,undefined4 param_3,char param_4); }
-namespace OWL::TDocManager { int __cdecl vf2(int param_1,int param_2,undefined4 param_3,undefined4 param_4,char param_5); }
-namespace OWL::TDocManager { int __cdecl vf3(int param_1,int param_2,undefined4 param_3,int param_4); }
-namespace OWL::TDocManager { char * __cdecl vf4(undefined4 param_1,int param_2,int param_3,uint *param_4); }
-namespace OWL::TDocManager { undefined4 __cdecl vf5(int param_1,char *param_2,uint param_3); }
-namespace OWL::TDocManager { int * __cdecl vf6(int param_1,int *param_2,int param_3,int param_4,uint param_5); }
+namespace OWL::TDocManager { int __cdecl vf1(int self,int param_2,undefined4 param_3,char param_4); }
+namespace OWL::TDocManager { int __cdecl vf2(int self,int param_2,undefined4 param_3,undefined4 param_4,char param_5); }
+namespace OWL::TDocManager { int __cdecl vf3(int self,int param_2,undefined4 param_3,int param_4); }
+namespace OWL::TDocManager { char * __cdecl vf4(undefined4 self,int param_2,int param_3,uint *param_4); }
+namespace OWL::TDocManager { undefined4 __cdecl vf5(int self,char *param_2,uint param_3); }
+namespace OWL::TDocManager { int * __cdecl vf6(int self,int *param_2,int param_3,int param_4,uint param_5); }
 int * __cdecl FUN_00441ff4(int param_1,int *param_2,int param_3,uint param_4);
-namespace OWL::TDocManager { undefined4 __cdecl vf7(int param_1,int param_2); }
+namespace OWL::TDocManager { undefined4 __cdecl vf7(int self,int param_2); }
 int __cdecl FUN_0044238c(undefined4 param_1,int param_2,int *param_3);
-namespace OWL::TDocManager { undefined4 __cdecl vf8(int param_1,int *param_2); }
-namespace OWL::TDocManager { undefined4 __cdecl vf9(int param_1,int *param_2); }
-namespace OWL::TDocManager { int __cdecl vf10(int param_1,uint *param_2); }
+namespace OWL::TDocManager { undefined4 __cdecl vf8(int self,int *param_2); }
+namespace OWL::TDocManager { undefined4 __cdecl vf9(int self,int *param_2); }
+namespace OWL::TDocManager { int __cdecl vf10(int self,uint *param_2); }
 undefined4 __cdecl FUN_00442690(uint *param_1,uint *param_2);
-namespace OWL::TDocManager { int * __cdecl vf11(int param_1); }
+namespace OWL::TDocManager { int * __cdecl vf11(int self); }
 int __cdecl FUN_004431f8(int param_1,char *param_2);
-namespace OWL::TDocManager { void __cdecl vf19(int param_1,int param_2,uint param_3,uint param_4); }
-namespace OWL::TDocManager { void __cdecl vf20(int param_1,WPARAM param_2,LPARAM param_3); }
-namespace OWL::TDocManager { void __cdecl vf21(int param_1,WPARAM param_2,LPARAM param_3); }
-namespace OWL::TDocManager { int __cdecl vf23(int param_1,int *param_2,int param_3); }
-namespace OWL::TDocManager { undefined4 __cdecl vf24(int param_1,uint param_2,uint param_3,uint *param_4,char *param_5,uint param_6, char param_7,int param_8); }
-namespace OWL::TDocManager { int __cdecl vf25(int param_1,undefined4 *param_2,int param_3); }
-namespace OWL::TDocManager { undefined4 __cdecl vf26(int param_1); }
-namespace OWL::TDocManager { void __cdecl vf22(int param_1,int param_2); }
-namespace OWL::TDocManager { undefined4 __cdecl EvOwlcanclose(int param_1); }
-namespace OWL::TDocManager { void __cdecl EvOwlpreprocmenu(int param_1,undefined4 param_2); }
-namespace OWL::TDocManager { void __cdecl EvMsg_7ef6(int param_1); }
-namespace OWL::TDocManager { void __cdecl CeCmd24331(undefined4 param_1,undefined4 *param_2); }
-namespace OWL::TDocManager { void __cdecl vf13(int param_1); }
-namespace OWL::TDocManager { void __cdecl CeCmd24332(undefined4 param_1,undefined4 *param_2); }
-namespace OWL::TDocManager { void __cdecl vf12(int param_1); }
-namespace OWL::TDocManager { void __cdecl CeCmd24339(int param_1,undefined4 *param_2); }
-namespace OWL::TDocManager { void __cdecl vf14(int param_1); }
-namespace OWL::TDocManager { void __cdecl CeCmd24334(int param_1,undefined4 *param_2); }
-namespace OWL::TDocManager { void __cdecl vf16(int param_1); }
-namespace OWL::TDocManager { void __cdecl CeCmd24333(int param_1,undefined4 *param_2); }
-namespace OWL::TDocManager { void __cdecl vf15(int param_1); }
-namespace OWL::TDocManager { void __cdecl CeCmd24335(int param_1,undefined4 *param_2); }
-namespace OWL::TDocManager { void __cdecl vf17(int param_1); }
-namespace OWL::TDocManager { void __cdecl CeCmd24341(int param_1,undefined4 *param_2); }
-namespace OWL::TDocManager { void __cdecl vf18(int param_1); }
-namespace OWL::TDvFileOpenDialog { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TDvFileSaveDialog { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TDvOpenSaveData { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TDocManager { void __cdecl vf19(int self,int param_2,uint param_3,uint param_4); }
+namespace OWL::TDocManager { void __cdecl vf20(int self,WPARAM wParam,LPARAM lParam); }
+namespace OWL::TDocManager { void __cdecl vf21(int self,WPARAM wParam,LPARAM lParam); }
+namespace OWL::TDocManager { int __cdecl vf23(int self,int *param_2,int param_3); }
+namespace OWL::TDocManager { undefined4 __cdecl vf24(int self,uint param_2,uint param_3,uint *param_4,char *n,uint param_6, char param_7,int param_8); }
+namespace OWL::TDocManager { int __cdecl vf25(int self,undefined4 *param_2,int param_3); }
+namespace OWL::TDocManager { undefined4 __cdecl vf26(int self); }
+namespace OWL::TDocManager { void __cdecl vf22(int self,int param_2); }
+namespace OWL::TDocManager { undefined4 __cdecl EvOwlcanclose(int self); }
+namespace OWL::TDocManager { void __cdecl EvOwlpreprocmenu(int self,undefined4 param_2); }
+namespace OWL::TDocManager { void __cdecl EvMsg_7ef6(int self); }
+namespace OWL::TDocManager { void __cdecl CeCmd24331(undefined4 self,undefined4 *commandEnabler); }
+namespace OWL::TDocManager { void __cdecl vf13(int self); }
+namespace OWL::TDocManager { void __cdecl CeCmd24332(undefined4 self,undefined4 *commandEnabler); }
+namespace OWL::TDocManager { void __cdecl vf12(int self); }
+namespace OWL::TDocManager { void __cdecl CeCmd24339(int self,undefined4 *commandEnabler); }
+namespace OWL::TDocManager { void __cdecl vf14(int self); }
+namespace OWL::TDocManager { void __cdecl CeCmd24334(int self,undefined4 *commandEnabler); }
+namespace OWL::TDocManager { void __cdecl vf16(int self); }
+namespace OWL::TDocManager { void __cdecl CeCmd24333(int self,undefined4 *commandEnabler); }
+namespace OWL::TDocManager { void __cdecl vf15(int self); }
+namespace OWL::TDocManager { void __cdecl CeCmd24335(int self,undefined4 *commandEnabler); }
+namespace OWL::TDocManager { void __cdecl vf17(int self); }
+namespace OWL::TDocManager { void __cdecl CeCmd24341(int self,undefined4 *commandEnabler); }
+namespace OWL::TDocManager { void __cdecl vf18(int self); }
+namespace OWL::TDvFileOpenDialog { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TDvFileSaveDialog { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TDvOpenSaveData { void __cdecl _dtor(int self,byte dtorFlags); }
 namespace OWL::TDocument { undefined4 __stdcall vf1(void); }
 namespace OWL::TDocument { undefined4 __stdcall vf2(void); }
 namespace OWL::TDocument { undefined1 __stdcall vf3(void); }
-namespace OWL::TDocument { bool __cdecl vf11(int param_1); }
+namespace OWL::TDocument { bool __cdecl vf11(int self); }
 namespace OWL::TDocument { undefined4 __stdcall vf16(void); }
 namespace OWL::TDocument { undefined1 __stdcall vf22(void); }
 void __cdecl FUN_0044474c(undefined4 *param_1);
-namespace OWL::TAPointer_OWL_TDocTemplate_ptr { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TAPointer_OWL_TDocTemplate_ptr { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __cdecl FUN_004447e4(int param_1,uint param_2);
 void __cdecl FUN_004447f4(int param_1,uint param_2);
 undefined * __cdecl FUN_00444804(int param_1);
-namespace OWL::TDocTemplate { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TDocTemplate { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 undefined * __cdecl FUN_004448c8(int param_1);
 undefined * __cdecl FUN_004448e8(int param_1);
 undefined * __cdecl FUN_00444908(int param_1);
-namespace OWL::TDocument { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace OWL::TDocument { undefined * __cdecl vf19(undefined4 param_1,int param_2); }
-namespace OWL::TDocument { undefined * __cdecl vf18(undefined4 param_1,int param_2); }
-namespace OWL::TDocument { int __cdecl vf17(undefined4 param_1,char *param_2); }
-namespace OWL::TDocument { char * __cdecl vf20(int *param_1,undefined4 param_2,int *param_3,char *param_4); }
-namespace OWL::TDocument { undefined4 __cdecl vf21(int *param_1,int param_2); }
-namespace OWL::TDocument { void __cdecl vf7(int param_1); }
-namespace OWL::TDocument { undefined4 __cdecl vf8(int *param_1,uint *param_2); }
-namespace OWL::TDocument { void __cdecl vf9(int param_1,uint *param_2); }
+namespace OWL::TDocument { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace OWL::TDocument { undefined * __cdecl vf19(undefined4 self,int param_2); }
+namespace OWL::TDocument { undefined * __cdecl vf18(undefined4 self,int param_2); }
+namespace OWL::TDocument { int __cdecl vf17(undefined4 self,char *param_2); }
+namespace OWL::TDocument { char * __cdecl vf20(int *self,undefined4 param_2,int *param_3,char *param_4); }
+namespace OWL::TDocument { undefined4 __cdecl vf21(int *self,int param_2); }
+namespace OWL::TDocument { void __cdecl vf7(int self); }
+namespace OWL::TDocument { undefined4 __cdecl vf8(int *self,uint *param_2); }
+namespace OWL::TDocument { void __cdecl vf9(int self,uint *param_2); }
 undefined4 __cdecl FUN_00444da8(int param_1,int param_2);
 void __cdecl FUN_00444e18(int param_1);
-namespace OWL::TDocument { void __cdecl vf23(int param_1,int param_2); }
-namespace OWL::TDocument { void __cdecl vf24(int param_1,int param_2); }
+namespace OWL::TDocument { void __cdecl vf23(int self,int param_2); }
+namespace OWL::TDocument { void __cdecl vf24(int self,int param_2); }
 undefined4 __cdecl FUN_00444ee8(int param_1,int param_2);
 int __cdecl FUN_00444f04(int param_1,int param_2);
 undefined4 __cdecl FUN_00444fe0(int *param_1,int param_2);
-namespace OWL::TDocument { char __cdecl vf5(int param_1,uint param_2); }
-namespace OWL::TDocument { char __cdecl vf6(int param_1,uint param_2); }
+namespace OWL::TDocument { char __cdecl vf5(int self,uint param_2); }
+namespace OWL::TDocument { char __cdecl vf6(int self,uint param_2); }
 char __cdecl FUN_00445124(int param_1,undefined4 param_2,undefined4 param_3,undefined4 *param_4);
 undefined4 * __cdecl FUN_004451dc(int param_1,undefined4 param_2,undefined4 param_3,undefined4 *param_4);
-namespace OWL::TDocument { bool __cdecl vf10(int param_1); }
-namespace OWL::TDocument { bool __cdecl vf13(int *param_1); }
-namespace OWL::TDocument { int * __cdecl vf14(int *param_1,undefined4 param_2); }
-namespace OWL::TDocument { undefined4 __cdecl vf12(int param_1); }
-namespace OWL::TDocument { undefined4 __cdecl vf4(int param_1); }
-namespace OWL::TDocument { void __cdecl vf15(int param_1); }
+namespace OWL::TDocument { bool __cdecl vf10(int self); }
+namespace OWL::TDocument { bool __cdecl vf13(int *self); }
+namespace OWL::TDocument { int * __cdecl vf14(int *self,undefined4 param_2); }
+namespace OWL::TDocument { undefined4 __cdecl vf12(int self); }
+namespace OWL::TDocument { undefined4 __cdecl vf4(int self); }
+namespace OWL::TDocument { void __cdecl vf15(int self); }
 undefined4 __cdecl FUN_004453d4(undefined4 *param_1,int param_2);
 undefined4 __cdecl FUN_004453ec(int *param_1,int param_2);
 void __cdecl FUN_00445414(int *param_1);
 uint * __cdecl FUN_00445488(uint *param_1,uint *param_2,char param_3);
 char * __cdecl FUN_00445516(char *param_1,int param_2,uint *param_3,char param_4);
-namespace OWL::TEdit { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-namespace OWL::TEdit { void __cdecl Cmd24322(int *param_1); }
-namespace OWL::TEdit { void __cdecl Cmd24323(int *param_1); }
-namespace OWL::TEdit { void __cdecl Cmd24324(int param_1); }
-namespace OWL::TEdit { void __cdecl Cmd24325(int *param_1); }
-namespace OWL::TEdit { void __cdecl Cmd24326(int param_1); }
-namespace OWL::TEdit { void __cdecl Cmd24321(int *param_1); }
-int * __cdecl FUN_00445680(int *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5,int param_6);
-namespace OWL::TEdit { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TEdit { void __cdecl NotifyAtChild_1280(int *param_1); }
-namespace OWL::TEdit { uint __cdecl EvGetDlgCode(int *param_1); }
-namespace OWL::TEdit { void __cdecl EvChar(int *param_1,int param_2); }
-namespace OWL::TEdit { void __cdecl EvKeyDown(int *param_1,int param_2); }
-namespace OWL::TEdit { void __cdecl EvKillFocus(int *param_1,HWND param_2); }
-namespace OWL::TEdit { void __cdecl EvSetFocus(int *param_1); }
-namespace OWL::TEdit { undefined4 __cdecl NotifyAtChild_m722(int *param_1); }
-namespace OWL::TEdit { void __cdecl EvChildinvalid(int *param_1); }
+namespace OWL::TEdit { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TEdit { void __cdecl Cmd24322(int *self); }
+namespace OWL::TEdit { void __cdecl Cmd24323(int *self); }
+namespace OWL::TEdit { void __cdecl Cmd24324(int self); }
+namespace OWL::TEdit { void __cdecl Cmd24325(int *self); }
+namespace OWL::TEdit { void __cdecl Cmd24326(int self); }
+namespace OWL::TEdit { void __cdecl Cmd24321(int *self); }
+namespace OWL::TEdit { int * __cdecl TEdit(int *self,int vbasesBuilt,undefined4 param_3,undefined4 param_4,int param_5,int param_6); }
+namespace OWL::TEdit { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TEdit { void __cdecl NotifyAtChild_1280(int *self); }
+namespace OWL::TEdit { uint __cdecl EvGetDlgCode(int *self); }
+namespace OWL::TEdit { void __cdecl EvChar(int *self,int param_2); }
+namespace OWL::TEdit { void __cdecl EvKeyDown(int *self,int param_2); }
+namespace OWL::TEdit { void __cdecl EvKillFocus(int *self,HWND hWndGetFocus); }
+namespace OWL::TEdit { void __cdecl EvSetFocus(int *self); }
+namespace OWL::TEdit { undefined4 __cdecl NotifyAtChild_m722(int *self); }
+namespace OWL::TEdit { void __cdecl EvChildinvalid(int *self); }
 void __cdecl FUN_00445e1c(int *param_1);
-namespace OWL::TEdit { void __cdecl vf9(int *param_1); }
-namespace OWL::TEdit { bool __cdecl vf21(int *param_1); }
-namespace OWL::TEdit { void __cdecl CeShared_445ec0(int param_1,undefined4 *param_2); }
-namespace OWL::TEdit { void __cdecl CeCmd24324(int *param_1,undefined4 *param_2); }
-namespace OWL::TEdit { void __cdecl CeCmd24326(int *param_1,undefined4 *param_2); }
-namespace OWL::TEdit { void __cdecl CeCmd24321(int *param_1,undefined4 *param_2); }
-undefined4 __cdecl FUN_00445fe4(int *param_1,WPARAM param_2);
-bool __cdecl FUN_00446028(int *param_1,undefined2 *param_2,uint param_3,WPARAM param_4);
+namespace OWL::TEdit { void __cdecl vf9(int *self); }
+namespace OWL::TEdit { bool __cdecl CanClose(int *self); }
+namespace OWL::TEdit { void __cdecl CeShared_445ec0(int self,undefined4 *commandEnabler); }
+namespace OWL::TEdit { void __cdecl CeCmd24324(int *self,undefined4 *commandEnabler); }
+namespace OWL::TEdit { void __cdecl CeCmd24326(int *self,undefined4 *commandEnabler); }
+namespace OWL::TEdit { void __cdecl CeCmd24321(int *self,undefined4 *commandEnabler); }
+undefined4 __cdecl FUN_00445fe4(int *param_1,WPARAM wParam);
+bool __cdecl FUN_00446028(int *param_1,undefined2 *lParam,uint param_3,WPARAM wParam);
 LPSTR __cdecl FUN_0044609c(int *param_1,SIZE_T param_2);
 void __cdecl FUN_00446158(int *param_1,LPCSTR param_2,char param_3);
-namespace OWL::TEdit { int __cdecl vf16(int *param_1,int param_2,uint *param_3,char param_4,char param_5,char param_6); }
+namespace OWL::TEdit { int __cdecl vf16(int *self,int param_2,uint *param_3,char param_4,char param_5,char param_6); }
 bool __cdecl FUN_0044634c(int *param_1);
 bool __cdecl FUN_00446390(int *param_1);
-namespace OWL::TEdit { void __cdecl vf12(int *param_1,int param_2,uint param_3,uint param_4); }
-namespace OWL::TEdit { undefined * __stdcall vf11(void); }
-namespace OWL::TEdit { void __cdecl vf20(int *param_1); }
+namespace OWL::TEdit { void __cdecl GetSubText(int *self,int param_2,uint wParam4,uint wParam5); }
+namespace OWL::TEdit { undefined * __stdcall GetClassName(void); }
+namespace OWL::TEdit { void __cdecl SetupWindow(int *self); }
 undefined1 __cdecl FUN_0044655c(int *param_1,char param_2);
 void __cdecl FUN_004465dc(int param_1,undefined4 param_2);
-namespace OWL::TEdit { int __cdecl vf10(int *param_1,LPSTR param_2,int param_3); }
-void __stdcall FUN_004467cc(void);
+namespace OWL::TEdit { int __cdecl Transfer(int *self,LPSTR string_,int param_3); }
+void __stdcall InitRichEditStreamer_4467cc(void);
 void __stdcall FUN_00446822(void);
-undefined4 * __cdecl FUN_00446854(undefined4 *param_1,int *param_2);
-int * __cdecl FUN_004468bc(int *param_1,int param_2);
+namespace OWL::TEdit::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TEdit { int * __cdecl TEdit_4468bc(int *self,int vbasesBuilt); }
 undefined4 __cdecl EvRegisteredMsg_4469d8_4469d8(int param_1,int *param_2);
-namespace OWL::TEdit::Streamer { void __cdecl vf2(int param_1,int *param_2); }
+namespace OWL::TEdit::Streamer { void __cdecl vf2(int self,int *param_2); }
 undefined4 * __cdecl FUN_00446a38(int *param_1);
 namespace OWL::TEdit::Streamer { undefined4 __stdcall vf3(void); }
-namespace OWL::TEditFile { undefined4 __cdecl vf8(undefined4 *param_1,int *param_2,undefined *param_3); }
+namespace OWL::TEditFile { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
 void __cdecl Cmd24333_446b94(int param_1);
 void __cdecl Cmd24334_446ba4(int param_1);
-namespace OWL::TEditFile { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TEditFile { void __cdecl vf20(int *param_1); }
+namespace OWL::TEditFile { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TEditFile { void __cdecl SetupWindow(int *self); }
 int __cdecl FUN_00447024(int *param_1,uint *param_2);
-namespace OWL::TEditFile { void __cdecl vf23(int *param_1); }
-namespace OWL::TEditFile { void __cdecl vf26(int *param_1,uint *param_2); }
-namespace OWL::TEditFile { void __cdecl vf24(undefined4 *param_1); }
-namespace OWL::TEditFile { uint __cdecl vf25(int *param_1,int param_2); }
-namespace OWL::TEditFile { undefined4 __cdecl vf27(int *param_1); }
-namespace OWL::TEditFile { undefined4 __cdecl vf28(int *param_1); }
+namespace OWL::TEditFile { void __cdecl vf23(int *self); }
+namespace OWL::TEditFile { void __cdecl vf26(int *self,uint *param_2); }
+namespace OWL::TEditFile { void __cdecl vf24(undefined4 *self); }
+namespace OWL::TEditFile { uint __cdecl vf25(int *self,int param_2); }
+namespace OWL::TEditFile { undefined4 __cdecl vf27(int *self); }
+namespace OWL::TEditFile { undefined4 __cdecl vf28(int *self); }
 void __cdecl CeCmd24333_447dcc(int *param_1,undefined4 *param_2);
-namespace OWL::TEditFile { undefined4 __cdecl vf29(int *param_1,int param_2); }
-namespace OWL::TEditFile { uint __cdecl vf22(int *param_1); }
-namespace OWL::TEditFile { void __cdecl vf21(int param_1); }
-void __stdcall FUN_00448418(void);
+namespace OWL::TEditFile { undefined4 __cdecl vf29(int *self,int param_2); }
+namespace OWL::TEditFile { uint __cdecl vf22(int *self); }
+namespace OWL::TEditFile { void __cdecl CanClose(int self); }
+void __stdcall InitRichEditStreamer_448418(void);
 void __stdcall FUN_0044846e(void);
-undefined4 * __cdecl FUN_004484a0(undefined4 *param_1,int *param_2);
-int * __cdecl FUN_00448508(int *param_1,int param_2);
-namespace OWL::TEditFile::Streamer { int __cdecl vf1(int param_1,int *param_2); }
+namespace OWL::TEditFile::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TEditFile { int * __cdecl TEditFile(int *self,int vbasesBuilt); }
+namespace OWL::TEditFile::Streamer { int __cdecl vf1(int self,int *param_2); }
 void __cdecl FUN_00448684(int param_1,int *param_2);
-namespace OWL::TEditFile::Streamer { void __cdecl vf2(int param_1,int *param_2); }
+namespace OWL::TEditFile::Streamer { void __cdecl vf2(int self,int *param_2); }
 void __cdecl FUN_00448714(int param_1,int *param_2);
 undefined4 * __cdecl FUN_00448768(int *param_1);
 namespace OWL::TEditFile::Streamer { undefined4 __stdcall vf3(void); }
-namespace OWL::TEditSearch { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-namespace OWL::TEditSearch { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TEditSearch { void __cdecl vf20(int *param_1); }
+namespace OWL::TEditSearch { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TEditSearch { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TEditSearch { void __cdecl SetupWindow(int *self); }
 void __cdecl FUN_00448ab4(int *param_1);
-namespace OWL::TEditSearch { void __cdecl Cmd24351(undefined4 *param_1); }
-namespace OWL::TEditSearch { void __cdecl Cmd24352(undefined4 *param_1); }
-namespace OWL::TEditSearch { void __cdecl CeRange24351to24352(undefined4 param_1,undefined4 *param_2); }
-namespace OWL::TEditSearch { void __cdecl Cmd24353(int *param_1); }
-namespace OWL::TEditSearch { void __cdecl CeCmd24353(int param_1,undefined4 *param_2); }
-namespace OWL::TEditSearch { undefined4 __cdecl EvRegisteredMsg_448fbc(int *param_1,undefined4 param_2,int param_3); }
-namespace OWL::TFindDialog { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TReplaceDialog { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TFindReplaceDialog { void __cdecl _dtor(int *param_1,uint param_2); }
-void __stdcall FUN_0044938c(void);
+namespace OWL::TEditSearch { void __cdecl Cmd24351(undefined4 *self); }
+namespace OWL::TEditSearch { void __cdecl Cmd24352(undefined4 *self); }
+namespace OWL::TEditSearch { void __cdecl CeRange24351to24352(undefined4 self,undefined4 *commandEnabler); }
+namespace OWL::TEditSearch { void __cdecl Cmd24353(int *self); }
+namespace OWL::TEditSearch { void __cdecl CeCmd24353(int self,undefined4 *commandEnabler); }
+namespace OWL::TEditSearch { undefined4 __cdecl EvRegisteredMsg_448fbc(int *self,undefined4 param_2,int param_3); }
+namespace OWL::TFindDialog { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TReplaceDialog { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TFindReplaceDialog { void __cdecl _dtor(int *self,uint dtorFlags); }
+void __stdcall InitRichEditStreamer_44938c(void);
 void __stdcall FUN_004493e2(void);
-undefined4 * __cdecl FUN_00449414(undefined4 *param_1,int *param_2);
-int * __cdecl FUN_0044947c(int *param_1,int param_2);
-namespace OWL::TEditSearch::Streamer { undefined4 __cdecl vf1(int param_1,int *param_2); }
+namespace OWL::TEditSearch::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TEditSearch { int * __cdecl TEditSearch(int *self,int vbasesBuilt); }
+namespace OWL::TEditSearch::Streamer { undefined4 __cdecl vf1(int self,int *param_2); }
 void __cdecl FUN_004495f4(int param_1,int *param_2);
-namespace OWL::TEditSearch::Streamer { void __cdecl vf2(int param_1,int *param_2); }
+namespace OWL::TEditSearch::Streamer { void __cdecl vf2(int self,int *param_2); }
 void __cdecl FUN_0044968c(int param_1,int *param_2);
 undefined4 * __cdecl FUN_004496e0(int *param_1);
 namespace OWL::TEditSearch::Streamer { undefined4 __stdcall vf3(void); }
-undefined4 * __cdecl FUN_004498a8(undefined4 *param_1);
+namespace OWL::TXBadFormat { undefined4 * __cdecl TXBadFormat(undefined4 *self); }
 int vshared_4498f4(...);   // not decompiled
 void __stdcall FUN_00449914(void);
-namespace OWL::TXBadFormat { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TXBadFormat { undefined4 * __cdecl vf2(int *param_1); }
-namespace OWL::TXBadFormat { void __cdecl vf3(int *param_1); }
-undefined4 * __cdecl FUN_00449af8(undefined4 *param_1,int *param_2);
+namespace OWL::TXBadFormat { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TXBadFormat { undefined4 * __cdecl vf2(int *self); }
+namespace OWL::TXBadFormat { void __cdecl vf3(int *self); }
+namespace OWL::TXBadFormat { undefined4 * __cdecl TXBadFormat_449af8(undefined4 *self,int *param_2); }
 void __cdecl FUN_00449b4c(uint *param_1,uint *param_2,uint *param_3,uint param_4);
-undefined4 * __cdecl FUN_00449ba8(undefined4 *param_1,uint *param_2,undefined4 param_3);
-namespace OWL::TDiskFileHandle { void __cdecl _dtor(int param_1,byte param_2); }
-namespace OWL::TDiskFileHandle { undefined4 __cdecl vf1(int param_1); }
-namespace OWL::TDiskFileHandle { int __cdecl vf2(int param_1,int param_2); }
-namespace OWL::TDiskFileHandle { bool __cdecl vf4(int param_1); }
-namespace OWL::TFileHandle { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-undefined4 * __cdecl FUN_00449f38(undefined4 *param_1,undefined4 param_2,uint *param_3,undefined4 param_4);
-namespace OWL::TDiskFileHandle { undefined4 * __cdecl vf5(int param_1); }
+namespace OWL::TDiskFileHandle { undefined4 * __cdecl TDiskFileHandle(undefined4 *self,uint *s,undefined4 param_3); }
+namespace OWL::TDiskFileHandle { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace OWL::TDiskFileHandle { undefined4 __cdecl vf1(int self); }
+namespace OWL::TDiskFileHandle { int __cdecl vf2(int self,int param_2); }
+namespace OWL::TDiskFileHandle { bool __cdecl vf4(int self); }
+namespace OWL::TFileHandle { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TDiskFileHandle { undefined4 * __cdecl TDiskFileHandle_449f38(undefined4 *self,undefined4 param_2,uint *s,undefined4 param_4); }
+namespace OWL::TDiskFileHandle { undefined4 * __cdecl vf5(int self); }
 namespace OWL::TDiskFileHandle { void __stdcall vf3(void); }
-namespace OWL::TDiskFileHandle { undefined4 __cdecl vf6(int param_1); }
-namespace OWL::TDiskFileHandle { DWORD __cdecl vf7(int param_1,LPVOID param_2,DWORD param_3); }
-namespace OWL::TDiskFileHandle { undefined4 __cdecl vf8(int param_1,LPCVOID param_2,DWORD param_3); }
-namespace OWL::TDiskFileHandle { undefined4 __cdecl vf9(int *param_1); }
-namespace OWL::TDiskFileHandle { DWORD __cdecl vf10(int param_1); }
-namespace OWL::TDiskFileHandle { DWORD __cdecl vf11(int param_1); }
-namespace OWL::TDiskFileHandle { undefined4 __cdecl vf12(int *param_1); }
-namespace OWL::TDiskFileHandle { DWORD __cdecl vf13(int param_1); }
-namespace OWL::TDiskFileHandle { DWORD __cdecl vf14(int param_1); }
-namespace OWL::TDiskFileHandle { DWORD __cdecl vf15(int param_1,LONG param_2,LONG param_3,DWORD param_4); }
-namespace OWL::TDiskFileHandle { DWORD __cdecl vf16(int param_1,LONG param_2,DWORD param_3); }
-namespace OWL::TDiskFileHandle { undefined4 __cdecl vf17(int param_1); }
-namespace OWL::TDiskFileHandle { bool __cdecl vf18(int param_1,DWORD param_2,DWORD param_3); }
-namespace OWL::TDiskFileHandle { undefined4 __cdecl vf19(int param_1,DWORD param_2,DWORD param_3); }
-namespace OWL::TDiskFileHandle { bool __cdecl vf20(int param_1,DWORD param_2,DWORD param_3,DWORD param_4,DWORD param_5); }
-namespace OWL::TDiskFileHandle { bool __cdecl vf21(int param_1,DWORD param_2,DWORD param_3,DWORD param_4,DWORD param_5); }
+namespace OWL::TDiskFileHandle { undefined4 __cdecl vf6(int self); }
+namespace OWL::TDiskFileHandle { DWORD __cdecl vf7(int self,LPVOID buffer,DWORD numberOfBytesToRead); }
+namespace OWL::TDiskFileHandle { undefined4 __cdecl vf8(int self,LPCVOID buffer,DWORD numberOfBytesToWrite); }
+namespace OWL::TDiskFileHandle { undefined4 __cdecl vf9(int *self); }
+namespace OWL::TDiskFileHandle { DWORD __cdecl vf10(int self); }
+namespace OWL::TDiskFileHandle { DWORD __cdecl vf11(int self); }
+namespace OWL::TDiskFileHandle { undefined4 __cdecl vf12(int *self); }
+namespace OWL::TDiskFileHandle { DWORD __cdecl vf13(int self); }
+namespace OWL::TDiskFileHandle { DWORD __cdecl vf14(int self); }
+namespace OWL::TDiskFileHandle { DWORD __cdecl vf15(int self,LONG lDistanceToMove,LONG param_3,DWORD moveMethod); }
+namespace OWL::TDiskFileHandle { DWORD __cdecl vf16(int self,LONG lDistanceToMove,DWORD moveMethod); }
+namespace OWL::TDiskFileHandle { undefined4 __cdecl vf17(int self); }
+namespace OWL::TDiskFileHandle { bool __cdecl vf18(int self,DWORD fileOffsetLow,DWORD numberOfBytesToLockLow); }
+namespace OWL::TDiskFileHandle { undefined4 __cdecl vf19(int self,DWORD fileOffsetLow,DWORD numberOfBytesToUnlockLow); }
+namespace OWL::TDiskFileHandle { bool __cdecl vf20(int self,DWORD fileOffsetLow,DWORD fileOffsetHigh,DWORD numberOfBytesToLockLow,DWORD numberOfBytesToLockHigh); }
+namespace OWL::TDiskFileHandle { bool __cdecl vf21(int self,DWORD fileOffsetLow,DWORD fileOffsetHigh,DWORD numberOfBytesToUnlockLow,DWORD numberOfBytesToUnlockHigh); }
 uint __cdecl FUN_0044a2f4(uint param_1);
-namespace OWL::TDiskFileHandle { undefined4 __cdecl vf22(int *param_1,uint *param_2); }
-namespace OWL::TFile { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace OWL::TFile { bool __cdecl vf2(int param_1,uint *param_2,undefined4 param_3); }
-namespace OWL::TFile { undefined4 __cdecl vf3(int param_1); }
-namespace OWL::TFile { void __cdecl vf14(int param_1); }
-namespace OWL::TFile { void __cdecl vf15(int param_1); }
-namespace OWL::TFile { void __cdecl vf16(int param_1); }
+namespace OWL::TDiskFileHandle { undefined4 __cdecl vf22(int *self,uint *param_2); }
+namespace OWL::TFile { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace OWL::TFile { bool __cdecl vf2(int self,uint *s,undefined4 param_3); }
+namespace OWL::TFile { undefined4 __cdecl vf3(int self); }
+namespace OWL::TFile { void __cdecl vf14(int self); }
+namespace OWL::TFile { void __cdecl vf15(int self); }
+namespace OWL::TFile { void __cdecl vf16(int self); }
 int __cdecl FUN_0044a684(ushort *param_1,ushort *param_2,undefined4 param_3,int param_4,int param_5);
 int __cdecl FUN_0044a6c6(uint *param_1,undefined4 *param_2,undefined4 param_3,int param_4,int param_5);
 int __cdecl FUN_0044a731(uint *param_1,undefined4 *param_2,undefined4 param_3,int param_4,int param_5);
@@ -1617,99 +1617,99 @@ int __cdecl FUN_0044a899(uint *param_1,undefined4 *param_2,undefined4 param_3,in
 int __cdecl FUN_0044a904(uint *param_1,undefined4 *param_2,undefined4 param_3,int param_4,int param_5);
 undefined4 __stdcall FUN_0044a96f(void);
 int __cdecl FUN_0044a976(uint *param_1,undefined4 *param_2,undefined4 param_3,int param_4,int param_5);
-int __cdecl FUN_0044aa2c(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,int param_4,int param_5);
-int __cdecl FUN_0044aa54(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,int param_4,int param_5);
+int __cdecl FUN_0044aa2c(undefined4 *src,undefined4 *dest,undefined4 param_3,int param_4,int param_5);
+int __cdecl FUN_0044aa54(undefined4 *src,undefined4 *dest,undefined4 param_3,int param_4,int param_5);
 int __cdecl FUN_0044aa7c(int param_1);
 int __cdecl FUN_0044aa9c(int *param_1,undefined4 param_2,int *param_3,int param_4);
 undefined1 __cdecl FUN_0044abd4(int *param_1,undefined4 param_2,int *param_3,int param_4);
 void __cdecl FUN_0044ad18(int *param_1,undefined4 param_2,int param_3,int param_4);
 void __cdecl FUN_0044ad3c(int *param_1,undefined4 param_2,int param_3,int param_4);
-namespace OWL::TFile { uint __cdecl vf19(int *param_1); }
-namespace OWL::TFile { undefined2 __cdecl vf20(int *param_1); }
-namespace OWL::TFile { undefined4 __cdecl vf21(int *param_1); }
-namespace OWL::TFile { undefined4 __cdecl vf22(int *param_1); }
-namespace OWL::TFile { void __cdecl vf23(int *param_1); }
-namespace OWL::TFile { void __cdecl vf24(int *param_1); }
-namespace OWL::TFile { void __cdecl vf26(int *param_1); }
-namespace OWL::TFile { void __cdecl vf27(int *param_1); }
-namespace OWL::TFile { void __cdecl vf28(int *param_1); }
-namespace OWL::TFile { void __cdecl vf29(int *param_1); }
-namespace OWL::TFile { void __cdecl vf30(int *param_1); }
-namespace OWL::TFile { void __cdecl vf31(int *param_1); }
+namespace OWL::TFile { uint __cdecl vf19(int *self); }
+namespace OWL::TFile { undefined2 __cdecl vf20(int *self); }
+namespace OWL::TFile { undefined4 __cdecl vf21(int *self); }
+namespace OWL::TFile { undefined4 __cdecl vf22(int *self); }
+namespace OWL::TFile { void __cdecl vf23(int *self); }
+namespace OWL::TFile { void __cdecl vf24(int *self); }
+namespace OWL::TFile { void __cdecl vf26(int *self); }
+namespace OWL::TFile { void __cdecl vf27(int *self); }
+namespace OWL::TFile { void __cdecl vf28(int *self); }
+namespace OWL::TFile { void __cdecl vf29(int *self); }
+namespace OWL::TFile { void __cdecl vf30(int *self); }
+namespace OWL::TFile { void __cdecl vf31(int *self); }
 char * __cdecl FUN_0044aec8(char *param_1);
 char * __cdecl FUN_0044aed8(char *param_1,char *param_2,int param_3);
 char * __cdecl FUN_0044aef6(char *param_1,char *param_2,uint *param_3);
 char * __cdecl FUN_0044af2e(char *param_1,char *param_2,int param_3);
 char * __cdecl FUN_0044af4c(char *param_1,char *param_2,uint *param_3);
 char * __cdecl FUN_0044af84(char *param_1,char *param_2,char *param_3);
-undefined4 __cdecl FUN_0044afa8(int param_1,uint *param_2,char param_3);
-int __cdecl FUN_0044bb88(int param_1,uint *param_2,char param_3);
+undefined4 __cdecl FUN_0044afa8(int str,uint *param_2,char param_3);
+int __cdecl FUN_0044bb88(int str,uint *param_2,char param_3);
 void __cdecl FUN_0044bc98(int param_1);
 int __cdecl FUN_0044bd08(int param_1,uint param_2);
 bool __cdecl FUN_0044be7c(int param_1,uint param_2);
 undefined4 * __cdecl FUN_0044beec(undefined4 *param_1,undefined4 param_2,undefined4 param_3);
-namespace OWL::TFindReplaceDialog::TData { void __cdecl _dtor(int param_1,byte param_2); }
-namespace OWL::TFindReplaceDialog { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
+namespace OWL::TFindReplaceDialog::TData { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace OWL::TFindReplaceDialog { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
 void __cdecl FUN_0044c00c(int *param_1,int param_2);
-int * __cdecl FUN_0044c0a8(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5,int param_6, int param_7);
+namespace OWL::TFindReplaceDialog { int * __cdecl TFindReplaceDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,int param_5,int param_6, int param_7); }
 namespace OWL::TFindReplaceDialog { void __stdcall vf4(void); }
-namespace OWL::TFindReplaceDialog { void __cdecl vf1(int *param_1,int param_2,undefined4 param_3); }
-namespace OWL::TFindReplaceDialog { void __cdecl EvNCDestroy(int *param_1); }
+namespace OWL::TFindReplaceDialog { void __cdecl vf1(int *self,int param_2,undefined4 param_3); }
+namespace OWL::TFindReplaceDialog { void __cdecl EvNCDestroy(int *self); }
 void __cdecl FUN_0044c224(int param_1,int param_2);
-int * __cdecl FUN_0044c248(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5,int param_6, int param_7);
-namespace OWL::TFindDialog { void __cdecl vf4(int *param_1); }
-int * __cdecl FUN_0044c38c(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5,int param_6, int param_7);
-namespace OWL::TReplaceDialog { void __cdecl vf4(int *param_1); }
+namespace OWL::TFindDialog { int * __cdecl TFindDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,int param_5,int param_6, int param_7); }
+namespace OWL::TFindDialog { void __cdecl vf4(int *self); }
+namespace OWL::TReplaceDialog { int * __cdecl TReplaceDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,int param_5,int param_6, int param_7); }
+namespace OWL::TReplaceDialog { void __cdecl vf4(int *self); }
 void __cdecl FUN_0044c80c(int param_1,int *param_2);
 void __cdecl FUN_0044c88c(undefined4 *param_1,int *param_2);
-uint __cdecl FUN_0044c8e4(HMENU param_1,int param_2);
+uint __cdecl FUN_0044c8e4(HMENU hMenu,int param_2);
 HICON __stdcall FUN_0044c928(void);
 int __cdecl FUN_0044c9cb(int param_1);
 bool __cdecl FUN_0044ca34(int param_1);
-namespace OWL::TFrameWindow { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-namespace OWL::TMenuItemEnabler { void __cdecl vf0(int param_1,char param_2); }
-namespace OWL::TMenuItemEnabler { void __cdecl vf1(int param_1,LPCSTR param_2); }
-namespace OWL::TMenuItemEnabler { void __cdecl vf2(int param_1,int param_2); }
-int * __cdecl FUN_0044cb34(int *param_1,int param_2,undefined4 param_3,uint *param_4,int param_5,char param_6, int param_7);
+namespace OWL::TFrameWindow { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TMenuItemEnabler { void __cdecl vf0(int self,char param_2); }
+namespace OWL::TMenuItemEnabler { void __cdecl vf1(int self,LPCSTR newItem); }
+namespace OWL::TMenuItemEnabler { void __cdecl vf2(int self,int param_2); }
+namespace OWL::TFrameWindow { int * __cdecl TFrameWindow(int *self,int vbasesBuilt,undefined4 param_3,uint *param_4,int param_5,char param_6, int param_7); }
 void __cdecl FUN_0044cc70(int *param_1,int param_2,char param_3);
 void __cdecl FUN_0044ccc0(int *param_1,undefined4 param_2);
-namespace OWL::TFrameWindow { void __cdecl _dtor(int *param_1,uint param_2); }
-namespace OWL::TFrameWindow { void __cdecl EvInitMenuPopup(int *param_1,HMENU param_2,undefined4 param_3,char param_4); }
+namespace OWL::TFrameWindow { void __cdecl _dtor(int *self,uint dtorFlags); }
+namespace OWL::TFrameWindow { void __cdecl EvInitMenuPopup(int *self,HMENU hPopupMenu,undefined4 index,char sysMenu); }
 void __cdecl Child4509768_Notify4453474_44cfcc(int *param_1,int param_2);
-namespace OWL::TFrameWindow { HWND __cdecl vf9(int *param_1); }
-namespace OWL::TFrameWindow { undefined4 __cdecl vf14(int *param_1,int param_2,HWND param_3,undefined4 param_4); }
-namespace OWL::TFrameWindow { void __cdecl vf15(undefined4 *param_1,undefined4 *param_2); }
-namespace OWL::TFrameWindow { undefined4 __cdecl vf10(int *param_1,LPMSG param_2); }
-namespace OWL::TFrameWindow { bool __cdecl vf2(int *param_1,HMENU param_2); }
-namespace OWL::TFrameWindow { undefined4 __cdecl vf1(int *param_1,uint *param_2); }
+namespace OWL::TFrameWindow { HWND __cdecl vf9(int *self); }
+namespace OWL::TFrameWindow { undefined4 __cdecl EvCommand(int *self,int param_2,HWND hWnd2,undefined4 param_4); }
+namespace OWL::TFrameWindow { void __cdecl EvCommandEnable(undefined4 *self,undefined4 *param_2); }
+namespace OWL::TFrameWindow { undefined4 __cdecl PreProcessMsg(int *self,LPMSG lParam); }
+namespace OWL::TFrameWindow { bool __cdecl vf2(int *self,HMENU hMenu); }
+namespace OWL::TFrameWindow { undefined4 __cdecl vf1(int *self,uint *param_2); }
 undefined4 __cdecl FUN_0044d2f0(int *param_1,undefined4 param_2,undefined4 param_3);
 undefined4 __cdecl FUN_0044d37c(int *param_1,undefined4 param_2,HANDLE param_3);
-namespace OWL::TFrameWindow { undefined4 __cdecl vf6(int param_1); }
-namespace OWL::TFrameWindow { int __cdecl vf7(int *param_1,undefined4 param_2); }
-namespace OWL::TFrameWindow { void __cdecl vf8(int *param_1,int param_2); }
-namespace OWL::TFrameWindow { undefined4 __cdecl vf13(int *param_1,uint *param_2,uint param_3); }
-namespace OWL::TFrameWindow { void __cdecl EvPaint(int *param_1); }
-namespace OWL::TFrameWindow { bool __cdecl EvEraseBkgnd(int *param_1,undefined4 param_2); }
-namespace OWL::TFrameWindow { HICON __cdecl EvQuerydragicon(int *param_1); }
+namespace OWL::TFrameWindow { undefined4 __cdecl vf6(int self); }
+namespace OWL::TFrameWindow { int __cdecl vf7(int *self,undefined4 param_2); }
+namespace OWL::TFrameWindow { void __cdecl RemoveChild(int *self,int param_2); }
+namespace OWL::TFrameWindow { undefined4 __cdecl SetDocTitle(int *self,uint *param_2,uint param_3); }
+namespace OWL::TFrameWindow { void __cdecl EvPaint(int *self); }
+namespace OWL::TFrameWindow { bool __cdecl EvEraseBkgnd(int *self,undefined4 hdc); }
+namespace OWL::TFrameWindow { HICON __cdecl EvQuerydragicon(int *self); }
 int __cdecl FUN_0044d8dc(int *param_1);
-namespace OWL::TFrameWindow { bool __cdecl vf12(int *param_1,HWND param_2,HWND param_3); }
-namespace OWL::TFrameWindow { void __cdecl EvSetFocus(int *param_1); }
-namespace OWL::TFrameWindow { void __cdecl EvParentNotify(int *param_1,int param_2,HWND param_3); }
-namespace OWL::TFrameWindow { bool __cdecl EvQuerynewpalette(int *param_1); }
-namespace OWL::TFrameWindow { void __cdecl EvPalettechanged(int *param_1); }
+namespace OWL::TFrameWindow { bool __cdecl HoldFocusHWnd(int *self,HWND hWnd,HWND hWnd2); }
+namespace OWL::TFrameWindow { void __cdecl EvSetFocus(int *self); }
+namespace OWL::TFrameWindow { void __cdecl EvParentNotify(int *self,int param_2,HWND hWnd); }
+namespace OWL::TFrameWindow { bool __cdecl EvQuerynewpalette(int *self); }
+namespace OWL::TFrameWindow { void __cdecl EvPalettechanged(int *self); }
 undefined4 __cdecl FUN_0044daec(int *param_1,char param_2);
-namespace OWL::TFrameWindow { void __cdecl vf16(int *param_1); }
-namespace OWL::TFrameWindow { void __cdecl vf17(int *param_1); }
-void __cdecl FUN_0044e228(int *param_1,WPARAM param_2,LPARAM param_3);
-namespace OWL::TFrameWindow { void __stdcall EvSize(int param_1,int param_2,int *param_3); }
+namespace OWL::TFrameWindow { void __cdecl SetupWindow(int *self); }
+namespace OWL::TFrameWindow { void __cdecl CleanupWindow(int *self); }
+void __cdecl FUN_0044e228(int *param_1,WPARAM wParam,LPARAM lParam);
+namespace OWL::TFrameWindow { void __stdcall EvSize(int self,int sizeType,int *size); }
 void __stdcall FUN_0044e25a(void);
-namespace OWL::TFrameWindow { undefined4 __cdecl vf3(int *param_1,int *param_2); }
-namespace OWL::TMenuDescr { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TFrameWindow { undefined4 __cdecl vf3(int *self,int *param_2); }
+namespace OWL::TMenuDescr { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 undefined4 __cdecl FUN_0044e630(int *param_1,int *param_2,int param_3);
-namespace OWL::TMenuDescr { undefined4 __cdecl vf1(int param_1); }
+namespace OWL::TMenuDescr { undefined4 __cdecl vf1(int self); }
 void __stdcall FUN_0044e6b8(void);
 DWORD * __cdecl FUN_0044e764(DWORD *param_1);
-void __cdecl FUN_0044e7f8(DWORD *param_1,ushort param_2);
+void __cdecl FUN_0044e7f8(DWORD *param_1,ushort languageId);
 undefined4 __cdecl FUN_0044e870(int param_1);
 void __cdecl FUN_0044e93c(int param_1,undefined4 param_2,uint param_3);
 void __cdecl FUN_0044e9dc(int param_1,int param_2);
@@ -1717,128 +1717,128 @@ uint __cdecl FUN_0044ea78(int param_1);
 undefined4 __cdecl FUN_0044eb20(int param_1,int param_2);
 int __cdecl FUN_0044eb68(int param_1,int param_2);
 undefined4 __cdecl FUN_0044eb8c(int param_1);
-undefined4 __cdecl FUN_0044ebc4(LPCSTR param_1,LPCSTR param_2);
-undefined4 * __cdecl FUN_0044ecbc(undefined4 *param_1,uint *param_2,char param_3,char param_4,char param_5);
-undefined4 * __cdecl FUN_0044ed8c(undefined4 *param_1,uint *param_2,undefined4 param_3,char param_4);
-undefined4 * __cdecl FUN_0044ee00(undefined4 *param_1,uint *param_2,int param_3,undefined4 param_4,char param_5);
-namespace OWL::TModule { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-undefined4 __cdecl FUN_0044ef18(LPCSTR param_1,LPCSTR param_2);
+undefined4 __cdecl FUN_0044ebc4(LPCSTR name,LPCSTR type);
+namespace OWL::TModule { undefined4 * __cdecl TModule(undefined4 *self,uint *libFileName,char param_3,char param_4,char param_5); }
+namespace OWL::TModule { undefined4 * __cdecl TModule_44ed8c(undefined4 *self,uint *param_2,undefined4 param_3,char param_4); }
+namespace OWL::TModule { undefined4 * __cdecl TModule_44ee00(undefined4 *self,uint *param_2,int param_3,undefined4 param_4,char param_5); }
+namespace OWL::TModule { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+undefined4 __cdecl FUN_0044ef18(LPCSTR name,LPCSTR type);
 void __cdecl FUN_0044ef34(int param_1,uint *param_2);
 void __cdecl FUN_0044efd0(int param_1,undefined4 param_2);
-namespace OWL::TModule { void __cdecl vf1(int param_1,int *param_2,uint param_3,uint param_4); }
+namespace OWL::TModule { void __cdecl vf1(int self,int *param_2,uint param_3,uint param_4); }
 void __cdecl FUN_0044f0a4(int param_1,undefined4 param_2);
-int __cdecl FUN_0044f0b4(int param_1,uint param_2,LPSTR param_3,int param_4);
+int __cdecl FUN_0044f0b4(int param_1,uint param_2,LPSTR multiByteStr,int multiByte);
 int __cdecl FUN_0044f1ec(int param_1,int param_2,uint param_3);
-HACCEL __cdecl FUN_0044fe7c(int param_1,LPCSTR param_2);
-HMENU __cdecl FUN_0044fec8(int param_1,LPCSTR param_2);
-HCURSOR __cdecl FUN_0044ff14(int param_1,LPCSTR param_2);
-int * __cdecl FUN_0044ff60(int *param_1,int param_2,LPCSTR param_3);
+HACCEL __cdecl FUN_0044fe7c(int param_1,LPCSTR name);
+HMENU __cdecl FUN_0044fec8(int param_1,LPCSTR name);
+HCURSOR __cdecl FUN_0044ff14(int param_1,LPCSTR name);
+int * __cdecl FUN_0044ff60(int *param_1,int param_2,LPCSTR procName);
 undefined * __stdcall FUN_00450210(void);
 undefined4 __stdcall FUN_00450270(void);
 void __stdcall FUN_004502b0(void);
 undefined4 __stdcall FUN_004502e8(void);
 undefined4 __stdcall FUN_0045032c(void);
-undefined4 * __cdecl FUN_00450388(undefined4 *param_1,undefined4 param_2);
-namespace OWL::TXInvalidModule { undefined4 * __cdecl vf2(int *param_1); }
-namespace OWL::TXInvalidModule { void __cdecl vf3(int *param_1); }
+namespace OWL::TXInvalidModule { undefined4 * __cdecl TXInvalidModule(undefined4 *self,undefined4 param_2); }
+namespace OWL::TXInvalidModule { undefined4 * __cdecl vf2(int *self); }
+namespace OWL::TXInvalidModule { void __cdecl vf3(int *self); }
 void __cdecl FUN_0045063c(undefined4 param_1);
-namespace OWL::TXInvalidModule { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TXInvalidModule { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __cdecl FUN_004507d4(int param_1,byte param_2);
 void __cdecl FUN_00450824(int param_1,byte param_2);
-void __stdcall FUN_00450854(void);
+void __stdcall InitRichEditStreamer_450854(void);
 void __stdcall FUN_004508aa(void);
-undefined4 * __cdecl FUN_004508dc(undefined4 *param_1,int *param_2);
-undefined4 * __cdecl FUN_00450944(undefined4 *param_1);
+namespace OWL::TModule::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TModule { undefined4 * __cdecl TModule_450944(undefined4 *self); }
 int * __cdecl FUN_00450984(int *param_1,undefined4 *param_2);
 int * __cdecl FUN_004509d4(int *param_1,int *param_2);
-namespace OWL::TModule::Streamer { int __cdecl vf1(int param_1,int *param_2); }
-namespace OWL::TModule::Streamer { void __cdecl vf2(int param_1,int *param_2); }
-undefined4 * __cdecl FUN_00450a74(int *param_1);
+namespace OWL::TModule::Streamer { int __cdecl vf1(int self,int *param_2); }
+namespace OWL::TModule::Streamer { void __cdecl vf2(int self,int *param_2); }
+undefined4 * __cdecl FUN_00450a74(int *module);
 namespace OWL::TModule::Streamer { undefined4 __stdcall vf3(void); }
 uint * __cdecl FUN_00450b7c(uint *param_1,uint param_2,uint *param_3,uint param_4,uint param_5,uint param_6, uint param_7,uint param_8,uint param_9);
-namespace OWL::TOpenSaveDialog::TData { void __cdecl _dtor(int param_1,byte param_2); }
+namespace OWL::TOpenSaveDialog::TData { void __cdecl _dtor(int self,byte dtorFlags); }
 char * FUN_00450c98(char *param_1,undefined4 param_2,undefined4 param_3,int param_4,uint *param_5);
-namespace OWL::TOpenSaveDialog { undefined4 __cdecl vf14(undefined4 *param_1,int *param_2,undefined *param_3); }
+namespace OWL::TOpenSaveDialog { undefined4 __cdecl vf14(undefined4 *self,int *param_2,undefined *param_3); }
 void __cdecl FUN_00450d94(int *param_1,int param_2);
-int * __cdecl FUN_00450e94(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5,int param_6, int param_7);
-namespace OWL::TOpenSaveDialog { bool __cdecl vf1(int *param_1,int param_2,undefined4 param_3); }
+namespace OWL::TOpenSaveDialog { int * __cdecl TOpenSaveDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,int param_5,int param_6, int param_7); }
+namespace OWL::TOpenSaveDialog { bool __cdecl vf1(int *self,int param_2,undefined4 param_3); }
 namespace OWL::TOpenSaveDialog { undefined4 __stdcall vf15(void); }
-int * __cdecl FUN_0045103c(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5,int param_6, int param_7);
-namespace OWL::TFileOpenDialog { undefined4 __cdecl vf6(int param_1); }
-int * __cdecl FUN_004511f4(int *param_1,int param_2,undefined4 param_3,int param_4,int param_5,int param_6, int param_7);
-namespace OWL::TFileSaveDialog { undefined4 __cdecl vf6(int param_1); }
-namespace OWL::TScrollBar { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-int * __cdecl FUN_00451770(int *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5);
-namespace OWL::TScrollBar { undefined4 __cdecl vf16(int param_1,int param_2,int param_3); }
+namespace OWL::TFileOpenDialog { int * __cdecl TFileOpenDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,int param_5,int param_6, int param_7); }
+namespace OWL::TFileOpenDialog { undefined4 __cdecl vf6(int self); }
+namespace OWL::TFileSaveDialog { int * __cdecl TFileSaveDialog(int *self,int vbasesBuilt,undefined4 param_3,int param_4,int param_5,int param_6, int param_7); }
+namespace OWL::TFileSaveDialog { undefined4 __cdecl vf6(int self); }
+namespace OWL::TScrollBar { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TScrollBar { int * __cdecl TScrollBar(int *self,int vbasesBuilt,undefined4 param_3,undefined4 param_4,int param_5); }
+namespace OWL::TScrollBar { undefined4 __cdecl vf16(int self,int param_2,int param_3); }
 namespace OWL::TScrollBar { char * __stdcall vf26(void); }
-namespace OWL::TScrollBar { void __cdecl vf27(int *param_1); }
-namespace OWL::TScrollBar { void __cdecl vf15(int *param_1,LPCSCROLLINFO param_2,byte param_3); }
-namespace OWL::TScrollBar { void __cdecl vf14(int *param_1,LPSCROLLINFO param_2); }
-namespace OWL::TScrollBar { undefined4 __cdecl vf10(int param_1); }
-namespace OWL::TScrollBar { void __cdecl vf12(int param_1,int param_2); }
-namespace OWL::TScrollBar { void __cdecl vf9(int param_1,undefined4 *param_2,undefined4 *param_3); }
-namespace OWL::TScrollBar { void __cdecl vf11(int param_1,undefined4 param_2,undefined4 param_3); }
-namespace OWL::TScrollBar { void __cdecl vf13(int param_1,int param_2); }
-namespace OWL::TScrollBar { void __cdecl vf17(int param_1); }
-namespace OWL::TScrollBar { void __cdecl vf18(int param_1); }
-namespace OWL::TScrollBar { void __cdecl vf19(int param_1); }
-namespace OWL::TScrollBar { void __cdecl vf20(int param_1); }
-namespace OWL::TScrollBar { void __cdecl vf21(int param_1); }
-namespace OWL::TScrollBar { void __cdecl vf22(int param_1); }
-namespace OWL::TScrollBar { void __cdecl vf23(int param_1); }
-namespace OWL::TScrollBar { void __cdecl vf24(int param_1); }
+namespace OWL::TScrollBar { void __cdecl vf27(int *self); }
+namespace OWL::TScrollBar { void __cdecl vf15(int *self,LPCSCROLLINFO lpsi,byte redraw); }
+namespace OWL::TScrollBar { void __cdecl vf14(int *self,LPSCROLLINFO lpsi); }
+namespace OWL::TScrollBar { undefined4 __cdecl vf10(int self); }
+namespace OWL::TScrollBar { void __cdecl vf12(int self,int param_2); }
+namespace OWL::TScrollBar { void __cdecl vf9(int self,undefined4 *param_2,undefined4 *param_3); }
+namespace OWL::TScrollBar { void __cdecl vf11(int self,undefined4 param_2,undefined4 param_3); }
+namespace OWL::TScrollBar { void __cdecl vf13(int self,int param_2); }
+namespace OWL::TScrollBar { void __cdecl vf17(int self); }
+namespace OWL::TScrollBar { void __cdecl vf18(int self); }
+namespace OWL::TScrollBar { void __cdecl vf19(int self); }
+namespace OWL::TScrollBar { void __cdecl vf20(int self); }
+namespace OWL::TScrollBar { void __cdecl vf21(int self); }
+namespace OWL::TScrollBar { void __cdecl vf22(int self); }
+namespace OWL::TScrollBar { void __cdecl vf23(int self); }
+namespace OWL::TScrollBar { void __cdecl vf24(int self); }
 namespace OWL::TScrollBar { void __stdcall vf25(void); }
-namespace OWL::TScrollBar { void __cdecl EvHScroll(int param_1,undefined4 param_2); }
-namespace OWL::TScrollBar { void __cdecl EvVScroll(int param_1,undefined4 param_2); }
-namespace OWL::TScroller { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace OWL::TScroller { void __cdecl vf3(int *param_1); }
-namespace OWL::TScroller { void __cdecl vf5(int *param_1,int param_2,int param_3); }
-namespace OWL::TScroller { void __cdecl vf6(int *param_1,int param_2,int param_3); }
-namespace OWL::TScroller { void __cdecl vf2(int *param_1,int param_2,int param_3); }
-namespace OWL::TScroller { void __cdecl vf4(int *param_1); }
-namespace OWL::TScroller { void __cdecl vf7(int param_1,int param_2,int *param_3); }
-namespace OWL::TScroller { void vf8(undefined4 param_1,int param_2,int param_3,int *param_4); }
-namespace OWL::TScroller { void __cdecl vf9(int *param_1,undefined4 param_2,int param_3); }
-namespace OWL::TScroller { void __cdecl vf10(int *param_1,undefined4 param_2,int param_3); }
-namespace OWL::TScroller { void __cdecl vf11(int param_1,int param_2,int param_3); }
-namespace OWL::TScroller { undefined1 __cdecl vf14(int param_1); }
-namespace OWL::TScroller { void __cdecl vf15(int *param_1); }
-namespace OWL::TScroller { void __cdecl vf1(int param_1,undefined4 param_2); }
-namespace OWL::TScroller { bool __cdecl vf12(int param_1,UINT param_2,UINT param_3); }
-namespace OWL::TScroller { void __cdecl vf13(int param_1,int param_2,byte param_3); }
-namespace OWL::TScroller { void __cdecl vf16(int param_1,int param_2,UINT param_3,byte param_4); }
-namespace OWL::TScroller { void __cdecl vf17(int param_1,int param_2); }
-namespace OWL::TScroller { void __cdecl vf18(int param_1,int param_2,int *param_3,int *param_4); }
-namespace OWL::TScroller { void __cdecl vf19(int param_1,int param_2,int param_3,int param_4,byte param_5); }
-namespace OWL::TScroller { void __cdecl vf20(int param_1,int param_2); }
-namespace OWL::TScroller { void __cdecl vf21(int param_1,int param_2,int param_3,byte param_4); }
-void __stdcall FUN_0045284c(void);
+namespace OWL::TScrollBar { void __cdecl EvHScroll(int self,undefined4 param_2); }
+namespace OWL::TScrollBar { void __cdecl EvVScroll(int self,undefined4 param_2); }
+namespace OWL::TScroller { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace OWL::TScroller { void __cdecl vf3(int *self); }
+namespace OWL::TScroller { void __cdecl vf5(int *self,int param_2,int param_3); }
+namespace OWL::TScroller { void __cdecl vf6(int *self,int param_2,int param_3); }
+namespace OWL::TScroller { void __cdecl vf2(int *self,int param_2,int param_3); }
+namespace OWL::TScroller { void __cdecl vf4(int *self); }
+namespace OWL::TScroller { void __cdecl vf7(int self,int param_2,int *param_3); }
+namespace OWL::TScroller { void vf8(undefined4 self,int param_2,int param_3,int *param_4); }
+namespace OWL::TScroller { void __cdecl vf9(int *self,undefined4 param_2,int param_3); }
+namespace OWL::TScroller { void __cdecl vf10(int *self,undefined4 param_2,int param_3); }
+namespace OWL::TScroller { void __cdecl vf11(int self,int param_2,int param_3); }
+namespace OWL::TScroller { undefined1 __cdecl vf14(int self); }
+namespace OWL::TScroller { void __cdecl vf15(int *self); }
+namespace OWL::TScroller { void __cdecl vf1(int self,undefined4 param_2); }
+namespace OWL::TScroller { bool __cdecl vf12(int self,UINT sBflags,UINT arrows); }
+namespace OWL::TScroller { void __cdecl vf13(int self,int bar,byte show); }
+namespace OWL::TScroller { void __cdecl vf16(int self,int bar,UINT param_3,byte redraw); }
+namespace OWL::TScroller { void __cdecl vf17(int self,int bar); }
+namespace OWL::TScroller { void __cdecl vf18(int self,int bar,int *param_3,int *param_4); }
+namespace OWL::TScroller { void __cdecl vf19(int self,int bar,int param_3,int param_4,byte redraw); }
+namespace OWL::TScroller { void __cdecl vf20(int self,int bar); }
+namespace OWL::TScroller { void __cdecl vf21(int self,int bar,int param_3,byte redraw); }
+void __stdcall InitRichEditStreamer_45284c(void);
 void __stdcall FUN_004528a2(void);
-undefined4 * __cdecl FUN_004528d4(undefined4 *param_1,int *param_2);
-undefined4 * __cdecl FUN_0045293c(undefined4 *param_1);
+namespace OWL::TScroller::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TScroller { undefined4 * __cdecl TScroller(undefined4 *self); }
 int * __cdecl FUN_0045297c(int *param_1,undefined4 *param_2);
 int * __cdecl FUN_004529cc(int *param_1,int *param_2);
-namespace OWL::TScroller::Streamer { int __stdcall vf1(int param_1,int *param_2); }
+namespace OWL::TScroller::Streamer { int __stdcall vf1(int self,int *param_2); }
 int __stdcall FUN_004529ee(void);
-namespace OWL::TScroller::Streamer { void __cdecl vf2(int param_1,int *param_2); }
-undefined4 * __cdecl FUN_00452c78(int *param_1);
+namespace OWL::TScroller::Streamer { void __cdecl vf2(int self,int *param_2); }
+undefined4 * __cdecl FUN_00452c78(int *scroller);
 namespace OWL::TScroller::Streamer { undefined4 __stdcall vf3(void); }
-namespace OWL::TStatic { undefined4 __cdecl Find(undefined4 *param_1,int *param_2,undefined *param_3); }
-int * __cdecl FUN_00452dcc(int *param_1,int param_2,undefined4 param_3,undefined4 param_4,int param_5,int param_6);
-namespace OWL::TStatic { void __cdecl EvSize(int *param_1,int param_2); }
-namespace OWL::TStatic { char * __cdecl vf11(int *param_1); }
-namespace OWL::TStatic { int __cdecl vf10(int *param_1,LPSTR param_2,int param_3); }
-namespace OWL::TStatic { void __cdecl vf9(int *param_1); }
-void __stdcall FUN_00453004(void);
+namespace OWL::TStatic { undefined4 __cdecl Find(undefined4 *self,int *param_2,undefined *param_3); }
+namespace OWL::TStatic { int * __cdecl TStatic(int *self,int vbasesBuilt,undefined4 param_3,undefined4 param_4,int param_5,int param_6); }
+namespace OWL::TStatic { void __cdecl EvSize(int *self,int param_2); }
+namespace OWL::TStatic { char * __cdecl vf11(int *self); }
+namespace OWL::TUrlLink { int __cdecl Transfer(int *self,LPSTR string_,int param_3); }
+namespace OWL::TStatic { void __cdecl vf9(int *self); }
+void __stdcall InitRichEditStreamer_453004(void);
 void __stdcall FUN_0045305a(void);
-undefined4 * __cdecl FUN_0045308c(undefined4 *param_1,int *param_2);
-int * __cdecl FUN_004530f4(int *param_1,int param_2);
+namespace OWL::TStatic::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TStatic { int * __cdecl TStatic_4530f4(int *self,int vbasesBuilt); }
 undefined4 __cdecl EvRegisteredMsg_453210_453210(int param_1,int *param_2);
-namespace OWL::TStatic::Streamer { void __cdecl vf2(int param_1,int *param_2); }
+namespace OWL::TStatic::Streamer { void __cdecl vf2(int self,int *param_2); }
 undefined4 * __cdecl FUN_00453270(int *param_1);
 namespace OWL::TStatic::Streamer { undefined4 __stdcall vf3(void); }
-namespace OWL::TTinyCaption { void __cdecl vf2(int param_1,int *param_2,undefined *param_3); }
-namespace OWL::TTinyCaption { void __cdecl _dtor(int *param_1,uint param_2); }
+namespace OWL::TTinyCaption { void __cdecl Find(int self,int *param_2,undefined *param_3); }
+namespace OWL::TTinyCaption { void __cdecl _dtor(int *self,uint dtorFlags); }
 undefined4 __cdecl EvNCHitTest_4534c4(int *param_1,int *param_2);
 undefined4 __cdecl FUN_004534f8(int *param_1,int *param_2,undefined4 *param_3);
 void __cdecl EvNCPaint_4536e8(int *param_1);
@@ -1853,15 +1853,15 @@ void __cdecl EvLButtonUp_453d68(int *param_1,undefined4 param_2,LONG *param_3);
 undefined4 __cdecl FUN_00453d90(int *param_1,undefined4 param_2,LONG *param_3);
 undefined1 EvNcactivate_453ea0(undefined4 param_1,undefined4 param_2,int param_3,int *param_4,undefined1 param_5);
 undefined4 __cdecl FUN_00453ed8(int *param_1,undefined4 param_2,undefined1 *param_3);
-namespace OWL::TTinyCaption { undefined4 __cdecl vf1(int *param_1,uint param_2,HWND param_3,undefined4 param_4); }
+namespace OWL::TTinyCaption { undefined4 __cdecl EvCommand(int *self,uint param_2,HWND hWnd,undefined4 param_4); }
 undefined4 __cdecl FUN_00453f5c(int *param_1,uint param_2,undefined4 param_3,undefined4 param_4,undefined4 *param_5);
 void __cdecl EvSysCommand_453fa8(int *param_1,uint param_2);
 undefined4 __cdecl FUN_00453fd0(int *param_1,uint param_2);
-void __cdecl FUN_0045401c(undefined4 param_1,undefined4 *param_2,RECT *param_3,char param_4);
-uint __cdecl FUN_00454384(undefined4 param_1,undefined4 *param_2,RECT *param_3,char param_4);
-void __cdecl FUN_0045451c(undefined4 param_1,undefined4 *param_2,RECT *param_3);
-void __cdecl FUN_00454764(undefined4 param_1,undefined4 *param_2,RECT *param_3,char param_4);
-void __stdcall FUN_00454834(int *param_1,undefined4 *param_2,int *param_3,char param_4);
+void __cdecl FUN_0045401c(undefined4 param_1,undefined4 *param_2,RECT *pRect,char param_4);
+uint __cdecl FUN_00454384(undefined4 param_1,undefined4 *param_2,RECT *pRect,char param_4);
+void __cdecl FUN_0045451c(undefined4 param_1,undefined4 *param_2,RECT *pRect);
+void __cdecl FUN_00454764(undefined4 param_1,undefined4 *param_2,RECT *pRect,char param_4);
+void __stdcall FUN_00454834(int *param_1,undefined4 *param_2,int *pRect,char param_4);
 void __stdcall FUN_0045483a(void);
 void __cdecl FUN_004549dc(int *param_1);
 int * __cdecl FUN_00454dc8(int *param_1,int *param_2);
@@ -1869,47 +1869,47 @@ int * __cdecl FUN_00454e7c(int *param_1,int *param_2);
 int * __cdecl FUN_00454ecc(int *param_1,int *param_2);
 int * __cdecl FUN_00454f38(int *param_1,int *param_2);
 void __cdecl FUN_00454f88(int *param_1);
-namespace OWL::TValidator { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TValidator { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 namespace OWL::TValidator { void __stdcall vf1(void); }
 namespace OWL::TValidator { undefined1 __stdcall vf2(void); }
 namespace OWL::TValidator { undefined1 __stdcall vf3(void); }
 namespace OWL::TValidator { undefined4 __stdcall vf4(void); }
 namespace OWL::TValidator { undefined4 __stdcall vf5(void); }
-void __stdcall FUN_004551e8(void);
+void __stdcall InitRichEditStreamer_4551e8(void);
 void __stdcall FUN_0045523e(void);
-undefined4 * __cdecl FUN_00455270(undefined4 *param_1,int *param_2);
-undefined4 * __cdecl FUN_004552d8(undefined4 *param_1);
+namespace OWL::TValidator::Streamer { undefined4 * __cdecl Streamer(undefined4 *self,int *param_2); }
+namespace OWL::TValidator { undefined4 * __cdecl TValidator(undefined4 *self); }
 int * __cdecl FUN_00455318(int *param_1,undefined4 *param_2);
 int * __cdecl FUN_00455368(int *param_1,int *param_2);
-namespace OWL::TValidator::Streamer { undefined4 __cdecl vf1(int param_1,int *param_2); }
-namespace OWL::TValidator::Streamer { void __cdecl vf2(undefined4 param_1,int *param_2); }
-undefined4 * __cdecl FUN_004553c8(int *param_1);
+namespace OWL::TValidator::Streamer { undefined4 __cdecl vf1(int self,int *param_2); }
+namespace OWL::TValidator::Streamer { void __cdecl vf2(undefined4 self,int *param_2); }
+undefined4 * __cdecl FUN_004553c8(int *validator);
 namespace OWL::TValidator::Streamer { undefined4 __stdcall vf3(void); }
-namespace OWL::TView { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
-namespace OWL::TView { undefined * __cdecl vf9(undefined4 param_1,int param_2); }
-namespace OWL::TView { undefined * __cdecl vf8(undefined4 param_1,int param_2); }
-namespace OWL::TView { int __cdecl vf7(undefined4 param_1,char *param_2); }
-namespace OWL::TView { char * __cdecl vf10(int param_1,int param_2,undefined4 *param_3,char *param_4); }
+namespace OWL::TView { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
+namespace OWL::TView { undefined * __cdecl vf9(undefined4 self,int param_2); }
+namespace OWL::TView { undefined * __cdecl vf8(undefined4 self,int param_2); }
+namespace OWL::TView { int __cdecl vf7(undefined4 self,char *param_2); }
+namespace OWL::TView { char * __cdecl vf10(int self,int param_2,undefined4 *param_3,char *param_4); }
 void __stdcall FUN_004556fc(void);
 namespace OWL::TView { undefined4 __stdcall vf4(void); }
 namespace OWL::TView { undefined4 __stdcall vf5(void); }
 int * __cdecl FUN_00455738(uint *param_1,int param_2,undefined1 *param_3);
 void __cdecl FUN_004557ea(int param_1,int param_2,int param_3);
-namespace OWL::__TBarDescrGdNode { void __cdecl _dtor(int *param_1,byte param_2); }
+namespace OWL::__TBarDescrGdNode { void __cdecl _dtor(int *self,byte dtorFlags); }
 void __cdecl FUN_00455964(int param_1,int param_2);
-namespace OWL::TBarDescr { void __stdcall _dtor(undefined4 *param_1,byte param_2); }
+namespace OWL::TBarDescr { void __stdcall _dtor(undefined4 *self,byte dtorFlags); }
 void __stdcall FUN_00455a06(void);
 void __cdecl FUN_00455aec(int param_1,char param_2);
 undefined4 __cdecl FUN_00455b38(int *param_1);
-namespace OWL::TBarDescr { undefined4 __cdecl vf1(int param_1,int param_2); }
-namespace OWL::TBarDescr { undefined4 __cdecl vf2(int param_1,int param_2,int *param_3); }
-namespace OWL::TBarDescr { undefined4 __cdecl vf3(int param_1,int *param_2); }
+namespace OWL::TBarDescr { undefined4 __cdecl vf1(int self,int param_2); }
+namespace OWL::TBarDescr { undefined4 __cdecl vf2(int self,int param_2,int *param_3); }
+namespace OWL::TBarDescr { undefined4 __cdecl vf3(int self,int *param_2); }
 undefined4 __cdecl FUN_00456024(undefined4 param_1,int param_2);
 void __cdecl FUN_00456114(int param_1,byte param_2);
 void __cdecl FUN_0045625c(int param_1,byte param_2);
 void __cdecl FUN_004563ac(int param_1,byte param_2);
 void __cdecl FUN_004563fc(int param_1,byte param_2);
-undefined4 * __stdcall FUN_0045642c(undefined4 *param_1,int param_2);
+namespace std::logic_error { undefined4 * __stdcall logic_error(undefined4 *self,int param_2); }
 undefined4 * __stdcall FUN_00456432(void);
 void __stdcall FUN_00456514(void);
 undefined * __stdcall FUN_00456558(void);
@@ -1917,8 +1917,8 @@ undefined4 __stdcall FUN_004565b0(void);
 undefined * __stdcall GetDocTemplateHead(uint param_1);
 undefined4 * __stdcall GetModulePtr(uint param_1);
 void __stdcall FUN_00456678(void);
-void __stdcall FUN_004566bc(HMODULE param_1,undefined4 param_2,uint *param_3,undefined4 param_4);
-undefined4 * __cdecl calloc(int param_1,int param_2);
+void __stdcall FUN_004566bc(HMODULE hModule,undefined4 param_2,uint *param_3,undefined4 param_4);
+undefined4 * __cdecl calloc(int count,int size);
 undefined4 __stdcall operator_delete(void);
 void __stdcall operator_delete_array(void);
 undefined4 __cdecl set_new_handler(undefined4 param_1);
@@ -1931,10 +1931,10 @@ void __cdecl _vector_delete_ldtc_(int param_1,int param_2,int param_3,uint param
 int __cdecl FUN_004569d8(int param_1,int param_2,int param_3,uint param_4,undefined *param_5);
 int * __cdecl _vector_new_ldtc_(int *param_1,int param_2,int param_3,uint param_4,undefined *param_5);
 bool FUN_00456cd0(int param_1,undefined4 *param_2,uint *param_3);
-bool FUN_00456d3c(undefined4 *param_1,SIZE_T param_2);
-undefined4 FUN_00456d64(LPVOID param_1,int param_2);
-undefined4 FUN_00456db0(LPVOID param_1,SIZE_T param_2);
-undefined4 FUN_00456dc8(LPVOID param_1);
+bool FUN_00456d3c(undefined4 *param_1,SIZE_T size);
+undefined4 FUN_00456d64(LPVOID address,int param_2);
+undefined4 FUN_00456db0(LPVOID address,SIZE_T size);
+undefined4 FUN_00456dc8(LPVOID address);
 undefined4 __cdecl FUN_00456e04(int *param_1,int *param_2,int *param_3);
 undefined4 __stdcall FUN_00456e80(void);
 undefined4 __stdcall malloc(void);
@@ -1965,7 +1965,7 @@ void __stdcall FUN_00457bd8(void);
 void __stdcall FUN_00457bdc(void);
 void __cdecl FUN_00457ea0(int param_1);
 void __cdecl FUN_00457ed8(int param_1);
-namespace __rwstd::rb_tree_int_std_pair_const_int_std_string_rwstd_select1st_std_pair_const_int_std_string_int_std_less_int { void __cdecl _dtor(int param_1,byte param_2); }
+namespace __rwstd::rb_tree_int_std_pair_const_int_std_string_rwstd_select1st_std_pair_const_int_std_string_int_std_less_int { void __cdecl _dtor(int self,byte dtorFlags); }
 int __cdecl FUN_00457f7c(int param_1,int param_2);
 int __cdecl FUN_00457fa0(int param_1);
 int __cdecl FUN_00457fb4(int param_1);
@@ -1995,38 +1995,38 @@ int __cdecl FUN_00458d04(int param_1);
 void __cdecl FUN_00458d30(int param_1,int param_2);
 void __cdecl FUN_00458df8(int param_1,int param_2);
 void __cdecl FUN_00458ec0(int param_1,int param_2,char param_3);
-undefined4 __cdecl FUN_00458f14(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator(undefined4 param_1); }
 int __cdecl FUN_00458f3c(int param_1);
 undefined4 __cdecl FUN_00458f48(undefined4 param_1,undefined4 param_2);
 void __cdecl FUN_00458f50(undefined4 param_1,int param_2);
 void __cdecl FUN_00458f60(int param_1);
-void __cdecl FUN_00458fdc(int param_1);
+void __cdecl FUN_00458fdc(int str);
 undefined4 __cdecl FUN_00459074(int param_1);
-int __cdecl FUN_00459080(int param_1);
+namespace std::string { int __cdecl __getRepOf(int param_1); }
 int __cdecl FUN_00459094(int *param_1);
 int __cdecl FUN_004590a0(int *param_1);
 undefined4 * __stdcall FUN_004590c4(void);
 undefined4 * __cdecl FUN_004590cc(undefined4 *param_1);
 undefined4 * __cdecl FUN_00459100(undefined4 *param_1,undefined4 param_2);
 int __cdecl FUN_00459134(int *param_1);
-undefined4 __cdecl FUN_00459154(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator_459154(undefined4 param_1); }
 void __stdcall FUN_0045917c(void);
 void __stdcall FUN_0045918c(void);
-undefined4 __cdecl FUN_00459194(undefined4 param_1);
-undefined4 __cdecl FUN_004591bc(int param_1);
+namespace std::allocator { undefined4 __cdecl allocator_459194(undefined4 param_1); }
+namespace std::string { undefined4 __cdecl size(int self); }
 void __stdcall FUN_004591d0(void);
 int __cdecl FUN_004591e0(int param_1,int param_2,undefined4 *param_3);
 int __cdecl FUN_00459204(int param_1,int param_2);
-undefined4 __cdecl FUN_00459238(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator_459238(undefined4 param_1); }
 void __cdecl FUN_00459260(int param_1);
 undefined4 __cdecl FUN_004592d8(int param_1);
 undefined4 __cdecl FUN_004592e4(int param_1);
 int __cdecl FUN_004592f0(int param_1,int param_2,undefined4 *param_3);
 int __cdecl FUN_00459314(int param_1,int param_2);
-undefined4 __cdecl FUN_00459348(undefined4 param_1);
-undefined4 __cdecl FUN_00459370(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator_459348(undefined4 param_1); }
+namespace std::allocator { undefined4 __cdecl allocator_459370(undefined4 param_1); }
 void __stdcall FUN_00459398(void);
-undefined4 __cdecl FUN_004593a8(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator_4593a8(undefined4 param_1); }
 void __stdcall FUN_004593d0(void);
 int __cdecl FUN_004593e0(int param_1,int *param_2);
 int __cdecl FUN_0045943c(int param_1);
@@ -2039,36 +2039,36 @@ void __cdecl FUN_00459514(int param_1,uint *param_2,undefined4 param_3);
 undefined4 * __stdcall FUN_0045954c(void);
 undefined4 * __stdcall FUN_004595a0(void);
 undefined * __stdcall FUN_004595f8(void);
-undefined4 * __cdecl FUN_00459624(undefined4 *param_1,undefined4 param_2,char *param_3);
-undefined4 * __cdecl FUN_00459688(undefined4 *param_1,undefined4 param_2,undefined4 param_3);
+undefined4 * __cdecl FUN_00459624(undefined4 *facet2,undefined4 param_2,char *param_3);
+namespace std::locale::facet { undefined4 * __cdecl facet(undefined4 *self,undefined4 param_2,undefined4 param_3); }
 int __cdecl FUN_004596d0(int param_1,char *param_2);
 undefined4 * __cdecl FUN_0045970c(undefined4 param_1,uint *param_2,undefined4 param_3);
-undefined4 * __cdecl FUN_00459790(undefined4 *param_1,uint *param_2,undefined4 param_3);
+undefined4 * __cdecl FUN_00459790(undefined4 *facet,uint *param_2,undefined4 param_3);
 undefined4 __cdecl FUN_004597ec(undefined4 param_1,uint *param_2);
 int * __cdecl FUN_00459808(int *param_1,int param_2);
 int __cdecl FUN_0045984c(int param_1,undefined4 param_2,int param_3);
 int __cdecl FUN_004598b4(int param_1,int param_2,int *param_3);
 int * __cdecl FUN_004598fc(int *param_1,int param_2,undefined4 *param_3);
-namespace __rwstd::locale_vector_rwstd_rwcat_ptr { void __cdecl _dtor(int *param_1,byte param_2); }
+namespace __rwstd::locale_vector_rwstd_rwcat_ptr { void __cdecl _dtor(int *self,byte dtorFlags); }
 undefined4 __cdecl FUN_00459a04(int param_1);
 int __cdecl FUN_00459a10(int *param_1,int param_2);
 int * __cdecl FUN_00459a24(int *param_1,int param_2,undefined4 *param_3);
-namespace __rwstd::locale_vector_rwstd_facet_imp_ptr { void __cdecl _dtor(int *param_1,byte param_2); }
-int __cdecl FUN_00459ad4(int param_1,int param_2);
+namespace __rwstd::locale_vector_rwstd_facet_imp_ptr { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace std::string { int __cdecl operator_assign(int self,int other); }
 void __cdecl FUN_00459b44(int *param_1);
 undefined4 __cdecl FUN_00459b5c(int param_1);
-int __cdecl FUN_00459b6c(int param_1,uint *param_2);
-undefined4 __cdecl FUN_00459ce4(undefined4 param_1);
-undefined4 * __cdecl FUN_00459cec(undefined4 *param_1,int param_2);
+namespace std::string { int __cdecl assign_cstr(int self,uint *s); }
+namespace __rwstd::except_msg_string { undefined4 __cdecl msgstr(undefined4 param_1); }
+namespace std::logic_error { undefined4 * __cdecl logic_error_416de8(undefined4 *logicError,int str); }
 bool __cdecl FUN_00459d40(char *param_1,char *param_2);
 void __cdecl FUN_00459d58(undefined1 *param_1,undefined1 *param_2);
-char * __cdecl FUN_00459d68(uint *param_1);
-namespace std::string { int __cdecl string_from_cstr(int param_1,uint *param_2); }
-undefined4 * __cdecl FUN_00459ea8(undefined4 *param_1,undefined4 *param_2,uint param_3);
+char * __cdecl FUN_00459d68(uint *s);
+namespace std::string { int __cdecl string_from_cstr(int self,uint *s); }
+undefined4 * __cdecl FUN_00459ea8(undefined4 *param_1,undefined4 *src,uint n);
 int __cdecl FUN_00459ec8(int param_1,undefined4 param_2);
-namespace std::string { int * __cdecl __getRep(undefined4 param_1,uint param_2,uint param_3); }
+namespace std::string { int * __cdecl __getRep(undefined4 alloc,uint capacity,uint length); }
 int __stdcall FUN_00459fc0(void);
-undefined4 * __cdecl FUN_0045a02c(undefined4 *param_1);
+namespace std::bad_alloc { undefined4 * __cdecl bad_alloc(undefined4 *self); }
 undefined4 * __cdecl FUN_0045a06c(undefined4 *param_1,int param_2);
 void __cdecl FUN_0045a0a0(undefined4 param_1,undefined4 param_2,undefined4 *param_3);
 void __cdecl FUN_0045a0b8(undefined4 param_1,undefined4 *param_2);
@@ -2078,57 +2078,57 @@ void __cdecl FUN_0045a19c(undefined4 param_1,undefined4 param_2,undefined1 *para
 void __cdecl FUN_0045a1b4(undefined4 param_1,undefined1 *param_2);
 void __cdecl FUN_0045a1d0(int *param_1,int param_2);
 undefined4 __stdcall FUN_0045a1ec(void);
-int __cdecl FUN_0045a1f0(int param_1);
-int __cdecl FUN_0045a1fc(int param_1,uint param_2,uint param_3,uint param_4,uint param_5);
-int __cdecl FUN_0045a224(int param_1,uint param_2,uint param_3,uint param_4,uint param_5,uint param_6, uint param_7);
-undefined4 * __cdecl FUN_0045a61c(undefined4 *param_1,int param_2);
-undefined4 * __cdecl FUN_0045a664(undefined4 *param_1,int param_2);
+namespace std::string { int __cdecl __rep_data(int rep); }
+int __cdecl FUN_0045a1fc(int str,uint pos,uint n1,uint s,uint param_5);
+namespace std::string { int __cdecl replace(int self,uint pos,uint n1,uint s,uint n2,uint param_6, uint param_7); }
+namespace std::out_of_range { undefined4 * __cdecl out_of_range(undefined4 *self,int what); }
+namespace std::length_error { undefined4 * __cdecl length_error(undefined4 *self,int what); }
 undefined4 * __cdecl FUN_0045a6ac(undefined4 *param_1,undefined4 *param_2,uint param_3);
 undefined4 __cdecl FUN_0045a6cc(int param_1);
 undefined4 __cdecl FUN_0045a6e4(int param_1);
-undefined4 __cdecl FUN_0045a6f0(int param_1);
-namespace __rwstd::locale_vector_std_string { void __cdecl _dtor(int *param_1,byte param_2); }
-namespace std::wstring { void __cdecl _dtor(int param_1,byte param_2); }
-void __cdecl FUN_0045a810(int param_1);
+namespace std::string { undefined4 __cdecl data(int self); }
+namespace __rwstd::locale_vector_std_string { void __cdecl _dtor(int *self,byte dtorFlags); }
+namespace std::wstring { void __cdecl _dtor(int self,byte dtorFlags); }
+void __cdecl FUN_0045a810(int str);
 undefined4 __cdecl FUN_0045a8a8(int param_1);
-int __cdecl FUN_0045a8b4(int param_1);
+namespace std::string { int __cdecl __getRepOf_45a8b4(int param_1); }
 int __cdecl FUN_0045a8c8(int *param_1);
 int __cdecl FUN_0045a8d4(int *param_1);
 undefined * __stdcall FUN_0045a8f8(void);
 undefined4 * __cdecl FUN_0045a900(undefined4 *param_1);
 undefined4 * __cdecl FUN_0045a938(undefined4 *param_1,undefined4 param_2);
 int __cdecl FUN_0045a96c(int *param_1);
-undefined4 __cdecl FUN_0045a98c(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator_45a98c(undefined4 param_1); }
 void __stdcall FUN_0045a9b4(void);
 void __stdcall FUN_0045a9c4(void);
-undefined4 __cdecl FUN_0045a9cc(undefined4 param_1);
+namespace std::allocator { undefined4 __cdecl allocator_45a9cc(undefined4 param_1); }
 void __stdcall FUN_0045a9f4(void);
 int __cdecl FUN_0045aa04(int param_1,int param_2,undefined4 *param_3);
 int __cdecl FUN_0045aa28(int param_1,int param_2);
-undefined4 __cdecl FUN_0045aa5c(undefined4 param_1);
-undefined4 __cdecl FUN_0045aa84(int param_1);
+namespace std::allocator { undefined4 __cdecl allocator_45aa5c(undefined4 param_1); }
+namespace std::string { undefined4 __cdecl size_45aa84(int self); }
 int __cdecl FUN_0045aa98(int param_1);
 int __cdecl FUN_0045ab08(int param_1,undefined4 *param_2);
 int __cdecl FUN_0045ab44(int param_1);
 int __cdecl FUN_0045abd0(int param_1,undefined4 *param_2);
 int __cdecl FUN_0045ac0c(int param_1);
 void __cdecl FUN_0045ac18(int *param_1);
-undefined4 * __cdecl FUN_0045ac30(undefined4 *param_1);
+namespace std::basic_filebuf_char { undefined4 * __cdecl basic_filebuf(undefined4 *self); }
 undefined4 * __cdecl FUN_0045ad20(undefined4 *param_1,undefined4 param_2);
-undefined4 * __cdecl FUN_0045ad88(undefined4 *param_1);
+namespace std::basic_streambuf_char { undefined4 * __cdecl basic_streambuf(undefined4 *self); }
 int * __cdecl FUN_0045add8(int *param_1);
 void __cdecl FUN_0045ae40(int param_1,char param_2);
 undefined4 __stdcall FUN_0045ae74(void);
-undefined4 * __cdecl FUN_0045ae7c(undefined4 *param_1,int param_2);
-namespace std::basic_filebuf_char { void __cdecl _dtor(int *param_1,byte param_2); }
+namespace std::basic_filebuf_char { undefined4 * __cdecl basic_filebuf_45ae7c(undefined4 *self,int vbasesBuilt); }
+namespace std::basic_filebuf_char { void __cdecl _dtor(int *self,byte dtorFlags); }
 int * __cdecl FUN_0045b014(int *param_1);
 undefined4 __stdcall FUN_0045b17c(void);
 bool __cdecl FUN_0045b180(undefined4 param_1,int param_2);
 undefined4 __cdecl FUN_0045b190(undefined4 param_1,uint param_2);
-namespace std::basic_streambuf_char { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-undefined4 * __cdecl FUN_0045b200(undefined4 *param_1,int param_2);
-undefined4 * __cdecl FUN_0045b268(undefined4 *param_1,int param_2);
-undefined4 * __cdecl FUN_0045b2c8(undefined4 *param_1);
+namespace std::basic_streambuf_char { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::basic_istream_char { undefined4 * __cdecl basic_istream(undefined4 *self,int vbasesBuilt); }
+namespace std::basic_ostream_char { undefined4 * __cdecl basic_ostream(undefined4 *self,int vbasesBuilt); }
+namespace std::basic_ios_char { undefined4 * __cdecl basic_ios(undefined4 *self); }
 void __cdecl FUN_0045b330(int param_1,undefined4 param_2);
 undefined4 __cdecl FUN_0045b380(int param_1);
 undefined4 __cdecl FUN_0045b3e4(int *param_1);
@@ -2136,18 +2136,18 @@ void __cdecl FUN_0045b3fc(int param_1,uint param_2);
 void __cdecl FUN_0045b414(int param_1,uint param_2);
 undefined4 __cdecl FUN_0045b694(int param_1);
 undefined4 __cdecl FUN_0045b6a0(int param_1);
-int * __cdecl FUN_0045b6ac(int *param_1,LPCSTR param_2,uint param_3,uint param_4);
-DWORD __cdecl FUN_0045b7b8(undefined4 param_1,uint param_2,LONG param_3,int param_4);
+int * __cdecl FUN_0045b6ac(int *param_1,LPCSTR fileName,uint param_3,uint param_4);
+DWORD __cdecl FUN_0045b7b8(undefined4 param_1,uint param_2,LONG lDistanceToMove,int param_4);
 void __cdecl FUN_0045b7d4(int param_1,uint param_2);
-namespace std::basic_ostream_char { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
-namespace std::basic_istream_char { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
-namespace std::basic_ios_char { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-int * __cdecl FUN_0045b958(int *param_1,int param_2,LPCSTR param_3,uint param_4,uint param_5);
-void __cdecl FUN_0045ba08(int *param_1,LPCSTR param_2,uint param_3,uint param_4);
-namespace std::basic_ifstream_char { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
-int * __cdecl FUN_0045baf0(int *param_1,int param_2,int param_3);
+namespace std::basic_ostream_char { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
+namespace std::basic_istream_char { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
+namespace std::basic_ios_char { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::basic_ifstream_char { int * __cdecl basic_ifstream(int *self,int vbasesBuilt,LPCSTR fileName,uint param_4,uint param_5); }
+void __cdecl FUN_0045ba08(int *param_1,LPCSTR fileName,uint param_3,uint param_4);
+namespace std::basic_ifstream_char { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
+namespace std::basic_istream_char { int * __cdecl basic_istream_45baf0(int *self,int vbasesBuilt,int param_3); }
 undefined4 __cdecl FUN_0045bba0(int param_1);
-int * __cdecl FUN_0045bbac(int *param_1,int param_2,int param_3);
+namespace std::basic_ostream_char { int * __cdecl basic_ostream_45bbac(int *self,int vbasesBuilt,int param_3); }
 undefined4 * __cdecl FUN_0045bc54(undefined4 *param_1,int *param_2,char param_3);
 undefined4 __cdecl FUN_0045bdd8(int param_1);
 bool __cdecl FUN_0045bde4(int *param_1,int *param_2);
@@ -2164,30 +2164,30 @@ undefined4 __cdecl FUN_0045bf04(int param_1);
 void __cdecl FUN_0045bf10(int *param_1);
 undefined4 __cdecl FUN_0045bf54(int *param_1);
 void __cdecl FUN_0045bfa0(int param_1,int param_2);
-namespace std::basic_istream_char::sentry { void __cdecl _dtor(int param_1,byte param_2); }
+namespace std::basic_istream_char::sentry { void __cdecl _dtor(int self,byte dtorFlags); }
 void __cdecl FUN_0045bfec(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4);
 void __cdecl FUN_0045c008(int param_1,undefined4 param_2,undefined4 param_3);
 void __cdecl FUN_0045c020(int param_1,int param_2);
-undefined4 * __cdecl FUN_0045c030(undefined4 *param_1,undefined4 param_2);
-namespace std::basic_stringbuf_char { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-int * __cdecl FUN_0045c140(int *param_1,int param_2,LPCSTR param_3,uint param_4,uint param_5);
-void __cdecl FUN_0045c1f0(int *param_1,LPCSTR param_2,uint param_3,uint param_4);
-namespace std::basic_ofstream_char { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
+namespace std::basic_stringbuf_char { undefined4 * __cdecl basic_stringbuf(undefined4 *self,undefined4 param_2); }
+namespace std::basic_stringbuf_char { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::basic_ofstream_char { int * __cdecl basic_ofstream(int *self,int vbasesBuilt,LPCSTR fileName,uint param_4,uint param_5); }
+void __cdecl FUN_0045c1f0(int *param_1,LPCSTR fileName,uint param_3,uint param_4);
+namespace std::basic_ofstream_char { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
 undefined4 * __cdecl FUN_0045c2d8(undefined4 *param_1,int *param_2);
 undefined1 __stdcall FUN_0045c3c0(void);
 bool __cdecl FUN_0045c3cc(undefined *param_1);
 bool __cdecl FUN_0045c3e0(undefined4 *param_1);
 undefined4 __cdecl FUN_0045c418(undefined4 param_1,int *param_2);
-namespace std::basic_ostream_char::sentry { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-int * __cdecl FUN_0045c504(int *param_1,int param_2,uint param_3);
-namespace std::basic_ostringstream_char { void __cdecl _dtor(undefined4 *param_1,uint param_2); }
-int __cdecl FUN_0045c644(int param_1,undefined4 *param_2,uint param_3);
-int __cdecl FUN_0045c818(int param_1,int param_2,uint param_3,uint param_4);
-undefined4 * __cdecl FUN_0045c990(undefined4 *param_1,undefined4 param_2);
-int __cdecl FUN_0045c9d8(int param_1,int param_2);
-namespace std::num_put_char_std_ostreambuf_iterator_char { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-void __cdecl FUN_0045cb4c(undefined4 *param_1,byte param_2);
-void __cdecl FUN_0045cbf0(undefined4 *param_1,byte param_2);
+namespace std::basic_ostream_char::sentry { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::basic_ostringstream_char { int * __cdecl basic_ostringstream(int *self,int vbasesBuilt,uint param_3); }
+namespace std::basic_ostringstream_char { void __cdecl _dtor(undefined4 *self,uint dtorFlags); }
+namespace std::string { int __cdecl string_from_buf(int self,undefined4 *s,uint n); }
+int __cdecl FUN_0045c818(int param_1,int str,uint param_3,uint param_4);
+undefined4 * __cdecl FUN_0045c990(undefined4 *facet2,undefined4 param_2);
+int __cdecl FUN_0045c9d8(int param_1,int str);
+namespace std::num_put_char_std_ostreambuf_iterator_char { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+void __cdecl FUN_0045cb4c(undefined4 *facet2,byte param_2);
+void __cdecl FUN_0045cbf0(undefined4 *facet,byte param_2);
 undefined4 * __cdecl FUN_0045cc50(int *param_1,undefined4 *param_2);
 undefined4 * __cdecl FUN_0045ccf8(int *param_1);
 void __cdecl FUN_0045cd5c(int *param_1);
@@ -2212,13 +2212,13 @@ void __stdcall FUN_0045d770(void);
 undefined4 * __cdecl FUN_0045d788(undefined4 param_1,undefined4 param_2,undefined4 param_3);
 void __cdecl FUN_0045d7dc(int param_1,undefined4 param_2,undefined4 param_3);
 undefined4 * __stdcall FUN_0045d814(void);
-undefined4 * __cdecl FUN_0045d864(undefined4 *param_1,undefined4 param_2);
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl num_put(undefined4 *self,undefined4 param_2); }
 void __stdcall FUN_0045d8b0(void);
 undefined4 * __cdecl FUN_0045d8c8(undefined4 param_1,undefined4 param_2,undefined4 param_3);
 undefined1 __cdecl FUN_0045d91c(undefined1 *param_1);
 undefined1 __cdecl FUN_0045d928(int param_1);
 undefined1 __cdecl FUN_0045d934(int param_1);
-namespace std::basic_filebuf_char { void __cdecl vf9(int *param_1); }
+namespace std::basic_filebuf_char { void __cdecl vf9(int *self); }
 undefined4 __cdecl FUN_0045ddd0(int *param_1);
 undefined4 * __cdecl FUN_0045dde0(undefined4 *param_1,undefined4 *param_2);
 undefined4 __cdecl FUN_0045ddf4(int *param_1);
@@ -2231,9 +2231,9 @@ undefined4 __cdecl FUN_0045de6c(int *param_1,undefined1 param_2);
 int * __cdecl FUN_0045deb8(int *param_1,int param_2);
 int * __cdecl FUN_0045defc(int *param_1,int *param_2);
 int * __cdecl FUN_0045df50(int *param_1);
-bool __cdecl FUN_0045df8c(undefined4 param_1,uint param_2,char *param_3,int param_4,int param_5);
-namespace std::basic_filebuf_char { int __cdecl vf10(int param_1,int param_2); }
-namespace std::basic_filebuf_char { undefined4 __cdecl vf12(int *param_1); }
+bool __cdecl FUN_0045df8c(undefined4 param_1,uint param_2,char *buffer,int param_4,int param_5);
+namespace std::basic_filebuf_char { int __cdecl vf10(int self,int param_2); }
+namespace std::basic_filebuf_char { undefined4 __cdecl vf12(int *self); }
 int * __cdecl FUN_0045e370(int *param_1,int param_2);
 undefined4 * __cdecl FUN_0045e3c4(undefined4 *param_1,undefined4 *param_2);
 undefined4 __cdecl FUN_0045e3f0(undefined4 *param_1);
@@ -2241,32 +2241,32 @@ bool __cdecl FUN_0045e3fc(int *param_1,int *param_2);
 undefined4 * __cdecl FUN_0045e414(undefined4 *param_1,undefined4 *param_2);
 undefined4 __cdecl FUN_0045e464(int *param_1,int *param_2);
 bool __cdecl FUN_0045e4b0(int *param_1,int *param_2);
-namespace std::basic_filebuf_char { void __cdecl vf7(int *param_1); }
+namespace std::basic_filebuf_char { void __cdecl vf7(int *self); }
 undefined4 __cdecl FUN_0045e90c(int *param_1);
 void __cdecl FUN_0045e93c(undefined4 *param_1,undefined4 param_2);
-char * __cdecl FUN_0045e94c(undefined4 param_1,uint param_2,char *param_3,int param_4,int param_5);
+char * __cdecl FUN_0045e94c(undefined4 param_1,uint param_2,char *buffer,int param_4,int param_5);
 int __cdecl FUN_0045e974(int param_1,char *param_2,char *param_3);
 namespace std::basic_streambuf_char { void __stdcall vf9(void); }
 namespace std::basic_streambuf_char { void __stdcall vf10(void); }
 namespace std::basic_streambuf_char { undefined4 __stdcall vf12(void); }
-namespace std::basic_streambuf_char { void __cdecl vf8(int *param_1); }
+namespace std::basic_streambuf_char { void __cdecl vf8(int *self); }
 namespace std::basic_streambuf_char { void __stdcall vf7(void); }
-uint __cdecl FUN_0045ea80(int param_1,uint param_2,uint param_3,byte *param_4,uint param_5);
+namespace std::string { uint __cdecl compare(int str,uint param_2,uint param_3,byte *param_4,uint param_5); }
 int __cdecl FUN_0045ebb4(byte *param_1,byte *param_2,int param_3);
-namespace std::basic_stringbuf_char { int __cdecl vf9(int *param_1,undefined1 param_2); }
-namespace std::basic_stringbuf_char { int __cdecl vf10(int param_1,int param_2); }
-namespace std::basic_stringbuf_char { void __cdecl vf7(int param_1); }
-namespace std::basic_filebuf_char { int __cdecl vf5(int param_1); }
-namespace std::basic_filebuf_char { int __cdecl vf11(int *param_1,undefined1 *param_2,int param_3); }
+namespace std::basic_stringbuf_char { int __cdecl vf9(int *self,undefined1 param_2); }
+namespace std::basic_stringbuf_char { int __cdecl vf10(int self,int param_2); }
+namespace std::basic_stringbuf_char { void __cdecl vf7(int self); }
+namespace std::basic_filebuf_char { int __cdecl vf5(int self); }
+namespace std::basic_filebuf_char { int __cdecl vf11(int *self,undefined1 *param_2,int param_3); }
 undefined4 __cdecl FUN_0045f178(int param_1);
 int __cdecl FUN_0045f184(int *param_1);
 int * __cdecl FUN_0045f1c0(int *param_1,undefined1 *param_2,int param_3);
 undefined1 __cdecl FUN_0045f3cc(int param_1);
-namespace std::basic_streambuf_char { int __cdecl vf5(int param_1); }
-namespace std::basic_streambuf_char { uint __cdecl vf6(int *param_1,undefined4 *param_2,uint param_3); }
-namespace std::basic_streambuf_char { int __cdecl vf11(int *param_1,undefined1 *param_2,int param_3); }
-namespace std::basic_stringbuf_char { uint __cdecl vf11(int *param_1,undefined4 *param_2,uint param_3); }
-void __cdecl FUN_0045f64c(int param_1);
+namespace std::basic_streambuf_char { int __cdecl vf5(int self); }
+namespace std::basic_streambuf_char { uint __cdecl vf6(int *self,undefined4 *param_2,uint param_3); }
+namespace std::basic_streambuf_char { int __cdecl vf11(int *self,undefined1 *param_2,int param_3); }
+namespace std::basic_stringbuf_char { uint __cdecl vf11(int *self,undefined4 *src,uint param_3); }
+namespace std::string { void __cdecl __unshare(int self); }
 undefined4 __cdecl FUN_0045f6bc(int param_1);
 undefined4 __cdecl FUN_0045f6c8(int param_1,undefined4 param_2);
 bool __cdecl FUN_0045f6dc(int param_1);
@@ -2281,39 +2281,39 @@ void __cdecl FUN_0045f9d8(undefined4 param_1,undefined *param_2);
 int * __cdecl FUN_0045f9e8(int *param_1,undefined1 param_2);
 int * __cdecl FUN_0045fb0c(int *param_1,int param_2,int param_3);
 undefined4 __cdecl FUN_0045fc28(int *param_1);
-int * __cdecl FUN_0045fc44(int *param_1,uint *param_2);
-int __cdecl FUN_0045fefc(int param_1,int param_2);
-int __cdecl FUN_0045ff3c(int param_1,int param_2);
+int * __cdecl FUN_0045fc44(int *param_1,uint *s);
+int __cdecl FUN_0045fefc(int str,int param_2);
+int __cdecl FUN_0045ff3c(int str,int param_2);
 undefined4 __cdecl FUN_004600b8(int param_1,undefined4 param_2);
-namespace std::basic_filebuf_char { int * __cdecl vf2(int *param_1,int param_2,int param_3); }
-namespace std::basic_streambuf_char { undefined4 __cdecl vf2(undefined4 param_1); }
-namespace std::basic_stringbuf_char { int __cdecl vf2(int param_1,undefined4 *param_2,int param_3); }
-namespace std::string { int __cdecl append(int param_1,int param_2); }
-int __cdecl FUN_004603d8(int param_1,uint param_2,uint param_3,int param_4);
-void __cdecl FUN_00460414(int param_1,uint param_2,int param_3);
-namespace std::string { int __cdecl replace_fill(int param_1,uint param_2,uint param_3,uint param_4,undefined1 param_5); }
-undefined4 * __cdecl FUN_0046094c(undefined4 *param_1,uint param_2,undefined1 param_3);
+namespace std::basic_filebuf_char { int * __cdecl vf2(int *self,int param_2,int param_3); }
+namespace std::basic_streambuf_char { undefined4 __cdecl vf2(undefined4 self); }
+namespace std::basic_stringbuf_char { int __cdecl vf2(int self,undefined4 *param_2,int param_3); }
+namespace std::string { int __cdecl append(int self,int other); }
+namespace std::string { int __cdecl replace_str(int self,uint pos,uint n1,int other); }
+namespace std::string { void __cdecl insert(int self,uint pos,int other); }
+namespace std::string { int __cdecl replace_fill(int self,uint pos,uint n1,uint count,undefined1 ch); }
+undefined4 * __cdecl FUN_0046094c(undefined4 *param_1,uint n,undefined1 ch);
 int __cdecl FUN_0046096c(int *param_1,uint param_2);
-int __cdecl FUN_00460aa0(int param_1,int param_2,uint param_3,uint param_4);
-void __cdecl FUN_00460bbc(int param_1,uint param_2);
+namespace std::string { int __cdecl substr(int result,int self,uint pos,uint n); }
+namespace std::string { void __cdecl string_fill(int self,uint n); }
 int __cdecl FUN_00460cd8(int param_1,int param_2);
 int __cdecl FUN_00460d1c(int param_1,int param_2);
 int __cdecl FUN_00460d60(int param_1,int param_2);
-namespace std::basic_filebuf_char { int * __cdecl vf3(int *param_1,int *param_2,int param_3,int param_4); }
+namespace std::basic_filebuf_char { int * __cdecl vf3(int *self,int *param_2,int param_3,int param_4); }
 undefined4 __cdecl FUN_004613cc(int *param_1);
 undefined4 * __cdecl FUN_004613dc(undefined4 *param_1,undefined4 *param_2);
 void __cdecl FUN_0046140c(int *param_1,int param_2);
 void __cdecl FUN_0046141c(int *param_1,int param_2);
-namespace std::basic_filebuf_char { int * __cdecl vf4(int *param_1,int *param_2); }
+namespace std::basic_filebuf_char { int * __cdecl vf4(int *self,int *param_2); }
 undefined4 * __cdecl FUN_00461614(undefined4 *param_1,int param_2);
 int * __cdecl FUN_00461634(int *param_1,int *param_2);
-namespace std::basic_streambuf_char { int * __cdecl vf3(int *param_1); }
-namespace std::basic_streambuf_char { int * __cdecl vf4(int *param_1); }
-namespace std::basic_stringbuf_char { int * __cdecl vf3(int *param_1,int *param_2,int param_3,int param_4,byte param_5); }
-namespace std::basic_stringbuf_char { int * __cdecl vf4(int *param_1,int *param_2); }
-void __cdecl FUN_00461d70(int param_1,uint param_2);
+namespace std::basic_streambuf_char { int * __cdecl vf3(int *self); }
+namespace std::basic_streambuf_char { int * __cdecl vf4(int *self); }
+namespace std::basic_stringbuf_char { int * __cdecl vf3(int *self,int *param_2,int param_3,int param_4,byte param_5); }
+namespace std::basic_stringbuf_char { int * __cdecl vf4(int *self,int *param_2); }
+void __cdecl FUN_00461d70(int str,uint param_2);
 void __cdecl FUN_00461de0(int *param_1);
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf12(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9, undefined4 param_10); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf12(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9, undefined4 param_10); }
 void __cdecl FUN_00461e6c(int param_1,undefined1 param_2);
 undefined4 __cdecl FUN_004621d4(int param_1);
 undefined4 __cdecl FUN_004621ec(int param_1);
@@ -2321,91 +2321,91 @@ void __cdecl FUN_00462200(undefined4 *param_1,undefined4 *param_2);
 undefined4 __cdecl FUN_00462228(undefined4 param_1);
 int __cdecl FUN_00462230(int param_1,undefined1 param_2);
 undefined4 __cdecl FUN_0046227c(int param_1);
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf2(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined4 param_8,char param_9); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf2(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined4 param_8,char param_9); }
 void __stdcall FUN_00462338(int param_1);
 void __stdcall FUN_0046233e(void);
 int __cdecl FUN_0046242c(int param_1,char param_2);
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf7(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9); }
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf5(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9, undefined4 param_10); }
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf10(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9); }
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf6(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9, undefined4 param_10,undefined2 param_11); }
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf3(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9); }
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf8(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined2 param_9); }
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf13(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9, undefined4 param_10); }
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf11(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9); }
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9); }
-namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf9(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined2 param_9); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf7(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf5(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9, undefined4 param_10); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf10(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf6(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9, undefined4 param_10,undefined2 param_11); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf3(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf8(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined2 param_9); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf13(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9, undefined4 param_10); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf11(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf4(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined4 param_9); }
+namespace std::num_put_char_std_ostreambuf_iterator_char { undefined4 * __cdecl vf9(undefined4 *self,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 param_5,undefined1 param_6,int param_7,undefined1 param_8,undefined2 param_9); }
 undefined4 * __cdecl FUN_0046286c(undefined4 *param_1,int *param_2,undefined4 *param_3);
 undefined4 * __cdecl FUN_00462a74(undefined4 *param_1,undefined4 *param_2,undefined1 *param_3);
 undefined4 * __cdecl FUN_00462ab4(undefined4 *param_1,undefined4 *param_2);
-int __cdecl FUN_00462af8(int param_1,byte *param_2,int param_3,int param_4);
+int __cdecl FUN_00462af8(int str,byte *param_2,int param_3,int param_4);
 void __cdecl FUN_00462c04(int param_1);
-namespace std::basic_streambuf_char { void __cdecl vf1(int param_1,int *param_2); }
+namespace std::basic_streambuf_char { void __cdecl vf1(int self,int *param_2); }
 void __cdecl FUN_00462c5c(int *param_1);
 undefined4 __cdecl FUN_00462da0(int param_1,uint param_2);
 undefined4 * __cdecl FUN_00462dd0(undefined4 *param_1);
-undefined4 * __cdecl FUN_00462dfc(undefined4 *param_1,undefined4 param_2,undefined4 param_3);
+namespace __rwstd::facet_imp { undefined4 * __cdecl facet_imp(undefined4 *self,undefined4 param_2,undefined4 param_3); }
 undefined4 __cdecl FUN_00462e7c(undefined4 param_1);
-undefined4 * __cdecl FUN_00462e84(undefined4 *param_1);
+namespace std::exception { undefined4 * __cdecl exception(undefined4 *self); }
 void __cdecl FUN_00462f14(int param_1);
-undefined4 * __cdecl FUN_00462f20(undefined4 *param_1,undefined4 param_2);
+namespace __rwstd::ref_counted { undefined4 * __cdecl ref_counted(undefined4 *self,undefined4 param_2); }
 int __cdecl FUN_00462fa0(int param_1,char *param_2);
-namespace __rwstd::facet_imp { char * vf2(int *param_1,byte *param_2,byte *param_3,byte *param_4,undefined4 param_5, byte *param_6,byte *param_7,byte *param_8,byte *param_9,byte *param_10, byte *param_11,undefined4 param_12,byte *param_13,byte *param_14,byte *param_15, byte *param_16,byte *param_17,byte *param_18,byte *param_19,byte *param_20, byte *param_21,byte *param_22,byte *param_23,byte *param_24,byte *param_25, undefined4 param_26,byte *param_27,byte *param_28,byte *param_29,byte *param_30, byte *param_31,byte *param_32,byte *param_33,byte *param_34,byte *param_35, byte *param_36,byte *param_37,byte *param_38,undefined4 param_39, undefined4 param_40,byte *param_41,byte *param_42,undefined4 param_43, byte *param_44,byte *param_45,byte *param_46,byte *param_47); }
-namespace std::basic_filebuf_char { char vf13(char *param_1,undefined4 param_2,char param_3); }
+namespace __rwstd::facet_imp { char * vf2(int *self,byte *param_2,byte *param_3,byte *param_4,undefined4 param_5, byte *param_6,byte *param_7,byte *param_8,byte *param_9,byte *param_10, byte *param_11,undefined4 param_12,byte *param_13,byte *param_14,byte *param_15, byte *param_16,byte *param_17,byte *param_18,byte *param_19,byte *param_20, byte *param_21,byte *param_22,byte *param_23,byte *param_24,byte *param_25, undefined4 param_26,byte *param_27,byte *param_28,byte *param_29,byte *param_30, byte *param_31,byte *param_32,byte *param_33,byte *param_34,byte *param_35, byte *param_36,byte *param_37,byte *param_38,undefined4 param_39, undefined4 param_40,byte *param_41,byte *param_42,undefined4 param_43, byte *param_44,byte *param_45,byte *param_46,byte *param_47); }
+namespace std::basic_filebuf_char { char vf13(char *self,undefined4 param_2,char param_3); }
 void __cdecl FUN_00463790(int param_1,byte param_2);
-namespace std::pair_const_int_std_string { void __cdecl _dtor(int param_1,byte param_2); }
+namespace std::pair_const_int_std_string { void __cdecl _dtor(int self,byte dtorFlags); }
 void __cdecl FUN_00463874(int param_1,byte param_2);
-namespace __rwstd::punct_data_char { void __cdecl _dtor(int param_1,byte param_2); }
-undefined4 * __cdecl FUN_0046392c(undefined4 *param_1,int param_2);
-namespace std::ios_base::failure { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::ios_base::failure { undefined4 __cdecl vf1(int param_1); }
+namespace __rwstd::punct_data_char { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::ios_base::failure { undefined4 * __cdecl failure_46392c(undefined4 *self,int param_2); }
+namespace std::ios_base::failure { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::ios_base::failure { undefined4 __cdecl vf1(int self); }
 undefined4 __cdecl FUN_00463b24(undefined4 param_1);
-namespace std::ios_base::Init { void __cdecl _dtor(int param_1,byte param_2); }
-undefined4 * __cdecl FUN_00463c18(undefined4 *param_1);
-namespace std::ios_base { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace std::ios_base::Init { void __cdecl _dtor(int self,byte dtorFlags); }
+namespace std::ios_base { undefined4 * __cdecl ios_base(undefined4 *self); }
+namespace std::ios_base { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __stdcall FUN_00463ddc(void);
 void __stdcall FUN_00463ea8(void);
 void __stdcall FUN_00463f60(void);
 undefined1 * __cdecl FUN_00463f68(uint *param_1);
-undefined4 * __cdecl FUN_004643c0(undefined4 *param_1,undefined4 param_2,undefined1 param_3,undefined4 param_4);
+namespace std::locale::facet { undefined4 * __cdecl facet_4643c0(undefined4 *self,undefined4 param_2,undefined1 param_3,undefined4 param_4); }
 void __cdecl FUN_004645f8(int param_1,int *param_2);
-void __cdecl FUN_004647d4(undefined4 *param_1,byte param_2);
+void __cdecl FUN_004647d4(undefined4 *refCounted,byte param_2);
 uint __cdecl FUN_00464868(int param_1,uint param_2);
 void __cdecl FUN_0046489c(int param_1,byte *param_2,byte *param_3);
 uint __cdecl FUN_004648d8(int param_1,uint param_2);
 void __cdecl FUN_0046490c(int param_1,byte *param_2,byte *param_3);
 undefined1 __cdecl FUN_00464948(undefined4 param_1,undefined1 param_2);
-int __cdecl FUN_00464950(undefined4 param_1,undefined4 *param_2,int param_3,undefined4 *param_4);
+int __cdecl FUN_00464950(undefined4 param_1,undefined4 *param_2,int param_3,undefined4 *dest);
 undefined1 __cdecl FUN_00464974(undefined4 param_1,undefined1 param_2);
-int __cdecl FUN_0046497c(undefined4 param_1,undefined4 *param_2,int param_3,undefined4 param_4, undefined4 *param_5);
+int __cdecl FUN_0046497c(undefined4 param_1,undefined4 *param_2,int param_3,undefined4 param_4, undefined4 *dest);
 undefined4 __cdecl FUN_004649a0(char *param_1);
-undefined4 * __cdecl FUN_00464a00(undefined4 *param_1,uint *param_2,undefined4 param_3);
-void __cdecl FUN_00464bc0(undefined4 *param_1,byte param_2);
+undefined4 * __cdecl FUN_00464a00(undefined4 *facet2,uint *param_2,undefined4 param_3);
+void __cdecl FUN_00464bc0(undefined4 *refCounted,byte param_2);
 uint * __cdecl FUN_00464c20(uint *param_1);
 void __stdcall FUN_00464d74(void);
 void __stdcall FUN_00464db0(void);
-undefined4 * __cdecl FUN_00464de4(undefined4 *param_1,LPCSTR param_2);
-namespace __rwstd::__rwcat { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-undefined4 __cdecl FUN_00464fb0(undefined4 *param_1,undefined4 param_2,UINT param_3,undefined4 param_4);
+undefined4 * __cdecl FUN_00464de4(undefined4 *param_1,LPCSTR libFileName);
+namespace __rwstd::__rwcat { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+undefined4 __cdecl FUN_00464fb0(undefined4 *param_1,undefined4 param_2,UINT id,undefined4 param_4);
 uint __cdecl FUN_0046526c(int param_1);
-int * __cdecl FUN_004652a4(LPCSTR param_1);
-undefined4 __cdecl FUN_004653b0(int param_1,undefined4 param_2,UINT param_3,undefined4 param_4);
-namespace std::map_int_std_string_std_less_int { void __cdecl _dtor(int param_1,byte param_2); }
+int * __cdecl FUN_004652a4(LPCSTR libFileName);
+undefined4 __cdecl FUN_004653b0(int param_1,undefined4 param_2,UINT id,undefined4 param_4);
+namespace std::map_int_std_string_std_less_int { void __cdecl _dtor(int self,byte dtorFlags); }
 void __stdcall FUN_00465800(void);
-int __cdecl FUN_00465870(int param_1);
-namespace __rwstd::ref_counted { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace std::string { int __cdecl string(int self); }
+namespace __rwstd::ref_counted { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 int * __cdecl FUN_004658e8(int *param_1);
-undefined4 * __cdecl FUN_00465908(undefined4 *param_1,int param_2,undefined4 param_3);
-namespace __rwstd::locale_imp { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace __rwstd::locale_imp { undefined4 * __cdecl locale_imp(undefined4 *self,int param_2,undefined4 param_3); }
+namespace __rwstd::locale_imp { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 undefined * __cdecl FUN_00465bb0(int param_1,uint param_2);
 int * __cdecl FUN_00465be4(int *param_1,uint *param_2,int param_3);
-namespace __rwstd::use_Clib_locale { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace __rwstd::use_Clib_locale { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __stdcall FUN_00465da4(void);
 int * __cdecl FUN_004661c0(int *param_1,int *param_2);
-int __cdecl FUN_00466234(int param_1,int *param_2);
+int __cdecl FUN_00466234(int str,int *param_2);
 int * __cdecl FUN_004665a4(int *param_1,uint *param_2,char param_3,uint param_4,undefined *param_5);
 void __cdecl FUN_00466744(int *param_1,int *param_2,uint *param_3);
-void __cdecl FUN_00466804(undefined4 *param_1,byte param_2);
+void __cdecl FUN_00466804(undefined4 *refCounted,byte param_2);
 undefined4 __cdecl FUN_00466868(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 *param_5,undefined4 param_6,undefined4 param_7,undefined4 *param_8);
 undefined4 __cdecl FUN_00466884(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4, undefined4 *param_5,undefined4 param_6,undefined4 param_7,undefined4 *param_8);
 undefined4 __stdcall FUN_004668a0(void);
@@ -2414,8 +2414,8 @@ undefined4 __stdcall FUN_004668b4(void);
 uint __cdecl FUN_004668c0(undefined4 param_1,undefined4 param_2,int param_3,int param_4,uint param_5);
 undefined4 __stdcall FUN_004668d4(void);
 int __cdecl FUN_004668e0(int param_1,int param_2);
-namespace std::runtime_error { undefined4 __cdecl vf1(int param_1); }
-undefined4 __cdecl FUN_00466a0c(int param_1,int *param_2);
+namespace std::runtime_error { undefined4 __cdecl vf1(int self); }
+undefined4 __cdecl FUN_00466a0c(int str,int *param_2);
 void __cdecl FUN_00466b50(int param_1);
 void __cdecl FUN_00466b78(int param_1,undefined1 *param_2,char *param_3,char param_4);
 void __cdecl FUN_00466bf0(int param_1);
@@ -2430,43 +2430,43 @@ undefined4 __cdecl FUN_00466ef0(int param_1,undefined1 *param_2,char param_3);
 void __cdecl FUN_00466f80(int param_1,undefined4 param_2,undefined4 param_3);
 void __cdecl FUN_00467000(int param_1);
 int __cdecl FUN_00467068(int param_1,int param_2,char *param_3);
-undefined1 * __cdecl FUN_004670cc(undefined1 *param_1,byte *param_2);
-char * __cdecl FUN_00467104(char *param_1,UINT param_2);
-namespace std::exception { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::bad_alloc { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::logic_error { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::domain_error { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::length_error { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::out_of_range { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-namespace std::runtime_error { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
-char * __cdecl memchr(char *param_1,char param_2,int param_3);
+namespace __rwstd::except_msg_string { undefined1 * __cdecl format(undefined1 *exceptMsg,byte *format2); }
+char * __cdecl FUN_00467104(char *param_1,UINT id);
+namespace std::exception { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::bad_alloc { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::logic_error { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::domain_error { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::length_error { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::out_of_range { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+namespace std::runtime_error { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
+char * __cdecl memchr(char *s,char ch,int n);
 short * __cdecl FUN_00467560(short *param_1,short param_2,int param_3);
-undefined4 * __cdecl memcpy(undefined4 *param_1,undefined4 *param_2,uint param_3);
+undefined4 * __cdecl memcpy(undefined4 *dest,undefined4 *src,uint n);
 undefined4 * __cdecl FUN_004675a4(undefined4 *param_1,undefined4 *param_2,uint param_3);
-undefined4 * __cdecl memset(undefined4 *param_1,undefined1 param_2,uint param_3);
+undefined4 * __cdecl memset(undefined4 *dest,undefined1 ch,uint n);
 undefined2 * __cdecl FUN_0046767c(undefined2 *param_1,undefined2 param_2,int param_3);
 char * __cdecl FUN_00467694(char *param_1,char *param_2);
-char * __cdecl FUN_004676d0(char *param_1,char param_2);
+char * __cdecl strchr(char *s,char ch);
 int __cdecl FUN_00467724(char *param_1,char *param_2);
 char * __cdecl FUN_00467770(char *param_1,char *param_2);
-char * __cdecl strlen(uint *param_1);
+char * __cdecl strlen(uint *s);
 char * __cdecl FUN_004677fc(char *param_1,char *param_2,uint param_3);
 uint __cdecl FUN_0046786c(byte *param_1,byte *param_2,int param_3);
 char * __cdecl thunk_memchr(char *param_1,char param_2,int param_3);
-char * __cdecl thunk_FUN_004676d0(char *param_1,char param_2);
-char * __cdecl thunk_FUN_004676d0_4678ad(char *param_1,char param_2);
+char * __cdecl thunk_strchr(char *param_1,char param_2);
+char * __cdecl thunk_strchr_4678ad(char *param_1,char param_2);
 char * __cdecl thunk_FUN_00467a3c(char *param_1,char *param_2);
 uint * __cdecl thunk_strrchr(uint *param_1,char param_2);
 uint * __cdecl thunk_strrchr_4678c5(uint *param_1,char param_2);
 char * __cdecl thunk_FUN_00467ac4(char *param_1,char *param_2);
 char * __cdecl thunk_FUN_00467ac4_4678d1(char *param_1,char *param_2);
 int __cdecl FUN_004678d8(byte *param_1,byte *param_2,int param_3);
-int __cdecl FUN_00467944(char *param_1,char *param_2);
+int __cdecl strcspn(char *s,char *reject);
 undefined4 * __cdecl FUN_00467970(uint *param_1);
-int __cdecl FUN_004679a4(char *param_1,char *param_2);
-undefined4 * __cdecl FUN_004679ec(undefined4 *param_1,uint *param_2,char *param_3);
+int __cdecl strcmp(char *s1,char *s2);
+undefined4 * __cdecl strncpy(undefined4 *dest,uint *src,char *n);
 char * __cdecl FUN_00467a3c(char *param_1,char *param_2);
-uint * __cdecl strrchr(uint *param_1,char param_2);
+uint * __cdecl strrchr(uint *s,char ch);
 int __cdecl FUN_00467a94(char *param_1,char *param_2);
 char * __cdecl FUN_00467ac4(char *param_1,char *param_2);
 char * __cdecl FUN_00467b18(char *param_1,char *param_2);
@@ -2480,12 +2480,12 @@ undefined4 __cdecl FUN_00468029(undefined4 *param_1,int param_2,int *param_3,int
 char * __cdecl FUN_004680cc(int param_1);
 undefined4 __cdecl FUN_00468104(int *param_1,int *param_2);
 undefined4 __cdecl FUN_004681e0(int *param_1,int *param_2,int param_3,undefined4 param_4);
-namespace std::type_info { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace std::type_info { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 undefined4 * __cdecl FUN_00468310(int param_1,int param_2,int param_3);
 char * __cdecl FUN_00468420(int param_1);
 undefined4 * __cdecl FUN_00468488(int param_1,int param_2,int *param_3,int *param_4,int param_5);
 int __cdecl FUN_00468570(int param_1,int param_2,int *param_3);
-namespace type_info_hash { void __cdecl _dtor(undefined4 *param_1,byte param_2); }
+namespace type_info_hash { void __cdecl _dtor(undefined4 *self,byte dtorFlags); }
 void __stdcall FUN_004686b8(void);
 void __stdcall FUN_004686e0(void);
 void __stdcall FUN_00468784(void);
@@ -2493,36 +2493,36 @@ void __stdcall FUN_004687f8(void);
 void __cdecl FUN_00468830(undefined4 *param_1);
 void __cdecl FUN_0046887c(undefined4 *param_1);
 undefined4 __stdcall FUN_004688a4(void);
-LONG __cdecl FUN_004688b0(PEXCEPTION_RECORD param_1,PVOID param_2,PCONTEXT param_3);
+LONG __cdecl FUN_004688b0(PEXCEPTION_RECORD exceptionRecord,PVOID targetFrame,PCONTEXT param_3);
 void __cdecl FUN_004689a0(undefined4 *param_1);
 void __cdecl FUN_004689bc(undefined4 *param_1);
 undefined4 __cdecl FUN_004689cc(undefined4 param_1);
 void __stdcall FUN_00468a18(void);
 void __cdecl FUN_00468a2c(undefined4 *param_1);
 void __cdecl FUN_00468a41(undefined4 *param_1);
-void FUN_00468a7a(PVOID param_1,PEXCEPTION_RECORD param_2);
+void FUN_00468a7a(PVOID targetFrame,PEXCEPTION_RECORD exceptionRecord);
 undefined4 __stdcall FUN_00468a8f(void);
-undefined4 __cdecl FUN_00468a98(LPCSTR param_1,byte param_2);
+undefined4 __cdecl access(LPCSTR path,byte mode);
 undefined4 __cdecl FUN_00468ad4(uint param_1);
 uint __cdecl FUN_00468b34(uint param_1);
 bool __cdecl FUN_00468bbc(uint param_1);
-bool __cdecl FUN_00468bec(HANDLE param_1);
-DWORD __cdecl FUN_00468c04(uint param_1,LONG param_2,int param_3);
-int __cdecl FUN_00468c7c(LPCSTR param_1,uint param_2,uint param_3);
+bool __cdecl FUN_00468bec(HANDLE hFile);
+DWORD __cdecl FUN_00468c04(uint param_1,LONG lDistanceToMove,int param_3);
+int __cdecl FUN_00468c7c(LPCSTR fileName,uint param_2,uint param_3);
 char * __cdecl FUN_00468e78(char *param_1,int param_2);
-char * __cdecl FUN_00468ee4(uint param_1,char *param_2,char *param_3);
-int __cdecl FUN_00469014(LPCWSTR param_1,uint param_2,uint param_3);
-int __cdecl FUN_00469210(uint param_1,char *param_2,uint param_3);
+char * __cdecl FUN_00468ee4(uint param_1,char *buffer,char *numberOfBytesToRead);
+int __cdecl FUN_00469014(LPCWSTR fileName,uint param_2,uint param_3);
+int __cdecl FUN_00469210(uint param_1,char *buffer,uint numberOfBytesToWrite);
 undefined4 __cdecl FUN_0046932c(undefined1 *param_1);
 int __stdcall FUN_00469340(void);
-undefined4 __cdecl FUN_00469378(uint param_1,LPVOID param_2,DWORD param_3);
-void __cdecl FUN_004693c0(uint param_1,char *param_2,char *param_3);
-void __cdecl FUN_004693dc(LPCWSTR param_1,uint param_2);
-void __cdecl FUN_004693fc(LPCWSTR param_1,uint param_2);
-undefined4 __cdecl FUN_00469414(uint param_1,LPCVOID param_2,DWORD param_3);
-void __cdecl FUN_0046945c(uint param_1,char *param_2,uint param_3);
-undefined4 __cdecl thunk_FUN_00468a98(LPCSTR param_1,byte param_2);
-undefined4 __cdecl FUN_00469480(int *param_1,int param_2,int param_3,int param_4);
+undefined4 __cdecl FUN_00469378(uint param_1,LPVOID buffer,DWORD numberOfBytesToRead);
+void __cdecl FUN_004693c0(uint param_1,char *buffer,char *numberOfBytesToRead);
+void __cdecl FUN_004693dc(LPCWSTR fileName,uint param_2);
+void __cdecl FUN_004693fc(LPCWSTR owner,uint key);
+undefined4 __cdecl FUN_00469414(uint param_1,LPCVOID buffer,DWORD numberOfBytesToWrite);
+void __cdecl FUN_0046945c(uint param_1,char *buffer,uint numberOfBytesToWrite);
+undefined4 __cdecl thunk_access(LPCSTR fileName,byte param_2);
+undefined4 __cdecl FUN_00469480(int *param_1,int mem,int param_3,int param_4);
 undefined4 __cdecl thunk_FUN_00468ad4(uint param_1);
 undefined4 __cdecl FUN_00469508(int *param_1);
 undefined4 __cdecl FUN_00469598(int *param_1);
@@ -2531,15 +2531,15 @@ int __stdcall FUN_00469748(void);
 void __cdecl FUN_004697a4(undefined *param_1);
 void __cdecl FUN_004697b4(undefined4 *param_1);
 uint __cdecl FUN_004697c8(char *param_1,uint *param_2,undefined4 *param_3);
-int * __cdecl FUN_004698a4(int *param_1,LPCSTR param_2,char *param_3,uint param_4);
+int * __cdecl FUN_004698a4(int *param_1,LPCSTR fileName,char *param_3,uint param_4);
 undefined4 * __stdcall FUN_00469950(void);
-int * __cdecl fopen(LPCSTR param_1,char *param_2);
-uint __cdecl FUN_004699a8(byte *param_1,uint param_2,int *param_3);
+int * __cdecl fopen(LPCSTR fileName,char *param_2);
+uint __cdecl FUN_004699a8(byte *buffer,uint numberOfBytesToWrite,int *param_3);
 int __cdecl FUN_00469a84(undefined4 *param_1);
-undefined4 __cdecl fseek(int *param_1,LONG param_2,int param_3);
+undefined4 __cdecl fseek(int *param_1,LONG lDistanceToMove,int param_3);
 DWORD __cdecl FUN_00469b44(undefined4 *param_1);
-char * __cdecl FUN_00469bc4(char *param_1,LPCSTR param_2,uint param_3);
-uint __cdecl FUN_00469c98(byte *param_1,uint param_2,uint param_3,int *param_4);
+char * __cdecl FUN_00469bc4(char *param_1,LPCSTR fileName,uint param_3);
+uint __cdecl FUN_00469c98(byte *buffer,uint param_2,uint param_3,int *param_4);
 int __cdecl FUN_00469ccc(undefined4 param_1,undefined4 param_2);
 uint __cdecl FUN_00469d0c(uint param_1,uint param_2,undefined4 param_3);
 void __cdecl FUN_00469d74(uint param_1);
@@ -2552,84 +2552,84 @@ undefined4 __cdecl FUN_0046a034(undefined4 *param_1);
 uint __cdecl FUN_0046a0a0(int *param_1);
 uint __cdecl FUN_0046a0b8(int *param_1);
 uint __cdecl FUN_0046a1a0(byte param_1,int *param_2);
-DWORD __cdecl thunk_FUN_00468c04(uint param_1,LONG param_2,int param_3);
+DWORD __cdecl thunk_FUN_00468c04(uint param_1,LONG lDistanceToMove,int param_3);
 char * __cdecl FUN_0046a2b8(char *param_1,char *param_2,ushort param_3);
-char * __cdecl FUN_0046a308(char *param_1,ushort *param_2);
-int __cdecl thunk_FUN_00468c7c(LPCSTR param_1,uint param_2,uint param_3);
-char * __cdecl thunk_FUN_00468ee4(uint param_1,char *param_2,char *param_3);
+char * __cdecl FUN_0046a308(char *fileName,ushort *param_2);
+int __cdecl thunk_FUN_00468c7c(LPCSTR fileName,uint param_2,uint param_3);
+char * __cdecl thunk_FUN_00468ee4(uint param_1,char *buffer,char *numberOfBytesToRead);
 void __cdecl FUN_0046a364(int *param_1);
 uint __cdecl FUN_0046a388(undefined *param_1,undefined *param_2,undefined4 param_3,uint param_4,int param_5, int *param_6,int *param_7);
-undefined4 __cdecl setvbuf(int *param_1,int param_2,int param_3,uint param_4);
-uint __cdecl FUN_0046a5a0(undefined4 *param_1,uint param_2,int *param_3);
-uint __cdecl FUN_0046a5c8(undefined1 *param_1,byte *param_2);
+undefined4 __cdecl setvbuf(int *param_1,int mem,int param_3,uint param_4);
+uint __cdecl FUN_0046a5a0(undefined4 *src,uint param_2,int *param_3);
+uint __cdecl sprintf(undefined1 *buf,byte *format);
 void __cdecl FUN_0046a5f0(undefined1 *param_1,byte *param_2,uint *param_3);
-undefined4 __cdecl FUN_0046a730(LPCSTR param_1);
+undefined4 __cdecl FUN_0046a730(LPCSTR fileName);
 void __cdecl FUN_0046a74c(int param_1);
 void __cdecl FUN_0046a794(undefined1 param_1,int param_2);
 void __cdecl FUN_0046a7c8(uint param_1,int param_2);
 uint __cdecl FUN_0046a7fc(undefined4 param_1,undefined4 param_2,byte *param_3,int param_4,undefined4 param_5, uint *param_6);
-int __cdecl thunk_FUN_00469210(uint param_1,char *param_2,uint param_3);
+int __cdecl thunk_FUN_00469210(uint param_1,char *buffer,uint numberOfBytesToWrite);
 undefined ** __stdcall FUN_0046b198(void);
-char * __cdecl FUN_0046b1a0(char *param_1,char *param_2,uint param_3);
+char * __cdecl FUN_0046b1a0(char *param_1,char *param_2,uint n);
 undefined4 __cdecl FUN_0046b464(int param_1);
-undefined4 __cdecl FUN_0046b4b8(uint param_1);
+undefined4 __cdecl isalnum(uint ch);
 bool __cdecl FUN_0046b4d0(uint param_1);
-undefined4 __cdecl FUN_0046b4e4(uint param_1);
-undefined4 __cdecl FUN_0046b4fc(uint param_1);
-undefined4 __cdecl FUN_0046b510(uint param_1);
-undefined4 __cdecl FUN_0046b524(uint param_1);
-undefined4 __cdecl FUN_0046b53c(uint param_1);
-undefined4 __cdecl FUN_0046b550(uint param_1);
-undefined4 __cdecl FUN_0046b568(uint param_1);
-undefined4 __cdecl FUN_0046b57c(uint param_1);
-undefined4 __cdecl FUN_0046b590(uint param_1);
-undefined4 __cdecl FUN_0046b5a4(uint param_1);
-void __cdecl FUN_0046b5bc(ushort param_1);
+undefined4 __cdecl isalpha(uint ch);
+undefined4 __cdecl FUN_0046b4fc(uint ch);
+undefined4 __cdecl FUN_0046b510(uint ch);
+undefined4 __cdecl FUN_0046b524(uint ch);
+undefined4 __cdecl FUN_0046b53c(uint ch);
+undefined4 __cdecl FUN_0046b550(uint ch);
+undefined4 __cdecl FUN_0046b568(uint ch);
+undefined4 __cdecl FUN_0046b57c(uint ch);
+undefined4 __cdecl FUN_0046b590(uint ch);
+undefined4 __cdecl FUN_0046b5a4(uint ch);
+void __cdecl FUN_0046b5bc(ushort srcStr);
 bool __cdecl FUN_0046b5d4(ushort param_1);
-void __cdecl FUN_0046b5e8(ushort param_1);
-void __cdecl FUN_0046b600(ushort param_1);
-void __cdecl FUN_0046b614(ushort param_1);
-void __cdecl FUN_0046b628(ushort param_1);
-void __cdecl FUN_0046b640(ushort param_1);
-void __cdecl FUN_0046b654(ushort param_1);
-void __cdecl FUN_0046b66c(ushort param_1);
-uint __cdecl FUN_0046b680(ushort param_1);
-void __cdecl FUN_0046b694(ushort param_1);
-void __cdecl FUN_0046b6a8(ushort param_1);
-ushort __cdecl FUN_0046b6c0(uint param_1,ushort param_2);
-uint __cdecl FUN_0046b704(WCHAR param_1,uint param_2);
-undefined4 __cdecl FUN_0046b75c(ushort param_1,LPCWSTR param_2);
+void __cdecl FUN_0046b5e8(ushort srcStr);
+void __cdecl FUN_0046b600(ushort srcStr);
+void __cdecl FUN_0046b614(ushort srcStr);
+void __cdecl FUN_0046b628(ushort srcStr);
+void __cdecl FUN_0046b640(ushort srcStr);
+void __cdecl FUN_0046b654(ushort srcStr);
+void __cdecl FUN_0046b66c(ushort srcStr);
+uint __cdecl FUN_0046b680(ushort srcStr);
+void __cdecl FUN_0046b694(ushort srcStr);
+void __cdecl FUN_0046b6a8(ushort srcStr);
+ushort __cdecl _isctype(uint ch,ushort mask);
+uint __cdecl FUN_0046b704(WCHAR srcStr,uint param_2);
+undefined4 __cdecl FUN_0046b75c(ushort param_1,LPCWSTR wideCharStr);
 undefined4 __cdecl FUN_0046b80c(ushort param_1,uint *param_2);
 uint __cdecl FUN_0046bd5c(int *param_1,byte *param_2);
 int __cdecl FUN_0046bfb4(uint *param_1,ushort param_2);
 void __cdecl FUN_0046c170(int param_1);
 undefined4 __cdecl FUN_0046c51c(int *param_1,char *param_2);
 undefined4 __cdecl FUN_0046c73c(uint *param_1,uint *param_2);
-undefined4 __cdecl FUN_0046c8dc(LCID param_1,LCTYPE param_2,undefined4 *param_3);
-undefined4 __cdecl FUN_0046c938(LCID param_1,LCTYPE param_2,undefined2 *param_3,int param_4);
-undefined4 __cdecl FUN_0046c994(LCID param_1,UINT param_2,undefined4 *param_3);
-bool __cdecl FUN_0046ca7c(LCID param_1,undefined2 *param_2);
-bool __cdecl FUN_0046cbfc(LCID param_1,undefined4 *param_2);
-bool __cdecl FUN_0046d058(LCID param_1,undefined4 *param_2);
+undefined4 __cdecl FUN_0046c8dc(LCID locale,LCTYPE lcType,undefined4 *param_3);
+undefined4 __cdecl FUN_0046c938(LCID locale,LCTYPE lcType,undefined2 *param_3,int param_4);
+undefined4 __cdecl FUN_0046c994(LCID locale,UINT codePage,undefined4 *param_3);
+bool __cdecl FUN_0046ca7c(LCID locale,undefined2 *param_2);
+bool __cdecl FUN_0046cbfc(LCID locale,undefined4 *param_2);
+bool __cdecl FUN_0046d058(LCID locale,undefined4 *param_2);
 undefined4 __stdcall FUN_0046d0e0(void);
 undefined ** __stdcall FUN_0046d0ec(void);
 byte * __cdecl FUN_0046d184(byte *param_1);
-uint __cdecl FUN_0046d1a8(uint param_1);
-uint __cdecl FUN_0046d1fc(uint param_1);
-undefined4 __cdecl FUN_0046d250(byte *param_1,int param_2);
-undefined4 __cdecl FUN_0046d2cc(LPWSTR param_1,byte *param_2,int param_3);
-int __cdecl FUN_0046d3a0(LPSTR param_1,ushort param_2);
-char * __cdecl FUN_0046d414(LPWSTR param_1,uint *param_2,char *param_3);
+uint __cdecl tolower(uint ch);
+uint __cdecl toupper(uint ch);
+undefined4 __cdecl FUN_0046d250(byte *multiByteStr,int param_2);
+undefined4 __cdecl FUN_0046d2cc(LPWSTR wideCharStr,byte *multiByteStr,int param_3);
+int __cdecl FUN_0046d3a0(LPSTR multiByteStr,ushort wideCharStr);
+char * __cdecl FUN_0046d414(LPWSTR wideCharStr,uint *multiByteStr,char *wideChar);
 int __cdecl FUN_0046d540(short *param_1,int param_2);
-uint __cdecl FUN_0046d57c(LPSTR param_1,LPCWSTR param_2,uint param_3);
+uint __cdecl FUN_0046d57c(LPSTR multiByteStr,LPCWSTR wideCharStr,uint multiByte);
 undefined4 __cdecl FUN_0046d720(ushort param_1,uint *param_2);
 int FUN_0046d7d3(int param_1,uint param_2,undefined4 param_3,uint param_4,uint param_5);
 uint FUN_0046d896(int param_1,uint param_2,undefined4 param_3,uint param_4,uint param_5);
 void __cdecl thunk_FUN_0046e158(uint param_1,char *param_2,uint param_3);
 void __cdecl FUN_0046d940(int param_1,undefined4 param_2,undefined8 *param_3,undefined8 *param_4, undefined4 param_5,undefined4 param_6);
 void __stdcall FUN_0046d9f0(void);
-int __cdecl FUN_0046db78(char *param_1);
-void __cdecl FUN_0046dbe0(char *param_1);
+int __cdecl atoi(char *s);
+void __cdecl FUN_0046dbe0(char *s);
 undefined2 __stdcall FUN_0046dbf0(void);
 uint __cdecl FUN_0046dc04(uint param_1,int param_2);
 undefined4 __stdcall thunk_FUN_0046dc4c(void);
@@ -2638,7 +2638,7 @@ undefined4 __stdcall FUN_0046dc4c(void);
 void __stdcall FUN_0046dc89(void);
 void __stdcall FUN_0046dd54(void);
 void __stdcall FUN_0046dd94(void);
-undefined4 __stdcall FUN_0046ddac(void);
+undefined4 __stdcall __ftol(void);
 void __cdecl FUN_0046ddd4(int param_1);
 void __cdecl FUN_0046de04(longlong *param_1,longdouble *param_2);
 ushort __cdecl FUN_0046de28(longdouble *param_1);
@@ -2671,22 +2671,22 @@ void __cdecl FUN_0046f438(undefined4 param_1,int *param_2);
 uint __cdecl FUN_0046f444(char *param_1,int *param_2,uint param_3);
 int __cdecl FUN_0046f4d0(longdouble *param_1,uint param_2,uint *param_3,undefined4 *param_4,int param_5);
 int __cdecl FUN_0046f7a4(longdouble *param_1,int param_2,uint *param_3,undefined2 *param_4,int param_5);
-undefined4 __cdecl FUN_0046fa98(UINT param_1);
+undefined4 __cdecl FUN_0046fa98(UINT codePage);
 undefined4 __cdecl FUN_0046fbd4(uint param_1);
-undefined4 __cdecl FUN_0046fc14(uint param_1);
-undefined4 __cdecl FUN_0046fc30(uint param_1);
+undefined4 __cdecl FUN_0046fc14(uint ch);
+undefined4 __cdecl FUN_0046fc30(uint ch);
 byte * __cdecl FUN_0046fc4c(byte *param_1,byte *param_2,uint param_3);
 undefined4 __cdecl FUN_0046fca0(byte *param_1,byte *param_2,int param_3);
 byte * __cdecl FUN_0046fd60(byte *param_1,uint param_2);
 void __cdecl FUN_0046fdb8(uint *param_1,int param_2);
 void __cdecl FUN_0046fe00(undefined4 param_1,undefined4 param_2,uint param_3);
 undefined * __stdcall FUN_0046fe60(void);
-void __cdecl FUN_0046feb0(LPCSTR param_1,uint *param_2);
+void __cdecl FUN_0046feb0(LPCSTR fileName,uint *buffer);
 undefined4 __stdcall FUN_0046ff18(undefined4 param_1,undefined4 *param_2);
 undefined4 __stdcall FUN_0046ff2c(void);
-void __cdecl FUN_0046ff70(uint *param_1);
-void __cdecl FUN_0047008c(uint *param_1);
-void __cdecl FUN_0047009c(uint *param_1);
+void __cdecl FUN_0046ff70(uint *buffer);
+void __cdecl FUN_0047008c(uint *buffer);
+void __cdecl FUN_0047009c(uint *buffer);
 void __stdcall vshared_470140(void);
 void __cdecl FUN_00470150(undefined1 *param_1,undefined1 *param_2);
 void __cdecl FUN_00470178(undefined1 *param_1,uint param_2);
@@ -2694,9 +2694,9 @@ void __cdecl FUN_0047035c(undefined1 *param_1,uint param_2,int param_3,undefined
 void __stdcall FUN_00470388(void);
 void __stdcall FUN_0047039c(void);
 void __stdcall FUN_004703ac(void);
-void __cdecl FUN_004703b0(int param_1,int param_2,UINT param_3);
-void __cdecl FUN_00470404(UINT param_1);
-void __cdecl FUN_0047041c(UINT param_1);
+void __cdecl FUN_004703b0(int param_1,int param_2,UINT exitCode);
+void __cdecl FUN_00470404(UINT exitCode);
+void __cdecl FUN_0047041c(UINT exitCode);
 char * __cdecl FUN_00470454(uint *param_1);
 void __cdecl FUN_004704ac(undefined4 *param_1,undefined4 *param_2);
 void __cdecl FUN_004704c8(undefined4 param_1,undefined *param_2);
@@ -2713,16 +2713,16 @@ undefined4 __cdecl FUN_00470c9c(int *param_1,undefined4 param_2,int param_3);
 undefined4 __stdcall FUN_00470e7c(int param_1);
 undefined4 __cdecl FUN_00470ea4(int param_1,undefined4 param_2);
 undefined4 __cdecl FUN_00470f04(int param_1);
-void __stdcall FUN_00470f74(UINT param_1);
+void __stdcall FUN_00470f74(UINT exitCode);
 undefined4 __stdcall FUN_00470f84(void);
 undefined4 __stdcall FUN_00470f88(void);
 void __cdecl FUN_00470f8c(int *param_1,int param_2);
 void __stdcall FUN_00471060(void);
 void __cdecl FUN_004710cc(int param_1);
 WORD __stdcall FUN_00471250(void);
-void __stdcall FUN_00471278(DWORD param_1);
-void __stdcall FUN_00471288(DWORD param_1);
-void __stdcall FUN_00471298(DWORD param_1,LPVOID param_2);
+void __stdcall FUN_00471278(DWORD tlsIndex);
+void __stdcall FUN_00471288(DWORD tlsIndex);
+void __stdcall FUN_00471298(DWORD tlsIndex,LPVOID tlsValue);
 void __stdcall FUN_004712ac(void);
 void __stdcall FUN_004712b4(void);
 char * __stdcall FUN_004712c8(void);
@@ -2732,13 +2732,13 @@ void __cdecl FUN_00471514(int param_1);
 undefined4 __cdecl FUN_00471541(int *param_1,undefined4 param_2,int *param_3,byte param_4);
 void __cdecl FUN_00471607(undefined4 param_1,undefined4 param_2,undefined *param_3,uint param_4);
 int __cdecl FUN_00471715(char *param_1);
-void __cdecl FUN_0047172d(undefined4 param_1,int param_2);
+void __cdecl FUN_0047172d(undefined4 arguments,int param_2);
 void __cdecl FUN_0047174a(undefined4 param_1,int param_2,byte param_3,undefined *param_4,uint param_5,int param_6 );
 void __cdecl FUN_0047181a(undefined4 param_1,undefined *param_2,uint param_3);
-void __cdecl FUN_00471898(uint *param_1,undefined4 *param_2,undefined4 param_3,undefined *param_4,uint param_5, undefined4 param_6,undefined4 param_7,undefined4 param_8,undefined4 param_9);
-void __cdecl FUN_00471ae8(uint *param_1,undefined4 *param_2,undefined4 param_3,undefined *param_4,uint param_5, undefined4 param_6,undefined4 param_7,undefined4 param_8);
-void __cdecl FUN_00471b1d(undefined4 param_1,undefined4 param_2);
-void __cdecl FUN_00471b88(PVOID param_1,PEXCEPTION_RECORD param_2);
+void __cdecl __raiseException(uint *typeDesc,undefined4 *object,undefined4 objectDtor,undefined *copyCtor,uint copyCtorMask, undefined4 throwFlags,undefined4 throwFile,undefined4 throwLine,undefined4 throwReturn);
+void __cdecl _ThrowExceptionLDTC(uint *typeDesc,undefined4 *object,undefined4 objectDtor,undefined *copyCtor,uint copyCtorMask, undefined4 throwFlags,undefined4 throwFile,undefined4 throwLine);
+void __cdecl FUN_00471b1d(undefined4 throwFile,undefined4 throwLine);
+void __cdecl FUN_00471b88(PVOID targetFrame,PEXCEPTION_RECORD exceptionRecord);
 void __cdecl FUN_00471bc7(undefined4 param_1,int param_2,undefined *param_3,uint param_4);
 void __cdecl FUN_00471c3c(int param_1);
 void __stdcall FUN_00471cc4(void);
@@ -3131,7 +3131,7 @@ extern pointer PTR_LAB_00474ed4;   // 0x00474ed4
 extern undefined * PTR_LAB_00474ee0;   // 0x00474ee0
 namespace OWL::TStreamableBase { extern pointer vftable; }   // 0x00474f74  PTR_FUN_00474f74
 namespace OWL::TEventHandler { extern pointer vftable; }   // 0x00474f84  PTR_FUN_00474f84
-extern int DAT_00474fd8;   // 0x00474fd8
+extern int g_writeFailed;   // 0x00474fd8  DAT_00474fd8
 extern undefined4 DAT_00474fdc;   // 0x00474fdc
 extern undefined2 DAT_00474fe0;   // 0x00474fe0
 extern undefined1 DAT_00474fe2;   // 0x00474fe2
@@ -3148,7 +3148,7 @@ extern undefined DAT_00476b74;   // 0x00476b74
 namespace TSDictionaryBuilderProgressBar { extern undefined * vftable; }   // 0x00477094  PTR_FUN_00477094
 extern pointer PTR_LAB_004770c8;   // 0x004770c8
 extern pointer PTR_LAB_004770d4;   // 0x004770d4
-extern undefined * PTR_LAB_004770e0;   // 0x004770e0
+namespace TSDictionaryBuilderProgressBar { extern undefined * vftable_TWindow; }   // 0x004770e0  PTR_LAB_004770e0
 extern undefined DAT_00477368;   // 0x00477368
 extern undefined DAT_0047766d;   // 0x0047766d
 extern undefined DAT_004776f8;   // 0x004776f8
@@ -3164,11 +3164,11 @@ namespace OWL::TNewStreamer { extern undefined * vftable; }   // 0x00478268  PTR
 namespace OWL::TEditSearch { extern undefined * vftable; }   // 0x00478284  PTR_FUN_00478284
 extern pointer PTR_LAB_004782e4;   // 0x004782e4
 extern pointer PTR_LAB_004782f0;   // 0x004782f0
-extern undefined * PTR_LAB_004782fc;   // 0x004782fc
+namespace OWL::TEditSearch { extern undefined * vftable_TWindow; }   // 0x004782fc  PTR_LAB_004782fc
 namespace OWL::TEditFile { extern undefined * vftable; }   // 0x00478390  PTR_FUN_00478390
 extern pointer PTR_LAB_00478410;   // 0x00478410
 extern pointer PTR_LAB_0047841c;   // 0x0047841c
-extern undefined * PTR_LAB_00478428;   // 0x00478428
+namespace OWL::TEditFile { extern undefined * vftable_TWindow; }   // 0x00478428  PTR_LAB_00478428
 namespace OWL::TRichEdit { extern undefined * vftable; }   // 0x004784bc  PTR_FUN_004784bc
 extern pointer PTR_LAB_0047853c;   // 0x0047853c
 extern pointer PTR_LAB_00478548;   // 0x00478548
@@ -3226,14 +3226,14 @@ namespace OWL::TCommonDialog { extern undefined __entries; }   // 0x00479d3c  DA
 namespace OWL::TCommonDialog { extern undefined * vftable; }   // 0x00479df0  PTR_FUN_00479df0
 extern pointer PTR_LAB_00479e34;   // 0x00479e34
 extern pointer PTR_LAB_00479e40;   // 0x00479e40
-extern undefined * PTR_LAB_00479e4c;   // 0x00479e4c
+namespace OWL::TCommonDialog { extern undefined * vftable_TWindow; }   // 0x00479e4c  PTR_LAB_00479e4c
 namespace OWL::TFile { extern pointer vftable; }   // 0x00479f18  PTR_FUN_00479f18
 extern undefined * PTR_FUN_00479f20;   // 0x00479f20
 namespace OWL::TControlBar { extern undefined * vftable; }   // 0x0047a018  PTR_FUN_0047a018
 extern undefined * PTR_LAB_0047a08c;   // 0x0047a08c
 extern pointer PTR_LAB_0047a0ac;   // 0x0047a0ac
 extern pointer PTR_LAB_0047a0b8;   // 0x0047a0b8
-extern undefined * PTR_LAB_0047a0c4;   // 0x0047a0c4
+namespace OWL::TControlBar { extern undefined * vftable_TWindow; }   // 0x0047a0c4  PTR_LAB_0047a0c4
 namespace OWL::TCreatedDC { extern undefined * vftable; }   // 0x0047a1b4  PTR_FUN_0047a1b4
 extern undefined DAT_0047a31b;   // 0x0047a31b
 namespace std::ios_base::failure { extern undefined * vftable; }   // 0x0047a49c  PTR_FUN_0047a49c
@@ -3254,7 +3254,7 @@ namespace OWL::TGadgetWindow { extern undefined * vftable; }   // 0x0047b35c  PT
 extern undefined * PTR_LAB_0047b3d0;   // 0x0047b3d0
 extern pointer PTR_LAB_0047b3f0;   // 0x0047b3f0
 extern pointer PTR_LAB_0047b3fc;   // 0x0047b3fc
-extern undefined * PTR_LAB_0047b408;   // 0x0047b408
+namespace OWL::TGadgetWindow { extern undefined * vftable_TWindow; }   // 0x0047b408  PTR_LAB_0047b408
 namespace OWL::TXGdi { extern undefined * vftable; }   // 0x0047b598  PTR_FUN_0047b598
 extern int DAT_0047b5ac;   // 0x0047b5ac
 extern undefined4 _DAT_0047b5b0;   // 0x0047b5b0
@@ -3266,7 +3266,7 @@ namespace OWL::TLayoutWindow::Streamer { extern undefined * vftable; }   // 0x00
 namespace OWL::TLayoutWindow { extern undefined * vftable; }   // 0x0047ba24  PTR_FUN_0047ba24
 extern pointer PTR_LAB_0047ba3c;   // 0x0047ba3c
 extern pointer PTR_LAB_0047ba48;   // 0x0047ba48
-extern undefined * PTR_LAB_0047ba54;   // 0x0047ba54
+namespace OWL::TLayoutWindow { extern undefined * vftable_TWindow; }   // 0x0047ba54  PTR_LAB_0047ba54
 extern char DAT_0047bae0;   // 0x0047bae0
 extern ushort DAT_0047bb10;   // 0x0047bb10
 extern ushort DAT_0047bb18;   // 0x0047bb18
@@ -3286,7 +3286,7 @@ namespace OWL::TMessageBar { extern undefined * vftable; }   // 0x0047c3a8  PTR_
 extern undefined * PTR_LAB_0047c420;   // 0x0047c420
 extern pointer PTR_LAB_0047c440;   // 0x0047c440
 extern pointer PTR_LAB_0047c44c;   // 0x0047c44c
-extern undefined * PTR_LAB_0047c458;   // 0x0047c458
+namespace OWL::TMessageBar { extern undefined * vftable_TWindow; }   // 0x0047c458  PTR_LAB_0047c458
 namespace OWL::TMsgThread { extern undefined * vftable; }   // 0x0047c570  PTR_FUN_0047c570
 extern int * DAT_0047c5cc;   // 0x0047c5cc
 extern undefined DAT_0047c978;   // 0x0047c978
@@ -3307,7 +3307,7 @@ extern undefined DAT_0047ce84;   // 0x0047ce84
 namespace OWL::TTooltip { extern undefined * vftable; }   // 0x0047cf3c  PTR_FUN_0047cf3c
 extern pointer PTR_LAB_0047cf6c;   // 0x0047cf6c
 extern pointer PTR_LAB_0047cf78;   // 0x0047cf78
-extern undefined * PTR_LAB_0047cf84;   // 0x0047cf84
+namespace OWL::TTooltip { extern undefined * vftable_TWindow; }   // 0x0047cf84  PTR_LAB_0047cf84
 namespace OWL::TTooltipEnabler { extern undefined * vftable; }   // 0x0047d018  PTR_FUN_0047d018
 extern undefined DAT_0047d024;   // 0x0047d024
 extern undefined DAT_0047d028;   // 0x0047d028
@@ -3512,7 +3512,7 @@ namespace OWL::TUrlLink::Streamer { extern undefined * vftable; }   // 0x0047e00
 namespace OWL::TUrlLink { extern undefined * vftable; }   // 0x0047e020  PTR_FUN_0047e020
 extern pointer PTR_LAB_0047e07c;   // 0x0047e07c
 extern pointer PTR_LAB_0047e088;   // 0x0047e088
-extern undefined * PTR_LAB_0047e094;   // 0x0047e094
+namespace OWL::TUrlLink { extern undefined * vftable_TWindow; }   // 0x0047e094  PTR_LAB_0047e094
 extern char DAT_0047e14c;   // 0x0047e14c
 extern UINT DAT_0047e150;   // 0x0047e150
 extern char DAT_0047e184;   // 0x0047e184
@@ -3552,18 +3552,18 @@ namespace OWL::TButton { extern undefined __entries; }   // 0x0047f538  DAT_0047
 namespace OWL::TButton { extern undefined * vftable; }   // 0x0047f58c  PTR_FUN_0047f58c
 extern pointer PTR_LAB_0047f5c0;   // 0x0047f5c0
 extern pointer PTR_LAB_0047f5cc;   // 0x0047f5cc
-extern undefined * PTR_LAB_0047f5d8;   // 0x0047f5d8
+namespace OWL::TButton { extern undefined * vftable_TWindow; }   // 0x0047f5d8  PTR_LAB_0047f5d8
 namespace OWL::TButton::Streamer { extern undefined * vftable; }   // 0x0047f768  PTR_FUN_0047f768
 extern undefined DAT_0047f778;   // 0x0047f778
 namespace OWL::TCheckBox { extern undefined * vftable; }   // 0x0047f7cc  PTR_FUN_0047f7cc
 extern pointer PTR_LAB_0047f804;   // 0x0047f804
 extern pointer PTR_LAB_0047f810;   // 0x0047f810
-extern undefined * PTR_LAB_0047f81c;   // 0x0047f81c
+namespace OWL::TCheckBox { extern undefined * vftable_TWindow; }   // 0x0047f81c  PTR_LAB_0047f81c
 namespace OWL::TControl { extern undefined __entries; }   // 0x0047f8fc  DAT_0047f8fc
 namespace OWL::TControl { extern undefined * vftable; }   // 0x0047f9bc  PTR_FUN_0047f9bc
 extern pointer PTR_LAB_0047f9e8;   // 0x0047f9e8
 extern pointer PTR_LAB_0047f9f4;   // 0x0047f9f4
-extern undefined * PTR_LAB_0047fa00;   // 0x0047fa00
+namespace OWL::TControl { extern undefined * vftable_TWindow; }   // 0x0047fa00  PTR_LAB_0047fa00
 namespace OWL::TControl::Streamer { extern undefined * vftable; }   // 0x0047fb80  PTR_FUN_0047fb80
 extern undefined DAT_0047fbdc;   // 0x0047fbdc
 namespace OWL::TDecoratedFrame { extern undefined __entries; }   // 0x0047fbe0  DAT_0047fbe0
@@ -3571,14 +3571,14 @@ namespace OWL::TDecoratedFrame { extern undefined * vftable; }   // 0x0047fcec  
 extern undefined * PTR_LAB_0047fd30;   // 0x0047fd30
 extern pointer PTR_LAB_0047fd48;   // 0x0047fd48
 extern pointer PTR_LAB_0047fd54;   // 0x0047fd54
-extern undefined * PTR_LAB_0047fd60;   // 0x0047fd60
-extern undefined * PTR_LAB_0047fdf0;   // 0x0047fdf0
+namespace OWL::TDecoratedFrame { extern undefined * vftable_TWindow; }   // 0x0047fd60  PTR_LAB_0047fd60
+namespace OWL::TDecoratedFrame { extern undefined * vftable_TFrameWindow; }   // 0x0047fdf0  PTR_LAB_0047fdf0
 extern int * DAT_0047fe3c;   // 0x0047fe3c
 extern undefined DAT_0047fe40;   // 0x0047fe40
 namespace OWL::TDialog { extern undefined * vftable; }   // 0x0047ff60  PTR_FUN_0047ff60
 extern pointer PTR_LAB_0047ffa4;   // 0x0047ffa4
 extern pointer PTR_LAB_0047ffb0;   // 0x0047ffb0
-extern undefined * PTR_LAB_0047ffbc;   // 0x0047ffbc
+namespace OWL::TDialog { extern undefined * vftable_TWindow; }   // 0x0047ffbc  PTR_LAB_0047ffbc
 namespace OWL::TControlEnabler { extern undefined * vftable; }   // 0x004800c4  PTR_FUN_004800c4
 namespace OWL::TDib { extern undefined * vftable; }   // 0x004800dc  PTR_FUN_004800dc
 extern undefined DAT_00480178;   // 0x00480178
@@ -3609,7 +3609,7 @@ namespace OWL::TEdit { extern undefined __entries; }   // 0x0048108c  DAT_004810
 namespace OWL::TEdit { extern undefined * vftable; }   // 0x004813e0  PTR_FUN_004813e0
 extern pointer PTR_LAB_00481440;   // 0x00481440
 extern pointer PTR_LAB_0048144c;   // 0x0048144c
-extern undefined * PTR_LAB_00481458;   // 0x00481458
+namespace OWL::TEdit { extern undefined * vftable_TWindow; }   // 0x00481458  PTR_LAB_00481458
 namespace OWL::TEdit::Streamer { extern undefined * vftable; }   // 0x00481590  PTR_FUN_00481590
 extern undefined DAT_004815a0;   // 0x004815a0
 extern undefined DAT_00481a30;   // 0x00481a30
@@ -3649,7 +3649,7 @@ namespace OWL::TFrameWindow { extern undefined __entries; }   // 0x00482838  DAT
 namespace OWL::TFrameWindow { extern undefined * vftable; }   // 0x00482aa4  PTR_FUN_00482aa4
 extern pointer PTR_LAB_00482af8;   // 0x00482af8
 extern pointer PTR_LAB_00482b04;   // 0x00482b04
-extern undefined * PTR_LAB_00482b10;   // 0x00482b10
+namespace OWL::TFrameWindow { extern undefined * vftable_TWindow; }   // 0x00482b10  PTR_LAB_00482b10
 namespace OWL::TMenuDescr { extern undefined * vftable; }   // 0x00482c30  PTR_FUN_00482c30
 extern char DAT_00482c51;   // 0x00482c51
 extern char DAT_00482c52;   // 0x00482c52
@@ -3694,7 +3694,7 @@ extern undefined DAT_00483d28;   // 0x00483d28
 namespace OWL::TTinyCaption { extern undefined * vftable; }   // 0x00483fc0  PTR_FUN_00483fc0
 extern pointer PTR_LAB_00483fd4;   // 0x00483fd4
 extern pointer PTR_LAB_00483fe0;   // 0x00483fe0
-extern undefined * PTR_LAB_00483fec;   // 0x00483fec
+namespace OWL::TTinyCaption { extern undefined * vftable_TWindow; }   // 0x00483fec  PTR_LAB_00483fec
 namespace OWL::TValidator { extern undefined * vftable; }   // 0x004840a4  PTR_FUN_004840a4
 namespace OWL::TValidator::Streamer { extern undefined * vftable; }   // 0x0048416c  PTR_FUN_0048416c
 extern pointer PTR_FUN_00484178;   // 0x00484178
@@ -3734,10 +3734,10 @@ extern uint DAT_00484b80;   // 0x00484b80
 extern uint DAT_00484b84;   // 0x00484b84
 extern undefined DAT_00484eb1;   // 0x00484eb1
 extern undefined DAT_00484eb4;   // 0x00484eb4
-extern undefined4 DAT_00485bcc;   // 0x00485bcc
-extern undefined DAT_00485bd8;   // 0x00485bd8
+extern undefined4 g_nullStringRep;   // 0x00485bcc  DAT_00485bcc
+extern undefined g_emptyStringData;   // 0x00485bd8  DAT_00485bd8
 extern undefined DAT_00485c38;   // 0x00485c38
-extern int DAT_00485f20;   // 0x00485f20
+extern int g_stringNpos;   // 0x00485f20  DAT_00485f20
 extern undefined DAT_00485f6c;   // 0x00485f6c
 extern undefined DAT_00486b1c;   // 0x00486b1c
 namespace __rwstd::ref_counted { extern pointer vftable; }   // 0x00487554  PTR_FUN_00487554
@@ -3971,8 +3971,8 @@ extern undefined DAT_0048b329;   // 0x0048b329
 extern undefined DAT_0048b33c;   // 0x0048b33c
 extern int DAT_0048b444;   // 0x0048b444
 extern int _DAT_0048b44c;   // 0x0048b44c
-extern uint DAT_0048b450;   // 0x0048b450
-extern byte DAT_0048b850;   // 0x0048b850
+extern uint g_huffmanCodes;   // 0x0048b450  DAT_0048b450
+extern byte g_huffmanCodeLengths;   // 0x0048b850  DAT_0048b850
 extern undefined4 DAT_0048b950;   // 0x0048b950
 extern short DAT_0048bd50;   // 0x0048bd50
 extern short DAT_0048bd52;   // 0x0048bd52

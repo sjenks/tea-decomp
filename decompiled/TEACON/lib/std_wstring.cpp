@@ -9,12 +9,12 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x004178e8  std::wstring::~basic_string   (34 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as std::wstring::_dtor
-void __cdecl std::wstring::_dtor(int param_1,byte param_2)
+void __cdecl std::wstring::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
-    FUN_0041790c(param_1);
-    if ((param_2 & 1) != 0) {
+  if (self != 0) {
+    FUN_0041790c(self);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

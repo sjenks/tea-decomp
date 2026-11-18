@@ -8,18 +8,18 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004244c8  OWL::TView::vf1   (11 bytes)   [rtti:vtable virtual slot 1]
-undefined4 __cdecl OWL::TView::vf1(int param_1)
+undefined4 __cdecl OWL::TView::vf1(int self)
 
 {
-  return *(undefined4 *)(param_1 + 0x1c);
+  return *(undefined4 *)(self + 0x1c);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004244d4  OWL::TView::vf2   (11 bytes)   [rtti:vtable virtual slot 2]
-undefined4 __cdecl OWL::TView::vf2(int param_1)
+undefined4 __cdecl OWL::TView::vf2(int self)
 
 {
-  return *(undefined4 *)(param_1 + 0x20);
+  return *(undefined4 *)(self + 0x20);
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -41,42 +41,42 @@ undefined4 __stdcall OWL::TView::vf11(void)
 // ----------------------------------------------------------------------------------------------------
 // 0x00449f94  OWL::TView::~TView   (298 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TView::_dtor
-void __cdecl OWL::TView::_dtor(undefined4 *param_1,uint param_2)
+void __cdecl OWL::TView::_dtor(undefined4 *self,uint dtorFlags)
 
 {
   undefined4 uVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_40;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x4703b8);
-  if (param_1 != (undefined4 *)0x0) {
-    param_1[2] = &OWL::TView::vftable;
-    *(undefined ***)*param_1 = &PTR_FUN_00470458;
-    *(undefined ***)param_1[1] = &PTR_LAB_00470464;
-    if ((undefined4 *)param_1[7] != (undefined4 *)0x0) {
-      (*(code *)**(undefined4 **)param_1[7])();
+  if (self != (undefined4 *)0x0) {
+    self[2] = &OWL::TView::vftable;
+    *(undefined ***)*self = &PTR_FUN_00470458;
+    *(undefined ***)self[1] = &PTR_LAB_00470464;
+    if ((undefined4 *)self[7] != (undefined4 *)0x0) {
+      (*(code *)**(undefined4 **)self[7])();
     }
-    if ((undefined4 *)param_1[8] != (undefined4 *)0x0) {
-      (*(code *)**(undefined4 **)param_1[8])();
+    if ((undefined4 *)self[8] != (undefined4 *)0x0) {
+      (*(code *)**(undefined4 **)self[8])();
     }
-    uVar1 = FUN_00439e4c((int *)param_1[3],(int)param_1);
-    if (((char)uVar1 != '\0') && ((undefined4 *)param_1[3] != (undefined4 *)0x0)) {
-      (*(code *)**(undefined4 **)param_1[3])();
+    uVar1 = FUN_00439e4c((int *)self[3],(int)self);
+    if (((char)uVar1 != '\0') && ((undefined4 *)self[3] != (undefined4 *)0x0)) {
+      (*(code *)**(undefined4 **)self[3])();
     }
-    if ((param_2 & 2) != 0) {
-      OWL::TStreamableBase::_dtor(param_1 + 10,0);
+    if ((dtorFlags & 2) != 0) {
+      OWL::TStreamableBase::_dtor(self + 10,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_40;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0044a0c0  OWL::TView::vf9   (32 bytes)   [rtti:vtable virtual slot 9]
-undefined * __cdecl OWL::TView::vf9(undefined4 param_1,int param_2)
+undefined * __cdecl OWL::TView::vf9(undefined4 self,int param_2)
 
 {
   if (param_2 < 1) {
@@ -90,7 +90,7 @@ undefined * __cdecl OWL::TView::vf9(undefined4 param_1,int param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0044a0e0  OWL::TView::vf8   (32 bytes)   [rtti:vtable virtual slot 8]
-undefined * __cdecl OWL::TView::vf8(undefined4 param_1,int param_2)
+undefined * __cdecl OWL::TView::vf8(undefined4 self,int param_2)
 
 {
   if (param_2 < 1) {
@@ -104,7 +104,7 @@ undefined * __cdecl OWL::TView::vf8(undefined4 param_1,int param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0044a100  OWL::TView::vf7   (47 bytes)   [rtti:vtable virtual slot 7]
-int __cdecl OWL::TView::vf7(undefined4 param_1,char *param_2)
+int __cdecl OWL::TView::vf7(undefined4 self,char *param_2)
 
 {
   int iVar1;
@@ -123,7 +123,7 @@ int __cdecl OWL::TView::vf7(undefined4 param_1,char *param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0044a130  OWL::TView::vf10   (138 bytes)   [rtti:vtable virtual slot 10]
-char * __cdecl OWL::TView::vf10(int param_1,int param_2,undefined4 *param_3,char *param_4)
+char * __cdecl OWL::TView::vf10(int self,int param_2,undefined4 *param_3,char *param_4)
 
 {
   undefined4 *puVar1;
@@ -132,20 +132,20 @@ char * __cdecl OWL::TView::vf10(int param_1,int param_2,undefined4 *param_3,char
   int iVar4;
   
   if (param_2 == 1) {
-    if (param_1 == 0) {
+    if (self == 0) {
       iVar4 = 0;
     }
     else {
-      iVar4 = *(int *)(param_1 + 8);
+      iVar4 = *(int *)(self + 8);
     }
-    puVar1 = FUN_0045666c(param_1,iVar4,0x4244f4);
+    puVar1 = FUN_0045666c(self,iVar4,0x4244f4);
     puVar2 = (uint *)FUN_0045677c((int)puVar1);
   }
   else {
     if (param_2 != 2) {
       return (char *)0x0;
     }
-    puVar2 = (uint *)(**(code **)(*(int *)(param_1 + 8) + 0xc))();
+    puVar2 = (uint *)(**(code **)(*(int *)(self + 8) + 0xc))();
   }
   if (param_4 == (char *)0x0) {
     pcVar3 = (char *)0x0;

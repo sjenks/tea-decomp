@@ -1,0 +1,232 @@
+{
+ "0x00401000": {
+  "ppuVar1": "startupTable"
+ },
+ "0x00401059": {
+  "param_1": "info"
+ },
+ "0x0040234c": {
+  "param_1": "self",
+  "param_2": "unused"
+ },
+ "0x004029ac": {
+  "param_1": "self",
+  "param_2": "edit",
+  "param_3": "out"
+ },
+ "0x004029e8": {
+  "param_1": "self"
+ },
+ "0x0040339c": {
+  "param_1": "self"
+ },
+ "0x00403518": {
+  "param_1": "self",
+  "param_2": "edit"
+ },
+ "0x00403554": {
+  "param_1": "self",
+  "param_2": "edit"
+ },
+ "0x00403588": {
+  "param_1": "self",
+  "param_2": "edit"
+ },
+ "0x004035b8": {
+  "param_1": "self",
+  "param_2": "fileName"
+ },
+ "0x00405118": {
+  "param_1": "file"
+ },
+ "0x00405140": {
+  "param_1": "self",
+  "param_2": "file"
+ },
+ "0x00405158": {
+  "param_1": "self",
+  "param_2": "nbits",
+  "param_3": "code"
+ },
+ "0x004051e4": {
+  "param_1": "self",
+  "param_2": "bytes",
+  "param_3": "count"
+ },
+ "0x00405228": {
+  "param_1": "self"
+ },
+ "0x00405248": {
+  "param_1": "self"
+ },
+ "0x00405268": {
+  "param_1": "count",
+  "param_2": "total",
+  "param_3": "range"
+ },
+ "0x00405368": {
+  "param_1": "a",
+  "param_2": "b"
+ },
+ "0x00405398": {
+  "param_1": "node",
+  "param_2": "bit"
+ },
+ "0x004053d4": {
+  "param_1": "node",
+  "iVar1": "byteValue"
+ },
+ "0x00405568": {
+  "param_1": "out",
+  "param_2": "line"
+ },
+ "0x00405ae0": {
+  "param_1": "mapping",
+  "param_2": "line"
+ },
+ "0x00405d6c": {
+  "param_1": "writer",
+  "param_2": "definition"
+ },
+ "0x00405f48": {
+  "param_1": "a",
+  "param_2": "b"
+ },
+ "0x004061d0": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last"
+ },
+ "0x004063a4": {
+  "param_1": "tree",
+  "param_2": "node"
+ },
+ "0x00406e78": {
+  "param_1": "dest",
+  "param_2": "node"
+ },
+ "0x00406f08": {
+  "param_1": "self",
+  "param_2": "wordLists",
+  "param_3": "fileName",
+  "param_4": "description",
+  "param_5": "shortest",
+  "param_6": "longest",
+  "param_7": "progressTotal",
+  "param_8": "options"
+ },
+ "0x0040fd40": {
+  "param_1": "dest",
+  "param_2": "node"
+ },
+ "0x00410620": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last"
+ },
+ "0x00412114": {
+  "param_1": "tree",
+  "param_2": "node"
+ },
+ "0x0041328c": {
+  "param_1": "dest",
+  "param_2": "node"
+ },
+ "0x00413a78": {
+  "param_1": "vec",
+  "param_2": "n"
+ },
+ "0x00413bd8": {
+  "param_1": "vec",
+  "param_2": "pos",
+  "param_3": "n",
+  "param_4": "value"
+ },
+ "0x00413e80": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "value"
+ },
+ "0x00413eac": {
+  "param_1": "dest",
+  "param_2": "n",
+  "param_3": "value"
+ },
+ "0x00413fec": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest"
+ },
+ "0x00415af0": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x00415b98": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x00415d40": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x00415d78": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x00415dec": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x00415e60": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x00415fb8": {
+  "param_1": "self"
+ },
+ "0x004162e4": {
+  "param_1": "self",
+  "param_2": "keyPath"
+ },
+ "0x00416918": {
+  "param_1": "result",
+  "param_2": "dir",
+  "param_3": "fileName"
+ },
+ "0x00416c8c": {
+  "param_1": "self"
+ },
+ "0x0041740c": {
+  "param_1": "self",
+  "param_2": "abort"
+ },
+ "0x00417718": {
+  "param_1": "result",
+  "param_2": "path"
+ },
+ "0x00418afc": {
+  "param_1": "path"
+ },
+ "0x00418d04": {
+  "param_1": "result"
+ },
+ "0x0041901c": {
+  "param_1": "result",
+  "param_2": "path"
+ },
+ "0x0041946c": {
+  "param_1": "fileName"
+ },
+ "0x00419664": {
+  "param_1": "fileName",
+  "param_2": "buf",
+  "param_3": "bufSize",
+  "param_4": "lineLen"
+ },
+ "0x00419b20": {
+  "param_1": "hWnd"
+ },
+ "0x00419bf0": {
+  "param_1": "result"
+ }
+}

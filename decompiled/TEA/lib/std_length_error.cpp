@@ -9,21 +9,21 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x004dc5d4  std::length_error::~length_error   (93 bytes)   [rtti:dtor destructor; function defined from rtti-dtor]
 //   written in code as std::length_error::_dtor
-void __cdecl std::length_error::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl std::length_error::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x516cb8);
-  if (param_1 != (undefined4 *)0x0) {
-    *param_1 = &std::length_error::vftable;
-    std::logic_error::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    *self = &std::length_error::vftable;
+    std::logic_error::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

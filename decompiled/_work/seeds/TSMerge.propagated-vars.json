@@ -1,0 +1,525 @@
+{
+ "0x00401012": {
+  "from": "TEACON.exe 0x00401012",
+  "vars": {
+   "ppuVar1": "startupTable"
+  }
+ },
+ "0x00403134": {
+  "from": "TEACON.exe 0x00408894",
+  "vars": {
+   "param_1": "~p",
+   "param_2": "~ch",
+   "param_3": "~n",
+   "pcVar1": "q"
+  }
+ },
+ "0x004064c4": {
+  "from": "TEACON.exe 0x004048f4",
+  "vars": {
+   "param_1": "vec",
+   "param_2": "pos",
+   "param_3": "value",
+   "uVar1": "len",
+   "iVar2": "refs",
+   "iVar3": "newCapacity",
+   "iVar4": "storage",
+   "iVar5": "slot",
+   "piVar6": "rep",
+   "local_c": "badAlloc",
+   "local_8": "end"
+  }
+ },
+ "0x004068fc": {
+  "from": "TEACON.exe 0x00404d2c",
+  "vars": {
+   "param_1": "first",
+   "param_2": "last",
+   "param_3": "destEnd"
+  }
+ },
+ "0x0040692c": {
+  "from": "TEACON.exe 0x00404d5c",
+  "vars": {
+   "param_1": "first",
+   "param_2": "last",
+   "param_3": "dest",
+   "iVar1": "refs",
+   "uVar2": "len",
+   "iVar3": "src",
+   "iVar4": "dst",
+   "piVar5": "rep"
+  }
+ },
+ "0x00406a90": {
+  "from": "TEACON.exe 0x0040483c",
+  "vars": {
+   "param_1": "vec",
+   "param_2": "first",
+   "param_3": "last",
+   "iVar1": "str",
+   "iVar2": "prevRefs",
+   "piVar3": "strRep"
+  }
+ },
+ "0x0040d844": {
+  "from": "TEACON.exe 0x004088c0",
+  "vars": {
+   "param_1": "result",
+   "param_2": "lhs",
+   "param_3": "rhs",
+   "uVar1": "len",
+   "iVar2": "sum",
+   "iVar3": "refs",
+   "piVar4": "rep",
+   "local_14": "tmp",
+   "local_c": "tmpData"
+  }
+ },
+ "0x0040dac4": {
+  "from": "TEACON.exe 0x00408b40",
+  "vars": {
+   "param_1": "result",
+   "param_2": "str",
+   "uVar1": "len",
+   "iVar2": "sum",
+   "piVar3": "rep",
+   "iVar4": "refs",
+   "puVar5": "suffixArg",
+   "local_24": "tmp",
+   "local_1c": "tmpData",
+   "local_14": "suffix",
+   "local_c": "suffixData"
+  }
+ },
+ "0x0040dee4": {
+  "from": "TEACON.exe 0x0040909c",
+  "vars": {
+   "param_1": "result",
+   "DVar1": "len",
+   "puVar2": "lastSep",
+   "iVar3": "dir",
+   "local_14": "dirStr",
+   "local_c": "dirData"
+  }
+ },
+ "0x0040e920": {
+  "from": "TEA.exe 0x0044e83c",
+  "vars": {
+   "param_1": "self",
+   "param_3": "create",
+   "param_4": "tryLocalMachine",
+   "iVar1": "regStatus"
+  }
+ },
+ "0x0040ea30": {
+  "from": "TEACON.exe 0x00411a4c",
+  "vars": {
+   "param_1": "self",
+   "param_2": "valueName",
+   "param_3": "out",
+   "iVar1": "probe",
+   "auStackY_1000c": "buf",
+   "uStackY_102c": "retAddr",
+   "local_c": "typeAndSize"
+  }
+ },
+ "0x0040eaa4": {
+  "from": "TEACON.exe 0x00411ac0",
+  "vars": {
+   "param_1": "self",
+   "param_2": "valueName",
+   "param_3": "out",
+   "local_10": "typeAndSize",
+   "local_8": "value"
+  }
+ },
+ "0x0040eaf8": {
+  "from": "TEA.exe 0x0044ec78",
+  "vars": {
+   "param_1": "self",
+   "param_2": "valueName",
+   "param_3": "value"
+  }
+ },
+ "0x0040eb28": {
+  "from": "TEA.exe 0x0044eca8",
+  "vars": {
+   "param_1": "self",
+   "param_2": "valueName"
+  }
+ },
+ "0x0040fc8c": {
+  "from": "TEA.exe 0x00469b1c",
+  "vars": {
+   "param_1": "load"
+  }
+ },
+ "0x0044b2a0": {
+  "from": "TEACON.exe 0x00414f4c",
+  "vars": {
+   "param_1": "~count",
+   "param_2": "~size"
+  }
+ },
+ "0x0044ce78": {
+  "from": "TEACON.exe 0x00416bd0",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~other"
+  }
+ },
+ "0x0044cf10": {
+  "from": "TEACON.exe 0x00416c68",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~s"
+  }
+ },
+ "0x0044d11c": {
+  "from": "TEACON.exe 0x00416e74",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~s"
+  }
+ },
+ "0x0044d2a4": {
+  "from": "TEACON.exe 0x00416ffc",
+  "vars": {
+   "param_1": "~alloc",
+   "param_2": "~capacity",
+   "param_3": "~length",
+   "piVar1": "nullRep",
+   "piVar2": "rep",
+   "puVar3": "allocArg",
+   "local_15": "nul"
+  }
+ },
+ "0x0044d5c8": {
+  "from": "TEACON.exe 0x00417320",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~pos",
+   "param_3": "~n1",
+   "param_4": "~s",
+   "param_5": "~n2"
+  }
+ },
+ "0x0044f6d0": {
+  "from": "TEACON.exe 0x00418dec",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~s",
+   "param_3": "~n"
+  }
+ },
+ "0x0045143c": {
+  "from": "TEACON.exe 0x0041a7fc",
+  "vars": {
+   "param_1": "self",
+   "uVar1": "len",
+   "uVar2": "len2",
+   "newRep": "rep",
+   "puVar4": "src",
+   "puVar5": "dst"
+  }
+ },
+ "0x00451a34": {
+  "from": "TEACON.exe 0x0041ab68",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~other",
+   "iVar1": "otherLen",
+   "uVar6": "room"
+  }
+ },
+ "0x00451b48": {
+  "from": "TEACON.exe 0x0041aca0",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~pos",
+   "param_3": "~n1",
+   "param_4": "~other",
+   "uVar1": "otherLen",
+   "uVar2": "otherLen2",
+   "uVar3": "otherData",
+   "uVar4": "zero"
+  }
+ },
+ "0x00451b84": {
+  "from": "TEACON.exe 0x0041acdc",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~pos",
+   "param_3": "~other"
+  }
+ },
+ "0x00451d38": {
+  "from": "TEACON.exe 0x0041ae90",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~pos",
+   "param_3": "~n1",
+   "param_4": "~count",
+   "param_5": "~ch"
+  }
+ },
+ "0x00452210": {
+  "from": "TEACON.exe 0x0041b484",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~n"
+  }
+ },
+ "0x00455640": {
+  "from": "TEACON.exe 0x0041ea4c",
+  "vars": {
+   "param_1": "exceptMsg",
+   "param_2": "~format"
+  }
+ },
+ "0x00455990": {
+  "from": "TEACON.exe 0x0041ed9c",
+  "vars": {
+   "param_1": "~s",
+   "param_2": "~ch",
+   "param_3": "~n"
+  }
+ },
+ "0x004559d0": {
+  "from": "TEACON.exe 0x0041eddc",
+  "vars": {
+   "param_1": "~dest",
+   "param_2": "~src",
+   "param_3": "~n"
+  }
+ },
+ "0x00455a40": {
+  "from": "TEACON.exe 0x0041ee4c",
+  "vars": {
+   "param_1": "~dest",
+   "param_2": "~ch",
+   "param_3": "~n"
+  }
+ },
+ "0x00455b20": {
+  "from": "TEACON.exe 0x0041ef2c",
+  "vars": {
+   "param_1": "~s",
+   "param_2": "~ch"
+  }
+ },
+ "0x00455bf0": {
+  "from": "TEACON.exe 0x0041ef80",
+  "vars": {
+   "param_1": "~s"
+  }
+ },
+ "0x00455d94": {
+  "from": "TEACON.exe 0x0041f178",
+  "vars": {
+   "param_1": "~s1",
+   "param_2": "~s2"
+  }
+ },
+ "0x00455ddc": {
+  "from": "TEACON.exe 0x0041f1c0",
+  "vars": {
+   "param_1": "~dest",
+   "param_2": "~src",
+   "param_3": "~n"
+  }
+ },
+ "0x00455e2c": {
+  "from": "TEACON.exe 0x0041f284",
+  "vars": {
+   "param_1": "~s",
+   "param_2": "~ch"
+  }
+ },
+ "0x00456df4": {
+  "from": "TEACON.exe 0x0041ffa0",
+  "vars": {
+   "param_1": "~path",
+   "param_2": "~mode"
+  }
+ },
+ "0x00457ef4": {
+  "from": "TEACON.exe 0x00421660",
+  "vars": {
+   "param_1": "~buf",
+   "param_2": "~format"
+  }
+ },
+ "0x00458f98": {
+  "from": "TEACON.exe 0x00422750",
+  "vars": {
+   "param_1": "~ch",
+   "param_2": "~mask"
+  }
+ },
+ "0x0045aa80": {
+  "from": "TEACON.exe 0x00424238",
+  "vars": {
+   "param_1": "~ch"
+  }
+ },
+ "0x0045aad4": {
+  "from": "TEACON.exe 0x0042428c",
+  "vars": {
+   "param_1": "~ch"
+  }
+ },
+ "0x0045b3a0": {
+  "from": "TEACON.exe 0x00424b58",
+  "vars": {
+   "param_1": "~s"
+  }
+ },
+ "0x0045b4bc": {
+  "from": "TEA.exe 0x004e3c04",
+  "vars": {
+   "local_10": "result"
+  }
+ },
+ "0x0045eb24": {
+  "from": "TEACON.exe 0x00427e50",
+  "vars": {
+   "param_1": "typeDesc",
+   "param_2": "object",
+   "param_3": "objectDtor",
+   "param_4": "copyCtor",
+   "param_5": "copyCtorMask",
+   "param_6": "throwFlags",
+   "param_7": "throwFile",
+   "param_8": "throwLine",
+   "param_9": "throwReturn",
+   "local_34": "record",
+   "local_30": "objectOffset",
+   "local_2c": "baseTypeDesc"
+  }
+ },
+ "0x0045ed74": {
+  "from": "TEACON.exe 0x004280a0",
+  "vars": {
+   "param_1": "~typeDesc",
+   "param_2": "~object",
+   "param_3": "~objectDtor",
+   "param_4": "~copyCtor",
+   "param_5": "~copyCtorMask",
+   "param_6": "~throwFlags",
+   "param_7": "~throwFile",
+   "param_8": "~throwLine",
+   "in_stack_00000000": "throwReturn"
+  }
+ },
+ "0x00401678": {
+  "from": "TEA.exe 0x004292c0 (duplicated code)",
+  "vars": {
+   "param_2": "eventInfo",
+   "param_3": "equal",
+   "uVar1": "found"
+  }
+ },
+ "0x00406a78": {
+  "from": "TEACON.exe 0x00404ea8 (duplicated code)",
+  "vars": {
+   "param_1": "first",
+   "param_2": "last"
+  }
+ },
+ "0x0040ad40": {
+  "from": "TEA.exe 0x0044e49c (duplicated code)",
+  "vars": {
+   "param_1": "self",
+   "param_2": "dtorFlags"
+  }
+ },
+ "0x0044cbb0": {
+  "from": "TEACON.exe 0x0041687c (duplicated code)",
+  "vars": {
+   "param_1": "self",
+   "iVar1": "rep"
+  }
+ },
+ "0x0044d9c0": {
+  "from": "TEACON.exe 0x00417760 (duplicated code)",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~what"
+  }
+ },
+ "0x0044da08": {
+  "from": "TEACON.exe 0x00417760 (duplicated code)",
+  "vars": {
+   "param_1": "self",
+   "param_2": "~what"
+  }
+ },
+ "0x0044de28": {
+  "from": "TEACON.exe 0x0041687c (duplicated code)",
+  "vars": {
+   "param_1": "self",
+   "iVar1": "rep"
+  }
+ },
+ "0x0045440c": {
+  "from": "TEACON.exe 0x0040da88 (duplicated code)",
+  "vars": {
+   "param_1": "self"
+  }
+ },
+ "0x004576d0": {
+  "from": "TEACON.exe 0x00414870 (duplicated code)",
+  "vars": {
+   "param_1": "owner",
+   "param_2": "key",
+   "bVar1": "ok"
+  }
+ },
+ "0x00458d90": {
+  "from": "TEACON.exe 0x00422548 (duplicated code)",
+  "vars": {
+   "param_1": "~ch"
+  }
+ },
+ "0x00458dbc": {
+  "from": "TEACON.exe 0x00422574 (duplicated code)",
+  "vars": {
+   "param_1": "~ch"
+  }
+ },
+ "0x0044b944": {
+  "from": "TEACON.exe 0x004155f0 (same declared variables)",
+  "vars": {
+   "param_1": "~size"
+  }
+ },
+ "0x0044d594": {
+  "from": "TEACON.exe 0x004172ec (same declared variables)",
+  "vars": {
+   "param_1": "~rep"
+  }
+ },
+ "0x0044da94": {
+  "from": "TEACON.exe 0x004177ec (same declared variables)",
+  "vars": {
+   "param_1": "self",
+   "uVar1": "data"
+  }
+ },
+ "0x0040f12c": {
+  "from": "TEA.exe 0x0046924c (same declared variables)",
+  "vars": {
+   "param_1": "self",
+   "param_2": "range"
+  }
+ },
+ "0x0040f148": {
+  "from": "TEA.exe 0x0046926c (same declared variables)",
+  "vars": {
+   "param_1": "self",
+   "param_2": "textRange"
+  }
+ }
+}

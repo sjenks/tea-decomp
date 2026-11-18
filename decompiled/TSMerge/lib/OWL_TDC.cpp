@@ -9,13 +9,13 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x00416b40  OWL::TDC::~TDC   (42 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TDC::_dtor
-void __cdecl OWL::TDC::_dtor(int *param_1,byte param_2)
+void __cdecl OWL::TDC::_dtor(int *self,byte dtorFlags)
 
 {
-  if (param_1 != (int *)0x0) {
-    *(undefined ***)((int)param_1 + 5) = &OWL::TDC::vftable;
-    FUN_00416d80(param_1);
-    if ((param_2 & 1) != 0) {
+  if (self != (int *)0x0) {
+    *(undefined ***)((int)self + 5) = &OWL::TDC::vftable;
+    FUN_00416d80(self);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -24,28 +24,28 @@ void __cdecl OWL::TDC::_dtor(int *param_1,byte param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416b6c  OWL::TDC::vf23   (10 bytes)   [rtti:vtable virtual slot 23]
-undefined4 __cdecl OWL::TDC::vf23(undefined4 *param_1)
+undefined4 __cdecl OWL::TDC::vf23(undefined4 *self)
 
 {
-  return *param_1;
+  return *self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416bbc  OWL::TDC::vf5   (67 bytes)   [rtti:vtable virtual slot 5]
-void __cdecl OWL::TDC::vf5(undefined4 *param_1,uint *param_2)
+void __cdecl OWL::TDC::vf5(undefined4 *self,uint *param_2)
 
 {
-  HGDIOBJ pvVar1;
+  HGDIOBJ hGdiObject;
   
-  pvVar1 = SelectObject((HDC)*param_1,(HGDIOBJ)*param_2);
-  if (pvVar1 != (HGDIOBJ)0x0) {
+  hGdiObject = SelectObject((HDC)*self,(HGDIOBJ)*param_2);
+  if (hGdiObject != (HGDIOBJ)0x0) {
     FUN_0041d158(*param_2);
-    if ((HGDIOBJ)0x1 < pvVar1) {
-      if (*(int *)((int)param_1 + 0x11) == 0) {
-        *(HGDIOBJ *)((int)param_1 + 0x11) = pvVar1;
+    if ((HGDIOBJ)0x1 < hGdiObject) {
+      if (*(int *)((int)self + 0x11) == 0) {
+        *(HGDIOBJ *)((int)self + 0x11) = hGdiObject;
       }
       else {
-        FUN_0041d184((uint)pvVar1);
+        FUN_0041d184((uint)hGdiObject);
       }
     }
   }
@@ -54,302 +54,302 @@ void __cdecl OWL::TDC::vf5(undefined4 *param_1,uint *param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416c4c  OWL::TDC::vf6   (42 bytes)   [rtti:vtable virtual slot 6]
-void __cdecl OWL::TDC::vf6(undefined4 *param_1,int param_2)
+void __cdecl OWL::TDC::vf6(undefined4 *self,int i)
 
 {
-  HGDIOBJ pvVar1;
+  HGDIOBJ hGdiObject;
   
-  pvVar1 = GetStockObject(param_2);
-  pvVar1 = SelectObject((HDC)*param_1,pvVar1);
-  if ((HGDIOBJ)0x1 < pvVar1) {
-    FUN_0041d184((uint)pvVar1);
+  hGdiObject = GetStockObject(i);
+  hGdiObject = SelectObject((HDC)*self,hGdiObject);
+  if ((HGDIOBJ)0x1 < hGdiObject) {
+    FUN_0041d184((uint)hGdiObject);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416cd0  OWL::TDC::vf7   (42 bytes)   [rtti:vtable virtual slot 7]
-void __cdecl OWL::TDC::vf7(undefined4 *param_1)
+void __cdecl OWL::TDC::vf7(undefined4 *self)
 
 {
-  HGDIOBJ pvVar1;
+  HGDIOBJ hGdiObject;
   
-  if (*(int *)((int)param_1 + 0x11) != 0) {
-    pvVar1 = SelectObject((HDC)*param_1,*(HGDIOBJ *)((int)param_1 + 0x11));
-    FUN_0041d184((uint)pvVar1);
-    *(undefined4 *)((int)param_1 + 0x11) = 0;
+  if (*(int *)((int)self + 0x11) != 0) {
+    hGdiObject = SelectObject((HDC)*self,*(HGDIOBJ *)((int)self + 0x11));
+    FUN_0041d184((uint)hGdiObject);
+    *(undefined4 *)((int)self + 0x11) = 0;
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416ee8  OWL::TDC::vf1   (15 bytes)   [rtti:vtable virtual slot 1]
-void __cdecl OWL::TDC::vf1(undefined4 *param_1)
+void __cdecl OWL::TDC::vf1(undefined4 *self)
 
 {
-  SaveDC((HDC)*param_1);
+  SaveDC((HDC)*self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416ef8  OWL::TDC::vf2   (28 bytes)   [rtti:vtable virtual slot 2]
-bool __cdecl OWL::TDC::vf2(undefined4 *param_1,int param_2)
+bool __cdecl OWL::TDC::vf2(undefined4 *self,int savedDC)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
-  BVar1 = RestoreDC((HDC)*param_1,param_2);
-  return BVar1 != 0;
+  ok = RestoreDC((HDC)*self,savedDC);
+  return ok != 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416f14  OWL::TDC::vf3   (27 bytes)   [rtti:vtable virtual slot 3]
-void __cdecl OWL::TDC::vf3(int param_1,int param_2)
+void __cdecl OWL::TDC::vf3(int self,int index)
 
 {
   HDC hdc;
   
-  hdc = (HDC)(**(code **)(*(int *)(param_1 + 5) + 0x5c))();
-  GetDeviceCaps(hdc,param_2);
+  hdc = (HDC)(**(code **)(*(int *)(self + 5) + 0x5c))();
+  GetDeviceCaps(hdc,index);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416f30  OWL::TDC::vf4   (28 bytes)   [rtti:vtable virtual slot 4]
-bool __cdecl OWL::TDC::vf4(undefined4 *param_1,DEVMODEA *param_2)
+bool __cdecl OWL::TDC::vf4(undefined4 *self,DEVMODEA *lpdm)
 
 {
-  HDC pHVar1;
+  HDC hdc;
   
-  pHVar1 = ResetDCA((HDC)*param_1,param_2);
-  return pHVar1 != (HDC)0x0;
+  hdc = ResetDCA((HDC)*self,lpdm);
+  return hdc != (HDC)0x0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416f4c  OWL::TDC::vf8   (76 bytes)   [rtti:vtable virtual slot 8]
-COLORREF * __cdecl OWL::TDC::vf8(COLORREF *param_1,int *param_2,uint *param_3)
+COLORREF * __cdecl OWL::TDC::vf8(COLORREF *self,int *param_2,uint *param_3)
 
 {
   int iVar1;
-  uint uVar2;
+  uint color2;
   HDC hdc;
-  COLORREF CVar3;
+  COLORREF color;
   
   iVar1 = (**(code **)(*(int *)((int)param_2 + 5) + 0x5c))();
   if (iVar1 != *param_2) {
-    uVar2 = FUN_00415340(param_3);
-    SetBkColor((HDC)*param_2,uVar2);
+    color2 = FUN_00415340(param_3);
+    SetBkColor((HDC)*param_2,color2);
   }
-  uVar2 = FUN_00415340(param_3);
+  color2 = FUN_00415340(param_3);
   hdc = (HDC)(**(code **)(*(int *)((int)param_2 + 5) + 0x5c))
-                       (uVar2,*(int *)((int)param_2 + 5),param_3,param_2);
-  CVar3 = SetBkColor(hdc,uVar2);
-  *param_1 = CVar3;
-  return param_1;
+                       (color2,*(int *)((int)param_2 + 5),param_3,param_2);
+  color = SetBkColor(hdc,color2);
+  *self = color;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416f98  OWL::TDC::vf9   (76 bytes)   [rtti:vtable virtual slot 9]
-COLORREF * __cdecl OWL::TDC::vf9(COLORREF *param_1,int *param_2,uint *param_3)
+COLORREF * __cdecl OWL::TDC::vf9(COLORREF *self,int *param_2,uint *param_3)
 
 {
   int iVar1;
-  uint uVar2;
+  uint color2;
   HDC hdc;
-  COLORREF CVar3;
+  COLORREF color;
   
   iVar1 = (**(code **)(*(int *)((int)param_2 + 5) + 0x5c))();
   if (iVar1 != *param_2) {
-    uVar2 = FUN_00415340(param_3);
-    SetTextColor((HDC)*param_2,uVar2);
+    color2 = FUN_00415340(param_3);
+    SetTextColor((HDC)*param_2,color2);
   }
-  uVar2 = FUN_00415340(param_3);
+  color2 = FUN_00415340(param_3);
   hdc = (HDC)(**(code **)(*(int *)((int)param_2 + 5) + 0x5c))
-                       (uVar2,*(int *)((int)param_2 + 5),param_3,param_2);
-  CVar3 = SetTextColor(hdc,uVar2);
-  *param_1 = CVar3;
-  return param_1;
+                       (color2,*(int *)((int)param_2 + 5),param_3,param_2);
+  color = SetTextColor(hdc,color2);
+  *self = color;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00416fe4  OWL::TDC::vf10   (50 bytes)   [rtti:vtable virtual slot 10]
-void __cdecl OWL::TDC::vf10(int *param_1,int param_2)
+void __cdecl OWL::TDC::vf10(int *self,int mode)
 
 {
   int iVar1;
   HDC hdc;
   
-  iVar1 = (**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  if (iVar1 != *param_1) {
-    SetMapMode((HDC)*param_1,param_2);
+  iVar1 = (**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  if (iVar1 != *self) {
+    SetMapMode((HDC)*self,mode);
   }
-  hdc = (HDC)(**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  SetMapMode(hdc,param_2);
+  hdc = (HDC)(**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  SetMapMode(hdc,mode);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00417018  OWL::TDC::vf11   (73 bytes)   [rtti:vtable virtual slot 11]
-bool __cdecl OWL::TDC::vf11(int *param_1,int *param_2,LPPOINT param_3)
+bool __cdecl OWL::TDC::vf11(int *self,int *param_2,LPPOINT lppt)
 
 {
-  int iVar1;
+  int y;
   HDC hdc;
-  BOOL BVar2;
+  BOOL ok;
   int x;
   
-  iVar1 = (**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  if (iVar1 != *param_1) {
-    SetViewportOrgEx((HDC)*param_1,*param_2,param_2[1],param_3);
+  y = (**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  if (y != *self) {
+    SetViewportOrgEx((HDC)*self,*param_2,param_2[1],lppt);
   }
-  iVar1 = param_2[1];
+  y = param_2[1];
   x = *param_2;
-  hdc = (HDC)(**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  BVar2 = SetViewportOrgEx(hdc,x,iVar1,param_3);
-  return BVar2 != 0;
+  hdc = (HDC)(**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  ok = SetViewportOrgEx(hdc,x,y,lppt);
+  return ok != 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00417064  OWL::TDC::vf12   (73 bytes)   [rtti:vtable virtual slot 12]
-bool __cdecl OWL::TDC::vf12(int *param_1,int *param_2,LPPOINT param_3)
+bool __cdecl OWL::TDC::vf12(int *self,int *param_2,LPPOINT lppt)
 
 {
-  int iVar1;
+  int y;
   HDC hdc;
-  BOOL BVar2;
+  BOOL ok;
   int x;
   
-  iVar1 = (**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  if (iVar1 != *param_1) {
-    OffsetViewportOrgEx((HDC)*param_1,*param_2,param_2[1],param_3);
+  y = (**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  if (y != *self) {
+    OffsetViewportOrgEx((HDC)*self,*param_2,param_2[1],lppt);
   }
-  iVar1 = param_2[1];
+  y = param_2[1];
   x = *param_2;
-  hdc = (HDC)(**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  BVar2 = OffsetViewportOrgEx(hdc,x,iVar1,param_3);
-  return BVar2 != 0;
+  hdc = (HDC)(**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  ok = OffsetViewportOrgEx(hdc,x,y,lppt);
+  return ok != 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004170b0  OWL::TDC::vf13   (73 bytes)   [rtti:vtable virtual slot 13]
-bool __cdecl OWL::TDC::vf13(int *param_1,int *param_2,LPSIZE param_3)
+bool __cdecl OWL::TDC::vf13(int *self,int *param_2,LPSIZE lpsz)
 
 {
-  int iVar1;
+  int y;
   HDC hdc;
-  BOOL BVar2;
+  BOOL ok;
   int x;
   
-  iVar1 = (**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  if (iVar1 != *param_1) {
-    SetViewportExtEx((HDC)*param_1,*param_2,param_2[1],param_3);
+  y = (**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  if (y != *self) {
+    SetViewportExtEx((HDC)*self,*param_2,param_2[1],lpsz);
   }
-  iVar1 = param_2[1];
+  y = param_2[1];
   x = *param_2;
-  hdc = (HDC)(**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  BVar2 = SetViewportExtEx(hdc,x,iVar1,param_3);
-  return BVar2 != 0;
+  hdc = (HDC)(**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  ok = SetViewportExtEx(hdc,x,y,lpsz);
+  return ok != 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004170fc  OWL::TDC::vf14   (83 bytes)   [rtti:vtable virtual slot 14]
-bool __cdecl OWL::TDC::vf14(int *param_1,int param_2,int param_3,int param_4,int param_5,LPSIZE param_6)
+bool __cdecl OWL::TDC::vf14(int *self,int xn,int dx,int yn,int yd,LPSIZE lpsz)
 
 {
   int iVar1;
   HDC hdc;
-  BOOL BVar2;
+  BOOL ok;
   
-  iVar1 = (**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  if (iVar1 != *param_1) {
-    ScaleViewportExtEx((HDC)*param_1,param_2,param_3,param_4,param_5,param_6);
+  iVar1 = (**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  if (iVar1 != *self) {
+    ScaleViewportExtEx((HDC)*self,xn,dx,yn,yd,lpsz);
   }
-  hdc = (HDC)(**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  BVar2 = ScaleViewportExtEx(hdc,param_2,param_3,param_4,param_5,param_6);
-  return BVar2 != 0;
+  hdc = (HDC)(**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  ok = ScaleViewportExtEx(hdc,xn,dx,yn,yd,lpsz);
+  return ok != 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00417150  OWL::TDC::vf15   (73 bytes)   [rtti:vtable virtual slot 15]
-bool __cdecl OWL::TDC::vf15(int *param_1,int *param_2,LPSIZE param_3)
+bool __cdecl OWL::TDC::vf15(int *self,int *param_2,LPSIZE lpsz)
 
 {
-  int iVar1;
+  int y;
   HDC hdc;
-  BOOL BVar2;
+  BOOL ok;
   int x;
   
-  iVar1 = (**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  if (iVar1 != *param_1) {
-    SetWindowExtEx((HDC)*param_1,*param_2,param_2[1],param_3);
+  y = (**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  if (y != *self) {
+    SetWindowExtEx((HDC)*self,*param_2,param_2[1],lpsz);
   }
-  iVar1 = param_2[1];
+  y = param_2[1];
   x = *param_2;
-  hdc = (HDC)(**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  BVar2 = SetWindowExtEx(hdc,x,iVar1,param_3);
-  return BVar2 != 0;
+  hdc = (HDC)(**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  ok = SetWindowExtEx(hdc,x,y,lpsz);
+  return ok != 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041719c  OWL::TDC::vf16   (83 bytes)   [rtti:vtable virtual slot 16]
-bool __cdecl OWL::TDC::vf16(int *param_1,int param_2,int param_3,int param_4,int param_5,LPSIZE param_6)
+bool __cdecl OWL::TDC::vf16(int *self,int xn,int xd,int yn,int yd,LPSIZE lpsz)
 
 {
   int iVar1;
   HDC hdc;
-  BOOL BVar2;
+  BOOL ok;
   
-  iVar1 = (**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  if (iVar1 != *param_1) {
-    ScaleWindowExtEx((HDC)*param_1,param_2,param_3,param_4,param_5,param_6);
+  iVar1 = (**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  if (iVar1 != *self) {
+    ScaleWindowExtEx((HDC)*self,xn,xd,yn,yd,lpsz);
   }
-  hdc = (HDC)(**(code **)(*(int *)((int)param_1 + 5) + 0x5c))();
-  BVar2 = ScaleWindowExtEx(hdc,param_2,param_3,param_4,param_5,param_6);
-  return BVar2 != 0;
+  hdc = (HDC)(**(code **)(*(int *)((int)self + 5) + 0x5c))();
+  ok = ScaleWindowExtEx(hdc,xn,xd,yn,yd,lpsz);
+  return ok != 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004171f0  OWL::TDC::vf17   (56 bytes)   [rtti:vtable virtual slot 17]
-bool __cdecl OWL::TDC::vf17(undefined4 *param_1,int param_2,int param_3,uint *param_4,char *param_5)
+bool __cdecl OWL::TDC::vf17(undefined4 *self,int x,int y,uint *string_,char *len)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
-  if ((int)param_5 < 0) {
-    param_5 = strlen(param_4);
+  if ((int)len < 0) {
+    len = strlen(string_);
   }
-  BVar1 = TextOutA((HDC)*param_1,param_2,param_3,(LPCSTR)param_4,(int)param_5);
-  return BVar1 != 0;
+  ok = TextOutA((HDC)*self,x,y,(LPCSTR)string_,(int)len);
+  return ok != 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00417228  OWL::TDC::vf18   (67 bytes)   [rtti:vtable virtual slot 18]
-bool __cdecl OWL::TDC::vf18(undefined4 *param_1,int param_2,int param_3,ushort param_4,RECT *param_5,uint *param_6, char *param_7,INT *param_8)
+bool __cdecl OWL::TDC::vf18(undefined4 *self,int x,int y,ushort options,RECT *pRect,uint *string_, char *len,INT *dx)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
-  if ((int)param_7 < 0) {
-    param_7 = strlen(param_6);
+  if ((int)len < 0) {
+    len = strlen(string_);
   }
-  BVar1 = ExtTextOutA((HDC)*param_1,param_2,param_3,(uint)param_4,param_5,(LPCSTR)param_6,
-                      (UINT)param_7,param_8);
-  return BVar1 != 0;
+  ok = ExtTextOutA((HDC)*self,x,y,(uint)options,pRect,(LPCSTR)string_,
+                      (UINT)len,dx);
+  return ok != 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041726c  OWL::TDC::vf19   (102 bytes)   [rtti:vtable virtual slot 19]
-undefined4 __cdecl OWL::TDC::vf19(undefined4 *param_1,int *param_2,uint *param_3,char *param_4,int param_5,INT *param_6, int param_7,uint *param_8)
+undefined4 __cdecl OWL::TDC::vf19(undefined4 *self,int *param_2,uint *string_,char *len,int tabPositions,INT *lpnTabStopPositions, int tabOrigin,uint *param_8)
 
 {
   uint uVar1;
   undefined1 local_c [8];
   
-  if ((int)param_4 < 0) {
-    param_4 = strlen(param_3);
+  if ((int)len < 0) {
+    len = strlen(string_);
   }
-  uVar1 = TabbedTextOutA((HDC)*param_1,*param_2,param_2[1],(LPCSTR)param_3,(int)param_4,param_5,
-                         param_6,param_7);
+  uVar1 = TabbedTextOutA((HDC)*self,*param_2,param_2[1],(LPCSTR)string_,(int)len,tabPositions,
+                         lpnTabStopPositions,tabOrigin);
   *param_8 = uVar1 & 0xffff;
   param_8[1] = uVar1 >> 0x10;
   return CONCAT31((int3)((uint)local_c >> 8),1);
@@ -357,38 +357,38 @@ undefined4 __cdecl OWL::TDC::vf19(undefined4 *param_1,int *param_2,uint *param_3
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004172d4  OWL::TDC::vf20   (29 bytes)   [rtti:vtable virtual slot 20]
-void __cdecl OWL::TDC::vf20(undefined4 *param_1,LPCSTR param_2,int param_3,LPRECT param_4,ushort param_5)
+void __cdecl OWL::TDC::vf20(undefined4 *self,LPCSTR text,int text2,LPRECT lprc,ushort format)
 
 {
-  DrawTextA((HDC)*param_1,param_2,param_3,param_4,(uint)param_5);
+  DrawTextA((HDC)*self,text,text2,lprc,(uint)format);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004172f4  OWL::TDC::vf21   (41 bytes)   [rtti:vtable virtual slot 21]
-void __cdecl OWL::TDC::vf21(undefined4 *param_1,LPSTR param_2,int param_3,LPRECT param_4,UINT param_5, LPDRAWTEXTPARAMS param_6)
+void __cdecl OWL::TDC::vf21(undefined4 *self,LPSTR text,int text2,LPRECT lprc,UINT format, LPDRAWTEXTPARAMS lpdtp)
 
 {
-  if (param_6 != (LPDRAWTEXTPARAMS)0x0) {
-    param_6->cbSize = 0x14;
+  if (lpdtp != (LPDRAWTEXTPARAMS)0x0) {
+    lpdtp->cbSize = 0x14;
   }
-  DrawTextExA((HDC)*param_1,param_2,param_3,param_4,param_5,param_6);
+  DrawTextExA((HDC)*self,text,text2,lprc,format,lpdtp);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00417320  OWL::TDC::vf22   (71 bytes)   [rtti:vtable virtual slot 22]
-bool __cdecl OWL::TDC::vf22(undefined4 *param_1,undefined4 *param_2,GRAYSTRINGPROC param_3,LPARAM param_4, int param_5,int *param_6)
+bool __cdecl OWL::TDC::vf22(undefined4 *self,undefined4 *param_2,GRAYSTRINGPROC outputFunc,LPARAM lParam, int count,int *param_6)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
-  if (param_5 < 0) {
-    param_5 = 0;
+  if (count < 0) {
+    count = 0;
   }
-  BVar1 = GrayStringA((HDC)*param_1,(HBRUSH)*param_2,param_3,param_4,param_5,*param_6,param_6[1],
+  ok = GrayStringA((HDC)*self,(HBRUSH)*param_2,outputFunc,lParam,count,*param_6,param_6[1],
                       param_6[2] - *param_6,param_6[3] - param_6[1]);
-  return BVar1 != 0;
+  return ok != 0;
 }
 
 } // namespace tea

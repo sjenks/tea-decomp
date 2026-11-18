@@ -1,0 +1,132 @@
+{
+ "0x00401000": {
+  "ppuVar1": "startupTable"
+ },
+ "0x00401059": {
+  "param_1": "info"
+ },
+ "0x00401490": {
+  "param_1": "self",
+  "param_2": "abort"
+ },
+ "0x004031f4": {
+  "param_1": "self",
+  "param_2": "unused"
+ },
+ "0x00403258": {
+  "param_1": "self",
+  "param_2": "format"
+ },
+ "0x00403920": {
+  "param_1": "self"
+ },
+ "0x00403a18": {
+  "param_1": "self",
+  "param_2": "edit",
+  "param_3": "forOutput"
+ },
+ "0x0040402c": {
+  "param_1": "self"
+ },
+ "0x00405984": {
+  "param_1": "counter",
+  "param_2": "unused"
+ },
+ "0x00405a5c": {
+  "param_1": "result",
+  "param_2": "fileName",
+  "param_3": "words",
+  "param_4": "status"
+ },
+ "0x00405e78": {
+  "param_1": "out",
+  "param_2": "word",
+  "param_3": "conversion"
+ },
+ "0x00405f48": {
+  "param_1": "result",
+  "param_2": "first",
+  "param_3": "last",
+  "param_4": "conversion",
+  "param_5": "progressTotal",
+  "param_6": "fileName"
+ },
+ "0x004088f4": {
+  "param_1": "self",
+  "param_2": "primaryFile",
+  "param_3": "secondaryFile",
+  "param_4": "operation",
+  "param_5": "conversion",
+  "param_6": "outputFile"
+ },
+ "0x004092d4": {
+  "param_1": "result",
+  "param_2": "first1",
+  "param_3": "last1",
+  "param_4": "first2",
+  "param_5": "last2",
+  "param_6": "operation"
+ },
+ "0x00409868": {
+  "param_1": "cmp",
+  "param_2": "a",
+  "param_3": "b"
+ },
+ "0x00409bd4": {
+  "param_1": "dest",
+  "param_2": "value"
+ },
+ "0x00409be4": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "value",
+  "param_4": "less"
+ },
+ "0x00409cb8": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "value",
+  "param_4": "less"
+ },
+ "0x00409eb0": {
+  "param_1": "a",
+  "param_2": "b"
+ },
+ "0x0040b8c4": {
+  "param_1": "out",
+  "param_2": "word",
+  "param_3": "conversion"
+ },
+ "0x0040be50": {
+  "param_1": "self"
+ },
+ "0x0040c154": {
+  "param_1": "self"
+ },
+ "0x0040c638": {
+  "param_1": "self"
+ },
+ "0x0040ca90": {
+  "param_1": "result",
+  "param_2": "path"
+ },
+ "0x0040de48": {
+  "param_1": "path"
+ },
+ "0x0040e050": {
+  "param_1": "result"
+ },
+ "0x0040e368": {
+  "param_1": "result",
+  "param_2": "path"
+ },
+ "0x0040e7b8": {
+  "param_1": "fileName"
+ },
+ "0x0040eb8c": {
+  "param_1": "hWnd"
+ },
+ "0x0040ec5c": {
+  "param_1": "result"
+ }
+}

@@ -1,5 +1,5 @@
 // TSMerge.exe — runtime / library code "OWL_TXOutOfMemory"
-// 4 functions, 0x004126a8..0x004188b0. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 5 functions, 0x004126a8..0x004188b0. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -16,7 +16,7 @@ namespace tea {
 /* WARNING: Removing unreachable block (ram,0x004128a4) */
 /* WARNING: Removing unreachable block (ram,0x004128ab) */
 /* WARNING: Restarted to delay deadcode elimination for space: stack */
-void OWL::TXOutOfMemory::vf5(char *param_1,byte *param_2,int *param_3)
+void OWL::TXOutOfMemory::vf5(char *self,byte *param_2,int *param_3)
 
 {
   ushort *puVar1;
@@ -41,7 +41,7 @@ void OWL::TXOutOfMemory::vf5(char *param_1,byte *param_2,int *param_3)
   int iVar18;
   int unaff_EDI;
   undefined2 in_ES;
-  undefined4 *in_FS_OFFSET;
+  undefined4 *sehChainHead;
   int in_GS_OFFSET;
   byte in_AF;
   undefined1 in_stack_ffffbec7;
@@ -63,28 +63,28 @@ void OWL::TXOutOfMemory::vf5(char *param_1,byte *param_2,int *param_3)
   int *piStack_410a;
   int aiStack_4106 [4160];
   
-  *param_1 = *param_1 + (char)param_1;
+  *self = *self + (char)self;
   cVar9 = (char)param_3;
-  *(char *)((int)param_1 * 2) = *(char *)((int)param_1 * 2) + cVar9;
+  *(char *)((int)self * 2) = *(char *)((int)self * 2) + cVar9;
   cStack_412c = (char)((uint)(unaff_EDI + -1) >> 0x18);
   out(*(undefined4 *)(unaff_ESI + 1),(short)param_2);
   out(*(undefined1 *)(unaff_ESI + 5),(short)param_2);
   if ((undefined4 *)(unaff_ESI + 1) != (undefined4 *)0x0) {
-    piVar12 = (int *)(CONCAT31((int3)((uint)param_1 >> 8),(char)param_1 - *param_1) - *param_3);
+    piVar12 = (int *)(CONCAT31((int3)((uint)self >> 8),(char)self - *self) - *param_3);
     *(char *)piVar12 = (char)*piVar12 + (char)piVar12;
     pbVar13 = (byte *)((int)piVar12 + *piVar12);
     *pbVar13 = *pbVar13 ^ (byte)pbVar13;
     pcVar14 = (char *)((uint)pbVar13 ^ 0x7f000000);
     *pcVar14 = *pcVar14 + (byte)pbVar13;
     *pcVar14 = *pcVar14 + cVar9;
-    param_1 = acStack_4130;
+    self = acStack_4130;
   }
-  cVar8 = (char)param_1;
-  *param_1 = *param_1 + cVar8;
-  *param_1 = *param_1 + cVar8;
+  cVar8 = (char)self;
+  *self = *self + cVar8;
+  *self = *self + cVar8;
   cRam02000000 = cRam02000000 + cVar8;
-  *param_1 = *param_1 + cVar8;
-  *(undefined2 *)(CONCAT31((int3)((uint)param_1 >> 8),cVar8 + cVar9) + -0x10043) = in_ES;
+  *self = *self + cVar8;
+  *(undefined2 *)(CONCAT31((int3)((uint)self >> 8),cVar8 + cVar9) + -0x10043) = in_ES;
   bVar5 = *param_2;
   puVar1 = (ushort *)(in_GS_OFFSET + unaff_EDI + 0x70);
   sVar6 = -(*puVar1 & 3);
@@ -270,78 +270,94 @@ void OWL::TXOutOfMemory::vf5(char *param_1,byte *param_2,int *param_3)
   acStack_4130[0] = '\0';
   acStack_4130[1] = 0;
   puStack_410e = (uint *)pcVar16;
-  FUN_00443b28((undefined4 *)&DAT_00476b20,(uint *)"uxtheme.dll",'\x01','\0','\x01');
+  OWL::TModule::TModule((undefined4 *)&DAT_00476b20,(uint *)"uxtheme.dll",'\x01','\0','\x01');
   *(int *)(iVar7 + -8) = *(int *)(iVar7 + -8) + 2;
-  *in_FS_OFFSET = *(undefined4 *)(iVar7 + -0x24);
+  *sehChainHead = *(undefined4 *)(iVar7 + -0x24);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004186bc  OWL::TXOutOfMemory::vf2   (126 bytes)   [rtti:vtable virtual slot 2]
-undefined4 * __cdecl OWL::TXOutOfMemory::vf2(int *param_1)
+// 0x0041864c  OWL::TXOutOfMemory::TXOutOfMemory   (74 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TXOutOfMemory's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl OWL::TXOutOfMemory::TXOutOfMemory(undefined4 *self)
 
 {
-  undefined4 *puVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_2c;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x466c14);
+  OWL::TXOwl::TXOwl_417f7c(self,0x7ff9,DAT_00470a60);
+  *self = &OWL::TXOutOfMemory::vftable;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004186bc  OWL::TXOutOfMemory::vf2   (126 bytes)   [rtti:vtable virtual slot 2]
+undefined4 * __cdecl OWL::TXOutOfMemory::vf2(int *self)
+
+{
+  undefined4 *txOutOfMemory;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x466c38);
-  puVar1 = (undefined4 *)operator_new();
-  if (puVar1 != (undefined4 *)0x0) {
-    FUN_00417b88(puVar1,param_1);
-    puVar1[2] = param_1[2];
-    *puVar1 = &OWL::TXOwl::vftable;
-    *puVar1 = &OWL::TXOutOfMemory::vftable;
+  txOutOfMemory = (undefined4 *)operator_new();
+  if (txOutOfMemory != (undefined4 *)0x0) {
+    OWL::TXBase::TXBase_417b88(txOutOfMemory,self);
+    txOutOfMemory[2] = self[2];
+    *txOutOfMemory = &OWL::TXOwl::vftable;
+    *txOutOfMemory = &OWL::TXOutOfMemory::vftable;
   }
-  *in_FS_OFFSET = local_2c;
-  return puVar1;
+  *sehChainHead = sehPrevFrame;
+  return txOutOfMemory;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0041873c  OWL::TXOutOfMemory::vf3   (116 bytes)   [rtti:vtable virtual slot 3]
-void __cdecl OWL::TXOutOfMemory::vf3(int *param_1)
+void __cdecl OWL::TXOutOfMemory::vf3(int *self)
 
 {
-  undefined4 uVar1;
-  undefined *puVar2;
-  uint uVar3;
-  undefined4 uVar4;
-  undefined4 uVar5;
-  undefined4 uVar6;
-  undefined **local_10 [2];
-  int local_8;
+  undefined4 objectDtor;
+  undefined *copyCtor;
+  uint copyCtorMask;
+  undefined4 throwFlags;
+  undefined4 throwFile;
+  undefined4 throwLine;
+  undefined **txOutOfMemory [2];
+  int unused;
   
   __InitExceptBlockLDTC(0x466c68);
-  uVar6 = 0;
-  uVar5 = 0;
-  uVar4 = 0;
-  uVar3 = 1;
-  puVar2 = &LAB_0041880c;
-  uVar1 = 0;
-  FUN_00417b88((undefined4*)local_10,param_1);
-  local_8 = param_1[2];
-  local_10[0] = &OWL::TXOutOfMemory::vftable;
-  FUN_0045ed74((uint *)&DAT_004187b0,(undefined4*)local_10,uVar1,puVar2,uVar3,uVar4,uVar5,uVar6);
+  throwLine = 0;
+  throwFile = 0;
+  throwFlags = 0;
+  copyCtorMask = 1;
+  copyCtor = &LAB_0041880c;
+  objectDtor = 0;
+  OWL::TXBase::TXBase_417b88((undefined4*)txOutOfMemory,self);
+  unused = self[2];
+  txOutOfMemory[0] = &OWL::TXOutOfMemory::vftable;
+  _ThrowExceptionLDTC((uint *)&DAT_004187b0,(undefined4*)txOutOfMemory,objectDtor,copyCtor,copyCtorMask,throwFlags,throwFile,throwLine);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004188b0  OWL::TXOutOfMemory::~TXOutOfMemory   (67 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TXOutOfMemory::_dtor
-void __cdecl OWL::TXOutOfMemory::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl OWL::TXOutOfMemory::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x466cb4);
-  if (param_1 != (undefined4 *)0x0) {
-    OWL::TXOwl::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    OWL::TXOwl::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

@@ -1,5 +1,5 @@
 // TEA.exe — runtime / library code "OWL_TEditSearch"
-// 12 functions, 0x004b9518..0x004ba5cc. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 15 functions, 0x004b9518..0x004ba5cc. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -8,15 +8,15 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004b9518  OWL::TEditSearch::Find   (69 bytes)   [owl:response-table response-table-find]
-//   also: OWL::TEditSearch::vf8 [rtti:vtable]
-undefined4 __cdecl OWL::TEditSearch::Find(undefined4 *param_1,int *param_2,undefined *param_3)
+//   also: OWL::TEditSearch::Find [rtti:vtable]; OWL::TEditSearch::vf8 [rtti:vtable]
+undefined4 __cdecl OWL::TEditSearch::Find(undefined4 *self,int *param_2,undefined *param_3)
 
 {
   undefined4 uVar1;
   
-  param_2[2] = (int)param_1;
-  uVar1 = FUN_0048e808(param_1[1],(int *)&OWL::TEditSearch::__entries,param_2,param_3);
-  if (((char)uVar1 == '\0') && (uVar1 = OWL::TEdit::Find(param_1,param_2,param_3), (char)uVar1 == '\0'))
+  param_2[2] = (int)self;
+  uVar1 = FUN_0048e808(self[1],(int *)&OWL::TEditSearch::__entries,param_2,param_3);
+  if (((char)uVar1 == '\0') && (uVar1 = OWL::TEdit::Find(self,param_2,param_3), (char)uVar1 == '\0'))
   {
     return 0;
   }
@@ -24,51 +24,94 @@ undefined4 __cdecl OWL::TEditSearch::Find(undefined4 *param_1,int *param_2,undef
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004b96e4  OWL::TEditSearch::~TEditSearch   (318 bytes)   [rtti:dtor destructor]
-//   written in code as OWL::TEditSearch::_dtor
-void __cdecl OWL::TEditSearch::_dtor(int *param_1,uint param_2)
+// 0x004b9560  OWL::TEditSearch::TEditSearch   (355 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TEditSearch's vtable at its vptr offset (+0xc) in this
+int * __cdecl OWL::TEditSearch::TEditSearch(int *self,int vbasesBuilt,undefined4 param_3,undefined4 param_4,uint *param_5, undefined4 param_6,undefined4 param_7,undefined4 param_8,undefined4 param_9,int param_10 )
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x50eb38);
+  if (vbasesBuilt == 0) {
+    *self = (int)(self + 0x12);
+    self[0x12] = (int)(self + 0xf);
+    self[0x13] = (int)(self + 0x10);
+    self[1] = (int)(self + 0xf);
+    self[2] = (int)(self + 0x10);
+    self[0xe] = 0;
+    self[0x11] = 0;
+    self[0xf] = (int)&OWL::TEventHandler::vftable;
+    self[0x10] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::TWindow_4a4fbc(self + 0x12,1);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+  }
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x1c;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -0x1c;
+  OWL::TEdit::TEdit(self,1,param_3,param_4,param_5,param_6,param_7,param_8,param_9,0,'\x01',param_10);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x1c;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 0x1c;
+  self[3] = (int)&OWL::TEditSearch::vftable;
+  *(undefined ***)self[1] = &PTR_LAB_004fd05c;
+  *(undefined ***)self[2] = &PTR_LAB_004fd068;
+  *(undefined ***)(*self + 8) = &OWL::TEditSearch::vftable_TWindow;
+  FUN_004bccc4(self + 7,1,0x51);
+  *(uint *)(*self + 0x18) = *(uint *)(*self + 0x18) | 0x100;
+  self[0xc] = 0;
+  self[0xd] = 0;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004b96e4  OWL::TEditSearch::~TEditSearch   (318 bytes)   [rtti:dtor destructor]
+//   written in code as OWL::TEditSearch::_dtor
+void __cdecl OWL::TEditSearch::_dtor(int *self,uint dtorFlags)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x50eb78);
-  if (param_1 != (int *)0x0) {
-    param_1[3] = (int)&OWL::TEditSearch::vftable;
-    *(undefined ***)param_1[1] = &PTR_LAB_004fd05c;
-    *(undefined ***)param_1[2] = &PTR_LAB_004fd068;
-    *(undefined ***)(*param_1 + 8) = &PTR_LAB_004fd074;
-    if (param_1[0xc] != 0) {
-      (*(code *)**(undefined4 **)(param_1[0xc] + 0xc))();
+  if (self != (int *)0x0) {
+    self[3] = (int)&OWL::TEditSearch::vftable;
+    *(undefined ***)self[1] = &PTR_LAB_004fd05c;
+    *(undefined ***)self[2] = &PTR_LAB_004fd068;
+    *(undefined ***)(*self + 8) = &OWL::TEditSearch::vftable_TWindow;
+    if (self[0xc] != 0) {
+      (*(code *)**(undefined4 **)(self[0xc] + 0xc))();
     }
-    OWL::TFindReplaceDialog::TData::_dtor((int)(param_1 + 7),2);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x1c;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + -0x1c;
-    OWL::TEdit::_dtor(param_1,0);
-    *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x1c;
-    *(int *)(*param_1 + -4) = *(int *)(*param_1 + -4) + 0x1c;
-    if ((param_2 & 2) != 0) {
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + 0x96;
-      OWL::TWindow::_dtor(param_1 + 0x12,0);
-      *(int *)(param_1[1] + -4) = *(int *)(param_1[1] + -4) + -0x96;
-      OWL::TStreamableBase::_dtor(param_1 + 0x10,0);
+    OWL::TFindReplaceDialog::TData::_dtor((int)(self + 7),2);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x1c;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + -0x1c;
+    OWL::TEdit::_dtor(self,0);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x1c;
+    *(int *)(*self + -4) = *(int *)(*self + -4) + 0x1c;
+    if ((dtorFlags & 2) != 0) {
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+      OWL::TWindow::_dtor(self + 0x12,0);
+      *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+      OWL::TStreamableBase::_dtor(self + 0x10,0);
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_30;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004b9854  OWL::TEditSearch::vf20   (54 bytes)   [rtti:vtable virtual slot 20]
-void __cdecl OWL::TEditSearch::vf20(int *param_1)
+// 0x004b9854  OWL::TEditSearch::SetupWindow   (54 bytes)   [rtti:vtable virtual slot 30]
+//   override of OWL::TWindow vtable slot 30, from OWL::TEditSearch's OWL::TWindow subobject vtable at 0x004fd074 (through the this-adjusting thunk at 0x00469c27); slot name identified from OWL::TWindow's own implementation of that slot
+//   also: OWL::TEditSearch::vf20 [rtti:vtable]
+void __cdecl OWL::TEditSearch::SetupWindow(int *self)
 
 {
-  OWL::TEdit::vf20(param_1);
-  if (param_1[0xd] != 0) {
-    PostMessageA(*(HWND *)(*param_1 + 0xc),0x111,param_1[0xd],0);
+  OWL::TEdit::SetupWindow(self);
+  if (self[0xd] != 0) {
+    PostMessageA(*(HWND *)(*self + 0xc),0x111,self[0xd],0);
   }
   return;
 }
@@ -76,54 +119,54 @@ void __cdecl OWL::TEditSearch::vf20(int *param_1)
 // ----------------------------------------------------------------------------------------------------
 // 0x004b9b6c  OWL::TEditSearch::Cmd24351   (181 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(24351)
-void __cdecl OWL::TEditSearch::Cmd24351(undefined4 *param_1)
+void __cdecl OWL::TEditSearch::Cmd24351(undefined4 *self)
 
 {
-  int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_34;
+  int *findDialog;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x50ec34);
-  if (param_1[0xd] == 0) {
-    param_1[0xd] = 0x5f1f;
-    if (param_1[0xc] != 0) {
-      (*(code *)**(undefined4 **)(param_1[0xc] + 0xc))();
+  if (self[0xd] == 0) {
+    self[0xd] = 0x5f1f;
+    if (self[0xc] != 0) {
+      (*(code *)**(undefined4 **)(self[0xc] + 0xc))();
     }
-    piVar1 = (int *)operator_new();
-    if (piVar1 != (int *)0x0) {
-      FUN_004bd020(piVar1,0,*param_1,(int)(param_1 + 7),0,0,0);
+    findDialog = (int *)operator_new();
+    if (findDialog != (int *)0x0) {
+      OWL::TFindDialog::TFindDialog(findDialog,0,*self,(int)(self + 7),0,0,0);
     }
-    param_1[0xc] = piVar1;
-    (**(code **)(*(int *)(param_1[0xc] + 0xc) + 0xc))();
+    self[0xc] = findDialog;
+    (**(code **)(*(int *)(self[0xc] + 0xc) + 0xc))();
   }
-  *in_FS_OFFSET = local_34;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004b9c44  OWL::TEditSearch::Cmd24352   (181 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(24352)
-void __cdecl OWL::TEditSearch::Cmd24352(undefined4 *param_1)
+void __cdecl OWL::TEditSearch::Cmd24352(undefined4 *self)
 
 {
-  int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_34;
+  int *replaceDialog;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x50ec8c);
-  if (param_1[0xd] == 0) {
-    param_1[0xd] = 0x5f20;
-    if (param_1[0xc] != 0) {
-      (*(code *)**(undefined4 **)(param_1[0xc] + 0xc))();
+  if (self[0xd] == 0) {
+    self[0xd] = 0x5f20;
+    if (self[0xc] != 0) {
+      (*(code *)**(undefined4 **)(self[0xc] + 0xc))();
     }
-    piVar1 = (int *)operator_new();
-    if (piVar1 != (int *)0x0) {
-      FUN_004bd164(piVar1,0,*param_1,(int)(param_1 + 7),0,0,0);
+    replaceDialog = (int *)operator_new();
+    if (replaceDialog != (int *)0x0) {
+      OWL::TReplaceDialog::TReplaceDialog(replaceDialog,0,*self,(int)(self + 7),0,0,0);
     }
-    param_1[0xc] = piVar1;
-    (**(code **)(*(int *)(param_1[0xc] + 0xc) + 0xc))();
+    self[0xc] = replaceDialog;
+    (**(code **)(*(int *)(self[0xc] + 0xc) + 0xc))();
   }
-  *in_FS_OFFSET = local_34;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -131,77 +174,143 @@ void __cdecl OWL::TEditSearch::Cmd24352(undefined4 *param_1)
 // 0x004b9d20  OWL::TEditSearch::CeRange24351to24352   (30 bytes)   [owl:response-table message-handler]
 //   one handler for 2 table entries: id 24351; id 24352
 //   also: OWL::TEditSearch::CeRange24351to24352 [owl:response-table]
-void __cdecl OWL::TEditSearch::CeRange24351to24352(undefined4 param_1,undefined4 *param_2)
+void __cdecl OWL::TEditSearch::CeRange24351to24352(undefined4 self,undefined4 *commandEnabler)
 
 {
-  (**(code **)*param_2)();
+  (**(code **)*commandEnabler)();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004b9d40  OWL::TEditSearch::Cmd24353   (40 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND(24353)
-void __cdecl OWL::TEditSearch::Cmd24353(int *param_1)
+void __cdecl OWL::TEditSearch::Cmd24353(int *self)
 
 {
-  if (param_1[0xc] != 0) {
-    FUN_004bcffc(param_1[0xc],0);
+  if (self[0xc] != 0) {
+    FUN_004bcffc(self[0xc],0);
   }
-  param_1[7] = param_1[7] | 8;
-  FUN_004b988c(param_1);
+  self[7] = self[7] | 8;
+  FUN_004b988c(self);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004b9d68  OWL::TEditSearch::CeCmd24353   (43 bytes)   [owl:response-table message-handler]
 //   EV_COMMAND_ENABLE(24353)
-void __cdecl OWL::TEditSearch::CeCmd24353(int param_1,undefined4 *param_2)
+void __cdecl OWL::TEditSearch::CeCmd24353(int self,undefined4 *commandEnabler)
 
 {
-  (**(code **)*param_2)();
+  (**(code **)*commandEnabler)();
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004b9d94  OWL::TEditSearch::EvRegisteredMsg_4b9d94   (46 bytes)   [owl:response-table message-handler]
 //   message id 0 in the static table (filled at run time or WM_NULL)
-undefined4 __cdecl OWL::TEditSearch::EvRegisteredMsg_4b9d94(int *param_1,undefined4 param_2,int param_3)
+undefined4 __cdecl OWL::TEditSearch::EvRegisteredMsg_4b9d94(int *self,undefined4 param_2,int param_3)
 
 {
-  FUN_004bcffc(param_1[0xc],param_3);
-  if ((*(byte *)(param_1 + 7) & 0x40) == 0) {
-    FUN_004b988c(param_1);
+  FUN_004bcffc(self[0xc],param_3);
+  if ((*(byte *)(self + 7) & 0x40) == 0) {
+    FUN_004b988c(self);
   }
   else {
-    param_1[0xd] = 0;
+    self[0xd] = 0;
   }
   return 0;
 }
 
 // ----------------------------------------------------------------------------------------------------
+// 0x004ba1ec  OWL::TEditSearch::Streamer::Streamer   (102 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TEditSearch::Streamer's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl OWL::TEditSearch::Streamer::Streamer(undefined4 *self,int *param_2)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x50ed08);
+  *self = &OWL::TStreamer::vftable;
+  self[1] = param_2;
+  *self = &OWL::TNewStreamer::vftable;
+  *self = &OWL::TEditSearch::Streamer::vftable;
+  if (param_2 == (int *)0x0) {
+    iVar2 = 0;
+  }
+  else {
+    iVar2 = *param_2;
+  }
+  puVar1 = FUN_004dd744((int)param_2,iVar2,(int *)&DAT_004027f0,(int *)&DAT_00422e44,0);
+  self[2] = puVar1;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004ba254  OWL::TEditSearch::TEditSearch_4ba254   (304 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TEditSearch's vtable at its vptr offset (+0xc) in this
+int * __cdecl OWL::TEditSearch::TEditSearch_4ba254(int *self,int vbasesBuilt)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x50ed20);
+  if (vbasesBuilt == 0) {
+    *self = (int)(self + 0x12);
+    self[0x12] = (int)(self + 0xf);
+    self[0x13] = (int)(self + 0x10);
+    self[1] = (int)(self + 0xf);
+    self[2] = (int)(self + 0x10);
+    self[0xe] = 0;
+    self[0x11] = 0;
+    self[0xf] = (int)&OWL::TEventHandler::vftable;
+    self[0x10] = (int)&OWL::TStreamableBase::vftable;
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x96;
+    OWL::TWindow::TWindow_4a4fbc(self + 0x12,1);
+    *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x96;
+  }
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + -0x1c;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + -0x1c;
+  OWL::TEdit::TEdit_4b73c0(self,1);
+  *(int *)(self[1] + -4) = *(int *)(self[1] + -4) + 0x1c;
+  *(int *)(*self + -4) = *(int *)(*self + -4) + 0x1c;
+  self[3] = (int)&OWL::TEditSearch::vftable;
+  *(undefined ***)self[1] = &PTR_LAB_004fd05c;
+  *(undefined ***)self[2] = &PTR_LAB_004fd068;
+  *(undefined ***)(*self + 8) = &OWL::TEditSearch::vftable_TWindow;
+  FUN_004bccc4(self + 7,0,0x51);
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
 // 0x004ba384  OWL::TEditSearch::Streamer::vf1   (71 bytes)   [rtti:vtable virtual slot 1]
-undefined4 __cdecl OWL::TEditSearch::Streamer::vf1(int param_1,int *param_2)
+undefined4 __cdecl OWL::TEditSearch::Streamer::vf1(int self,int *param_2)
 
 {
   int iVar1;
   uint uVar2;
   
-  FUN_004ba3cc(*(int *)(param_1 + 8),param_2);
-  FUN_004bd5e4(*(int *)(param_1 + 8) + 0x1c,param_2);
-  iVar1 = *(int *)(param_1 + 8);
+  FUN_004ba3cc(*(int *)(self + 8),param_2);
+  FUN_004bd5e4(*(int *)(self + 8) + 0x1c,param_2);
+  iVar1 = *(int *)(self + 8);
   uVar2 = FUN_00499e9c(param_2);
   *(uint *)(iVar1 + 0x34) = uVar2;
-  *(undefined4 *)(*(int *)(param_1 + 8) + 0x30) = 0;
-  return *(undefined4 *)(param_1 + 8);
+  *(undefined4 *)(*(int *)(self + 8) + 0x30) = 0;
+  return *(undefined4 *)(self + 8);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004ba424  OWL::TEditSearch::Streamer::vf2   (61 bytes)   [rtti:vtable virtual slot 2]
-void __cdecl OWL::TEditSearch::Streamer::vf2(int param_1,int *param_2)
+void __cdecl OWL::TEditSearch::Streamer::vf2(int self,int *param_2)
 
 {
-  FUN_004ba464(*(int *)(param_1 + 8),param_2);
-  FUN_004bd664((undefined4 *)(*(int *)(param_1 + 8) + 0x1c),param_2);
+  FUN_004ba464(*(int *)(self + 8),param_2);
+  FUN_004bd664((undefined4 *)(*(int *)(self + 8) + 0x1c),param_2);
   FUN_0049a31c(param_2);
   return;
 }

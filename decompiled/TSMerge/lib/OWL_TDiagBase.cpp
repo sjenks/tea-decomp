@@ -1,5 +1,5 @@
 // TSMerge.exe — runtime / library code "OWL_TDiagBase"
-// 1 functions, 0x0041475c..0x0041475c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 2 functions, 0x004146c0..0x0041475c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,15 +7,35 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x0041475c  OWL::TDiagBase::~TDiagBase   (41 bytes)   [rtti:dtor destructor]
-//   written in code as OWL::TDiagBase::_dtor
-void __cdecl OWL::TDiagBase::_dtor(undefined4 *param_1,byte param_2)
+// 0x004146c0  OWL::TDiagBase::TDiagBase   (122 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores OWL::TDiagBase's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl OWL::TDiagBase::TDiagBase(undefined4 *self,undefined4 param_2,byte param_3,char param_4)
 
 {
-  if (param_1 != (undefined4 *)0x0) {
-    *param_1 = &OWL::TDiagBase::vftable;
-    FUN_004147b4((int)param_1);
-    if ((param_2 & 1) != 0) {
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x465d4c);
+  *self = &OWL::TDiagBase::vftable;
+  *(undefined4 *)((int)self + 5) = param_2;
+  *(undefined4 *)((int)self + 9) = 0;
+  *(byte *)(self + 1) = param_3 & 1 | *(byte *)(self + 1) & 0xfe;
+  *(byte *)(self + 1) = param_4 * '\x02' | *(byte *)(self + 1) & 1;
+  FUN_00414788(self);
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x0041475c  OWL::TDiagBase::~TDiagBase   (41 bytes)   [rtti:dtor destructor]
+//   written in code as OWL::TDiagBase::_dtor
+void __cdecl OWL::TDiagBase::_dtor(undefined4 *self,byte dtorFlags)
+
+{
+  if (self != (undefined4 *)0x0) {
+    *self = &OWL::TDiagBase::vftable;
+    FUN_004147b4((int)self);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

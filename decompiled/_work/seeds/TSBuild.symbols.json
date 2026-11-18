@@ -2,6 +2,34 @@
  "exe": "TSBuild.exe",
  "imageBase": 4194304,
  "functions": {
+  "4198418": {
+   "name": "__startup",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00401012. C runtime start: records the TLS index, initialises the RTL and calls the program's main through the startup table"
+  },
+  "4198720": {
+   "name": "__getTlsBlock",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "this thread's TLS block (FS:[0x2c][tls index])"
+  },
+  "4198736": {
+   "name": "InitStaticStrings",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "static initialiser of two global strings"
+  },
+  "4198824": {
+   "name": "DestroyStaticStrings",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "static destructor of two global strings"
+  },
   "4198988": {
    "name": "DMDialog::Find",
    "priority": 4,
@@ -11,6 +39,14 @@
    "aliases": [
     "DMDialog::vf14 [rtti:vtable]"
    ]
+  },
+  "4199060": {
+   "name": "DMDialog::DMDialog",
+   "priority": 1.5,
+   "cls": "DMDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores DMDialog's vtable at its vptr offset (+0xc) in this"
   },
   "4200128": {
    "name": "DMDialog::vf15",
@@ -43,6 +79,14 @@
    "kind": "message-handler",
    "source": "owl:response-table",
    "note": "WM_CLOSE"
+  },
+  "4203340": {
+   "name": "DMDialog::PumpMessages",
+   "priority": 10,
+   "cls": "DMDialog",
+   "kind": "function",
+   "source": "analysis",
+   "note": "processes pending window messages during a build; true when the user asked to stop"
   },
   "4203440": {
    "name": "DMDialog::vf16",
@@ -100,6 +144,22 @@
    "source": "owl:response-table",
    "note": "EV_COMMAND(114)"
   },
+  "4204972": {
+   "name": "DMDialog::GetControlText",
+   "priority": 10,
+   "cls": "DMDialog",
+   "kind": "function",
+   "source": "analysis",
+   "note": "the text of an edit control as a std::string"
+  },
+  "4205032": {
+   "name": "DMDialog::UpdateControls",
+   "priority": 10,
+   "cls": "DMDialog",
+   "kind": "function",
+   "source": "analysis",
+   "note": "enables the Build button only when the word list and output names are filled in"
+  },
   "4205120": {
    "name": "DMDialog::Cmd112",
    "priority": 3,
@@ -123,6 +183,14 @@
    "kind": "message-handler",
    "source": "owl:response-table",
    "note": "EV_COMMAND(120)"
+  },
+  "4207516": {
+   "name": "DMDialog::ReadOptions",
+   "priority": 10,
+   "cls": "DMDialog",
+   "kind": "function",
+   "source": "analysis",
+   "note": "reads the sort/frequency radio buttons and check boxes into the profile"
   },
   "4207704": {
    "name": "DMDialog::Cmd108",
@@ -172,6 +240,38 @@
    "source": "owl:response-table",
    "note": "EV_CHILD_NOTIFY(id 119, code 1)"
   },
+  "4207896": {
+   "name": "DMDialog::ClampLengthEdit",
+   "priority": 10,
+   "cls": "DMDialog",
+   "kind": "function",
+   "source": "analysis",
+   "note": "re-reads a length edit and writes back the clamped value"
+  },
+  "4207956": {
+   "name": "DMDialog::SetIntText",
+   "priority": 10,
+   "cls": "DMDialog",
+   "kind": "function",
+   "source": "analysis",
+   "note": "writes a number into an edit control"
+  },
+  "4208008": {
+   "name": "DMDialog::GetIntText",
+   "priority": 10,
+   "cls": "DMDialog",
+   "kind": "function",
+   "source": "analysis",
+   "note": "reads a number from an edit control (atoi)"
+  },
+  "4208056": {
+   "name": "DMDialog::SetWordListFile",
+   "priority": 10,
+   "cls": "DMDialog",
+   "kind": "function",
+   "source": "analysis",
+   "note": "sets the word list name and proposes the output name with a .tsd extension"
+  },
   "4208504": {
    "name": "DMApplication::vf17",
    "priority": 2,
@@ -179,6 +279,13 @@
    "kind": "virtual",
    "slot": 17,
    "source": "rtti:vtable"
+  },
+  "4208752": {
+   "name": "OwlMain",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "creates and runs the \"TEA&Sympathy Dictionary Builder\" application"
   },
   "4209016": {
    "name": "DMApplication::~DMApplication",
@@ -241,36 +348,40 @@
    "source": "rtti:dtor"
   },
   "4212056": {
-   "name": "OWL::TWindow::vf1",
+   "name": "OWL::TWindow::GetTooltip",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 1,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 1; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4212068": {
-   "name": "OWL::TWindow::vf24",
+   "name": "OWL::TWindow::EnableWindow",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 24,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 24; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4212104": {
-   "name": "OWL::TWindow::vf26",
+   "name": "OWL::TWindow::Invalidate",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 26,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 26; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4212132": {
-   "name": "OWL::TWindow::vf27",
+   "name": "OWL::TWindow::InvalidateRect",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 27,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 27; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4212540": {
    "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string",
@@ -307,6 +418,126 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4215064": {
+   "name": "BitWriter::FlushWord",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "writes the pending 16-bit word of the bit stream to the file (sets g_writeFailed on error)"
+  },
+  "4215104": {
+   "name": "BitWriter::BitWriter",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "bit stream on a FILE"
+  },
+  "4215128": {
+   "name": "BitWriter::WriteBits",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "appends an nbits-long code to the 16-bit-word bit stream, flushing full words"
+  },
+  "4215268": {
+   "name": "BitWriter::WriteBytes",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "writes bytes through the Huffman code table"
+  },
+  "4215336": {
+   "name": "BitWriter::AlignToWord",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "pads the stream to a 32-bit boundary"
+  },
+  "4215368": {
+   "name": "BitWriter::Flush",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "writes out any pending bits"
+  },
+  "4215400": {
+   "name": "ScaleFrequency",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "frequency scaled to the Huffman weight range (floating-point arithmetic not visible; ends in __ftol)"
+  },
+  "4215560": {
+   "name": "ReverseHuffmanCodes",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "reverses the bits of every byte code so the stream can be written low bit first"
+  },
+  "4215656": {
+   "name": "HuffmanNodeLess",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "order of two Huffman nodes by weight (for the heap)"
+  },
+  "4215704": {
+   "name": "AddBitToSubtree",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "appends one bit to the code of every leaf under a Huffman tree node"
+  },
+  "4215764": {
+   "name": "StoreCodesAndFree",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "walks a Huffman (sub)tree storing each leaf byte code and code length in the tables, freeing the nodes"
+  },
+  "4215828": {
+   "name": "BuildHuffmanCodes",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "builds the Huffman tree from the byte frequencies (lightest two nodes merged repeatedly), then assigns each byte its code and length"
+  },
+  "4216168": {
+   "name": "ParseDefinitionLine",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "splits one definition line of the input into headwords, qualifiers and text (RTF braces \"\\{}\" escaped)"
+  },
+  "4217568": {
+   "name": "ParseMappingLine",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "parses one line of the letter mapping file (byte, letter class, display byte)"
+  },
+  "4218220": {
+   "name": "WriteDefinitionRecord",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "writes one definition record (headwords, qualifiers and text, XOR 0xBD) and returns its offset"
+  },
+  "4218696": {
+   "name": "DefinitionRecordLess",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "order of two definition entries by their stored offset"
+  },
+  "4218728": {
+   "name": "DictionaryMaintainer::DictionaryMaintainer",
+   "priority": 1.5,
+   "cls": "DictionaryMaintainer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores DictionaryMaintainer's vtable at its vptr offset (+0x0) in this"
+  },
   "4218812": {
    "name": "DictionaryMaintainer::~DictionaryMaintainer",
    "priority": 5,
@@ -321,12 +552,614 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4219220": {
+   "name": "__rwstd::__rb_tree::iterator::increment",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042aec0 (99 bytes; the code occurs several times, e.g. one template instance per type). ++iterator (in-order successor)"
+  },
+  "4219320": {
+   "name": "std::_Destroy_range_ptr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004050b4 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of pointers (nothing to do; the loop is left in)"
+  },
+  "4219344": {
+   "name": "std::_Destroy_range_WordMap",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "destroys the word maps in [first, last)"
+  },
+  "4219552": {
+   "name": "WordMap::erase_range",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "__rb_tree::erase(first, last)"
+  },
+  "4219812": {
+   "name": "WordMap::__erase",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "returns a subtree's nodes to the free list, releasing each key string"
+  },
+  "4220124": {
+   "name": "WordMap::erase",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "__rb_tree::erase(iterator) (red-black delete)"
+  },
+  "4222584": {
+   "name": "__rwstd::__rb_tree::__set_node_406e78",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "stores a node pointer"
+  },
+  "4222600": {
+   "name": "__rwstd::__rb_tree::__minimum",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042ae80 (29 bytes; the code occurs several times, e.g. one template instance per type). leftmost node of a subtree"
+  },
+  "4222632": {
+   "name": "__rwstd::__rb_tree::__maximum",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042aea0 (29 bytes; the code occurs several times, e.g. one template instance per type). rightmost node of a subtree"
+  },
+  "4222664": {
+   "name": "__rwstd::__rb_tree::__deallocate_buffers",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042af24 (63 bytes; the code occurs several times, e.g. one template instance per type). frees every node buffer of a tree"
+  },
+  "4222728": {
+   "name": "WriteTsdDictionary",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "builds the .tsd dictionary: calibration pass, letter statistics, Huffman code, per-length word streams, definition output passes (\"Calibrating dictionary - \", \"Definition output pass \")"
+  },
+  "4254216": {
+   "name": "std::vector_WordMap::vector",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "vector of n copies of a word map"
+  },
+  "4254656": {
+   "name": "std::uninitialized_fill_n_WordMap",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x004487c0. copy-constructs n word maps"
+  },
+  "4255160": {
+   "name": "WordMap::__copy",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "copies a subtree under a parent node"
+  },
+  "4255268": {
+   "name": "WordMap::__get_node",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "takes a node from the free list and copy-constructs the value"
+  },
+  "4255732": {
+   "name": "__rwstd::__rb_tree::__minimum_40eff4",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042ae80 (29 bytes; the code occurs several times, e.g. one template instance per type). leftmost node of a subtree"
+  },
+  "4255764": {
+   "name": "__rwstd::__rb_tree::__maximum_40f014",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042aea0 (29 bytes; the code occurs several times, e.g. one template instance per type). rightmost node of a subtree"
+  },
+  "4255796": {
+   "name": "std::_Destroy_range",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x00448c34 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of trivially destructible objects (nothing to do)"
+  },
   "4255820": {
    "name": "WordListMap::AllocateNode",
    "priority": 10,
    "kind": "function",
-   "source": "notes (position-matched TEA.exe)",
-   "note": "same masked bytes as TEA.exe 0x00448c4c (297 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. node slab allocator for the duplicate-suppression map per your notes. Entry checked; body not read"
+   "source": "notes (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x00448c4c (297 bytes; the code occurs several times, e.g. one template instance per type). node slab allocator for the duplicate-suppression map per your notes. Entry checked; body not read"
+  },
+  "4256152": {
+   "name": "WordMap2::erase_range",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (position-matched TEA.exe)",
+   "note": "same masked bytes as TEA.exe 0x00448d98 (258 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. __rb_tree::erase(first, last)"
+  },
+  "4256412": {
+   "name": "WordMap2::__erase",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (position-matched TEA.exe)",
+   "note": "same masked bytes as TEA.exe 0x00448e9c (262 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. returns a subtree's nodes to the free list, releasing each key string"
+  },
+  "4256676": {
+   "name": "WordMap2::erase",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "__rb_tree::erase(iterator) (red-black delete)"
+  },
+  "4259136": {
+   "name": "__rwstd::__rb_tree::__set_node_40fd40",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "stores a node pointer"
+  },
+  "4259152": {
+   "name": "__rwstd::__rb_tree::iterator::increment_40fd50",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042aec0 (99 bytes; the code occurs several times, e.g. one template instance per type). ++iterator (in-order successor)"
+  },
+  "4259252": {
+   "name": "__rwstd::__rb_tree::__deallocate_buffers_40fdb4",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042af24 (63 bytes; the code occurs several times, e.g. one template instance per type). frees every node buffer of a tree"
+  },
+  "4259316": {
+   "name": "std::vector_WordMap2::vector",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "vector of n copies of a word map"
+  },
+  "4259604": {
+   "name": "std::uninitialized_fill_n_WordMap2",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x00449b14. copy-constructs n word maps"
+  },
+  "4260100": {
+   "name": "WordMap2::__copy",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (position-matched TEA.exe)",
+   "note": "same masked bytes as TEA.exe 0x00449d04 (105 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. copies a subtree under a parent node"
+  },
+  "4260208": {
+   "name": "WordMap2::__get_node",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (position-matched TEA.exe)",
+   "note": "same masked bytes as TEA.exe 0x00449d70 (381 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. takes a node from the free list (or a new buffer) and copy-constructs the value"
+  },
+  "4260632": {
+   "name": "std::_Destroy_range_410318",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x00448c34 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of trivially destructible objects (nothing to do)"
+  },
+  "4260656": {
+   "name": "WordListMap::AllocateNode_410330",
+   "priority": 10,
+   "kind": "function",
+   "source": "notes (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x00448c4c (297 bytes; the code occurs several times, e.g. one template instance per type). node slab allocator for the duplicate-suppression map per your notes. Entry checked; body not read"
+  },
+  "4260988": {
+   "name": "std::vector_int::vector",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044a07c. vector of n copies of a value"
+  },
+  "4261260": {
+   "name": "std::fill_n_ptr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x004147d0. fill n pointers with a value"
+  },
+  "4261384": {
+   "name": "std::_Destroy_range_ptr_410608",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x0040644c (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of pointers (nothing to do)"
+  },
+  "4261408": {
+   "name": "std::_Destroy_range_WordMap2",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "destroys the word maps in [first, last)"
+  },
+  "4261584": {
+   "name": "WordMap::insert_hint",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044a23c. insert with a position hint (collation order, then exact string order)"
+  },
+  "4262604": {
+   "name": "WordMap::__insert",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044a638. links a new node under the parent and rebalances (red-black insert)"
+  },
+  "4263444": {
+   "name": "WordMap::insert_unique",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044a980. insert unless an equal key exists (collation order, then exact string order)"
+  },
+  "4264188": {
+   "name": "__rwstd::__rb_tree::iterator::decrement",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042e9d8 (107 bytes; the code occurs several times, e.g. one template instance per type). --iterator (in-order predecessor)"
+  },
+  "4264296": {
+   "name": "std::vector_MatchEngine_ptr::resize",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00414468. resize(n) with null pointers"
+  },
+  "4264456": {
+   "name": "std::vector_MatchEngine_ptr::insert_fill",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00414508. inserts n copies of a value at a position, growing the storage when needed"
+  },
+  "4265136": {
+   "name": "std::copy_ptr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004063cc (89 bytes; the code occurs several times, e.g. one template instance per type). copy over a range of pointers"
+  },
+  "4265264": {
+   "name": "std::copy_backward_ptr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004063a8 (36 bytes; the code occurs several times, e.g. one template instance per type). copy_backward over a range of pointers"
+  },
+  "4265300": {
+   "name": "std::fill_ptr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x004147b0. fill a range of pointers with a value"
+  },
+  "4265332": {
+   "name": "std::copy_ptr_411574",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x00406584 (36 bytes; the code occurs several times, e.g. one template instance per type). copy over a range of pointers (vector erase)"
+  },
+  "4265368": {
+   "name": "WordMap2::lower_bound",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "first node whose key is not less than the string"
+  },
+  "4265620": {
+   "name": "WordMap2::insert_unique",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "insert unless an equal key exists"
+  },
+  "4266244": {
+   "name": "WordMap2::__insert",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "links a new node under the parent and rebalances"
+  },
+  "4267036": {
+   "name": "__rwstd::__rb_tree::iterator::decrement_411c1c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042e9d8 (107 bytes; the code occurs several times, e.g. one template instance per type). --iterator (in-order predecessor)"
+  },
+  "4267144": {
+   "name": "std::vector_ptr::insert_aux_411c88",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "std::vector<T *> insert at a position, growing the storage when full"
+  },
+  "4267616": {
+   "name": "__rwstd::__rb_tree::iterator::increment_411e60",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042aec0 (99 bytes; the code occurs several times, e.g. one template instance per type). ++iterator (in-order successor)"
+  },
+  "4267716": {
+   "name": "WordListMap::AllocateNode_411ec4",
+   "priority": 10,
+   "kind": "function",
+   "source": "notes (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x00448c4c (297 bytes; the code occurs several times, e.g. one template instance per type). node slab allocator for the duplicate-suppression map per your notes. Entry checked; body not read"
+  },
+  "4268048": {
+   "name": "WordMap3::erase_range",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "__rb_tree::erase(first, last)"
+  },
+  "4268308": {
+   "name": "WordMap3::__erase",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "returns a subtree's nodes to the free list"
+  },
+  "4268572": {
+   "name": "__rwstd::__rb_tree::__deallocate_buffers_41221c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042af24 (63 bytes; the code occurs several times, e.g. one template instance per type). frees every node buffer of a tree"
+  },
+  "4268636": {
+   "name": "std::vector_string::insert_aux",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x004048f4. std::vector<std::string> insert at a position, growing the storage (doubling, at least 64) when full"
+  },
+  "4269564": {
+   "name": "std::copy_backward_string",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00404d2c. copy_backward over std::string objects (16 bytes each)"
+  },
+  "4269612": {
+   "name": "std::uninitialized_copy_string",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00404d5c. copy-constructs std::string objects from [first, last) into raw storage"
+  },
+  "4269944": {
+   "name": "std::_Destroy_range_16",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x00404ea8 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of 16-byte objects with trivial destructors (nothing to do)"
+  },
+  "4269968": {
+   "name": "WordMap3::lower_bound",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "first node whose key is not less than the string"
+  },
+  "4270220": {
+   "name": "__rwstd::__rb_tree::iterator::increment_41288c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042aec0 (99 bytes; the code occurs several times, e.g. one template instance per type). ++iterator (in-order successor)"
+  },
+  "4270320": {
+   "name": "WordMap3::erase",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "__rb_tree::erase(iterator)"
+  },
+  "4272780": {
+   "name": "__rwstd::__rb_tree::__set_node_41328c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "stores a node pointer"
+  },
+  "4272796": {
+   "name": "__rwstd::__rb_tree::__minimum_41329c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042ae80 (29 bytes; the code occurs several times, e.g. one template instance per type). leftmost node of a subtree"
+  },
+  "4272828": {
+   "name": "__rwstd::__rb_tree::__maximum_4132bc",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042aea0 (29 bytes; the code occurs several times, e.g. one template instance per type). rightmost node of a subtree"
+  },
+  "4272860": {
+   "name": "WordMap3::insert_unique",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "insert unless an equal key exists"
+  },
+  "4273484": {
+   "name": "WordMap3::__insert",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "links a new node under the parent and rebalances"
+  },
+  "4274276": {
+   "name": "WordMap3::__get_node",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "takes a node from the free list and copy-constructs the value"
+  },
+  "4274700": {
+   "name": "__rwstd::__rb_tree::iterator::decrement_413a0c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0042e9d8 (107 bytes; the code occurs several times, e.g. one template instance per type). --iterator (in-order predecessor)"
+  },
+  "4274808": {
+   "name": "std::vector_string::resize",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "resize(n) of a vector of strings"
+  },
+  "4275160": {
+   "name": "std::vector_string::insert_fill",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "inserts n copies of a string at a position"
+  },
+  "4275840": {
+   "name": "std::fill_string",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "assigns a string to every element of a range"
+  },
+  "4275884": {
+   "name": "std::uninitialized_fill_n_string",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "copy-constructs n strings"
+  },
+  "4276204": {
+   "name": "std::copy_string",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "copy over a range of strings"
+  },
+  "4276256": {
+   "name": "std::_Destroy_range_string",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0040483c. destroys the std::string objects in [first, last)"
+  },
+  "4276440": {
+   "name": "std::vector_16::reserve",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044caa8. reserve(n) for a vector of 16-byte elements (throws length_error past max_size)"
+  },
+  "4277264": {
+   "name": "std::uninitialized_copy_16",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044cde0. copies 16-byte elements into raw storage"
+  },
+  "4277432": {
+   "name": "std::_Destroy_range_16_4144b8",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x00404ea8 (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of 16-byte objects with trivial destructors (nothing to do)"
+  },
+  "4277456": {
+   "name": "std::vector_16::insert_aux",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044cea0. insert at a position into a vector of 16-byte elements, growing the storage (doubling, at least 64)"
+  },
+  "4278008": {
+   "name": "std::copy_backward_16",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044d0c8. copy_backward over 16-byte elements"
+  },
+  "4278056": {
+   "name": "std::__final_insertion_sort",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044d0f8. last step of std::sort: insertion sort of the first 16, unguarded for the rest"
+  },
+  "4278148": {
+   "name": "std::__insertion_sort",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044d154. insertion sort of [first, last)"
+  },
+  "4278304": {
+   "name": "std::__unguarded_linear_insert",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044d1f0. moves one element left until in order"
+  },
+  "4278376": {
+   "name": "std::__unguarded_insertion_sort",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044d238. unguarded insertion sort of [first, last)"
+  },
+  "4278440": {
+   "name": "std::__introsort_loop",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044d278. quicksort with median-of-three pivots until ranges are 16 elements or fewer"
+  },
+  "4278760": {
+   "name": "std::__unguarded_partition",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044d3b8. partitions [first, last) around the pivot"
+  },
+  "4278908": {
+   "name": "std::_Destroy_range_16_414a7c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0044d44c (22 bytes; the code occurs several times, e.g. one template instance per type). destroys a range of 16-byte objects with trivial destructors (nothing to do)"
   },
   "4278932": {
    "name": "DictionaryMaintainer::vf3",
@@ -394,6 +1227,13 @@
    "slot": 1,
    "source": "rtti:vtable"
   },
+  "4283120": {
+   "name": "std::vector_16::_dtor",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "destructor of a vector of 16-byte elements"
+  },
   "4283176": {
    "name": "std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::~vector",
    "priority": 5,
@@ -408,6 +1248,63 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4283288": {
+   "name": "std::vector_WordMap2::_dtor",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "destructor of a vector of word maps"
+  },
+  "4283712": {
+   "name": "std::vector_WordMap::_dtor",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "destructor of a vector of word maps"
+  },
+  "4283768": {
+   "name": "WordMap2::_dtor",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "destructor of a word map (erases every node, frees the buffers)"
+  },
+  "4283884": {
+   "name": "WordMap::_dtor",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "destructor of a word map"
+  },
+  "4284000": {
+   "name": "WordMap3::_dtor",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "destructor of a word map"
+  },
+  "4284116": {
+   "name": "InitRegistryPaths",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "static initialiser of the registry key path strings"
+  },
+  "4284180": {
+   "name": "DestroyRegistryPaths",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "static destructor of the registry key path strings"
+  },
+  "4284344": {
+   "name": "TSBuildProfile::TSBuildProfile",
+   "priority": 10,
+   "cls": "TSBuildProfile",
+   "kind": "function",
+   "source": "analysis",
+   "note": "constructor: empty file names, default lengths, frequency and sort options"
+  },
   "4284600": {
    "name": "TSBuildProfile::~TSBuildProfile",
    "priority": 5,
@@ -415,12 +1312,51 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4285156": {
+   "name": "TSBuildProfile::Load",
+   "priority": 10,
+   "cls": "TSBuildProfile",
+   "kind": "function",
+   "source": "analysis",
+   "note": "reads BuilderMapping (default.tsm), BuilderWordList, BuilderShortest, BuilderLongest, BuilderFrequency and BuilderSort"
+  },
+  "4286744": {
+   "name": "ResolveDataPath",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "full path of a file in the program's data folder"
+  },
+  "4287628": {
+   "name": "TSBuildProfile::Save",
+   "priority": 10,
+   "cls": "TSBuildProfile",
+   "kind": "function",
+   "source": "analysis",
+   "note": "writes BuilderMapping, BuilderWordList, BuilderShortest, BuilderLongest, BuilderFrequency and BuilderSort"
+  },
+  "4288948": {
+   "name": "TSDictionaryBuilderProgressBar::TSDictionaryBuilderProgressBar",
+   "priority": 1.5,
+   "cls": "TSDictionaryBuilderProgressBar",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores TSDictionaryBuilderProgressBar's vtable at its vptr offset (+0xc) in this"
+  },
   "4289296": {
    "name": "TSDictionaryBuilderProgressBar::~TSDictionaryBuilderProgressBar",
    "priority": 5,
    "cls": "TSDictionaryBuilderProgressBar",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4289548": {
+   "name": "DMDialog::SetAbort",
+   "priority": 10,
+   "cls": "DMDialog",
+   "kind": "function",
+   "source": "analysis",
+   "note": "records that the user asked to stop"
   },
   "4289584": {
    "name": "TSDictionaryBuilderProgressBar::vf5",
@@ -430,12 +1366,90 @@
    "slot": 5,
    "source": "rtti:vtable"
   },
+  "4290200": {
+   "name": "CollationCompare",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0043c624. compares two words letter by letter with the Windows-1252 collation table"
+  },
+  "4290328": {
+   "name": "ExpandLongPathName",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "rebuilds a path component by component from the end, replacing each with the name FindFirstFileA reports (long name, on-disk case)"
+  },
+  "4293836": {
+   "name": "memrchr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00408894. last occurrence of a character in [p, p + n], or 0"
+  },
+  "4293880": {
+   "name": "std::operator_plus",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x004088c0. result = lhs + rhs for two std::string"
+  },
+  "4294520": {
+   "name": "AppendChar",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00408b40. result = str + std::string(1, c) (the character is not visible in the decompiled call to the fill constructor)"
+  },
+  "4295420": {
+   "name": "IsRelativePath",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "true unless the path starts with '\\' or has a drive colon followed by '\\'"
+  },
   "4295576": {
    "name": "GetProgramDirectory",
    "priority": 10,
    "kind": "function",
    "source": "analysis (matched TEACON.exe)",
    "note": "identical body to TEACON.exe 0x0040909c. GetModuleFileNameA, truncated after the last backslash"
+  },
+  "4295940": {
+   "name": "GetMyDocumentsDirectory",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "the user's documents folder (SHGetSpecialFolderLocation), or the program directory"
+  },
+  "4296732": {
+   "name": "ResolveRelativePath",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "prefixes the program directory to a relative path"
+  },
+  "4297836": {
+   "name": "IsAnsiTextFile",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "reads the start of a file and rejects it when IsTextUnicode says it is Unicode"
+  },
+  "4298340": {
+   "name": "ReadDescriptionLine",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "reads the first line of the word list (the dictionary description) into a buffer"
+  },
+  "4298932": {
+   "name": "Persist::Persist",
+   "priority": 10,
+   "cls": "Persist",
+   "kind": "function",
+   "source": "analysis",
+   "note": "opens or creates the registry key (machine-wide first when asked)"
   },
   "4299160": {
    "name": "Persist::~Persist",
@@ -445,20 +1459,57 @@
    "source": "rtti:dtor"
   },
   "4299204": {
-   "name": "Persist::QueryValueSized",
+   "name": "Persist::QueryString",
    "priority": 10,
    "cls": "Persist",
    "kind": "function",
    "source": "analysis (matched TEACON.exe)",
-   "note": "identical body to TEACON.exe 0x00411a4c. RegQueryValueExA wrapper"
+   "note": "identical body to TEACON.exe 0x00411a4c. reads a REG_SZ value (up to 64 KB) into a std::string; true if present"
   },
   "4299320": {
-   "name": "Persist::QueryValue",
+   "name": "Persist::QueryDword",
    "priority": 10,
    "cls": "Persist",
    "kind": "function",
    "source": "analysis (matched TEACON.exe)",
-   "note": "identical body to TEACON.exe 0x00411ac0. RegQueryValueExA wrapper"
+   "note": "identical body to TEACON.exe 0x00411ac0. reads a REG_DWORD value; true if present"
+  },
+  "4299404": {
+   "name": "Persist::SetString",
+   "priority": 10,
+   "cls": "Persist",
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044ec78. writes a REG_SZ value"
+  },
+  "4299452": {
+   "name": "Persist::SetDword",
+   "priority": 10,
+   "cls": "Persist",
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x0044eca8. writes a REG_DWORD value (the value is the third argument on the stack)"
+  },
+  "4299488": {
+   "name": "DestroyRichEditLoader",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader"
+  },
+  "4299552": {
+   "name": "ShowHtmlHelp",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "opens the help file with HtmlHelpA; reports \"Help library not found\" / \"Can't open help\""
+  },
+  "4299760": {
+   "name": "LoadHtmlHelp",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "finds hhctrl.ocx through its CLSID in the registry and gets HtmlHelpA"
   },
   "4300052": {
    "name": "Help::~Help",
@@ -466,6 +1517,41 @@
    "cls": "Help",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4300124": {
+   "name": "GetRichEditVersion",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "2 when RICHED20.DLL can be loaded, else 1"
+  },
+  "4300251": {
+   "name": "InitRichEditStreamer",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "static initialiser of the TRichEdit streamable class registration"
+  },
+  "4300337": {
+   "name": "DestroyRichEditStreamer",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "static destructor of the TRichEdit streamable class registration"
+  },
+  "4300420": {
+   "name": "OWL::TRichEdit::GetModule",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "the rich-edit DLL module"
+  },
+  "4300428": {
+   "name": "OWL::TRichEdit::GetModuleInstance",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis",
+   "note": "the rich-edit DLL module object"
   },
   "4300436": {
    "name": "OWL::TRichEdit::Find",
@@ -526,28 +1612,45 @@
    "note": "EV_COMMAND(24321)"
   },
   "4300860": {
-   "name": "OWL::TRichEdit::vf13",
+   "name": "OWL::TRichEdit::GetSelection",
    "priority": 2,
    "cls": "OWL::TRichEdit",
    "kind": "virtual",
    "slot": 13,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 13 (introduced by OWL::TEdit); EM_GETSEL"
   },
   "4300944": {
-   "name": "OWL::TRichEdit::vf15",
+   "name": "OWL::TRichEdit::SetSelection",
    "priority": 2,
    "cls": "OWL::TRichEdit",
    "kind": "virtual",
    "slot": 15,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 15 (introduced by OWL::TEdit); EM_SETSEL"
+  },
+  "4300992": {
+   "name": "OWL::TRichEdit::SetSelection_46924c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (position-matched TEA.exe)",
+   "note": "paired with TEA.exe 0x0046924c by position between identical neighbours; the bodies differ (30 vs 28 bytes), so treat the name as probable. EM_EXSETSEL"
+  },
+  "4301020": {
+   "name": "OWL::TRichEdit::GetTextRange",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (position-matched TEA.exe)",
+   "note": "paired with TEA.exe 0x0046926c by position between identical neighbours; the bodies differ (30 vs 28 bytes), so treat the name as probable. EM_GETTEXTRANGE"
   },
   "4301048": {
-   "name": "OWL::TRichEdit::vf12",
+   "name": "OWL::TRichEdit::GetSubText",
    "priority": 2,
    "cls": "OWL::TRichEdit",
    "kind": "virtual",
    "slot": 12,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 12 (introduced by OWL::TEdit); text between two positions (EM_LINEINDEX / EM_LINEFROMCHAR per line)"
   },
   "4301128": {
    "name": "OWL::TRichEdit::vf16",
@@ -558,12 +1661,13 @@
    "source": "rtti:vtable"
   },
   "4301316": {
-   "name": "OWL::TRichEdit::vf17",
+   "name": "OWL::TRichEdit::Paste",
    "priority": 2,
    "cls": "OWL::TRichEdit",
    "kind": "virtual",
    "slot": 17,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 17 (introduced by OWL::TEdit); WM_PASTE"
   },
   "4301408": {
    "name": "OWL::TRichEdit::EvGetDlgCode",
@@ -666,20 +1770,38 @@
    "source": "rtti:vtable"
   },
   "4302524": {
-   "name": "OWL::TRichEdit::vf25",
+   "name": "OWL::TRichEdit::ReadFromFile",
    "priority": 2,
    "cls": "OWL::TRichEdit",
    "kind": "virtual",
    "slot": 25,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 25; loads a file into the control (stream in, EM_SETMODIFY)"
   },
   "4302812": {
-   "name": "OWL::TRichEdit::vf29",
+   "name": "OWL::TRichEdit::WriteToFile",
    "priority": 2,
    "cls": "OWL::TRichEdit",
    "kind": "virtual",
    "slot": 29,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 29; saves the control to a file (stream out, EM_SETMODIFY)"
+  },
+  "4303360": {
+   "name": "OWL::TRichEdit::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TRichEdit::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TRichEdit::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4303464": {
+   "name": "OWL::TRichEdit::TRichEdit",
+   "priority": 1.5,
+   "cls": "OWL::TRichEdit",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TRichEdit's vtable at its vptr offset (+0xc) in this"
   },
   "4303748": {
    "name": "OWL::TRichEdit::Streamer::vf1",
@@ -696,6 +1818,13 @@
    "kind": "virtual",
    "slot": 2,
    "source": "rtti:vtable"
+  },
+  "4304048": {
+   "name": "OWL::TRichEdit::UseRichEdit2",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x00469b1c. whether the RichEdit 2.0 control is available"
   },
   "4304404": {
    "name": "OWL::TErrorMode::~TErrorMode",
@@ -735,12 +1864,13 @@
    "source": "rtti:vtable"
   },
   "4305344": {
-   "name": "OWL::TEdit::vf13",
+   "name": "OWL::TEdit::GetSelection",
    "priority": 2,
    "cls": "OWL::TEdit",
    "kind": "virtual",
    "slot": 13,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 13; EM_GETSEL"
   },
   "4305376": {
    "name": "OWL::TEdit::vf14",
@@ -751,52 +1881,66 @@
    "source": "rtti:vtable"
   },
   "4305412": {
-   "name": "OWL::TEdit::vf15",
+   "name": "OWL::TEdit::SetSelection",
    "priority": 2,
    "cls": "OWL::TEdit",
    "kind": "virtual",
    "slot": 15,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 15; EM_SETSEL"
   },
   "4305452": {
-   "name": "OWL::TEdit::vf17",
+   "name": "OWL::TEdit::Paste",
    "priority": 2,
    "cls": "OWL::TEdit",
    "kind": "virtual",
    "slot": 17,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 17; WM_PASTE"
   },
   "4305480": {
-   "name": "OWL::TEdit::vf18",
+   "name": "OWL::TEdit::CharFromPos",
    "priority": 2,
    "cls": "OWL::TEdit",
    "kind": "virtual",
    "slot": 18,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 18; EM_CHARFROMPOS"
   },
   "4305524": {
-   "name": "OWL::TEdit::vf19",
+   "name": "OWL::TEdit::PosFromChar",
    "priority": 2,
    "cls": "OWL::TEdit",
    "kind": "virtual",
    "slot": 19,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 19; EM_POSFROMCHAR"
   },
   "4305844": {
-   "name": "OWL::TRichEdit::vf18",
+   "name": "OWL::TRichEdit::CharFromPos",
    "priority": 2,
    "cls": "OWL::TRichEdit",
    "kind": "virtual",
    "slot": 18,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 18 (introduced by OWL::TEdit); EM_CHARFROMPOS"
   },
   "4305896": {
-   "name": "OWL::TRichEdit::vf19",
+   "name": "OWL::TRichEdit::PosFromChar",
    "priority": 2,
    "cls": "OWL::TRichEdit",
    "kind": "virtual",
    "slot": 19,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 19 (introduced by OWL::TEdit); EM_POSFROMCHAR"
+  },
+  "4306296": {
+   "name": "OWL::TCommCtrlDll::TCommCtrlDll",
+   "priority": 1.5,
+   "cls": "OWL::TCommCtrlDll",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TCommCtrlDll's vtable at its vptr offset (+0x0) in this"
   },
   "4306908": {
    "name": "OWL::TCommCtrlDll::~TCommCtrlDll",
@@ -855,12 +1999,27 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4310112": {
+   "name": "DestroyRichEditLoader_41c460",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader"
+  },
   "4310616": {
    "name": "OWL::TAppDictionary::~TAppDictionary",
    "priority": 5,
    "cls": "OWL::TAppDictionary",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4310968": {
+   "name": "OWL::TAppDictPidImp::TAppDictPidImp",
+   "priority": 1.5,
+   "cls": "OWL::TAppDictPidImp",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TAppDictPidImp's vtable at its vptr offset (+0x0) in this"
   },
   "4311056": {
    "name": "OWL::TAppDictPidImp::~TAppDictPidImp",
@@ -1047,6 +2206,14 @@
    "slot": 2,
    "source": "rtti:vtable"
   },
+  "4315548": {
+   "name": "OWL::TButtonGadget::TButtonGadget",
+   "priority": 1.5,
+   "cls": "OWL::TButtonGadget",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TButtonGadget's vtable at its vptr offset (+0x0) in this"
+  },
   "4315916": {
    "name": "OWL::TButtonGadget::~TButtonGadget",
    "priority": 5,
@@ -1213,12 +2380,36 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4319676": {
+   "name": "OWL::TCelArray::TCelArray",
+   "priority": 1.5,
+   "cls": "OWL::TCelArray",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TCelArray's vtable at its vptr offset (+0x0) in this"
+  },
+  "4320056": {
+   "name": "OWL::TCelArray::TCelArray_41eb38",
+   "priority": 1.5,
+   "cls": "OWL::TCelArray",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TCelArray's vtable at its vptr offset (+0x0) in this"
+  },
   "4320292": {
    "name": "OWL::TCelArray::~TCelArray",
    "priority": 5,
    "cls": "OWL::TCelArray",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4322920": {
+   "name": "OWL::TDiagGroupDef::TDiagGroupDef",
+   "priority": 1.5,
+   "cls": "OWL::TDiagGroupDef",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TDiagGroupDef's vtable at its vptr offset (+0x0) in this"
   },
   "4323032": {
    "name": "OWL::TDiagGroupDef::vf0",
@@ -1227,6 +2418,14 @@
    "kind": "virtual",
    "slot": 0,
    "source": "rtti:vtable"
+  },
+  "4323044": {
+   "name": "OWL::TDiagBase::TDiagBase",
+   "priority": 1.5,
+   "cls": "OWL::TDiagBase",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TDiagBase's vtable at its vptr offset (+0x0) in this"
   },
   "4323200": {
    "name": "OWL::TDiagBase::~TDiagBase",
@@ -1255,6 +2454,14 @@
    "cls": "OWL::TClipboard",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4324980": {
+   "name": "OWL::TXClipboard::TXClipboard",
+   "priority": 1.5,
+   "cls": "OWL::TXClipboard",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXClipboard's vtable at its vptr offset (+0x0) in this"
   },
   "4325084": {
    "name": "OWL::TXClipboard::vf2",
@@ -1286,6 +2493,7 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
+    "OWL::TCommonDialog::Find [rtti:vtable]",
     "OWL::TCommonDialog::vf14 [rtti:vtable]"
    ]
   },
@@ -1308,6 +2516,14 @@
     "OWL::TCommonDialog::CmRange1to2 [owl:response-table]"
    ]
   },
+  "4326964": {
+   "name": "OWL::TCommonDialog::TCommonDialog",
+   "priority": 1.5,
+   "cls": "OWL::TCommonDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TCommonDialog's vtable at its vptr offset (+0xc) in this"
+  },
   "4327304": {
    "name": "OWL::TCommonDialog::~TCommonDialog",
    "priority": 5,
@@ -1316,28 +2532,40 @@
    "source": "rtti:dtor"
   },
   "4327556": {
-   "name": "OWL::TCommonDialog::vf11",
-   "priority": 2,
+   "name": "OWL::TCommonDialog::SetupWindow",
+   "priority": 2.5,
    "cls": "OWL::TCommonDialog",
    "kind": "virtual",
-   "slot": 11,
-   "source": "rtti:vtable"
+   "slot": 30,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 30, from OWL::TCommonDialog's OWL::TWindow subobject vtable at 0x00479e4c (through the this-adjusting thunk at 0x004208cf); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TCommonDialog::vf11 [rtti:vtable]"
+   ]
   },
   "4327592": {
-   "name": "OWL::TCommonDialog::vf4",
-   "priority": 2,
+   "name": "OWL::TCommonDialog::PerformCreate",
+   "priority": 2.5,
    "cls": "OWL::TCommonDialog",
    "kind": "virtual",
-   "slot": 4,
-   "source": "rtti:vtable"
+   "slot": 5,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 5, from OWL::TCommonDialog's OWL::TWindow subobject vtable at 0x00479e4c (through the this-adjusting thunk at 0x0042097a); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TCommonDialog::vf4 [rtti:vtable]"
+   ]
   },
   "4327600": {
-   "name": "OWL::TCommonDialog::vf6",
-   "priority": 2,
+   "name": "OWL::TCommonDialog::DoExecute",
+   "priority": 2.5,
    "cls": "OWL::TCommonDialog",
    "kind": "virtual",
-   "slot": 6,
-   "source": "rtti:vtable"
+   "slot": 8,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 8, from OWL::TCommonDialog's OWL::TWindow subobject vtable at 0x00479e4c (through the this-adjusting thunk at 0x00420941); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TCommonDialog::vf6 [rtti:vtable]"
+   ]
   },
   "4328392": {
    "name": "OWL::TFile::vf1",
@@ -1480,6 +2708,14 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4329348": {
+   "name": "OWL::TControlBar::TControlBar",
+   "priority": 1.5,
+   "cls": "OWL::TControlBar",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TControlBar's vtable at its vptr offset (+0x18) in this"
+  },
   "4329880": {
    "name": "OWL::TControl::Streamer::vf4",
    "priority": 2,
@@ -1496,12 +2732,16 @@
    "source": "rtti:dtor"
   },
   "4330264": {
-   "name": "OWL::TGadgetWindow::vf3",
-   "priority": 2,
+   "name": "OWL::TGadgetWindow::GetTooltip",
+   "priority": 2.5,
    "cls": "OWL::TGadgetWindow",
    "kind": "virtual",
-   "slot": 3,
-   "source": "rtti:vtable"
+   "slot": 1,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 1, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x004277ca); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TGadgetWindow::vf3 [rtti:vtable]"
+   ]
   },
   "4331160": {
    "name": "OWL::TCreatedDC::~TCreatedDC",
@@ -1509,6 +2749,14 @@
    "cls": "OWL::TCreatedDC",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4332284": {
+   "name": "std::ios_base::failure::failure",
+   "priority": 1.5,
+   "cls": "std::ios_base::failure",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::ios_base::failure's vtable at its vptr offset (+0x0) in this"
   },
   "4332632": {
    "name": "std::ios_base::failure::vf2",
@@ -1725,6 +2973,22 @@
    "slot": 0,
    "source": "rtti:vtable"
   },
+  "4336576": {
+   "name": "OWL::TXBase::TXBase",
+   "priority": 1.5,
+   "cls": "OWL::TXBase",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXBase's vtable at its vptr offset (+0x0) in this"
+  },
+  "4336892": {
+   "name": "OWL::TXBase::TXBase_422cfc",
+   "priority": 1.5,
+   "cls": "OWL::TXBase",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXBase's vtable at its vptr offset (+0x0) in this"
+  },
   "4337028": {
    "name": "OWL::TXBase::~TXBase",
    "priority": 5,
@@ -1755,6 +3019,22 @@
    "kind": "virtual",
    "slot": 1,
    "source": "rtti:vtable"
+  },
+  "4337800": {
+   "name": "OWL::TXOwl::TXOwl",
+   "priority": 1.5,
+   "cls": "OWL::TXOwl",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXOwl's vtable at its vptr offset (+0x0) in this"
+  },
+  "4337904": {
+   "name": "OWL::TXOwl::TXOwl_4230f0",
+   "priority": 1.5,
+   "cls": "OWL::TXOwl",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXOwl's vtable at its vptr offset (+0x0) in this"
   },
   "4338140": {
    "name": "OWL::TXOwl::~TXOwl",
@@ -1787,6 +3067,22 @@
    "slot": 3,
    "source": "rtti:vtable"
   },
+  "4338492": {
+   "name": "OWL::TXOwl::TXOwl_42333c",
+   "priority": 1.5,
+   "cls": "OWL::TXOwl",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXOwl's vtable at its vptr offset (+0x0) in this"
+  },
+  "4339648": {
+   "name": "OWL::TXOutOfMemory::TXOutOfMemory",
+   "priority": 1.5,
+   "cls": "OWL::TXOutOfMemory",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXOutOfMemory's vtable at its vptr offset (+0x0) in this"
+  },
   "4339760": {
    "name": "OWL::TXOutOfMemory::vf2",
    "priority": 2,
@@ -1816,6 +3112,14 @@
    "cls": "OWL::TDefaultGUIFont",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4341968": {
+   "name": "OWL::TGadget::TGadget",
+   "priority": 1.5,
+   "cls": "OWL::TGadget",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TGadget's vtable at its vptr offset (+0x0) in this"
   },
   "4342284": {
    "name": "OWL::TGadget::~TGadget",
@@ -1984,6 +3288,14 @@
    "slot": 20,
    "source": "rtti:vtable"
   },
+  "4344844": {
+   "name": "OWL::TSeparatorGadget::TSeparatorGadget",
+   "priority": 1.5,
+   "cls": "OWL::TSeparatorGadget",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TSeparatorGadget's vtable at its vptr offset (+0x0) in this"
+  },
   "4345032": {
    "name": "OWL::TSeparatorGadget::vf8",
    "priority": 2,
@@ -2006,6 +3318,14 @@
    "cls": "OWL::TSeparatorGadget",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4345660": {
+   "name": "OWL::TGadgetList::TGadgetList",
+   "priority": 1.5,
+   "cls": "OWL::TGadgetList",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TGadgetList's vtable at its vptr offset (+0x0) in this"
   },
   "4345760": {
    "name": "OWL::TGadgetList::~TGadgetList",
@@ -2061,8 +3381,17 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
+    "OWL::TGadgetWindow::Find [rtti:vtable]",
     "OWL::TGadgetWindow::vf26 [rtti:vtable]"
    ]
+  },
+  "4346868": {
+   "name": "OWL::TGadgetWindow::TGadgetWindow",
+   "priority": 1.5,
+   "cls": "OWL::TGadgetWindow",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TGadgetWindow's vtable at its vptr offset (+0x18) in this"
   },
   "4347664": {
    "name": "OWL::TGadgetWindow::~TGadgetWindow",
@@ -2080,12 +3409,16 @@
    "note": "WM_SYSCOLORCHANGE"
   },
   "4348024": {
-   "name": "OWL::TGadgetWindow::vf12",
-   "priority": 2,
+   "name": "OWL::TGadgetWindow::IdleAction",
+   "priority": 2.5,
    "cls": "OWL::TGadgetWindow",
    "kind": "virtual",
-   "slot": 12,
-   "source": "rtti:vtable"
+   "slot": 11,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 11, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x0042777e); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TGadgetWindow::vf12 [rtti:vtable]"
+   ]
   },
   "4348496": {
    "name": "OWL::TGadgetWindow::vf13",
@@ -2104,12 +3437,16 @@
    "source": "rtti:vtable"
   },
   "4348992": {
-   "name": "OWL::TGadgetWindow::vf1",
-   "priority": 2,
+   "name": "OWL::TGadgetWindow::Create",
+   "priority": 2.5,
    "cls": "OWL::TGadgetWindow",
    "kind": "virtual",
-   "slot": 1,
-   "source": "rtti:vtable"
+   "slot": 4,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 4, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x004277a4); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TGadgetWindow::vf1 [rtti:vtable]"
+   ]
   },
   "4349020": {
    "name": "OWL::TGadgetWindow::vf2",
@@ -2208,28 +3545,40 @@
    "source": "rtti:vtable"
   },
   "4352752": {
-   "name": "OWL::TGadgetWindow::vf21",
-   "priority": 2,
+   "name": "OWL::TGadgetWindow::SetupWindow",
+   "priority": 2.5,
    "cls": "OWL::TGadgetWindow",
    "kind": "virtual",
-   "slot": 21,
-   "source": "rtti:vtable"
+   "slot": 30,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 30, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x00427732); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TGadgetWindow::vf21 [rtti:vtable]"
+   ]
   },
   "4352948": {
-   "name": "OWL::TGadgetWindow::vf22",
-   "priority": 2,
+   "name": "OWL::TGadgetWindow::CleanupWindow",
+   "priority": 2.5,
    "cls": "OWL::TGadgetWindow",
    "kind": "virtual",
-   "slot": 22,
-   "source": "rtti:vtable"
+   "slot": 31,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 31, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x0042771f); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TGadgetWindow::vf22 [rtti:vtable]"
+   ]
   },
   "4353056": {
-   "name": "OWL::TGadgetWindow::vf23",
-   "priority": 2,
+   "name": "OWL::TGadgetWindow::PreProcessMsg",
+   "priority": 2.5,
    "cls": "OWL::TGadgetWindow",
    "kind": "virtual",
-   "slot": 23,
-   "source": "rtti:vtable"
+   "slot": 10,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 10, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x00427791); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TGadgetWindow::vf23 [rtti:vtable]"
+   ]
   },
   "4353192": {
    "name": "OWL::TGadgetWindow::EvMsg_7ef2",
@@ -2256,12 +3605,16 @@
    "source": "rtti:vtable"
   },
   "4353780": {
-   "name": "OWL::TGadgetWindow::vf19",
-   "priority": 2,
+   "name": "OWL::TGadgetWindow::Paint",
+   "priority": 2.5,
    "cls": "OWL::TGadgetWindow",
    "kind": "virtual",
-   "slot": 19,
-   "source": "rtti:vtable"
+   "slot": 21,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 21, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x00427745); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TGadgetWindow::vf19 [rtti:vtable]"
+   ]
   },
   "4353828": {
    "name": "OWL::TGadgetWindow::EvLButtonDown",
@@ -2320,28 +3673,40 @@
    "source": "rtti:vtable"
   },
   "4354680": {
-   "name": "OWL::TGadgetWindow::vf4",
-   "priority": 2,
+   "name": "OWL::TGadgetWindow::EnableTooltip",
+   "priority": 2.5,
    "cls": "OWL::TGadgetWindow",
    "kind": "virtual",
-   "slot": 4,
-   "source": "rtti:vtable"
+   "slot": 2,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 2, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x004277b7); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TGadgetWindow::vf4 [rtti:vtable]"
+   ]
   },
   "4355112": {
-   "name": "OWL::TGadgetWindow::vf24",
-   "priority": 2,
+   "name": "OWL::TGadgetWindow::EvCommand",
+   "priority": 2.5,
    "cls": "OWL::TGadgetWindow",
    "kind": "virtual",
-   "slot": 24,
-   "source": "rtti:vtable"
+   "slot": 18,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 18, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x0042776b); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TGadgetWindow::vf24 [rtti:vtable]"
+   ]
   },
   "4355316": {
-   "name": "OWL::TGadgetWindow::vf25",
-   "priority": 2,
+   "name": "OWL::TGadgetWindow::EvCommandEnable",
+   "priority": 2.5,
    "cls": "OWL::TGadgetWindow",
    "kind": "virtual",
-   "slot": 25,
-   "source": "rtti:vtable"
+   "slot": 20,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 20, from OWL::TGadgetWindow's OWL::TWindow subobject vtable at 0x0047b408 (through the this-adjusting thunk at 0x00427758); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TGadgetWindow::vf25 [rtti:vtable]"
+   ]
   },
   "4355588": {
    "name": "OWL::TGadgetWindow::TLayoutInfo::~TLayoutInfo",
@@ -2363,6 +3728,14 @@
    "cls": "OWL::TAPointer<OWL::TRect>",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4356516": {
+   "name": "OWL::TXGdi::TXGdi",
+   "priority": 1.5,
+   "cls": "OWL::TXGdi",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXGdi's vtable at its vptr offset (+0x0) in this"
   },
   "4356776": {
    "name": "OWL::TXGdi::vf2",
@@ -2401,6 +3774,13 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4361304": {
+   "name": "InitRichEditStreamer_428c58",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
   "4361660": {
    "name": "OWL::TDeferWinPos::~TDeferWinPos",
    "priority": 5,
@@ -2415,6 +3795,7 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
+    "OWL::TLayoutWindow::Find [rtti:vtable]",
     "OWL::TLayoutWindow::vf3 [rtti:vtable]"
    ]
   },
@@ -2442,12 +3823,32 @@
    "note": "WM_SIZE"
   },
   "4363416": {
-   "name": "OWL::TLayoutWindow::vf2",
-   "priority": 2,
+   "name": "OWL::TLayoutWindow::RemoveChild",
+   "priority": 2.5,
    "cls": "OWL::TLayoutWindow",
    "kind": "virtual",
-   "slot": 2,
-   "source": "rtti:vtable"
+   "slot": 32,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 32, from OWL::TLayoutWindow's OWL::TWindow subobject vtable at 0x0047ba54 (through the this-adjusting thunk at 0x0042a3fb); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TLayoutWindow::vf2 [rtti:vtable]"
+   ]
+  },
+  "4365788": {
+   "name": "OWL::TLayoutWindow::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TLayoutWindow::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TLayoutWindow::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4365892": {
+   "name": "OWL::TLayoutWindow::TLayoutWindow",
+   "priority": 1.5,
+   "cls": "OWL::TLayoutWindow",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TLayoutWindow's vtable at its vptr offset (+0xc) in this"
   },
   "4366160": {
    "name": "OWL::TLayoutWindow::Streamer::vf1",
@@ -2472,6 +3873,13 @@
    "kind": "virtual",
    "slot": 3,
    "source": "rtti:vtable"
+  },
+  "4367575": {
+   "name": "DestroyRichEditLoader_42a4d7",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader"
   },
   "4368968": {
    "name": "OWL::_TLocaleCacheList::~_TLocaleCacheList",
@@ -2501,6 +3909,13 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4372205": {
+   "name": "DestroyRichEditLoader_42b6ed",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader"
+  },
   "4372456": {
    "name": "OWL::TMemDCCache::~TMemDCCache",
    "priority": 5,
@@ -2515,6 +3930,14 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4373276": {
+   "name": "OWL::TMenu::TMenu",
+   "priority": 1.5,
+   "cls": "OWL::TMenu",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TMenu's vtable at its vptr offset (+0x0) in this"
+  },
   "4373368": {
    "name": "OWL::TMemoryDC::vf24",
    "priority": 2,
@@ -2522,6 +3945,30 @@
    "kind": "virtual",
    "slot": 24,
    "source": "rtti:vtable"
+  },
+  "4373396": {
+   "name": "OWL::TMenu::TMenu_42bb94",
+   "priority": 1.5,
+   "cls": "OWL::TMenu",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TMenu's vtable at its vptr offset (+0x0) in this"
+  },
+  "4373508": {
+   "name": "OWL::TMenu::TMenu_42bc04",
+   "priority": 1.5,
+   "cls": "OWL::TMenu",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TMenu's vtable at its vptr offset (+0x0) in this"
+  },
+  "4373584": {
+   "name": "OWL::TMenu::TMenu_42bc50",
+   "priority": 1.5,
+   "cls": "OWL::TMenu",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TMenu's vtable at its vptr offset (+0x0) in this"
   },
   "4373680": {
    "name": "OWL::TMenu::~TMenu",
@@ -2545,6 +3992,22 @@
    "kind": "virtual",
    "slot": 3,
    "source": "rtti:vtable"
+  },
+  "4374364": {
+   "name": "OWL::TPopupMenu::TPopupMenu",
+   "priority": 1.5,
+   "cls": "OWL::TPopupMenu",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TPopupMenu's vtable at its vptr offset (+0x0) in this"
+  },
+  "4374468": {
+   "name": "OWL::TXMenu::TXMenu",
+   "priority": 1.5,
+   "cls": "OWL::TXMenu",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXMenu's vtable at its vptr offset (+0x0) in this"
   },
   "4374568": {
    "name": "OWL::TXMenu::vf2",
@@ -2630,6 +4093,14 @@
    "cls": "OWL::TSystemMessage",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4376672": {
+   "name": "OWL::TMsgThread::TMsgThread",
+   "priority": 1.5,
+   "cls": "OWL::TMsgThread",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TMsgThread's vtable at its vptr offset (+0x0) in this"
   },
   "4376728": {
    "name": "OWL::TMsgThread::vf0",
@@ -2729,21 +4200,31 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4387596": {
+   "name": "OWL::TPickListPopup::TPickListPopup",
+   "priority": 1.5,
+   "cls": "OWL::TPickListPopup",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TPickListPopup's vtable at its vptr offset (+0x8) in this"
+  },
   "4387996": {
-   "name": "OWL::TPickListPopup::vf7",
+   "name": "OWL::TPickListPopup::Execute",
    "priority": 2,
    "cls": "OWL::TPickListPopup",
    "kind": "virtual",
    "slot": 7,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 7 (introduced by OWL::TWindow); slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4388124": {
-   "name": "OWL::TPickListPopup::vf18",
+   "name": "OWL::TPickListPopup::EvCommand",
    "priority": 2,
    "cls": "OWL::TPickListPopup",
    "kind": "virtual",
    "slot": 18,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 18 (introduced by OWL::TWindow); slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4388268": {
    "name": "OWL::TPickListPopup::~TPickListPopup",
@@ -2812,6 +4293,29 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4389580": {
+   "name": "InitRichEditStreamer_42facc",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
+  "4389716": {
+   "name": "OWL::TWindow::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TWindow::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TWindow::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4389820": {
+   "name": "OWL::TWindow::TWindow",
+   "priority": 1.5,
+   "cls": "OWL::TWindow",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TWindow's vtable at its vptr offset (+0x8) in this"
+  },
   "4390132": {
    "name": "OWL::TWindow::Streamer::vf1",
    "priority": 2,
@@ -2836,6 +4340,14 @@
    "slot": 3,
    "source": "rtti:vtable"
   },
+  "4393172": {
+   "name": "OWL::TTooltipEnabler::TTooltipEnabler",
+   "priority": 1.5,
+   "cls": "OWL::TTooltipEnabler",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TTooltipEnabler's vtable at its vptr offset (+0x0) in this"
+  },
   "4393260": {
    "name": "OWL::TTooltipEnabler::vf1",
    "priority": 2,
@@ -2852,6 +4364,14 @@
    "slot": 2,
    "source": "rtti:vtable"
   },
+  "4393304": {
+   "name": "OWL::TTooltip::TTooltip",
+   "priority": 1.5,
+   "cls": "OWL::TTooltip",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TTooltip's vtable at its vptr offset (+0xc) in this"
+  },
   "4393664": {
    "name": "OWL::TTooltip::~TTooltip",
    "priority": 5,
@@ -2860,12 +4380,16 @@
    "source": "rtti:dtor"
   },
   "4393876": {
-   "name": "OWL::TTooltip::vf9",
-   "priority": 2,
+   "name": "OWL::TTooltip::GetClassName",
+   "priority": 2.5,
    "cls": "OWL::TTooltip",
    "kind": "virtual",
-   "slot": 9,
-   "source": "rtti:vtable"
+   "slot": 29,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 29, from OWL::TTooltip's OWL::TWindow subobject vtable at 0x0047cf84 (through the this-adjusting thunk at 0x00430bb3); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TTooltip::vf9 [rtti:vtable]"
+   ]
   },
   "4394052": {
    "name": "OWL::TFrameWindow::vf4",
@@ -2904,6 +4428,13 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4403212": {
+   "name": "InitRichEditStreamer_43300c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
   "4403348": {
    "name": "OWL::TUrlLink::Find",
    "priority": 4,
@@ -2911,6 +4442,7 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
+    "OWL::TUrlLink::Find [rtti:vtable]",
     "OWL::TUrlLink::vf8 [rtti:vtable]"
    ]
   },
@@ -2922,52 +4454,76 @@
    "source": "rtti:dtor"
   },
   "4403928": {
-   "name": "OWL::TUrlLink::vf11",
-   "priority": 2,
+   "name": "OWL::TUrlLink::GetClassName",
+   "priority": 2.5,
    "cls": "OWL::TUrlLink",
    "kind": "virtual",
-   "slot": 11,
-   "source": "rtti:vtable"
+   "slot": 29,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 29, from OWL::TUrlLink's OWL::TWindow subobject vtable at 0x0047e094 (through the this-adjusting thunk at 0x0043550a); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TUrlLink::vf11 [rtti:vtable]"
+   ]
   },
   "4403940": {
-   "name": "OWL::TUrlLink::vf15",
-   "priority": 2,
+   "name": "OWL::TUrlLink::SetupWindow",
+   "priority": 2.5,
    "cls": "OWL::TUrlLink",
    "kind": "virtual",
-   "slot": 15,
-   "source": "rtti:vtable"
+   "slot": 30,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 30, from OWL::TUrlLink's OWL::TWindow subobject vtable at 0x0047e094 (through the this-adjusting thunk at 0x004354f7); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TUrlLink::vf15 [rtti:vtable]"
+   ]
   },
   "4404684": {
-   "name": "OWL::TUrlLink::vf13",
-   "priority": 2,
+   "name": "OWL::TUrlLink::EnableTooltip",
+   "priority": 2.5,
    "cls": "OWL::TUrlLink",
    "kind": "virtual",
-   "slot": 13,
-   "source": "rtti:vtable"
+   "slot": 2,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 2, from OWL::TUrlLink's OWL::TWindow subobject vtable at 0x0047e094 (through the this-adjusting thunk at 0x00435569); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TUrlLink::vf13 [rtti:vtable]"
+   ]
   },
   "4405180": {
-   "name": "OWL::TUrlLink::vf14",
-   "priority": 2,
+   "name": "OWL::TUrlLink::PreProcessMsg",
+   "priority": 2.5,
    "cls": "OWL::TUrlLink",
    "kind": "virtual",
-   "slot": 14,
-   "source": "rtti:vtable"
+   "slot": 10,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 10, from OWL::TUrlLink's OWL::TWindow subobject vtable at 0x0047e094 (through the this-adjusting thunk at 0x00435556); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TUrlLink::vf14 [rtti:vtable]"
+   ]
   },
   "4405360": {
-   "name": "OWL::TUrlLink::vf16",
-   "priority": 2,
+   "name": "OWL::TUrlLink::GetWindowClass",
+   "priority": 2.5,
    "cls": "OWL::TUrlLink",
    "kind": "virtual",
-   "slot": 16,
-   "source": "rtti:vtable"
+   "slot": 28,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 28, from OWL::TUrlLink's OWL::TWindow subobject vtable at 0x0047e094 (through the this-adjusting thunk at 0x0043551d); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TUrlLink::vf16 [rtti:vtable]"
+   ]
   },
   "4405476": {
-   "name": "OWL::TUrlLink::vf17",
-   "priority": 2,
+   "name": "OWL::TUrlLink::Paint",
+   "priority": 2.5,
    "cls": "OWL::TUrlLink",
    "kind": "virtual",
-   "slot": 17,
-   "source": "rtti:vtable"
+   "slot": 21,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 21, from OWL::TUrlLink's OWL::TWindow subobject vtable at 0x0047e094 (through the this-adjusting thunk at 0x00435543); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TUrlLink::vf17 [rtti:vtable]"
+   ]
   },
   "4406192": {
    "name": "OWL::TUrlLink::EvPaint",
@@ -3049,6 +4605,22 @@
    "slot": 20,
    "source": "rtti:vtable"
   },
+  "4411252": {
+   "name": "OWL::TUrlLink::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TUrlLink::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TUrlLink::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4411356": {
+   "name": "OWL::TUrlLink::TUrlLink",
+   "priority": 1.5,
+   "cls": "OWL::TUrlLink",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TUrlLink's vtable at its vptr offset (+0xc) in this"
+  },
   "4411716": {
    "name": "OWL::TUrlLink::Streamer::vf1",
    "priority": 2,
@@ -3074,12 +4646,16 @@
    "source": "rtti:vtable"
   },
   "4412632": {
-   "name": "OWL::TUrlLink::vf12",
-   "priority": 2,
+   "name": "OWL::TUrlLink::GetTooltip",
+   "priority": 2.5,
    "cls": "OWL::TUrlLink",
    "kind": "virtual",
-   "slot": 12,
-   "source": "rtti:vtable"
+   "slot": 1,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 1, from OWL::TUrlLink's OWL::TWindow subobject vtable at 0x0047e094 (through the this-adjusting thunk at 0x0043557c); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TUrlLink::vf12 [rtti:vtable]"
+   ]
   },
   "4412876": {
    "name": "OWL::TPointer<OWL::TFont>::~TPointer",
@@ -3095,8 +4671,16 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
-    "OWL::TWindow::vf33 [rtti:vtable]"
+    "OWL::TWindow::Find [rtti:vtable]"
    ]
+  },
+  "4414384": {
+   "name": "OWL::TCommandEnabler::TCommandEnabler",
+   "priority": 1.5,
+   "cls": "OWL::TCommandEnabler",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TCommandEnabler's vtable at its vptr offset (+0x0) in this"
   },
   "4414448": {
    "name": "OWL::TCommandEnabler::vf0",
@@ -3106,6 +4690,22 @@
    "slot": 0,
    "source": "rtti:vtable"
   },
+  "4414504": {
+   "name": "OWL::TWindow::TWindow_435c28",
+   "priority": 1.5,
+   "cls": "OWL::TWindow",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TWindow's vtable at its vptr offset (+0x8) in this"
+  },
+  "4414744": {
+   "name": "OWL::TWindow::TWindow_435d18",
+   "priority": 1.5,
+   "cls": "OWL::TWindow",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TWindow's vtable at its vptr offset (+0x8) in this"
+  },
   "4415348": {
    "name": "OWL::TWindow::~TWindow",
    "priority": 5,
@@ -3114,20 +4714,22 @@
    "source": "rtti:dtor"
   },
   "4415848": {
-   "name": "OWL::TWindow::vf10",
+   "name": "OWL::TWindow::PreProcessMsg",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 10,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 10; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4416008": {
-   "name": "OWL::TWindow::vf11",
+   "name": "OWL::TWindow::IdleAction",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 11,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 11; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4416132": {
    "name": "OWL::TWindow::EvSysColorChange",
@@ -3138,68 +4740,76 @@
    "note": "WM_SYSCOLORCHANGE"
   },
   "4416164": {
-   "name": "OWL::TWindow::vf32",
+   "name": "OWL::TWindow::RemoveChild",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 32,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 32; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4416248": {
-   "name": "OWL::TWindow::vf13",
+   "name": "OWL::TWindow::SetParent",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 13,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 13; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4416388": {
-   "name": "OWL::TWindow::vf14",
+   "name": "OWL::TWindow::SetDocTitle",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 14,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 14; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4417052": {
-   "name": "OWL::TWindow::vf18",
+   "name": "OWL::TWindow::EvCommand",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 18,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 18; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4417228": {
-   "name": "OWL::TWindow::vf19",
+   "name": "OWL::TWindow::EvNotify",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 19,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 19; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4417472": {
-   "name": "OWL::TWindow::vf20",
+   "name": "OWL::TWindow::EvCommandEnable",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 20,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 20; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4417924": {
-   "name": "OWL::TWindow::vf17",
+   "name": "OWL::TWindow::DefWindowProc",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 17,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 17; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4418284": {
-   "name": "OWL::TWindow::vf16",
+   "name": "OWL::TWindow::WindowProc",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 16,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 16; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4419160": {
    "name": "OWL::TWindow::EvCreate",
@@ -3210,12 +4820,13 @@
    "note": "WM_CREATE"
   },
   "4419192": {
-   "name": "OWL::TWindow::vf12",
+   "name": "OWL::TWindow::HoldFocusHWnd",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 12,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 12; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4419200": {
    "name": "OWL::TWindow::EvKillFocus",
@@ -3346,12 +4957,13 @@
    "note": "WM_PAINT"
   },
   "4421540": {
-   "name": "OWL::TWindow::vf21",
+   "name": "OWL::TWindow::Paint",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 21,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 21; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4421548": {
    "name": "OWL::TWindow::EvSetCursor",
@@ -3370,116 +4982,130 @@
    "note": "WM_LBUTTONDOWN"
   },
   "4421780": {
-   "name": "OWL::TWindow::vf6",
+   "name": "OWL::TWindow::Destroy",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 6,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 6; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4421908": {
-   "name": "OWL::TWindow::vf28",
+   "name": "OWL::TWindow::GetWindowClass",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 28,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 28; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4422076": {
-   "name": "OWL::TWindow::vf29",
+   "name": "OWL::TWindow::GetClassName",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 29,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 29; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4422236": {
-   "name": "OWL::TWindow::vf5",
+   "name": "OWL::TWindow::PerformCreate",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 5,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 5; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4422316": {
-   "name": "OWL::TWindow::vf4",
+   "name": "OWL::TWindow::Create",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 4,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 4; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4422684": {
-   "name": "OWL::TWindow::vf7",
+   "name": "OWL::TWindow::Execute",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 7,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 7; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4422700": {
-   "name": "OWL::TWindow::vf8",
+   "name": "OWL::TWindow::DoExecute",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 8,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 8; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4422760": {
-   "name": "OWL::TWindow::vf30",
+   "name": "OWL::TWindow::SetupWindow",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 30,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 30; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4422912": {
-   "name": "OWL::TWindow::vf31",
+   "name": "OWL::TWindow::CleanupWindow",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 31,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 31; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4422920": {
-   "name": "OWL::TWindow::vf22",
+   "name": "OWL::TWindow::Transfer",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 22,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 22; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4422996": {
-   "name": "OWL::TWindow::vf23",
+   "name": "OWL::TWindow::TransferData",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 23,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 23; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4423124": {
-   "name": "OWL::TWindow::vf3",
+   "name": "OWL::TWindow::Register",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 3,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 3; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4423360": {
-   "name": "OWL::TWindow::vf15",
+   "name": "OWL::TWindow::CanClose",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 15,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 15; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4423396": {
-   "name": "OWL::TWindow::vf9",
+   "name": "OWL::TWindow::CloseWindow",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 9,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 9; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4423460": {
    "name": "OWL::TWindow::EvClose",
@@ -3530,12 +5156,13 @@
    "note": "WM_CHILDINVALID"
   },
   "4425652": {
-   "name": "OWL::TWindow::vf25",
+   "name": "OWL::TWindow::ShowWindow",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 25,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 25; slot name identified from OWL::TWindow's own implementation of that slot"
   },
   "4426156": {
    "name": "OWL::TWindow::EvInitMenuPopup",
@@ -3562,12 +5189,29 @@
    "note": "WM_ENTERIDLE"
   },
   "4427156": {
-   "name": "OWL::TWindow::vf2",
+   "name": "OWL::TWindow::EnableTooltip",
    "priority": 2,
    "cls": "OWL::TWindow",
    "kind": "virtual",
    "slot": 2,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 2; slot name identified from OWL::TWindow's own implementation of that slot"
+  },
+  "4427604": {
+   "name": "OWL::TXWindow::TXWindow",
+   "priority": 1.5,
+   "cls": "OWL::TXWindow",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXWindow's vtable at its vptr offset (+0x0) in this"
+  },
+  "4427880": {
+   "name": "OWL::TXWindow::TXWindow_439068",
+   "priority": 1.5,
+   "cls": "OWL::TXWindow",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXWindow's vtable at its vptr offset (+0x0) in this"
   },
   "4427988": {
    "name": "OWL::TXWindow::vf4",
@@ -3810,6 +5454,14 @@
    "slot": 10,
    "source": "rtti:vtable"
   },
+  "4438952": {
+   "name": "OWL::TXInvalidMainWindow::TXInvalidMainWindow",
+   "priority": 1.5,
+   "cls": "OWL::TXInvalidMainWindow",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXInvalidMainWindow's vtable at its vptr offset (+0x0) in this"
+  },
   "4439068": {
    "name": "OWL::TXInvalidMainWindow::vf2",
    "priority": 2,
@@ -3833,6 +5485,13 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4440264": {
+   "name": "DestroyRichEditLoader_43c0c8",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x00468c4c (64 bytes; the code occurs several times, e.g. one template instance per type). static destructor of the TRichEdit DLL loader"
+  },
   "4440588": {
    "name": "OWL::TBrushCache::~TBrushCache",
    "priority": 5,
@@ -3854,8 +5513,17 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
+    "OWL::TButton::Find [rtti:vtable]",
     "OWL::TButton::vf8 [rtti:vtable]"
    ]
+  },
+  "4442220": {
+   "name": "OWL::TButton::TButton",
+   "priority": 1.5,
+   "cls": "OWL::TButton",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TButton's vtable at its vptr offset (+0xc) in this"
   },
   "4442532": {
    "name": "OWL::TButton::~TButton",
@@ -3865,20 +5533,28 @@
    "source": "rtti:dtor"
   },
   "4442784": {
-   "name": "OWL::TButton::vf9",
-   "priority": 2,
+   "name": "OWL::TButton::GetClassName",
+   "priority": 2.5,
    "cls": "OWL::TButton",
    "kind": "virtual",
-   "slot": 9,
-   "source": "rtti:vtable"
+   "slot": 29,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 29, from OWL::TButton's OWL::TWindow subobject vtable at 0x0047f5d8 (through the this-adjusting thunk at 0x0043c826); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TButton::vf9 [rtti:vtable]"
+   ]
   },
   "4442816": {
-   "name": "OWL::TButton::vf10",
-   "priority": 2,
+   "name": "OWL::TButton::SetupWindow",
+   "priority": 2.5,
    "cls": "OWL::TButton",
    "kind": "virtual",
-   "slot": 10,
-   "source": "rtti:vtable"
+   "slot": 30,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 30, from OWL::TButton's OWL::TWindow subobject vtable at 0x0047f5d8 (through the this-adjusting thunk at 0x0043c813); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TButton::vf10 [rtti:vtable]"
+   ]
   },
   "4442868": {
    "name": "OWL::TButton::EvGetDlgCode",
@@ -3895,6 +5571,29 @@
    "kind": "message-handler",
    "source": "owl:response-table",
    "note": "message 0x00f4"
+  },
+  "4443020": {
+   "name": "InitRichEditStreamer_43cb8c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
+  "4443156": {
+   "name": "OWL::TButton::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TButton::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TButton::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4443260": {
+   "name": "OWL::TButton::TButton_43cc7c",
+   "priority": 1.5,
+   "cls": "OWL::TButton",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TButton's vtable at its vptr offset (+0xc) in this"
   },
   "4443544": {
    "name": "EvRegisteredMsg_43cd98_43cd98",
@@ -3923,12 +5622,16 @@
    "source": "rtti:vtable"
   },
   "4444104": {
-   "name": "OWL::TCheckBox::vf8",
-   "priority": 2,
+   "name": "OWL::TCheckBox::Find",
+   "priority": 2.5,
    "cls": "OWL::TCheckBox",
    "kind": "virtual",
-   "slot": 8,
-   "source": "rtti:vtable"
+   "slot": 33,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 33, from OWL::TCheckBox's OWL::TWindow subobject vtable at 0x0047f81c (through the this-adjusting thunk at 0x0043d044); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TCheckBox::vf8 [rtti:vtable]"
+   ]
   },
   "4444176": {
    "name": "EvGetDlgCode_43d010",
@@ -3936,6 +5639,14 @@
    "kind": "message-handler",
    "source": "owl:response-table",
    "note": "WM_GETDLGCODE"
+  },
+  "4444352": {
+   "name": "OWL::TCheckBox::TCheckBox",
+   "priority": 1.5,
+   "cls": "OWL::TCheckBox",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TCheckBox's vtable at its vptr offset (+0xc) in this"
   },
   "4444664": {
    "name": "OWL::TCheckBox::~TCheckBox",
@@ -3945,20 +5656,28 @@
    "source": "rtti:dtor"
   },
   "4444916": {
-   "name": "OWL::TCheckBox::vf9",
-   "priority": 2,
+   "name": "OWL::TCheckBox::GetClassName",
+   "priority": 2.5,
    "cls": "OWL::TCheckBox",
    "kind": "virtual",
-   "slot": 9,
-   "source": "rtti:vtable"
+   "slot": 29,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 29, from OWL::TCheckBox's OWL::TWindow subobject vtable at 0x0047f81c (through the this-adjusting thunk at 0x0043d06a); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TCheckBox::vf9 [rtti:vtable]"
+   ]
   },
   "4444948": {
-   "name": "OWL::TCheckBox::vf11",
-   "priority": 2,
+   "name": "OWL::TCheckBox::Transfer",
+   "priority": 2.5,
    "cls": "OWL::TCheckBox",
    "kind": "virtual",
-   "slot": 11,
-   "source": "rtti:vtable"
+   "slot": 22,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 22, from OWL::TCheckBox's OWL::TWindow subobject vtable at 0x0047f81c (through the this-adjusting thunk at 0x0043d07d); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TCheckBox::vf11 [rtti:vtable]"
+   ]
   },
   "4445072": {
    "name": "BNClicked_43d390",
@@ -3974,8 +5693,25 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
+    "OWL::TControl::Find [rtti:vtable]",
     "OWL::TControl::vf8 [rtti:vtable]"
    ]
+  },
+  "4445188": {
+   "name": "OWL::TControl::TControl",
+   "priority": 1.5,
+   "cls": "OWL::TControl",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TControl's vtable at its vptr offset (+0xc) in this"
+  },
+  "4445608": {
+   "name": "OWL::TControl::TControl_43d5a8",
+   "priority": 1.5,
+   "cls": "OWL::TControl",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TControl's vtable at its vptr offset (+0xc) in this"
   },
   "4445956": {
    "name": "OWL::TControl::~TControl",
@@ -4080,6 +5816,29 @@
    "slot": 7,
    "source": "rtti:vtable"
   },
+  "4446600": {
+   "name": "InitRichEditStreamer_43d988",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
+  "4446736": {
+   "name": "OWL::TControl::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TControl::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TControl::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4446840": {
+   "name": "OWL::TControl::TControl_43da78",
+   "priority": 1.5,
+   "cls": "OWL::TControl",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TControl's vtable at its vptr offset (+0xc) in this"
+  },
   "4447092": {
    "name": "OWL::TControl::Streamer::vf1",
    "priority": 2,
@@ -4111,6 +5870,7 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
+    "OWL::TDecoratedFrame::TFrameWindow_vf18 [rtti:vtable]",
     "OWL::TDecoratedFrame::vf14 [rtti:vtable]"
    ]
   },
@@ -4122,44 +5882,64 @@
    "source": "rtti:dtor"
   },
   "4448476": {
-   "name": "OWL::TDecoratedFrame::vf9",
-   "priority": 2,
+   "name": "OWL::TDecoratedFrame::TFrameWindow_vf16",
+   "priority": 2.5,
    "cls": "OWL::TDecoratedFrame",
    "kind": "virtual",
-   "slot": 9,
-   "source": "rtti:vtable"
+   "slot": 16,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TFrameWindow vtable slot 16 (OWL::TFrameWindow::SetupWindow), from OWL::TDecoratedFrame's OWL::TFrameWindow subobject vtable at 0x0047fdf0 (through the this-adjusting thunk at 0x0043f40e)",
+   "aliases": [
+    "OWL::TDecoratedFrame::vf9 [rtti:vtable]"
+   ]
   },
   "4448612": {
-   "name": "OWL::TDecoratedFrame::vf10",
-   "priority": 2,
+   "name": "OWL::TDecoratedFrame::TFrameWindow_vf17",
+   "priority": 2.5,
+   "cls": "OWL::TDecoratedFrame",
+   "kind": "virtual",
+   "slot": 17,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TFrameWindow vtable slot 17 (OWL::TFrameWindow::CleanupWindow), from OWL::TDecoratedFrame's OWL::TFrameWindow subobject vtable at 0x0047fdf0 (through the this-adjusting thunk at 0x0043f3f9)",
+   "aliases": [
+    "OWL::TDecoratedFrame::vf10 [rtti:vtable]"
+   ]
+  },
+  "4448664": {
+   "name": "OWL::TDecoratedFrame::TFrameWindow_vf7",
+   "priority": 2.5,
+   "cls": "OWL::TDecoratedFrame",
+   "kind": "virtual",
+   "slot": 7,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TFrameWindow vtable slot 7 (OWL::TFrameWindow::vf7), from OWL::TDecoratedFrame's OWL::TFrameWindow subobject vtable at 0x0047fdf0 (through the this-adjusting thunk at 0x0043f477)",
+   "aliases": [
+    "OWL::TDecoratedFrame::vf4 [rtti:vtable]"
+   ]
+  },
+  "4449084": {
+   "name": "OWL::TDecoratedFrame::TFrameWindow_vf8",
+   "priority": 2.5,
+   "cls": "OWL::TDecoratedFrame",
+   "kind": "virtual",
+   "slot": 8,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TFrameWindow vtable slot 8 (OWL::TFrameWindow::RemoveChild), from OWL::TDecoratedFrame's OWL::TFrameWindow subobject vtable at 0x0047fdf0 (through the this-adjusting thunk at 0x0043f462)",
+   "aliases": [
+    "OWL::TDecoratedFrame::vf11 [rtti:vtable]"
+   ]
+  },
+  "4449148": {
+   "name": "OWL::TDecoratedFrame::TFrameWindow_vf10",
+   "priority": 2.5,
    "cls": "OWL::TDecoratedFrame",
    "kind": "virtual",
    "slot": 10,
-   "source": "rtti:vtable"
-  },
-  "4448664": {
-   "name": "OWL::TDecoratedFrame::vf4",
-   "priority": 2,
-   "cls": "OWL::TDecoratedFrame",
-   "kind": "virtual",
-   "slot": 4,
-   "source": "rtti:vtable"
-  },
-  "4449084": {
-   "name": "OWL::TDecoratedFrame::vf11",
-   "priority": 2,
-   "cls": "OWL::TDecoratedFrame",
-   "kind": "virtual",
-   "slot": 11,
-   "source": "rtti:vtable"
-  },
-  "4449148": {
-   "name": "OWL::TDecoratedFrame::vf3",
-   "priority": 2,
-   "cls": "OWL::TDecoratedFrame",
-   "kind": "virtual",
-   "slot": 3,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "override of OWL::TFrameWindow vtable slot 10 (OWL::TFrameWindow::PreProcessMsg), from OWL::TDecoratedFrame's OWL::TFrameWindow subobject vtable at 0x0047fdf0 (through the this-adjusting thunk at 0x0043f44d)",
+   "aliases": [
+    "OWL::TDecoratedFrame::vf3 [rtti:vtable]"
+   ]
   },
   "4449260": {
    "name": "OWL::TDecoratedFrame::vf2",
@@ -4194,20 +5974,28 @@
    "note": "WM_ENTERIDLE"
   },
   "4450160": {
-   "name": "OWL::TDecoratedFrame::vf12",
-   "priority": 2,
+   "name": "OWL::TDecoratedFrame::TFrameWindow_vf14",
+   "priority": 2.5,
    "cls": "OWL::TDecoratedFrame",
    "kind": "virtual",
-   "slot": 12,
-   "source": "rtti:vtable"
+   "slot": 14,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TFrameWindow vtable slot 14 (OWL::TFrameWindow::EvCommand), from OWL::TDecoratedFrame's OWL::TFrameWindow subobject vtable at 0x0047fdf0 (through the this-adjusting thunk at 0x0043f438)",
+   "aliases": [
+    "OWL::TDecoratedFrame::vf12 [rtti:vtable]"
+   ]
   },
   "4450536": {
-   "name": "OWL::TDecoratedFrame::vf13",
-   "priority": 2,
+   "name": "OWL::TDecoratedFrame::TFrameWindow_vf15",
+   "priority": 2.5,
    "cls": "OWL::TDecoratedFrame",
    "kind": "virtual",
-   "slot": 13,
-   "source": "rtti:vtable"
+   "slot": 15,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TFrameWindow vtable slot 15 (OWL::TFrameWindow::EvCommandEnable), from OWL::TDecoratedFrame's OWL::TFrameWindow subobject vtable at 0x0047fdf0 (through the this-adjusting thunk at 0x0043f423)",
+   "aliases": [
+    "OWL::TDecoratedFrame::vf13 [rtti:vtable]"
+   ]
   },
   "4452788": {
    "name": "OWL::TDecoratedFrame::vf1",
@@ -4234,20 +6022,28 @@
    "source": "rtti:vtable"
   },
   "4453220": {
-   "name": "OWL::TDecoratedFrame::vf6",
-   "priority": 2,
+   "name": "OWL::TDecoratedFrame::TFrameWindow_vf4",
+   "priority": 2.5,
    "cls": "OWL::TDecoratedFrame",
    "kind": "virtual",
-   "slot": 6,
-   "source": "rtti:vtable"
+   "slot": 4,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TFrameWindow vtable slot 4 (OWL::TFrameWindow::vf4), from OWL::TDecoratedFrame's OWL::TFrameWindow subobject vtable at 0x0047fdf0 (through the this-adjusting thunk at 0x0043f4a1)",
+   "aliases": [
+    "OWL::TDecoratedFrame::vf6 [rtti:vtable]"
+   ]
   },
   "4453284": {
-   "name": "OWL::TDecoratedFrame::vf7",
-   "priority": 2,
+   "name": "OWL::TDecoratedFrame::TFrameWindow_vf5",
+   "priority": 2.5,
    "cls": "OWL::TDecoratedFrame",
    "kind": "virtual",
-   "slot": 7,
-   "source": "rtti:vtable"
+   "slot": 5,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TFrameWindow vtable slot 5 (OWL::TFrameWindow::vf5), from OWL::TDecoratedFrame's OWL::TFrameWindow subobject vtable at 0x0047fdf0 (through the this-adjusting thunk at 0x0043f48c)",
+   "aliases": [
+    "OWL::TDecoratedFrame::vf7 [rtti:vtable]"
+   ]
   },
   "4453369": {
    "name": "Child4453411_Notify4453432_43f3f9",
@@ -4264,12 +6060,24 @@
    "note": "EV_CHILD_NOTIFY(id 4514932, code 4510180)"
   },
   "4453856": {
-   "name": "OWL::TDialog::vf14",
-   "priority": 2,
+   "name": "OWL::TDialog::Find",
+   "priority": 2.5,
    "cls": "OWL::TDialog",
    "kind": "virtual",
-   "slot": 14,
-   "source": "rtti:vtable"
+   "slot": 33,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 33, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f768); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf14 [rtti:vtable]"
+   ]
+  },
+  "4453928": {
+   "name": "OWL::TDialog::TDialog",
+   "priority": 1.5,
+   "cls": "OWL::TDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TDialog's vtable at its vptr offset (+0xc) in this"
   },
   "4454644": {
    "name": "OWL::TDialog::~TDialog",
@@ -4279,28 +6087,40 @@
    "source": "rtti:dtor"
   },
   "4455016": {
-   "name": "OWL::TDialog::vf7",
-   "priority": 2,
+   "name": "OWL::TDialog::PreProcessMsg",
+   "priority": 2.5,
    "cls": "OWL::TDialog",
    "kind": "virtual",
-   "slot": 7,
-   "source": "rtti:vtable"
+   "slot": 10,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 10, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f7c7); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf7 [rtti:vtable]"
+   ]
   },
   "4455164": {
-   "name": "OWL::TDialog::vf12",
-   "priority": 2,
+   "name": "OWL::TDialog::GetClassName",
+   "priority": 2.5,
    "cls": "OWL::TDialog",
    "kind": "virtual",
-   "slot": 12,
-   "source": "rtti:vtable"
+   "slot": 29,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 29, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f78e); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf12 [rtti:vtable]"
+   ]
   },
   "4455196": {
-   "name": "OWL::TDialog::vf13",
-   "priority": 2,
+   "name": "OWL::TDialog::GetWindowClass",
+   "priority": 2.5,
    "cls": "OWL::TDialog",
    "kind": "virtual",
-   "slot": 13,
-   "source": "rtti:vtable"
+   "slot": 28,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 28, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f7a1); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf13 [rtti:vtable]"
+   ]
   },
   "4455364": {
    "name": "EvSetfont_43fbc4",
@@ -4353,36 +6173,52 @@
    "source": "rtti:vtable"
   },
   "4456044": {
-   "name": "OWL::TDialog::vf3",
-   "priority": 2,
-   "cls": "OWL::TDialog",
-   "kind": "virtual",
-   "slot": 3,
-   "source": "rtti:vtable"
-  },
-  "4456164": {
-   "name": "OWL::TDialog::vf4",
-   "priority": 2,
+   "name": "OWL::TDialog::Create",
+   "priority": 2.5,
    "cls": "OWL::TDialog",
    "kind": "virtual",
    "slot": 4,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 4, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f839); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf3 [rtti:vtable]"
+   ]
   },
-  "4456288": {
-   "name": "OWL::TDialog::vf5",
-   "priority": 2,
+  "4456164": {
+   "name": "OWL::TDialog::PerformCreate",
+   "priority": 2.5,
    "cls": "OWL::TDialog",
    "kind": "virtual",
    "slot": 5,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 5, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f826); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf4 [rtti:vtable]"
+   ]
   },
-  "4456384": {
-   "name": "OWL::TDialog::vf6",
-   "priority": 2,
+  "4456288": {
+   "name": "OWL::TDialog::Execute",
+   "priority": 2.5,
    "cls": "OWL::TDialog",
    "kind": "virtual",
-   "slot": 6,
-   "source": "rtti:vtable"
+   "slot": 7,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 7, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f800); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf5 [rtti:vtable]"
+   ]
+  },
+  "4456384": {
+   "name": "OWL::TDialog::DoExecute",
+   "priority": 2.5,
+   "cls": "OWL::TDialog",
+   "kind": "virtual",
+   "slot": 8,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 8, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f7ed); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf6 [rtti:vtable]"
+   ]
   },
   "4456840": {
    "name": "OWL::TDialog::vf2",
@@ -4393,28 +6229,40 @@
    "source": "rtti:vtable"
   },
   "4456888": {
-   "name": "OWL::TDialog::vf11",
-   "priority": 2,
+   "name": "OWL::TDialog::SetupWindow",
+   "priority": 2.5,
    "cls": "OWL::TDialog",
    "kind": "virtual",
-   "slot": 11,
-   "source": "rtti:vtable"
+   "slot": 30,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 30, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f77b); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf11 [rtti:vtable]"
+   ]
   },
   "4456956": {
-   "name": "OWL::TDialog::vf8",
-   "priority": 2,
-   "cls": "OWL::TDialog",
-   "kind": "virtual",
-   "slot": 8,
-   "source": "rtti:vtable"
-  },
-  "4457044": {
-   "name": "OWL::TDialog::vf9",
-   "priority": 2,
+   "name": "OWL::TDialog::CloseWindow",
+   "priority": 2.5,
    "cls": "OWL::TDialog",
    "kind": "virtual",
    "slot": 9,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 9, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f7da); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf8 [rtti:vtable]"
+   ]
+  },
+  "4457044": {
+   "name": "OWL::TDialog::Destroy",
+   "priority": 2.5,
+   "cls": "OWL::TDialog",
+   "kind": "virtual",
+   "slot": 6,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 6, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f813); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf9 [rtti:vtable]"
+   ]
   },
   "4457184": {
    "name": "Cmd1_4402e0",
@@ -4436,6 +6284,14 @@
    "kind": "message-handler",
    "source": "owl:response-table",
    "note": "WM_CLOSE"
+  },
+  "4457368": {
+   "name": "OWL::TControlEnabler::TControlEnabler",
+   "priority": 1.5,
+   "cls": "OWL::TControlEnabler",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TControlEnabler's vtable at its vptr offset (+0x0) in this"
   },
   "4457428": {
    "name": "OWL::TControlEnabler::vf0",
@@ -4462,12 +6318,16 @@
    "source": "rtti:vtable"
   },
   "4457756": {
-   "name": "OWL::TDialog::vf10",
-   "priority": 2,
+   "name": "OWL::TDialog::IdleAction",
+   "priority": 2.5,
    "cls": "OWL::TDialog",
    "kind": "virtual",
-   "slot": 10,
-   "source": "rtti:vtable"
+   "slot": 11,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 11, from OWL::TDialog's OWL::TWindow subobject vtable at 0x0047ffbc (through the this-adjusting thunk at 0x0043f7b4); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TDialog::vf10 [rtti:vtable]"
+   ]
   },
   "4458252": {
    "name": "OWL::TDib::~TDib",
@@ -4506,6 +6366,14 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4461480": {
+   "name": "OWL::TDvFileOpenDialog::TDvFileOpenDialog",
+   "priority": 1.5,
+   "cls": "OWL::TDvFileOpenDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TDvFileOpenDialog's vtable at its vptr offset (+0xc) in this"
+  },
   "4461868": {
    "name": "OWL::TDvFileOpenDialog::vf1",
    "priority": 2,
@@ -4513,6 +6381,14 @@
    "kind": "virtual",
    "slot": 1,
    "source": "rtti:vtable"
+  },
+  "4461952": {
+   "name": "OWL::TDvFileSaveDialog::TDvFileSaveDialog",
+   "priority": 1.5,
+   "cls": "OWL::TDvFileSaveDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TDvFileSaveDialog's vtable at its vptr offset (+0xc) in this"
   },
   "4462340": {
    "name": "OWL::TDvFileSaveDialog::vf1",
@@ -5124,6 +7000,7 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
+    "OWL::TEdit::Find [rtti:vtable]",
     "OWL::TEdit::vf8 [rtti:vtable]"
    ]
   },
@@ -5174,6 +7051,14 @@
    "kind": "message-handler",
    "source": "owl:response-table",
    "note": "EV_COMMAND(24321)"
+  },
+  "4478592": {
+   "name": "OWL::TEdit::TEdit",
+   "priority": 1.5,
+   "cls": "OWL::TEdit",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TEdit's vtable at its vptr offset (+0xc) in this"
   },
   "4478904": {
    "name": "OWL::TEdit::~TEdit",
@@ -5255,12 +7140,16 @@
    "source": "rtti:vtable"
   },
   "4480616": {
-   "name": "OWL::TEdit::vf21",
-   "priority": 2,
+   "name": "OWL::TEdit::CanClose",
+   "priority": 2.5,
    "cls": "OWL::TEdit",
    "kind": "virtual",
-   "slot": 21,
-   "source": "rtti:vtable"
+   "slot": 15,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 15, from OWL::TEdit's OWL::TWindow subobject vtable at 0x00481458 (through the this-adjusting thunk at 0x00446788); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TEdit::vf21 [rtti:vtable]"
+   ]
   },
   "4480704": {
    "name": "OWL::TEdit::CeShared_445ec0",
@@ -5307,36 +7196,72 @@
    "source": "rtti:vtable"
   },
   "4481980": {
-   "name": "OWL::TEdit::vf12",
+   "name": "OWL::TEdit::GetSubText",
    "priority": 2,
    "cls": "OWL::TEdit",
    "kind": "virtual",
    "slot": 12,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "vtable slot 12; text between two positions (EM_LINEINDEX / EM_LINEFROMCHAR per line)"
   },
   "4482336": {
-   "name": "OWL::TEdit::vf11",
-   "priority": 2,
+   "name": "OWL::TEdit::GetClassName",
+   "priority": 2.5,
    "cls": "OWL::TEdit",
    "kind": "virtual",
-   "slot": 11,
-   "source": "rtti:vtable"
+   "slot": 29,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 29, from OWL::TEdit's OWL::TWindow subobject vtable at 0x00481458 (through the this-adjusting thunk at 0x00446762); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TEdit::vf11 [rtti:vtable]"
+   ]
   },
   "4482348": {
-   "name": "OWL::TEdit::vf20",
-   "priority": 2,
+   "name": "OWL::TEdit::SetupWindow",
+   "priority": 2.5,
    "cls": "OWL::TEdit",
    "kind": "virtual",
-   "slot": 20,
-   "source": "rtti:vtable"
+   "slot": 30,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 30, from OWL::TEdit's OWL::TWindow subobject vtable at 0x00481458 (through the this-adjusting thunk at 0x0044674f); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TEdit::vf20 [rtti:vtable]"
+   ]
   },
   "4482656": {
-   "name": "OWL::TEdit::vf10",
-   "priority": 2,
+   "name": "OWL::TEdit::Transfer",
+   "priority": 2.5,
    "cls": "OWL::TEdit",
    "kind": "virtual",
-   "slot": 10,
-   "source": "rtti:vtable"
+   "slot": 22,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 22, from OWL::TEdit's OWL::TWindow subobject vtable at 0x00481458 (through the this-adjusting thunk at 0x00446775); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TEdit::vf10 [rtti:vtable]"
+   ]
+  },
+  "4483020": {
+   "name": "InitRichEditStreamer_4467cc",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
+  "4483156": {
+   "name": "OWL::TEdit::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TEdit::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TEdit::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4483260": {
+   "name": "OWL::TEdit::TEdit_4468bc",
+   "priority": 1.5,
+   "cls": "OWL::TEdit",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TEdit's vtable at its vptr offset (+0xc) in this"
   },
   "4483544": {
    "name": "EvRegisteredMsg_4469d8_4469d8",
@@ -5365,12 +7290,16 @@
    "source": "rtti:vtable"
   },
   "4483916": {
-   "name": "OWL::TEditFile::vf8",
-   "priority": 2,
+   "name": "OWL::TEditFile::Find",
+   "priority": 2.5,
    "cls": "OWL::TEditFile",
    "kind": "virtual",
-   "slot": 8,
-   "source": "rtti:vtable"
+   "slot": 33,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 33, from OWL::TEditFile's OWL::TWindow subobject vtable at 0x00478428 (through the this-adjusting thunk at 0x0041b324); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TEditFile::vf8 [rtti:vtable]"
+   ]
   },
   "4483988": {
    "name": "Cmd24333_446b94",
@@ -5394,12 +7323,16 @@
    "source": "rtti:dtor"
   },
   "4484336": {
-   "name": "OWL::TEditFile::vf20",
-   "priority": 2,
+   "name": "OWL::TEditFile::SetupWindow",
+   "priority": 2.5,
    "cls": "OWL::TEditFile",
    "kind": "virtual",
-   "slot": 20,
-   "source": "rtti:vtable"
+   "slot": 30,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 30, from OWL::TEditFile's OWL::TWindow subobject vtable at 0x00478428 (through the this-adjusting thunk at 0x0041b337); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TEditFile::vf20 [rtti:vtable]"
+   ]
   },
   "4485688": {
    "name": "OWL::TEditFile::vf23",
@@ -5473,12 +7406,39 @@
    "source": "rtti:vtable"
   },
   "4490248": {
-   "name": "OWL::TEditFile::vf21",
-   "priority": 2,
+   "name": "OWL::TEditFile::CanClose",
+   "priority": 2.5,
    "cls": "OWL::TEditFile",
    "kind": "virtual",
-   "slot": 21,
-   "source": "rtti:vtable"
+   "slot": 15,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 15, from OWL::TEditFile's OWL::TWindow subobject vtable at 0x00478428 (through the this-adjusting thunk at 0x0041b370); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TEditFile::vf21 [rtti:vtable]"
+   ]
+  },
+  "4490264": {
+   "name": "InitRichEditStreamer_448418",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
+  "4490400": {
+   "name": "OWL::TEditFile::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TEditFile::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TEditFile::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4490504": {
+   "name": "OWL::TEditFile::TEditFile",
+   "priority": 1.5,
+   "cls": "OWL::TEditFile",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TEditFile's vtable at its vptr offset (+0xc) in this"
   },
   "4490820": {
    "name": "OWL::TEditFile::Streamer::vf1",
@@ -5511,6 +7471,7 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
+    "OWL::TEditSearch::Find [rtti:vtable]",
     "OWL::TEditSearch::vf8 [rtti:vtable]"
    ]
   },
@@ -5522,12 +7483,16 @@
    "source": "rtti:dtor"
   },
   "4491900": {
-   "name": "OWL::TEditSearch::vf20",
-   "priority": 2,
+   "name": "OWL::TEditSearch::SetupWindow",
+   "priority": 2.5,
    "cls": "OWL::TEditSearch",
    "kind": "virtual",
-   "slot": 20,
-   "source": "rtti:vtable"
+   "slot": 30,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 30, from OWL::TEditSearch's OWL::TWindow subobject vtable at 0x004782fc (through the this-adjusting thunk at 0x0041b2a7); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TEditSearch::vf20 [rtti:vtable]"
+   ]
   },
   "4492692": {
    "name": "OWL::TEditSearch::Cmd24351",
@@ -5601,6 +7566,29 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4494220": {
+   "name": "InitRichEditStreamer_44938c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
+  "4494356": {
+   "name": "OWL::TEditSearch::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TEditSearch::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TEditSearch::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4494460": {
+   "name": "OWL::TEditSearch::TEditSearch",
+   "priority": 1.5,
+   "cls": "OWL::TEditSearch",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TEditSearch's vtable at its vptr offset (+0xc) in this"
+  },
   "4494764": {
    "name": "OWL::TEditSearch::Streamer::vf1",
    "priority": 2,
@@ -5624,6 +7612,14 @@
    "kind": "virtual",
    "slot": 3,
    "source": "rtti:vtable"
+  },
+  "4495528": {
+   "name": "OWL::TXBadFormat::TXBadFormat",
+   "priority": 1.5,
+   "cls": "OWL::TXBadFormat",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXBadFormat's vtable at its vptr offset (+0x0) in this"
   },
   "4495604": {
    "name": "vshared_4498f4",
@@ -5654,6 +7650,22 @@
    "kind": "virtual",
    "slot": 3,
    "source": "rtti:vtable"
+  },
+  "4496120": {
+   "name": "OWL::TXBadFormat::TXBadFormat_449af8",
+   "priority": 1.5,
+   "cls": "OWL::TXBadFormat",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXBadFormat's vtable at its vptr offset (+0x0) in this"
+  },
+  "4496296": {
+   "name": "OWL::TDiskFileHandle::TDiskFileHandle",
+   "priority": 1.5,
+   "cls": "OWL::TDiskFileHandle",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TDiskFileHandle's vtable at its vptr offset (+0x0) in this"
   },
   "4496656": {
    "name": "OWL::TDiskFileHandle::~TDiskFileHandle",
@@ -5692,6 +7704,14 @@
    "cls": "OWL::TFileHandle",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4497208": {
+   "name": "OWL::TDiskFileHandle::TDiskFileHandle_449f38",
+   "priority": 1.5,
+   "cls": "OWL::TDiskFileHandle",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TDiskFileHandle's vtable at its vptr offset (+0x0) in this"
   },
   "4497316": {
    "name": "OWL::TDiskFileHandle::vf5",
@@ -6005,6 +8025,14 @@
     "OWL::TFindReplaceDialog::vf14 [rtti:vtable]"
    ]
   },
+  "4505768": {
+   "name": "OWL::TFindReplaceDialog::TFindReplaceDialog",
+   "priority": 1.5,
+   "cls": "OWL::TFindReplaceDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TFindReplaceDialog's vtable at its vptr offset (+0xc) in this"
+  },
   "4506088": {
    "name": "OWL::TFindReplaceDialog::vf4",
    "priority": 2,
@@ -6029,6 +8057,14 @@
    "source": "owl:response-table",
    "note": "WM_NCDESTROY"
   },
+  "4506184": {
+   "name": "OWL::TFindDialog::TFindDialog",
+   "priority": 1.5,
+   "cls": "OWL::TFindDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TFindDialog's vtable at its vptr offset (+0xc) in this"
+  },
   "4506472": {
    "name": "OWL::TFindDialog::vf4",
    "priority": 2,
@@ -6036,6 +8072,14 @@
    "kind": "virtual",
    "slot": 4,
    "source": "rtti:vtable"
+  },
+  "4506508": {
+   "name": "OWL::TReplaceDialog::TReplaceDialog",
+   "priority": 1.5,
+   "cls": "OWL::TReplaceDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TReplaceDialog's vtable at its vptr offset (+0xc) in this"
   },
   "4506796": {
    "name": "OWL::TReplaceDialog::vf4",
@@ -6052,6 +8096,7 @@
    "kind": "response-table-find",
    "source": "owl:response-table",
    "aliases": [
+    "OWL::TFrameWindow::Find [rtti:vtable]",
     "OWL::TFrameWindow::vf18 [rtti:vtable]"
    ]
   },
@@ -6079,6 +8124,14 @@
    "slot": 2,
    "source": "rtti:vtable"
   },
+  "4508468": {
+   "name": "OWL::TFrameWindow::TFrameWindow",
+   "priority": 1.5,
+   "cls": "OWL::TFrameWindow",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TFrameWindow's vtable at its vptr offset (+0xc) in this"
+  },
   "4509052": {
    "name": "OWL::TFrameWindow::~TFrameWindow",
    "priority": 5,
@@ -6101,6 +8154,7 @@
    "source": "owl:response-table",
    "note": "EV_CHILD_NOTIFY(id 4509768, code 4453474)",
    "aliases": [
+    "OWL::TFrameWindow::IdleAction [rtti:vtable]",
     "OWL::TFrameWindow::vf11 [rtti:vtable]"
    ]
   },
@@ -6113,28 +8167,40 @@
    "source": "rtti:vtable"
   },
   "4509900": {
-   "name": "OWL::TFrameWindow::vf14",
-   "priority": 2,
+   "name": "OWL::TFrameWindow::EvCommand",
+   "priority": 2.5,
    "cls": "OWL::TFrameWindow",
    "kind": "virtual",
-   "slot": 14,
-   "source": "rtti:vtable"
+   "slot": 18,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 18, from OWL::TFrameWindow's OWL::TWindow subobject vtable at 0x00482b10 (through the this-adjusting thunk at 0x0044e397); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TFrameWindow::vf14 [rtti:vtable]"
+   ]
   },
   "4510012": {
-   "name": "OWL::TFrameWindow::vf15",
-   "priority": 2,
+   "name": "OWL::TFrameWindow::EvCommandEnable",
+   "priority": 2.5,
    "cls": "OWL::TFrameWindow",
    "kind": "virtual",
-   "slot": 15,
-   "source": "rtti:vtable"
+   "slot": 20,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 20, from OWL::TFrameWindow's OWL::TWindow subobject vtable at 0x00482b10 (through the this-adjusting thunk at 0x0044e384); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TFrameWindow::vf15 [rtti:vtable]"
+   ]
   },
   "4510044": {
-   "name": "OWL::TFrameWindow::vf10",
-   "priority": 2,
+   "name": "OWL::TFrameWindow::PreProcessMsg",
+   "priority": 2.5,
    "cls": "OWL::TFrameWindow",
    "kind": "virtual",
    "slot": 10,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 10, from OWL::TFrameWindow's OWL::TWindow subobject vtable at 0x00482b10 (through the this-adjusting thunk at 0x0044e3e3); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TFrameWindow::vf10 [rtti:vtable]"
+   ]
   },
   "4510180": {
    "name": "OWL::TFrameWindow::vf2",
@@ -6169,20 +8235,28 @@
    "source": "rtti:vtable"
   },
   "4511024": {
-   "name": "OWL::TFrameWindow::vf8",
-   "priority": 2,
+   "name": "OWL::TFrameWindow::RemoveChild",
+   "priority": 2.5,
    "cls": "OWL::TFrameWindow",
    "kind": "virtual",
-   "slot": 8,
-   "source": "rtti:vtable"
+   "slot": 32,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 32, from OWL::TFrameWindow's OWL::TWindow subobject vtable at 0x00482b10 (through the this-adjusting thunk at 0x0044e34b); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TFrameWindow::vf8 [rtti:vtable]"
+   ]
   },
   "4511080": {
-   "name": "OWL::TFrameWindow::vf13",
-   "priority": 2,
+   "name": "OWL::TFrameWindow::SetDocTitle",
+   "priority": 2.5,
    "cls": "OWL::TFrameWindow",
    "kind": "virtual",
-   "slot": 13,
-   "source": "rtti:vtable"
+   "slot": 14,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 14, from OWL::TFrameWindow's OWL::TWindow subobject vtable at 0x00482b10 (through the this-adjusting thunk at 0x0044e3aa); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TFrameWindow::vf13 [rtti:vtable]"
+   ]
   },
   "4511540": {
    "name": "OWL::TFrameWindow::EvPaint",
@@ -6209,12 +8283,16 @@
    "note": "WM_QUERYDRAGICON"
   },
   "4512012": {
-   "name": "OWL::TFrameWindow::vf12",
-   "priority": 2,
+   "name": "OWL::TFrameWindow::HoldFocusHWnd",
+   "priority": 2.5,
    "cls": "OWL::TFrameWindow",
    "kind": "virtual",
    "slot": 12,
-   "source": "rtti:vtable"
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 12, from OWL::TFrameWindow's OWL::TWindow subobject vtable at 0x00482b10 (through the this-adjusting thunk at 0x0044e3bd); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TFrameWindow::vf12 [rtti:vtable]"
+   ]
   },
   "4512104": {
    "name": "OWL::TFrameWindow::EvSetFocus",
@@ -6249,20 +8327,28 @@
    "note": "WM_PALETTECHANGED"
   },
   "4513864": {
-   "name": "OWL::TFrameWindow::vf16",
-   "priority": 2,
+   "name": "OWL::TFrameWindow::SetupWindow",
+   "priority": 2.5,
    "cls": "OWL::TFrameWindow",
    "kind": "virtual",
-   "slot": 16,
-   "source": "rtti:vtable"
+   "slot": 30,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 30, from OWL::TFrameWindow's OWL::TWindow subobject vtable at 0x00482b10 (through the this-adjusting thunk at 0x0044e371); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TFrameWindow::vf16 [rtti:vtable]"
+   ]
   },
   "4514288": {
-   "name": "OWL::TFrameWindow::vf17",
-   "priority": 2,
+   "name": "OWL::TFrameWindow::CleanupWindow",
+   "priority": 2.5,
    "cls": "OWL::TFrameWindow",
    "kind": "virtual",
-   "slot": 17,
-   "source": "rtti:vtable"
+   "slot": 31,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 31, from OWL::TFrameWindow's OWL::TWindow subobject vtable at 0x00482b10 (through the this-adjusting thunk at 0x0044e35e); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TFrameWindow::vf17 [rtti:vtable]"
+   ]
   },
   "4514388": {
    "name": "OWL::TFrameWindow::EvSize",
@@ -6295,6 +8381,30 @@
    "slot": 1,
    "source": "rtti:vtable"
   },
+  "4517052": {
+   "name": "OWL::TModule::TModule",
+   "priority": 1.5,
+   "cls": "OWL::TModule",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TModule's vtable at its vptr offset (+0x0) in this"
+  },
+  "4517260": {
+   "name": "OWL::TModule::TModule_44ed8c",
+   "priority": 1.5,
+   "cls": "OWL::TModule",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TModule's vtable at its vptr offset (+0x0) in this"
+  },
+  "4517376": {
+   "name": "OWL::TModule::TModule_44ee00",
+   "priority": 1.5,
+   "cls": "OWL::TModule",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TModule's vtable at its vptr offset (+0x0) in this"
+  },
   "4517516": {
    "name": "OWL::TModule::~TModule",
    "priority": 5,
@@ -6309,6 +8419,14 @@
    "kind": "virtual",
    "slot": 1,
    "source": "rtti:vtable"
+  },
+  "4522888": {
+   "name": "OWL::TXInvalidModule::TXInvalidModule",
+   "priority": 1.5,
+   "cls": "OWL::TXInvalidModule",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TXInvalidModule's vtable at its vptr offset (+0x0) in this"
   },
   "4523156": {
    "name": "OWL::TXInvalidModule::vf2",
@@ -6332,6 +8450,29 @@
    "cls": "OWL::TXInvalidModule",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4524116": {
+   "name": "InitRichEditStreamer_450854",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
+  "4524252": {
+   "name": "OWL::TModule::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TModule::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TModule::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4524356": {
+   "name": "OWL::TModule::TModule_450944",
+   "priority": 1.5,
+   "cls": "OWL::TModule",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TModule's vtable at its vptr offset (+0x0) in this"
   },
   "4524528": {
    "name": "OWL::TModule::Streamer::vf1",
@@ -6372,6 +8513,14 @@
    "slot": 14,
    "source": "rtti:vtable"
   },
+  "4525716": {
+   "name": "OWL::TOpenSaveDialog::TOpenSaveDialog",
+   "priority": 1.5,
+   "cls": "OWL::TOpenSaveDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TOpenSaveDialog's vtable at its vptr offset (+0xc) in this"
+  },
   "4526064": {
    "name": "OWL::TOpenSaveDialog::vf1",
    "priority": 2,
@@ -6388,6 +8537,14 @@
    "slot": 15,
    "source": "rtti:vtable"
   },
+  "4526140": {
+   "name": "OWL::TFileOpenDialog::TFileOpenDialog",
+   "priority": 1.5,
+   "cls": "OWL::TFileOpenDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TFileOpenDialog's vtable at its vptr offset (+0xc) in this"
+  },
   "4526488": {
    "name": "OWL::TFileOpenDialog::vf6",
    "priority": 2,
@@ -6395,6 +8552,14 @@
    "kind": "virtual",
    "slot": 6,
    "source": "rtti:vtable"
+  },
+  "4526580": {
+   "name": "OWL::TFileSaveDialog::TFileSaveDialog",
+   "priority": 1.5,
+   "cls": "OWL::TFileSaveDialog",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TFileSaveDialog's vtable at its vptr offset (+0xc) in this"
   },
   "4526928": {
    "name": "OWL::TFileSaveDialog::vf6",
@@ -6413,6 +8578,14 @@
    "aliases": [
     "OWL::TScrollBar::vf8 [rtti:vtable]"
    ]
+  },
+  "4527984": {
+   "name": "OWL::TScrollBar::TScrollBar",
+   "priority": 1.5,
+   "cls": "OWL::TScrollBar",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TScrollBar's vtable at its vptr offset (+0xc) in this"
   },
   "4528292": {
    "name": "OWL::TScrollBar::vf16",
@@ -6757,6 +8930,29 @@
    "slot": 21,
    "source": "rtti:vtable"
   },
+  "4532300": {
+   "name": "InitRichEditStreamer_45284c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
+  "4532436": {
+   "name": "OWL::TScroller::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TScroller::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TScroller::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4532540": {
+   "name": "OWL::TScroller::TScroller",
+   "priority": 1.5,
+   "cls": "OWL::TScroller",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TScroller's vtable at its vptr offset (+0x0) in this"
+  },
   "4532712": {
    "name": "OWL::TScroller::Streamer::vf1",
    "priority": 2,
@@ -6791,6 +8987,14 @@
     "OWL::TStatic::vf8 [rtti:vtable]"
    ]
   },
+  "4533708": {
+   "name": "OWL::TStatic::TStatic",
+   "priority": 1.5,
+   "cls": "OWL::TStatic",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TStatic's vtable at its vptr offset (+0xc) in this"
+  },
   "4534016": {
    "name": "OWL::TStatic::EvSize",
    "priority": 3,
@@ -6808,12 +9012,16 @@
    "source": "rtti:vtable"
   },
   "4534088": {
-   "name": "OWL::TStatic::vf10",
-   "priority": 2,
-   "cls": "OWL::TStatic",
+   "name": "OWL::TUrlLink::Transfer",
+   "priority": 2.5,
+   "cls": "OWL::TUrlLink",
    "kind": "virtual",
-   "slot": 10,
-   "source": "rtti:vtable"
+   "slot": 22,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 22, from OWL::TUrlLink's OWL::TWindow subobject vtable at 0x0047e094 (through the this-adjusting thunk at 0x00435530); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TStatic::vf10 [rtti:vtable]"
+   ]
   },
   "4534144": {
    "name": "OWL::TStatic::vf9",
@@ -6822,6 +9030,29 @@
    "kind": "virtual",
    "slot": 9,
    "source": "rtti:vtable"
+  },
+  "4534276": {
+   "name": "InitRichEditStreamer_453004",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
+  "4534412": {
+   "name": "OWL::TStatic::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TStatic::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TStatic::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4534516": {
+   "name": "OWL::TStatic::TStatic_4530f4",
+   "priority": 1.5,
+   "cls": "OWL::TStatic",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TStatic's vtable at its vptr offset (+0xc) in this"
   },
   "4534800": {
    "name": "EvRegisteredMsg_453210_453210",
@@ -6850,12 +9081,16 @@
    "source": "rtti:vtable"
   },
   "4535176": {
-   "name": "OWL::TTinyCaption::vf2",
-   "priority": 2,
+   "name": "OWL::TTinyCaption::Find",
+   "priority": 2.5,
    "cls": "OWL::TTinyCaption",
    "kind": "virtual",
-   "slot": 2,
-   "source": "rtti:vtable"
+   "slot": 33,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 33, from OWL::TTinyCaption's OWL::TWindow subobject vtable at 0x00483fec (through the this-adjusting thunk at 0x004550ec); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TTinyCaption::vf2 [rtti:vtable]"
+   ]
   },
   "4535244": {
    "name": "OWL::TTinyCaption::~TTinyCaption",
@@ -6914,12 +9149,16 @@
    "note": "WM_NCACTIVATE"
   },
   "4538140": {
-   "name": "OWL::TTinyCaption::vf1",
-   "priority": 2,
+   "name": "OWL::TTinyCaption::EvCommand",
+   "priority": 2.5,
    "cls": "OWL::TTinyCaption",
    "kind": "virtual",
-   "slot": 1,
-   "source": "rtti:vtable"
+   "slot": 18,
+   "source": "rtti:vtable",
+   "note": "override of OWL::TWindow vtable slot 18, from OWL::TTinyCaption's OWL::TWindow subobject vtable at 0x00483fec (through the this-adjusting thunk at 0x004550ff); slot name identified from OWL::TWindow's own implementation of that slot",
+   "aliases": [
+    "OWL::TTinyCaption::vf1 [rtti:vtable]"
+   ]
   },
   "4538280": {
    "name": "EvSysCommand_453fa8",
@@ -6974,6 +9213,29 @@
    "kind": "virtual",
    "slot": 5,
    "source": "rtti:vtable"
+  },
+  "4542952": {
+   "name": "InitRichEditStreamer_4551e8",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe, duplicated code)",
+   "note": "same masked bytes as TEA.exe 0x0048687b (86 bytes; the code occurs several times, e.g. one template instance per type). static initialiser of the TRichEdit streamable class registration"
+  },
+  "4543088": {
+   "name": "OWL::TValidator::Streamer::Streamer",
+   "priority": 1.5,
+   "cls": "OWL::TValidator::Streamer",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TValidator::Streamer's vtable at its vptr offset (+0x0) in this"
+  },
+  "4543192": {
+   "name": "OWL::TValidator::TValidator",
+   "priority": 1.5,
+   "cls": "OWL::TValidator",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores OWL::TValidator's vtable at its vptr offset (+0x0) in this"
   },
   "4543364": {
    "name": "OWL::TValidator::Streamer::vf1",
@@ -7092,6 +9354,14 @@
    "slot": 3,
    "source": "rtti:vtable"
   },
+  "4547628": {
+   "name": "std::logic_error::logic_error",
+   "priority": 1.5,
+   "cls": "std::logic_error",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::logic_error's vtable at its vptr offset (+0x0) in this"
+  },
   "4548576": {
    "name": "calloc",
    "priority": 10,
@@ -7169,6 +9439,77 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4558612": {
+   "name": "std::allocator::allocator",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+  },
+  "4558976": {
+   "name": "std::string::__getRepOf",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x00416740 (20 bytes; the code occurs several times, e.g. one template instance per type). the rep header of a string (data - 12)"
+  },
+  "4559188": {
+   "name": "std::allocator::allocator_459154",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+  },
+  "4559252": {
+   "name": "std::allocator::allocator_459194",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+  },
+  "4559292": {
+   "name": "std::string::size",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x0041687c (20 bytes; the code occurs several times, e.g. one template instance per type). length of the string (rep->length)"
+  },
+  "4559416": {
+   "name": "std::allocator::allocator_459238",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+  },
+  "4559688": {
+   "name": "std::allocator::allocator_459348",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+  },
+  "4559728": {
+   "name": "std::allocator::allocator_459370",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+  },
+  "4559784": {
+   "name": "std::allocator::allocator_4593a8",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+  },
+  "4560520": {
+   "name": "std::locale::facet::facet",
+   "priority": 1.5,
+   "cls": "std::locale::facet",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::locale::facet's vtable at its vptr offset (+0x0) in this"
+  },
   "4561312": {
    "name": "__rwstd::locale_vector<__rwstd::__rwcat *>::~locale_vector",
    "priority": 5,
@@ -7182,6 +9523,37 @@
    "cls": "__rwstd::locale_vector<__rwstd::facet_imp *>",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4561620": {
+   "name": "std::string::operator_assign",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00416bd0. std::string assignment from another string (shares the rep)"
+  },
+  "4561772": {
+   "name": "std::string::assign_cstr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00416c68. assigns a NUL-terminated string"
+  },
+  "4562148": {
+   "name": "__rwstd::except_msg_string::msgstr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (position-matched TEACON.exe)",
+   "note": "same masked bytes as TEACON.exe 0x00416de0 (8 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. the formatted message text"
+  },
+  "4562156": {
+   "name": "std::logic_error::logic_error_416de8",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00416de8. constructs a std::logic_error from a message string",
+   "aliases": [
+    "std::logic_error::logic_error_459cec [rtti:vtable-store]"
+   ]
   },
   "4562296": {
    "name": "std::string::string_from_cstr",
@@ -7197,6 +9569,53 @@
    "source": "analysis (usage pattern) (matched TEACON.exe)",
    "note": "identical body to TEACON.exe 0x00416ffc. allocates a string representation of the given capacity"
   },
+  "4562988": {
+   "name": "std::bad_alloc::bad_alloc",
+   "priority": 1.5,
+   "cls": "std::bad_alloc",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::bad_alloc's vtable at its vptr offset (+0x0) in this"
+  },
+  "4563440": {
+   "name": "std::string::__rep_data",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (position-matched TEACON.exe)",
+   "note": "same masked bytes as TEACON.exe 0x004172ec (11 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. character data of a rep (rep + 12)"
+  },
+  "4563492": {
+   "name": "std::string::replace",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00417320. replace(pos, n1, const char *s, n2, ...): with n1 = 0 at the end it appends s"
+  },
+  "4564508": {
+   "name": "std::out_of_range::out_of_range",
+   "priority": 1.5,
+   "cls": "std::out_of_range",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::out_of_range's vtable at its vptr offset (+0x0) in this"
+  },
+  "4564580": {
+   "name": "std::length_error::length_error",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (position-matched TEACON.exe)",
+   "note": "same masked bytes as TEACON.exe 0x00417760 (69 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. constructs a std::length_error from a message string",
+   "aliases": [
+    "std::length_error::length_error [rtti:vtable-store]"
+   ]
+  },
+  "4564720": {
+   "name": "std::string::data",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (position-matched TEACON.exe)",
+   "note": "same masked bytes as TEACON.exe 0x004177ec (15 bytes — too short or too common to be unique on its own), confirmed by its position between identical neighbours. pointer to the character data"
+  },
   "4564736": {
    "name": "__rwstd::locale_vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::~locale_vector",
    "priority": 5,
@@ -7211,6 +9630,65 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4565172": {
+   "name": "std::string::__getRepOf_45a8b4",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x00416740 (20 bytes; the code occurs several times, e.g. one template instance per type). the rep header of a string (data - 12)"
+  },
+  "4565388": {
+   "name": "std::allocator::allocator_45a98c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+  },
+  "4565452": {
+   "name": "std::allocator::allocator_45a9cc",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+  },
+  "4565596": {
+   "name": "std::allocator::allocator_45aa5c",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+  },
+  "4565636": {
+   "name": "std::string::size_45aa84",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x0041687c (20 bytes; the code occurs several times, e.g. one template instance per type). length of the string (rep->length)"
+  },
+  "4566064": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::basic_filebuf",
+   "priority": 1.5,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_filebuf<char,std::char_traits<char> >'s vtable at its vptr offset (+0x0) in this"
+  },
+  "4566408": {
+   "name": "std::basic_streambuf<char,std::char_traits<char> >::basic_streambuf",
+   "priority": 1.5,
+   "cls": "std::basic_streambuf<char,std::char_traits<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_streambuf<char,std::char_traits<char> >'s vtable at its vptr offset (+0x0) in this"
+  },
+  "4566652": {
+   "name": "std::basic_filebuf<char,std::char_traits<char> >::basic_filebuf_45ae7c",
+   "priority": 1.5,
+   "cls": "std::basic_filebuf<char,std::char_traits<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_filebuf<char,std::char_traits<char> >'s vtable at its vptr offset (+0x0) in this"
+  },
   "4566928": {
    "name": "std::basic_filebuf<char,std::char_traits<char> >::~basic_filebuf",
    "priority": 5,
@@ -7224,6 +9702,30 @@
    "cls": "std::basic_streambuf<char,std::char_traits<char> >",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4567552": {
+   "name": "std::basic_istream<char,std::char_traits<char> >::basic_istream",
+   "priority": 1.5,
+   "cls": "std::basic_istream<char,std::char_traits<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_istream<char,std::char_traits<char> >'s vtable at its vptr offset (+0x4) in this"
+  },
+  "4567656": {
+   "name": "std::basic_ostream<char,std::char_traits<char> >::basic_ostream",
+   "priority": 1.5,
+   "cls": "std::basic_ostream<char,std::char_traits<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_ostream<char,std::char_traits<char> >'s vtable at its vptr offset (+0x4) in this"
+  },
+  "4567752": {
+   "name": "std::basic_ios<char,std::char_traits<char> >::basic_ios",
+   "priority": 1.5,
+   "cls": "std::basic_ios<char,std::char_traits<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_ios<char,std::char_traits<char> >'s vtable at its vptr offset (+0x0) in this"
   },
   "4569068": {
    "name": "std::basic_ostream<char,std::char_traits<char> >::~basic_ostream",
@@ -7246,12 +9748,36 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4569432": {
+   "name": "std::basic_ifstream<char,std::char_traits<char> >::basic_ifstream",
+   "priority": 1.5,
+   "cls": "std::basic_ifstream<char,std::char_traits<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_ifstream<char,std::char_traits<char> >'s vtable at its vptr offset (+0x4) in this"
+  },
   "4569680": {
    "name": "std::basic_ifstream<char,std::char_traits<char> >::~basic_ifstream",
    "priority": 5,
    "cls": "std::basic_ifstream<char,std::char_traits<char> >",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4569840": {
+   "name": "std::basic_istream<char,std::char_traits<char> >::basic_istream_45baf0",
+   "priority": 1.5,
+   "cls": "std::basic_istream<char,std::char_traits<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_istream<char,std::char_traits<char> >'s vtable at its vptr offset (+0x4) in this"
+  },
+  "4570028": {
+   "name": "std::basic_ostream<char,std::char_traits<char> >::basic_ostream_45bbac",
+   "priority": 1.5,
+   "cls": "std::basic_ostream<char,std::char_traits<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_ostream<char,std::char_traits<char> >'s vtable at its vptr offset (+0x4) in this"
   },
   "4571056": {
    "name": "std::basic_istream<char,std::char_traits<char> >::sentry::~sentry",
@@ -7260,12 +9786,28 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4571184": {
+   "name": "std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::basic_stringbuf",
+   "priority": 1.5,
+   "cls": "std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >'s vtable at its vptr offset (+0x0) in this"
+  },
   "4571316": {
    "name": "std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::~basic_stringbuf",
    "priority": 5,
    "cls": "std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4571456": {
+   "name": "std::basic_ofstream<char,std::char_traits<char> >::basic_ofstream",
+   "priority": 1.5,
+   "cls": "std::basic_ofstream<char,std::char_traits<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_ofstream<char,std::char_traits<char> >'s vtable at its vptr offset (+0x4) in this"
   },
   "4571704": {
    "name": "std::basic_ofstream<char,std::char_traits<char> >::~basic_ofstream",
@@ -7281,6 +9823,14 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4572420": {
+   "name": "std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::basic_ostringstream",
+   "priority": 1.5,
+   "cls": "std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >'s vtable at its vptr offset (+0x4) in this"
+  },
   "4572580": {
    "name": "std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::~basic_ostringstream",
    "priority": 5,
@@ -7288,12 +9838,27 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4572740": {
+   "name": "std::string::string_from_buf",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00418dec. std::string(const char *s, size_type n)"
+  },
   "4573884": {
    "name": "std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::~num_put",
    "priority": 5,
    "cls": "std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4577380": {
+   "name": "std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::num_put",
+   "priority": 1.5,
+   "cls": "std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >'s vtable at its vptr offset (+0x0) in this"
   },
   "4577600": {
    "name": "std::basic_filebuf<char,std::char_traits<char> >::vf9",
@@ -7367,6 +9932,13 @@
    "slot": 7,
    "source": "rtti:vtable"
   },
+  "4582016": {
+   "name": "std::string::compare",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x004d40d0. compare(pos, n, const char *s, n2): <0, 0 or >0"
+  },
   "4582352": {
    "name": "std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::vf9",
    "priority": 2,
@@ -7439,6 +10011,13 @@
    "slot": 11,
    "source": "rtti:vtable"
   },
+  "4585036": {
+   "name": "std::string::__unshare",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041a7fc. gives the string its own copy of a shared rep before it is modified"
+  },
   "4587724": {
    "name": "std::basic_filebuf<char,std::char_traits<char> >::vf2",
    "priority": 2,
@@ -7470,12 +10049,40 @@
    "source": "analysis (usage pattern) (matched TEACON.exe)",
    "note": "identical body to TEACON.exe 0x0041ab68."
   },
+  "4588504": {
+   "name": "std::string::replace_str",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041aca0. replace(pos, n1, const std::string &)"
+  },
+  "4588564": {
+   "name": "std::string::insert",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041acdc. insert(pos, const std::string &)"
+  },
   "4589000": {
    "name": "std::string::replace_fill",
    "priority": 10,
    "kind": "function",
    "source": "analysis (usage pattern) (matched TEACON.exe)",
    "note": "identical body to TEACON.exe 0x0041ae90. replace(pos, n1, n2, ch); with pos=size,n1=0 it appends n2 copies of ch"
+  },
+  "4590240": {
+   "name": "std::string::substr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041b368. result = substr(pos, n)"
+  },
+  "4590524": {
+   "name": "std::string::string_fill",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041b484. std::string(n, c); throws length_error for npos (the character argument is not visible)"
   },
   "4591012": {
    "name": "std::basic_filebuf<char,std::char_traits<char> >::vf3",
@@ -7629,6 +10236,30 @@
    "slot": 1,
    "source": "rtti:vtable"
   },
+  "4599292": {
+   "name": "__rwstd::facet_imp::facet_imp",
+   "priority": 1.5,
+   "cls": "__rwstd::facet_imp",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores __rwstd::facet_imp's vtable at its vptr offset (+0x0) in this"
+  },
+  "4599428": {
+   "name": "std::exception::exception",
+   "priority": 1.5,
+   "cls": "std::exception",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::exception's vtable at its vptr offset (+0x0) in this"
+  },
+  "4599584": {
+   "name": "__rwstd::ref_counted::ref_counted",
+   "priority": 1.5,
+   "cls": "__rwstd::ref_counted",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores __rwstd::ref_counted's vtable at its vptr offset (+0x0) in this"
+  },
   "4600240": {
    "name": "__rwstd::facet_imp::vf2",
    "priority": 2,
@@ -7659,6 +10290,14 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4602156": {
+   "name": "std::ios_base::failure::failure_46392c",
+   "priority": 1.5,
+   "cls": "std::ios_base::failure",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::ios_base::failure's vtable at its vptr offset (+0x0) in this"
+  },
   "4602428": {
    "name": "std::ios_base::failure::~failure",
    "priority": 5,
@@ -7681,12 +10320,28 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4602904": {
+   "name": "std::ios_base::ios_base",
+   "priority": 1.5,
+   "cls": "std::ios_base",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::ios_base's vtable at its vptr offset (+0x0) in this"
+  },
   "4603048": {
    "name": "std::ios_base::~ios_base",
    "priority": 5,
    "cls": "std::ios_base",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4604864": {
+   "name": "std::locale::facet::facet_4643c0",
+   "priority": 1.5,
+   "cls": "std::locale::facet",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores std::locale::facet's vtable at its vptr offset (+0x0) in this"
   },
   "4607748": {
    "name": "__rwstd::__rwcat::~__rwcat",
@@ -7702,12 +10357,27 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4610160": {
+   "name": "std::string::string",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x0040da88 (87 bytes; the code occurs several times, e.g. one template instance per type). default constructor: data = the shared empty rep"
+  },
   "4610248": {
    "name": "__rwstd::ref_counted::~ref_counted",
    "priority": 5,
    "cls": "__rwstd::ref_counted",
    "kind": "destructor",
    "source": "rtti:dtor"
+  },
+  "4610312": {
+   "name": "__rwstd::locale_imp::locale_imp",
+   "priority": 1.5,
+   "cls": "__rwstd::locale_imp",
+   "kind": "constructor",
+   "source": "rtti:vtable-store",
+   "note": "constructor: stores __rwstd::locale_imp's vtable at its vptr offset (+0x0) in this"
   },
   "4610600": {
    "name": "__rwstd::locale_imp::~locale_imp",
@@ -7730,6 +10400,13 @@
    "kind": "virtual",
    "slot": 1,
    "source": "rtti:vtable"
+  },
+  "4616396": {
+   "name": "__rwstd::except_msg_string::format",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041ea4c. formats a library exception message (printf-style) into a buffer; the result is used to build the exception's what() string"
   },
   "4616616": {
    "name": "std::exception::~exception",
@@ -7801,12 +10478,40 @@
    "source": "analysis (usage pattern) (matched TEACON.exe)",
    "note": "identical body to TEACON.exe 0x0041ee4c."
   },
+  "4617936": {
+   "name": "strchr",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041ef2c."
+  },
   "4618144": {
    "name": "strlen",
    "priority": 10,
    "kind": "function",
    "source": "analysis (usage pattern) (matched TEACON.exe)",
    "note": "identical body to TEACON.exe 0x0041ef80."
+  },
+  "4618564": {
+   "name": "strcspn",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041f118."
+  },
+  "4618660": {
+   "name": "strcmp",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041f178."
+  },
+  "4618732": {
+   "name": "strncpy",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041f1c0."
   },
   "4618856": {
    "name": "strrchr",
@@ -7836,6 +10541,13 @@
    "kind": "destructor",
    "source": "rtti:dtor"
   },
+  "4623000": {
+   "name": "access",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0041ffa0. C runtime access(path, mode): 0 when the path exists"
+  },
   "4626812": {
    "name": "fopen",
    "priority": 10,
@@ -7857,12 +10569,82 @@
    "source": "analysis (usage pattern) (matched TEA.exe)",
    "note": "identical body to TEA.exe 0x004e02cc."
   },
+  "4629960": {
+   "name": "sprintf",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00421660."
+  },
+  "4633784": {
+   "name": "isalnum",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x00422548 (22 bytes; the code occurs several times, e.g. one template instance per type). _isctype(c, C1_ALPHA | C1_DIGIT)"
+  },
+  "4633828": {
+   "name": "isalpha",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe, duplicated code)",
+   "note": "same masked bytes as TEACON.exe 0x00422574 (22 bytes; the code occurs several times, e.g. one template instance per type). _isctype(c, C1_ALPHA)"
+  },
+  "4634304": {
+   "name": "_isctype",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00422750. tests a character's classification bits (C1_* mask)"
+  },
+  "4641192": {
+   "name": "tolower",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00424238."
+  },
+  "4641276": {
+   "name": "toupper",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x0042428c."
+  },
+  "4643704": {
+   "name": "atoi",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00424b58."
+  },
+  "4644268": {
+   "name": "__ftol",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEA.exe)",
+   "note": "identical body to TEA.exe 0x004e3c04. converts the FPU top-of-stack to a 32-bit integer (rounded); the floating-point operands of its callers are not visible in the decompiled code"
+  },
   "4653376": {
    "name": "vshared_470140",
    "priority": 1,
    "kind": "shared-virtual-stub",
    "source": "rtti:vtable",
    "note": "in vtables of 10 classes across unrelated hierarchies (OWL::TOpenSaveDialog, DictionaryMaintainer, OWL::TStreamer, OWL::TAppDictImp, …)"
+  },
+  "4659352": {
+   "name": "__raiseException",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x00427e50. builds the Borland exception record (type, object copy, source position) and calls RaiseException"
+  },
+  "4659944": {
+   "name": "_ThrowExceptionLDTC",
+   "priority": 10,
+   "kind": "function",
+   "source": "analysis (matched TEACON.exe)",
+   "note": "identical body to TEACON.exe 0x004280a0. Borland throw: records the exception type descriptor and object in the thread's exception state and raises it"
   }
  },
  "data": {
@@ -7911,6 +10693,11 @@
    "source": "rtti:vtable",
    "cls": "OWL::TEventHandler"
   },
+  "4673496": {
+   "name": "g_writeFailed",
+   "source": "analysis",
+   "note": "set when a write to the dictionary file fails"
+  },
   "4680496": {
    "name": "std::bad_alloc::vftable",
    "source": "rtti:vtable",
@@ -7924,6 +10711,11 @@
   "4681876": {
    "name": "TSDictionaryBuilderProgressBar::vftable",
    "source": "rtti:vtable",
+   "cls": "TSDictionaryBuilderProgressBar"
+  },
+  "4681952": {
+   "name": "TSDictionaryBuilderProgressBar::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
    "cls": "TSDictionaryBuilderProgressBar"
   },
   "4685524": {
@@ -7951,9 +10743,19 @@
    "source": "rtti:vtable",
    "cls": "OWL::TEditSearch"
   },
+  "4686588": {
+   "name": "OWL::TEditSearch::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
+   "cls": "OWL::TEditSearch"
+  },
   "4686736": {
    "name": "OWL::TEditFile::vftable",
    "source": "rtti:vtable",
+   "cls": "OWL::TEditFile"
+  },
+  "4686888": {
+   "name": "OWL::TEditFile::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
    "cls": "OWL::TEditFile"
   },
   "4687036": {
@@ -8031,6 +10833,11 @@
    "source": "rtti:vtable",
    "cls": "OWL::TCommonDialog"
   },
+  "4693580": {
+   "name": "OWL::TCommonDialog::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
+   "cls": "OWL::TCommonDialog"
+  },
   "4693784": {
    "name": "OWL::TFile::vftable",
    "source": "rtti:vtable",
@@ -8039,6 +10846,11 @@
   "4694040": {
    "name": "OWL::TControlBar::vftable",
    "source": "rtti:vtable",
+   "cls": "OWL::TControlBar"
+  },
+  "4694212": {
+   "name": "OWL::TControlBar::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
    "cls": "OWL::TControlBar"
   },
   "4694452": {
@@ -8091,6 +10903,11 @@
    "source": "rtti:vtable",
    "cls": "OWL::TGadgetWindow"
   },
+  "4699144": {
+   "name": "OWL::TGadgetWindow::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
+   "cls": "OWL::TGadgetWindow"
+  },
   "4699544": {
    "name": "OWL::TXGdi::vftable",
    "source": "rtti:vtable",
@@ -8109,6 +10926,11 @@
   "4700708": {
    "name": "OWL::TLayoutWindow::vftable",
    "source": "rtti:vtable",
+   "cls": "OWL::TLayoutWindow"
+  },
+  "4700756": {
+   "name": "OWL::TLayoutWindow::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
    "cls": "OWL::TLayoutWindow"
   },
   "4702352": {
@@ -8134,6 +10956,11 @@
   "4703144": {
    "name": "OWL::TMessageBar::vftable",
    "source": "rtti:vtable",
+   "cls": "OWL::TMessageBar"
+  },
+  "4703320": {
+   "name": "OWL::TMessageBar::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
    "cls": "OWL::TMessageBar"
   },
   "4703600": {
@@ -8171,6 +10998,11 @@
    "source": "rtti:vtable",
    "cls": "OWL::TTooltip"
   },
+  "4706180": {
+   "name": "OWL::TTooltip::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
+   "cls": "OWL::TTooltip"
+  },
   "4706328": {
    "name": "OWL::TTooltipEnabler::vftable",
    "source": "rtti:vtable",
@@ -8189,6 +11021,11 @@
   "4710432": {
    "name": "OWL::TUrlLink::vftable",
    "source": "rtti:vtable",
+   "cls": "OWL::TUrlLink"
+  },
+  "4710548": {
+   "name": "OWL::TUrlLink::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
    "cls": "OWL::TUrlLink"
   },
   "4711104": {
@@ -8246,6 +11083,11 @@
    "source": "rtti:vtable",
    "cls": "OWL::TButton"
   },
+  "4715992": {
+   "name": "OWL::TButton::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
+   "cls": "OWL::TButton"
+  },
   "4716384": {
    "name": "response_table_47f760",
    "source": "owl:response-table"
@@ -8260,6 +11102,11 @@
    "source": "rtti:vtable",
    "cls": "OWL::TCheckBox"
   },
+  "4716572": {
+   "name": "OWL::TCheckBox::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
+   "cls": "OWL::TCheckBox"
+  },
   "4716796": {
    "name": "OWL::TControl::__entries",
    "source": "owl:response-table",
@@ -8268,6 +11115,11 @@
   "4716988": {
    "name": "OWL::TControl::vftable",
    "source": "rtti:vtable",
+   "cls": "OWL::TControl"
+  },
+  "4717056": {
+   "name": "OWL::TControl::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
    "cls": "OWL::TControl"
   },
   "4717440": {
@@ -8285,6 +11137,16 @@
    "source": "rtti:vtable",
    "cls": "OWL::TDecoratedFrame"
   },
+  "4717920": {
+   "name": "OWL::TDecoratedFrame::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
+   "cls": "OWL::TDecoratedFrame"
+  },
+  "4718064": {
+   "name": "OWL::TDecoratedFrame::vftable_TFrameWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
+   "cls": "OWL::TDecoratedFrame"
+  },
   "4718072": {
    "name": "response_table_47fdf8",
    "source": "owl:response-table"
@@ -8292,6 +11154,11 @@
   "4718432": {
    "name": "OWL::TDialog::vftable",
    "source": "rtti:vtable",
+   "cls": "OWL::TDialog"
+  },
+  "4718524": {
+   "name": "OWL::TDialog::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
    "cls": "OWL::TDialog"
   },
   "4718788": {
@@ -8342,6 +11209,11 @@
   "4723680": {
    "name": "OWL::TEdit::vftable",
    "source": "rtti:vtable",
+   "cls": "OWL::TEdit"
+  },
+  "4723800": {
+   "name": "OWL::TEdit::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
    "cls": "OWL::TEdit"
   },
   "4724104": {
@@ -8411,6 +11283,11 @@
   "4729508": {
    "name": "OWL::TFrameWindow::vftable",
    "source": "rtti:vtable",
+   "cls": "OWL::TFrameWindow"
+  },
+  "4729616": {
+   "name": "OWL::TFrameWindow::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
    "cls": "OWL::TFrameWindow"
   },
   "4729904": {
@@ -8492,6 +11369,11 @@
    "source": "rtti:vtable",
    "cls": "OWL::TTinyCaption"
   },
+  "4734956": {
+   "name": "OWL::TTinyCaption::vftable_TWindow",
+   "source": "rtti:vtable (virtual-base subobject)",
+   "cls": "OWL::TTinyCaption"
+  },
   "4735140": {
    "name": "OWL::TValidator::vftable",
    "source": "rtti:vtable",
@@ -8511,6 +11393,21 @@
    "name": "OWL::TBarDescr::vftable",
    "source": "rtti:vtable",
    "cls": "OWL::TBarDescr"
+  },
+  "4742092": {
+   "name": "g_nullStringRep",
+   "source": "analysis",
+   "note": "the shared rep of every empty std::string (refs, capacity, length); never freed"
+  },
+  "4742104": {
+   "name": "g_emptyStringData",
+   "source": "analysis",
+   "note": "character data of the shared empty rep (g_nullStringRep + 12)"
+  },
+  "4742944": {
+   "name": "g_stringNpos",
+   "source": "analysis",
+   "note": "std::string::npos"
   },
   "4748628": {
    "name": "__rwstd::ref_counted::vftable",
@@ -8601,6 +11498,16 @@
    "name": "std::type_info::vftable",
    "source": "rtti:vtable",
    "cls": "std::type_info"
+  },
+  "4764752": {
+   "name": "g_huffmanCodes",
+   "source": "analysis",
+   "note": "Huffman code of each byte (bit-reversed for output)"
+  },
+  "4765776": {
+   "name": "g_huffmanCodeLengths",
+   "source": "analysis",
+   "note": "Huffman code length of each byte"
   }
  },
  "classes": [

@@ -1,5 +1,5 @@
 // TSMerge.exe — runtime / library code "rwstd_ref_counted"
-// 1 functions, 0x00454464..0x00454464. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 2 functions, 0x00452fe0..0x00454464. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,12 +7,28 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00454464  __rwstd::ref_counted::~ref_counted   (32 bytes)   [rtti:dtor destructor]
-//   written in code as __rwstd::ref_counted::_dtor
-void __cdecl __rwstd::ref_counted::_dtor(undefined4 *param_1,byte param_2)
+// 0x00452fe0  __rwstd::ref_counted::ref_counted   (58 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores __rwstd::ref_counted's vtable at its vptr offset (+0x0) in this
+undefined4 * __cdecl __rwstd::ref_counted::ref_counted(undefined4 *self,undefined4 param_2)
 
 {
-  if ((param_1 != (undefined4 *)0x0) && (*param_1 = &__rwstd::ref_counted::vftable, (param_2 & 1) != 0)) {
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x472fac);
+  *self = &__rwstd::ref_counted::vftable;
+  self[1] = param_2;
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x00454464  __rwstd::ref_counted::~ref_counted   (32 bytes)   [rtti:dtor destructor]
+//   written in code as __rwstd::ref_counted::_dtor
+void __cdecl __rwstd::ref_counted::_dtor(undefined4 *self,byte dtorFlags)
+
+{
+  if ((self != (undefined4 *)0x0) && (*self = &__rwstd::ref_counted::vftable, (dtorFlags & 1) != 0)) {
     operator_delete();
   }
   return;

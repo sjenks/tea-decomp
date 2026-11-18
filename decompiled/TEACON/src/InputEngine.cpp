@@ -1,5 +1,5 @@
 // TEACON.exe — application module "InputEngine"
-// 8 functions, 0x00409a5c..0x0040a360. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 7 functions, 0x00409a5c..0x0040a338. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -9,50 +9,50 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x00409a5c  InputEngine::InputEngine   (169 bytes)   [analysis]
 //   constructor(list, dictionaryIndex): links the engine into the global InputEngine list
-undefined4 * __cdecl InputEngine::InputEngine(undefined4 *param_1,int param_2,int param_3)
+undefined4 * __cdecl InputEngine::InputEngine(undefined4 *self,int dictList,int dictIndex)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x42c49c);
-  param_1[2] = param_2;
-  param_1[3] = param_3;
-  param_1[4] = *(undefined4 *)(param_3 * 4 + *(int *)(param_2 + 0xc));
-  param_1[5] = 0xffffffff;
-  param_1[6] = 0;
-  param_1[0x11ff] = 0;
-  param_1[1] = DAT_0042c488;
-  *param_1 = 0;
-  if (DAT_0042c484 == (undefined4 *)0x0) {
-    DAT_0042c484 = param_1;
+  self[m_dictList / 4] = dictList;
+  self[m_dictIndex / 4] = dictIndex;
+  self[m_dict / 4] = *(undefined4 *)(dictIndex * 4 + *(int *)(dictList + 0xc));
+  self[m_hFile / 4] = 0xffffffff;
+  self[m_fileOffset / 4] = 0;
+  self[m_length / 4] = 0;
+  self[m_prev / 4] = g_inputEngineTail;
+  *self = 0;
+  if (g_inputEngineHead == (undefined4 *)0x0) {
+    g_inputEngineHead = self;
   }
   else {
-    *DAT_0042c488 = param_1;
+    *g_inputEngineTail = self;
   }
-  DAT_0042c488 = param_1;
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  g_inputEngineTail = self;
+  *sehChainHead = sehPrevFrame;
+  return self;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00409b24  InputEngine::~InputEngine   (69 bytes)   [rtti:dtor destructor]
 //   written in code as InputEngine::_dtor
-void __cdecl InputEngine::_dtor(int param_1,byte param_2)
+void __cdecl InputEngine::_dtor(int self,byte dtorFlags)
 
 {
-  if (param_1 != 0) {
-    DAT_0042c488 = *(undefined4 **)(param_1 + 4);
-    if (DAT_0042c488 == (undefined4 *)0x0) {
-      (*(undefined4 *)&DAT_0042c484) = 0;
+  if (self != 0) {
+    g_inputEngineTail = *(undefined4 **)(self + m_prev);
+    if (g_inputEngineTail == (undefined4 *)0x0) {
+      (*(undefined4 *)&g_inputEngineHead) = 0;
     }
     else {
-      *DAT_0042c488 = 0;
+      *g_inputEngineTail = 0;
     }
-    if (*(HANDLE *)(param_1 + 0x14) != (HANDLE)0xffffffff) {
-      CloseHandle(*(HANDLE *)(param_1 + 0x14));
+    if (*(HANDLE *)(self + m_hFile) != (HANDLE)0xffffffff) {
+      CloseHandle(*(HANDLE *)(self + m_hFile));
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
@@ -62,459 +62,448 @@ void __cdecl InputEngine::_dtor(int param_1,byte param_2)
 // ----------------------------------------------------------------------------------------------------
 // 0x00409b6c  InputEngine::StartLength   (267 bytes)   [analysis]
 //   selects one word-length bucket: looks up word_stream_offsets[L], skips empty buckets, opens the file, clears the word buffer
-bool __cdecl InputEngine::StartLength(int param_1,int param_2)
+bool __cdecl InputEngine::StartLength(int self,int length)
 
 {
-  bool bVar1;
-  undefined2 uVar2;
-  int iVar3;
-  undefined2 extraout_var_00;
-  undefined4 uVar4;
-  undefined2 extraout_var_01;
-  uint uVar5;
-  undefined3 extraout_var;
-  undefined1 uVar6;
+  bool opened;
+  undefined2 numLengths;
+  int loaded;
+  undefined2 regHigh;
+  undefined4 wordStreamOffset;
+  undefined2 regHigh2;
+  uint wordStreamOffset2;
+  undefined3 regHigh3;
+  undefined1 linkMode;
   
-  *(int *)(param_1 + 0x47fc) = param_2;
-  *(undefined4 *)(param_1 + 0x1c) = 0;
-  *(undefined4 *)(param_1 + 0x4808) = 0;
-  *(undefined4 *)(param_1 + 0x4804) = 0;
-  if (*(int *)(*(int *)(param_1 + 0x10) + 0x23fc) < 1) {
-    uVar6 = 0;
+  *(int *)(self + m_length) = length;
+  *(undefined4 *)(self + m_wordsScanned) = 0;
+  *(undefined4 *)(self + m_linkIndex) = 0;
+  *(undefined4 *)(self + m_hasLinks) = 0;
+  if (*(int *)(*(int *)(self + m_dict) + 0x23fc) < 1) {
+    linkMode = 0;
   }
   else {
-    uVar6 = 2;
+    linkMode = 2;
   }
-  *(undefined1 *)(param_1 + 0x4800) = uVar6;
-  if (*(HANDLE *)(param_1 + 0x14) != (HANDLE)0xffffffff) {
-    CloseHandle(*(HANDLE *)(param_1 + 0x14));
+  *(undefined1 *)(self + m_linkMode) = linkMode;
+  if (*(HANDLE *)(self + m_hFile) != (HANDLE)0xffffffff) {
+    CloseHandle(*(HANDLE *)(self + m_hFile));
   }
-  *(undefined4 *)(param_1 + 0x14) = 0xffffffff;
-  iVar3 = FUN_004066fc(*(int *)(param_1 + 8),*(int *)(param_1 + 0xc));
-  if ((iVar3 != 0) && (0 < param_2)) {
-    uVar2 = TSDictionaryList::GetNumLengths(*(int *)(param_1 + 8),*(int *)(param_1 + 0xc));
-    if (param_2 < CONCAT22(extraout_var_00,uVar2)) {
-      uVar4 = TSDictionaryList::GetWordStreamOffset(*(int *)(param_1 + 8),*(int *)(param_1 + 0xc),param_2);
-      *(undefined4 *)(param_1 + 0x18) = uVar4;
-      uVar2 = TSDictionaryList::GetNumLengths(*(int *)(param_1 + 8),*(int *)(param_1 + 0xc));
-      if (param_2 != CONCAT22(extraout_var_01,uVar2) + -1) {
-        uVar5 = TSDictionaryList::GetWordStreamOffset(*(int *)(param_1 + 8),*(int *)(param_1 + 0xc),param_2 + 1);
-        if (uVar5 <= *(uint *)(param_1 + 0x18)) goto LAB_00409c4b;
+  *(undefined4 *)(self + m_hFile) = 0xffffffff;
+  loaded = TSDictionaryList::EnsureCurrent(*(int *)(self + m_dictList),*(int *)(self + m_dictIndex));
+  if ((loaded != 0) && (0 < length)) {
+    numLengths = TSDictionaryList::GetNumLengths(*(int *)(self + m_dictList),*(int *)(self + m_dictIndex));
+    if (length < CONCAT22(regHigh,numLengths)) {
+      wordStreamOffset = TSDictionaryList::GetWordStreamOffset(*(int *)(self + m_dictList),*(int *)(self + m_dictIndex),length);
+      *(undefined4 *)(self + m_fileOffset) = wordStreamOffset;
+      numLengths = TSDictionaryList::GetNumLengths(*(int *)(self + m_dictList),*(int *)(self + m_dictIndex));
+      if (length != CONCAT22(regHigh2,numLengths) + -1) {
+        wordStreamOffset2 = TSDictionaryList::GetWordStreamOffset(*(int *)(self + m_dictList),*(int *)(self + m_dictIndex),length + 1);
+        if (wordStreamOffset2 <= *(uint *)(self + m_fileOffset)) goto LAB_00409c4b;
       }
-      bVar1 = InputEngine::OpenFile(param_1);
-      if (CONCAT31(extraout_var,bVar1) == 0) {
-        CloseHandle(*(HANDLE *)(param_1 + 0x14));
-        *(undefined4 *)(param_1 + 0x14) = 0xffffffff;
+      opened = InputEngine::OpenFile(self);
+      if (CONCAT31(regHigh3,opened) == 0) {
+        CloseHandle(*(HANDLE *)(self + m_hFile));
+        *(undefined4 *)(self + m_hFile) = 0xffffffff;
       }
     }
   }
 LAB_00409c4b:
-  memset((undefined4 *)(param_1 + 0x20),0,2000);
-  *(undefined1 *)(param_1 + 0x20 + *(int *)(param_1 + 0x47fc)) = 0xff;
-  return *(int *)(param_1 + 0x14) != -1;
+  memset((undefined4 *)(self + m_letters),0,2000);
+  *(undefined1 *)(self + m_letters + *(int *)(self + m_length)) = 0xff;
+  return *(int *)(self + m_hFile) != -1;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00409c78  InputEngine::NextMatch   (1058 bytes)   [notes+analysis]
 //   Huffman-decodes words of the current length (8-bit lookahead table, then bit-by-bit trie walk), at most 2000 per call, testing each against the MatchEngineSet
-char * __cdecl InputEngine::NextMatch(int param_1,int param_2)
+char * __cdecl InputEngine::NextMatch(int self,int matchSet)
 
 {
-  uint *puVar1;
-  int iVar2;
-  int iVar3;
-  char cVar4;
-  bool bVar5;
-  int *piVar6;
-  undefined3 extraout_var;
-  undefined3 extraout_var_00;
-  undefined3 extraout_var_01;
-  int iVar7;
-  uint uVar8;
-  char *pcVar9;
-  int iVar10;
-  byte *pbVar11;
-  int iVar12;
-  int iVar13;
-  uint uVar14;
-  char *local_28;
-  char *local_24;
-  int local_20;
-  uint *local_c;
-  uint *local_8;
+  uint *nextPtr;
+  int dict;
+  int codeLen;
+  char ch;
+  bool ok;
+  int *engines;
+  undefined3 regHigh;
+  undefined3 regHigh2;
+  undefined3 regHigh3;
+  int symbol;
+  uint bit;
+  char *rawNext;
+  int huffNodes;
+  byte *logicOps;
+  int singleEngine;
+  int bitPos;
+  uint bits;
+  char *rawOut;
+  char *lettersOut;
+  int budget;
+  uint *bitEnd;
+  uint *bitPtr;
   
-  iVar13 = *(int *)(param_1 + 0x47f8);
-  local_8 = *(uint **)(param_1 + 0x47f0);
-  local_c = *(uint **)(param_1 + 0x47f4);
-  iVar2 = *(int *)(param_1 + 0x10);
-  iVar10 = iVar2 + 4;
-  if (*(int *)(*(int *)(param_2 + 0x28) + -4) == 0) {
-    pbVar11 = (byte *)0x0;
+  bitPos = *(int *)(self + m_bitPos);
+  bitPtr = *(uint **)(self + m_bitPtr);
+  bitEnd = *(uint **)(self + m_bitEnd);
+  dict = *(int *)(self + m_dict);
+  huffNodes = dict + 4;
+  if (*(int *)(*(int *)(matchSet + 0x28) + -4) == 0) {
+    logicOps = (byte *)0x0;
   }
   else {
-    pbVar11 = *(byte **)(param_2 + 0x28);
+    logicOps = *(byte **)(matchSet + 0x28);
   }
-  if (**(char **)(param_2 + 0x28) == '\x03') {
-    iVar12 = *(int *)(param_2 + 8) - *(int *)(param_2 + 4);
-    if (iVar12 < 0) {
-      iVar12 = iVar12 + 3;
+  if (**(char **)(matchSet + 0x28) == '\x03') {
+    singleEngine = *(int *)(matchSet + 8) - *(int *)(matchSet + 4);
+    if (singleEngine < 0) {
+      singleEngine = singleEngine + 3;
     }
-    if (iVar12 >> 2 == 0) {
-      piVar6 = (int *)0x0;
+    if (singleEngine >> 2 == 0) {
+      engines = (int *)0x0;
     }
     else {
-      piVar6 = *(int **)(param_2 + 4);
+      engines = *(int **)(matchSet + 4);
     }
-    iVar12 = *piVar6;
+    singleEngine = *engines;
   }
   else {
-    iVar12 = 0;
+    singleEngine = 0;
   }
-  local_20 = 2000;
-  if (iVar13 < 0x20) {
-    uVar14 = *local_8 >> ((byte)iVar13 & 0x1f);
+  budget = 2000;
+  if (bitPos < 0x20) {
+    bits = *bitPtr >> ((byte)bitPos & 0x1f);
   }
   else {
-    uVar14 = 0;
+    bits = 0;
   }
   do {
-    local_24 = (char *)(param_1 + 0x20);
-    local_28 = (char *)(param_1 + 0x408);
+    lettersOut = (char *)(self + m_letters);
+    rawOut = (char *)(self + m_rawWord);
 LAB_00409d3a:
-    iVar7 = *(int *)(iVar2 + 0x1804 + (uVar14 & 0xff) * 4);
-    if (iVar7 < 0x100) {
-      iVar3 = *(int *)(iVar10 + iVar7 * 8);
-      if (0x20 < iVar3 + iVar13) {
+    symbol = *(int *)(dict + 0x1804 + (bits & 0xff) * 4);
+    if (symbol < 0x100) {
+      codeLen = *(int *)(huffNodes + symbol * 8);
+      if (0x20 < codeLen + bitPos) {
 LAB_00409d77:
-        puVar1 = local_8 + 1;
-        if (puVar1 < local_c) {
-          uVar8 = *puVar1;
-          iVar7 = *(int *)(iVar2 + 0x1804 +
-                          ((uVar14 | uVar8 << (0x20U - (char)iVar13 & 0x1f)) & 0xff) * 4);
-          local_8 = puVar1;
-          if (iVar7 < 0x100) {
-            iVar13 = *(int *)(iVar10 + iVar7 * 8) + -0x20 + iVar13;
-            uVar14 = uVar8 >> ((byte)iVar13 & 0x1f);
+        nextPtr = bitPtr + 1;
+        if (nextPtr < bitEnd) {
+          bit = *nextPtr;
+          symbol = *(int *)(dict + 0x1804 +
+                          ((bits | bit << (0x20U - (char)bitPos & 0x1f)) & 0xff) * 4);
+          bitPtr = nextPtr;
+          if (symbol < 0x100) {
+            bitPos = *(int *)(huffNodes + symbol * 8) + -0x20 + bitPos;
+            bits = bit >> ((byte)bitPos & 0x1f);
             goto LAB_00409e6b;
           }
-          iVar13 = iVar13 + -0x18;
-          uVar14 = uVar8 >> ((byte)iVar13 & 0x1f);
+          bitPos = bitPos + -0x18;
+          bits = bit >> ((byte)bitPos & 0x1f);
         }
         else {
-          iVar7 = 0x100;
+          symbol = 0x100;
         }
         goto joined_r0x00409ddb;
       }
-      iVar13 = iVar13 + iVar3;
-      uVar14 = uVar14 >> ((byte)iVar3 & 0x1f);
+      bitPos = bitPos + codeLen;
+      bits = bits >> ((byte)codeLen & 0x1f);
     }
     else {
-      if (0x18 < iVar13) goto LAB_00409d77;
-      iVar13 = iVar13 + 8;
-      uVar14 = uVar14 >> 8;
+      if (0x18 < bitPos) goto LAB_00409d77;
+      bitPos = bitPos + 8;
+      bits = bits >> 8;
 joined_r0x00409ddb:
-      for (; 0xff < iVar7; iVar7 = *(int *)(iVar10 + iVar7 * 8 + uVar8 * 4)) {
-        if (0x1f < iVar13) {
-          local_8 = local_8 + 1;
-          if (local_c <= local_8) {
-            bVar5 = InputEngine::OpenFile(param_1);
-            if (CONCAT31(extraout_var,bVar5) == 0) {
-              *(undefined1 *)(param_1 + 0x20) = 0xff;
-              *(undefined4 *)(param_1 + 0x47f8) = 0;
-              *(undefined4 *)(param_1 + 0x47f0) = *(undefined4 *)(param_1 + 0x47f4);
-              return (char *)(param_1 + 0x20);
+      for (; 0xff < symbol; symbol = *(int *)(huffNodes + symbol * 8 + bit * 4)) {
+        if (0x1f < bitPos) {
+          bitPtr = bitPtr + 1;
+          if (bitEnd <= bitPtr) {
+            ok = InputEngine::OpenFile(self);
+            if (CONCAT31(regHigh,ok) == 0) {
+              *(undefined1 *)(self + m_letters) = 0xff;
+              *(undefined4 *)(self + m_bitPos) = 0;
+              *(undefined4 *)(self + m_bitPtr) = *(undefined4 *)(self + m_bitEnd);
+              return (char *)(self + m_letters);
             }
-            local_8 = *(uint **)(param_1 + 0x47f0);
-            local_c = *(uint **)(param_1 + 0x47f4);
+            bitPtr = *(uint **)(self + m_bitPtr);
+            bitEnd = *(uint **)(self + m_bitEnd);
           }
-          iVar13 = 0;
-          uVar14 = *local_8;
+          bitPos = 0;
+          bits = *bitPtr;
         }
-        uVar8 = uVar14 & 1;
-        iVar13 = iVar13 + 1;
-        uVar14 = uVar14 >> 1;
+        bit = bits & 1;
+        bitPos = bitPos + 1;
+        bits = bits >> 1;
       }
     }
 LAB_00409e6b:
-    pcVar9 = local_28 + 1;
-    cVar4 = (char)iVar7;
-    *local_28 = cVar4;
-    if (cVar4 != '\0') {
-      if (cVar4 == '\n') {
-        *local_28 = '\0';
-        local_24 = (char *)0x0;
-        local_28 = pcVar9;
+    rawNext = rawOut + 1;
+    ch = (char)symbol;
+    *rawOut = ch;
+    if (ch != '\0') {
+      if (ch == '\n') {
+        *rawOut = '\0';
+        lettersOut = (char *)0x0;
+        rawOut = rawNext;
       }
       else {
-        local_28 = pcVar9;
-        if ((local_24 != (char *)0x0) &&
-           (cVar4 = *(char *)(iVar2 + 8 + iVar7 * 8), *local_24 = cVar4, cVar4 != -1)) {
-          local_24 = local_24 + 1;
+        rawOut = rawNext;
+        if ((lettersOut != (char *)0x0) &&
+           (ch = *(char *)(dict + 8 + symbol * 8), *lettersOut = ch, ch != -1)) {
+          lettersOut = lettersOut + 1;
         }
       }
       goto LAB_00409d3a;
     }
-    *pcVar9 = '\0';
-    if ((char *)(param_1 + 0x20) == local_24) {
-      *local_24 = -1;
-      *(undefined4 *)(param_1 + 0x4808) = 0;
-      *(undefined4 *)(param_1 + 0x4804) = 1;
-      *(char *)(param_1 + 0x4800) = *(char *)(param_1 + 0x4800) + -1;
-      *(int *)(param_1 + 0x47f8) = iVar13;
-      *(uint **)(param_1 + 0x47f0) = local_8;
-      *(uint **)(param_1 + 0x47f4) = local_c;
-      *(int *)(param_1 + 0x1c) = *(int *)(param_1 + 0x1c) + (2000 - local_20);
-      return (char *)(param_1 + 0x20);
+    *rawNext = '\0';
+    if ((char *)(self + m_letters) == lettersOut) {
+      *lettersOut = -1;
+      *(undefined4 *)(self + m_linkIndex) = 0;
+      *(undefined4 *)(self + m_hasLinks) = 1;
+      *(char *)(self + m_linkMode) = *(char *)(self + m_linkMode) + -1;
+      *(int *)(self + m_bitPos) = bitPos;
+      *(uint **)(self + m_bitPtr) = bitPtr;
+      *(uint **)(self + m_bitEnd) = bitEnd;
+      *(int *)(self + m_wordsScanned) = *(int *)(self + m_wordsScanned) + (2000 - budget);
+      return (char *)(self + m_letters);
     }
-    if (*(char *)(param_1 + 0x4800) == '\x02') {
-      if (0x1f < iVar13) {
-        local_8 = local_8 + 1;
-        if (local_c <= local_8) {
-          bVar5 = InputEngine::OpenFile(param_1);
-          if (CONCAT31(extraout_var_00,bVar5) == 0) {
-            *(undefined1 *)(param_1 + 0x20) = 0xff;
-            *(undefined4 *)(param_1 + 0x47f8) = 0;
-            *(undefined4 *)(param_1 + 0x47f0) = *(undefined4 *)(param_1 + 0x47f4);
-            return (char *)(param_1 + 0x20);
+    if (*(char *)(self + m_linkMode) == '\x02') {
+      if (0x1f < bitPos) {
+        bitPtr = bitPtr + 1;
+        if (bitEnd <= bitPtr) {
+          ok = InputEngine::OpenFile(self);
+          if (CONCAT31(regHigh2,ok) == 0) {
+            *(undefined1 *)(self + m_letters) = 0xff;
+            *(undefined4 *)(self + m_bitPos) = 0;
+            *(undefined4 *)(self + m_bitPtr) = *(undefined4 *)(self + m_bitEnd);
+            return (char *)(self + m_letters);
           }
-          local_8 = *(uint **)(param_1 + 0x47f0);
-          local_c = *(uint **)(param_1 + 0x47f4);
+          bitPtr = *(uint **)(self + m_bitPtr);
+          bitEnd = *(uint **)(self + m_bitEnd);
         }
-        iVar13 = 0;
-        uVar14 = *local_8;
+        bitPos = 0;
+        bits = *bitPtr;
       }
-      *(uint *)(param_1 + 0x4804) = uVar14 & 1;
-      if ((uVar14 & 1) != 0) {
-        *(int *)(param_1 + 0x4808) = *(int *)(param_1 + 0x4808) + 1;
+      *(uint *)(self + m_hasLinks) = bits & 1;
+      if ((bits & 1) != 0) {
+        *(int *)(self + m_linkIndex) = *(int *)(self + m_linkIndex) + 1;
       }
-      iVar13 = iVar13 + 1;
-      uVar14 = uVar14 >> 1;
+      bitPos = bitPos + 1;
+      bits = bits >> 1;
     }
     else {
-      *(int *)(param_1 + 0x4808) = *(int *)(param_1 + 0x4808) + 1;
+      *(int *)(self + m_linkIndex) = *(int *)(self + m_linkIndex) + 1;
     }
-    if (iVar12 == 0) {
-      if (pbVar11 == (byte *)0x0) {
+    if (singleEngine == 0) {
+      if (logicOps == (byte *)0x0) {
 LAB_0040a049:
-        *(int *)(param_1 + 0x47f8) = iVar13;
-        *(uint **)(param_1 + 0x47f0) = local_8;
-        *(uint **)(param_1 + 0x47f4) = local_c;
-        if (local_20 < 1) {
-          *(int *)(param_1 + 0x1c) = *(int *)(param_1 + 0x1c) + 2000;
-          pcVar9 = (char *)0x0;
+        *(int *)(self + m_bitPos) = bitPos;
+        *(uint **)(self + m_bitPtr) = bitPtr;
+        *(uint **)(self + m_bitEnd) = bitEnd;
+        if (budget < 1) {
+          *(int *)(self + m_wordsScanned) = *(int *)(self + m_wordsScanned) + 2000;
+          rawNext = (char *)0x0;
         }
         else {
-          *(int *)(param_1 + 0x1c) = *(int *)(param_1 + 0x1c) + (0x7d1 - local_20);
-          pcVar9 = (char *)(param_1 + 0x20);
+          *(int *)(self + m_wordsScanned) = *(int *)(self + m_wordsScanned) + (0x7d1 - budget);
+          rawNext = (char *)(self + m_letters);
         }
-        return pcVar9;
+        return rawNext;
       }
-      iVar7 = *(int *)(param_2 + 8) - *(int *)(param_2 + 4);
-      if (iVar7 < 0) {
-        iVar7 = iVar7 + 3;
+      symbol = *(int *)(matchSet + 8) - *(int *)(matchSet + 4);
+      if (symbol < 0) {
+        symbol = symbol + 3;
       }
-      if (iVar7 >> 2 == 0) {
-        piVar6 = (int *)0x0;
+      if (symbol >> 2 == 0) {
+        engines = (int *)0x0;
       }
       else {
-        piVar6 = *(int **)(param_2 + 4);
+        engines = *(int **)(matchSet + 4);
       }
-      uVar8 = MatchEngineSet::EvalLogic('\x02',param_1 + 0x20,*(int *)(param_1 + 0x47fc),pbVar11,piVar6);
+      bit = MatchEngineSet::EvalLogic('\x02',self + m_letters,*(int *)(self + m_length),logicOps,engines);
     }
     else {
-      bVar5 = MatchEngine::MatchWord(iVar12,param_1 + 0x20);
-      uVar8 = CONCAT31(extraout_var_01,bVar5);
+      ok = MatchEngine::MatchWord(singleEngine,self + m_letters);
+      bit = CONCAT31(regHigh3,ok);
     }
-    if ((uVar8 != 0) || (local_20 = local_20 + -1, local_20 < 1)) goto LAB_0040a049;
+    if ((bit != 0) || (budget = budget + -1, budget < 1)) goto LAB_0040a049;
   } while( true );
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040a09c  MatchEngineSet::EvalLogic   (372 bytes, 2 ranges)   [notes+analysis]
 //   boolean VM over the logic bytecode: 1=OR 2=AND 3=END 4=open paren 5=close paren, bit 0x08=NOT. mode 0 = precomputed flags, 1 = length pre-check (NOT is skipped), 2 = match the word. The 0x412000 address in your notes is this function in TEA.exe
-uint __cdecl MatchEngineSet::EvalLogic(char param_1,int param_2,int param_3,byte *param_4,int *param_5)
+uint __cdecl MatchEngineSet::EvalLogic(char mode,int wordBuf,int length,byte *ops,int *engines)
 
 {
-  byte *pbVar1;
-  int *piVar2;
-  bool bVar3;
-  int iVar4;
-  undefined3 extraout_var;
-  byte bVar5;
-  byte *pbVar6;
-  byte local_2c [32];
-  int local_c;
-  uint local_8;
+  byte *target;
+  int *nextEngine;
+  bool matched;
+  int minLength;
+  undefined3 regHigh;
+  byte op;
+  byte *stackTop;
+  byte parenStack [32];
+  int engine;
+  uint result;
   
-  pbVar6 = local_2c;
-  local_8 = 0x2a;
+  stackTop = parenStack;
+  result = 0x2a;
   while( true ) {
     while( true ) {
       while( true ) {
-        bVar5 = *param_4;
-        param_4 = param_4 + 1;
-        if ((bVar5 & 0xf7) != 4) break;
-        *pbVar6 = bVar5;
-        pbVar6 = pbVar6 + 1;
-        param_5 = param_5 + 1;
+        op = *ops;
+        ops = ops + 1;
+        if ((op & 0xf7) != 4) break;
+        *stackTop = op;
+        stackTop = stackTop + 1;
+        engines = engines + 1;
       }
-      piVar2 = param_5 + 1;
-      local_c = *param_5;
-      if (local_c != 0) {
-        if (param_1 == '\0') {
-          local_8 = (uint)(local_c == 1);
+      nextEngine = engines + 1;
+      engine = *engines;
+      if (engine != 0) {
+        if (mode == '\0') {
+          result = (uint)(engine == 1);
         }
         else {
-          iVar4 = MatchEngine::GetMinLength(local_c);
-          if ((param_3 < iVar4) || (iVar4 = MatchEngine::GetMaxLength(local_c), iVar4 < param_3)) {
-            local_8 = 0;
+          minLength = MatchEngine::GetMinLength(engine);
+          if ((length < minLength) || (minLength = MatchEngine::GetMaxLength(engine), minLength < length)) {
+            result = 0;
           }
           else {
-            local_8 = 1;
+            result = 1;
           }
-          if (((local_8 != 0) && (param_1 == '\x02')) &&
-             (bVar3 = MatchEngine::MatchWord(local_c,param_2), CONCAT31(extraout_var,bVar3) == 0)) {
-            local_8 = 0;
+          if (((result != 0) && (mode == '\x02')) &&
+             (matched = MatchEngine::MatchWord(engine,wordBuf), CONCAT31(regHigh,matched) == 0)) {
+            result = 0;
           }
         }
       }
-      if ((bVar5 & 8) != 0) {
-        if (param_1 != '\x01') {
-          local_8 = (uint)(local_8 == 0);
+      if ((op & 8) != 0) {
+        if (mode != '\x01') {
+          result = (uint)(result == 0);
         }
-        bVar5 = bVar5 & 0xf7;
+        op = op & 0xf7;
       }
-      if (((bVar5 == 1) && (local_8 != 0)) || ((bVar5 == 2 && (local_8 == 0)))) break;
-      param_5 = piVar2;
-      if (bVar5 == 5) {
-        pbVar6 = pbVar6 + -1;
-        if (((*pbVar6 & 8) != 0) && (param_1 != '\x01')) {
-          local_8 = (uint)(local_8 == 0);
+      if (((op == 1) && (result != 0)) || ((op == 2 && (result == 0)))) break;
+      engines = nextEngine;
+      if (op == 5) {
+        stackTop = stackTop + -1;
+        if (((*stackTop & 8) != 0) && (mode != '\x01')) {
+          result = (uint)(result == 0);
         }
       }
-      else if (bVar5 == 3) {
-        return local_8;
+      else if (op == 3) {
+        return result;
       }
     }
-    if (pbVar6 == local_2c) break;
-    pbVar1 = pbVar6 + -1;
-    while (pbVar1 < pbVar6) {
-      bVar5 = *param_4;
-      param_4 = param_4 + 1;
-      piVar2 = piVar2 + 1;
-      if ((bVar5 & 0xf7) == 4) {
-        pbVar6 = pbVar6 + 1;
+    if (stackTop == parenStack) break;
+    target = stackTop + -1;
+    while (target < stackTop) {
+      op = *ops;
+      ops = ops + 1;
+      nextEngine = nextEngine + 1;
+      if ((op & 0xf7) == 4) {
+        stackTop = stackTop + 1;
       }
-      else if ((bVar5 & 0xf7) == 5) {
-        pbVar6 = pbVar6 + -1;
+      else if ((op & 0xf7) == 5) {
+        stackTop = stackTop + -1;
       }
     }
-    param_5 = piVar2;
-    if (((*pbVar6 & 8) != 0) && (param_1 != '\x01')) {
-      local_8 = (uint)(local_8 == 0);
+    engines = nextEngine;
+    if (((*stackTop & 8) != 0) && (mode != '\x01')) {
+      result = (uint)(result == 0);
     }
   }
-  return local_8;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040a218  InputEngine::OpenFile   (288 bytes)   [notes+analysis]
 //   CreateFileA + seek to the saved offset; on ERROR_TOO_MANY_OPEN_FILES closes another engine's handle from the global list and retries
-bool __cdecl InputEngine::OpenFile(int param_1)
+bool __cdecl InputEngine::OpenFile(int self)
 
 {
-  undefined4 *puVar1;
+  undefined4 *other;
   LPCSTR lpFileName;
-  BOOL BVar2;
-  DWORD in_ECX;
-  bool bVar3;
-  DWORD DVar4;
+  BOOL ok;
+  DWORD initialEcx;
+  bool result;
+  DWORD status;
   DWORD dwShareMode;
   LPSECURITY_ATTRIBUTES lpSecurityAttributes;
   DWORD dwCreationDisposition;
   DWORD dwFlagsAndAttributes;
-  HANDLE pvVar5;
-  DWORD local_8;
+  HANDLE hFile;
+  DWORD bytesRead;
   
-  local_8 = in_ECX;
-  if (*(int *)(param_1 + 0x14) == -1) {
+  bytesRead = initialEcx;
+  if (*(int *)(self + m_hFile) == -1) {
     do {
-      pvVar5 = (HANDLE)0x0;
+      hFile = (HANDLE)0x0;
       dwFlagsAndAttributes = 0x80;
       dwCreationDisposition = 3;
       lpSecurityAttributes = (LPSECURITY_ATTRIBUTES)0x0;
       dwShareMode = 3;
-      DVar4 = 0x80000000;
-      lpFileName = (LPCSTR)(**(code **)(**(int **)(*(int *)(*(int *)(param_1 + 8) + 0xc) +
-                                                  *(int *)(param_1 + 0xc) * 4) + 0x18))();
-      pvVar5 = CreateFileA(lpFileName,DVar4,dwShareMode,lpSecurityAttributes,dwCreationDisposition,
-                           dwFlagsAndAttributes,pvVar5);
-      *(HANDLE *)(param_1 + 0x14) = pvVar5;
-      if (pvVar5 != (HANDLE)0xffffffff) {
-        if (*(int *)(param_1 + 0x18) != 0) {
-          SetFilePointer(*(HANDLE *)(param_1 + 0x14),*(int *)(param_1 + 0x18),(PLONG)0x0,0);
+      status = 0x80000000;
+      lpFileName = (LPCSTR)(**(code **)(**(int **)(*(int *)(*(int *)(self + m_dictList) + 0xc) +
+                                                  *(int *)(self + m_dictIndex) * 4) + 0x18))();
+      hFile = CreateFileA(lpFileName,status,dwShareMode,lpSecurityAttributes,dwCreationDisposition,
+                           dwFlagsAndAttributes,hFile);
+      *(HANDLE *)(self + m_hFile) = hFile;
+      if (hFile != (HANDLE)0xffffffff) {
+        if (*(int *)(self + m_fileOffset) != 0) {
+          SetFilePointer(*(HANDLE *)(self + m_hFile),*(int *)(self + m_fileOffset),(PLONG)0x0,0);
         }
         goto LAB_0040a2d6;
       }
-      DVar4 = GetLastError();
-      puVar1 = DAT_0042c484;
-      if (DVar4 != 4) {
+      status = GetLastError();
+      other = g_inputEngineHead;
+      if (status != 4) {
         return false;
       }
-      for (; puVar1 != (undefined4 *)0x0; puVar1 = (undefined4 *)*puVar1) {
-        if (puVar1[5] != -1) {
-          DVar4 = SetFilePointer(*(HANDLE *)(param_1 + 0x14),0,(PLONG)0x0,1);
-          puVar1[6] = DVar4;
-          CloseHandle((HANDLE)puVar1[5]);
-          puVar1[5] = 0xffffffff;
+      for (; other != (undefined4 *)0x0; other = (undefined4 *)*other) {
+        if (other[5] != -1) {
+          status = SetFilePointer(*(HANDLE *)(self + m_hFile),0,(PLONG)0x0,1);
+          other[6] = status;
+          CloseHandle((HANDLE)other[5]);
+          other[5] = 0xffffffff;
           break;
         }
       }
-    } while (puVar1 != (undefined4 *)0x0);
-    bVar3 = false;
+    } while (other != (undefined4 *)0x0);
+    result = false;
   }
   else {
 LAB_0040a2d6:
-    BVar2 = ReadFile(*(HANDLE *)(param_1 + 0x14),(LPVOID)(param_1 + 0x7f0),0x4000,&local_8,
+    ok = ReadFile(*(HANDLE *)(self + m_hFile),(LPVOID)(self + m_readBuf),0x4000,&bytesRead,
                      (LPOVERLAPPED)0x0);
-    if (BVar2 == 0) {
-      bVar3 = false;
+    if (ok == 0) {
+      result = false;
     }
     else {
-      *(undefined4 *)(param_1 + 0x47f8) = 0;
-      *(LPVOID *)(param_1 + 0x47f0) = (LPVOID)(param_1 + 0x7f0);
-      *(DWORD *)(param_1 + 0x47f4) = (local_8 + 3 & 0xfffffffc) + param_1 + 0x7f0;
-      bVar3 = local_8 != 0;
+      *(undefined4 *)(self + m_bitPos) = 0;
+      *(LPVOID *)(self + m_bitPtr) = (LPVOID)(self + m_readBuf);
+      *(DWORD *)(self + m_bitEnd) = (bytesRead + 3 & 0xfffffffc) + self + m_readBuf;
+      result = bytesRead != 0;
     }
   }
-  return bVar3;
+  return result;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0040a338  InputEngine::GetAnnotation   (37 bytes)   [notes+analysis]
 //   returns the text following the display word's NUL, or NULL when empty. The 0x4122bc address in your notes is this function in TEA.exe
-char * __cdecl InputEngine::GetAnnotation(int param_1)
+char * __cdecl InputEngine::GetAnnotation(int self)
 
 {
-  char *pcVar1;
+  char *annotation;
   
-  pcVar1 = strlen((uint *)(param_1 + 0x408));
-  pcVar1 = (char *)(param_1 + 0x408 + (int)(pcVar1 + 1));
-  if (*pcVar1 == '\0') {
-    pcVar1 = (char *)0x0;
+  annotation = strlen((uint *)(self + m_rawWord));
+  annotation = (char *)(self + m_rawWord + (int)(annotation + 1));
+  if (*annotation == '\0') {
+    annotation = (char *)0x0;
   }
-  return pcVar1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0040a360  FUN_0040a360   (25 bytes)   [unnamed]
-//   file placement: inferred (address adjacency)
-undefined4 __cdecl FUN_0040a360(int param_1,undefined4 param_2)
-
-{
-  *(char *)(param_1 + 0x1144) = (char)param_2;
-  *(int *)(param_1 + 0x1148) = *(int *)(param_1 + 0x1148) + 1;
-  return param_2;
+  return annotation;
 }
 
 } // namespace tea

@@ -1,0 +1,713 @@
+[
+ {
+  "addr": "0x471d5c",
+  "name": "g_nullStringRep",
+  "data": true,
+  "source": "analysis",
+  "note": "the shared rep of every empty std::string (refs, capacity, length); never freed"
+ },
+ {
+  "addr": "0x471d68",
+  "name": "g_emptyStringData",
+  "data": true,
+  "source": "analysis",
+  "note": "character data of the shared empty rep (g_nullStringRep + 12)"
+ },
+ {
+  "addr": "0x471f90",
+  "name": "g_stringNpos",
+  "data": true,
+  "source": "analysis",
+  "note": "std::string::npos"
+ },
+ {
+  "addr": "0x409868",
+  "name": "WordLess",
+  "source": "analysis",
+  "note": "strict weak order of two words (std::string compare) used by the sorts and merges"
+ },
+ {
+  "addr": "0x40989c",
+  "name": "std::__merge_adaptive_string",
+  "source": "analysis",
+  "note": "merges two adjacent sorted runs of words using a buffer (std::inplace_merge internals; role inferred from structure)"
+ },
+ {
+  "addr": "0x409a8c",
+  "name": "std::__rotate_adaptive_string",
+  "source": "analysis",
+  "note": "rotates a range of words through the buffer (inferred)"
+ },
+ {
+  "addr": "0x409bd4",
+  "name": "std::__set_ptr_409bd4",
+  "source": "analysis",
+  "note": "stores a pointer"
+ },
+ {
+  "addr": "0x409be4",
+  "name": "std::lower_bound_string",
+  "source": "analysis",
+  "note": "first word not less than a value (polls for cancellation)"
+ },
+ {
+  "addr": "0x409cb8",
+  "name": "std::upper_bound_string",
+  "source": "analysis",
+  "note": "first word greater than a value (polls for cancellation)"
+ },
+ {
+  "addr": "0x409d8c",
+  "name": "std::__merge_backward_string",
+  "source": "analysis",
+  "note": "merges two sorted runs from the back (inferred)"
+ },
+ {
+  "addr": "0x409e44",
+  "name": "std::rotate_string",
+  "source": "analysis",
+  "note": "rotates a range of words (inferred)"
+ },
+ {
+  "addr": "0x409eb0",
+  "name": "std::__gcd",
+  "source": "analysis",
+  "note": "greatest common divisor (used by rotate)"
+ },
+ {
+  "addr": "0x409ed4",
+  "name": "std::__rotate_cycle_string",
+  "source": "analysis",
+  "note": "rotate by cycles (inferred)"
+ },
+ {
+  "addr": "0x40a094",
+  "name": "std::__introsort_loop_wordlist",
+  "source": "analysis",
+  "note": "quicksort loop of std::sort over the word list (polls for cancellation; inferred)"
+ },
+ {
+  "addr": "0x40a390",
+  "name": "std::__median_string",
+  "source": "analysis",
+  "note": "median of three words (inferred)"
+ },
+ {
+  "addr": "0x40a4c0",
+  "name": "std::__merge_without_buffer_string",
+  "source": "analysis",
+  "note": "in-place merge (inferred)"
+ },
+ {
+  "addr": "0x40a884",
+  "name": "std::stable_sort_wordlist",
+  "source": "analysis",
+  "note": "sorts the word list, removing duplicates afterwards (inferred)"
+ },
+ {
+  "addr": "0x40b8c4",
+  "name": "ApplyConversion",
+  "source": "analysis",
+  "note": "converts a word for output under the conversion option (as is / lower case / upper case / letters only)"
+ },
+ {
+  "addr": "0x40bd6c",
+  "name": "InitRegistryPaths",
+  "source": "analysis",
+  "note": "static initialiser of the registry key path strings (\"Software\\Crossword Man\\TEA Crossword Helper 2.11\")"
+ },
+ {
+  "addr": "0x40bdac",
+  "name": "DestroyRegistryPaths",
+  "source": "analysis",
+  "note": "static destructor of the registry key path strings"
+ },
+ {
+  "addr": "0x40be50",
+  "name": "TSMergeProfile::TSMergeProfile",
+  "cls": "TSMergeProfile",
+  "source": "analysis",
+  "note": "constructor: empty input/output file names, default operation and conversion"
+ },
+ {
+  "addr": "0x404270",
+  "name": "OwlMain",
+  "source": "analysis",
+  "note": "creates and runs the \"TEA&Sympathy Word List Merge\" application"
+ },
+ {
+  "addr": "0x4031f4",
+  "name": "DMDialog::PumpMessages",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "processes pending window messages during a merge; true when the user asked to stop"
+ },
+ {
+  "addr": "0x403258",
+  "name": "DMDialog::SetStatus",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "printf-style text in the status line"
+ },
+ {
+  "addr": "0x403920",
+  "name": "DMDialog::UpdateControls",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "enables the Merge button only when the input and output names are filled in"
+ },
+ {
+  "addr": "0x403a18",
+  "name": "DMDialog::BrowseFile",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "file dialog for one of the word list names; rejects files that are not ANSI text"
+ },
+ {
+  "addr": "0x40402c",
+  "name": "DMDialog::ReadOptions",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "reads the operation and conversion radio buttons into the profile"
+ },
+ {
+  "addr": "0x405984",
+  "name": "PollCancel",
+  "source": "analysis",
+  "note": "lets the dialog process messages every so often during long operations; throws Abandon_exception when the user stopped the merge"
+ },
+ {
+  "addr": "0x405a5c",
+  "name": "LoadWordList",
+  "source": "analysis",
+  "note": "reads a text file into a vector of words (one per line), polling for cancellation"
+ },
+ {
+  "addr": "0x405e78",
+  "name": "WriteConvertedWord",
+  "source": "analysis",
+  "note": "writes one word to the output stream after ApplyConversion"
+ },
+ {
+  "addr": "0x405f48",
+  "name": "WriteWordList",
+  "source": "analysis",
+  "note": "writes the merged words to the output file with the chosen conversion"
+ },
+ {
+  "addr": "0x406b48",
+  "name": "std::operator_shl_string",
+  "source": "analysis",
+  "note": "writes a std::string to an output stream (inlined stream sentry and padding)"
+ },
+ {
+  "addr": "0x4088f4",
+  "name": "MergeWordLists",
+  "source": "analysis",
+  "note": "the merge: loads both lists, sorts and de-duplicates them, combines them under the operation (union, intersection, difference...) and writes the output"
+ },
+ {
+  "addr": "0x4092d4",
+  "name": "CombineSortedLists",
+  "source": "analysis",
+  "note": "applies the merge operation to two sorted word lists"
+ },
+ {
+  "addr": "0x409424",
+  "name": "std::inplace_merge_string",
+  "source": "analysis",
+  "note": "merges two adjacent sorted ranges of words (inferred)"
+ },
+ {
+  "addr": "0x409508",
+  "name": "std::__merge_sort_string",
+  "source": "analysis",
+  "note": "merge sort of a range of words (inferred)"
+ },
+ {
+  "addr": "0x4095a0",
+  "name": "std::__insertion_sort_string",
+  "source": "analysis",
+  "note": "insertion sort of a small range of words (inferred)"
+ },
+ {
+  "addr": "0x4095fc",
+  "name": "std::__merge_sort_loop_string",
+  "source": "analysis",
+  "note": "one pass of merge sort (inferred)"
+ },
+ {
+  "addr": "0x4096a0",
+  "name": "std::merge_string",
+  "source": "analysis",
+  "note": "merges two sorted ranges of words into a destination (inferred)"
+ },
+ {
+  "addr": "0x401140",
+  "name": "__getTlsBlock",
+  "source": "analysis",
+  "note": "this thread's TLS block (FS:[0x2c][tls index])"
+ },
+ {
+  "addr": "0x401150",
+  "name": "InitStaticStrings",
+  "source": "analysis",
+  "note": "static initialiser of two global strings"
+ },
+ {
+  "addr": "0x4011a8",
+  "name": "DestroyStaticStrings",
+  "source": "analysis",
+  "note": "static destructor of two global strings"
+ },
+ {
+  "addr": "0x401490",
+  "name": "DMDialog::SetAbort",
+  "cls": "DMDialog",
+  "source": "analysis",
+  "note": "records that the user asked to stop"
+ },
+ {
+  "addr": "0x40edc8",
+  "name": "GetRichEditVersion",
+  "source": "analysis",
+  "note": "2 when RICHED20.DLL can be loaded, else 1"
+ },
+ {
+  "addr": "0x40ee47",
+  "name": "InitRichEditStreamer",
+  "source": "analysis",
+  "note": "static initialiser of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x40ee9d",
+  "name": "DestroyRichEditStreamer",
+  "source": "analysis",
+  "note": "static destructor of the TRichEdit streamable class registration"
+ },
+ {
+  "addr": "0x40eef0",
+  "name": "OWL::TRichEdit::GetModule",
+  "source": "analysis",
+  "note": "the rich-edit DLL module"
+ },
+ {
+  "addr": "0x40eef8",
+  "name": "OWL::TRichEdit::GetModuleInstance",
+  "source": "analysis",
+  "note": "the rich-edit DLL module object"
+ },
+ {
+  "addr": "0x40eb8c",
+  "name": "ShowHtmlHelp",
+  "source": "analysis",
+  "note": "opens the help file with HtmlHelpA; reports \"Help library not found\" / \"Can't open help\""
+ },
+ {
+  "addr": "0x40ec5c",
+  "name": "LoadHtmlHelp",
+  "source": "analysis",
+  "note": "finds hhctrl.ocx through its CLSID in the registry and gets HtmlHelpA"
+ },
+ {
+  "addr": "0x40c154",
+  "name": "TSMergeProfile::Load",
+  "cls": "TSMergeProfile",
+  "source": "analysis",
+  "note": "reads MergePrimaryInput, MergeSecondaryInput, MergeOutput, MergeOperation and MergeConversion"
+ },
+ {
+  "addr": "0x40c638",
+  "name": "TSMergeProfile::Save",
+  "cls": "TSMergeProfile",
+  "source": "analysis",
+  "note": "writes MergePrimaryInput, MergeSecondaryInput, MergeOutput, MergeOperation and MergeConversion"
+ },
+ {
+  "addr": "0x40ca90",
+  "name": "ExpandLongPathName",
+  "source": "analysis",
+  "note": "rebuilds a path component by component from the end, replacing each with the name FindFirstFileA reports (long name, on-disk case)"
+ },
+ {
+  "addr": "0x40de48",
+  "name": "IsRelativePath",
+  "source": "analysis",
+  "note": "true unless the path starts with '\\' or has a drive colon followed by '\\'"
+ },
+ {
+  "addr": "0x40e050",
+  "name": "GetMyDocumentsDirectory",
+  "source": "analysis",
+  "note": "the user's documents folder (SHGetSpecialFolderLocation), or the program directory"
+ },
+ {
+  "addr": "0x40e368",
+  "name": "ResolveRelativePath",
+  "source": "analysis",
+  "note": "prefixes the program directory to a relative path"
+ },
+ {
+  "addr": "0x40e7b8",
+  "name": "IsAnsiTextFile",
+  "source": "analysis",
+  "note": "reads the start of a file and rejects it when IsTextUnicode says it is Unicode"
+ },
+ {
+  "addr": "0x40e920",
+  "name": "Persist::Persist",
+  "cls": "Persist",
+  "source": "analysis",
+  "note": "opens or creates the registry key (machine-wide first when asked)"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 9,
+  "name": "GetCount",
+  "source": "analysis",
+  "note": "LB_GETCOUNT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 10,
+  "name": "FindString",
+  "source": "analysis",
+  "note": "LB_FINDSTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 11,
+  "name": "FindExactString",
+  "source": "analysis",
+  "note": "the slot that holds CB_FINDSTRINGEXACT in TComboBox (no message of its own here)"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 12,
+  "name": "GetTopIndex",
+  "source": "analysis",
+  "note": "LB_GETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 13,
+  "name": "SetTopIndex",
+  "source": "analysis",
+  "note": "LB_SETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 14,
+  "name": "GetHorizontalExtent",
+  "source": "analysis",
+  "note": "LB_GETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 15,
+  "name": "SetHorizontalExtent",
+  "source": "analysis",
+  "note": "LB_SETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 16,
+  "name": "GetStringLen",
+  "source": "analysis",
+  "note": "LB_GETTEXTLEN"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 17,
+  "name": "GetString",
+  "source": "analysis",
+  "note": "LB_GETTEXT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 18,
+  "name": "GetItemData",
+  "source": "analysis",
+  "note": "LB_GETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 19,
+  "name": "SetItemData",
+  "source": "analysis",
+  "note": "LB_SETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 20,
+  "name": "GetItemHeight",
+  "source": "analysis",
+  "note": "LB_GETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 21,
+  "name": "SetItemHeight",
+  "source": "analysis",
+  "note": "LB_SETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 22,
+  "name": "ClearList",
+  "source": "analysis",
+  "note": "LB_RESETCONTENT"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 23,
+  "name": "DirectoryList",
+  "source": "analysis",
+  "note": "LB_DIR"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 24,
+  "name": "AddString",
+  "source": "analysis",
+  "note": "LB_ADDSTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 25,
+  "name": "InsertString",
+  "source": "analysis",
+  "note": "LB_INSERTSTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 26,
+  "name": "DeleteString",
+  "source": "analysis",
+  "note": "LB_DELETESTRING"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 27,
+  "name": "GetSelIndex",
+  "source": "analysis",
+  "note": "LB_GETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TListBox",
+  "slot": 28,
+  "name": "SetSelIndex",
+  "source": "analysis",
+  "note": "LB_SETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 9,
+  "name": "GetCount",
+  "source": "analysis",
+  "note": "CB_GETCOUNT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 10,
+  "name": "FindString",
+  "source": "analysis",
+  "note": "CB_FINDSTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 11,
+  "name": "FindExactString",
+  "source": "analysis",
+  "note": "CB_FINDSTRINGEXACT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 12,
+  "name": "GetTopIndex",
+  "source": "analysis",
+  "note": "CB_GETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 13,
+  "name": "SetTopIndex",
+  "source": "analysis",
+  "note": "CB_SETTOPINDEX"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 14,
+  "name": "GetHorizontalExtent",
+  "source": "analysis",
+  "note": "CB_GETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 15,
+  "name": "SetHorizontalExtent",
+  "source": "analysis",
+  "note": "CB_SETHORIZONTALEXTENT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 16,
+  "name": "GetStringLen",
+  "source": "analysis",
+  "note": "CB_GETLBTEXTLEN"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 17,
+  "name": "GetString",
+  "source": "analysis",
+  "note": "CB_GETLBTEXT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 18,
+  "name": "GetItemData",
+  "source": "analysis",
+  "note": "CB_GETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 19,
+  "name": "SetItemData",
+  "source": "analysis",
+  "note": "CB_SETITEMDATA"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 20,
+  "name": "GetItemHeight",
+  "source": "analysis",
+  "note": "CB_GETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 21,
+  "name": "SetItemHeight",
+  "source": "analysis",
+  "note": "CB_SETITEMHEIGHT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 22,
+  "name": "ClearList",
+  "source": "analysis",
+  "note": "CB_RESETCONTENT"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 23,
+  "name": "DirectoryList",
+  "source": "analysis",
+  "note": "CB_DIR"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 24,
+  "name": "AddString",
+  "source": "analysis",
+  "note": "CB_ADDSTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 25,
+  "name": "InsertString",
+  "source": "analysis",
+  "note": "CB_INSERTSTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 26,
+  "name": "DeleteString",
+  "source": "analysis",
+  "note": "CB_DELETESTRING"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 27,
+  "name": "GetSelIndex",
+  "source": "analysis",
+  "note": "CB_GETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 28,
+  "name": "SetSelIndex",
+  "source": "analysis",
+  "note": "CB_SETCURSEL"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 31,
+  "name": "GetSelStringIndex",
+  "source": "analysis",
+  "note": "CB_FINDSTRINGEXACT of the given text"
+ },
+ {
+  "slotClass": "OWL::TComboBox",
+  "slot": 32,
+  "name": "SetSelString",
+  "source": "analysis",
+  "note": "CB_SELECTSTRING"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 13,
+  "name": "GetSelection",
+  "source": "analysis",
+  "note": "EM_GETSEL"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 15,
+  "name": "SetSelection",
+  "source": "analysis",
+  "note": "EM_SETSEL"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 17,
+  "name": "Paste",
+  "source": "analysis",
+  "note": "WM_PASTE"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 18,
+  "name": "CharFromPos",
+  "source": "analysis",
+  "note": "EM_CHARFROMPOS"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 19,
+  "name": "PosFromChar",
+  "source": "analysis",
+  "note": "EM_POSFROMCHAR"
+ },
+ {
+  "slotClass": "OWL::TEdit",
+  "slot": 12,
+  "name": "GetSubText",
+  "source": "analysis",
+  "note": "text between two positions (EM_LINEINDEX / EM_LINEFROMCHAR per line)"
+ },
+ {
+  "slotClass": "OWL::TRichEdit",
+  "slot": 25,
+  "name": "ReadFromFile",
+  "source": "analysis",
+  "note": "loads a file into the control (stream in, EM_SETMODIFY)"
+ },
+ {
+  "slotClass": "OWL::TRichEdit",
+  "slot": 29,
+  "name": "WriteToFile",
+  "source": "analysis",
+  "note": "saves the control to a file (stream out, EM_SETMODIFY)"
+ }
+]

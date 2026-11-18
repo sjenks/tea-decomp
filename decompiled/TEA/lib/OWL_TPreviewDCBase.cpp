@@ -8,29 +8,29 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0049bd50  OWL::TPreviewDCBase::vf23   (13 bytes)   [rtti:vtable virtual slot 23]
-undefined4 __cdecl OWL::TPreviewDCBase::vf23(int param_1)
+undefined4 __cdecl OWL::TPreviewDCBase::vf23(int self)
 
 {
-  return **(undefined4 **)(param_1 + 0x35);
+  return **(undefined4 **)(self + 0x35);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0049c9e8  OWL::TPreviewDCBase::~TPreviewDCBase   (70 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::TPreviewDCBase::_dtor
-void __cdecl OWL::TPreviewDCBase::_dtor(int *param_1,byte param_2)
+void __cdecl OWL::TPreviewDCBase::_dtor(int *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x508df0);
-  if (param_1 != (int *)0x0) {
-    OWL::TCreatedDC::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (int *)0x0) {
+    OWL::TCreatedDC::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

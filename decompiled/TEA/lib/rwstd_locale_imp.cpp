@@ -1,5 +1,5 @@
 // TEA.exe — runtime / library code "rwstd_locale_imp"
-// 1 functions, 0x004dac7c..0x004dac7c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 2 functions, 0x004dab5c..0x004dac7c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,60 +7,99 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
+// 0x004dab5c  __rwstd::locale_imp::locale_imp   (252 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores __rwstd::locale_imp's vtable at its vptr offset (+0x0) in this
+/* WARNING: Removing unreachable block (ram,0x004dabfb) */
+undefined4 * __cdecl __rwstd::locale_imp::locale_imp(undefined4 *self,int param_2,undefined4 param_3)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 str;
+  undefined4 local_2c;
+  undefined4 sehPrevFrame;
+  undefined2 ehContext;
+  int ehDtorCount;
+  
+  __InitExceptBlockLDTC(0x516798);
+  ehContext = 8;
+  *self = &__rwstd::ref_counted::vftable;
+  self[1] = param_3;
+  *self = &__rwstd::locale_imp::vftable;
+  self[2] = 0;
+  self[3] = 0;
+  ehDtorCount = ehDtorCount + 2;
+  local_2c = 0;
+  str = 0x4dabbd;
+  FUN_004cf2d4(self + 4,param_2,&local_2c);
+  self[6] = 0;
+  self[7] = 0;
+  self[10] = 0;
+  self[10] = &g_emptyStringData;
+  ehDtorCount = ehDtorCount + 2;
+  *(undefined1 *)(self + 0xc) = 0;
+  ehContext = 0x38;
+  std::string::string_from_cstr((int)&str,(uint *)&DAT_00516765);
+  ehContext = 0x2c;
+  FUN_004d5fe4(self + 2,6);
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
 // 0x004dac7c  __rwstd::locale_imp::~locale_imp   (390 bytes)   [rtti:dtor destructor]
 //   written in code as __rwstd::locale_imp::_dtor
-void __cdecl __rwstd::locale_imp::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl __rwstd::locale_imp::_dtor(undefined4 *self,byte dtorFlags)
 
 {
   undefined4 *puVar1;
   int iVar2;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_34;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x51680c);
-  if (param_1 == (undefined4 *)0x0) goto LAB_004dadf2;
-  *param_1 = &__rwstd::locale_imp::vftable;
-  iVar2 = param_1[5];
+  if (self == (undefined4 *)0x0) goto LAB_004dadf2;
+  *self = &__rwstd::locale_imp::vftable;
+  iVar2 = self[5];
   while (iVar2 != 0) {
     iVar2 = iVar2 + -1;
-    puVar1 = *(undefined4 **)(param_1[4] + iVar2 * 4);
+    puVar1 = *(undefined4 **)(self[4] + iVar2 * 4);
     if (((puVar1 != (undefined4 *)0x0) && (puVar1[1] = puVar1[1] + -1, puVar1[1] == 0)) &&
        (puVar1 != (undefined4 *)0x0)) {
       (**(code **)*puVar1)();
     }
   }
-  if (param_1[10] != 0) {
-    if (*(int *)(param_1[10] + -0xc) != -1) {
-      piVar3 = (int *)(param_1[10] + -0xc);
-      if (piVar3 == &DAT_00513d58) {
+  if (self[10] != 0) {
+    if (*(int *)(self[10] + -0xc) != -1) {
+      strRep = (int *)(self[10] + -0xc);
+      if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
-      else if (piVar3 == &DAT_00513d58) {
+      else if (strRep == &g_nullStringRep) {
         iVar2 = 1;
       }
       else {
-        *piVar3 = *piVar3 + -1;
-        iVar2 = *piVar3 + 1;
+        *strRep = *strRep + -1;
+        iVar2 = *strRep + 1;
       }
       if (iVar2 != 0) goto LAB_004dad7a;
     }
     operator_delete();
-    param_1[10] = 0;
+    self[10] = 0;
   }
 LAB_004dad7a:
-  if (param_1[4] != 0) {
+  if (self[4] != 0) {
     operator_delete_array();
   }
-  if (param_1[2] != 0) {
-    _vector_delete_ldtc_(param_1[2],0x10,0,0x19,(undefined*)std::string::_dtor);
+  if (self[2] != 0) {
+    _vector_delete_ldtc_(self[2],0x10,0,0x19,(undefined*)std::string::_dtor);
   }
-  __rwstd::ref_counted::_dtor(param_1,0);
-  if ((param_2 & 1) != 0) {
+  __rwstd::ref_counted::_dtor(self,0);
+  if ((dtorFlags & 1) != 0) {
     operator_delete();
   }
 LAB_004dadf2:
-  *in_FS_OFFSET = local_34;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

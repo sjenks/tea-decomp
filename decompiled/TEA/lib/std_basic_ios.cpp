@@ -1,5 +1,5 @@
 // TEA.exe — runtime / library code "std_basic_ios"
-// 1 functions, 0x004d118c..0x004d118c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 2 functions, 0x004d0b78..0x004d118c. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -7,23 +7,41 @@
 namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
-// 0x004d118c  std::basic_ios<char>::~basic_ios   (93 bytes)   [rtti:dtor destructor]
-//   written in code as std::basic_ios_char::_dtor
-void __cdecl std::basic_ios_char::_dtor(undefined4 *param_1,byte param_2)
+// 0x004d0b78  std::basic_ios<char>::basic_ios   (77 bytes)   [rtti:vtable-store constructor]
+//   constructor: stores std::basic_ios<char,std::char_traits<char> >'s vtable at its vptr offset (+0x0) in this
+//   written in code as std::basic_ios_char::basic_ios
+undefined4 * __cdecl std::basic_ios_char::basic_ios(undefined4 *self)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
+  
+  __InitExceptBlockLDTC(0x5143c4);
+  std::ios_base::ios_base(self);
+  *self = &std::basic_ios_char::vftable;
+  FUN_004d0be0((int)self,0);
+  *sehChainHead = sehPrevFrame;
+  return self;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// 0x004d118c  std::basic_ios<char>::~basic_ios   (93 bytes)   [rtti:dtor destructor]
+//   written in code as std::basic_ios_char::_dtor
+void __cdecl std::basic_ios_char::_dtor(undefined4 *self,byte dtorFlags)
+
+{
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x514528);
-  if (param_1 != (undefined4 *)0x0) {
-    *param_1 = &std::basic_ios_char::vftable;
-    std::ios_base::_dtor(param_1,0);
-    if ((param_2 & 1) != 0) {
+  if (self != (undefined4 *)0x0) {
+    *self = &std::basic_ios_char::vftable;
+    std::ios_base::_dtor(self,0);
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

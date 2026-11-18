@@ -8,19 +8,19 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0047008c  FUN_0047008c   (15 bytes)   [unnamed]
-void __cdecl FUN_0047008c(uint *param_1)
+void __cdecl FUN_0047008c(uint *buffer)
 
 {
-  FUN_0046ff70(param_1);
+  FUN_0046ff70(buffer);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0047009c  FUN_0047009c   (23 bytes)   [unnamed]
-void __cdecl FUN_0047009c(uint *param_1)
+void __cdecl FUN_0047009c(uint *buffer)
 
 {
-  FUN_0046ff70(param_1);
+  FUN_0046ff70(buffer);
   FUN_0047041c(1);
   return;
 }
@@ -41,9 +41,9 @@ void __cdecl FUN_00470150(undefined1 *param_1,undefined1 *param_2)
 
 {
   undefined1 uVar1;
-  uint uVar2;
+  uint i;
   
-  for (uVar2 = 0; uVar2 < DAT_0048d87c; uVar2 = uVar2 + 1) {
+  for (i = 0; i < DAT_0048d87c; i = i + 1) {
     uVar1 = *param_2;
     *param_2 = *param_1;
     param_2 = param_2 + 1;
@@ -186,7 +186,7 @@ void __stdcall FUN_004703ac(void)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x004703b0  FUN_004703b0   (81 bytes)   [unnamed]
-void __cdecl FUN_004703b0(int param_1,int param_2,UINT param_3)
+void __cdecl FUN_004703b0(int param_1,int param_2,UINT exitCode)
 
 {
   if (param_1 == 0) {
@@ -204,26 +204,26 @@ void __cdecl FUN_004703b0(int param_1,int param_2,UINT param_3)
       (*(code *)PTR_FUN_0048a8fc)();
       (*(code *)PTR_FUN_0048a900)();
     }
-    FUN_00470f74(param_3);
+    FUN_00470f74(exitCode);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00470404  FUN_00470404   (21 bytes)   [unnamed]
-void __cdecl FUN_00470404(UINT param_1)
+void __cdecl FUN_00470404(UINT exitCode)
 
 {
-  FUN_004703b0(0,0,param_1);
+  FUN_004703b0(0,0,exitCode);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0047041c  FUN_0047041c   (21 bytes)   [unnamed]
-void __cdecl FUN_0047041c(UINT param_1)
+void __cdecl FUN_0047041c(UINT exitCode)
 
 {
-  FUN_004703b0(1,0,param_1);
+  FUN_004703b0(1,0,exitCode);
   return;
 }
 
@@ -828,11 +828,11 @@ undefined4 __cdecl FUN_00470f04(int param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00470f74  FUN_00470f74   (12 bytes)   [unnamed]
-void __stdcall FUN_00470f74(UINT param_1)
+void __stdcall FUN_00470f74(UINT exitCode)
 
 {
                     /* WARNING: Subroutine does not return */
-  ExitProcess(param_1);
+  ExitProcess(exitCode);
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -864,7 +864,7 @@ void __cdecl FUN_00470f8c(int *param_1,int param_2)
   int *local_18;
   int local_14;
   int local_10;
-  int local_c;
+  int i;
   
   if (param_2 == 0) {
     local_10 = 0x100;
@@ -878,7 +878,7 @@ void __cdecl FUN_00470f8c(int *param_1,int param_2)
   }
   for (; iVar4 != local_10; iVar4 = iVar4 + local_14) {
     local_18 = param_1;
-    for (local_c = 0; local_18 = local_18 + 1, local_c < *param_1; local_c = local_c + 1) {
+    for (i = 0; local_18 = local_18 + 1, i < *param_1; i = i + 1) {
       puVar1 = (uint *)*local_18;
       if (param_2 == 0) {
         uVar2 = puVar1[1];
@@ -909,7 +909,7 @@ void __stdcall FUN_00471060(void)
 {
   int *piVar1;
   int *piVar2;
-  int iVar3;
+  int i;
   
   if (DAT_0048aa94 == 0) {
     DAT_0048aa94 = 1;
@@ -919,7 +919,7 @@ void __stdcall FUN_00471060(void)
     if (piVar1 != (int *)0x0) {
       FUN_00470f8c(piVar1,1);
       piVar2 = piVar1;
-      for (iVar3 = 0; piVar2 = piVar2 + 1, iVar3 < *piVar1; iVar3 = iVar3 + 1) {
+      for (i = 0; piVar2 = piVar2 + 1, i < *piVar1; i = i + 1) {
         (**(code **)(*piVar2 + 0x18))();
       }
     }
@@ -935,12 +935,12 @@ void __cdecl FUN_004710cc(int param_1)
 {
   char cVar1;
   int *piVar2;
-  UINT UVar3;
+  UINT exitCode;
   char cVar4;
   int *piVar5;
   char *pcVar6;
-  int local_10;
-  undefined1 local_c [8];
+  int i;
+  undefined1 newStr [8];
   
   (*(uint *)&DAT_0048aa90) = *(uint *)(param_1 + 0x10) & 1;
   FUN_0046dd94();
@@ -949,7 +949,7 @@ void __cdecl FUN_004710cc(int param_1)
   FUN_004697b4(*(undefined4 **)(param_1 + 0x44));
   _DAT_0048d8d8 = 1;
   _DAT_0048d8dc = param_1;
-  DAT_0048d8c4 = local_c;
+  DAT_0048d8c4 = newStr;
   FUN_00468a18();
   DAT_0048d8b4 = GetEnvironmentStrings();
   DAT_0048d8b0 = GetCommandLineA();
@@ -961,15 +961,15 @@ void __cdecl FUN_004710cc(int param_1)
     piVar2[*piVar2 + 1] = -1;
     FUN_00470f8c(piVar2,0);
     piVar5 = piVar2;
-    for (local_10 = 0; piVar5 = piVar5 + 1, local_10 < *piVar2; local_10 = local_10 + 1) {
+    for (i = 0; piVar5 = piVar5 + 1, i < *piVar2; i = i + 1) {
       (**(code **)(*piVar5 + 0x18))();
     }
   }
   FUN_00470f8c((int *)&DAT_0048d8d8,0);
   pcVar6 = DAT_0048d8b0;
   if ((*(byte *)(param_1 + 0x10) & 1) == 0) {
-    UVar3 = (**(code **)(param_1 + 0x18))();
-    FUN_00470404(UVar3);
+    exitCode = (**(code **)(param_1 + 0x18))();
+    FUN_00470404(exitCode);
   }
   else {
     for (; (*pcVar6 == ' ' || (*pcVar6 == '\t')); pcVar6 = pcVar6 + 1) {
@@ -992,8 +992,8 @@ void __cdecl FUN_004710cc(int param_1)
     }
     FUN_00471250();
     GetModuleHandleA((LPCSTR)0x0);
-    UVar3 = (**(code **)(param_1 + 0x18))();
-    FUN_00470404(UVar3);
+    exitCode = (**(code **)(param_1 + 0x18))();
+    FUN_00470404(exitCode);
   }
   return;
 }
@@ -1014,28 +1014,28 @@ WORD __stdcall FUN_00471250(void)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00471278  FUN_00471278   (16 bytes)   [unnamed]
-void __stdcall FUN_00471278(DWORD param_1)
+void __stdcall FUN_00471278(DWORD tlsIndex)
 
 {
-  TlsFree(param_1);
+  TlsFree(tlsIndex);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00471288  FUN_00471288   (16 bytes)   [unnamed]
-void __stdcall FUN_00471288(DWORD param_1)
+void __stdcall FUN_00471288(DWORD tlsIndex)
 
 {
-  TlsGetValue(param_1);
+  TlsGetValue(tlsIndex);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00471298  FUN_00471298   (20 bytes)   [unnamed]
-void __stdcall FUN_00471298(DWORD param_1,LPVOID param_2)
+void __stdcall FUN_00471298(DWORD tlsIndex,LPVOID tlsValue)
 
 {
-  TlsSetValue(param_1,param_2);
+  TlsSetValue(tlsIndex,tlsValue);
   return;
 }
 
@@ -1060,14 +1060,14 @@ void __stdcall FUN_004712b4(void)
 char * __stdcall FUN_004712c8(void)
 
 {
-  char cVar1;
+  char ch;
   undefined *puVar2;
   uint *puVar3;
   char *pcVar4;
   int iVar5;
-  char *pcVar6;
+  char *len;
   int iVar7;
-  int local_bc;
+  int timeZoneInformation;
   WCHAR local_68;
   short local_22;
   WCHAR local_14;
@@ -1077,18 +1077,18 @@ char * __stdcall FUN_004712c8(void)
         (iVar5 = FUN_0046fbd4((int)(char)*puVar3), iVar5 == 0)) ||
        ((iVar5 = FUN_0046fbd4((int)*(char *)((int)puVar3 + 1)), iVar5 == 0 ||
         (iVar5 = FUN_0046fbd4((int)*(char *)((int)puVar3 + 2)), iVar5 == 0)))) ||
-      ((cVar1 = *(char *)((int)puVar3 + 3), cVar1 != '-' &&
-       ((cVar1 != '+' && (iVar5 = FUN_0046fc14((int)cVar1), iVar5 == 0)))))) ||
+      ((ch = *(char *)((int)puVar3 + 3), ch != '-' &&
+       ((ch != '+' && (iVar5 = FUN_0046fc14((int)ch), iVar5 == 0)))))) ||
      ((iVar5 = FUN_0046fc14((int)*(char *)((int)puVar3 + 3)), iVar5 == 0 &&
       (iVar5 = FUN_0046fc14((int)(char)puVar3[1]), iVar5 == 0)))) {
-    GetTimeZoneInformation((LPTIME_ZONE_INFORMATION)&local_bc);
+    GetTimeZoneInformation((LPTIME_ZONE_INFORMATION)&timeZoneInformation);
     if (local_22 == 0) {
       (*(uint *)&DAT_0048aa9c) = 0;
     }
     else {
       (*(uint *)&DAT_0048aa9c) = (uint)(local_14 != L'\0');
     }
-    DAT_0048aa98 = (local_bc + local_68) * 0x3c;
+    DAT_0048aa98 = (timeZoneInformation + local_68) * 0x3c;
     *PTR_DAT_0048aaa0 = DAT_0048aaab;
     puVar2 = PTR_DAT_0048aaa4;
     *PTR_DAT_0048aaa4 = DAT_0048aaac;
@@ -1097,7 +1097,7 @@ char * __stdcall FUN_004712c8(void)
   memset((undefined4 *)PTR_DAT_0048aaa4,0,4);
   FUN_0046fc4c(PTR_DAT_0048aaa0,(byte *)puVar3,3);
   PTR_DAT_0048aaa0[3] = 0;
-  iVar5 = FUN_0046db78((char *)((int)puVar3 + 3));
+  iVar5 = atoi((char *)((int)puVar3 + 3));
   iVar7 = 3;
   pcVar4 = (char *)((int)puVar3 + 3);
   DAT_0048aa98 = iVar5 * 0xe10;
@@ -1111,9 +1111,9 @@ char * __stdcall FUN_004712c8(void)
     iVar7 = iVar7 + 1;
     pcVar4 = pcVar4 + 1;
   }
-  pcVar6 = strlen((uint *)(iVar7 + (int)puVar3));
-  if (pcVar6 < (char *)0x3) {
-    return pcVar6;
+  len = strlen((uint *)(iVar7 + (int)puVar3));
+  if (len < (char *)0x3) {
+    return len;
   }
   iVar5 = FUN_0046fbd4((int)pcVar4[1]);
   if (iVar5 == 0) {
@@ -1153,14 +1153,14 @@ int __cdecl FUN_004714ca(uint param_1)
     return iVar1;
   }
   if (param_1 < 0x81) {
-    iVar1 = FUN_00401140();
+    iVar1 = __getTlsBlock();
     if ((*(byte *)(iVar1 + 4) & 1) == 0) goto LAB_004714f7;
   }
   FUN_0047039c();
 LAB_004714f7:
-  iVar1 = FUN_00401140();
+  iVar1 = __getTlsBlock();
   *(uint *)(iVar1 + 4) = *(uint *)(iVar1 + 4) | 1;
-  iVar1 = FUN_00401140();
+  iVar1 = __getTlsBlock();
   return *(int *)(iVar1 + 0x14);
 }
 
@@ -1171,9 +1171,9 @@ void __cdecl FUN_00471514(int param_1)
 {
   int iVar1;
   
-  iVar1 = FUN_00401140();
+  iVar1 = __getTlsBlock();
   if (param_1 == *(int *)(iVar1 + 0x14)) {
-    iVar1 = FUN_00401140();
+    iVar1 = __getTlsBlock();
     *(uint *)(iVar1 + 4) = *(uint *)(iVar1 + 4) & 0xfffffffe;
     return;
   }
@@ -1296,10 +1296,10 @@ int __cdecl FUN_00471715(char *param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0047172d  FUN_0047172d   (29 bytes)   [unnamed]
-void __cdecl FUN_0047172d(undefined4 param_1,int param_2)
+void __cdecl FUN_0047172d(undefined4 arguments,int param_2)
 
 {
-  RaiseException(0xeedfae6,0,param_2 + 2,&param_1);
+  RaiseException(0xeedfae6,0,param_2 + 2,&arguments);
   return;
 }
 
@@ -1380,8 +1380,9 @@ void __cdecl FUN_0047181a(undefined4 param_1,undefined *param_2,uint param_3)
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00471898  FUN_00471898   (576 bytes, 2 ranges)   [unnamed]
-void __cdecl FUN_00471898(uint *param_1,undefined4 *param_2,undefined4 param_3,undefined *param_4,uint param_5, undefined4 param_6,undefined4 param_7,undefined4 param_8,undefined4 param_9)
+// 0x00471898  __raiseException   (576 bytes, 2 ranges)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x00427e50. builds the Borland exception record (type, object copy, source position) and calls RaiseException
+void __cdecl __raiseException(uint *typeDesc,undefined4 *object,undefined4 objectDtor,undefined *copyCtor,uint copyCtorMask, undefined4 throwFlags,undefined4 throwFile,undefined4 throwLine,undefined4 throwReturn)
 
 {
   undefined4 *puVar1;
@@ -1391,140 +1392,141 @@ void __cdecl FUN_00471898(uint *param_1,undefined4 *param_2,undefined4 param_3,u
   char *pcVar5;
   int iVar6;
   undefined2 in_FS;
-  ULONG_PTR local_44;
-  undefined4 local_40;
-  undefined4 *local_3c;
+  ULONG_PTR arguments;
+  undefined4 unused;
+  undefined4 *unused2;
   undefined4 local_38;
-  undefined4 *local_34;
-  uint local_30;
-  uint *local_2c;
+  undefined4 *record;
+  uint objectOffset;
+  uint *baseTypeDesc;
   undefined4 local_28;
-  undefined2 local_18;
+  undefined2 ehContext;
   
   __InitExceptBlockLDTC(0x48aad4);
-  iVar4 = FUN_00401140();
+  iVar4 = __getTlsBlock();
   *(uint *)(iVar4 + 4) = *(uint *)(iVar4 + 4) | 2;
-  iVar4 = FUN_00401140();
-  if (param_1 == (uint *)0x0) {
+  iVar4 = __getTlsBlock();
+  if (typeDesc == (uint *)0x0) {
     iVar6 = 0;
   }
   else {
-    iVar6 = (uint)*(ushort *)((int)param_1 + 6) + (int)param_1;
+    iVar6 = (uint)*(ushort *)((int)typeDesc + 6) + (int)typeDesc;
   }
   *(int *)(iVar4 + 0x10) = iVar6;
-  iVar4 = FUN_00401140();
-  *(undefined4 *)(iVar4 + 0xc) = param_7;
-  iVar4 = FUN_00401140();
-  *(undefined4 *)(iVar4 + 8) = param_8;
-  local_2c = param_1;
-  uVar2 = (ushort)param_1[1];
-  uVar3 = *param_1;
+  iVar4 = __getTlsBlock();
+  *(undefined4 *)(iVar4 + 0xc) = throwFile;
+  iVar4 = __getTlsBlock();
+  *(undefined4 *)(iVar4 + 8) = throwLine;
+  baseTypeDesc = typeDesc;
+  uVar2 = (ushort)typeDesc[1];
+  uVar3 = *typeDesc;
   if ((uVar2 & 2) == 0) {
-    local_30 = 0;
+    objectOffset = 0;
   }
   else {
-    local_30 = param_1[3];
+    objectOffset = typeDesc[3];
   }
   if ((uVar2 & 0x30) != 0) {
-    local_2c = (uint *)param_1[2];
+    baseTypeDesc = (uint *)typeDesc[2];
   }
-  local_34 = (undefined4 *)FUN_004714ca(uVar3 + 0x52);
-  *local_34 = 0;
-  local_34[1] = param_1;
-  local_34[3] = param_6;
-  local_34[4] = uVar3;
-  *(ushort *)(local_34 + 6) = uVar2;
-  *(undefined2 *)((int)local_34 + 0x1a) = (undefined2)local_30;
-  local_34[5] = local_2c;
-  local_34[2] = param_3;
-  local_34[10] = 0;
-  local_34[0xb] = 0;
-  local_34[7] = FUN_00471514;
-  local_34[0xd] = param_7;
-  local_34[0xe] = param_8;
-  local_34[8] = param_4;
-  local_34[9] = param_5;
-  *(undefined1 *)((int)local_34 + 0x45) = 0;
-  *(undefined1 *)(local_34 + 0x11) = 1;
-  memcpy((undefined4 *)((int)local_34 + 0x52),param_2,uVar3);
+  record = (undefined4 *)FUN_004714ca(uVar3 + 0x52);
+  *record = 0;
+  record[1] = typeDesc;
+  record[3] = throwFlags;
+  record[4] = uVar3;
+  *(ushort *)(record + 6) = uVar2;
+  *(undefined2 *)((int)record + 0x1a) = (undefined2)objectOffset;
+  record[5] = baseTypeDesc;
+  record[2] = objectDtor;
+  record[10] = 0;
+  record[0xb] = 0;
+  record[7] = FUN_00471514;
+  record[0xd] = throwFile;
+  record[0xe] = throwLine;
+  record[8] = copyCtor;
+  record[9] = copyCtorMask;
+  *(undefined1 *)((int)record + 0x45) = 0;
+  *(undefined1 *)(record + 0x11) = 1;
+  memcpy((undefined4 *)((int)record + 0x52),object,uVar3);
   if ((*DAT_0048d8f0 == 1) || (*DAT_0048d8f0 == 2)) {
-    pcVar5 = FUN_004680cc((int)param_1);
+    pcVar5 = FUN_004680cc((int)typeDesc);
     FUN_00471715(pcVar5);
     FUN_0047172d(1,0xb);
   }
-  if ((local_30 & 1) != 0) {
-    if (param_4 == (undefined *)0x0) {
+  if ((objectOffset & 1) != 0) {
+    if (copyCtor == (undefined *)0x0) {
       FUN_0046fe00("cctrAddr","xx.cpp",0x445);
     }
     local_38 = DAT_0048d8ec;
-    local_18 = 8;
-    FUN_00471607((int)local_34 + 0x52,param_2,param_4,param_5);
-    local_18 = 0;
+    ehContext = 8;
+    FUN_00471607((int)record + 0x52,object,copyCtor,copyCtorMask);
+    ehContext = 0;
     DAT_0048d8ec = local_38;
   }
-  iVar4 = FUN_00401140();
-  local_44 = *(ULONG_PTR *)(iVar4 + 0x10);
-  local_40 = param_9;
-  local_3c = local_34;
-  RaiseException(0xeefface,1,3,&local_44);
+  iVar4 = __getTlsBlock();
+  arguments = *(ULONG_PTR *)(iVar4 + 0x10);
+  unused = throwReturn;
+  unused2 = record;
+  RaiseException(0xeefface,1,3,&arguments);
   puVar1 = (undefined4 *)segment(in_FS,0);
   *puVar1 = local_28;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
-// 0x00471ae8  FUN_00471ae8   (53 bytes)   [unnamed]
-void __cdecl FUN_00471ae8(uint *param_1,undefined4 *param_2,undefined4 param_3,undefined *param_4,uint param_5, undefined4 param_6,undefined4 param_7,undefined4 param_8)
+// 0x00471ae8  _ThrowExceptionLDTC   (53 bytes)   [analysis (matched TEACON.exe)]
+//   identical body to TEACON.exe 0x004280a0. Borland throw: records the exception type descriptor and object in the thread's exception state and raises it
+void __cdecl _ThrowExceptionLDTC(uint *typeDesc,undefined4 *object,undefined4 objectDtor,undefined *copyCtor,uint copyCtorMask, undefined4 throwFlags,undefined4 throwFile,undefined4 throwLine)
 
 {
-  undefined4 in_stack_00000000;
+  undefined4 throwReturn;
   
-  FUN_00471898(param_1,param_2,param_3,param_4,param_5,param_6,param_7,param_8,in_stack_00000000);
+  __raiseException(typeDesc,object,objectDtor,copyCtor,copyCtorMask,throwFlags,throwFile,throwLine,throwReturn);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00471b1d  FUN_00471b1d   (107 bytes)   [unnamed]
-void __cdecl FUN_00471b1d(undefined4 param_1,undefined4 param_2)
+void __cdecl FUN_00471b1d(undefined4 throwFile,undefined4 throwLine)
 
 {
   int iVar1;
   int *piVar2;
-  undefined4 *puVar3;
-  undefined4 in_stack_00000000;
+  undefined4 *object;
+  undefined4 throwReturn;
   
-  piVar2 = (int *)FUN_00401140();
+  piVar2 = (int *)__getTlsBlock();
   iVar1 = *piVar2;
   if (iVar1 == 0) {
     FUN_00468784();
   }
   if (*(char *)(iVar1 + 0x44) == '\0') {
-    puVar3 = *(undefined4 **)(iVar1 + 0x40);
+    object = *(undefined4 **)(iVar1 + 0x40);
   }
   else {
-    puVar3 = (undefined4 *)(iVar1 + 0x52);
+    object = (undefined4 *)(iVar1 + 0x52);
   }
-  FUN_00471898(*(uint **)(iVar1 + 4),puVar3,*(undefined4 *)(iVar1 + 8),*(undefined **)(iVar1 + 0x20)
-               ,*(uint *)(iVar1 + 0x24),*(undefined4 *)(iVar1 + 0xc),param_1,param_2,
-               in_stack_00000000);
+  __raiseException(*(uint **)(iVar1 + 4),object,*(undefined4 *)(iVar1 + 8),*(undefined **)(iVar1 + 0x20)
+               ,*(uint *)(iVar1 + 0x24),*(undefined4 *)(iVar1 + 0xc),throwFile,throwLine,
+               throwReturn);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x00471b88  FUN_00471b88   (63 bytes)   [unnamed]
-void __cdecl FUN_00471b88(PVOID param_1,PEXCEPTION_RECORD param_2)
+void __cdecl FUN_00471b88(PVOID targetFrame,PEXCEPTION_RECORD exceptionRecord)
 
 {
   EXCEPTION_RECORD local_54;
   
-  if (param_2 == (PEXCEPTION_RECORD)0x0) {
+  if (exceptionRecord == (PEXCEPTION_RECORD)0x0) {
     local_54.ExceptionCode = 0x26;
     local_54.ExceptionFlags = 2;
-    param_2 = &local_54;
+    exceptionRecord = &local_54;
     local_54.NumberParameters = 0;
   }
-  param_2->ExceptionFlags = param_2->ExceptionFlags | 2;
-  FUN_00468a7a(param_1,param_2);
+  exceptionRecord->ExceptionFlags = exceptionRecord->ExceptionFlags | 2;
+  FUN_00468a7a(targetFrame,exceptionRecord);
   return;
 }
 
@@ -1593,13 +1595,13 @@ void __stdcall FUN_00471cc4(void)
   undefined2 in_FS;
   undefined4 in_stack_00000000;
   
-  piVar4 = (int *)FUN_00401140();
+  piVar4 = (int *)__getTlsBlock();
   if (*piVar4 == 0) {
     FUN_0046fe00("__CPPexceptionList","xx.cpp",0x629);
   }
-  piVar4 = (int *)FUN_00401140();
+  piVar4 = (int *)__getTlsBlock();
   puVar1 = (undefined4 *)*piVar4;
-  puVar5 = (undefined4 *)FUN_00401140();
+  puVar5 = (undefined4 *)__getTlsBlock();
   *puVar5 = *puVar1;
   iVar2 = puVar1[10];
   piVar4 = (int *)segment(in_FS,0);
@@ -1764,7 +1766,7 @@ void __cdecl FUN_00472089(int param_1)
     }
     else if (2 < uVar3 - 1) {
       if (uVar3 == 4) {
-        uVar2 = FUN_00401140();
+        uVar2 = __getTlsBlock();
         *(undefined4 *)(puVar5 + -0x10) = uVar2;
         while ((puVar1 = (undefined4 *)**(int **)(puVar5 + -0x10), puVar1 != (undefined4 *)0x0 &&
                ((puVar1[10] != *(int *)(puVar5 + 8) || (uVar4 != puVar1[0xc]))))) {
@@ -1902,7 +1904,7 @@ LAB_00472426:
                 FUN_00471db5(*(int *)(puVar8 + -0x18),*(int *)(puVar8 + 0xc),*(int *)(puVar8 + -4),
                              *(int **)(puVar8 + -0x1c),*(int *)(puVar8 + -0xc));
               }
-              iVar9 = FUN_00401140();
+              iVar9 = __getTlsBlock();
               *(uint *)(iVar9 + 4) = *(uint *)(iVar9 + 4) & 0xfffffffd;
               if ((*DAT_0048d8f0 == 2) && (*(int *)(puVar8 + -0x14) == 3)) {
                 pcVar5 = FUN_004680cc(*(int *)(*(int *)(puVar8 + -4) + 4));
@@ -1930,9 +1932,9 @@ LAB_00472426:
                  ((**(uint **)(puVar8 + 8) < 0xeedface || (0xeefface < **(uint **)(puVar8 + 8))))) {
                 FUN_0047172d(2,3);
               }
-              puVar4 = (undefined4 *)FUN_00401140();
+              puVar4 = (undefined4 *)__getTlsBlock();
               **(undefined4 **)(puVar8 + -4) = *puVar4;
-              puVar4 = (undefined4 *)FUN_00401140();
+              puVar4 = (undefined4 *)__getTlsBlock();
               *puVar4 = *(undefined4 *)(puVar8 + -4);
               *(undefined4 *)(*(int *)(puVar8 + -4) + 0x28) = *(undefined4 *)(puVar8 + 0xc);
               *(undefined4 *)(*(int *)(puVar8 + -4) + 0x2c) = *(undefined4 *)(puVar8 + -0x18);
@@ -2450,12 +2452,12 @@ uint __cdecl FUN_00472fe6(int param_1)
 BOOL __stdcall import_IsTextUnicode(void *lpv,int iSize,LPINT lpiResult)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047303c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsTextUnicode(lpv,iSize,lpiResult);
-  return BVar1;
+  ok = IsTextUnicode(lpv,iSize,lpiResult);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2464,12 +2466,12 @@ BOOL __stdcall import_IsTextUnicode(void *lpv,int iSize,LPINT lpiResult)
 LSTATUS __stdcall import_RegCloseKey(HKEY hKey)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   
                     /* WARNING: Could not recover jumptable at 0x00473042. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = RegCloseKey(hKey);
-  return LVar1;
+  regStatus = RegCloseKey(hKey);
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2478,13 +2480,13 @@ LSTATUS __stdcall import_RegCloseKey(HKEY hKey)
 LSTATUS __stdcall import_RegCreateKeyExA(HKEY hKey,LPCSTR lpSubKey,DWORD Reserved,LPSTR lpClass,DWORD dwOptions, REGSAM samDesired,LPSECURITY_ATTRIBUTES lpSecurityAttributes,PHKEY phkResult, LPDWORD lpdwDisposition)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   
                     /* WARNING: Could not recover jumptable at 0x00473048. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = RegCreateKeyExA(hKey,lpSubKey,Reserved,lpClass,dwOptions,samDesired,lpSecurityAttributes,
+  regStatus = RegCreateKeyExA(hKey,lpSubKey,Reserved,lpClass,dwOptions,samDesired,lpSecurityAttributes,
                           phkResult,lpdwDisposition);
-  return LVar1;
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2493,12 +2495,12 @@ LSTATUS __stdcall import_RegCreateKeyExA(HKEY hKey,LPCSTR lpSubKey,DWORD Reserve
 LSTATUS __stdcall import_RegOpenKeyExA(HKEY hKey,LPCSTR lpSubKey,DWORD ulOptions,REGSAM samDesired,PHKEY phkResult)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   
                     /* WARNING: Could not recover jumptable at 0x0047304e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = RegOpenKeyExA(hKey,lpSubKey,ulOptions,samDesired,phkResult);
-  return LVar1;
+  regStatus = RegOpenKeyExA(hKey,lpSubKey,ulOptions,samDesired,phkResult);
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2507,14 +2509,14 @@ LSTATUS __stdcall import_RegOpenKeyExA(HKEY hKey,LPCSTR lpSubKey,DWORD ulOptions
 LSTATUS __stdcall import_RegQueryInfoKeyA(HKEY hKey,LPSTR lpClass,LPDWORD lpcchClass,LPDWORD lpReserved,LPDWORD lpcSubKeys, LPDWORD lpcbMaxSubKeyLen,LPDWORD lpcbMaxClassLen,LPDWORD lpcValues, LPDWORD lpcbMaxValueNameLen,LPDWORD lpcbMaxValueLen,LPDWORD lpcbSecurityDescriptor, PFILETIME lpftLastWriteTime)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   
                     /* WARNING: Could not recover jumptable at 0x00473054. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = RegQueryInfoKeyA(hKey,lpClass,lpcchClass,lpReserved,lpcSubKeys,lpcbMaxSubKeyLen,
+  regStatus = RegQueryInfoKeyA(hKey,lpClass,lpcchClass,lpReserved,lpcSubKeys,lpcbMaxSubKeyLen,
                            lpcbMaxClassLen,lpcValues,lpcbMaxValueNameLen,lpcbMaxValueLen,
                            lpcbSecurityDescriptor,lpftLastWriteTime);
-  return LVar1;
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2523,12 +2525,12 @@ LSTATUS __stdcall import_RegQueryInfoKeyA(HKEY hKey,LPSTR lpClass,LPDWORD lpcchC
 LSTATUS __stdcall import_RegQueryValueExA(HKEY hKey,LPCSTR lpValueName,LPDWORD lpReserved,LPDWORD lpType,LPBYTE lpData, LPDWORD lpcbData)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   
                     /* WARNING: Could not recover jumptable at 0x0047305a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = RegQueryValueExA(hKey,lpValueName,lpReserved,lpType,lpData,lpcbData);
-  return LVar1;
+  regStatus = RegQueryValueExA(hKey,lpValueName,lpReserved,lpType,lpData,lpcbData);
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2537,12 +2539,12 @@ LSTATUS __stdcall import_RegQueryValueExA(HKEY hKey,LPCSTR lpValueName,LPDWORD l
 LSTATUS __stdcall import_RegSetValueExA(HKEY hKey,LPCSTR lpValueName,DWORD Reserved,DWORD dwType,BYTE *lpData,DWORD cbData)
 
 {
-  LSTATUS LVar1;
+  LSTATUS regStatus;
   
                     /* WARNING: Could not recover jumptable at 0x00473060. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = RegSetValueExA(hKey,lpValueName,Reserved,dwType,lpData,cbData);
-  return LVar1;
+  regStatus = RegSetValueExA(hKey,lpValueName,Reserved,dwType,lpData,cbData);
+  return regStatus;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2551,12 +2553,12 @@ LSTATUS __stdcall import_RegSetValueExA(HKEY hKey,LPCSTR lpValueName,DWORD Reser
 BOOL __stdcall import_CloseHandle(HANDLE hObject)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473068. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = CloseHandle(hObject);
-  return BVar1;
+  ok = CloseHandle(hObject);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2565,13 +2567,13 @@ BOOL __stdcall import_CloseHandle(HANDLE hObject)
 HANDLE __stdcall import_CreateFileA(LPCSTR lpFileName,DWORD dwDesiredAccess,DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes,DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes,HANDLE hTemplateFile)
 
 {
-  HANDLE pvVar1;
+  HANDLE hFile;
   
                     /* WARNING: Could not recover jumptable at 0x0047306e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = CreateFileA(lpFileName,dwDesiredAccess,dwShareMode,lpSecurityAttributes,
+  hFile = CreateFileA(lpFileName,dwDesiredAccess,dwShareMode,lpSecurityAttributes,
                        dwCreationDisposition,dwFlagsAndAttributes,hTemplateFile);
-  return pvVar1;
+  return hFile;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2595,12 +2597,12 @@ HANDLE __stdcall import_CreateFileW(LPCWSTR lpFileName,DWORD dwDesiredAccess,DWO
 BOOL __stdcall import_DeleteFileA(LPCSTR lpFileName)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047307a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DeleteFileA(lpFileName);
-  return BVar1;
+  ok = DeleteFileA(lpFileName);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2609,13 +2611,13 @@ BOOL __stdcall import_DeleteFileA(LPCSTR lpFileName)
 BOOL __stdcall import_DuplicateHandle(HANDLE hSourceProcessHandle,HANDLE hSourceHandle,HANDLE hTargetProcessHandle, LPHANDLE lpTargetHandle,DWORD dwDesiredAccess,BOOL bInheritHandle,DWORD dwOptions)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473080. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DuplicateHandle(hSourceProcessHandle,hSourceHandle,hTargetProcessHandle,lpTargetHandle,
+  ok = DuplicateHandle(hSourceProcessHandle,hSourceHandle,hTargetProcessHandle,lpTargetHandle,
                           dwDesiredAccess,bInheritHandle,dwOptions);
-  return BVar1;
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2651,12 +2653,12 @@ DWORD __stdcall import_ExpandEnvironmentStringsA(LPCSTR lpSrc,LPSTR lpDst,DWORD 
 BOOL __stdcall import_FileTimeToSystemTime(FILETIME *lpFileTime,LPSYSTEMTIME lpSystemTime)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473098. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = FileTimeToSystemTime(lpFileTime,lpSystemTime);
-  return BVar1;
+  ok = FileTimeToSystemTime(lpFileTime,lpSystemTime);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2665,12 +2667,12 @@ BOOL __stdcall import_FileTimeToSystemTime(FILETIME *lpFileTime,LPSYSTEMTIME lpS
 BOOL __stdcall import_FindClose(HANDLE hFindFile)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047309e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = FindClose(hFindFile);
-  return BVar1;
+  ok = FindClose(hFindFile);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2679,12 +2681,12 @@ BOOL __stdcall import_FindClose(HANDLE hFindFile)
 HANDLE __stdcall import_FindFirstFileA(LPCSTR lpFileName,LPWIN32_FIND_DATAA lpFindFileData)
 
 {
-  HANDLE pvVar1;
+  HANDLE hFind;
   
                     /* WARNING: Could not recover jumptable at 0x004730a4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = FindFirstFileA(lpFileName,lpFindFileData);
-  return pvVar1;
+  hFind = FindFirstFileA(lpFileName,lpFindFileData);
+  return hFind;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2693,12 +2695,12 @@ HANDLE __stdcall import_FindFirstFileA(LPCSTR lpFileName,LPWIN32_FIND_DATAA lpFi
 HRSRC __stdcall import_FindResourceA(HMODULE hModule,LPCSTR lpName,LPCSTR lpType)
 
 {
-  HRSRC pHVar1;
+  HRSRC hResource;
   
                     /* WARNING: Could not recover jumptable at 0x004730aa. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = FindResourceA(hModule,lpName,lpType);
-  return pHVar1;
+  hResource = FindResourceA(hModule,lpName,lpType);
+  return hResource;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2707,12 +2709,12 @@ HRSRC __stdcall import_FindResourceA(HMODULE hModule,LPCSTR lpName,LPCSTR lpType
 HRSRC __stdcall import_FindResourceExA(HMODULE hModule,LPCSTR lpType,LPCSTR lpName,WORD wLanguage)
 
 {
-  HRSRC pHVar1;
+  HRSRC hResource;
   
                     /* WARNING: Could not recover jumptable at 0x004730b0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = FindResourceExA(hModule,lpType,lpName,wLanguage);
-  return pHVar1;
+  hResource = FindResourceExA(hModule,lpType,lpName,wLanguage);
+  return hResource;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2721,12 +2723,12 @@ HRSRC __stdcall import_FindResourceExA(HMODULE hModule,LPCSTR lpType,LPCSTR lpNa
 BOOL __stdcall import_FlushFileBuffers(HANDLE hFile)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004730b6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = FlushFileBuffers(hFile);
-  return BVar1;
+  ok = FlushFileBuffers(hFile);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2749,12 +2751,12 @@ DWORD __stdcall import_FormatMessageA(DWORD dwFlags,LPCVOID lpSource,DWORD dwMes
 BOOL __stdcall import_FreeLibrary(HMODULE hLibModule)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004730c2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = FreeLibrary(hLibModule);
-  return BVar1;
+  ok = FreeLibrary(hLibModule);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2763,12 +2765,12 @@ BOOL __stdcall import_FreeLibrary(HMODULE hLibModule)
 BOOL __stdcall import_FreeResource(HGLOBAL hResData)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004730c8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = FreeResource(hResData);
-  return BVar1;
+  ok = FreeResource(hResData);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2791,12 +2793,12 @@ UINT __stdcall import_GetACP(void)
 BOOL __stdcall import_GetCPInfo(UINT CodePage,LPCPINFO lpCPInfo)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004730d4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetCPInfo(CodePage,lpCPInfo);
-  return BVar1;
+  ok = GetCPInfo(CodePage,lpCPInfo);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2819,12 +2821,12 @@ LPSTR __stdcall import_GetCommandLineA(void)
 HANDLE __stdcall import_GetCurrentProcess(void)
 
 {
-  HANDLE pvVar1;
+  HANDLE hProcess;
   
                     /* WARNING: Could not recover jumptable at 0x004730e0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = GetCurrentProcess();
-  return pvVar1;
+  hProcess = GetCurrentProcess();
+  return hProcess;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2847,12 +2849,12 @@ DWORD __stdcall import_GetCurrentProcessId(void)
 DWORD __stdcall import_GetCurrentThreadId(void)
 
 {
-  DWORD DVar1;
+  DWORD threadId;
   
                     /* WARNING: Could not recover jumptable at 0x004730ec. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetCurrentThreadId();
-  return DVar1;
+  threadId = GetCurrentThreadId();
+  return threadId;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2889,12 +2891,12 @@ LPCH __stdcall import_GetEnvironmentStrings(void)
 DWORD __stdcall import_GetFileAttributesA(LPCSTR lpFileName)
 
 {
-  DWORD DVar1;
+  DWORD attributes;
   
                     /* WARNING: Could not recover jumptable at 0x004730fe. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetFileAttributesA(lpFileName);
-  return DVar1;
+  attributes = GetFileAttributesA(lpFileName);
+  return attributes;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2917,12 +2919,12 @@ DWORD __stdcall import_GetFileAttributesW(LPCWSTR lpFileName)
 DWORD __stdcall import_GetFileSize(HANDLE hFile,LPDWORD lpFileSizeHigh)
 
 {
-  DWORD DVar1;
+  DWORD fileSize;
   
                     /* WARNING: Could not recover jumptable at 0x0047310a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetFileSize(hFile,lpFileSizeHigh);
-  return DVar1;
+  fileSize = GetFileSize(hFile,lpFileSizeHigh);
+  return fileSize;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2931,12 +2933,12 @@ DWORD __stdcall import_GetFileSize(HANDLE hFile,LPDWORD lpFileSizeHigh)
 BOOL __stdcall import_GetFileTime(HANDLE hFile,LPFILETIME lpCreationTime,LPFILETIME lpLastAccessTime, LPFILETIME lpLastWriteTime)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473110. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetFileTime(hFile,lpCreationTime,lpLastAccessTime,lpLastWriteTime);
-  return BVar1;
+  ok = GetFileTime(hFile,lpCreationTime,lpLastAccessTime,lpLastWriteTime);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2945,12 +2947,12 @@ BOOL __stdcall import_GetFileTime(HANDLE hFile,LPFILETIME lpCreationTime,LPFILET
 DWORD __stdcall import_GetFileType(HANDLE hFile)
 
 {
-  DWORD DVar1;
+  DWORD fileType;
   
                     /* WARNING: Could not recover jumptable at 0x00473116. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetFileType(hFile);
-  return DVar1;
+  fileType = GetFileType(hFile);
+  return fileType;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -2973,12 +2975,12 @@ DWORD __stdcall import_GetFullPathNameA(LPCSTR lpFileName,DWORD nBufferLength,LP
 DWORD __stdcall import_GetLastError(void)
 
 {
-  DWORD DVar1;
+  DWORD lastError;
   
                     /* WARNING: Could not recover jumptable at 0x00473122. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetLastError();
-  return DVar1;
+  lastError = GetLastError();
+  return lastError;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3027,12 +3029,12 @@ DWORD __stdcall import_GetModuleFileNameA(HMODULE hModule,LPSTR lpFilename,DWORD
 HMODULE __stdcall import_GetModuleHandleA(LPCSTR lpModuleName)
 
 {
-  HMODULE pHVar1;
+  HMODULE hModule;
   
                     /* WARNING: Could not recover jumptable at 0x0047313a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetModuleHandleA(lpModuleName);
-  return pHVar1;
+  hModule = GetModuleHandleA(lpModuleName);
+  return hModule;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3055,12 +3057,12 @@ UINT __stdcall import_GetOEMCP(void)
 FARPROC __stdcall import_GetProcAddress(HMODULE hModule,LPCSTR lpProcName)
 
 {
-  FARPROC pFVar1;
+  FARPROC procAddress;
   
                     /* WARNING: Could not recover jumptable at 0x00473146. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pFVar1 = GetProcAddress(hModule,lpProcName);
-  return pFVar1;
+  procAddress = GetProcAddress(hModule,lpProcName);
+  return procAddress;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3095,12 +3097,12 @@ HANDLE __stdcall import_GetStdHandle(DWORD nStdHandle)
 BOOL __stdcall import_GetStringTypeA(LCID Locale,DWORD dwInfoType,LPCSTR lpSrcStr,int cchSrc,LPWORD lpCharType)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047315e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetStringTypeA(Locale,dwInfoType,lpSrcStr,cchSrc,lpCharType);
-  return BVar1;
+  ok = GetStringTypeA(Locale,dwInfoType,lpSrcStr,cchSrc,lpCharType);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3109,12 +3111,12 @@ BOOL __stdcall import_GetStringTypeA(LCID Locale,DWORD dwInfoType,LPCSTR lpSrcSt
 BOOL __stdcall import_GetStringTypeW(DWORD dwInfoType,LPCWSTR lpSrcStr,int cchSrc,LPWORD lpCharType)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473164. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetStringTypeW(dwInfoType,lpSrcStr,cchSrc,lpCharType);
-  return BVar1;
+  ok = GetStringTypeW(dwInfoType,lpSrcStr,cchSrc,lpCharType);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3137,12 +3139,12 @@ LANGID __stdcall import_GetSystemDefaultLangID(void)
 DWORD __stdcall import_GetTickCount(void)
 
 {
-  DWORD DVar1;
+  DWORD tickCount;
   
                     /* WARNING: Could not recover jumptable at 0x00473170. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetTickCount();
-  return DVar1;
+  tickCount = GetTickCount();
+  return tickCount;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3179,12 +3181,12 @@ LCID __stdcall import_GetUserDefaultLCID(void)
 DWORD __stdcall import_GetVersion(void)
 
 {
-  DWORD DVar1;
+  DWORD version;
   
                     /* WARNING: Could not recover jumptable at 0x00473188. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetVersion();
-  return DVar1;
+  version = GetVersion();
+  return version;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3193,12 +3195,12 @@ DWORD __stdcall import_GetVersion(void)
 BOOL __stdcall import_GetVersionExA(LPOSVERSIONINFOA lpVersionInformation)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047318e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetVersionExA(lpVersionInformation);
-  return BVar1;
+  ok = GetVersionExA(lpVersionInformation);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3221,12 +3223,12 @@ UINT __stdcall import_GetWindowsDirectoryA(LPSTR lpBuffer,UINT uSize)
 HGLOBAL __stdcall import_GlobalAlloc(UINT uFlags,SIZE_T dwBytes)
 
 {
-  HGLOBAL pvVar1;
+  HGLOBAL hGlobal;
   
                     /* WARNING: Could not recover jumptable at 0x0047319a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = GlobalAlloc(uFlags,dwBytes);
-  return pvVar1;
+  hGlobal = GlobalAlloc(uFlags,dwBytes);
+  return hGlobal;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3235,12 +3237,12 @@ HGLOBAL __stdcall import_GlobalAlloc(UINT uFlags,SIZE_T dwBytes)
 HGLOBAL __stdcall import_GlobalFree(HGLOBAL hMem)
 
 {
-  HGLOBAL pvVar1;
+  HGLOBAL hGlobal;
   
                     /* WARNING: Could not recover jumptable at 0x004731a0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = GlobalFree(hMem);
-  return pvVar1;
+  hGlobal = GlobalFree(hMem);
+  return hGlobal;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3249,12 +3251,12 @@ HGLOBAL __stdcall import_GlobalFree(HGLOBAL hMem)
 HGLOBAL __stdcall import_GlobalHandle(LPCVOID pMem)
 
 {
-  HGLOBAL pvVar1;
+  HGLOBAL hGlobal;
   
                     /* WARNING: Could not recover jumptable at 0x004731a6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = GlobalHandle(pMem);
-  return pvVar1;
+  hGlobal = GlobalHandle(pMem);
+  return hGlobal;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3263,12 +3265,12 @@ HGLOBAL __stdcall import_GlobalHandle(LPCVOID pMem)
 LPVOID __stdcall import_GlobalLock(HGLOBAL hMem)
 
 {
-  LPVOID pvVar1;
+  LPVOID lockedMem;
   
                     /* WARNING: Could not recover jumptable at 0x004731ac. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = GlobalLock(hMem);
-  return pvVar1;
+  lockedMem = GlobalLock(hMem);
+  return lockedMem;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3289,12 +3291,12 @@ void __stdcall import_GlobalMemoryStatus(LPMEMORYSTATUS lpBuffer)
 SIZE_T __stdcall import_GlobalSize(HGLOBAL hMem)
 
 {
-  SIZE_T SVar1;
+  SIZE_T memSize;
   
                     /* WARNING: Could not recover jumptable at 0x004731b8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  SVar1 = GlobalSize(hMem);
-  return SVar1;
+  memSize = GlobalSize(hMem);
+  return memSize;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3303,12 +3305,12 @@ SIZE_T __stdcall import_GlobalSize(HGLOBAL hMem)
 BOOL __stdcall import_GlobalUnlock(HGLOBAL hMem)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004731be. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GlobalUnlock(hMem);
-  return BVar1;
+  ok = GlobalUnlock(hMem);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3317,12 +3319,12 @@ BOOL __stdcall import_GlobalUnlock(HGLOBAL hMem)
 LPVOID __stdcall import_HeapAlloc(HANDLE hHeap,DWORD dwFlags,SIZE_T dwBytes)
 
 {
-  LPVOID pvVar1;
+  LPVOID mem;
   
                     /* WARNING: Could not recover jumptable at 0x004731c4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = HeapAlloc(hHeap,dwFlags,dwBytes);
-  return pvVar1;
+  mem = HeapAlloc(hHeap,dwFlags,dwBytes);
+  return mem;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3345,12 +3347,12 @@ HANDLE __stdcall import_HeapCreate(DWORD flOptions,SIZE_T dwInitialSize,SIZE_T d
 BOOL __stdcall import_HeapDestroy(HANDLE hHeap)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004731d0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = HeapDestroy(hHeap);
-  return BVar1;
+  ok = HeapDestroy(hHeap);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3359,12 +3361,12 @@ BOOL __stdcall import_HeapDestroy(HANDLE hHeap)
 BOOL __stdcall import_HeapFree(HANDLE hHeap,DWORD dwFlags,LPVOID lpMem)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004731d6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = HeapFree(hHeap,dwFlags,lpMem);
-  return BVar1;
+  ok = HeapFree(hHeap,dwFlags,lpMem);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3387,12 +3389,12 @@ LONG __stdcall import_InterlockedIncrement(LONG *lpAddend)
 BOOL __stdcall import_IsBadReadPtr(void *lp,UINT_PTR ucb)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004731e2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsBadReadPtr(lp,ucb);
-  return BVar1;
+  ok = IsBadReadPtr(lp,ucb);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3401,12 +3403,12 @@ BOOL __stdcall import_IsBadReadPtr(void *lp,UINT_PTR ucb)
 BOOL __stdcall import_IsValidLocale(LCID Locale,DWORD dwFlags)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004731e8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsValidLocale(Locale,dwFlags);
-  return BVar1;
+  ok = IsValidLocale(Locale,dwFlags);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3429,12 +3431,12 @@ int __stdcall import_LCMapStringA(LCID Locale,DWORD dwMapFlags,LPCSTR lpSrcStr,i
 HMODULE __stdcall import_LoadLibraryA(LPCSTR lpLibFileName)
 
 {
-  HMODULE pHVar1;
+  HMODULE hModule;
   
                     /* WARNING: Could not recover jumptable at 0x004731fa. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = LoadLibraryA(lpLibFileName);
-  return pHVar1;
+  hModule = LoadLibraryA(lpLibFileName);
+  return hModule;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3443,12 +3445,12 @@ HMODULE __stdcall import_LoadLibraryA(LPCSTR lpLibFileName)
 HGLOBAL __stdcall import_LoadResource(HMODULE hModule,HRSRC hResInfo)
 
 {
-  HGLOBAL pvVar1;
+  HGLOBAL hGlobal;
   
                     /* WARNING: Could not recover jumptable at 0x00473200. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = LoadResource(hModule,hResInfo);
-  return pvVar1;
+  hGlobal = LoadResource(hModule,hResInfo);
+  return hGlobal;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3457,12 +3459,12 @@ HGLOBAL __stdcall import_LoadResource(HMODULE hModule,HRSRC hResInfo)
 HLOCAL __stdcall import_LocalFree(HLOCAL hMem)
 
 {
-  HLOCAL pvVar1;
+  HLOCAL hLocal;
   
                     /* WARNING: Could not recover jumptable at 0x00473206. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = LocalFree(hMem);
-  return pvVar1;
+  hLocal = LocalFree(hMem);
+  return hLocal;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3471,12 +3473,12 @@ HLOCAL __stdcall import_LocalFree(HLOCAL hMem)
 HLOCAL __stdcall import_LocalHandle(LPCVOID pMem)
 
 {
-  HLOCAL pvVar1;
+  HLOCAL hLocal;
   
                     /* WARNING: Could not recover jumptable at 0x0047320c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = LocalHandle(pMem);
-  return pvVar1;
+  hLocal = LocalHandle(pMem);
+  return hLocal;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3485,12 +3487,12 @@ HLOCAL __stdcall import_LocalHandle(LPCVOID pMem)
 LPVOID __stdcall import_LocalLock(HLOCAL hMem)
 
 {
-  LPVOID pvVar1;
+  LPVOID lockedMem;
   
                     /* WARNING: Could not recover jumptable at 0x00473212. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = LocalLock(hMem);
-  return pvVar1;
+  lockedMem = LocalLock(hMem);
+  return lockedMem;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3499,12 +3501,12 @@ LPVOID __stdcall import_LocalLock(HLOCAL hMem)
 HLOCAL __stdcall import_LocalReAlloc(HLOCAL hMem,SIZE_T uBytes,UINT uFlags)
 
 {
-  HLOCAL pvVar1;
+  HLOCAL hLocal;
   
                     /* WARNING: Could not recover jumptable at 0x00473218. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = LocalReAlloc(hMem,uBytes,uFlags);
-  return pvVar1;
+  hLocal = LocalReAlloc(hMem,uBytes,uFlags);
+  return hLocal;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3513,12 +3515,12 @@ HLOCAL __stdcall import_LocalReAlloc(HLOCAL hMem,SIZE_T uBytes,UINT uFlags)
 BOOL __stdcall import_LocalUnlock(HLOCAL hMem)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047321e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = LocalUnlock(hMem);
-  return BVar1;
+  ok = LocalUnlock(hMem);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3527,13 +3529,13 @@ BOOL __stdcall import_LocalUnlock(HLOCAL hMem)
 BOOL __stdcall import_LockFile(HANDLE hFile,DWORD dwFileOffsetLow,DWORD dwFileOffsetHigh,DWORD nNumberOfBytesToLockLow, DWORD nNumberOfBytesToLockHigh)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473224. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = LockFile(hFile,dwFileOffsetLow,dwFileOffsetHigh,nNumberOfBytesToLockLow,
+  ok = LockFile(hFile,dwFileOffsetLow,dwFileOffsetHigh,nNumberOfBytesToLockLow,
                    nNumberOfBytesToLockHigh);
-  return BVar1;
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3556,12 +3558,12 @@ LPVOID __stdcall import_LockResource(HGLOBAL hResData)
 int __stdcall import_MulDiv(int nNumber,int nNumerator,int nDenominator)
 
 {
-  int iVar1;
+  int scaled;
   
                     /* WARNING: Could not recover jumptable at 0x00473230. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = MulDiv(nNumber,nNumerator,nDenominator);
-  return iVar1;
+  scaled = MulDiv(nNumber,nNumerator,nDenominator);
+  return scaled;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3597,12 +3599,12 @@ void __stdcall import_RaiseException(DWORD dwExceptionCode,DWORD dwExceptionFlag
 BOOL __stdcall import_ReadFile(HANDLE hFile,LPVOID lpBuffer,DWORD nNumberOfBytesToRead,LPDWORD lpNumberOfBytesRead, LPOVERLAPPED lpOverlapped)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473242. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ReadFile(hFile,lpBuffer,nNumberOfBytesToRead,lpNumberOfBytesRead,lpOverlapped);
-  return BVar1;
+  ok = ReadFile(hFile,lpBuffer,nNumberOfBytesToRead,lpNumberOfBytesRead,lpOverlapped);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3623,12 +3625,12 @@ void __stdcall import_RtlUnwind(PVOID TargetFrame,PVOID TargetIp,PEXCEPTION_RECO
 BOOL __stdcall import_SetConsoleCtrlHandler(PHANDLER_ROUTINE HandlerRoutine,BOOL Add)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047324e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetConsoleCtrlHandler(HandlerRoutine,Add);
-  return BVar1;
+  ok = SetConsoleCtrlHandler(HandlerRoutine,Add);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3637,12 +3639,12 @@ BOOL __stdcall import_SetConsoleCtrlHandler(PHANDLER_ROUTINE HandlerRoutine,BOOL
 BOOL __stdcall import_SetEndOfFile(HANDLE hFile)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473254. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetEndOfFile(hFile);
-  return BVar1;
+  ok = SetEndOfFile(hFile);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3665,12 +3667,12 @@ UINT __stdcall import_SetErrorMode(UINT uMode)
 DWORD __stdcall import_SetFilePointer(HANDLE hFile,LONG lDistanceToMove,PLONG lpDistanceToMoveHigh,DWORD dwMoveMethod)
 
 {
-  DWORD DVar1;
+  DWORD filePos;
   
                     /* WARNING: Could not recover jumptable at 0x00473260. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = SetFilePointer(hFile,lDistanceToMove,lpDistanceToMoveHigh,dwMoveMethod);
-  return DVar1;
+  filePos = SetFilePointer(hFile,lDistanceToMove,lpDistanceToMoveHigh,dwMoveMethod);
+  return filePos;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3705,12 +3707,12 @@ void __stdcall import_SetLastError(DWORD dwErrCode)
 BOOL __stdcall import_SetThreadLocale(LCID Locale)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473272. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetThreadLocale(Locale);
-  return BVar1;
+  ok = SetThreadLocale(Locale);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3719,12 +3721,12 @@ BOOL __stdcall import_SetThreadLocale(LCID Locale)
 BOOL __stdcall import_TlsFree(DWORD dwTlsIndex)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047327e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = TlsFree(dwTlsIndex);
-  return BVar1;
+  ok = TlsFree(dwTlsIndex);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3733,12 +3735,12 @@ BOOL __stdcall import_TlsFree(DWORD dwTlsIndex)
 LPVOID __stdcall import_TlsGetValue(DWORD dwTlsIndex)
 
 {
-  LPVOID pvVar1;
+  LPVOID tlsValue;
   
                     /* WARNING: Could not recover jumptable at 0x00473284. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = TlsGetValue(dwTlsIndex);
-  return pvVar1;
+  tlsValue = TlsGetValue(dwTlsIndex);
+  return tlsValue;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3747,12 +3749,12 @@ LPVOID __stdcall import_TlsGetValue(DWORD dwTlsIndex)
 BOOL __stdcall import_TlsSetValue(DWORD dwTlsIndex,LPVOID lpTlsValue)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047328a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = TlsSetValue(dwTlsIndex,lpTlsValue);
-  return BVar1;
+  ok = TlsSetValue(dwTlsIndex,lpTlsValue);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3775,13 +3777,13 @@ LONG __stdcall import_UnhandledExceptionFilter(_EXCEPTION_POINTERS *ExceptionInf
 BOOL __stdcall import_UnlockFile(HANDLE hFile,DWORD dwFileOffsetLow,DWORD dwFileOffsetHigh,DWORD nNumberOfBytesToUnlockLow ,DWORD nNumberOfBytesToUnlockHigh)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473296. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = UnlockFile(hFile,dwFileOffsetLow,dwFileOffsetHigh,nNumberOfBytesToUnlockLow,
+  ok = UnlockFile(hFile,dwFileOffsetLow,dwFileOffsetHigh,nNumberOfBytesToUnlockLow,
                      nNumberOfBytesToUnlockHigh);
-  return BVar1;
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3790,12 +3792,12 @@ BOOL __stdcall import_UnlockFile(HANDLE hFile,DWORD dwFileOffsetLow,DWORD dwFile
 LPVOID __stdcall import_VirtualAlloc(LPVOID lpAddress,SIZE_T dwSize,DWORD flAllocationType,DWORD flProtect)
 
 {
-  LPVOID pvVar1;
+  LPVOID mem;
   
                     /* WARNING: Could not recover jumptable at 0x0047329c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = VirtualAlloc(lpAddress,dwSize,flAllocationType,flProtect);
-  return pvVar1;
+  mem = VirtualAlloc(lpAddress,dwSize,flAllocationType,flProtect);
+  return mem;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3804,12 +3806,12 @@ LPVOID __stdcall import_VirtualAlloc(LPVOID lpAddress,SIZE_T dwSize,DWORD flAllo
 BOOL __stdcall import_VirtualFree(LPVOID lpAddress,SIZE_T dwSize,DWORD dwFreeType)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004732a2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = VirtualFree(lpAddress,dwSize,dwFreeType);
-  return BVar1;
+  ok = VirtualFree(lpAddress,dwSize,dwFreeType);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3861,12 +3863,12 @@ UINT __stdcall import_WinExec(LPCSTR lpCmdLine,UINT uCmdShow)
 BOOL __stdcall import_WriteFile(HANDLE hFile,LPCVOID lpBuffer,DWORD nNumberOfBytesToWrite,LPDWORD lpNumberOfBytesWritten, LPOVERLAPPED lpOverlapped)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004732ba. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = WriteFile(hFile,lpBuffer,nNumberOfBytesToWrite,lpNumberOfBytesWritten,lpOverlapped);
-  return BVar1;
+  ok = WriteFile(hFile,lpBuffer,nNumberOfBytesToWrite,lpNumberOfBytesWritten,lpOverlapped);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3917,12 +3919,12 @@ LPSTR __stdcall import_lstrcpynA(LPSTR lpString1,LPCSTR lpString2,int iMaxLength
 BOOL __stdcall import_BitBlt(HDC hdc,int x,int y,int cx,int cy,HDC hdcSrc,int x1,int y1,DWORD rop)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004732d4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = BitBlt(hdc,x,y,cx,cy,hdcSrc,x1,y1,rop);
-  return BVar1;
+  ok = BitBlt(hdc,x,y,cx,cy,hdcSrc,x1,y1,rop);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3931,12 +3933,12 @@ BOOL __stdcall import_BitBlt(HDC hdc,int x,int y,int cx,int cy,HDC hdcSrc,int x1
 HBITMAP __stdcall import_CreateBitmap(int nWidth,int nHeight,UINT nPlanes,UINT nBitCount,void *lpBits)
 
 {
-  HBITMAP pHVar1;
+  HBITMAP hBitmap;
   
                     /* WARNING: Could not recover jumptable at 0x004732da. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateBitmap(nWidth,nHeight,nPlanes,nBitCount,lpBits);
-  return pHVar1;
+  hBitmap = CreateBitmap(nWidth,nHeight,nPlanes,nBitCount,lpBits);
+  return hBitmap;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3945,12 +3947,12 @@ HBITMAP __stdcall import_CreateBitmap(int nWidth,int nHeight,UINT nPlanes,UINT n
 HBITMAP __stdcall import_CreateCompatibleBitmap(HDC hdc,int cx,int cy)
 
 {
-  HBITMAP pHVar1;
+  HBITMAP hBitmap;
   
                     /* WARNING: Could not recover jumptable at 0x004732e0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateCompatibleBitmap(hdc,cx,cy);
-  return pHVar1;
+  hBitmap = CreateCompatibleBitmap(hdc,cx,cy);
+  return hBitmap;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3959,12 +3961,12 @@ HBITMAP __stdcall import_CreateCompatibleBitmap(HDC hdc,int cx,int cy)
 HDC __stdcall import_CreateCompatibleDC(HDC hdc)
 
 {
-  HDC pHVar1;
+  HDC hdc2;
   
                     /* WARNING: Could not recover jumptable at 0x004732e6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateCompatibleDC(hdc);
-  return pHVar1;
+  hdc2 = CreateCompatibleDC(hdc);
+  return hdc2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3973,12 +3975,12 @@ HDC __stdcall import_CreateCompatibleDC(HDC hdc)
 HBRUSH __stdcall import_CreateDIBPatternBrush(HGLOBAL h,UINT iUsage)
 
 {
-  HBRUSH pHVar1;
+  HBRUSH hBrush;
   
                     /* WARNING: Could not recover jumptable at 0x004732ec. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateDIBPatternBrush(h,iUsage);
-  return pHVar1;
+  hBrush = CreateDIBPatternBrush(h,iUsage);
+  return hBrush;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -3987,12 +3989,12 @@ HBRUSH __stdcall import_CreateDIBPatternBrush(HGLOBAL h,UINT iUsage)
 HBITMAP __stdcall import_CreateDIBitmap(HDC hdc,BITMAPINFOHEADER *pbmih,DWORD flInit,void *pjBits,BITMAPINFO *pbmi, UINT iUsage)
 
 {
-  HBITMAP pHVar1;
+  HBITMAP hBitmap;
   
                     /* WARNING: Could not recover jumptable at 0x004732f2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateDIBitmap(hdc,pbmih,flInit,pjBits,pbmi,iUsage);
-  return pHVar1;
+  hBitmap = CreateDIBitmap(hdc,pbmih,flInit,pjBits,pbmi,iUsage);
+  return hBitmap;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4001,12 +4003,12 @@ HBITMAP __stdcall import_CreateDIBitmap(HDC hdc,BITMAPINFOHEADER *pbmih,DWORD fl
 HBITMAP __stdcall import_CreateDiscardableBitmap(HDC hdc,int cx,int cy)
 
 {
-  HBITMAP pHVar1;
+  HBITMAP hBitmap;
   
                     /* WARNING: Could not recover jumptable at 0x004732f8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateDiscardableBitmap(hdc,cx,cy);
-  return pHVar1;
+  hBitmap = CreateDiscardableBitmap(hdc,cx,cy);
+  return hBitmap;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4015,13 +4017,13 @@ HBITMAP __stdcall import_CreateDiscardableBitmap(HDC hdc,int cx,int cy)
 HFONT __stdcall import_CreateFontA(int cHeight,int cWidth,int cEscapement,int cOrientation,int cWeight,DWORD bItalic, DWORD bUnderline,DWORD bStrikeOut,DWORD iCharSet,DWORD iOutPrecision,DWORD iClipPrecision ,DWORD iQuality,DWORD iPitchAndFamily,LPCSTR pszFaceName)
 
 {
-  HFONT pHVar1;
+  HFONT hFont;
   
                     /* WARNING: Could not recover jumptable at 0x004732fe. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateFontA(cHeight,cWidth,cEscapement,cOrientation,cWeight,bItalic,bUnderline,bStrikeOut
+  hFont = CreateFontA(cHeight,cWidth,cEscapement,cOrientation,cWeight,bItalic,bUnderline,bStrikeOut
                        ,iCharSet,iOutPrecision,iClipPrecision,iQuality,iPitchAndFamily,pszFaceName);
-  return pHVar1;
+  return hFont;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4030,12 +4032,12 @@ HFONT __stdcall import_CreateFontA(int cHeight,int cWidth,int cEscapement,int cO
 HFONT __stdcall import_CreateFontIndirectA(LOGFONTA *lplf)
 
 {
-  HFONT pHVar1;
+  HFONT hFont;
   
                     /* WARNING: Could not recover jumptable at 0x00473304. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateFontIndirectA(lplf);
-  return pHVar1;
+  hFont = CreateFontIndirectA(lplf);
+  return hFont;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4044,12 +4046,12 @@ HFONT __stdcall import_CreateFontIndirectA(LOGFONTA *lplf)
 HPALETTE __stdcall import_CreatePalette(LOGPALETTE *plpal)
 
 {
-  HPALETTE pHVar1;
+  HPALETTE hPalette;
   
                     /* WARNING: Could not recover jumptable at 0x0047330a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreatePalette(plpal);
-  return pHVar1;
+  hPalette = CreatePalette(plpal);
+  return hPalette;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4058,12 +4060,12 @@ HPALETTE __stdcall import_CreatePalette(LOGPALETTE *plpal)
 HRGN __stdcall import_CreateRectRgn(int x1,int y1,int x2,int y2)
 
 {
-  HRGN pHVar1;
+  HRGN hRgn;
   
                     /* WARNING: Could not recover jumptable at 0x00473310. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateRectRgn(x1,y1,x2,y2);
-  return pHVar1;
+  hRgn = CreateRectRgn(x1,y1,x2,y2);
+  return hRgn;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4072,12 +4074,12 @@ HRGN __stdcall import_CreateRectRgn(int x1,int y1,int x2,int y2)
 HBRUSH __stdcall import_CreateSolidBrush(COLORREF color)
 
 {
-  HBRUSH pHVar1;
+  HBRUSH hBrush;
   
                     /* WARNING: Could not recover jumptable at 0x00473316. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateSolidBrush(color);
-  return pHVar1;
+  hBrush = CreateSolidBrush(color);
+  return hBrush;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4086,12 +4088,12 @@ HBRUSH __stdcall import_CreateSolidBrush(COLORREF color)
 BOOL __stdcall import_DPtoLP(HDC hdc,LPPOINT lppt,int c)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047331c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DPtoLP(hdc,lppt,c);
-  return BVar1;
+  ok = DPtoLP(hdc,lppt,c);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4100,12 +4102,12 @@ BOOL __stdcall import_DPtoLP(HDC hdc,LPPOINT lppt,int c)
 BOOL __stdcall import_DeleteDC(HDC hdc)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473322. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DeleteDC(hdc);
-  return BVar1;
+  ok = DeleteDC(hdc);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4114,12 +4116,12 @@ BOOL __stdcall import_DeleteDC(HDC hdc)
 BOOL __stdcall import_DeleteObject(HGDIOBJ ho)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473328. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DeleteObject(ho);
-  return BVar1;
+  ok = DeleteObject(ho);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4128,12 +4130,12 @@ BOOL __stdcall import_DeleteObject(HGDIOBJ ho)
 BOOL __stdcall import_ExtTextOutA(HDC hdc,int x,int y,UINT options,RECT *lprect,LPCSTR lpString,UINT c,INT *lpDx)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047332e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ExtTextOutA(hdc,x,y,options,lprect,lpString,c,lpDx);
-  return BVar1;
+  ok = ExtTextOutA(hdc,x,y,options,lprect,lpString,c,lpDx);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4142,12 +4144,12 @@ BOOL __stdcall import_ExtTextOutA(HDC hdc,int x,int y,UINT options,RECT *lprect,
 COLORREF __stdcall import_GetBkColor(HDC hdc)
 
 {
-  COLORREF CVar1;
+  COLORREF color;
   
                     /* WARNING: Could not recover jumptable at 0x00473334. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  CVar1 = GetBkColor(hdc);
-  return CVar1;
+  color = GetBkColor(hdc);
+  return color;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4170,12 +4172,12 @@ int __stdcall import_GetClipRgn(HDC hdc,HRGN hrgn)
 int __stdcall import_GetDeviceCaps(HDC hdc,int index)
 
 {
-  int iVar1;
+  int deviceCap;
   
                     /* WARNING: Could not recover jumptable at 0x00473340. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = GetDeviceCaps(hdc,index);
-  return iVar1;
+  deviceCap = GetDeviceCaps(hdc,index);
+  return deviceCap;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4198,12 +4200,12 @@ int __stdcall import_GetObjectA(HANDLE h,int c,LPVOID pv)
 HGDIOBJ __stdcall import_GetStockObject(int i)
 
 {
-  HGDIOBJ pvVar1;
+  HGDIOBJ hGdiObject;
   
                     /* WARNING: Could not recover jumptable at 0x0047334c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = GetStockObject(i);
-  return pvVar1;
+  hGdiObject = GetStockObject(i);
+  return hGdiObject;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4226,12 +4228,12 @@ UINT __stdcall import_GetSystemPaletteEntries(HDC hdc,UINT iStart,UINT cEntries,
 COLORREF __stdcall import_GetTextColor(HDC hdc)
 
 {
-  COLORREF CVar1;
+  COLORREF color;
   
                     /* WARNING: Could not recover jumptable at 0x00473358. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  CVar1 = GetTextColor(hdc);
-  return CVar1;
+  color = GetTextColor(hdc);
+  return color;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4240,12 +4242,12 @@ COLORREF __stdcall import_GetTextColor(HDC hdc)
 BOOL __stdcall import_GetTextExtentPoint32A(HDC hdc,LPCSTR lpString,int c,LPSIZE psizl)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047335e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetTextExtentPoint32A(hdc,lpString,c,psizl);
-  return BVar1;
+  ok = GetTextExtentPoint32A(hdc,lpString,c,psizl);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4254,12 +4256,12 @@ BOOL __stdcall import_GetTextExtentPoint32A(HDC hdc,LPCSTR lpString,int c,LPSIZE
 BOOL __stdcall import_GetTextMetricsA(HDC hdc,LPTEXTMETRICA lptm)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473364. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetTextMetricsA(hdc,lptm);
-  return BVar1;
+  ok = GetTextMetricsA(hdc,lptm);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4268,12 +4270,12 @@ BOOL __stdcall import_GetTextMetricsA(HDC hdc,LPTEXTMETRICA lptm)
 BOOL __stdcall import_GetViewportOrgEx(HDC hdc,LPPOINT lppoint)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047336a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetViewportOrgEx(hdc,lppoint);
-  return BVar1;
+  ok = GetViewportOrgEx(hdc,lppoint);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4296,12 +4298,12 @@ int __stdcall import_IntersectClipRect(HDC hdc,int left,int top,int right,int bo
 BOOL __stdcall import_LineTo(HDC hdc,int x,int y)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473376. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = LineTo(hdc,x,y);
-  return BVar1;
+  ok = LineTo(hdc,x,y);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4310,12 +4312,12 @@ BOOL __stdcall import_LineTo(HDC hdc,int x,int y)
 BOOL __stdcall import_MoveToEx(HDC hdc,int x,int y,LPPOINT lppt)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047337c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = MoveToEx(hdc,x,y,lppt);
-  return BVar1;
+  ok = MoveToEx(hdc,x,y,lppt);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4324,12 +4326,12 @@ BOOL __stdcall import_MoveToEx(HDC hdc,int x,int y,LPPOINT lppt)
 BOOL __stdcall import_OffsetViewportOrgEx(HDC hdc,int x,int y,LPPOINT lppt)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473382. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = OffsetViewportOrgEx(hdc,x,y,lppt);
-  return BVar1;
+  ok = OffsetViewportOrgEx(hdc,x,y,lppt);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4338,12 +4340,12 @@ BOOL __stdcall import_OffsetViewportOrgEx(HDC hdc,int x,int y,LPPOINT lppt)
 BOOL __stdcall import_PatBlt(HDC hdc,int x,int y,int w,int h,DWORD rop)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473388. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = PatBlt(hdc,x,y,w,h,rop);
-  return BVar1;
+  ok = PatBlt(hdc,x,y,w,h,rop);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4366,12 +4368,12 @@ UINT __stdcall import_RealizePalette(HDC hdc)
 BOOL __stdcall import_Rectangle(HDC hdc,int left,int top,int right,int bottom)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473394. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = Rectangle(hdc,left,top,right,bottom);
-  return BVar1;
+  ok = Rectangle(hdc,left,top,right,bottom);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4380,12 +4382,12 @@ BOOL __stdcall import_Rectangle(HDC hdc,int left,int top,int right,int bottom)
 HDC __stdcall import_ResetDCA(HDC hdc,DEVMODEA *lpdm)
 
 {
-  HDC pHVar1;
+  HDC hdc2;
   
                     /* WARNING: Could not recover jumptable at 0x0047339a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = ResetDCA(hdc,lpdm);
-  return pHVar1;
+  hdc2 = ResetDCA(hdc,lpdm);
+  return hdc2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4394,12 +4396,12 @@ HDC __stdcall import_ResetDCA(HDC hdc,DEVMODEA *lpdm)
 BOOL __stdcall import_RestoreDC(HDC hdc,int nSavedDC)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004733a0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = RestoreDC(hdc,nSavedDC);
-  return BVar1;
+  ok = RestoreDC(hdc,nSavedDC);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4422,12 +4424,12 @@ int __stdcall import_SaveDC(HDC hdc)
 BOOL __stdcall import_ScaleViewportExtEx(HDC hdc,int xn,int dx,int yn,int yd,LPSIZE lpsz)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004733ac. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ScaleViewportExtEx(hdc,xn,dx,yn,yd,lpsz);
-  return BVar1;
+  ok = ScaleViewportExtEx(hdc,xn,dx,yn,yd,lpsz);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4436,12 +4438,12 @@ BOOL __stdcall import_ScaleViewportExtEx(HDC hdc,int xn,int dx,int yn,int yd,LPS
 BOOL __stdcall import_ScaleWindowExtEx(HDC hdc,int xn,int xd,int yn,int yd,LPSIZE lpsz)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004733b2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ScaleWindowExtEx(hdc,xn,xd,yn,yd,lpsz);
-  return BVar1;
+  ok = ScaleWindowExtEx(hdc,xn,xd,yn,yd,lpsz);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4464,12 +4466,12 @@ int __stdcall import_SelectClipRgn(HDC hdc,HRGN hrgn)
 HGDIOBJ __stdcall import_SelectObject(HDC hdc,HGDIOBJ h)
 
 {
-  HGDIOBJ pvVar1;
+  HGDIOBJ hGdiObject;
   
                     /* WARNING: Could not recover jumptable at 0x004733be. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = SelectObject(hdc,h);
-  return pvVar1;
+  hGdiObject = SelectObject(hdc,h);
+  return hGdiObject;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4478,12 +4480,12 @@ HGDIOBJ __stdcall import_SelectObject(HDC hdc,HGDIOBJ h)
 HPALETTE __stdcall import_SelectPalette(HDC hdc,HPALETTE hPal,BOOL bForceBkgd)
 
 {
-  HPALETTE pHVar1;
+  HPALETTE hPalette;
   
                     /* WARNING: Could not recover jumptable at 0x004733c4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = SelectPalette(hdc,hPal,bForceBkgd);
-  return pHVar1;
+  hPalette = SelectPalette(hdc,hPal,bForceBkgd);
+  return hPalette;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4492,12 +4494,12 @@ HPALETTE __stdcall import_SelectPalette(HDC hdc,HPALETTE hPal,BOOL bForceBkgd)
 COLORREF __stdcall import_SetBkColor(HDC hdc,COLORREF color)
 
 {
-  COLORREF CVar1;
+  COLORREF color2;
   
                     /* WARNING: Could not recover jumptable at 0x004733ca. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  CVar1 = SetBkColor(hdc,color);
-  return CVar1;
+  color2 = SetBkColor(hdc,color);
+  return color2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4506,12 +4508,12 @@ COLORREF __stdcall import_SetBkColor(HDC hdc,COLORREF color)
 int __stdcall import_SetBkMode(HDC hdc,int mode)
 
 {
-  int iVar1;
+  int prevBkMode;
   
                     /* WARNING: Could not recover jumptable at 0x004733d0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = SetBkMode(hdc,mode);
-  return iVar1;
+  prevBkMode = SetBkMode(hdc,mode);
+  return prevBkMode;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4520,12 +4522,12 @@ int __stdcall import_SetBkMode(HDC hdc,int mode)
 int __stdcall import_SetMapMode(HDC hdc,int iMode)
 
 {
-  int iVar1;
+  int prevMapMode;
   
                     /* WARNING: Could not recover jumptable at 0x004733d6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = SetMapMode(hdc,iMode);
-  return iVar1;
+  prevMapMode = SetMapMode(hdc,iMode);
+  return prevMapMode;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4534,12 +4536,12 @@ int __stdcall import_SetMapMode(HDC hdc,int iMode)
 COLORREF __stdcall import_SetTextColor(HDC hdc,COLORREF color)
 
 {
-  COLORREF CVar1;
+  COLORREF color2;
   
                     /* WARNING: Could not recover jumptable at 0x004733dc. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  CVar1 = SetTextColor(hdc,color);
-  return CVar1;
+  color2 = SetTextColor(hdc,color);
+  return color2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4548,12 +4550,12 @@ COLORREF __stdcall import_SetTextColor(HDC hdc,COLORREF color)
 BOOL __stdcall import_SetViewportExtEx(HDC hdc,int x,int y,LPSIZE lpsz)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004733e2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetViewportExtEx(hdc,x,y,lpsz);
-  return BVar1;
+  ok = SetViewportExtEx(hdc,x,y,lpsz);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4562,12 +4564,12 @@ BOOL __stdcall import_SetViewportExtEx(HDC hdc,int x,int y,LPSIZE lpsz)
 BOOL __stdcall import_SetViewportOrgEx(HDC hdc,int x,int y,LPPOINT lppt)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004733e8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetViewportOrgEx(hdc,x,y,lppt);
-  return BVar1;
+  ok = SetViewportOrgEx(hdc,x,y,lppt);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4576,12 +4578,12 @@ BOOL __stdcall import_SetViewportOrgEx(HDC hdc,int x,int y,LPPOINT lppt)
 BOOL __stdcall import_SetWindowExtEx(HDC hdc,int x,int y,LPSIZE lpsz)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004733ee. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetWindowExtEx(hdc,x,y,lpsz);
-  return BVar1;
+  ok = SetWindowExtEx(hdc,x,y,lpsz);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4590,12 +4592,12 @@ BOOL __stdcall import_SetWindowExtEx(HDC hdc,int x,int y,LPSIZE lpsz)
 BOOL __stdcall import_TextOutA(HDC hdc,int x,int y,LPCSTR lpString,int c)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004733f4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = TextOutA(hdc,x,y,lpString,c);
-  return BVar1;
+  ok = TextOutA(hdc,x,y,lpString,c);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4604,12 +4606,12 @@ BOOL __stdcall import_TextOutA(HDC hdc,int x,int y,LPCSTR lpString,int c)
 HRESULT __stdcall import_SHGetMalloc(IMalloc **ppMalloc)
 
 {
-  HRESULT HVar1;
+  HRESULT hr;
   
                     /* WARNING: Could not recover jumptable at 0x004733fc. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  HVar1 = SHGetMalloc(ppMalloc);
-  return HVar1;
+  hr = SHGetMalloc(ppMalloc);
+  return hr;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4618,12 +4620,12 @@ HRESULT __stdcall import_SHGetMalloc(IMalloc **ppMalloc)
 HRESULT __stdcall import_SHGetSpecialFolderLocation(HWND hwnd,int csidl,LPITEMIDLIST *ppidl)
 
 {
-  HRESULT HVar1;
+  HRESULT hr;
   
                     /* WARNING: Could not recover jumptable at 0x00473402. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  HVar1 = SHGetSpecialFolderLocation(hwnd,csidl,ppidl);
-  return HVar1;
+  hr = SHGetSpecialFolderLocation(hwnd,csidl,ppidl);
+  return hr;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4632,12 +4634,12 @@ HRESULT __stdcall import_SHGetSpecialFolderLocation(HWND hwnd,int csidl,LPITEMID
 BOOL __stdcall import_SHGetPathFromIDListA(LPCITEMIDLIST pidl,LPSTR pszPath)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473408. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SHGetPathFromIDListA(pidl,pszPath);
-  return BVar1;
+  ok = SHGetPathFromIDListA(pidl,pszPath);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4646,12 +4648,12 @@ BOOL __stdcall import_SHGetPathFromIDListA(LPCITEMIDLIST pidl,LPSTR pszPath)
 BOOL __stdcall import_AppendMenuA(HMENU hMenu,UINT uFlags,UINT_PTR uIDNewItem,LPCSTR lpNewItem)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473410. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = AppendMenuA(hMenu,uFlags,uIDNewItem,lpNewItem);
-  return BVar1;
+  ok = AppendMenuA(hMenu,uFlags,uIDNewItem,lpNewItem);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4660,12 +4662,12 @@ BOOL __stdcall import_AppendMenuA(HMENU hMenu,UINT uFlags,UINT_PTR uIDNewItem,LP
 HDWP __stdcall import_BeginDeferWindowPos(int nNumWindows)
 
 {
-  HDWP pvVar1;
+  HDWP hDwp;
   
                     /* WARNING: Could not recover jumptable at 0x00473416. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = BeginDeferWindowPos(nNumWindows);
-  return pvVar1;
+  hDwp = BeginDeferWindowPos(nNumWindows);
+  return hDwp;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4674,12 +4676,12 @@ HDWP __stdcall import_BeginDeferWindowPos(int nNumWindows)
 HDC __stdcall import_BeginPaint(HWND hWnd,LPPAINTSTRUCT lpPaint)
 
 {
-  HDC pHVar1;
+  HDC hdc;
   
                     /* WARNING: Could not recover jumptable at 0x0047341c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = BeginPaint(hWnd,lpPaint);
-  return pHVar1;
+  hdc = BeginPaint(hWnd,lpPaint);
+  return hdc;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4688,12 +4690,12 @@ HDC __stdcall import_BeginPaint(HWND hWnd,LPPAINTSTRUCT lpPaint)
 LRESULT __stdcall import_CallWindowProcA(WNDPROC lpPrevWndFunc,HWND hWnd,UINT Msg,WPARAM wParam,LPARAM lParam)
 
 {
-  LRESULT LVar1;
+  LRESULT lResult;
   
                     /* WARNING: Could not recover jumptable at 0x00473422. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = CallWindowProcA(lpPrevWndFunc,hWnd,Msg,wParam,lParam);
-  return LVar1;
+  lResult = CallWindowProcA(lpPrevWndFunc,hWnd,Msg,wParam,lParam);
+  return lResult;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4716,12 +4718,12 @@ DWORD __stdcall import_CheckMenuItem(HMENU hMenu,UINT uIDCheckItem,UINT uCheck)
 BOOL __stdcall import_ClientToScreen(HWND hWnd,LPPOINT lpPoint)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047342e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ClientToScreen(hWnd,lpPoint);
-  return BVar1;
+  ok = ClientToScreen(hWnd,lpPoint);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4730,12 +4732,12 @@ BOOL __stdcall import_ClientToScreen(HWND hWnd,LPPOINT lpPoint)
 BOOL __stdcall import_CloseClipboard(void)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473434. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = CloseClipboard();
-  return BVar1;
+  ok = CloseClipboard();
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4744,12 +4746,12 @@ BOOL __stdcall import_CloseClipboard(void)
 HICON __stdcall import_CopyIcon(HICON hIcon)
 
 {
-  HICON pHVar1;
+  HICON hIcon2;
   
                     /* WARNING: Could not recover jumptable at 0x0047343a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CopyIcon(hIcon);
-  return pHVar1;
+  hIcon2 = CopyIcon(hIcon);
+  return hIcon2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4772,12 +4774,12 @@ int __stdcall import_CountClipboardFormats(void)
 HWND __stdcall import_CreateDialogIndirectParamA(HINSTANCE hInstance,LPCDLGTEMPLATEA lpTemplate,HWND hWndParent,DLGPROC lpDialogFunc, LPARAM dwInitParam)
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   
                     /* WARNING: Could not recover jumptable at 0x00473446. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateDialogIndirectParamA(hInstance,lpTemplate,hWndParent,lpDialogFunc,dwInitParam);
-  return pHVar1;
+  hWnd = CreateDialogIndirectParamA(hInstance,lpTemplate,hWndParent,lpDialogFunc,dwInitParam);
+  return hWnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4786,12 +4788,12 @@ HWND __stdcall import_CreateDialogIndirectParamA(HINSTANCE hInstance,LPCDLGTEMPL
 HWND __stdcall import_CreateDialogParamA(HINSTANCE hInstance,LPCSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc, LPARAM dwInitParam)
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   
                     /* WARNING: Could not recover jumptable at 0x0047344c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateDialogParamA(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam);
-  return pHVar1;
+  hWnd = CreateDialogParamA(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam);
+  return hWnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4800,12 +4802,12 @@ HWND __stdcall import_CreateDialogParamA(HINSTANCE hInstance,LPCSTR lpTemplateNa
 HMENU __stdcall import_CreateMenu(void)
 
 {
-  HMENU pHVar1;
+  HMENU hMenu;
   
                     /* WARNING: Could not recover jumptable at 0x00473452. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateMenu();
-  return pHVar1;
+  hMenu = CreateMenu();
+  return hMenu;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4814,12 +4816,12 @@ HMENU __stdcall import_CreateMenu(void)
 HMENU __stdcall import_CreatePopupMenu(void)
 
 {
-  HMENU pHVar1;
+  HMENU hMenu;
   
                     /* WARNING: Could not recover jumptable at 0x00473458. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreatePopupMenu();
-  return pHVar1;
+  hMenu = CreatePopupMenu();
+  return hMenu;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4828,13 +4830,13 @@ HMENU __stdcall import_CreatePopupMenu(void)
 HWND __stdcall import_CreateWindowExA(DWORD dwExStyle,LPCSTR lpClassName,LPCSTR lpWindowName,DWORD dwStyle,int X,int Y, int nWidth,int nHeight,HWND hWndParent,HMENU hMenu,HINSTANCE hInstance,LPVOID lpParam )
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   
                     /* WARNING: Could not recover jumptable at 0x0047345e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = CreateWindowExA(dwExStyle,lpClassName,lpWindowName,dwStyle,X,Y,nWidth,nHeight,hWndParent,
+  hWnd = CreateWindowExA(dwExStyle,lpClassName,lpWindowName,dwStyle,X,Y,nWidth,nHeight,hWndParent,
                            hMenu,hInstance,lpParam);
-  return pHVar1;
+  return hWnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4843,12 +4845,12 @@ HWND __stdcall import_CreateWindowExA(DWORD dwExStyle,LPCSTR lpClassName,LPCSTR 
 LRESULT __stdcall import_DefWindowProcA(HWND hWnd,UINT Msg,WPARAM wParam,LPARAM lParam)
 
 {
-  LRESULT LVar1;
+  LRESULT lResult;
   
                     /* WARNING: Could not recover jumptable at 0x00473464. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = DefWindowProcA(hWnd,Msg,wParam,lParam);
-  return LVar1;
+  lResult = DefWindowProcA(hWnd,Msg,wParam,lParam);
+  return lResult;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4857,12 +4859,12 @@ LRESULT __stdcall import_DefWindowProcA(HWND hWnd,UINT Msg,WPARAM wParam,LPARAM 
 HDWP __stdcall import_DeferWindowPos(HDWP hWinPosInfo,HWND hWnd,HWND hWndInsertAfter,int x,int y,int cx,int cy,UINT uFlags )
 
 {
-  HDWP pvVar1;
+  HDWP hDwp;
   
                     /* WARNING: Could not recover jumptable at 0x0047346a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pvVar1 = DeferWindowPos(hWinPosInfo,hWnd,hWndInsertAfter,x,y,cx,cy,uFlags);
-  return pvVar1;
+  hDwp = DeferWindowPos(hWinPosInfo,hWnd,hWndInsertAfter,x,y,cx,cy,uFlags);
+  return hDwp;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4871,12 +4873,12 @@ HDWP __stdcall import_DeferWindowPos(HDWP hWinPosInfo,HWND hWnd,HWND hWndInsertA
 BOOL __stdcall import_DeleteMenu(HMENU hMenu,UINT uPosition,UINT uFlags)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473470. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DeleteMenu(hMenu,uPosition,uFlags);
-  return BVar1;
+  ok = DeleteMenu(hMenu,uPosition,uFlags);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4885,12 +4887,12 @@ BOOL __stdcall import_DeleteMenu(HMENU hMenu,UINT uPosition,UINT uFlags)
 BOOL __stdcall import_DestroyCursor(HCURSOR hCursor)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473476. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DestroyCursor(hCursor);
-  return BVar1;
+  ok = DestroyCursor(hCursor);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4899,12 +4901,12 @@ BOOL __stdcall import_DestroyCursor(HCURSOR hCursor)
 BOOL __stdcall import_DestroyMenu(HMENU hMenu)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047347c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DestroyMenu(hMenu);
-  return BVar1;
+  ok = DestroyMenu(hMenu);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4913,12 +4915,12 @@ BOOL __stdcall import_DestroyMenu(HMENU hMenu)
 BOOL __stdcall import_DestroyWindow(HWND hWnd)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473482. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DestroyWindow(hWnd);
-  return BVar1;
+  ok = DestroyWindow(hWnd);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4941,12 +4943,12 @@ INT_PTR __stdcall import_DialogBoxIndirectParamA(HINSTANCE hInstance,LPCDLGTEMPL
 INT_PTR __stdcall import_DialogBoxParamA(HINSTANCE hInstance,LPCSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc, LPARAM dwInitParam)
 
 {
-  INT_PTR IVar1;
+  INT_PTR dialogResult;
   
                     /* WARNING: Could not recover jumptable at 0x0047348e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  IVar1 = DialogBoxParamA(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam);
-  return IVar1;
+  dialogResult = DialogBoxParamA(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam);
+  return dialogResult;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4955,12 +4957,12 @@ INT_PTR __stdcall import_DialogBoxParamA(HINSTANCE hInstance,LPCSTR lpTemplateNa
 LRESULT __stdcall import_DispatchMessageA(MSG *lpMsg)
 
 {
-  LRESULT LVar1;
+  LRESULT lResult;
   
                     /* WARNING: Could not recover jumptable at 0x00473494. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = DispatchMessageA(lpMsg);
-  return LVar1;
+  lResult = DispatchMessageA(lpMsg);
+  return lResult;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4969,12 +4971,12 @@ LRESULT __stdcall import_DispatchMessageA(MSG *lpMsg)
 BOOL __stdcall import_DrawEdge(HDC hdc,LPRECT qrc,UINT edge,UINT grfFlags)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047349a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DrawEdge(hdc,qrc,edge,grfFlags);
-  return BVar1;
+  ok = DrawEdge(hdc,qrc,edge,grfFlags);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4983,12 +4985,12 @@ BOOL __stdcall import_DrawEdge(HDC hdc,LPRECT qrc,UINT edge,UINT grfFlags)
 BOOL __stdcall import_DrawIcon(HDC hDC,int X,int Y,HICON hIcon)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004734a0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DrawIcon(hDC,X,Y,hIcon);
-  return BVar1;
+  ok = DrawIcon(hDC,X,Y,hIcon);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -4997,12 +4999,12 @@ BOOL __stdcall import_DrawIcon(HDC hDC,int X,int Y,HICON hIcon)
 BOOL __stdcall import_DrawMenuBar(HWND hWnd)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004734a6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = DrawMenuBar(hWnd);
-  return BVar1;
+  ok = DrawMenuBar(hWnd);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5039,12 +5041,12 @@ int __stdcall import_DrawTextExA(HDC hdc,LPSTR lpchText,int cchText,LPRECT lprc,
 BOOL __stdcall import_EnableMenuItem(HMENU hMenu,UINT uIDEnableItem,UINT uEnable)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004734b8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = EnableMenuItem(hMenu,uIDEnableItem,uEnable);
-  return BVar1;
+  ok = EnableMenuItem(hMenu,uIDEnableItem,uEnable);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5053,12 +5055,12 @@ BOOL __stdcall import_EnableMenuItem(HMENU hMenu,UINT uIDEnableItem,UINT uEnable
 BOOL __stdcall import_EnableScrollBar(HWND hWnd,UINT wSBflags,UINT wArrows)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004734be. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = EnableScrollBar(hWnd,wSBflags,wArrows);
-  return BVar1;
+  ok = EnableScrollBar(hWnd,wSBflags,wArrows);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5067,12 +5069,12 @@ BOOL __stdcall import_EnableScrollBar(HWND hWnd,UINT wSBflags,UINT wArrows)
 BOOL __stdcall import_EnableWindow(HWND hWnd,BOOL bEnable)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004734c4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = EnableWindow(hWnd,bEnable);
-  return BVar1;
+  ok = EnableWindow(hWnd,bEnable);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5081,12 +5083,12 @@ BOOL __stdcall import_EnableWindow(HWND hWnd,BOOL bEnable)
 BOOL __stdcall import_EndDeferWindowPos(HDWP hWinPosInfo)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004734ca. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = EndDeferWindowPos(hWinPosInfo);
-  return BVar1;
+  ok = EndDeferWindowPos(hWinPosInfo);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5095,12 +5097,12 @@ BOOL __stdcall import_EndDeferWindowPos(HDWP hWinPosInfo)
 BOOL __stdcall import_EndDialog(HWND hDlg,INT_PTR nResult)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004734d0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = EndDialog(hDlg,nResult);
-  return BVar1;
+  ok = EndDialog(hDlg,nResult);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5109,12 +5111,12 @@ BOOL __stdcall import_EndDialog(HWND hDlg,INT_PTR nResult)
 BOOL __stdcall import_EndPaint(HWND hWnd,PAINTSTRUCT *lpPaint)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004734d6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = EndPaint(hWnd,lpPaint);
-  return BVar1;
+  ok = EndPaint(hWnd,lpPaint);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5123,12 +5125,12 @@ BOOL __stdcall import_EndPaint(HWND hWnd,PAINTSTRUCT *lpPaint)
 BOOL __stdcall import_EnumThreadWindows(DWORD dwThreadId,WNDENUMPROC lpfn,LPARAM lParam)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004734dc. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = EnumThreadWindows(dwThreadId,lpfn,lParam);
-  return BVar1;
+  ok = EnumThreadWindows(dwThreadId,lpfn,lParam);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5137,12 +5139,12 @@ BOOL __stdcall import_EnumThreadWindows(DWORD dwThreadId,WNDENUMPROC lpfn,LPARAM
 HWND __stdcall import_FindWindowA(LPCSTR lpClassName,LPCSTR lpWindowName)
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   
                     /* WARNING: Could not recover jumptable at 0x004734e2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = FindWindowA(lpClassName,lpWindowName);
-  return pHVar1;
+  hWnd = FindWindowA(lpClassName,lpWindowName);
+  return hWnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5165,12 +5167,12 @@ int __stdcall import_FrameRect(HDC hDC,RECT *lprc,HBRUSH hbr)
 HWND __stdcall import_GetActiveWindow(void)
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   
                     /* WARNING: Could not recover jumptable at 0x004734ee. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetActiveWindow();
-  return pHVar1;
+  hWnd = GetActiveWindow();
+  return hWnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5179,12 +5181,12 @@ HWND __stdcall import_GetActiveWindow(void)
 BOOL __stdcall import_GetClassInfoA(HINSTANCE hInstance,LPCSTR lpClassName,LPWNDCLASSA lpWndClass)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004734f4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetClassInfoA(hInstance,lpClassName,lpWndClass);
-  return BVar1;
+  ok = GetClassInfoA(hInstance,lpClassName,lpWndClass);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5207,12 +5209,12 @@ int __stdcall import_GetClassNameA(HWND hWnd,LPSTR lpClassName,int nMaxCount)
 BOOL __stdcall import_GetClientRect(HWND hWnd,LPRECT lpRect)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473500. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetClientRect(hWnd,lpRect);
-  return BVar1;
+  ok = GetClientRect(hWnd,lpRect);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5221,12 +5223,12 @@ BOOL __stdcall import_GetClientRect(HWND hWnd,LPRECT lpRect)
 BOOL __stdcall import_GetCursorPos(LPPOINT lpPoint)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473506. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetCursorPos(lpPoint);
-  return BVar1;
+  ok = GetCursorPos(lpPoint);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5235,12 +5237,12 @@ BOOL __stdcall import_GetCursorPos(LPPOINT lpPoint)
 HWND __stdcall import_GetDesktopWindow(void)
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   
                     /* WARNING: Could not recover jumptable at 0x0047350c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetDesktopWindow();
-  return pHVar1;
+  hWnd = GetDesktopWindow();
+  return hWnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5249,12 +5251,12 @@ HWND __stdcall import_GetDesktopWindow(void)
 int __stdcall import_GetDlgCtrlID(HWND hWnd)
 
 {
-  int iVar1;
+  int ctrlId;
   
                     /* WARNING: Could not recover jumptable at 0x00473512. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = GetDlgCtrlID(hWnd);
-  return iVar1;
+  ctrlId = GetDlgCtrlID(hWnd);
+  return ctrlId;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5263,12 +5265,12 @@ int __stdcall import_GetDlgCtrlID(HWND hWnd)
 HWND __stdcall import_GetDlgItem(HWND hDlg,int nIDDlgItem)
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   
                     /* WARNING: Could not recover jumptable at 0x00473518. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetDlgItem(hDlg,nIDDlgItem);
-  return pHVar1;
+  hWnd = GetDlgItem(hDlg,nIDDlgItem);
+  return hWnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5277,12 +5279,12 @@ HWND __stdcall import_GetDlgItem(HWND hDlg,int nIDDlgItem)
 HWND __stdcall import_GetFocus(void)
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   
                     /* WARNING: Could not recover jumptable at 0x0047351e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetFocus();
-  return pHVar1;
+  hWnd = GetFocus();
+  return hWnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5291,12 +5293,12 @@ HWND __stdcall import_GetFocus(void)
 BOOL __stdcall import_GetIconInfo(HICON hIcon,PICONINFO piconinfo)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473524. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetIconInfo(hIcon,piconinfo);
-  return BVar1;
+  ok = GetIconInfo(hIcon,piconinfo);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5319,12 +5321,12 @@ SHORT __stdcall import_GetKeyState(int nVirtKey)
 HMENU __stdcall import_GetMenu(HWND hWnd)
 
 {
-  HMENU pHVar1;
+  HMENU hMenu;
   
                     /* WARNING: Could not recover jumptable at 0x00473530. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetMenu(hWnd);
-  return pHVar1;
+  hMenu = GetMenu(hWnd);
+  return hMenu;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5333,12 +5335,12 @@ HMENU __stdcall import_GetMenu(HWND hWnd)
 int __stdcall import_GetMenuItemCount(HMENU hMenu)
 
 {
-  int iVar1;
+  int itemCount;
   
                     /* WARNING: Could not recover jumptable at 0x00473536. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = GetMenuItemCount(hMenu);
-  return iVar1;
+  itemCount = GetMenuItemCount(hMenu);
+  return itemCount;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5347,12 +5349,12 @@ int __stdcall import_GetMenuItemCount(HMENU hMenu)
 UINT __stdcall import_GetMenuItemID(HMENU hMenu,int nPos)
 
 {
-  UINT UVar1;
+  UINT itemId;
   
                     /* WARNING: Could not recover jumptable at 0x0047353c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  UVar1 = GetMenuItemID(hMenu,nPos);
-  return UVar1;
+  itemId = GetMenuItemID(hMenu,nPos);
+  return itemId;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5361,12 +5363,12 @@ UINT __stdcall import_GetMenuItemID(HMENU hMenu,int nPos)
 UINT __stdcall import_GetMenuState(HMENU hMenu,UINT uId,UINT uFlags)
 
 {
-  UINT UVar1;
+  UINT menuState;
   
                     /* WARNING: Could not recover jumptable at 0x00473542. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  UVar1 = GetMenuState(hMenu,uId,uFlags);
-  return UVar1;
+  menuState = GetMenuState(hMenu,uId,uFlags);
+  return menuState;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5375,12 +5377,12 @@ UINT __stdcall import_GetMenuState(HMENU hMenu,UINT uId,UINT uFlags)
 HWND __stdcall import_GetParent(HWND hWnd)
 
 {
-  HWND pHVar1;
+  HWND hWnd2;
   
                     /* WARNING: Could not recover jumptable at 0x00473548. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetParent(hWnd);
-  return pHVar1;
+  hWnd2 = GetParent(hWnd);
+  return hWnd2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5389,12 +5391,12 @@ HWND __stdcall import_GetParent(HWND hWnd)
 BOOL __stdcall import_GetScrollInfo(HWND hwnd,int nBar,LPSCROLLINFO lpsi)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047354e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetScrollInfo(hwnd,nBar,lpsi);
-  return BVar1;
+  ok = GetScrollInfo(hwnd,nBar,lpsi);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5403,12 +5405,12 @@ BOOL __stdcall import_GetScrollInfo(HWND hwnd,int nBar,LPSCROLLINFO lpsi)
 HMENU __stdcall import_GetSubMenu(HMENU hMenu,int nPos)
 
 {
-  HMENU pHVar1;
+  HMENU hMenu2;
   
                     /* WARNING: Could not recover jumptable at 0x00473554. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetSubMenu(hMenu,nPos);
-  return pHVar1;
+  hMenu2 = GetSubMenu(hMenu,nPos);
+  return hMenu2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5417,12 +5419,12 @@ HMENU __stdcall import_GetSubMenu(HMENU hMenu,int nPos)
 DWORD __stdcall import_GetSysColor(int nIndex)
 
 {
-  DWORD DVar1;
+  DWORD sysColor;
   
                     /* WARNING: Could not recover jumptable at 0x0047355a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  DVar1 = GetSysColor(nIndex);
-  return DVar1;
+  sysColor = GetSysColor(nIndex);
+  return sysColor;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5431,12 +5433,12 @@ DWORD __stdcall import_GetSysColor(int nIndex)
 HBRUSH __stdcall import_GetSysColorBrush(int nIndex)
 
 {
-  HBRUSH pHVar1;
+  HBRUSH hBrush;
   
                     /* WARNING: Could not recover jumptable at 0x00473560. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetSysColorBrush(nIndex);
-  return pHVar1;
+  hBrush = GetSysColorBrush(nIndex);
+  return hBrush;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5445,12 +5447,12 @@ HBRUSH __stdcall import_GetSysColorBrush(int nIndex)
 int __stdcall import_GetSystemMetrics(int nIndex)
 
 {
-  int iVar1;
+  int metric;
   
                     /* WARNING: Could not recover jumptable at 0x00473566. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = GetSystemMetrics(nIndex);
-  return iVar1;
+  metric = GetSystemMetrics(nIndex);
+  return metric;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5459,12 +5461,12 @@ int __stdcall import_GetSystemMetrics(int nIndex)
 HWND __stdcall import_GetWindow(HWND hWnd,UINT uCmd)
 
 {
-  HWND pHVar1;
+  HWND hWnd2;
   
                     /* WARNING: Could not recover jumptable at 0x0047356c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetWindow(hWnd,uCmd);
-  return pHVar1;
+  hWnd2 = GetWindow(hWnd,uCmd);
+  return hWnd2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5473,12 +5475,12 @@ HWND __stdcall import_GetWindow(HWND hWnd,UINT uCmd)
 HDC __stdcall import_GetWindowDC(HWND hWnd)
 
 {
-  HDC pHVar1;
+  HDC hdc;
   
                     /* WARNING: Could not recover jumptable at 0x00473572. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetWindowDC(hWnd);
-  return pHVar1;
+  hdc = GetWindowDC(hWnd);
+  return hdc;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5487,12 +5489,12 @@ HDC __stdcall import_GetWindowDC(HWND hWnd)
 LONG __stdcall import_GetWindowLongA(HWND hWnd,int nIndex)
 
 {
-  LONG LVar1;
+  LONG windowLong;
   
                     /* WARNING: Could not recover jumptable at 0x00473578. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = GetWindowLongA(hWnd,nIndex);
-  return LVar1;
+  windowLong = GetWindowLongA(hWnd,nIndex);
+  return windowLong;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5501,12 +5503,12 @@ LONG __stdcall import_GetWindowLongA(HWND hWnd,int nIndex)
 BOOL __stdcall import_GetWindowPlacement(HWND hWnd,WINDOWPLACEMENT *lpwndpl)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047357e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetWindowPlacement(hWnd,lpwndpl);
-  return BVar1;
+  ok = GetWindowPlacement(hWnd,lpwndpl);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5515,12 +5517,12 @@ BOOL __stdcall import_GetWindowPlacement(HWND hWnd,WINDOWPLACEMENT *lpwndpl)
 BOOL __stdcall import_GetWindowRect(HWND hWnd,LPRECT lpRect)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473584. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GetWindowRect(hWnd,lpRect);
-  return BVar1;
+  ok = GetWindowRect(hWnd,lpRect);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5529,12 +5531,12 @@ BOOL __stdcall import_GetWindowRect(HWND hWnd,LPRECT lpRect)
 int __stdcall import_GetWindowTextA(HWND hWnd,LPSTR lpString,int nMaxCount)
 
 {
-  int iVar1;
+  int textLen;
   
                     /* WARNING: Could not recover jumptable at 0x0047358a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = GetWindowTextA(hWnd,lpString,nMaxCount);
-  return iVar1;
+  textLen = GetWindowTextA(hWnd,lpString,nMaxCount);
+  return textLen;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5543,12 +5545,12 @@ int __stdcall import_GetWindowTextA(HWND hWnd,LPSTR lpString,int nMaxCount)
 int __stdcall import_GetWindowTextLengthA(HWND hWnd)
 
 {
-  int iVar1;
+  int textLen;
   
                     /* WARNING: Could not recover jumptable at 0x00473590. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = GetWindowTextLengthA(hWnd);
-  return iVar1;
+  textLen = GetWindowTextLengthA(hWnd);
+  return textLen;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5571,12 +5573,12 @@ DWORD __stdcall import_GetWindowThreadProcessId(HWND hWnd,LPDWORD lpdwProcessId)
 BOOL __stdcall import_GrayStringA(HDC hDC,HBRUSH hBrush,GRAYSTRINGPROC lpOutputFunc,LPARAM lpData,int nCount,int X,int Y, int nWidth,int nHeight)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047359c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = GrayStringA(hDC,hBrush,lpOutputFunc,lpData,nCount,X,Y,nWidth,nHeight);
-  return BVar1;
+  ok = GrayStringA(hDC,hBrush,lpOutputFunc,lpData,nCount,X,Y,nWidth,nHeight);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5585,12 +5587,12 @@ BOOL __stdcall import_GrayStringA(HDC hDC,HBRUSH hBrush,GRAYSTRINGPROC lpOutputF
 BOOL __stdcall import_InsertMenuA(HMENU hMenu,UINT uPosition,UINT uFlags,UINT_PTR uIDNewItem,LPCSTR lpNewItem)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735a2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = InsertMenuA(hMenu,uPosition,uFlags,uIDNewItem,lpNewItem);
-  return BVar1;
+  ok = InsertMenuA(hMenu,uPosition,uFlags,uIDNewItem,lpNewItem);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5599,12 +5601,12 @@ BOOL __stdcall import_InsertMenuA(HMENU hMenu,UINT uPosition,UINT uFlags,UINT_PT
 BOOL __stdcall import_InvalidateRect(HWND hWnd,RECT *lpRect,BOOL bErase)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735a8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = InvalidateRect(hWnd,lpRect,bErase);
-  return BVar1;
+  ok = InvalidateRect(hWnd,lpRect,bErase);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5613,12 +5615,12 @@ BOOL __stdcall import_InvalidateRect(HWND hWnd,RECT *lpRect,BOOL bErase)
 BOOL __stdcall import_IsChild(HWND hWndParent,HWND hWnd)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735ae. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsChild(hWndParent,hWnd);
-  return BVar1;
+  ok = IsChild(hWndParent,hWnd);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5627,12 +5629,12 @@ BOOL __stdcall import_IsChild(HWND hWndParent,HWND hWnd)
 BOOL __stdcall import_IsClipboardFormatAvailable(UINT format)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735b4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsClipboardFormatAvailable(format);
-  return BVar1;
+  ok = IsClipboardFormatAvailable(format);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5641,12 +5643,12 @@ BOOL __stdcall import_IsClipboardFormatAvailable(UINT format)
 BOOL __stdcall import_IsDialogMessageA(HWND hDlg,LPMSG lpMsg)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735ba. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsDialogMessageA(hDlg,lpMsg);
-  return BVar1;
+  ok = IsDialogMessageA(hDlg,lpMsg);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5655,12 +5657,12 @@ BOOL __stdcall import_IsDialogMessageA(HWND hDlg,LPMSG lpMsg)
 BOOL __stdcall import_IsIconic(HWND hWnd)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735c0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsIconic(hWnd);
-  return BVar1;
+  ok = IsIconic(hWnd);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5669,12 +5671,12 @@ BOOL __stdcall import_IsIconic(HWND hWnd)
 BOOL __stdcall import_IsMenu(HMENU hMenu)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735c6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsMenu(hMenu);
-  return BVar1;
+  ok = IsMenu(hMenu);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5683,12 +5685,12 @@ BOOL __stdcall import_IsMenu(HMENU hMenu)
 BOOL __stdcall import_IsWindow(HWND hWnd)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735cc. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsWindow(hWnd);
-  return BVar1;
+  ok = IsWindow(hWnd);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5697,12 +5699,12 @@ BOOL __stdcall import_IsWindow(HWND hWnd)
 BOOL __stdcall import_IsWindowEnabled(HWND hWnd)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735d2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsWindowEnabled(hWnd);
-  return BVar1;
+  ok = IsWindowEnabled(hWnd);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5711,12 +5713,12 @@ BOOL __stdcall import_IsWindowEnabled(HWND hWnd)
 BOOL __stdcall import_IsWindowVisible(HWND hWnd)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735d8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsWindowVisible(hWnd);
-  return BVar1;
+  ok = IsWindowVisible(hWnd);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5725,12 +5727,12 @@ BOOL __stdcall import_IsWindowVisible(HWND hWnd)
 BOOL __stdcall import_IsZoomed(HWND hWnd)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735de. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = IsZoomed(hWnd);
-  return BVar1;
+  ok = IsZoomed(hWnd);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5739,12 +5741,12 @@ BOOL __stdcall import_IsZoomed(HWND hWnd)
 BOOL __stdcall import_KillTimer(HWND hWnd,UINT_PTR uIDEvent)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004735e4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = KillTimer(hWnd,uIDEvent);
-  return BVar1;
+  ok = KillTimer(hWnd,uIDEvent);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5753,12 +5755,12 @@ BOOL __stdcall import_KillTimer(HWND hWnd,UINT_PTR uIDEvent)
 HACCEL __stdcall import_LoadAcceleratorsA(HINSTANCE hInstance,LPCSTR lpTableName)
 
 {
-  HACCEL pHVar1;
+  HACCEL hAccel;
   
                     /* WARNING: Could not recover jumptable at 0x004735ea. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = LoadAcceleratorsA(hInstance,lpTableName);
-  return pHVar1;
+  hAccel = LoadAcceleratorsA(hInstance,lpTableName);
+  return hAccel;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5767,12 +5769,12 @@ HACCEL __stdcall import_LoadAcceleratorsA(HINSTANCE hInstance,LPCSTR lpTableName
 HCURSOR __stdcall import_LoadCursorA(HINSTANCE hInstance,LPCSTR lpCursorName)
 
 {
-  HCURSOR pHVar1;
+  HCURSOR hCursor;
   
                     /* WARNING: Could not recover jumptable at 0x004735f0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = LoadCursorA(hInstance,lpCursorName);
-  return pHVar1;
+  hCursor = LoadCursorA(hInstance,lpCursorName);
+  return hCursor;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5781,12 +5783,12 @@ HCURSOR __stdcall import_LoadCursorA(HINSTANCE hInstance,LPCSTR lpCursorName)
 HICON __stdcall import_LoadIconA(HINSTANCE hInstance,LPCSTR lpIconName)
 
 {
-  HICON pHVar1;
+  HICON hIcon;
   
                     /* WARNING: Could not recover jumptable at 0x004735f6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = LoadIconA(hInstance,lpIconName);
-  return pHVar1;
+  hIcon = LoadIconA(hInstance,lpIconName);
+  return hIcon;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5809,12 +5811,12 @@ HANDLE __stdcall import_LoadImageA(HINSTANCE hInst,LPCSTR name,UINT type,int cx,
 HMENU __stdcall import_LoadMenuA(HINSTANCE hInstance,LPCSTR lpMenuName)
 
 {
-  HMENU pHVar1;
+  HMENU hMenu;
   
                     /* WARNING: Could not recover jumptable at 0x00473602. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = LoadMenuA(hInstance,lpMenuName);
-  return pHVar1;
+  hMenu = LoadMenuA(hInstance,lpMenuName);
+  return hMenu;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5851,12 +5853,12 @@ int __stdcall import_MapWindowPoints(HWND hWndFrom,HWND hWndTo,LPPOINT lpPoints,
 BOOL __stdcall import_MessageBeep(UINT uType)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473614. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = MessageBeep(uType);
-  return BVar1;
+  ok = MessageBeep(uType);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5865,12 +5867,12 @@ BOOL __stdcall import_MessageBeep(UINT uType)
 int __stdcall import_MessageBoxA(HWND hWnd,LPCSTR lpText,LPCSTR lpCaption,UINT uType)
 
 {
-  int iVar1;
+  int choice;
   
                     /* WARNING: Could not recover jumptable at 0x0047361a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = MessageBoxA(hWnd,lpText,lpCaption,uType);
-  return iVar1;
+  choice = MessageBoxA(hWnd,lpText,lpCaption,uType);
+  return choice;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5893,12 +5895,12 @@ int __stdcall import_MessageBoxExA(HWND hWnd,LPCSTR lpText,LPCSTR lpCaption,UINT
 BOOL __stdcall import_ModifyMenuA(HMENU hMnu,UINT uPosition,UINT uFlags,UINT_PTR uIDNewItem,LPCSTR lpNewItem)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473626. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ModifyMenuA(hMnu,uPosition,uFlags,uIDNewItem,lpNewItem);
-  return BVar1;
+  ok = ModifyMenuA(hMnu,uPosition,uFlags,uIDNewItem,lpNewItem);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5921,12 +5923,12 @@ DWORD __stdcall import_MsgWaitForMultipleObjects(DWORD nCount,HANDLE *pHandles,B
 BOOL __stdcall import_OpenClipboard(HWND hWndNewOwner)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473632. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = OpenClipboard(hWndNewOwner);
-  return BVar1;
+  ok = OpenClipboard(hWndNewOwner);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5935,12 +5937,12 @@ BOOL __stdcall import_OpenClipboard(HWND hWndNewOwner)
 BOOL __stdcall import_PeekMessageA(LPMSG lpMsg,HWND hWnd,UINT wMsgFilterMin,UINT wMsgFilterMax,UINT wRemoveMsg)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473638. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = PeekMessageA(lpMsg,hWnd,wMsgFilterMin,wMsgFilterMax,wRemoveMsg);
-  return BVar1;
+  ok = PeekMessageA(lpMsg,hWnd,wMsgFilterMin,wMsgFilterMax,wRemoveMsg);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5949,12 +5951,12 @@ BOOL __stdcall import_PeekMessageA(LPMSG lpMsg,HWND hWnd,UINT wMsgFilterMin,UINT
 BOOL __stdcall import_PostMessageA(HWND hWnd,UINT Msg,WPARAM wParam,LPARAM lParam)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047363e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = PostMessageA(hWnd,Msg,wParam,lParam);
-  return BVar1;
+  ok = PostMessageA(hWnd,Msg,wParam,lParam);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5975,12 +5977,12 @@ void __stdcall import_PostQuitMessage(int nExitCode)
 ATOM __stdcall import_RegisterClassA(WNDCLASSA *lpWndClass)
 
 {
-  ATOM AVar1;
+  ATOM atom;
   
                     /* WARNING: Could not recover jumptable at 0x0047364a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  AVar1 = RegisterClassA(lpWndClass);
-  return AVar1;
+  atom = RegisterClassA(lpWndClass);
+  return atom;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -5989,12 +5991,12 @@ ATOM __stdcall import_RegisterClassA(WNDCLASSA *lpWndClass)
 UINT __stdcall import_RegisterWindowMessageA(LPCSTR lpString)
 
 {
-  UINT UVar1;
+  UINT msgId;
   
                     /* WARNING: Could not recover jumptable at 0x00473650. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  UVar1 = RegisterWindowMessageA(lpString);
-  return UVar1;
+  msgId = RegisterWindowMessageA(lpString);
+  return msgId;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6003,12 +6005,12 @@ UINT __stdcall import_RegisterWindowMessageA(LPCSTR lpString)
 BOOL __stdcall import_ReleaseCapture(void)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473656. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ReleaseCapture();
-  return BVar1;
+  ok = ReleaseCapture();
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6031,12 +6033,12 @@ int __stdcall import_ReleaseDC(HWND hWnd,HDC hDC)
 BOOL __stdcall import_ScreenToClient(HWND hWnd,LPPOINT lpPoint)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473662. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ScreenToClient(hWnd,lpPoint);
-  return BVar1;
+  ok = ScreenToClient(hWnd,lpPoint);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6045,12 +6047,12 @@ BOOL __stdcall import_ScreenToClient(HWND hWnd,LPPOINT lpPoint)
 BOOL __stdcall import_ScrollWindow(HWND hWnd,int XAmount,int YAmount,RECT *lpRect,RECT *lpClipRect)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x00473668. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ScrollWindow(hWnd,XAmount,YAmount,lpRect,lpClipRect);
-  return BVar1;
+  ok = ScrollWindow(hWnd,XAmount,YAmount,lpRect,lpClipRect);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6059,12 +6061,12 @@ BOOL __stdcall import_ScrollWindow(HWND hWnd,int XAmount,int YAmount,RECT *lpRec
 LRESULT __stdcall import_SendDlgItemMessageA(HWND hDlg,int nIDDlgItem,UINT Msg,WPARAM wParam,LPARAM lParam)
 
 {
-  LRESULT LVar1;
+  LRESULT lResult;
   
                     /* WARNING: Could not recover jumptable at 0x0047366e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = SendDlgItemMessageA(hDlg,nIDDlgItem,Msg,wParam,lParam);
-  return LVar1;
+  lResult = SendDlgItemMessageA(hDlg,nIDDlgItem,Msg,wParam,lParam);
+  return lResult;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6073,12 +6075,12 @@ LRESULT __stdcall import_SendDlgItemMessageA(HWND hDlg,int nIDDlgItem,UINT Msg,W
 LRESULT __stdcall import_SendMessageA(HWND hWnd,UINT Msg,WPARAM wParam,LPARAM lParam)
 
 {
-  LRESULT LVar1;
+  LRESULT lResult;
   
                     /* WARNING: Could not recover jumptable at 0x00473674. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = SendMessageA(hWnd,Msg,wParam,lParam);
-  return LVar1;
+  lResult = SendMessageA(hWnd,Msg,wParam,lParam);
+  return lResult;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6087,12 +6089,12 @@ LRESULT __stdcall import_SendMessageA(HWND hWnd,UINT Msg,WPARAM wParam,LPARAM lP
 HWND __stdcall import_SetCapture(HWND hWnd)
 
 {
-  HWND pHVar1;
+  HWND hWnd2;
   
                     /* WARNING: Could not recover jumptable at 0x0047367a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = SetCapture(hWnd);
-  return pHVar1;
+  hWnd2 = SetCapture(hWnd);
+  return hWnd2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6101,12 +6103,12 @@ HWND __stdcall import_SetCapture(HWND hWnd)
 HCURSOR __stdcall import_SetCursor(HCURSOR hCursor)
 
 {
-  HCURSOR pHVar1;
+  HCURSOR hCursor2;
   
                     /* WARNING: Could not recover jumptable at 0x00473680. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = SetCursor(hCursor);
-  return pHVar1;
+  hCursor2 = SetCursor(hCursor);
+  return hCursor2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6115,12 +6117,12 @@ HCURSOR __stdcall import_SetCursor(HCURSOR hCursor)
 HWND __stdcall import_SetFocus(HWND hWnd)
 
 {
-  HWND pHVar1;
+  HWND hWnd2;
   
                     /* WARNING: Could not recover jumptable at 0x00473686. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = SetFocus(hWnd);
-  return pHVar1;
+  hWnd2 = SetFocus(hWnd);
+  return hWnd2;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6129,12 +6131,12 @@ HWND __stdcall import_SetFocus(HWND hWnd)
 BOOL __stdcall import_SetMenu(HWND hWnd,HMENU hMenu)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x0047368c. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetMenu(hWnd,hMenu);
-  return BVar1;
+  ok = SetMenu(hWnd,hMenu);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6143,12 +6145,12 @@ BOOL __stdcall import_SetMenu(HWND hWnd,HMENU hMenu)
 HWND __stdcall import_SetParent(HWND hWndChild,HWND hWndNewParent)
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   
                     /* WARNING: Could not recover jumptable at 0x00473692. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = SetParent(hWndChild,hWndNewParent);
-  return pHVar1;
+  hWnd = SetParent(hWndChild,hWndNewParent);
+  return hWnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6171,12 +6173,12 @@ int __stdcall import_SetScrollInfo(HWND hwnd,int nBar,LPCSCROLLINFO lpsi,BOOL re
 UINT_PTR __stdcall import_SetTimer(HWND hWnd,UINT_PTR nIDEvent,UINT uElapse,TIMERPROC lpTimerFunc)
 
 {
-  UINT_PTR UVar1;
+  UINT_PTR timerId;
   
                     /* WARNING: Could not recover jumptable at 0x0047369e. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  UVar1 = SetTimer(hWnd,nIDEvent,uElapse,lpTimerFunc);
-  return UVar1;
+  timerId = SetTimer(hWnd,nIDEvent,uElapse,lpTimerFunc);
+  return timerId;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6185,12 +6187,12 @@ UINT_PTR __stdcall import_SetTimer(HWND hWnd,UINT_PTR nIDEvent,UINT uElapse,TIME
 LONG __stdcall import_SetWindowLongA(HWND hWnd,int nIndex,LONG dwNewLong)
 
 {
-  LONG LVar1;
+  LONG prevWindowLong;
   
                     /* WARNING: Could not recover jumptable at 0x004736a4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  LVar1 = SetWindowLongA(hWnd,nIndex,dwNewLong);
-  return LVar1;
+  prevWindowLong = SetWindowLongA(hWnd,nIndex,dwNewLong);
+  return prevWindowLong;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6199,12 +6201,12 @@ LONG __stdcall import_SetWindowLongA(HWND hWnd,int nIndex,LONG dwNewLong)
 BOOL __stdcall import_SetWindowPlacement(HWND hWnd,WINDOWPLACEMENT *lpwndpl)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736aa. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetWindowPlacement(hWnd,lpwndpl);
-  return BVar1;
+  ok = SetWindowPlacement(hWnd,lpwndpl);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6213,12 +6215,12 @@ BOOL __stdcall import_SetWindowPlacement(HWND hWnd,WINDOWPLACEMENT *lpwndpl)
 BOOL __stdcall import_SetWindowPos(HWND hWnd,HWND hWndInsertAfter,int X,int Y,int cx,int cy,UINT uFlags)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736b0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetWindowPos(hWnd,hWndInsertAfter,X,Y,cx,cy,uFlags);
-  return BVar1;
+  ok = SetWindowPos(hWnd,hWndInsertAfter,X,Y,cx,cy,uFlags);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6227,12 +6229,12 @@ BOOL __stdcall import_SetWindowPos(HWND hWnd,HWND hWndInsertAfter,int X,int Y,in
 BOOL __stdcall import_SetWindowTextA(HWND hWnd,LPCSTR lpString)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736b6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SetWindowTextA(hWnd,lpString);
-  return BVar1;
+  ok = SetWindowTextA(hWnd,lpString);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6241,12 +6243,12 @@ BOOL __stdcall import_SetWindowTextA(HWND hWnd,LPCSTR lpString)
 BOOL __stdcall import_ShowScrollBar(HWND hWnd,int wBar,BOOL bShow)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736bc. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ShowScrollBar(hWnd,wBar,bShow);
-  return BVar1;
+  ok = ShowScrollBar(hWnd,wBar,bShow);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6255,12 +6257,12 @@ BOOL __stdcall import_ShowScrollBar(HWND hWnd,int wBar,BOOL bShow)
 BOOL __stdcall import_ShowWindow(HWND hWnd,int nCmdShow)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736c2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = ShowWindow(hWnd,nCmdShow);
-  return BVar1;
+  ok = ShowWindow(hWnd,nCmdShow);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6269,12 +6271,12 @@ BOOL __stdcall import_ShowWindow(HWND hWnd,int nCmdShow)
 BOOL __stdcall import_SystemParametersInfoA(UINT uiAction,UINT uiParam,PVOID pvParam,UINT fWinIni)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736c8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = SystemParametersInfoA(uiAction,uiParam,pvParam,fWinIni);
-  return BVar1;
+  ok = SystemParametersInfoA(uiAction,uiParam,pvParam,fWinIni);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6297,12 +6299,12 @@ LONG __stdcall import_TabbedTextOutA(HDC hdc,int x,int y,LPCSTR lpString,int chC
 BOOL __stdcall import_TrackPopupMenu(HMENU hMenu,UINT uFlags,int x,int y,int nReserved,HWND hWnd,RECT *prcRect)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736d4. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = TrackPopupMenu(hMenu,uFlags,x,y,nReserved,hWnd,prcRect);
-  return BVar1;
+  ok = TrackPopupMenu(hMenu,uFlags,x,y,nReserved,hWnd,prcRect);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6311,12 +6313,12 @@ BOOL __stdcall import_TrackPopupMenu(HMENU hMenu,UINT uFlags,int x,int y,int nRe
 int __stdcall import_TranslateAcceleratorA(HWND hWnd,HACCEL hAccTable,LPMSG lpMsg)
 
 {
-  int iVar1;
+  int translated;
   
                     /* WARNING: Could not recover jumptable at 0x004736da. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  iVar1 = TranslateAcceleratorA(hWnd,hAccTable,lpMsg);
-  return iVar1;
+  translated = TranslateAcceleratorA(hWnd,hAccTable,lpMsg);
+  return translated;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6325,12 +6327,12 @@ int __stdcall import_TranslateAcceleratorA(HWND hWnd,HACCEL hAccTable,LPMSG lpMs
 BOOL __stdcall import_TranslateMDISysAccel(HWND hWndClient,LPMSG lpMsg)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736e0. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = TranslateMDISysAccel(hWndClient,lpMsg);
-  return BVar1;
+  ok = TranslateMDISysAccel(hWndClient,lpMsg);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6339,12 +6341,12 @@ BOOL __stdcall import_TranslateMDISysAccel(HWND hWndClient,LPMSG lpMsg)
 BOOL __stdcall import_TranslateMessage(MSG *lpMsg)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736e6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = TranslateMessage(lpMsg);
-  return BVar1;
+  ok = TranslateMessage(lpMsg);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6353,12 +6355,12 @@ BOOL __stdcall import_TranslateMessage(MSG *lpMsg)
 BOOL __stdcall import_UnregisterClassA(LPCSTR lpClassName,HINSTANCE hInstance)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736ec. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = UnregisterClassA(lpClassName,hInstance);
-  return BVar1;
+  ok = UnregisterClassA(lpClassName,hInstance);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6367,12 +6369,12 @@ BOOL __stdcall import_UnregisterClassA(LPCSTR lpClassName,HINSTANCE hInstance)
 BOOL __stdcall import_UpdateWindow(HWND hWnd)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736f2. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = UpdateWindow(hWnd);
-  return BVar1;
+  ok = UpdateWindow(hWnd);
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6381,12 +6383,12 @@ BOOL __stdcall import_UpdateWindow(HWND hWnd)
 BOOL __stdcall import_WaitMessage(void)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
                     /* WARNING: Could not recover jumptable at 0x004736f8. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  BVar1 = WaitMessage();
-  return BVar1;
+  ok = WaitMessage();
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6395,12 +6397,12 @@ BOOL __stdcall import_WaitMessage(void)
 HWND __stdcall import_WindowFromPoint(POINT Point)
 
 {
-  HWND pHVar1;
+  HWND hWnd;
   
                     /* WARNING: Could not recover jumptable at 0x004736fe. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = WindowFromPoint(Point);
-  return pHVar1;
+  hWnd = WindowFromPoint(Point);
+  return hWnd;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -6423,12 +6425,12 @@ int __cdecl import_wsprintfA(LPSTR param_1,LPCSTR param_2,...)
 HMENU __stdcall import_GetSystemMenu(HWND hWnd,BOOL bRevert)
 
 {
-  HMENU pHVar1;
+  HMENU hMenu;
   
                     /* WARNING: Could not recover jumptable at 0x0047370a. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  pHVar1 = GetSystemMenu(hWnd,bRevert);
-  return pHVar1;
+  hMenu = GetSystemMenu(hWnd,bRevert);
+  return hMenu;
 }
 
 } // namespace tea

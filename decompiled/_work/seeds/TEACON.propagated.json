@@ -19,5 +19,61 @@
   "kind": "function",
   "source": "analysis (usage pattern) (matched TEA.exe)",
   "note": "identical body to TEA.exe 0x004e02cc."
+ },
+ {
+  "addr": "0x00416814",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x00416854",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x004179b0",
+  "name": "std::string::__getRepOf",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x00416740 (20 bytes; the code occurs several times, e.g. one template instance per type). the rep header of a string (data - 12)"
+ },
+ {
+  "addr": "0x00417a88",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x00417ac8",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x00417b58",
+  "name": "std::allocator::allocator",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x004168f8 (37 bytes; the code occurs several times, e.g. one template instance per type). (empty)"
+ },
+ {
+  "addr": "0x00417b80",
+  "name": "std::string::size",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x0041687c (20 bytes; the code occurs several times, e.g. one template instance per type). length of the string (rep->length)"
+ },
+ {
+  "addr": "0x0041d818",
+  "name": "std::string::string",
+  "kind": "function",
+  "source": "analysis (matched TEACON.exe, duplicated code)",
+  "note": "same masked bytes as TEACON.exe 0x0040da88 (87 bytes; the code occurs several times, e.g. one template instance per type). default constructor: data = the shared empty rep"
  }
 ]

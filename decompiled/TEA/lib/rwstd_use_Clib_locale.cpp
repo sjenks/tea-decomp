@@ -9,15 +9,15 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x004dafc0  __rwstd::use_Clib_locale::~use_Clib_locale   (56 bytes)   [rtti:dtor destructor]
 //   written in code as __rwstd::use_Clib_locale::_dtor
-void __cdecl __rwstd::use_Clib_locale::_dtor(undefined4 *param_1,byte param_2)
+void __cdecl __rwstd::use_Clib_locale::_dtor(undefined4 *self,byte dtorFlags)
 
 {
-  if (param_1 != (undefined4 *)0x0) {
-    if ((uint *)param_1[1] != (uint *)0x0) {
-      FUN_004e3578((ushort)*param_1,(uint *)param_1[1]);
+  if (self != (undefined4 *)0x0) {
+    if ((uint *)self[1] != (uint *)0x0) {
+      FUN_004e3578((ushort)*self,(uint *)self[1]);
       operator_delete_array();
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }

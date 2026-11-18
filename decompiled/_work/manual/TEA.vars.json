@@ -1,0 +1,2827 @@
+{
+ "0x00401000": {
+  "ppuVar1": "startupTable"
+ },
+ "0x00401059": {
+  "param_1": "info"
+ },
+ "0x00401d10": {
+  "param_1": "text",
+  "param_2": "start",
+  "param_3": "word"
+ },
+ "0x0040317c": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last"
+ },
+ "0x004034c0": {
+  "param_1": "self"
+ },
+ "0x00403e94": {
+  "param_1": "dest",
+  "param_2": "src",
+  "param_3": "unused"
+ },
+ "0x00403ec0": {
+  "param_1": "vec",
+  "param_2": "pos",
+  "param_3": "value"
+ },
+ "0x004047bc": {
+  "param_1": "self",
+  "param_2": "line",
+  "param_3": "column"
+ },
+ "0x0040625c": {
+  "param_1": "self"
+ },
+ "0x004068e8": {
+  "param_1": "self"
+ },
+ "0x00406984": {
+  "param_1": "self",
+  "param_2": "paths"
+ },
+ "0x00408c8c": {
+  "param_1": "self"
+ },
+ "0x00408cbc": {
+  "param_1": "result",
+  "param_2": "self",
+  "param_3": "index"
+ },
+ "0x00408d0c": {
+  "param_1": "result",
+  "param_2": "self",
+  "param_3": "index"
+ },
+ "0x00408d5c": {
+  "param_1": "result",
+  "param_2": "self",
+  "param_3": "index"
+ },
+ "0x00408dac": {
+  "param_1": "self",
+  "param_2": "index"
+ },
+ "0x00408dfc": {
+  "param_1": "self",
+  "param_2": "index",
+  "iVar1": "dict"
+ },
+ "0x00408e24": {
+  "param_1": "self",
+  "param_2": "index"
+ },
+ "0x00408e54": {
+  "param_1": "self",
+  "param_2": "index",
+  "param_3": "length",
+  "iVar1": "dict"
+ },
+ "0x00408edc": {
+  "param_1": "self",
+  "param_2": "index"
+ },
+ "0x00409594": {
+  "param_1": "self",
+  "param_2": "word",
+  "param_3": "results"
+ },
+ "0x00409d44": {
+  "param_1": "self",
+  "param_2": "offset"
+ },
+ "0x0040a04c": {
+  "param_1": "self",
+  "param_2": "records",
+  "param_3": "count",
+  "param_4": "flags"
+ },
+ "0x0040aaec": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x0040ab04": {
+  "param_1": "self",
+  "param_2": "other",
+  "param_3": "unused"
+ },
+ "0x0040ab88": {
+  "param_1": "self",
+  "param_2": "other"
+ },
+ "0x0040add8": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest"
+ },
+ "0x0040ae0c": {
+  "param_1": "a",
+  "param_2": "b",
+  "param_3": "unused"
+ },
+ "0x0040ae88": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest"
+ },
+ "0x0040b62c": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last"
+ },
+ "0x0040db1c": {
+  "param_1": "vec",
+  "param_2": "n"
+ },
+ "0x0040dc7c": {
+  "param_1": "vec",
+  "param_2": "pos",
+  "param_3": "n",
+  "param_4": "value"
+ },
+ "0x0040e0a0": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "value"
+ },
+ "0x0040e0cc": {
+  "param_1": "dest",
+  "param_2": "n",
+  "param_3": "value"
+ },
+ "0x0040e20c": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest"
+ },
+ "0x0040fc0c": {
+  "param_1": "vec",
+  "param_2": "n"
+ },
+ "0x00410328": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x00410378": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x004103d4": {
+  "param_1": "last",
+  "param_2": "value"
+ },
+ "0x004103f8": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x004104e8": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "pivot"
+ },
+ "0x00410538": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x00410750": {
+  "param_1": "self",
+  "param_2": "first",
+  "param_3": "last"
+ },
+ "0x00410da0": {
+  "param_1": "self",
+  "param_2": "first",
+  "param_3": "last"
+ },
+ "0x004115a0": {
+  "param_1": "code",
+  "param_2": "wParam",
+  "param_3": "msg",
+  "SVar1": "ctrlState",
+  "uVar2": "style"
+ },
+ "0x00411790": {
+  "param_1": "self",
+  "param_2": "length",
+  "bVar1": "opened",
+  "iVar3": "loaded",
+  "uVar5": "linkModeOrOffset",
+  "uVar4": "nextLengthOffset"
+ },
+ "0x004118a0": {
+  "param_1": "self",
+  "param_2": "unused",
+  "puVar1": "nextPtr",
+  "pcVar2": "rawNext",
+  "iVar3": "dict",
+  "iVar4": "codeLen",
+  "cVar5": "ch",
+  "bVar6": "ok",
+  "uVar7": "bit",
+  "iVar8": "huffNodes",
+  "iVar9": "symbol",
+  "iVar10": "bitPos",
+  "uVar11": "bits",
+  "local_1c": "rawOut",
+  "local_18": "lettersOut",
+  "local_c": "bitEnd",
+  "local_8": "bitPtr"
+ },
+ "0x00411bdc": {
+  "param_1": "self",
+  "param_2": "matchSet",
+  "puVar1": "nextPtr",
+  "iVar2": "dict",
+  "iVar3": "codeLen",
+  "cVar4": "ch",
+  "bVar5": "ok",
+  "piVar6": "engines",
+  "iVar7": "symbol",
+  "uVar8": "bit",
+  "pcVar9": "rawNext",
+  "iVar10": "huffNodes",
+  "pbVar11": "logicOps",
+  "iVar12": "singleEngine",
+  "iVar13": "bitPos",
+  "uVar14": "bits",
+  "local_28": "rawOut",
+  "local_24": "lettersOut",
+  "local_20": "budget",
+  "local_c": "bitEnd",
+  "local_8": "bitPtr"
+ },
+ "0x00412000": {
+  "param_2": "wordBuf",
+  "param_3": "length",
+  "param_4": "ops",
+  "param_5": "engines",
+  "pbVar1": "target",
+  "piVar2": "nextEngine",
+  "bVar3": "matched",
+  "iVar4": "minLength",
+  "bVar5": "op",
+  "pbVar6": "stackTop",
+  "local_2c": "parenStack",
+  "local_c": "engine",
+  "local_8": "result",
+  "param_1": "mode"
+ },
+ "0x0041229c": {
+  "param_1": "self"
+ },
+ "0x00412334": {
+  "param_1": "self"
+ },
+ "0x0041238c": {
+  "param_1": "owner",
+  "param_2": "isCrossword"
+ },
+ "0x00412434": {
+  "param_1": "result",
+  "param_2": "self",
+  "param_3": "index",
+  "iVar3": "entry"
+ },
+ "0x0041251c": {
+  "param_1": "self",
+  "param_2": "path",
+  "iVar2": "cmp",
+  "iVar4": "i",
+  "iVar5": "entry",
+  "local_24": "previous",
+  "local_1c": "previousData",
+  "local_14": "carry",
+  "local_c": "carryData"
+ },
+ "0x00412830": {
+  "param_1": "self",
+  "piVar1": "entryData",
+  "pcVar2": "valueBase",
+  "iVar3": "i",
+  "iVar4": "machineWide",
+  "puVar5": "valueArg",
+  "local_158": "valueNameBuf",
+  "local_1c": "keyPath",
+  "local_14": "keyPathData",
+  "local_c": "persist"
+ },
+ "0x00412cf0": {
+  "param_1": "self",
+  "param_2": "owner",
+  "param_3": "isCrossword",
+  "iVar2": "i",
+  "iVar3": "machineWide",
+  "puVar4": "valueArg",
+  "local_150": "valueNameBuf",
+  "local_94": "valueBase",
+  "local_4c": "value",
+  "local_44": "valueData",
+  "local_2c": "keyPath",
+  "local_24": "keyPathData",
+  "local_1c": "first",
+  "local_14": "firstData",
+  "local_c": "persist"
+ },
+ "0x00413990": {
+  "param_1": "self",
+  "param_2": "out"
+ },
+ "0x00414278": {
+  "param_1": "result",
+  "param_2": "pattern"
+ },
+ "0x00415118": {
+  "param_1": "child"
+ },
+ "0x004153ec": {
+  "param_1": "left",
+  "param_2": "top",
+  "param_3": "right",
+  "param_4": "bottom"
+ },
+ "0x00415920": {
+  "param_1": "self",
+  "param_2": "topic"
+ },
+ "0x00415944": {
+  "param_1": "self",
+  "param_2": "control",
+  "param_3": "point"
+ },
+ "0x00416a78": {
+  "param_1": "self",
+  "param_2": "valueName",
+  "param_3": "defaultValue"
+ },
+ "0x00416c2c": {
+  "param_1": "self",
+  "param_2": "valueName"
+ },
+ "0x00416dd4": {
+  "param_1": "result",
+  "param_2": "self",
+  "param_3": "valueName",
+  "param_4": "defaultValue"
+ },
+ "0x0041717c": {
+  "param_1": "self",
+  "param_2": "valueName",
+  "param_3": "value"
+ },
+ "0x004173c0": {
+  "param_1": "self",
+  "param_2": "control",
+  "param_3": "xFactor",
+  "param_4": "yFactor",
+  "param_5": "sizeFactor"
+ },
+ "0x00417498": {
+  "param_1": "self",
+  "param_2": "control"
+ },
+ "0x00417760": {
+  "param_1": "self",
+  "param_2": "hWndTooltip"
+ },
+ "0x00417780": {
+  "param_1": "self",
+  "param_2": "delta"
+ },
+ "0x004178ac": {
+  "param_1": "logBrush",
+  "param_2": "colour"
+ },
+ "0x00418a48": {
+  "param_1": "self",
+  "param_2": "colour"
+ },
+ "0x00419418": {
+  "param_1": "self",
+  "param_2": "logFont",
+  "param_3": "colour",
+  "param_4": "x",
+  "param_5": "y",
+  "param_6": "w",
+  "param_7": "h"
+ },
+ "0x00419f9c": {
+  "param_1": "self",
+  "param_2": "position",
+  "param_3": "word",
+  "param_4": "lParam"
+ },
+ "0x0041aa8c": {
+  "param_1": "self",
+  "param_2": "text"
+ },
+ "0x0041aacc": {
+  "param_1": "self",
+  "param_2": "out"
+ },
+ "0x0041ac90": {
+  "param_1": "self",
+  "param_2": "text"
+ },
+ "0x0041ad00": {
+  "param_1": "self",
+  "param_2": "text"
+ },
+ "0x0041ae3c": {
+  "param_1": "colour",
+  "param_2": "charFormat"
+ },
+ "0x0041b1ec": {
+  "param_1": "self",
+  "param_2": "text"
+ },
+ "0x0041b218": {
+  "param_1": "self"
+ },
+ "0x0041b24c": {
+  "param_1": "self"
+ },
+ "0x0041b280": {
+  "param_1": "self"
+ },
+ "0x0041b2b0": {
+  "param_1": "self",
+  "param_2": "out"
+ },
+ "0x0041b474": {
+  "param_1": "self",
+  "param_2": "value"
+ },
+ "0x0041b48c": {
+  "param_1": "self",
+  "param_2": "path"
+ },
+ "0x0041b8f8": {
+  "param_1": "self"
+ },
+ "0x0041b914": {
+  "param_1": "self",
+  "param_2": "out"
+ },
+ "0x0041c1cc": {
+  "param_1": "self"
+ },
+ "0x0041c4b0": {
+  "param_1": "self"
+ },
+ "0x0041c4f8": {
+  "param_1": "self",
+  "param_2": "paths",
+  "param_3": "selected"
+ },
+ "0x0041c740": {
+  "param_1": "self"
+ },
+ "0x0041c758": {
+  "param_1": "self"
+ },
+ "0x0041c780": {
+  "param_1": "self",
+  "param_2": "text",
+  "param_3": "limit"
+ },
+ "0x0041ca1c": {
+  "param_1": "self",
+  "param_2": "paths"
+ },
+ "0x0041e888": {
+  "param_1": "self"
+ },
+ "0x0041e940": {
+  "param_1": "result",
+  "param_2": "logFont"
+ },
+ "0x0041e9dc": {
+  "param_1": "control",
+  "param_2": "size"
+ },
+ "0x0041f1c8": {
+  "param_1": "self",
+  "param_2": "paths",
+  "param_3": "sorted"
+ },
+ "0x0041f8c8": {
+  "param_1": "result",
+  "param_2": "self",
+  "param_3": "index"
+ },
+ "0x0041fbe4": {
+  "param_1": "self",
+  "param_2": "list",
+  "param_3": "index"
+ },
+ "0x0041fea4": {
+  "param_1": "self"
+ },
+ "0x0041fedc": {
+  "param_1": "self",
+  "param_2": "parent",
+  "param_3": "firstId",
+  "param_4": "module",
+  "param_5": "flags"
+ },
+ "0x0042056c": {
+  "param_1": "self",
+  "param_2": "index"
+ },
+ "0x00420bb4": {
+  "param_1": "self"
+ },
+ "0x00420cbc": {
+  "param_1": "self",
+  "param_2": "listId"
+ },
+ "0x00420e2c": {
+  "param_1": "self",
+  "param_2": "listId"
+ },
+ "0x00420ec0": {
+  "param_1": "self",
+  "param_2": "control",
+  "param_3": "index",
+  "param_4": "out"
+ },
+ "0x0042116c": {
+  "param_1": "self",
+  "param_2": "folder"
+ },
+ "0x004215f0": {
+  "param_1": "self",
+  "param_2": "paths"
+ },
+ "0x004216a0": {
+  "param_1": "result",
+  "param_2": "self"
+ },
+ "0x004216dc": {
+  "param_1": "unused",
+  "param_2": "path"
+ },
+ "0x00421b48": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x00422de4": {
+  "param_1": "self"
+ },
+ "0x00422e14": {
+  "param_1": "self"
+ },
+ "0x00422fc4": {
+  "param_1": "owner"
+ },
+ "0x00423078": {
+  "param_1": "self",
+  "param_2": "word",
+  "param_3": "index"
+ },
+ "0x00423c2c": {
+  "param_1": "self"
+ },
+ "0x00423c6c": {
+  "param_1": "self"
+ },
+ "0x00423e14": {
+  "param_1": "self",
+  "param_2": "hMenu",
+  "param_3": "position"
+ },
+ "0x00424168": {
+  "param_1": "self"
+ },
+ "0x00424c28": {
+  "param_1": "self",
+  "param_2": "owner"
+ },
+ "0x004258e8": {
+  "param_1": "self"
+ },
+ "0x004263ec": {
+  "param_1": "self"
+ },
+ "0x004264ec": {
+  "param_1": "self",
+  "param_2": "vbasesBuilt",
+  "param_3": "title",
+  "param_4": "parent",
+  "param_5": "printer",
+  "param_6": "printout",
+  "param_7": "client",
+  "param_8": "module",
+  "param_9": "caption",
+  "param_10": "flags",
+  "param_11": "rect"
+ },
+ "0x00428340": {
+  "param_1": "self"
+ },
+ "0x0042835c": {
+  "param_1": "self"
+ },
+ "0x004283a8": {
+  "param_1": "self"
+ },
+ "0x0042905c": {
+  "param_1": "self",
+  "param_2": "number",
+  "param_3": "text"
+ },
+ "0x00429084": {
+  "param_1": "self",
+  "param_2": "count"
+ },
+ "0x0042909c": {
+  "param_1": "self"
+ },
+ "0x004292c0": {
+  "param_2": "eventInfo",
+  "param_3": "equal",
+  "uVar1": "found"
+ },
+ "0x00429308": {
+  "param_3": "parent",
+  "param_4": "ctlId",
+  "param_5": "bounds",
+  "uVar1": "exStyle",
+  "uVar2": "parentHandle",
+  "piVar3": "tree",
+  "puVar4": "header",
+  "local_14": "emptyGroup",
+  "local_8": "scroller"
+ },
+ "0x00429928": {
+  "param_1": "tree",
+  "piVar1": "buffer",
+  "iVar2": "nodes"
+ },
+ "0x00429a74": {
+  "param_1": "tree",
+  "piVar1": "buffer",
+  "iVar2": "nodes"
+ },
+ "0x00429bc0": {
+  "param_1": "vec",
+  "param_2": "n"
+ },
+ "0x00429f04": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest",
+  "puVar1": "src",
+  "puVar2": "dst"
+ },
+ "0x00429fa0": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x00429fb8": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last",
+  "puVar1": "p"
+ },
+ "0x00429ffc": {
+  "param_1": "vec",
+  "param_2": "pos",
+  "param_3": "value",
+  "puVar1": "oldEnd",
+  "puVar2": "oldBegin",
+  "iVar3": "newCapacity",
+  "puVar4": "storage",
+  "local_8": "end"
+ },
+ "0x0042a220": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "destEnd"
+ },
+ "0x0042a474": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "firstLo",
+  "param_4": "firstHi",
+  "param_5": "firstNode",
+  "in_stack_00000024": "lastNode",
+  "local_54": "next",
+  "local_14": "ret"
+ },
+ "0x0042a578": {
+  "param_1": "tree",
+  "param_2": "node",
+  "iVar1": "left"
+ },
+ "0x0042a5d0": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "itLo",
+  "param_4": "itHi",
+  "param_5": "itNode",
+  "local_9c": "next",
+  "local_30": "z",
+  "local_31": "removed"
+ },
+ "0x0042ae70": {
+  "param_1": "dest",
+  "param_2": "node"
+ },
+ "0x0042ae80": {
+  "param_1": "node"
+ },
+ "0x0042aea0": {
+  "param_1": "node"
+ },
+ "0x0042aec0": {
+  "param_1": "it",
+  "iVar1": "parent"
+ },
+ "0x0042af24": {
+  "param_1": "tree"
+ },
+ "0x0042af64": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "firstLo",
+  "param_4": "firstHi",
+  "param_5": "firstNode"
+ },
+ "0x0042b068": {
+  "param_1": "tree",
+  "param_2": "node"
+ },
+ "0x0042b0a4": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "itLo",
+  "param_4": "itHi",
+  "param_5": "itNode"
+ },
+ "0x0042b8f8": {
+  "param_1": "dest",
+  "param_2": "node"
+ },
+ "0x0042b908": {
+  "param_1": "node"
+ },
+ "0x0042b928": {
+  "param_1": "node"
+ },
+ "0x0042b948": {
+  "param_1": "it",
+  "iVar1": "parent"
+ },
+ "0x0042b9ac": {
+  "param_1": "tree"
+ },
+ "0x0042b9ec": {
+  "param_1": "self",
+  "param_2": "wordWidth",
+  "param_3": "annotationWidth"
+ },
+ "0x0042ba08": {
+  "param_1": "self"
+ },
+ "0x0042ba14": {
+  "param_1": "self",
+  "local_18": "it",
+  "local_10": "node",
+  "local_8": "total"
+ },
+ "0x0042ba94": {
+  "param_1": "it",
+  "iVar1": "parent"
+ },
+ "0x0042baf8": {
+  "param_1": "self",
+  "param_2": "index",
+  "puVar1": "entry"
+ },
+ "0x0042bb18": {
+  "param_1": "self",
+  "piVar1": "begin",
+  "piVar2": "newEnd",
+  "local_a4": "erased",
+  "local_74": "erased2",
+  "local_44": "slot",
+  "local_40": "oldEnd",
+  "local_3c": "end",
+  "local_10": "emptyGroup"
+ },
+ "0x0042bce8": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest"
+ },
+ "0x0042bd3c": {
+  "param_1": "self",
+  "param_2": "rect",
+  "param_3": "redraw",
+  "uVar1": "noRedrawFlag"
+ },
+ "0x0042bdf0": {
+  "param_1": "self",
+  "param_2": "changed",
+  "bVar1": "noDirtyRect",
+  "iVar2": "lineCount",
+  "pLVar4": "dst",
+  "local_34": "client"
+ },
+ "0x0042cbc0": {
+  "param_1": "self"
+ },
+ "0x0042d5fe": {
+  "hWnd2": "hWndPrevFocus",
+  "SVar3": "leftButton",
+  "iVar6": "line",
+  "unaff_EBP": "frame"
+ },
+ "0x0042d792": {
+  "puVar1": "point",
+  "piVar7": "self",
+  "iVar5": "line",
+  "unaff_EBP": "frame"
+ },
+ "0x0042dbdc": {
+  "param_1": "self",
+  "param_2": "wordFont",
+  "param_3": "annotationFont",
+  "param_4": "wordColour",
+  "param_5": "annotationColour",
+  "uVar1": "hFont"
+ },
+ "0x0042dc18": {
+  "param_1": "self",
+  "param_2": "word",
+  "param_3": "annotation",
+  "param_4": "suffix",
+  "param_5": "group",
+  "local_5c": "lineCount",
+  "local_60": "entry"
+ },
+ "0x0042e408": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "value",
+  "uVar1": "goLeft",
+  "iVar2": "node",
+  "local_8": "parent"
+ },
+ "0x0042e60c": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "forceLeft",
+  "param_4": "parent",
+  "param_5": "value",
+  "puVar4": "node",
+  "uVar5": "less"
+ },
+ "0x0042e908": {
+  "param_1": "tree",
+  "param_2": "value",
+  "puVar1": "node"
+ },
+ "0x0042e9d8": {
+  "param_1": "it",
+  "piVar1": "node",
+  "iVar2": "parent"
+ },
+ "0x0042ea44": {
+  "param_1": "self",
+  "param_2": "word",
+  "param_3": "wordLen",
+  "i": "group",
+  "local_10": "probe",
+  "local_8": "head"
+ },
+ "0x0042eb4c": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "key",
+  "uVar1": "less",
+  "iVar2": "node",
+  "local_8": "candidate"
+ },
+ "0x0042ec10": {
+  "param_1": "self",
+  "param_2": "key",
+  "param_3": "extend",
+  "unaff_EDI": "line",
+  "iVar1": "lineCount"
+ },
+ "0x0042eca0": {
+  "param_1": "self",
+  "param_2": "useCaret",
+  "param_3": "text",
+  "param_4": "group",
+  "iVar2": "index",
+  "puVar1": "entry"
+ },
+ "0x0042ecfc": {
+  "param_1": "self",
+  "local_14": "ranges"
+ },
+ "0x0042ed34": {
+  "param_1": "self",
+  "cVar3": "extend",
+  "iVar2": "mode",
+  "iVar1": "lineCount",
+  "local_14": "ranges"
+ },
+ "0x0042ed6c": {
+  "param_1": "self",
+  "param_2": "index",
+  "puVar1": "entry"
+ },
+ "0x0042ed8c": {
+  "param_1": "result",
+  "param_2": "self",
+  "param_3": "first",
+  "param_4": "count",
+  "param_5": "mode",
+  "param_6": "extend",
+  "local_3c": "changed",
+  "local_44": "rangeStart",
+  "local_6c": "start"
+ },
+ "0x0042faf4": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "value",
+  "bVar1": "goLeft",
+  "iVar2": "node",
+  "local_8": "parent"
+ },
+ "0x0042fcfc": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "forceLeft",
+  "param_4": "parent",
+  "param_5": "value",
+  "puVar4": "node"
+ },
+ "0x0042fff8": {
+  "param_1": "tree",
+  "param_2": "value",
+  "puVar1": "node"
+ },
+ "0x00430114": {
+  "param_1": "it",
+  "piVar1": "node",
+  "iVar2": "parent"
+ },
+ "0x00430180": {
+  "param_1": "self",
+  "param_2": "other",
+  "puVar2": "root"
+ },
+ "0x00430224": {
+  "param_1": "tree",
+  "param_2": "src",
+  "param_3": "parent",
+  "puVar1": "node",
+  "puVar2": "right",
+  "local_8": "top"
+ },
+ "0x00430290": {
+  "param_1": "self",
+  "param_2": "first",
+  "param_3": "count",
+  "param_4": "rect",
+  "bVar2": "visible",
+  "iVar3": "top",
+  "iVar4": "bottom",
+  "local_38": "client",
+  "local_8": "y0",
+  "local_c": "y1",
+  "local_10": "x1",
+  "local_68": "area"
+ },
+ "0x0043043e": {
+  "piVar1": "self",
+  "unaff_EBP": "frame",
+  "uVar4": "node"
+ },
+ "0x004304f0": {
+  "param_1": "self",
+  "param_2": "text",
+  "param_3": "wordLen",
+  "param_4": "group",
+  "pcVar1": "len"
+ },
+ "0x00430548": {
+  "param_1": "self",
+  "param_2": "a",
+  "param_3": "b",
+  "bVar1": "less"
+ },
+ "0x00430560": {
+  "param_1": "self",
+  "param_2": "other"
+ },
+ "0x004305b4": {
+  "param_1": "self",
+  "param_2": "other"
+ },
+ "0x004305f4": {
+  "param_1": "self"
+ },
+ "0x0043061c": {
+  "param_1": "self",
+  "param_2": "list",
+  "iVar1": "node"
+ },
+ "0x00430678": {
+  "param_1": "self",
+  "iVar1": "rangeFirst",
+  "bVar2": "inRange",
+  "iVar3": "line"
+ },
+ "0x00430730": {
+  "param_1": "self",
+  "param_2": "n",
+  "i": "rangeCount",
+  "piVar2": "src",
+  "piVar3": "dst",
+  "local_24": "begin",
+  "local_c": "node"
+ },
+ "0x004307e4": {
+  "param_1": "self",
+  "param_2": "line",
+  "iVar2": "lo",
+  "iVar3": "hi"
+ },
+ "0x004308e4": {
+  "param_1": "self",
+  "param_2": "index",
+  "puVar1": "group",
+  "puVar2": "entry",
+  "iVar3": "firstLine"
+ },
+ "0x00430a68": {
+  "param_1": "entry",
+  "param_2": "word",
+  "param_3": "wordLen",
+  "param_4": "mode",
+  "iVar1": "diff",
+  "iVar2": "cmp"
+ },
+ "0x00430aec": {
+  "param_1": "self",
+  "param_2": "point",
+  "iVar1": "entryCount"
+ },
+ "0x004327e8": {
+  "param_1": "self",
+  "param_2": "cursorRef",
+  "param_3": "bc",
+  "param_4": "outExtra",
+  "param_5": "templateExtra",
+  "pbVar1": "next",
+  "bVar2": "ch",
+  "bVar3": "escaped",
+  "uVar4": "op",
+  "iVar5": "count",
+  "puVar6": "opSlot",
+  "iVar7": "n",
+  "piVar8": "countAt",
+  "pcVar9": "q",
+  "local_524": "counts",
+  "acStack_138": "varCountsByDigit",
+  "local_120": "subPatternPos2",
+  "local_11a": "singlesOp",
+  "local_118": "countByte",
+  "local_117": "multiplesOp",
+  "local_116": "varCount",
+  "local_115": "varsOp",
+  "local_114": "letterClass",
+  "local_108": "varCounts",
+  "local_c8": "classPos",
+  "local_c4": "choiceClass",
+  "local_c0": "allowed",
+  "local_bb": "countByte2",
+  "local_ba": "subOp",
+  "local_b9": "subFirstOp",
+  "local_b8": "subPattern",
+  "local_8c": "poolIndex",
+  "local_74": "subLen",
+  "local_5c": "distinctLetters",
+  "local_58": "i",
+  "local_54": "letterCount",
+  "local_50": "subPatternPos",
+  "local_4c": "p",
+  "local_24": "choiceSet",
+  "local_1c": "choiceSetData",
+  "local_14": "subBc",
+  "local_c": "subBcData"
+ },
+ "0x0043484c": {
+  "param_1": "self"
+ },
+ "0x00434ad8": {
+  "param_1": "self"
+ },
+ "0x00434cac": {
+  "param_1": "self"
+ },
+ "0x00434cb8": {
+  "param_1": "self",
+  "param_2": "index"
+ },
+ "0x00434cd0": {
+  "param_1": "self",
+  "param_2": "vbasesBuilt",
+  "param_3": "parent",
+  "param_4": "module",
+  "param_5": "versionText",
+  "iVar3": "enabled",
+  "local_14": "supportUrl",
+  "local_c": "supportUrlData",
+  "local_24": "mailUrl",
+  "local_1c": "mailUrlData"
+ },
+ "0x004354bc": {
+  "param_1": "hWnd",
+  "param_2": "found"
+ },
+ "0x0043550c": {
+  "param_1": "hWnd",
+  "param_2": "msg",
+  "param_3": "lParam",
+  "param_4": "data"
+ },
+ "0x00435534": {
+  "param_1": "result",
+  "param_2": "commandLine"
+ },
+ "0x0043568c": {
+  "param_1": "hWnd",
+  "param_2": "title",
+  "param_3": "folder"
+ },
+ "0x00435880": {
+  "param_1": "result",
+  "param_2": "name",
+  "param_3": "fallback"
+ },
+ "0x00435a1c": {
+  "param_1": "program",
+  "param_2": "arguments",
+  "param_3": "folder"
+ },
+ "0x00435de0": {
+  "param_1": "result",
+  "param_2": "path"
+ },
+ "0x00436e14": {
+  "param_1": "result",
+  "param_2": "path"
+ },
+ "0x00436f50": {
+  "param_1": "path"
+ },
+ "0x00437158": {
+  "param_1": "result"
+ },
+ "0x00437470": {
+  "param_1": "result",
+  "param_2": "paths"
+ },
+ "0x004378c0": {
+  "param_1": "path",
+  "param_2": "wantWriteTime",
+  "param_3": "timeOut"
+ },
+ "0x00437928": {
+  "param_1": "path",
+  "param_2": "timeOut"
+ },
+ "0x00437bd4": {
+  "param_1": "result"
+ },
+ "0x00437fc4": {
+  "param_1": "self",
+  "param_2": "keyPath"
+ },
+ "0x0043a064": {
+  "param_1": "self",
+  "param_2": "keyPath"
+ },
+ "0x0043b7a8": {
+  "param_1": "options",
+  "uVar1": "found",
+  "cVar4": "missing"
+ },
+ "0x0043bbfc": {
+  "param_1": "self",
+  "param_2": "vbasesBuilt",
+  "param_3": "title",
+  "param_4": "parent",
+  "param_5": "printer",
+  "param_6": "client",
+  "param_7": "module",
+  "param_8": "flag",
+  "param_9": "caption",
+  "param_10": "flags",
+  "param_11": "rect"
+ },
+ "0x0043c6d4": {
+  "param_1": "ch"
+ },
+ "0x0043db94": {
+  "param_1": "self",
+  "param_2": "fileName"
+ },
+ "0x0043dfb0": {
+  "param_1": "self"
+ },
+ "0x0043e02c": {
+  "param_1": "self",
+  "param_2": "toList"
+ },
+ "0x0043ef48": {
+  "param_1": "file"
+ },
+ "0x0043ef70": {
+  "param_1": "self",
+  "param_2": "file"
+ },
+ "0x0043ef88": {
+  "param_1": "self",
+  "param_2": "nbits",
+  "param_3": "code"
+ },
+ "0x0043f014": {
+  "param_1": "self",
+  "param_2": "bytes",
+  "param_3": "count"
+ },
+ "0x0043f058": {
+  "param_1": "self"
+ },
+ "0x0043f078": {
+  "param_1": "self"
+ },
+ "0x0043f098": {
+  "param_1": "count",
+  "param_2": "total",
+  "param_3": "range"
+ },
+ "0x0043f198": {
+  "param_1": "a",
+  "param_2": "b"
+ },
+ "0x0043f1c8": {
+  "param_1": "node",
+  "param_2": "bit"
+ },
+ "0x0043f204": {
+  "param_1": "node"
+ },
+ "0x0043f398": {
+  "param_1": "out",
+  "param_2": "line"
+ },
+ "0x0043f910": {
+  "param_1": "mapping",
+  "param_2": "line"
+ },
+ "0x0043fb9c": {
+  "param_1": "writer",
+  "param_2": "definition"
+ },
+ "0x0043fd78": {
+  "param_1": "a",
+  "param_2": "b"
+ },
+ "0x0043fe0c": {
+  "local_40": "erased",
+  "local_38": "erased2",
+  "local_30": "erased3"
+ },
+ "0x0043ff6c": {
+  "param_1": "it"
+ },
+ "0x0043ffd0": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last",
+  "local_8": "map"
+ },
+ "0x004400a0": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "firstLo",
+  "param_4": "firstHi",
+  "param_5": "firstNode"
+ },
+ "0x004401a4": {
+  "param_1": "tree",
+  "param_2": "node",
+  "iVar1": "left"
+ },
+ "0x004402dc": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "itLo",
+  "param_4": "itHi",
+  "param_5": "itNode"
+ },
+ "0x00440c78": {
+  "param_1": "dest",
+  "param_2": "node"
+ },
+ "0x00440c88": {
+  "param_1": "node"
+ },
+ "0x00440ca8": {
+  "param_1": "node"
+ },
+ "0x00440cc8": {
+  "param_1": "tree"
+ },
+ "0x00440d08": {
+  "param_1": "self",
+  "param_2": "wordLists",
+  "param_3": "fileName",
+  "param_4": "description",
+  "param_5": "shortest",
+  "param_6": "longest",
+  "param_7": "progressTotal",
+  "param_8": "options"
+ },
+ "0x004486a0": {
+  "param_1": "self",
+  "param_2": "n",
+  "param_3": "value",
+  "piVar1": "storage"
+ },
+ "0x004487c0": {
+  "param_1": "dest",
+  "param_2": "n",
+  "param_3": "value"
+ },
+ "0x004489b8": {
+  "param_1": "tree",
+  "param_2": "src",
+  "param_3": "parent",
+  "puVar1": "node",
+  "puVar2": "right",
+  "local_8": "top"
+ },
+ "0x00448a24": {
+  "param_1": "tree",
+  "param_2": "value",
+  "puVar3": "node"
+ },
+ "0x00448bf4": {
+  "param_1": "node"
+ },
+ "0x00448c14": {
+  "param_1": "node"
+ },
+ "0x00448c34": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x00448d98": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "firstLo",
+  "param_4": "firstHi",
+  "param_5": "firstNode"
+ },
+ "0x00448e9c": {
+  "param_1": "tree",
+  "param_2": "node",
+  "iVar1": "left"
+ },
+ "0x00448fa4": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "itLo",
+  "param_4": "itHi",
+  "param_5": "itNode"
+ },
+ "0x00449940": {
+  "param_1": "dest",
+  "param_2": "node"
+ },
+ "0x00449950": {
+  "param_1": "it"
+ },
+ "0x004499b4": {
+  "param_1": "tree"
+ },
+ "0x004499f4": {
+  "param_1": "self",
+  "param_2": "n",
+  "param_3": "value",
+  "piVar1": "storage"
+ },
+ "0x00449b14": {
+  "param_1": "dest",
+  "param_2": "n",
+  "param_3": "value"
+ },
+ "0x00449d04": {
+  "param_1": "tree",
+  "param_2": "src",
+  "param_3": "parent",
+  "puVar1": "node",
+  "puVar2": "right",
+  "local_8": "top"
+ },
+ "0x00449d70": {
+  "param_1": "tree",
+  "param_2": "value",
+  "puVar3": "node"
+ },
+ "0x00449f18": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x0044a07c": {
+  "param_1": "self",
+  "param_2": "n",
+  "param_3": "value"
+ },
+ "0x0044a18c": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last",
+  "local_8": "map"
+ },
+ "0x0044a23c": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "hintLo",
+  "param_4": "hintHi",
+  "param_5": "hintNode",
+  "param_6": "unused",
+  "param_7": "value"
+ },
+ "0x0044a638": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "forceLeft",
+  "param_4": "parent",
+  "param_5": "value",
+  "puVar3": "node"
+ },
+ "0x0044a980": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "value",
+  "bVar4": "goLeft",
+  "iVar2": "node",
+  "local_8": "parent"
+ },
+ "0x0044ac68": {
+  "param_1": "it"
+ },
+ "0x0044acd4": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "key",
+  "iVar2": "node",
+  "local_8": "candidate"
+ },
+ "0x0044add0": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "value",
+  "bVar3": "goLeft",
+  "iVar2": "node",
+  "local_8": "parent"
+ },
+ "0x0044b040": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "forceLeft",
+  "param_4": "parent",
+  "param_5": "value",
+  "puVar4": "node"
+ },
+ "0x0044b358": {
+  "param_1": "it"
+ },
+ "0x0044b3c4": {
+  "param_1": "it"
+ },
+ "0x0044b574": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "firstLo",
+  "param_4": "firstHi",
+  "param_5": "firstNode"
+ },
+ "0x0044b678": {
+  "param_1": "tree",
+  "param_2": "node",
+  "iVar1": "left"
+ },
+ "0x0044b780": {
+  "param_1": "tree"
+ },
+ "0x0044b7c0": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "key",
+  "iVar2": "node"
+ },
+ "0x0044b8bc": {
+  "param_1": "it"
+ },
+ "0x0044b920": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "itLo",
+  "param_4": "itHi",
+  "param_5": "itNode"
+ },
+ "0x0044c2bc": {
+  "param_1": "dest",
+  "param_2": "node"
+ },
+ "0x0044c2cc": {
+  "param_1": "node"
+ },
+ "0x0044c2ec": {
+  "param_1": "node"
+ },
+ "0x0044c30c": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "value",
+  "bVar3": "goLeft",
+  "iVar2": "node",
+  "local_8": "parent"
+ },
+ "0x0044c57c": {
+  "param_1": "result",
+  "param_2": "tree",
+  "param_3": "forceLeft",
+  "param_4": "parent",
+  "param_5": "value",
+  "puVar4": "node"
+ },
+ "0x0044c894": {
+  "param_1": "tree",
+  "param_2": "value",
+  "puVar3": "node"
+ },
+ "0x0044ca3c": {
+  "param_1": "it"
+ },
+ "0x0044caa8": {
+  "param_1": "vec",
+  "param_2": "n"
+ },
+ "0x0044cde0": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest",
+  "puVar1": "src",
+  "puVar2": "dst"
+ },
+ "0x0044cea0": {
+  "param_1": "vec",
+  "param_2": "pos",
+  "param_3": "value",
+  "iVar2": "newCapacity",
+  "local_8": "end"
+ },
+ "0x0044d0c8": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "destEnd"
+ },
+ "0x0044d0f8": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "less"
+ },
+ "0x0044d154": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "less"
+ },
+ "0x0044d1f0": {
+  "param_1": "last"
+ },
+ "0x0044d238": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x0044d278": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "depthLimit",
+  "param_4": "less"
+ },
+ "0x0044d3b8": {
+  "param_1": "first",
+  "param_2": "last"
+ },
+ "0x0044d44c": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "last"
+ },
+ "0x0044e49c": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x0044e4d4": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x0044e67c": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x0044e6b4": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x0044e728": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x0044e79c": {
+  "param_1": "self",
+  "param_2": "dtorFlags"
+ },
+ "0x0044e83c": {
+  "param_1": "self",
+  "param_3": "create",
+  "param_4": "tryLocalMachine",
+  "iVar1": "regStatus"
+ },
+ "0x0044ec78": {
+  "param_1": "self",
+  "param_2": "valueName",
+  "param_3": "value"
+ },
+ "0x0044eca8": {
+  "param_1": "self",
+  "param_2": "valueName"
+ },
+ "0x0044eccc": {
+  "param_1": "self",
+  "param_2": "valueName",
+  "param_3": "logFont",
+  "iVar1": "text",
+  "local_448": "buf",
+  "local_14": "textStr",
+  "local_c": "textData"
+ },
+ "0x0044eda8": {
+  "param_1": "self",
+  "param_2": "valueName",
+  "param_3": "colour",
+  "iVar1": "text"
+ },
+ "0x0044ee84": {
+  "param_1": "text",
+  "param_2": "showCmd",
+  "param_3": "left",
+  "param_4": "top",
+  "param_5": "right",
+  "param_6": "bottom",
+  "pcVar1": "token",
+  "iVar2": "value"
+ },
+ "0x0044eee4": {
+  "param_1": "buf"
+ },
+ "0x0044ef70": {
+  "param_1": "colour",
+  "param_2": "buf"
+ },
+ "0x0044f060": {
+  "param_1": "logFont",
+  "param_2": "buf"
+ },
+ "0x0044f0f0": {
+  "param_1": "service",
+  "param_2": "topic",
+  "param_3": "command",
+  "UVar1": "status",
+  "pHVar3": "result",
+  "uVar4": "error"
+ },
+ "0x0044f1d8": {
+  "uVar1": "result"
+ },
+ "0x0044f260": {
+  "param_1": "self",
+  "param_2": "window",
+  "param_3": "xUnit",
+  "param_4": "yUnit",
+  "param_5": "xRange",
+  "param_6": "yRange"
+ },
+ "0x0044f8cc": {
+  "param_1": "self",
+  "param_2": "on"
+ },
+ "0x0044f9f0": {
+  "param_1": "self",
+  "param_2": "child"
+ },
+ "0x0044faac": {
+  "param_1": "self"
+ },
+ "0x0044fd7c": {
+  "param_1": "self",
+  "param_2": "low",
+  "param_3": "high"
+ },
+ "0x0044fdb8": {
+  "param_1": "self",
+  "param_2": "dictList",
+  "param_3": "dictIndex",
+  "param_4": "pane",
+  "param_5": "view"
+ },
+ "0x0044ffb8": {
+  "param_1": "self",
+  "param_2": "position"
+ },
+ "0x00451784": {
+  "param_1": "self",
+  "param_2": "paneCount"
+ },
+ "0x004525f4": {
+  "param_1": "self"
+ },
+ "0x0045269c": {
+  "param_1": "self"
+ },
+ "0x004526b4": {
+  "param_1": "self"
+ },
+ "0x00452b50": {
+  "param_1": "self",
+  "param_2": "pane",
+  "piVar1": "currentList",
+  "hWnd": "hWndFocus"
+ },
+ "0x00452bcc": {
+  "param_1": "self"
+ },
+ "0x00452bdc": {
+  "param_1": "self",
+  "param_2": "pane",
+  "param_3": "first",
+  "param_4": "last",
+  "param_5": "step"
+ },
+ "0x00452cf4": {
+  "param_1": "self"
+ },
+ "0x00452d1c": {
+  "param_1": "self"
+ },
+ "0x00452d7c": {
+  "param_1": "self"
+ },
+ "0x00452dc8": {
+  "param_1": "self"
+ },
+ "0x0045318c": {
+  "param_1": "self"
+ },
+ "0x004534b8": {
+  "param_1": "self"
+ },
+ "0x004536c4": {
+  "param_1": "self"
+ },
+ "0x00453724": {
+  "param_1": "self"
+ },
+ "0x0045424c": {
+  "param_1": "self"
+ },
+ "0x00454434": {
+  "param_1": "self"
+ },
+ "0x00454458": {
+  "param_1": "self",
+  "uVar1": "hWnd"
+ },
+ "0x00454524": {
+  "param_1": "self",
+  "param_2": "cmdId"
+ },
+ "0x00456480": {
+  "param_1": "self"
+ },
+ "0x00456728": {
+  "param_1": "self",
+  "param_2": "state"
+ },
+ "0x00456950": {
+  "param_1": "self"
+ },
+ "0x00457354": {
+  "param_1": "self",
+  "param_2": "list",
+  "param_3": "useCaret",
+  "param_4": "newWindow"
+ },
+ "0x00458090": {
+  "param_1": "self",
+  "param_2": "n",
+  "param_3": "value"
+ },
+ "0x004581a0": {
+  "param_1": "self"
+ },
+ "0x00458310": {
+  "param_1": "self",
+  "param_2": "list",
+  "param_3": "useCaret",
+  "param_4": "word",
+  "param_5": "dictPath",
+  "param_6": "group"
+ },
+ "0x00459150": {
+  "param_1": "rect",
+  "param_2": "window"
+ },
+ "0x004591fc": {
+  "param_1": "self",
+  "param_2": "text"
+ },
+ "0x0045a7f0": {
+  "param_1": "self"
+ },
+ "0x0045adf0": {
+  "param_1": "self"
+ },
+ "0x0045b89c": {
+  "param_1": "self"
+ },
+ "0x0045bc3c": {
+  "param_1": "self"
+ },
+ "0x0045c448": {
+  "param_1": "self",
+  "param_2": "list",
+  "param_3": "gained"
+ },
+ "0x0045c520": {
+  "param_1": "self"
+ },
+ "0x0045c57c": {
+  "param_1": "self",
+  "param_2": "pane"
+ },
+ "0x0045c5f0": {
+  "param_1": "self",
+  "param_2": "flags"
+ },
+ "0x0045c6d4": {
+  "param_1": "self",
+  "param_2": "searching"
+ },
+ "0x0045cbd0": {
+  "param_1": "result",
+  "param_2": "self"
+ },
+ "0x0045cd28": {
+  "param_1": "self"
+ },
+ "0x0045ce74": {
+  "param_1": "self"
+ },
+ "0x0045d86c": {
+  "param_1": "self"
+ },
+ "0x0045d938": {
+  "param_1": "self"
+ },
+ "0x0045d9e8": {
+  "param_1": "self"
+ },
+ "0x0045daf8": {
+  "param_1": "self"
+ },
+ "0x0045db98": {
+  "param_1": "self"
+ },
+ "0x0045dbd8": {
+  "param_1": "self",
+  "param_2": "except",
+  "uVar2": "i"
+ },
+ "0x0045dc48": {
+  "param_1": "self",
+  "param_2": "point",
+  "iVar1": "pane",
+  "iVar2": "coord"
+ },
+ "0x0045dcb8": {
+  "param_1": "rect",
+  "param_2": "window"
+ },
+ "0x0045dd8c": {
+  "param_1": "self",
+  "local_28": "used"
+ },
+ "0x0045de08": {
+  "param_1": "self",
+  "param_2": "window",
+  "param_3": "backwards"
+ },
+ "0x0045dfbc": {
+  "param_1": "self",
+  "param_2": "text"
+ },
+ "0x0045e060": {
+  "param_1": "self",
+  "param_2": "text",
+  "param_3": "x",
+  "param_4": "y",
+  "param_5": "rect",
+  "param_6": "lParam"
+ },
+ "0x0045e25c": {
+  "param_1": "result",
+  "param_2": "self"
+ },
+ "0x0045e4dc": {
+  "param_1": "self",
+  "param_2": "list",
+  "param_3": "key",
+  "param_4": "extend"
+ },
+ "0x0045e59c": {
+  "param_1": "self",
+  "param_2": "label",
+  "param_3": "list"
+ },
+ "0x0045e7c8": {
+  "param_1": "self",
+  "param_2": "view",
+  "param_3": "pane",
+  "uVar1": "length"
+ },
+ "0x0045e800": {
+  "param_1": "self"
+ },
+ "0x0045e810": {
+  "param_1": "self",
+  "uVar1": "inRange"
+ },
+ "0x0045e830": {
+  "param_1": "self",
+  "param_2": "first",
+  "param_3": "last"
+ },
+ "0x0045f1d4": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "wordBuf",
+  "param_4": "punctIdx",
+  "param_5": "slack",
+  "iVar1": "filteredIdx",
+  "bVar2": "op",
+  "bVar3": "choice",
+  "bVar4": "operand",
+  "uVar5": "remaining",
+  "uVar6": "left",
+  "pbVar7": "after",
+  "pbVar8": "pc",
+  "bVar9": "negated",
+  "local_6c": "extra",
+  "local_24": "innerSaved",
+  "local_14": "saved"
+ },
+ "0x0045fa1c": {
+  "param_1": "self",
+  "param_2": "varCounts",
+  "param_3": "hist",
+  "param_5": "budget",
+  "param_6": "numLetters",
+  "pcVar1": "value",
+  "iVar2": "result",
+  "iVar3": "found",
+  "puVar4": "valueSlot",
+  "pbVar5": "letterAt",
+  "local_11": "count",
+  "param_4": "var"
+ },
+ "0x0045fc04": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "letters",
+  "param_4": "op",
+  "param_5": "mult",
+  "param_6": "sub",
+  "param_7": "punctIdx",
+  "param_8": "budget",
+  "param_9": "n",
+  "param_10": "numLetters",
+  "pbVar1": "p",
+  "pbVar2": "runEnd",
+  "i": "start",
+  "local_54": "result",
+  "local_50": "triesLeft",
+  "local_4c": "subExtra",
+  "local_48": "subMin",
+  "local_14": "saved"
+ },
+ "0x00460050": {
+  "param_1": "self",
+  "param_2": "bc",
+  "param_3": "wordBuf",
+  "param_4": "punctIdx",
+  "param_5": "slack",
+  "param_6": "n",
+  "pbVar1": "pc",
+  "local_14": "saved"
+ },
+ "0x00460220": {
+  "param_1": "self",
+  "param_2": "vbasesBuilt",
+  "param_3": "parent",
+  "param_4": "config",
+  "puVar1": "lookupConfig",
+  "piVar2": "controls"
+ },
+ "0x0046136c": {
+  "param_1": "self"
+ },
+ "0x00461484": {
+  "param_1": "self",
+  "param_2": "control",
+  "param_3": "text",
+  "param_4": "out"
+ },
+ "0x00462d9c": {
+  "param_1": "self",
+  "param_2": "name"
+ },
+ "0x00463310": {
+  "param_1": "self",
+  "param_2": "rect",
+  "param_3": "unused",
+  "param_4": "x",
+  "param_5": "y",
+  "param_6": "width",
+  "param_7": "height",
+  "param_8": "state"
+ },
+ "0x00463bfc": {
+  "param_1": "self"
+ },
+ "0x0046449c": {
+  "param_1": "self"
+ },
+ "0x0046495c": {
+  "param_1": "self"
+ },
+ "0x00464a94": {
+  "param_1": "result",
+  "param_2": "self",
+  "param_3": "id"
+ },
+ "0x00464ae0": {
+  "param_1": "self"
+ },
+ "0x00464af0": {
+  "param_1": "self"
+ },
+ "0x00464bb4": {
+  "param_1": "self",
+  "param_2": "paths"
+ },
+ "0x00464f24": {
+  "param_1": "self"
+ },
+ "0x004650a8": {
+  "param_1": "self",
+  "param_2": "direction"
+ },
+ "0x0046524c": {
+  "param_1": "self",
+  "param_2": "except",
+  "param_3": "index",
+  "param_4": "word",
+  "param_5": "newWindow",
+  "param_6": "flags"
+ },
+ "0x0046583c": {
+  "param_1": "self",
+  "param_2": "exeName"
+ },
+ "0x0046597c": {
+  "param_1": "self",
+  "param_2": "text",
+  "param_3": "text2"
+ },
+ "0x00465a64": {
+  "param_1": "self",
+  "param_2": "text"
+ },
+ "0x00465a80": {
+  "param_1": "self"
+ },
+ "0x00466370": {
+  "param_1": "self",
+  "param_2": "window",
+  "param_3": "backwards"
+ },
+ "0x004663a0": {
+  "param_1": "self",
+  "param_2": "hMenu"
+ },
+ "0x00466a90": {
+  "param_1": "self"
+ },
+ "0x00466aa0": {
+  "param_1": "self"
+ },
+ "0x00466b18": {
+  "param_1": "self"
+ },
+ "0x00466b28": {
+  "param_1": "self"
+ },
+ "0x00466b38": {
+  "param_1": "self"
+ },
+ "0x00466e80": {
+  "param_1": "self",
+  "param_2": "view"
+ },
+ "0x00466e98": {
+  "param_1": "self",
+  "param_2": "word",
+  "param_3": "results"
+ },
+ "0x00467044": {
+  "param_1": "self",
+  "param_2": "list",
+  "param_3": "key",
+  "param_4": "extend"
+ },
+ "0x0046715c": {
+  "param_1": "hWnd",
+  "param_2": "hFont"
+ },
+ "0x0046719c": {
+  "param_1": "hWnd",
+  "param_2": "hFont"
+ },
+ "0x004677b8": {
+  "param_1": "self"
+ },
+ "0x00467844": {
+  "param_1": "self"
+ },
+ "0x00468478": {
+  "param_1": "self",
+  "param_2": "firstId",
+  "param_3": "show"
+ },
+ "0x004684d4": {
+  "param_1": "self",
+  "param_2": "enable"
+ },
+ "0x00468ab8": {
+  "param_1": "var",
+  "param_2": "letter",
+  "iVar1": "taken"
+ },
+ "0x00468b04": {
+  "param_1": "var"
+ },
+ "0x00468b50": {
+  "puVar1": "value",
+  "iVar2": "i"
+ },
+ "0x00468b6c": {
+  "param_1": "snapshot",
+  "puVar1": "value",
+  "iVar2": "i",
+  "puVar3": "dst"
+ },
+ "0x00468b8c": {
+  "param_1": "snapshot",
+  "puVar1": "src",
+  "iVar2": "i",
+  "puVar3": "value"
+ },
+ "0x00468bc8": {
+  "uMode": "prevErrorMode",
+  "uVar1": "version"
+ },
+ "0x00468f98": {
+  "param_1": "loader"
+ },
+ "0x004690f0": {
+  "param_1": "self",
+  "param_2": "charFormat",
+  "param_3": "selection"
+ },
+ "0x00469120": {
+  "param_1": "self",
+  "param_2": "charFormat",
+  "param_3": "flags"
+ },
+ "0x0046914c": {
+  "param_1": "result",
+  "param_2": "self",
+  "param_3": "colour"
+ },
+ "0x004691fc": {
+  "param_1": "self",
+  "param_2": "range"
+ },
+ "0x0046924c": {
+  "param_1": "self",
+  "param_2": "range"
+ },
+ "0x0046926c": {
+  "param_1": "self",
+  "param_2": "textRange"
+ },
+ "0x004692bc": {
+  "param_1": "self",
+  "param_2": "flags",
+  "param_3": "findText"
+ },
+ "0x004693a0": {
+  "param_1": "self",
+  "param_2": "format",
+  "param_3": "editStream"
+ },
+ "0x004693c4": {
+  "param_1": "self",
+  "param_2": "format",
+  "param_3": "editStream"
+ },
+ "0x004693e8": {
+  "param_1": "self"
+ },
+ "0x00469408": {
+  "param_1": "self",
+  "param_2": "mask"
+ },
+ "0x004696dc": {
+  "param_1": "cookie",
+  "param_2": "buffer",
+  "param_3": "size",
+  "param_4": "read"
+ },
+ "0x00469724": {
+  "param_1": "cookie",
+  "param_2": "buffer",
+  "param_3": "size",
+  "param_4": "written"
+ },
+ "0x004697bc": {
+  "param_1": "self",
+  "param_2": "unused",
+  "param_3": "format"
+ },
+ "0x004697f8": {
+  "param_1": "self",
+  "param_2": "unused",
+  "param_3": "format"
+ },
+ "0x00469b1c": {
+  "param_1": "load"
+ },
+ "0x00469e1c": {
+  "param_1": "text",
+  "param_2": "len",
+  "param_3": "number"
+ },
+ "0x00469f48": {
+  "param_1": "a",
+  "param_2": "b"
+ },
+ "0x0046b0fc": {
+  "param_1": "self",
+  "param_2": "cmdId"
+ },
+ "0x0046b2ec": {
+  "param_1": "self",
+  "param_2": "hMenu"
+ },
+ "0x0046c024": {
+  "param_1": "window",
+  "param_2": "rect"
+ },
+ "0x0046c198": {
+  "param_1": "self"
+ },
+ "0x0046c244": {
+  "param_1": "self",
+  "param_2": "path",
+  "param_3": "index",
+  "param_4": "count"
+ },
+ "0x0046c760": {
+  "param_1": "self"
+ },
+ "0x0046c7e4": {
+  "param_1": "self"
+ },
+ "0x0046caa4": {
+  "param_1": "self"
+ },
+ "0x0046ccac": {
+  "param_1": "self"
+ },
+ "0x0046d004": {
+  "param_1": "self",
+  "param_2": "position",
+  "param_3": "lParam"
+ },
+ "0x0046d2c8": {
+  "param_1": "self",
+  "param_2": "position",
+  "param_3": "word",
+  "param_4": "lParam"
+ },
+ "0x0046d86c": {
+  "param_1": "self",
+  "param_2": "list",
+  "param_3": "value",
+  "param_4": "word",
+  "param_5": "matchSet",
+  "param_6": "dictIndex",
+  "param_7": "flags",
+  "param_8": "newWindow"
+ },
+ "0x0046ddd0": {
+  "param_1": "self",
+  "param_2": "definitions"
+ },
+ "0x0046e698": {
+  "param_1": "a",
+  "param_2": "b",
+  "param_3": "word"
+ },
+ "0x0046e740": {
+  "param_1": "self",
+  "param_2": "word",
+  "param_3": "dictIndex"
+ },
+ "0x0046faf0": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "less"
+ },
+ "0x004722fc": {
+  "param_1": "self"
+ },
+ "0x00472370": {
+  "param_1": "self"
+ },
+ "0x004723b0": {
+  "param_1": "self",
+  "param_2": "vbasesBuilt",
+  "param_3": "parent",
+  "param_4": "title",
+  "param_5": "module",
+  "param_6": "number"
+ },
+ "0x004733d8": {
+  "param_1": "self",
+  "param_2": "list",
+  "param_3": "value",
+  "param_4": "word",
+  "param_5": "matchSet",
+  "param_6": "dictIndex",
+  "param_7": "flags",
+  "param_8": "newWindow"
+ },
+ "0x00473470": {
+  "param_1": "self",
+  "param_2": "text"
+ },
+ "0x00473488": {
+  "param_1": "self"
+ },
+ "0x004734c4": {
+  "param_1": "self",
+  "param_2": "word"
+ },
+ "0x00473df0": {
+  "param_1": "self"
+ },
+ "0x00473f78": {
+  "param_1": "self",
+  "param_2": "vbasesBuilt",
+  "param_3": "parent",
+  "param_4": "client"
+ },
+ "0x00474e1c": {
+  "param_1": "self",
+  "param_2": "name"
+ },
+ "0x004753f4": {
+  "param_1": "self",
+  "param_2": "fileHistory",
+  "param_3": "fileName"
+ },
+ "0x004760d8": {
+  "param_1": "self"
+ },
+ "0x0047784c": {
+  "param_1": "result",
+  "param_2": "self"
+ },
+ "0x00477ca0": {
+  "param_1": "self"
+ },
+ "0x00477e58": {
+  "param_1": "self",
+  "param_2": "dictList",
+  "param_3": "dictIndex",
+  "param_4": "query",
+  "param_5": "shortest",
+  "param_6": "longest",
+  "param_7": "ignoreUnusedPunctuation",
+  "cVar1": "ch",
+  "uVar4": "opPos",
+  "uVar5": "pos",
+  "local_2cc": "i",
+  "local_2b4": "opsRef3",
+  "local_2ad": "opByte",
+  "local_2ac": "opsRef2",
+  "local_2a4": "slot3",
+  "local_298": "slot2",
+  "local_290": "engine",
+  "local_28c": "eraseLen2",
+  "local_285": "nul2",
+  "local_23c": "opsRef",
+  "local_234": "slot",
+  "local_225": "negate",
+  "local_224": "eraseLen",
+  "local_21d": "nul",
+  "local_21c": "available",
+  "local_1cc": "tailLen",
+  "local_178": "beforeLast",
+  "local_170": "lastPos",
+  "local_169": "lastCh",
+  "local_168": "trailingCloses",
+  "local_164": "balanced",
+  "local_15c": "idx",
+  "local_154": "prevIdx",
+  "local_150": "closes",
+  "local_14c": "opens",
+  "local_148": "notDepth",
+  "local_13d": "logicOp",
+  "local_13c": "prevPos",
+  "local_138": "rest",
+  "local_134": "opPos2",
+  "local_e8": "searchPos",
+  "local_e4": "start",
+  "local_e0": "depth",
+  "local_b8": "newEngine",
+  "local_14": "leaf",
+  "local_c": "leafData",
+  "local_29c": "nullEngine",
+  "local_22c": "nullEngine2"
+ },
+ "0x00479ab8": {
+  "param_1": "self",
+  "param_2": "shortest",
+  "param_3": "longest"
+ },
+ "0x00479b7c": {
+  "param_1": "self"
+ },
+ "0x00479bd4": {
+  "param_1": "self",
+  "param_2": "vec"
+ },
+ "0x0047af2c": {
+  "param_1": "self"
+ },
+ "0x0047b728": {
+  "param_1": "self",
+  "param_2": "text",
+  "param_3": "mode"
+ },
+ "0x0047b87c": {
+  "param_1": "self"
+ },
+ "0x0047c140": {
+  "param_1": "word",
+  "uVar2": "hash",
+  "cVar1": "ch"
+ },
+ "0x0047c168": {
+  "param_1": "id",
+  "piVar1": "entry"
+ },
+ "0x0047c18c": {
+  "param_1": "start",
+  "param_2": "p",
+  "param_3": "state",
+  "local_404": "word",
+  "local_10": "value",
+  "local_14": "negative",
+  "local_c": "hasValue"
+ },
+ "0x0047c438": {
+  "param_1": "out",
+  "param_2": "word",
+  "param_3": "oldValue",
+  "param_4": "newValue"
+ },
+ "0x0047c494": {
+  "param_1": "out",
+  "param_2": "text",
+  "local_14": "escaped"
+ },
+ "0x0047c7c8": {
+  "param_1": "out",
+  "param_2": "word",
+  "param_3": "value",
+  "param_4": "store"
+ },
+ "0x0047c804": {
+  "param_1": "out",
+  "param_2": "changed",
+  "param_3": "on",
+  "param_4": "word"
+ },
+ "0x0047c9d0": {
+  "param_1": "self",
+  "param_2": "token",
+  "param_3": "index",
+  "param_4": "value"
+ },
+ "0x0047ce48": {
+  "param_1": "self",
+  "param_2": "kind",
+  "param_3": "state",
+  "param_4": "value"
+ },
+ "0x0047ede4": {
+  "param_1": "self",
+  "param_2": "index",
+  "param_3": "name",
+  "param_4": "charset"
+ },
+ "0x0047efa0": {
+  "param_1": "self",
+  "param_2": "text",
+  "param_3": "len",
+  "param_4": "flags"
+ },
+ "0x0047f2d8": {
+  "param_1": "self",
+  "param_2": "count"
+ },
+ "0x0047f57c": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "dest"
+ },
+ "0x0047f610": {
+  "param_1": "first",
+  "param_2": "last",
+  "param_3": "destEnd"
+ },
+ "0x0047f6ec": {
+  "param_1": "self",
+  "param_2": "ch",
+  "iVar1": "pos"
+ },
+ "0x0047f720": {
+  "param_1": "self",
+  "param_2": "kind",
+  "param_3": "value"
+ },
+ "0x0047f9f8": {
+  "param_1": "self"
+ },
+ "0x0047fa24": {
+  "param_1": "self",
+  "param_2": "token",
+  "param_3": "isColumn"
+ },
+ "0x0047faa8": {
+  "param_1": "self"
+ },
+ "0x0047fb1c": {
+  "param_1": "self",
+  "param_2": "type"
+ },
+ "0x0047fb8c": {
+  "param_1": "self",
+  "param_2": "count"
+ },
+ "0x0047fc9c": {
+  "param_1": "self",
+  "param_2": "twips"
+ },
+ "0x0047fdac": {
+  "param_1": "self",
+  "param_2": "attribute",
+  "param_3": "value"
+ },
+ "0x004803f0": {
+  "param_1": "self",
+  "param_2": "kind",
+  "param_3": "value"
+ },
+ "0x004804b0": {
+  "param_1": "self",
+  "param_2": "position"
+ },
+ "0x00480578": {
+  "param_1": "self"
+ },
+ "0x00480608": {
+  "param_1": "self"
+ },
+ "0x0048070c": {
+  "param_1": "self"
+ },
+ "0x00480754": {
+  "param_1": "result",
+  "param_2": "self"
+ },
+ "0x00481b70": {
+  "param_1": "result",
+  "param_2": "state",
+  "local_a0": "paraFormat"
+ },
+ "0x00481c1c": {
+  "param_1": "result",
+  "param_2": "source"
+ },
+ "0x00481f7c": {
+  "param_1": "self",
+  "param_2": "paragraph",
+  "param_3": "text",
+  "param_4": "source"
+ },
+ "0x00482150": {
+  "param_1": "self"
+ },
+ "0x004825dc": {
+  "param_1": "self",
+  "param_2": "text"
+ },
+ "0x004828bc": {
+  "param_1": "vec",
+  "param_2": "first",
+  "param_3": "value"
+ },
+ "0x00482908": {
+  "param_1": "self",
+  "param_2": "font"
+ },
+ "0x00482a60": {
+  "param_1": "self",
+  "param_2": "colour"
+ },
+ "0x00482bb8": {
+  "param_1": "text"
+ },
+ "0x00482bdc": {
+  "param_1": "result",
+  "param_2": "text",
+  "param_3": "flags"
+ },
+ "0x004837d0": {
+  "param_1": "text",
+  "param_2": "len"
+ },
+ "0x00483a88": {
+  "param_1": "hWnd",
+  "param_2": "text",
+  "param_3": "lParam"
+ },
+ "0x00485614": {
+  "param_1": "self",
+  "param_2": "richEdit",
+  "param_3": "selection",
+  "param_4": "mask"
+ },
+ "0x00485664": {
+  "param_1": "self",
+  "param_2": "on"
+ },
+ "0x00485680": {
+  "param_1": "self",
+  "param_2": "on"
+ },
+ "0x0048569c": {
+  "param_1": "self",
+  "param_2": "on"
+ },
+ "0x004856b8": {
+  "param_1": "self",
+  "param_2": "on"
+ },
+ "0x004856d4": {
+  "param_1": "self",
+  "param_2": "colour"
+ },
+ "0x00485700": {
+  "param_1": "self",
+  "param_2": "faceName"
+ },
+ "0x00485738": {
+  "param_1": "self",
+  "param_2": "charSet"
+ },
+ "0x00485748": {
+  "param_1": "self",
+  "param_2": "pitchAndFamily"
+ },
+ "0x00485758": {
+  "param_1": "self",
+  "param_2": "height"
+ },
+ "0x00485770": {
+  "param_1": "self",
+  "param_2": "logFont"
+ },
+ "0x004857f4": {
+  "param_1": "self"
+ },
+ "0x00485870": {
+  "param_1": "self",
+  "param_2": "mask"
+ },
+ "0x004858a4": {
+  "param_1": "self",
+  "param_2": "indent",
+  "param_3": "relative"
+ },
+ "0x004858cc": {
+  "param_1": "self",
+  "param_2": "indent"
+ },
+ "0x004858e0": {
+  "param_1": "self",
+  "param_2": "offset"
+ },
+ "0x004858f4": {
+  "param_1": "self",
+  "param_2": "alignment"
+ },
+ "0x00485908": {
+  "param_1": "self",
+  "param_2": "count",
+  "param_3": "tabs"
+ },
+ "0x0048597c": {
+  "param_1": "hWnd"
+ },
+ "0x00485a4c": {
+  "param_1": "result"
+ },
+ "0x00485bb8": {
+  "param_1": "result",
+  "param_2": "subdir"
+ },
+ "0x00485fac": {
+  "param_1": "self",
+  "param_2": "owner",
+  "param_3": "key"
+ },
+ "0x00486058": {
+  "param_1": "self",
+  "param_2": "owner",
+  "param_3": "key"
+ },
+ "0x0048609c": {
+  "param_1": "owner",
+  "param_2": "key"
+ },
+ "0x004867cc": {
+  "param_1": "owner",
+  "param_2": "key"
+ },
+ "0x004867e4": {
+  "param_1": "owner",
+  "param_2": "key"
+ },
+ "0x004e3c04": {
+  "local_10": "result"
+ }
+}

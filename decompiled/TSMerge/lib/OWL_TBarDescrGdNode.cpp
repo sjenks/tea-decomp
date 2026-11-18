@@ -9,22 +9,22 @@ namespace tea {
 // ----------------------------------------------------------------------------------------------------
 // 0x0044a3a0  OWL::__TBarDescrGdNode::~__TBarDescrGdNode   (95 bytes)   [rtti:dtor destructor]
 //   written in code as OWL::__TBarDescrGdNode::_dtor
-void __cdecl OWL::__TBarDescrGdNode::_dtor(int *param_1,byte param_2)
+void __cdecl OWL::__TBarDescrGdNode::_dtor(int *self,byte dtorFlags)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x470500);
-  if (param_1 != (int *)0x0) {
-    if ((undefined4 *)*param_1 != (undefined4 *)0x0) {
-      (*(code *)**(undefined4 **)*param_1)();
+  if (self != (int *)0x0) {
+    if ((undefined4 *)*self != (undefined4 *)0x0) {
+      (*(code *)**(undefined4 **)*self)();
     }
-    if ((param_2 & 1) != 0) {
+    if ((dtorFlags & 1) != 0) {
       operator_delete();
     }
   }
-  *in_FS_OFFSET = local_30;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 

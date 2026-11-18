@@ -1,5 +1,5 @@
 // TSMerge.exe — runtime / library code "code_0x0042c000"
-// 58 functions, 0x0042c0dc..0x0042f180. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
+// 56 functions, 0x0042c0dc..0x0042f180. Ghidra 12.1.4 pseudocode; names and grouping added afterwards.
 // This is decompiler output, not the original source. It compiles (see ../README.md) but is not a working rebuild.
 
 #include "../decomp.h"
@@ -8,26 +8,26 @@ namespace tea {
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042c0dc  FUN_0042c0dc   (118 bytes)   [unnamed]
-void __cdecl FUN_0042c0dc(int param_1,int param_2,undefined4 param_3,HWND param_4)
+void __cdecl FUN_0042c0dc(int param_1,int param_2,undefined4 param_3,HWND hWnd)
 
 {
   int iVar1;
-  LRESULT LVar2;
-  uint uVar3;
+  LRESULT lResult;
+  uint ctrlId;
   
-  if (param_4 == (HWND)0x0) {
+  if (hWnd == (HWND)0x0) {
     FUN_0042b294(param_1);
   }
   else {
-    LVar2 = FUN_0042bc6c(param_4,*(LPARAM *)(param_1 + 0x6c));
-    if (LVar2 != 0) {
-      FUN_0042d204(LVar2,'\x01');
+    lResult = FUN_0042bc6c(hWnd,*(LPARAM *)(param_1 + 0x6c));
+    if (lResult != 0) {
+      FUN_0042d204(lResult,'\x01');
     }
-    uVar3 = GetDlgCtrlID(param_4);
+    ctrlId = GetDlgCtrlID(hWnd);
     iVar1 = *(int *)(param_1 + 0x6c);
     *(undefined4 *)(iVar1 + 0x5b) = 0x111;
-    *(uint *)(iVar1 + 0x5f) = param_2 << 0x10 | uVar3 & 0xffff;
-    *(HWND *)(iVar1 + 99) = param_4;
+    *(uint *)(iVar1 + 0x5f) = param_2 << 0x10 | ctrlId & 0xffff;
+    *(HWND *)(iVar1 + 99) = hWnd;
     (**(code **)(*(int *)(param_1 + 8) + 0x48))();
   }
   return;
@@ -49,11 +49,11 @@ void __cdecl FUN_0042c6ec(int param_1)
 void __cdecl FUN_0042c89c(int param_1)
 
 {
-  HACCEL pHVar1;
+  HACCEL hAccel;
   
   if (*(int *)(param_1 + 0x3c) != 0) {
-    pHVar1 = FUN_00444ce8(*(int *)(param_1 + 0x70),*(LPCSTR *)(param_1 + 0x3c));
-    *(HACCEL *)(param_1 + 0x4c) = pHVar1;
+    hAccel = FUN_00444ce8(*(int *)(param_1 + 0x70),*(LPCSTR *)(param_1 + 0x3c));
+    *(HACCEL *)(param_1 + 0x4c) = hAccel;
   }
   return;
 }
@@ -65,12 +65,12 @@ void __cdecl FUN_0042cbe0(int param_1)
 {
   DWORD DVar1;
   LONG LVar2;
-  DWORD local_8;
+  DWORD lpdwProcessId;
   
-  local_8 = 0;
-  GetWindowThreadProcessId(*(HWND *)(param_1 + 0xc),&local_8);
+  lpdwProcessId = 0;
+  GetWindowThreadProcessId(*(HWND *)(param_1 + 0xc),&lpdwProcessId);
   DVar1 = GetCurrentProcessId();
-  if (DVar1 == local_8) {
+  if (DVar1 == lpdwProcessId) {
     LVar2 = GetWindowLongA(*(HWND *)(param_1 + 0xc),-4);
     if (LVar2 == *(int *)(param_1 + 0x68)) {
       if (*(int *)(param_1 + 0x40) == 0) {
@@ -103,16 +103,16 @@ void __cdecl FUN_0042cf50(int param_1)
 
 {
   short sVar1;
-  HWND pHVar2;
-  LRESULT LVar3;
+  HWND hWnd;
+  LRESULT lResult;
   
   if ((*(HWND *)(param_1 + 0xc) != (HWND)0x0) &&
-     (pHVar2 = GetWindow(*(HWND *)(param_1 + 0xc),5), pHVar2 != (HWND)0x0)) {
+     (hWnd = GetWindow(*(HWND *)(param_1 + 0xc),5), hWnd != (HWND)0x0)) {
     sVar1 = 1;
-    for (pHVar2 = GetWindow(pHVar2,1); pHVar2 != (HWND)0x0; pHVar2 = GetWindow(pHVar2,3)) {
-      LVar3 = FUN_0042bc6c(pHVar2,*(LPARAM *)(param_1 + 0x6c));
-      if (LVar3 != 0) {
-        *(short *)(LVar3 + 0x78) = sVar1;
+    for (hWnd = GetWindow(hWnd,1); hWnd != (HWND)0x0; hWnd = GetWindow(hWnd,3)) {
+      lResult = FUN_0042bc6c(hWnd,*(LPARAM *)(param_1 + 0x6c));
+      if (lResult != 0) {
+        *(short *)(lResult + 0x78) = sVar1;
         sVar1 = sVar1 + 1;
       }
     }
@@ -136,23 +136,23 @@ undefined4 __cdecl FUN_0042cfd0(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  HWND pHVar4;
+  HWND hWnd;
   uint3 extraout_var;
   
   iVar1 = FUN_0042d08c(param_1,(undefined*)FUN_0042a769);
   if (iVar1 != 0) {
     FUN_0042e05c(iVar1,0x7fe9);
   }
-  pHVar4 = (HWND)0x0;
+  hWnd = (HWND)0x0;
   iVar1 = FUN_0042cf38(param_1);
   iVar3 = iVar1;
   for (; iVar1 != 0; iVar1 = iVar1 + -1) {
     iVar2 = FUN_0042d100(param_1,PTR_FUN_0046a417);
     iVar3 = 0;
     if (iVar2 != 0) {
-      FUN_0042d59c(iVar2,pHVar4,0,0,0,0,0x13);
+      FUN_0042d59c(iVar2,hWnd,0,0,0,0,0x13);
       iVar3 = (uint)extraout_var << 8;
-      pHVar4 = *(HWND *)(iVar2 + 0xc);
+      hWnd = *(HWND *)(iVar2 + 0xc);
     }
   }
   return CONCAT31((int3)((uint)iVar3 >> 8),1);
@@ -272,36 +272,36 @@ int __cdecl FUN_0042d188(int param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042d1a4  FUN_0042d1a4   (25 bytes)   [unnamed]
-LRESULT __cdecl FUN_0042d1a4(int param_1,UINT param_2,WPARAM param_3,LPARAM param_4)
+LRESULT __cdecl FUN_0042d1a4(int param_1,UINT msg,WPARAM wParam,LPARAM lParam)
 
 {
-  LRESULT LVar1;
+  LRESULT lResult;
   
-  LVar1 = SendMessageA(*(HWND *)(param_1 + 0xc),param_2,param_3,param_4);
-  return LVar1;
+  lResult = SendMessageA(*(HWND *)(param_1 + 0xc),msg,wParam,lParam);
+  return lResult;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042d1c0  FUN_0042d1c0   (65 bytes, 2 ranges)   [unnamed]
-LRESULT __cdecl FUN_0042d1c0(int param_1,HWND param_2,char param_3)
+LRESULT __cdecl FUN_0042d1c0(int param_1,HWND hWnd,char param_3)
 
 {
   int iVar1;
-  LRESULT LVar2;
-  BOOL BVar3;
+  LRESULT lResult;
+  BOOL ok;
   
-  if (param_2 == (HWND)0x0) {
+  if (hWnd == (HWND)0x0) {
     return 0;
   }
   iVar1 = *(int *)(param_1 + 0x6c);
   if (param_3 != '\0') {
-    LVar2 = SendMessageA(param_2,*(UINT *)(iVar1 + 0x5b),*(WPARAM *)(iVar1 + 0x5f),
+    lResult = SendMessageA(hWnd,*(UINT *)(iVar1 + 0x5b),*(WPARAM *)(iVar1 + 0x5f),
                          *(LPARAM *)(iVar1 + 99));
-    return LVar2;
+    return lResult;
   }
-  BVar3 = PostMessageA(param_2,*(UINT *)(iVar1 + 0x5b),*(WPARAM *)(iVar1 + 0x5f),
+  ok = PostMessageA(hWnd,*(UINT *)(iVar1 + 0x5b),*(WPARAM *)(iVar1 + 0x5f),
                        *(LPARAM *)(iVar1 + 99));
-  return BVar3;
+  return ok;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -311,7 +311,7 @@ undefined4 __cdecl FUN_0042d204(int param_1,char param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  LRESULT LVar3;
+  LRESULT lResult;
   
   iVar1 = *(int *)(param_1 + 0x6c);
   if (param_2 != '\0') {
@@ -319,23 +319,23 @@ undefined4 __cdecl FUN_0042d204(int param_1,char param_2)
                          *(undefined4 *)(iVar1 + 99));
     return uVar2;
   }
-  LVar3 = FUN_0042d1c0(param_1,*(HWND *)(param_1 + 0xc),'\0');
-  return LVar3;
+  lResult = FUN_0042d1c0(param_1,*(HWND *)(param_1 + 0xc),'\0');
+  return lResult;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042d23c  FUN_0042d23c   (62 bytes)   [unnamed]
-void __cdecl FUN_0042d23c(int param_1,UINT param_2,WPARAM param_3,LPARAM param_4)
+void __cdecl FUN_0042d23c(int param_1,UINT msg,WPARAM wParam,LPARAM lParam)
 
 {
   HWND hWnd;
-  HWND pHVar1;
+  HWND hWnd2;
   
   hWnd = GetWindow(*(HWND *)(param_1 + 0xc),5);
   while (hWnd != (HWND)0x0) {
-    pHVar1 = GetWindow(hWnd,2);
-    SendMessageA(hWnd,param_2,param_3,param_4);
-    hWnd = pHVar1;
+    hWnd2 = GetWindow(hWnd,2);
+    SendMessageA(hWnd,msg,wParam,lParam);
+    hWnd = hWnd2;
   }
   return;
 }
@@ -365,15 +365,15 @@ void __cdecl FUN_0042d27c(int param_1,uint *param_2)
 void __cdecl FUN_0042d2c4(int param_1)
 
 {
-  int iVar1;
+  int textLen;
   undefined4 uVar2;
   
   if (*(short *)(param_1 + 0x10) != -1) {
     if ((short)((uint)*(undefined4 *)(param_1 + 0x10) >> 0x10) != 0) {
       operator_delete_array();
     }
-    iVar1 = GetWindowTextLengthA(*(HWND *)(param_1 + 0xc));
-    if (iVar1 < 0) {
+    textLen = GetWindowTextLengthA(*(HWND *)(param_1 + 0xc));
+    if (textLen < 0) {
       uVar2 = FUN_0041fd2c((uint *)("MSWHEEL_ROLLMSG" + 0xf));
       *(undefined4 *)(param_1 + 0x10) = uVar2;
     }
@@ -381,8 +381,8 @@ void __cdecl FUN_0042d2c4(int param_1)
       uVar2 = operator_new_array();
       *(undefined4 *)(param_1 + 0x10) = uVar2;
       **(undefined1 **)(param_1 + 0x10) = 0;
-      *(undefined1 *)(*(int *)(param_1 + 0x10) + iVar1) = 0;
-      GetWindowTextA(*(HWND *)(param_1 + 0xc),*(LPSTR *)(param_1 + 0x10),iVar1 + 1);
+      *(undefined1 *)(*(int *)(param_1 + 0x10) + textLen) = 0;
+      GetWindowTextA(*(HWND *)(param_1 + 0xc),*(LPSTR *)(param_1 + 0x10),textLen + 1);
     }
   }
   return;
@@ -393,23 +393,23 @@ void __cdecl FUN_0042d2c4(int param_1)
 LONG __cdecl FUN_0042d338(int param_1,char param_2)
 
 {
-  LONG LVar1;
+  LONG windowLong;
   HWND hWnd;
-  tagRECT local_14;
+  tagRECT rect;
   
   if (((*(byte *)(param_1 + 0x74) & 4) != 0) || (param_2 != '\0')) {
-    LVar1 = GetWindowLongA(*(HWND *)(param_1 + 0xc),-0x10);
-    *(LONG *)(param_1 + 0x18) = LVar1;
-    LVar1 = GetWindowLongA(*(HWND *)(param_1 + 0xc),-0x14);
-    *(LONG *)(param_1 + 0x1c) = LVar1;
+    windowLong = GetWindowLongA(*(HWND *)(param_1 + 0xc),-0x10);
+    *(LONG *)(param_1 + 0x18) = windowLong;
+    windowLong = GetWindowLongA(*(HWND *)(param_1 + 0xc),-0x14);
+    *(LONG *)(param_1 + 0x1c) = windowLong;
   }
-  local_14.left = 0;
-  local_14.top = 0;
-  local_14.right = 0;
-  local_14.bottom = 0;
-  FUN_0042d52c(param_1,&local_14);
-  *(LONG *)(param_1 + 0x2c) = local_14.bottom - local_14.top;
-  *(LONG *)(param_1 + 0x28) = local_14.right - local_14.left;
+  rect.left = 0;
+  rect.top = 0;
+  rect.right = 0;
+  rect.bottom = 0;
+  FUN_0042d52c(param_1,&rect);
+  *(LONG *)(param_1 + 0x2c) = rect.bottom - rect.top;
+  *(LONG *)(param_1 + 0x28) = rect.right - rect.left;
   if (*(int *)(param_1 + 0xc) == 0) {
     hWnd = (HWND)0x0;
   }
@@ -417,13 +417,13 @@ LONG __cdecl FUN_0042d338(int param_1,char param_2)
     hWnd = GetParent(*(HWND *)(param_1 + 0xc));
   }
   if (((*(byte *)(param_1 + 0x1b) & 0x40) != 0) && (hWnd != (HWND)0x0)) {
-    ScreenToClient(hWnd,(LPPOINT)&local_14);
+    ScreenToClient(hWnd,(LPPOINT)&rect);
   }
-  *(LONG *)(param_1 + 0x20) = local_14.left;
-  *(LONG *)(param_1 + 0x24) = local_14.top;
-  LVar1 = GetWindowLongA(*(HWND *)(param_1 + 0xc),-0xc);
-  *(LONG *)(param_1 + 0x34) = LVar1;
-  return LVar1;
+  *(LONG *)(param_1 + 0x20) = rect.left;
+  *(LONG *)(param_1 + 0x24) = rect.top;
+  windowLong = GetWindowLongA(*(HWND *)(param_1 + 0xc),-0xc);
+  *(LONG *)(param_1 + 0x34) = windowLong;
+  return windowLong;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -444,17 +444,17 @@ LONG __cdecl FUN_0042d3ec(int param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042d40c  FUN_0042d40c   (44 bytes)   [unnamed]
-LONG __cdecl FUN_0042d40c(int param_1,LONG param_2)
+LONG __cdecl FUN_0042d40c(int param_1,LONG newLong)
 
 {
   LONG LVar1;
   
   if (*(int *)(param_1 + 0xc) == 0) {
     LVar1 = *(LONG *)(param_1 + 0x18);
-    *(LONG *)(param_1 + 0x18) = param_2;
+    *(LONG *)(param_1 + 0x18) = newLong;
   }
   else {
-    LVar1 = SetWindowLongA(*(HWND *)(param_1 + 0xc),-0x10,param_2);
+    LVar1 = SetWindowLongA(*(HWND *)(param_1 + 0xc),-0x10,newLong);
   }
   return LVar1;
 }
@@ -477,17 +477,17 @@ LONG __cdecl FUN_0042d438(int param_1)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042d458  FUN_0042d458   (44 bytes)   [unnamed]
-LONG __cdecl FUN_0042d458(int param_1,LONG param_2)
+LONG __cdecl FUN_0042d458(int param_1,LONG newLong)
 
 {
   LONG LVar1;
   
   if (*(int *)(param_1 + 0xc) == 0) {
     LVar1 = *(LONG *)(param_1 + 0x1c);
-    *(LONG *)(param_1 + 0x1c) = param_2;
+    *(LONG *)(param_1 + 0x1c) = newLong;
   }
   else {
-    LVar1 = SetWindowLongA(*(HWND *)(param_1 + 0xc),-0x14,param_2);
+    LVar1 = SetWindowLongA(*(HWND *)(param_1 + 0xc),-0x14,newLong);
   }
   return LVar1;
 }
@@ -501,15 +501,15 @@ undefined4 __cdecl FUN_0042d484(int param_1,uint param_2,uint param_3,uint param
   undefined4 uVar2;
   LONG LVar3;
   uint3 extraout_var;
-  uint uVar4;
+  uint newLong;
   
   uVar1 = FUN_0042d3ec(param_1);
-  uVar4 = ~param_2 & uVar1 | param_3;
-  if (uVar4 == uVar1) {
+  newLong = ~param_2 & uVar1 | param_3;
+  if (newLong == uVar1) {
     uVar2 = 0;
   }
   else {
-    LVar3 = FUN_0042d40c(param_1,uVar4);
+    LVar3 = FUN_0042d40c(param_1,newLong);
     if ((param_4 != 0) && (*(int *)(param_1 + 0xc) != 0)) {
       FUN_0042d59c(param_1,(HWND)0x0,0,0,0,0,param_4 | 0x17);
       LVar3 = (uint)extraout_var << 8;
@@ -528,15 +528,15 @@ undefined4 __cdecl FUN_0042d4dc(int param_1,uint param_2,uint param_3,uint param
   undefined4 uVar2;
   LONG LVar3;
   uint3 extraout_var;
-  uint uVar4;
+  uint newLong;
   
   uVar1 = FUN_0042d438(param_1);
-  uVar4 = ~param_2 & uVar1 | param_3;
-  if (uVar4 == uVar1) {
+  newLong = ~param_2 & uVar1 | param_3;
+  if (newLong == uVar1) {
     uVar2 = 0;
   }
   else {
-    LVar3 = FUN_0042d458(param_1,uVar4);
+    LVar3 = FUN_0042d458(param_1,newLong);
     if (param_4 != 0) {
       FUN_0042d59c(param_1,(HWND)0x0,0,0,0,0,param_4 | 0x17);
       LVar3 = (uint)extraout_var << 8;
@@ -548,7 +548,7 @@ undefined4 __cdecl FUN_0042d4dc(int param_1,uint param_2,uint param_3,uint param
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042d52c  FUN_0042d52c   (59 bytes)   [unnamed]
-void __cdecl FUN_0042d52c(int param_1,LPRECT param_2)
+void __cdecl FUN_0042d52c(int param_1,LPRECT rect)
 
 {
   int iVar1;
@@ -561,57 +561,57 @@ void __cdecl FUN_0042d52c(int param_1,LPRECT param_2)
     iVar2 = *(int *)(param_1 + 0x28);
     iVar3 = *(int *)(param_1 + 0x24);
     iVar4 = *(int *)(param_1 + 0x20);
-    param_2->left = iVar4;
-    param_2->top = iVar3;
-    param_2->right = iVar2 + iVar4;
-    param_2->bottom = iVar1 + iVar3;
+    rect->left = iVar4;
+    rect->top = iVar3;
+    rect->right = iVar2 + iVar4;
+    rect->bottom = iVar1 + iVar3;
   }
   else {
-    GetWindowRect(*(HWND *)(param_1 + 0xc),param_2);
+    GetWindowRect(*(HWND *)(param_1 + 0xc),rect);
   }
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042d568  FUN_0042d568   (52 bytes)   [unnamed]
-void __cdecl FUN_0042d568(int param_1,LPRECT param_2)
+void __cdecl FUN_0042d568(int param_1,LPRECT rect)
 
 {
   LONG LVar1;
   LONG LVar2;
   
   if (*(int *)(param_1 + 0xc) != 0) {
-    GetClientRect(*(HWND *)(param_1 + 0xc),param_2);
+    GetClientRect(*(HWND *)(param_1 + 0xc),rect);
     return;
   }
   LVar1 = *(LONG *)(param_1 + 0x2c);
   LVar2 = *(LONG *)(param_1 + 0x28);
-  param_2->left = 0;
-  param_2->top = 0;
-  param_2->right = LVar2;
-  param_2->bottom = LVar1;
+  rect->left = 0;
+  rect->top = 0;
+  rect->right = LVar2;
+  rect->bottom = LVar1;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042d59c  FUN_0042d59c   (129 bytes)   [unnamed]
-bool __cdecl FUN_0042d59c(int param_1,HWND param_2,int param_3,int param_4,int param_5,int param_6,uint param_7)
+bool __cdecl FUN_0042d59c(int param_1,HWND hWnd,int x,int y,int cx,int cy,uint flags)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   bool bVar2;
   
   if (*(int *)(param_1 + 0xc) == 0) {
-    if ((param_7 & 2) == 0) {
-      *(int *)(param_1 + 0x20) = param_3;
-      *(int *)(param_1 + 0x24) = param_4;
+    if ((flags & 2) == 0) {
+      *(int *)(param_1 + 0x20) = x;
+      *(int *)(param_1 + 0x24) = y;
     }
-    if ((param_7 & 1) == 0) {
-      *(int *)(param_1 + 0x28) = param_5;
-      *(int *)(param_1 + 0x2c) = param_6;
+    if ((flags & 1) == 0) {
+      *(int *)(param_1 + 0x28) = cx;
+      *(int *)(param_1 + 0x2c) = cy;
     }
-    if ((param_7 & 0x40) == 0) {
-      if ((param_7 & 0x80) != 0) {
+    if ((flags & 0x40) == 0) {
+      if ((flags & 0x80) != 0) {
         *(uint *)(param_1 + 0x18) = *(uint *)(param_1 + 0x18) & 0xefffffff;
       }
     }
@@ -621,8 +621,8 @@ bool __cdecl FUN_0042d59c(int param_1,HWND param_2,int param_3,int param_4,int p
     bVar2 = true;
   }
   else {
-    BVar1 = SetWindowPos(*(HWND *)(param_1 + 0xc),param_2,param_3,param_4,param_5,param_6,param_7);
-    bVar2 = BVar1 != 0;
+    ok = SetWindowPos(*(HWND *)(param_1 + 0xc),hWnd,x,y,cx,cy,flags);
+    bVar2 = ok != 0;
   }
   return bVar2;
 }
@@ -633,14 +633,14 @@ undefined4 __cdecl FUN_0042d6f8(int param_1,int param_2,int param_3)
 
 {
   undefined4 uVar1;
-  int iVar2;
+  int i;
   HCURSOR hCursor;
-  tagRECT *ptVar3;
+  tagRECT *pRect;
   LONG *pLVar4;
   int local_30 [4];
-  tagRECT local_20;
+  tagRECT rect;
   char local_d;
-  tagPOINT local_c;
+  tagPOINT pt;
   
   if ((param_2 == *(int *)(param_1 + 0x50)) && (param_3 == *(int *)(param_1 + 0x54))) {
     uVar1 = 0;
@@ -666,25 +666,25 @@ undefined4 __cdecl FUN_0042d6f8(int param_1,int param_2,int param_3)
       *(int *)(param_1 + 0x58) = param_3;
     }
     if (*(int *)(param_1 + 0xc) != 0) {
-      local_c.x = 0;
-      local_c.y = 0;
-      GetCursorPos(&local_c);
-      ScreenToClient(*(HWND *)(param_1 + 0xc),&local_c);
-      local_20.left = 0;
-      local_20.top = 0;
-      local_20.right = 0;
-      local_20.bottom = 0;
-      FUN_0042d568(param_1,&local_20);
-      ptVar3 = &local_20;
+      pt.x = 0;
+      pt.y = 0;
+      GetCursorPos(&pt);
+      ScreenToClient(*(HWND *)(param_1 + 0xc),&pt);
+      rect.left = 0;
+      rect.top = 0;
+      rect.right = 0;
+      rect.bottom = 0;
+      FUN_0042d568(param_1,&rect);
+      pRect = &rect;
       pLVar4 = local_30;
-      for (iVar2 = 4; iVar2 != 0; iVar2 = iVar2 + -1) {
-        *pLVar4 = ptVar3->left;
-        ptVar3 = (tagRECT *)&ptVar3->top;
+      for (i = 4; i != 0; i = i + -1) {
+        *pLVar4 = pRect->left;
+        pRect = (tagRECT *)&pRect->top;
         pLVar4 = pLVar4 + 1;
       }
-      param_3 = local_c.x;
-      if ((((local_c.x < local_30[0]) || (local_30[2] <= local_c.x)) || (local_c.y < local_30[1]))
-         || (param_3 = local_c.y, local_30[3] <= local_c.y)) {
+      param_3 = pt.x;
+      if ((((pt.x < local_30[0]) || (local_30[2] <= pt.x)) || (pt.y < local_30[1]))
+         || (param_3 = pt.y, local_30[3] <= pt.y)) {
         local_d = '\0';
       }
       else {
@@ -704,94 +704,94 @@ undefined4 __cdecl FUN_0042d6f8(int param_1,int param_2,int param_3)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042da3c  FUN_0042da3c   (64 bytes)   [unnamed]
-int __cdecl FUN_0042da3c(int param_1,int param_2)
+int __cdecl FUN_0042da3c(int param_1,int bar)
 
 {
-  tagSCROLLINFO local_20;
+  tagSCROLLINFO scrollInfo;
   
-  memset(&local_20.cbSize,0,0x1c);
-  local_20.cbSize = 0x1c;
-  local_20.fMask = 4;
-  FUN_0042dd5c(param_1,param_2,&local_20);
-  return local_20.nPos;
+  memset(&scrollInfo.cbSize,0,0x1c);
+  scrollInfo.cbSize = 0x1c;
+  scrollInfo.fMask = 4;
+  FUN_0042dd5c(param_1,bar,&scrollInfo);
+  return scrollInfo.nPos;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042da7c  FUN_0042da7c   (90 bytes)   [unnamed]
-int __cdecl FUN_0042da7c(int param_1,int param_2,int param_3,byte param_4)
+int __cdecl FUN_0042da7c(int param_1,int bar,int param_3,byte redraw)
 
 {
   int iVar1;
-  SCROLLINFO local_20;
+  SCROLLINFO lpsi;
   
-  iVar1 = FUN_0042da3c(param_1,param_2);
-  memset(&local_20.cbSize,0,0x1c);
-  local_20.cbSize = 0x1c;
-  local_20.fMask = 4;
-  local_20.nPos = param_3;
-  FUN_0042dd40(param_1,param_2,&local_20,param_4);
+  iVar1 = FUN_0042da3c(param_1,bar);
+  memset(&lpsi.cbSize,0,0x1c);
+  lpsi.cbSize = 0x1c;
+  lpsi.fMask = 4;
+  lpsi.nPos = param_3;
+  FUN_0042dd40(param_1,bar,&lpsi,redraw);
   return iVar1;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042dad8  FUN_0042dad8   (77 bytes)   [unnamed]
-void __cdecl FUN_0042dad8(int param_1,int param_2,int *param_3,int *param_4)
+void __cdecl FUN_0042dad8(int param_1,int bar,int *param_3,int *param_4)
 
 {
-  tagSCROLLINFO local_20;
+  tagSCROLLINFO scrollInfo;
   
-  memset(&local_20.cbSize,0,0x1c);
-  local_20.cbSize = 0x1c;
-  local_20.fMask = 1;
-  FUN_0042dd5c(param_1,param_2,&local_20);
-  *param_3 = local_20.nMin;
-  *param_4 = local_20.nMax;
+  memset(&scrollInfo.cbSize,0,0x1c);
+  scrollInfo.cbSize = 0x1c;
+  scrollInfo.fMask = 1;
+  FUN_0042dd5c(param_1,bar,&scrollInfo);
+  *param_3 = scrollInfo.nMin;
+  *param_4 = scrollInfo.nMax;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042db28  FUN_0042db28   (77 bytes)   [unnamed]
-void __cdecl FUN_0042db28(int param_1,int param_2,int param_3,int param_4,byte param_5)
+void __cdecl FUN_0042db28(int param_1,int bar,int param_3,int param_4,byte redraw)
 
 {
-  SCROLLINFO local_20;
+  SCROLLINFO lpsi;
   
-  memset(&local_20.cbSize,0,0x1c);
-  local_20.cbSize = 0x1c;
-  local_20.fMask = 1;
-  local_20.nMin = param_3;
-  local_20.nMax = param_4;
-  FUN_0042dd40(param_1,param_2,&local_20,param_5);
+  memset(&lpsi.cbSize,0,0x1c);
+  lpsi.cbSize = 0x1c;
+  lpsi.fMask = 1;
+  lpsi.nMin = param_3;
+  lpsi.nMax = param_4;
+  FUN_0042dd40(param_1,bar,&lpsi,redraw);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042db78  FUN_0042db78   (71 bytes)   [unnamed]
-void __cdecl FUN_0042db78(int param_1,int param_2,UINT param_3,byte param_4)
+void __cdecl FUN_0042db78(int param_1,int bar,UINT param_3,byte redraw)
 
 {
-  SCROLLINFO local_20;
+  SCROLLINFO lpsi;
   
-  memset(&local_20.cbSize,0,0x1c);
-  local_20.cbSize = 0x1c;
-  local_20.fMask = 2;
-  local_20.nPage = param_3;
-  FUN_0042dd40(param_1,param_2,&local_20,param_4);
+  memset(&lpsi.cbSize,0,0x1c);
+  lpsi.cbSize = 0x1c;
+  lpsi.fMask = 2;
+  lpsi.nPage = param_3;
+  FUN_0042dd40(param_1,bar,&lpsi,redraw);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042dbc0  FUN_0042dbc0   (64 bytes)   [unnamed]
-UINT __cdecl FUN_0042dbc0(int param_1,int param_2)
+UINT __cdecl FUN_0042dbc0(int param_1,int bar)
 
 {
-  tagSCROLLINFO local_20;
+  tagSCROLLINFO scrollInfo;
   
-  memset(&local_20.cbSize,0,0x1c);
-  local_20.cbSize = 0x1c;
-  local_20.fMask = 2;
-  FUN_0042dd5c(param_1,param_2,&local_20);
-  return local_20.nPage;
+  memset(&scrollInfo.cbSize,0,0x1c);
+  scrollInfo.cbSize = 0x1c;
+  scrollInfo.fMask = 2;
+  FUN_0042dd5c(param_1,bar,&scrollInfo);
+  return scrollInfo.nPage;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -800,8 +800,8 @@ void __cdecl FUN_0042dc98(int param_1,undefined4 param_2)
 
 {
   uint *puVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_30;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46aa48);
   if (*(int *)(param_1 + 100) != 0) {
@@ -820,112 +820,50 @@ void __cdecl FUN_0042dc98(int param_1,undefined4 param_2)
     *puVar1 = *puVar1 | 0x8000000;
     (**(code **)(*(int *)(**(int **)(param_1 + 100) + 8) + 0x10))();
   }
-  *in_FS_OFFSET = local_30;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042dd40  FUN_0042dd40   (28 bytes)   [unnamed]
-void __cdecl FUN_0042dd40(int param_1,int param_2,LPCSCROLLINFO param_3,byte param_4)
+void __cdecl FUN_0042dd40(int param_1,int bar,LPCSCROLLINFO lpsi,byte redraw)
 
 {
-  SetScrollInfo(*(HWND *)(param_1 + 0xc),param_2,param_3,(uint)param_4);
+  SetScrollInfo(*(HWND *)(param_1 + 0xc),bar,lpsi,(uint)redraw);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042dd5c  FUN_0042dd5c   (22 bytes)   [unnamed]
-void __cdecl FUN_0042dd5c(int param_1,int param_2,LPSCROLLINFO param_3)
+void __cdecl FUN_0042dd5c(int param_1,int bar,LPSCROLLINFO lpsi)
 
 {
-  GetScrollInfo(*(HWND *)(param_1 + 0xc),param_2,param_3);
+  GetScrollInfo(*(HWND *)(param_1 + 0xc),bar,lpsi);
   return;
 }
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042dd74  FUN_0042dd74   (74 bytes)   [unnamed]
-undefined4 * __cdecl FUN_0042dd74(undefined4 *param_1)
+undefined4 * __cdecl FUN_0042dd74(undefined4 *lp)
 
 {
-  BOOL BVar1;
+  BOOL ok;
   
-  if (param_1 == (undefined4 *)0x0) {
+  if (lp == (undefined4 *)0x0) {
     return (undefined4 *)0x0;
   }
-  BVar1 = IsBadReadPtr(param_1,8);
-  if (BVar1 != 0) {
+  ok = IsBadReadPtr(lp,8);
+  if (ok != 0) {
     return (undefined4 *)0x0;
   }
-  if (param_1[1] != 0x69777264) {
+  if (lp[1] != 0x69777264) {
     return (undefined4 *)0x0;
   }
-  BVar1 = IsBadReadPtr((void *)*param_1,4);
-  if (BVar1 != 0) {
+  ok = IsBadReadPtr((void *)*lp,4);
+  if (ok != 0) {
     return (undefined4 *)0x0;
   }
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0042ddc0  FUN_0042ddc0   (248 bytes)   [unnamed]
-undefined4 * __cdecl FUN_0042ddc0(undefined4 *param_1,int param_2,uint param_3)
-
-{
-  undefined *puVar1;
-  int iVar2;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
-  uint uVar4;
-  undefined4 local_38;
-  undefined1 local_14 [8];
-  int local_c;
-  
-  __InitExceptBlockLDTC(0x46aa88);
-  iVar2 = DAT_00470a60;
-  uVar4 = param_3;
-  puVar1 = FUN_0042a81f(param_2);
-  FUN_00418444((int)local_14,param_3,puVar1,iVar2);
-  FUN_00417f14(param_1,(int)local_14,uVar4);
-  if (local_c != 0) {
-    if (*(int *)(local_c + -0xc) != -1) {
-      piVar3 = (int *)(local_c + -0xc);
-      if (piVar3 == &DAT_00471d5c) {
-        iVar2 = 1;
-      }
-      else if (piVar3 == &DAT_00471d5c) {
-        iVar2 = 1;
-      }
-      else {
-        *piVar3 = *piVar3 + -1;
-        iVar2 = *piVar3 + 1;
-      }
-      if (iVar2 != 0) goto LAB_0042de88;
-    }
-    operator_delete();
-  }
-LAB_0042de88:
-  *param_1 = &OWL::TXWindow::vftable;
-  param_1[3] = param_2;
-  *in_FS_OFFSET = local_38;
-  return param_1;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// 0x0042ded4  FUN_0042ded4   (105 bytes)   [unnamed]
-undefined4 * __cdecl FUN_0042ded4(undefined4 *param_1,int *param_2)
-
-{
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
-  
-  __InitExceptBlockLDTC(0x46aad0);
-  FUN_00417b88(param_1,param_2);
-  param_1[2] = param_2[2];
-  *param_1 = &OWL::TXOwl::vftable;
-  *param_1 = &OWL::TXWindow::vftable;
-  param_1[3] = param_2[3];
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  return lp;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -934,15 +872,15 @@ void __cdecl FUN_0042e05c(int param_1,uint param_2)
 
 {
   int *piVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_38;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   undefined4 local_14 [4];
   
   __InitExceptBlockLDTC(0x46ab48);
-  piVar1 = FUN_0042ddc0(local_14,param_1,param_2);
+  piVar1 = OWL::TXWindow::TXWindow(local_14,param_1,param_2);
   (**(code **)(*piVar1 + 0xc))();
   OWL::TXOwl::_dtor(local_14,0);
-  *in_FS_OFFSET = local_38;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -951,18 +889,18 @@ void __cdecl FUN_0042e05c(int param_1,uint param_2)
 int * __cdecl FUN_0042e1ac(int *param_1,undefined4 param_2)
 
 {
-  HDC pHVar1;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  HDC hdc;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46abd0);
   FUN_00416afc(param_1);
   *(undefined ***)((int)param_1 + 5) = &OWL::TWindowDC::vftable;
   *(undefined4 *)((int)param_1 + 0x21) = param_2;
-  pHVar1 = GetWindowDC(*(HWND *)((int)param_1 + 0x21));
-  *param_1 = (int)pHVar1;
+  hdc = GetWindowDC(*(HWND *)((int)param_1 + 0x21));
+  *param_1 = (int)hdc;
   FUN_0041c800(param_1,0x7fe3);
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -971,13 +909,13 @@ int * __cdecl FUN_0042e1ac(int *param_1,undefined4 param_2)
 int * __cdecl FUN_0042e298(int *param_1)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46ac18);
   FUN_0042e1ac(param_1,0);
   *(undefined ***)((int)param_1 + 5) = &OWL::TScreenDC::vftable;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -1024,7 +962,7 @@ int * __cdecl FUN_0042e360(int *param_1,undefined4 *param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042e3c8  FUN_0042e3c8   (51 bytes)   [unnamed]
-void __cdecl FUN_0042e3c8(HWND param_1,LPCSTR param_2,LPCSTR param_3,UINT param_4)
+void __cdecl FUN_0042e3c8(HWND hWnd,LPCSTR text,LPCSTR caption,UINT type)
 
 {
   WORD wLanguageId;
@@ -1040,7 +978,7 @@ void __cdecl FUN_0042e3c8(HWND param_1,LPCSTR param_2,LPCSTR param_3,UINT param_
   else {
     wLanguageId = *(WORD *)(iVar2 + 0x2f);
   }
-  MessageBoxExA(param_1,param_2,param_3,param_4,wLanguageId);
+  MessageBoxExA(hWnd,text,caption,type,wLanguageId);
   return;
 }
 
@@ -1049,8 +987,8 @@ void __cdecl FUN_0042e3c8(HWND param_1,LPCSTR param_2,LPCSTR param_3,UINT param_
 void __stdcall FUN_0042e3fb(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46ad06);
   if (DAT_0046ad05 != '\0') {
@@ -1060,7 +998,7 @@ void __stdcall FUN_0042e3fb(void)
     OWL::TApplicatData::_dtor(0x477180,2);
     DAT_0046ad04 = '\0';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -1069,12 +1007,12 @@ void __stdcall FUN_0042e3fb(void)
 undefined4 * __cdecl FUN_0042e450(undefined4 *param_1)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46ad20);
   *param_1 = FUN_0042e3c8;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -1083,15 +1021,15 @@ undefined4 * __cdecl FUN_0042e450(undefined4 *param_1)
 undefined * __stdcall FUN_0042e4c0(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46ad44);
   if (DAT_0046ad04 == '\0') {
     FUN_0042e450((undefined4 *)&DAT_00477180);
     DAT_0046ad04 = DAT_0046ad04 + '\x01';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return &DAT_00477180;
 }
 
@@ -1101,8 +1039,8 @@ undefined * __stdcall FUN_0042e4c0(void)
 undefined * __stdcall FUN_0042e55c(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46ad68);
   if (DAT_0046ad05 == '\0') {
@@ -1111,7 +1049,7 @@ undefined * __stdcall FUN_0042e55c(void)
     _DAT_0047718c = 0;
     DAT_0046ad05 = '\x01';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return &DAT_00477184;
 }
 
@@ -1120,27 +1058,27 @@ undefined * __stdcall FUN_0042e55c(void)
 void __stdcall FUN_0042e620(void)
 
 {
-  int iVar1;
-  int *piVar2;
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  int prevRefs;
+  int *strRep;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46ad84);
   if (DAT_0046ad7c == '\0') goto LAB_0042e6c7;
   if (DAT_004771a4 != 0) {
     if (*(int *)(DAT_004771a4 + -0xc) != -1) {
-      piVar2 = (int *)(DAT_004771a4 + -0xc);
-      if (piVar2 == &DAT_00471d5c) {
-        iVar1 = 1;
+      strRep = (int *)(DAT_004771a4 + -0xc);
+      if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
-      else if (piVar2 == &DAT_00471d5c) {
-        iVar1 = 1;
+      else if (strRep == &g_nullStringRep) {
+        prevRefs = 1;
       }
       else {
-        *piVar2 = *piVar2 + -1;
-        iVar1 = *piVar2 + 1;
+        *strRep = *strRep + -1;
+        prevRefs = *strRep + 1;
       }
-      if (iVar1 != 0) goto LAB_0042e6c0;
+      if (prevRefs != 0) goto LAB_0042e6c0;
     }
     operator_delete();
     DAT_004771a4 = 0;
@@ -1148,7 +1086,7 @@ void __stdcall FUN_0042e620(void)
 LAB_0042e6c0:
   DAT_0046ad7c = '\0';
 LAB_0042e6c7:
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return;
 }
 
@@ -1158,15 +1096,15 @@ LAB_0042e6c7:
 undefined * __stdcall FUN_0042e6d8(void)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46ada8);
   if (DAT_0046ad7c == '\0') {
-    (*(undefined * *)&DAT_004771a4) = &DAT_00471d68;
+    (*(undefined * *)&DAT_004771a4) = &g_emptyStringData;
     DAT_0046ad7c = '\x01';
   }
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return &DAT_0047719c;
 }
 
@@ -1175,12 +1113,12 @@ undefined * __stdcall FUN_0042e6d8(void)
 int * __cdecl FUN_0042e748(int *param_1,int param_2,uint *param_3,undefined4 *param_4,undefined *param_5)
 
 {
-  uint uVar1;
+  uint len;
   undefined *puVar2;
-  int *piVar3;
-  undefined4 *in_FS_OFFSET;
+  int *rep;
+  undefined4 *sehChainHead;
   char cVar4;
-  undefined4 local_28;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46add8);
   if (param_2 == 0) {
@@ -1190,8 +1128,8 @@ int * __cdecl FUN_0042e748(int *param_1,int param_2,uint *param_3,undefined4 *pa
   }
   cVar4 = '\x01';
   puVar2 = FUN_0042e6d8();
-  FUN_00443c6c(param_1 + 1,param_3,(*(int *)&DAT_00477190),*(undefined4 *)(puVar2 + 8),cVar4);
-  FUN_004216ec((undefined4 *)((int)param_1 + 0x11));
+  OWL::TModule::TModule_443c6c(param_1 + 1,param_3,(*(int *)&DAT_00477190),*(undefined4 *)(puVar2 + 8),cVar4);
+  OWL::TMsgThread::TMsgThread((undefined4 *)((int)param_1 + 0x11));
   *(undefined ***)((int)param_1 + 0x1b) = &OWL::TApplication::vftable;
   param_1[1] = (int)&PTR_LAB_0046ae70;
   *(undefined ***)((int)param_1 + 0x11) = &PTR_LAB_0046ae80;
@@ -1206,16 +1144,16 @@ int * __cdecl FUN_0042e748(int *param_1,int param_2,uint *param_3,undefined4 *pa
   *(undefined4 *)((int)param_1 + 0x3d) = 0;
   if (*(int *)(*(int *)(puVar2 + 8) + -0xc) == -1 || *(int *)(*(int *)(puVar2 + 8) + -0xc) + 1 < 0)
   {
-    uVar1 = *(uint *)(*(int *)(puVar2 + 8) + -4);
-    piVar3 = std::string::__getRep((int)param_1 + 0x35,uVar1,uVar1);
-    *(int **)((int)param_1 + 0x3d) = piVar3 + 3;
-    memcpy(*(undefined4 **)((int)param_1 + 0x3d),*(undefined4 **)(puVar2 + 8),uVar1);
+    len = *(uint *)(*(int *)(puVar2 + 8) + -4);
+    rep = std::string::__getRep((int)param_1 + 0x35,len,len);
+    *(int **)((int)param_1 + 0x3d) = rep + 3;
+    memcpy(*(undefined4 **)((int)param_1 + 0x3d),*(undefined4 **)(puVar2 + 8),len);
   }
   else {
     *(undefined4 *)((int)param_1 + 0x3d) = *(undefined4 *)(puVar2 + 8);
-    piVar3 = (int *)(*(int *)((int)param_1 + 0x3d) + -0xc);
-    if (piVar3 != &DAT_00471d5c) {
-      *piVar3 = *piVar3 + 1;
+    rep = (int *)(*(int *)((int)param_1 + 0x3d) + -0xc);
+    if (rep != &g_nullStringRep) {
+      *rep = *rep + 1;
     }
   }
   *(undefined4 *)((int)param_1 + 0x45) = 0;
@@ -1235,7 +1173,7 @@ int * __cdecl FUN_0042e748(int *param_1,int param_2,uint *param_3,undefined4 *pa
   *(undefined **)((int)param_1 + 0x6b) = param_5;
   FUN_004116f4(*(undefined4 **)((int)param_1 + 0x6b),param_1,0);
   *param_4 = param_1 + 1;
-  *in_FS_OFFSET = local_28;
+  *sehChainHead = sehPrevFrame;
   return param_1;
 }
 
@@ -1287,16 +1225,16 @@ undefined4 __cdecl FUN_0042f090(int param_1,undefined4 param_2)
 
 // ----------------------------------------------------------------------------------------------------
 // 0x0042f180  FUN_0042f180   (63 bytes)   [unnamed]
-int __cdecl FUN_0042f180(int param_1,undefined4 param_2,uint *param_3)
+int __cdecl FUN_0042f180(int str,undefined4 param_2,uint *s)
 
 {
-  undefined4 *in_FS_OFFSET;
-  undefined4 local_28;
+  undefined4 *sehChainHead;
+  undefined4 sehPrevFrame;
   
   __InitExceptBlockLDTC(0x46afec);
-  std::string::string_from_cstr(param_1,param_3);
-  *in_FS_OFFSET = local_28;
-  return param_1;
+  std::string::string_from_cstr(str,s);
+  *sehChainHead = sehPrevFrame;
+  return str;
 }
 
 } // namespace tea
